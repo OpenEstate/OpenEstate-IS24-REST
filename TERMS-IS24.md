@@ -1,8 +1,7 @@
 # Nutzungsbedingungen von ImmobilienScout24
 Die folgenden Bedingungen sind zur Nutzung der REST-API von [ImmobilienScout24](http://www.immobilienscout24.de/) einzuhalten.
 
-## Nutzungsbedingungen der Immobilien Scout GmbH hinsichtlich der Datennutzung über die Anwendungsprogrammierschnittstelle („REST-API“)
-siehe [Originaltext von ImmobilienScout24](http://www.immobilienscout24.de/de/popup/produktinformationen/api-nutzungsbedigungen/)
+**Nutzungsbedingungen der Immobilien Scout GmbH hinsichtlich der Datennutzung über die Anwendungsprogrammierschnittstelle („REST-API“)** (siehe [Originaltext von ImmobilienScout24](http://www.immobilienscout24.de/de/popup/produktinformationen/api-nutzungsbedigungen/))
 
 1. Geltungsbereich
   1. Die ImmobilienScout24 GmbH, Andreasstraße 10, 10243 Berlin („ImmobilienScout24“), stellt dem API-Lizenznehmer im Rahmen dieser Nutzungsbedingungen eine Lizenz zur Nutzung von Daten aus der ImmobilienScout24-Datenbank über eine von ImmobilienScout24 benannte Anwendungsprogrammierschnittstelle („REST-API“) zur Verfügung. Diese Nutzungsbedingungen gelten auch für alle weiteren REST-API-Webservices von ImmobilienScout24.
