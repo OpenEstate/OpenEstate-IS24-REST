@@ -22,43 +22,15 @@
   </parent>
 
   <dependencies>
+
+    <!-- OpenEstate-IS24-REST -->
     <dependency>
       <groupId>org.openestate.is24</groupId>
       <artifactId>OpenEstate-IS24-REST</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.google.code.findbugs</groupId>
-      <artifactId>annotations</artifactId>
-      <scope>compile</scope>
-      <optional>true</optional>
-    </dependency>
-    <dependency>
-      <groupId>commons-io</groupId>
-      <artifactId>commons-io</artifactId>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>commons-lang</groupId>
-      <artifactId>commons-lang</artifactId>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>commons-validator</groupId>
-      <artifactId>commons-validator</artifactId>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>log4j</groupId>
-      <artifactId>log4j</artifactId>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>oauth.signpost</groupId>
-      <artifactId>signpost-core</artifactId>
       <scope>compile</scope>
     </dependency>
 
-    <!-- additional dependencies for HTTP components 4.3.x -->
+    <!-- HTTP components 4.3.x -->
     <dependency>
       <groupId>org.apache.httpcomponents</groupId>
       <artifactId>httpclient</artifactId>
@@ -77,11 +49,12 @@
       <scope>compile</scope>
     </dependency>
 
-    <!-- test dependencies -->
+    <!-- further compile dependencies -->
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <scope>test</scope>
+      <groupId>com.google.code.findbugs</groupId>
+      <artifactId>annotations</artifactId>
+      <scope>compile</scope>
+      <optional>true</optional>
     </dependency>
 
   </dependencies>

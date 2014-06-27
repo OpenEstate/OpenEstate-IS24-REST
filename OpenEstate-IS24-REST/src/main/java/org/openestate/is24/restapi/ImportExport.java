@@ -48,6 +48,7 @@ import org.openestate.is24.restapi.xml.videoupload.VideoUploadTicket;
  */
 public final class ImportExport
 {
+  //private final static Logger LOGGER = LoggerFactory.getLogger( ImportExport.class );
   public final static int PUBLISH_CHANNEL_IS24_ID = 10000;
   public final static String PUBLISH_CHANNEL_IS24_TITLE = "Immobilienscout24";
   public final static int PUBLISH_CHANNEL_HOMEPAGE_ID = 10001;
@@ -1402,9 +1403,9 @@ public final class ImportExport
 
       // write object into xml
       String xml = XmlUtils.marshal( realEstate, client.getEncoding() );
-      //System.out.println( StringUtils.repeat( "-", 50 ) );
-      //System.out.println( xml );
-      //System.out.println( StringUtils.repeat( "-", 50 ) );
+      //LOGGER.debug( StringUtils.repeat( "-", 50 ) );
+      //LOGGER.debug( xml );
+      //LOGGER.debug( StringUtils.repeat( "-", 50 ) );
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.POST, xml );
@@ -1538,12 +1539,12 @@ public final class ImportExport
         throw new IOException( "No upload ticket was found!" );
 
       // send video file to the service, that is specified in the ticket
-      //System.out.println( "UPLOAD VIDEO (" + fileName + ")" );
-      //System.out.println( "> upload url  : " + ticket.getUploadUrl() );
-      //System.out.println( "> auth key    : " + ticket.getAuth() );
-      //System.out.println( "> video id    : " + ticket.getVideoId() );
+      //LOGGER.debug( "UPLOAD VIDEO (" + fileName + ")" );
+      //LOGGER.debug( "> upload url  : " + ticket.getUploadUrl() );
+      //LOGGER.debug( "> auth key    : " + ticket.getAuth() );
+      //LOGGER.debug( "> video id    : " + ticket.getVideoId() );
       //if (ticket.getValidUntil()!=null)
-      //  System.out.println( "> valid until : " + ticket.getValidUntil().getTime() );
+      //  LOGGER.debug( "> valid until : " + ticket.getValidUntil().getTime() );
       Response response = client.sendVideoUploadRequest(
         ticket.getUploadUrl(),
         RequestMethod.POST,

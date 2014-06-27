@@ -20,6 +20,8 @@ import org.apache.commons.lang.StringUtils;
 import org.openestate.is24.restapi.xml.XmlUtils;
 import org.openestate.is24.restapi.xml.common.Message;
 import org.openestate.is24.restapi.xml.common.Messages;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -27,6 +29,7 @@ import org.openestate.is24.restapi.xml.common.Messages;
  */
 public class RequestFailedException extends Exception
 {
+  private final static Logger LOGGER = LoggerFactory.getLogger( RequestFailedException.class );
   public final int statusCode;
   public final String statusMessage;
   public final Messages responseMessages;
@@ -49,11 +52,11 @@ public class RequestFailedException extends Exception
       }
       catch (Exception ex)
       {
-        System.err.println( "WARNING: Can't read error messages from response body!" );
-        System.err.println( StringUtils.repeat( "-", 40 ) );
-        System.err.println( body );
-        System.err.println( StringUtils.repeat( "-", 40 ) );
-        ex.printStackTrace( System.err );
+        LOGGER.error( "WARNING: Can't read error messages from response body!" );
+        LOGGER.error( StringUtils.repeat( "-", 40 ) );
+        LOGGER.error( body );
+        LOGGER.error( StringUtils.repeat( "-", 40 ) );
+        LOGGER.error( ex.getLocalizedMessage(), ex );
       }
     }
 
@@ -88,8 +91,7 @@ public class RequestFailedException extends Exception
     }
     catch (Exception ex)
     {
-      System.out.println( "Can't parse response messages!" );
-      ex.printStackTrace( System.out );
+      LOGGER.error( "Can't parse response messages!", ex );
     }
     this.responseMessages = messages;
   }

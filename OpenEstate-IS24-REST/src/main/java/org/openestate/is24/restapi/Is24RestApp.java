@@ -60,6 +60,8 @@ import org.openestate.is24.restapi.utils.SSLUtils;
 import org.openestate.is24.restapi.utils.Verification;
 import org.openestate.is24.restapi.xml.XmlUtils;
 import org.openestate.is24.restapi.xml.realestates.RealEstates;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -67,6 +69,7 @@ import org.openestate.is24.restapi.xml.realestates.RealEstates;
  */
 public class Is24RestApp extends javax.swing.JFrame
 {
+  private final static Logger LOGGER = LoggerFactory.getLogger( Is24RestApp.class );
   private final static String LINE = StringUtils.repeat( "-", 50 );
   private final static String URL_PROPERTY = "webservice.url";
   private final static String CONSUMER_KEY_PROPERTY = "webservice.consumer.key";
@@ -165,17 +168,13 @@ public class Is24RestApp extends javax.swing.JFrame
           }
           catch (Exception ex)
           {
-            String error = "Can't open web-browser!";
-            System.err.println( error );
-            ex.printStackTrace( System.err );
+            LOGGER.error( "Can't open web-browser!", ex );
           }
         }
         catch (Exception ex)
         {
-          String error = "Requesting access failed!";
-          System.err.println( error );
-          ex.printStackTrace( System.err );
-          writeExceptionToOutputField( error, ex );
+          LOGGER.error( "Requesting access failed!", ex );
+          writeExceptionToOutputField( "Requesting access failed!", ex );
         }
         finally
         {
@@ -236,10 +235,8 @@ public class Is24RestApp extends javax.swing.JFrame
         }
         catch (Exception ex)
         {
-          String error = "Verifying access failed!";
-          System.err.println( error );
-          ex.printStackTrace( System.err );
-          writeExceptionToOutputField( error, ex );
+          LOGGER.error( "Verifying access failed!", ex );
+          writeExceptionToOutputField( "Verifying access failed!", ex );
         }
         finally
         {
@@ -274,10 +271,8 @@ public class Is24RestApp extends javax.swing.JFrame
         }
         catch (Exception ex)
         {
-          String error = "Can't fetch real estates from webservice!";
-          System.err.println( error );
-          ex.printStackTrace( System.err );
-          writeExceptionToOutputField( error, ex );
+          LOGGER.error( "Can't fetch real estates from webservice!", ex );
+          writeExceptionToOutputField( "Can't fetch real estates from webservice!", ex );
         }
         finally
         {
@@ -321,10 +316,8 @@ public class Is24RestApp extends javax.swing.JFrame
     }
     catch (IOException ex)
     {
-      String error = "Can't read webservice settings!";
-      System.err.println( error );
-      ex.printStackTrace( System.err );
-      writeExceptionToOutputField( error, ex );
+      LOGGER.error( "Can't read webservice settings!", ex );
+      writeExceptionToOutputField( "Can't read webservice settings!", ex );
     }
     finally
     {
@@ -360,10 +353,8 @@ public class Is24RestApp extends javax.swing.JFrame
     }
     catch (IOException ex)
     {
-      String error = "Can't save webservice settings!";
-      System.err.println( error );
-      ex.printStackTrace( System.err );
-      writeExceptionToOutputField( error, ex );
+      LOGGER.error( "Can't save webservice settings!", ex );
+      writeExceptionToOutputField( "Can't save webservice settings!", ex );
     }
     finally
     {
@@ -779,10 +770,8 @@ public class Is24RestApp extends javax.swing.JFrame
     }
     catch (OAuthException ex)
     {
-      String error = "Authorization failed!";
-      System.err.println( error );
-      ex.printStackTrace( System.err );
-      writeExceptionToOutputField( error, ex );
+      LOGGER.error( "Authorization failed!", ex );
+      writeExceptionToOutputField( "Authorization failed!", ex );
     }
   }//GEN-LAST:event_getAllRealEstatesMenuItemActionPerformed
 
@@ -833,9 +822,7 @@ public class Is24RestApp extends javax.swing.JFrame
     }
     catch (Exception ex)
     {
-      String error = "Can't disable certificate checks!";
-      System.err.println( error );
-      ex.printStackTrace( System.err );
+      LOGGER.error( "Can't disable certificate checks!", ex );
     }
 
     // Create and display the form

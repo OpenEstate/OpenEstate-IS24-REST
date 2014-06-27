@@ -22,6 +22,7 @@ package org.openestate.is24.restapi.utils;
  */
 public class Authorization
 {
+  //private final static Logger LOGGER = LoggerFactory.getLogger( Authorization.class );
   public final String accessToken;
   public final String accessTokenSecret;
 

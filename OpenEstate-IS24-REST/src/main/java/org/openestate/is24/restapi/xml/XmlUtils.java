@@ -69,6 +69,7 @@ import org.openestate.is24.restapi.xml.realestates.TradeSite;
  */
 public final class XmlUtils
 {
+  //private final static Logger LOGGER = LoggerFactory.getLogger( XmlUtils.class );
   public final static String DEFAULT_ENCODING = "UTF-8";
   private static JAXBContext JAXB = null;
   private final static String JAXB_PACKAGES = ""

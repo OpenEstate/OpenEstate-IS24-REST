@@ -30,6 +30,8 @@ import javax.net.ssl.X509TrustManager;
  */
 public final class SSLUtils
 {
+  //private final static Logger LOGGER = LoggerFactory.getLogger( SSLUtils.class );
+
   private SSLUtils()
   {
   }

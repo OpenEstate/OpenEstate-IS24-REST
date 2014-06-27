@@ -63,6 +63,7 @@ import org.openestate.is24.restapi.utils.Response;
  */
 public class HttpComponents42Client extends AbstractClient
 {
+  //private final static Logger LOGGER = LoggerFactory.getLogger( HttpComponents42Client.class );
   private transient HttpClient httpClient = null;
 
   public HttpComponents42Client( String apiBaseUrl, String apiAccessKey, String apiAccessSecret )

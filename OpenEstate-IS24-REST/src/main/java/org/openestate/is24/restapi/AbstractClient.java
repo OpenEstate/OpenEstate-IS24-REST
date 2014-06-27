@@ -33,6 +33,8 @@ import org.openestate.is24.restapi.utils.Authorization;
 import org.openestate.is24.restapi.utils.RequestMethod;
 import org.openestate.is24.restapi.utils.Response;
 import org.openestate.is24.restapi.xml.XmlUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -40,6 +42,7 @@ import org.openestate.is24.restapi.xml.XmlUtils;
  */
 public abstract class AbstractClient
 {
+  private final static Logger LOGGER = LoggerFactory.getLogger( AbstractClient.class );
   public final static String GET_METHOD = "GET";
   public final static String POST_METHOD = "POST";
   public final static String PUT_METHOD = "PUT";
@@ -90,13 +93,13 @@ public abstract class AbstractClient
     this.oAuthProvider = buildOAuthProvider( apiBaseUrl );
     this.oAuthProvider.setOAuth10a( true );
 
-    //System.out.println( "Fetching access token..." );
+    //LOGGER.debug( "Fetching access token..." );
     this.oAuthProvider.retrieveAccessToken( this.oAuthConsumer, verificationCode );
 
     //String accessToken = this.oAuthConsumer.getToken();
     //String accessTokenSecret = this.oAuthConsumer.getTokenSecret();
-    //System.out.println( "Access token: " + accessToken );
-    //System.out.println( "Token secret: " + accessTokenSecret );
+    //LOGGER.debug( "Access token: " + accessToken );
+    //LOGGER.debug( "Token secret: " + accessTokenSecret );
     return new Authorization( this.oAuthConsumer.getToken(), this.oAuthConsumer.getTokenSecret() );
   }
 
@@ -165,8 +168,7 @@ public abstract class AbstractClient
     }
     catch (UnsupportedEncodingException ex)
     {
-      System.out.println( "Unsupported encoding!" );
-      ex.printStackTrace( System.out );
+      LOGGER.error( "Unsupported encoding!", ex );
       return null;
     }
   }

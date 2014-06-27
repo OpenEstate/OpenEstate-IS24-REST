@@ -22,6 +22,7 @@ package org.openestate.is24.restapi.utils;
  */
 public final class Verification
 {
+  //private final static Logger LOGGER = LoggerFactory.getLogger( Verification.class );
   public final String verificationUrl;
   public final String requestToken;
   public final String requestTokenSecret;

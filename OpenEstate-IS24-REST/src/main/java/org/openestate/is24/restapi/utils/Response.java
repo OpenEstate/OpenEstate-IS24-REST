@@ -24,6 +24,7 @@ import org.apache.commons.lang.StringUtils;
  */
 public final class Response
 {
+  //private final static Logger LOGGER = LoggerFactory.getLogger( Response.class );
   public final static int OK = 200;
   public final static int CREATED = 201;
   public final static int AUTHENTICATION_REQUIRED = 401;

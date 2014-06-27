@@ -24,7 +24,6 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-
 import oauth.signpost.OAuthConsumer;
 import oauth.signpost.OAuthProvider;
 import oauth.signpost.basic.DefaultOAuthConsumer;
@@ -32,6 +31,8 @@ import oauth.signpost.basic.DefaultOAuthProvider;
 import oauth.signpost.exception.OAuthCommunicationException;
 import oauth.signpost.exception.OAuthExpectationFailedException;
 import oauth.signpost.exception.OAuthMessageSignerException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * The oAuth example from <a href="http://developerwiki.immobilienscout24.de/wiki/Java-Signpost_Tutorial#Complete_Example_Code">Java-Signpost Tutorial</a>.
@@ -42,6 +43,8 @@ import oauth.signpost.exception.OAuthMessageSignerException;
   justification = "Keep example code untouched." )
 public class OauthTesterIS24
 {
+  private final static Logger LOGGER = LoggerFactory.getLogger( OauthTesterIS24.class );
+
   public static void main( String[] args ) throws Exception
   {
 
@@ -54,7 +57,7 @@ public class OauthTesterIS24
       "http://sandbox.immobilienscout24.de/restapi/security/oauth/confirm_access" );
 
 
-    System.out.println( "Fetching request token..." );
+    LOGGER.info( "Fetching request token..." );
 
     String authUrl =
       provider.retrieveRequestToken( consumer, "http://www.google.de" );
@@ -62,34 +65,34 @@ public class OauthTesterIS24
     String requestToken = consumer.getToken();
     String requestTokenSecret = consumer.getTokenSecret();
 
-    System.out.println( "Request token: "+requestToken );
-    System.out.println( "Token secret: "+requestTokenSecret );
+    LOGGER.info( "Request token: "+requestToken );
+    LOGGER.info( "Token secret: "+requestTokenSecret );
 
-    System.out.println( "Now visit:\n"+authUrl
+    LOGGER.info( "Now visit:\n"+authUrl
       +"\n... and grant this app authorization" );
-    System.out.println( "Enter the verification code and hit ENTER when you're done:" );
+    LOGGER.info( "Enter the verification code and hit ENTER when you're done:" );
 
     BufferedReader br = new BufferedReader( new InputStreamReader( System.in ) );
     String verificationCode = br.readLine();
 
-    System.out.println( "Fetching access token..." );
+    LOGGER.info( "Fetching access token..." );
 
     provider.retrieveAccessToken( consumer, verificationCode.trim() );
 
     String accessToken = consumer.getToken();
     String accessTokenSecret = consumer.getTokenSecret();
-    System.out.println( "Access token: "+accessToken );
-    System.out.println( "Token secret: "+accessTokenSecret );
+    LOGGER.info( "Access token: "+accessToken );
+    LOGGER.info( "Token secret: "+accessTokenSecret );
 
-    System.out.println( "first call" );
-
-    requestObjectApi( consumer );
-
-    System.out.println( "second call" );
+    //LOGGER.debug( "first call" );
 
     requestObjectApi( consumer );
 
-    System.out.println( "third call" );
+    //LOGGER.debug( "second call" );
+
+    requestObjectApi( consumer );
+
+    //LOGGER.debug( "third call" );
 
     OAuthConsumer consumer2 =
       new DefaultOAuthConsumer( "testzugang-import-api-maklermanagerKey", "VXyCmVpjR4GQVCVBf33T" );
@@ -103,7 +106,7 @@ public class OauthTesterIS24
     OAuthExpectationFailedException, OAuthCommunicationException, UnsupportedEncodingException
   {
 
-    System.out.println( "#################################################################################################" );
+    LOGGER.info( "#################################################################################################" );
 
     URL url =
       new URL( "http://sandbox.immobilienscout24.de/restapi/api/search/v1.0/searcher/abc" );
@@ -111,17 +114,17 @@ public class OauthTesterIS24
     HttpURLConnection apiRequest = (HttpURLConnection) url.openConnection();
 
     consumer.sign( apiRequest );
-    System.out.println( "Sending request..." );
+    LOGGER.info( "Sending request..." );
 
     apiRequest.connect();
-    System.out.println( "Expiration "+apiRequest.getExpiration() );
-    System.out.println( "Timeout "+apiRequest.getConnectTimeout() );
-    System.out.println( "URL "+apiRequest.getURL() );
-    System.out.println( "Method "+apiRequest.getRequestMethod() );
+    LOGGER.info( "Expiration "+apiRequest.getExpiration() );
+    LOGGER.info( "Timeout "+apiRequest.getConnectTimeout() );
+    LOGGER.info( "URL "+apiRequest.getURL() );
+    LOGGER.info( "Method "+apiRequest.getRequestMethod() );
 
-    System.out.println( "Response: "+apiRequest.getResponseCode()+" "
+    LOGGER.info( "Response: "+apiRequest.getResponseCode()+" "
       +apiRequest.getResponseMessage() );
 
-    System.out.println( "#################################################################################################" );
+    LOGGER.info( "#################################################################################################" );
   }
 }

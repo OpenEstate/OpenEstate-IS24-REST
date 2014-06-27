@@ -36,6 +36,8 @@ import org.openestate.is24.restapi.utils.Response;
  */
 public class DefaultClient extends AbstractClient
 {
+  //private final static Logger LOGGER = LoggerFactory.getLogger( DefaultClient.class );
+
   public DefaultClient( String apiBaseUrl, String apiAccessKey, String apiAccessSecret )
   {
     super( apiBaseUrl, apiAccessKey, apiAccessSecret );

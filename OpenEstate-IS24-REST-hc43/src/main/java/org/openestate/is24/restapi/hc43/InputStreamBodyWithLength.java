@@ -25,6 +25,7 @@ import org.apache.http.entity.mime.content.InputStreamBody;
  */
 public class InputStreamBodyWithLength extends InputStreamBody
 {
+  //private final static Logger LOGGER = LoggerFactory.getLogger( InputStreamBodyWithLength.class );
   private final long length;
 
   public InputStreamBodyWithLength( InputStream in, String filename, long length )
