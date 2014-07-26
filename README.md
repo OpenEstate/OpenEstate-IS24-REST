@@ -50,7 +50,7 @@ How to use
 
 You can find further informations in the
 [project wiki](https://github.com/OpenEstate/OpenEstate-IS24-REST/wiki) or in the
-[docs subfolder](docs/).
+[*docs* subfolder](docs/Home.md).
 
 
 Requirements
@@ -68,7 +68,7 @@ Dependencies
 * [commons-io 2.4](http://commons.apache.org/proper/commons-io/)
 * [commons-lang 2.6](http://commons.apache.org/proper/commons-lang/)
 * [commons-validator 1.4](http://commons.apache.org/proper/commons-validator/)
-* [oauth-signpost 1.2.1.2](https://github.com/mttkay/signpost)
+* [oauth-signpost 1.2.1.2](https://code.google.com/p/oauth-signpost/)
 * [SLF4J 1.7.7](http://www.slf4j.org/)
 * [log4j 1.2.17](http://logging.apache.org/log4j/1.2/) (optional)
 * [Apache HttpComponents 4.2](http://hc.apache.org/httpcomponents-client-4.2.x/) or
