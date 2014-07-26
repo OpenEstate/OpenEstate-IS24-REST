@@ -5,20 +5,21 @@
 
   <groupId>org.openestate.is24</groupId>
   <artifactId>OpenEstate-IS24-REST</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>OpenEstate-IS24-REST_v1.x</name>
+  <name>OpenEstate-IS24-REST-v0.1-dev</name>
   <url>http://openestate.org</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.packageDir>${basedir}/package</project.packageDir>
   </properties>
 
   <parent>
     <groupId>org.openestate.is24</groupId>
     <artifactId>ALL</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.1-SNAPSHOT</version>
   </parent>
 
   <dependencies>
@@ -76,6 +77,21 @@
   <build>
     <plugins>
 
+      <!-- clean -->
+      <plugin>
+        <artifactId>maven-clean-plugin</artifactId>
+        <version>2.5</version>
+        <configuration>
+          <failOnError>false</failOnError>
+          <filesets>
+            <fileset>
+              <directory>${project.packageDir}</directory>
+              <followSymlinks>false</followSymlinks>
+            </fileset>
+          </filesets>
+        </configuration>
+      </plugin>
+
       <!-- compiler -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -89,11 +105,73 @@
         </configuration>
       </plugin>
 
+      <!-- source -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>2.3</version>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- javadoc -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.9.1</version>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+            <configuration>
+              <quiet>true</quiet>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- assembly -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>2.4</version>
+        <executions>
+          <execution>
+            <id>package</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+            <configuration>
+              <!--
+              <finalName>${project.artifactId}-${project.version}</finalName>
+              <outputDirectory>${project.packageDir}</outputDirectory>
+              -->
+              <finalName>package</finalName>
+              <outputDirectory>${basedir}</outputDirectory>
+              <appendAssemblyId>false</appendAssemblyId>
+              <attach>false</attach>
+              <descriptors>
+                <descriptor>assembly.xml</descriptor>
+              </descriptors>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
       <!-- JAXB -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>jaxb2-maven-plugin</artifactId>
-        <version>1.5</version>
+        <version>1.6</version>
         <configuration>
           <outputDirectory>${basedir}/src/main/java</outputDirectory>
           <bindingFiles>binding.xjb</bindingFiles>
