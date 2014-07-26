@@ -56,10 +56,9 @@ You can find further informations in the
 Requirements
 ------------
 
-* You need to [Register for API access](http://rest.immobilienscout24.de/restapi/security/registration).
+* You need to [register for API access](http://rest.immobilienscout24.de/restapi/security/registration).
 * You need to accept the [terms of use](http://www.immobilienscout24.de/de/popup/produktinformationen/api-nutzungsbedigungen/).
-* After the registration process you should receive a
-  **consumer token** and **consumer secret**.
+* After the registration process you should receive a **consumer token** and **consumer secret**.
 
 
 Dependencies
@@ -71,6 +70,9 @@ Dependencies
 * [commons-validator 1.4](http://commons.apache.org/proper/commons-validator/)
 * [oauth-signpost 1.2.1.2](https://github.com/mttkay/signpost)
 * [SLF4J 1.7.7](http://www.slf4j.org/)
+* [log4j 1.2.17](http://logging.apache.org/log4j/1.2/) (optional)
+* [Apache HttpComponents 4.2](http://hc.apache.org/httpcomponents-client-4.2.x/) or
+  [Apache HttpComponents 4.3](http://hc.apache.org/httpcomponents-client-4.3.x/) (optional)
 
 
 Limitations
