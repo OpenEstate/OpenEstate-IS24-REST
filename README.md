@@ -49,8 +49,8 @@ How to use
 ----------
 
 You can find further informations in the
-[project wiki](https://github.com/OpenEstate/OpenEstate-IS24-REST/wiki) or in the
-[*docs* subfolder](docs/Home.md).
+[project wiki](https://github.com/OpenEstate/OpenEstate-IS24-REST/wiki) or in
+the **docs** subfolder.
 
 
 Requirements
