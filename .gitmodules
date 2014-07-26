@@ -1,0 +1,3 @@
+[submodule "docs"]
+	path = docs
+	url = git@github.com:OpenEstate/OpenEstate-IS24-REST.wiki.git
