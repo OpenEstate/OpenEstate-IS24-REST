@@ -1,4 +1,4 @@
-OpenEstate-IS24-REST (0.1-SNAPSHOT)
+OpenEstate-IS24-REST (0.1)
 ===================================
 
 OpenEstate-IS24-REST is a client library for the REST-Webservice of
