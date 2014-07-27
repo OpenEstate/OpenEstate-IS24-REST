@@ -2,7 +2,10 @@ OpenEstate-IS24-REST (0.1-SNAPSHOT)
 ===================================
 
 OpenEstate-IS24-REST is a client library for the REST-Webservice of
-[ImmobilienScout24](http://www.immobilienscout24.de/) written in Java.
+[ImmobilienScout24](http://www.immobilienscout24.de/) written in Java. This
+library is used within [OpenEstate-ImmoTool](http://openestate.org/) in order to
+export properties to [ImmobilienScout24](http://www.immobilienscout24.de/)
+through their Webservice.
 
 
 Work in progress
@@ -17,6 +20,7 @@ release.
 Features
 --------
 
+* authentication through OAuth
 * read and write XML according to the specifications of the Webservice
 * helper functions to call the [Import/Export-API](http://api.immobilienscout24.de/our-apis/import-export.html)
   (see [ImportExport.java](OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/ImportExport.java))
@@ -70,7 +74,6 @@ Dependencies
 * [commons-validator 1.4](http://commons.apache.org/proper/commons-validator/)
 * [oauth-signpost 1.2.1.2](https://code.google.com/p/oauth-signpost/)
 * [SLF4J 1.7.7](http://www.slf4j.org/)
-* [log4j 1.2.17](http://logging.apache.org/log4j/1.2/) (optional)
 * [Apache HttpComponents 4.2](http://hc.apache.org/httpcomponents-client-4.2.x/) or
   [Apache HttpComponents 4.3](http://hc.apache.org/httpcomponents-client-4.3.x/) (optional)
 
@@ -111,4 +114,4 @@ Further informations
 * [ImmobilienScout24-REST-API forum](https://groups.google.com/forum/#!forum/immobilienscout24-development)
 * [XML-Schemas (production)](http://rest.immobilienscout24.de/restapi/api/offer/v1.0/?_wadl&_schema)
 * [XML-Schemas (sandbox)](http://rest.sandbox-immobilienscout24.de/restapi/api/offer/v1.0/?_wadl&_schema)
-* [Alternative implementation by IS24](https://github.com/ImmobilienScout24/restapi-java-sdk)
+* [An alternative implementation by IS24](https://github.com/ImmobilienScout24/restapi-java-sdk)
