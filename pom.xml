@@ -59,6 +59,7 @@
           <reportOutputDirectory>${basedir}/target</reportOutputDirectory>
           <destDir>javadoc</destDir>
           <quiet>true</quiet>
+          <excludePackageNames>org.openestate.is24.restapi.examples:org.openestate.is24.restapi.examples.*</excludePackageNames>
         </configuration>
       </plugin>
 
