@@ -62,10 +62,10 @@ public class ExportRealEstatesExample
         for (OfferRealEstateForList object : result.getRealEstateList().getRealEstateElement())
         {
           String xml = XmlUtils.marshal( object, "UTF-8", true );
-          System.out.println( "------------------" );
-          System.out.println( "object id " + object.getId() + "" );
-          System.out.println( "object title '" + object.getTitle() +  "'" );
+          System.out.println( "object #" + object.getId() + "" );
+          System.out.println( "title '" + object.getTitle() +  "'" );
           System.out.println( xml );
+          System.out.println( "------------------" );
         }
       }
       catch (RequestFailedException ex)
@@ -83,7 +83,7 @@ public class ExportRealEstatesExample
       }
       catch (IOException ex)
       {
-        throw new RuntimeException( "Can't get object list!", ex );
+        throw new RuntimeException( "Communication failed!", ex );
       }
     }
     while (result.getPaging().getNumberOfPages()>page);
