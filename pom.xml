@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.openestate.is24</groupId>
+  <artifactId>ALL</artifactId>
+  <version>0.1</version>
+  <packaging>pom</packaging>
+
+  <name>ALL-OpenEstate-IS24-REST-v0.1</name>
+  <url>http://openestate.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.baseName>OpenEstate-IS24-REST</project.baseName>
+    <project.releaseDir>${basedir}/release</project.releaseDir>
+  </properties>
+  <build>
+    <plugins>
+
+      <!-- clean -->
+      <plugin>
+        <artifactId>maven-clean-plugin</artifactId>
+        <version>2.5</version>
+        <configuration>
+          <failOnError>false</failOnError>
+          <filesets>
+            <fileset>
+              <directory>${project.releaseDir}</directory>
+              <followSymlinks>false</followSymlinks>
+            </fileset>
+          </filesets>
+        </configuration>
+      </plugin>
+
+      <!-- compiler -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.1</version>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+          <showDeprecation>true</showDeprecation>
+          <debug>false</debug>
+        </configuration>
+      </plugin>
+
+      <!-- javadoc -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.9.1</version>
+        <inherited>false</inherited>
+        <configuration>
+          <finalName>${project.baseName}-v${project.version}</finalName>
+          <doctitle>${project.baseName} v${project.version} API</doctitle>
+          <reportOutputDirectory>${basedir}/target</reportOutputDirectory>
+          <destDir>javadoc</destDir>
+          <quiet>true</quiet>
+          <excludePackageNames>org.openestate.is24.restapi.examples:org.openestate.is24.restapi.examples.*</excludePackageNames>
+        </configuration>
+      </plugin>
+
+      <!-- assembly -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>2.4</version>
+        <inherited>false</inherited>
+        <configuration>
+          <finalName>${project.baseName}-release-v${project.version}</finalName>
+          <outputDirectory>${project.releaseDir}</outputDirectory>
+          <appendAssemblyId>false</appendAssemblyId>
+          <attach>false</attach>
+          <useAllReactorProjects>true</useAllReactorProjects>
+          <descriptors>
+            <descriptor>assembly.xml</descriptor>
+          </descriptors>
+        </configuration>
+      </plugin>
+
+    </plugins>
+  </build>
+  <modules>
+    <module>OpenEstate-IS24-REST</module>
+    <module>OpenEstate-IS24-REST-hc42</module>
+    <module>OpenEstate-IS24-REST-hc43</module>
+    <module>OpenEstate-IS24-REST-examples</module>
+  </modules>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.openestate.is24</groupId>
+        <artifactId>OpenEstate-IS24-REST</artifactId>
+        <version>0.1</version>
+      </dependency>
+      <dependency>
+        <groupId>org.openestate.is24</groupId>
+        <artifactId>OpenEstate-IS24-REST-hc42</artifactId>
+        <version>0.1</version>
+      </dependency>
+      <dependency>
+        <groupId>org.openestate.is24</groupId>
+        <artifactId>OpenEstate-IS24-REST-hc43</artifactId>
+        <version>0.1</version>
+      </dependency>
+      <dependency>
+        <groupId>com.google.code.findbugs</groupId>
+        <artifactId>annotations</artifactId>
+        <version>3.0.0</version>
+      </dependency>
+      <dependency>
+        <groupId>commons-io</groupId>
+        <artifactId>commons-io</artifactId>
+        <version>2.4</version>
+      </dependency>
+      <dependency>
+        <groupId>commons-lang</groupId>
+        <artifactId>commons-lang</artifactId>
+        <version>2.6</version>
+      </dependency>
+      <dependency>
+        <groupId>commons-validator</groupId>
+        <artifactId>commons-validator</artifactId>
+        <version>1.4.0</version>
+      </dependency>
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.11</version>
+      </dependency>
+      <dependency>
+        <groupId>log4j</groupId>
+        <artifactId>log4j</artifactId>
+        <version>1.2.17</version>
+      </dependency>
+      <dependency>
+        <groupId>oauth.signpost</groupId>
+        <artifactId>signpost-core</artifactId>
+        <version>1.2.1.2</version>
+      </dependency>
+      <dependency>
+        <groupId>oauth.signpost</groupId>
+        <artifactId>signpost-commonshttp4</artifactId>
+        <version>1.2.1.2</version>
+      </dependency>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>1.7.7</version>
+      </dependency>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-log4j12</artifactId>
+        <version>1.7.7</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+  <organization>
+    <name>OpenEstate</name>
+    <url>http://openestate.org/</url>
+  </organization>
+  <developers>
+    <developer>
+      <id>andy</id>
+      <name>Andreas Rudolph</name>
+      <email>andy@openindex.de</email>
+      <organization>OpenIndex</organization>
+      <organizationUrl>http://www.openindex.de/</organizationUrl>
+    </developer>
+    <developer>
+      <id>walter</id>
+      <name>Walter Wagner</name>
+      <email>walter@openindex.de</email>
+      <organization>OpenIndex</organization>
+      <organizationUrl>http://www.openindex.de/</organizationUrl>
+    </developer>
+  </developers>
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+      <comments>A business-friendly OSS license</comments>
+    </license>
+  </licenses>
+</project>
