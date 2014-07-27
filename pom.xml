@@ -70,7 +70,7 @@
         <version>2.4</version>
         <inherited>false</inherited>
         <configuration>
-          <finalName>${project.baseName}-release-v${project.version}</finalName>
+          <finalName>${project.baseName}-${project.version}-release</finalName>
           <outputDirectory>${project.releaseDir}</outputDirectory>
           <appendAssemblyId>false</appendAssemblyId>
           <attach>false</attach>
