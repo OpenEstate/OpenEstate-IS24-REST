@@ -5,4 +5,4 @@ PROJECT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 export LANG=en
 
 cd $PROJECT_DIR
-$MVN install
+$MVN clean install

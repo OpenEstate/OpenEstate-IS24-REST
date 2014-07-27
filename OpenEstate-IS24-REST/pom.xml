@@ -13,7 +13,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.packageDir>${basedir}/package</project.packageDir>
+    <project.releaseDir>${basedir}/release</project.releaseDir>
   </properties>
 
   <parent>
@@ -85,7 +85,7 @@
           <failOnError>false</failOnError>
           <filesets>
             <fileset>
-              <directory>${project.packageDir}</directory>
+              <directory>${project.releaseDir}</directory>
               <followSymlinks>false</followSymlinks>
             </fileset>
           </filesets>
@@ -145,17 +145,13 @@
         <version>2.4</version>
         <executions>
           <execution>
-            <id>package</id>
+            <id>release</id>
             <phase>package</phase>
             <goals>
               <goal>single</goal>
             </goals>
             <configuration>
-              <!--
-              <finalName>${project.artifactId}-${project.version}</finalName>
-              <outputDirectory>${project.packageDir}</outputDirectory>
-              -->
-              <finalName>package</finalName>
+              <finalName>release</finalName>
               <outputDirectory>${basedir}</outputDirectory>
               <appendAssemblyId>false</appendAssemblyId>
               <attach>false</attach>

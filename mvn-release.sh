@@ -6,6 +6,5 @@ export LANG=en
 set -e
 
 cd $PROJECT_DIR
-$MVN clean package
-$MVN javadoc:aggregate-jar
+$MVN clean install javadoc:aggregate
 $MVN --non-recursive assembly:single
