@@ -1,4 +1,4 @@
-OpenEstate-IS24-REST 0.1.1
+OpenEstate-IS24-REST 0.1.2
 ==========================
 
 OpenEstate-IS24-REST is a client library for the REST-Webservice of
@@ -20,7 +20,7 @@ release.
 Features
 --------
 
-* authentication through OAuth
+* authentication through [OAuth](http://api.immobilienscout24.de/useful/authentication.html)
 * read and write XML according to the specifications of the Webservice
 * helper functions to call the [Import/Export-API](http://api.immobilienscout24.de/our-apis/import-export.html)
   (see [ImportExport.java](OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/ImportExport.java))
@@ -82,7 +82,7 @@ Limitations
 -----------
 
 The use of the Webservice may be limited by IS24 to a maximal number of
-operations per day. Contact <service@immobilienscout24.de> If the limit is too
+operations per day. Contact <service@immobilienscout24.de> if the limit is too
 low for your use case.
 
 

@@ -79,12 +79,14 @@ public final class XmlUtils
     + ":org.openestate.is24.restapi.xml.common"
     + ":org.openestate.is24.restapi.xml.offerlistelement"
     + ":org.openestate.is24.restapi.xml.offeruser"
+    + ":org.openestate.is24.restapi.xml.premiumplacement"
     + ":org.openestate.is24.restapi.xml.productrecommendation"
     + ":org.openestate.is24.restapi.xml.realestatecounts"
+    + ":org.openestate.is24.restapi.xml.realestateproject"
     + ":org.openestate.is24.restapi.xml.realestates"
     + ":org.openestate.is24.restapi.xml.realestatestock"
     + ":org.openestate.is24.restapi.xml.realtor"
-    + ":org.openestate.is24.restapi.xml.toplisting"
+    + ":org.openestate.is24.restapi.xml.realtorbadges"
     + ":org.openestate.is24.restapi.xml.videoupload"
     + ":org.openestate.is24.restapi.xml.zipandlocationtoregion";
 
