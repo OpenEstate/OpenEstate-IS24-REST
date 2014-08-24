@@ -1,47 +1,46 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<xs:schema xmlns="http://rest.immobilienscout24.de/schema/offer/toplisting/1.0"
-           targetNamespace="http://rest.immobilienscout24.de/schema/offer/toplisting/1.0"
+<xs:schema xmlns="http://rest.immobilienscout24.de/schema/offer/premiumplacement/1.0"
+           targetNamespace="http://rest.immobilienscout24.de/schema/offer/premiumplacement/1.0"
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
            xmlns:xlink="http://www.w3.org/1999/xlink"
            xmlns:common="http://rest.immobilienscout24.de/schema/common/1.0"
-           xmlns:messages="http://rest.immobilienscout24.de/schema/messages/1.0"
            elementFormDefault="unqualified"
            attributeFormDefault="unqualified"
            version="1.0">
 
+  <!--xmlns:messages="http://rest.immobilienscout24.de/schema/messages/1.0"              -->
   <xs:import namespace="http://www.w3.org/1999/xlink"/>
   <xs:import namespace="http://rest.immobilienscout24.de/schema/common/1.0"/>
 
-  <xs:element name="toplistings" type="Toplistings">
+  <xs:element name="premiumplacements" type="Premiumplacements">
     <xs:annotation>
-      <xs:documentation xml:lang="en">Liste of top listings</xs:documentation>
-      <xs:documentation xml:lang="de-DE">Liste von Toplistings</xs:documentation>
+      <xs:documentation xml:lang="en">Liste of premium placements</xs:documentation>
+      <xs:documentation xml:lang="de-DE">Liste von Premiumplacements</xs:documentation>
     </xs:annotation>
   </xs:element>
-  <xs:element name="toplisting" type="Toplisting">
+  <xs:element name="premiumplacement" type="Premiumplacement">
     <xs:annotation>
-      <xs:documentation xml:lang="en">top listing</xs:documentation>
-      <xs:documentation xml:lang="de-DE">Toplisting</xs:documentation>
+      <xs:documentation xml:lang="en">premium placement</xs:documentation>
+      <xs:documentation xml:lang="de-DE">Premiumplacement</xs:documentation>
     </xs:annotation>
   </xs:element>
 
 
-  <xs:complexType name="Toplisting">
+  <xs:complexType name="Premiumplacement">
     <xs:annotation>
-      <xs:documentation xml:lang="en">toplisting.</xs:documentation>
-      <xs:documentation xml:lang="de-DE">toplisting</xs:documentation>
+      <xs:documentation xml:lang="en">premium placement.</xs:documentation>
+      <xs:documentation xml:lang="de-DE">Premiumplacement</xs:documentation>
     </xs:annotation>
     <xs:sequence>
       <xs:element name="messageCode" type="xs:string" minOccurs="0" maxOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">result of the operation</xs:documentation>
-          <xs:documentation xml:lang="de-DE">Toplisting-Ergebnis</xs:documentation>
+          <xs:documentation xml:lang="de-DE">Premiumplacement-Ergebnis</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="message" type="xs:string" minOccurs="0" maxOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">result of the operation</xs:documentation>
-          <xs:documentation xml:lang="de-DE">Toplisting-Ergebnis</xs:documentation>
+          <xs:documentation xml:lang="de-DE">Premiumplacement-Ergebnis</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="servicePeriod" type="common:DateRange" minOccurs="0">
@@ -65,13 +64,13 @@
     </xs:attribute>
   </xs:complexType>
 
-  <xs:complexType name="Toplistings">
+  <xs:complexType name="Premiumplacements">
     <xs:annotation>
-      <xs:documentation xml:lang="en">List of Toplistings</xs:documentation>
-      <xs:documentation xml:lang="de-DE">Liste von Toplistings</xs:documentation>
+      <xs:documentation xml:lang="en">List of Premiumplacements</xs:documentation>
+      <xs:documentation xml:lang="de-DE">Liste von Premiumplacements</xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:element name="toplisting" type="Toplisting" minOccurs="0" maxOccurs="unbounded">
+      <xs:element name="premiumplacement" type="Premiumplacement" minOccurs="0" maxOccurs="unbounded">
         <xs:annotation>
           <xs:documentation xml:lang="en">an attachment</xs:documentation>
           <xs:documentation xml:lang="de-DE">ein Anhang</xs:documentation>

@@ -281,6 +281,17 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
               <xs:documentation xml:lang="de-DE">ReferencePrice API Call</xs:documentation>
             </xs:annotation>
           </xs:element>
+          <xs:element name="realEstateProjectId" type="xs:long" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">
+                Read Only: Represents an id of real estate project.
+              </xs:documentation>
+              <xs:documentation xml:lang="de-DE">
+                Nur lesend: Immobilien-Projekt Id
+              </xs:documentation>
+            </xs:annotation>
+          </xs:element>
+
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -1350,8 +1361,8 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
 
   <xs:complexType name="CountyCourt">
     <xs:all>
-      <xs:element name="courtNumber" type="TextField"/>
-      <xs:element name="name" type="TextField"/>
+      <xs:element name="courtNumber" type="TextField" minOccurs="0"/>
+      <xs:element name="name" type="TextField" minOccurs="0"/>
     </xs:all>
   </xs:complexType>
 
@@ -3873,6 +3884,55 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
         <xs:annotation>
           <xs:documentation xml:lang="en">heat supply</xs:documentation>
           <xs:documentation xml:lang="de-DE">Wärmelieferung</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <!-- new values -->
+      <xs:enumeration value="BIO_ENERGY">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">bio energy</xs:documentation>
+          <xs:documentation xml:lang="de-DE">BIO Energie</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="WIND_ENERGY">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">wind energy</xs:documentation>
+          <xs:documentation xml:lang="de-DE">Windenergie</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="HYDRO_ENERGY">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">hydro energy</xs:documentation>
+          <xs:documentation xml:lang="de-DE">Wasserenergie</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ENVIRONMENTAL_THERMAL_ENERGY">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">environmental thermal energy</xs:documentation>
+          <xs:documentation xml:lang="de-DE">Umweltwärme</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="COMBINED_HEAT_AND_POWER_FOSSIL_FUELS">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">combined heat and power fossil fuels</xs:documentation>
+          <xs:documentation xml:lang="de-DE">KWK fossil</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="COMBINED_HEAT_AND_POWER_RENEWABLE_ENERGY">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">combined heat and power renewable energy</xs:documentation>
+          <xs:documentation xml:lang="de-DE">KWK erneuerbar</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="COMBINED_HEAT_AND_POWER_REGENERATIVE_ENERGY">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">combined heat and power regenerative energy</xs:documentation>
+          <xs:documentation xml:lang="de-DE">KWK regenerativ</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="COMBINED_HEAT_AND_POWER_BIO_ENERGY">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">combined heat and power bio energy</xs:documentation>
+          <xs:documentation xml:lang="de-DE">KWK bio</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
@@ -10467,7 +10527,7 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
           <xs:documentation xml:lang="de-DE">Aufhebungsdatum</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="recordationDate" type="xs:date">
+      <xs:element name="recordationDate" type="xs:date" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">date of recordation</xs:documentation>
           <xs:documentation xml:lang="de-DE">Erfassungsdatum</xs:documentation>
@@ -10485,20 +10545,20 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
           <xs:documentation xml:lang="de-DE">Objektart der Auktion</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="countyCourt" type="CountyCourt">
+      <xs:element name="countyCourt" type="CountyCourt" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">the county court responsible for the auction</xs:documentation>
           <xs:documentation xml:lang="de-DE">Das Amtsgericht das für die Auktion verantwortlich ist
           </xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="fileReferenceAtCountyCourt" type="TextField">
+      <xs:element name="fileReferenceAtCountyCourt" type="TextField" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">the file reference at the county court</xs:documentation>
           <xs:documentation xml:lang="de-DE">Das Aktenzeichen beim Amtsgericht</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="numberOfFolio" type="TextField">
+      <xs:element name="numberOfFolio" type="TextField" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">number of folio</xs:documentation>
           <xs:documentation xml:lang="de-DE">Grundbuchsblatt-Nummer</xs:documentation>
@@ -10510,16 +10570,10 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
           <xs:documentation xml:lang="de-DE">Teilungsversteigerung</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="owner" type="TextField">
+      <xs:element name="owner" type="TextField" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Owner of the object to be auctioned</xs:documentation>
           <xs:documentation xml:lang="de-DE">Besitzer des zu versteigernden Objekts</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="courtage" type="CourtageInfo" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation xml:lang="en">courtage elements</xs:documentation>
-          <xs:documentation xml:lang="de-DE">Provisionselemente</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="energyCertificate" type="EnergyPerformanceCertificate" minOccurs="0">
@@ -10983,9 +11037,9 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
       <!-- MODIFICATION BY OPENESTATE.ORG: JAXB-JAVATYPE DISABLED -->
       <!--
       <xs:appinfo>
-          <jaxb:javaType name="java.lang.String"
-                         parseMethod="de.is24.common.xml.XmlSafeCharacterAdapter.unmarshal"
-                         printMethod="de.is24.common.xml.XmlSafeCharacterAdapter.marshal"/>
+        <jaxb:javaType name="java.lang.String"
+                               parseMethod="de.is24.common.xml.XmlSafeCharacterAdapter.unmarshal"
+                               printMethod="de.is24.common.xml.XmlSafeCharacterAdapter.marshal"/>
       </xs:appinfo>
       -->
     </xs:annotation>

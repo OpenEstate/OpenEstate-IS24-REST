@@ -221,6 +221,12 @@
     </jaxb:schemaBindings>
   </jaxb:bindings>
 
+  <jaxb:bindings schemaLocation="../xsd/premiumplacement-1.0.xsd">
+    <jaxb:schemaBindings>
+      <jaxb:package name="org.openestate.is24.restapi.xml.premiumplacement"/>
+    </jaxb:schemaBindings>
+  </jaxb:bindings>
+
   <jaxb:bindings schemaLocation="../xsd/productrecommendation-1.0.xsd">
     <jaxb:schemaBindings>
       <jaxb:package name="org.openestate.is24.restapi.xml.productrecommendation"/>
@@ -260,12 +266,6 @@
   <jaxb:bindings schemaLocation="../xsd/realtorbadges-1.0.xsd">
     <jaxb:schemaBindings>
       <jaxb:package name="org.openestate.is24.restapi.xml.realtorbadges"/>
-    </jaxb:schemaBindings>
-  </jaxb:bindings>
-
-  <jaxb:bindings schemaLocation="../xsd/toplisting-1.0.xsd">
-    <jaxb:schemaBindings>
-      <jaxb:package name="org.openestate.is24.restapi.xml.toplisting"/>
     </jaxb:schemaBindings>
   </jaxb:bindings>
 

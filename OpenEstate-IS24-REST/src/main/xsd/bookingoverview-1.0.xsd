@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns="ttp://rest.immobilienscout24.de/schema/offer/productbookingoverview/1.0"
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
            targetNamespace="ttp://rest.immobilienscout24.de/schema/offer/productbookingoverview/1.0"
