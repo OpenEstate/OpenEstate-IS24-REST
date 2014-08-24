@@ -110,6 +110,7 @@ Todo
 Further informations
 --------------------
 
+* [OpenEstate-IS24-REST at GitHub](https://github.com/OpenEstate/OpenEstate-IS24-REST)
 * [ImmobilienScout24 Developer Center](http://api.immobilienscout24.de/)
 * [ImmobilienScout24-REST-API forum](https://groups.google.com/forum/#!forum/immobilienscout24-development)
 * [XML-Schemas (production)](http://rest.immobilienscout24.de/restapi/api/offer/v1.0/?_wadl&_schema)
