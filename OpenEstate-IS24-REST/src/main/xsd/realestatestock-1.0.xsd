@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- Mit XMLSpy v2008 rel. 2 sp2 (http://www.altova.com) von Immobilien Scout GmbH (Immobilien Scout GmbH) bearbeitet -->
 <xs:schema xmlns="http://rest.immobilienscout24.de/schema/offer/realestatestock/1.0"
            xmlns:xs="http://www.w3.org/2001/XMLSchema"

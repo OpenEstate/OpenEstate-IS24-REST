@@ -33,6 +33,9 @@
       <includes>
         <include>**/*.md</include>
       </includes>
+      <excludes>
+        <exclude>**/_*.md</exclude>
+      </excludes>
     </fileSet>
     <fileSet>
       <directory>${basedir}/OpenEstate-IS24-REST/release</directory>
