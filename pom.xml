@@ -5,7 +5,7 @@
 
   <groupId>org.openestate.is24</groupId>
   <artifactId>ALL</artifactId>
-  <version>0.1.2</version>
+  <version>0.2-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>ALL-OpenEstate-IS24-REST</name>
@@ -94,17 +94,17 @@
       <dependency>
         <groupId>org.openestate.is24</groupId>
         <artifactId>OpenEstate-IS24-REST</artifactId>
-        <version>0.1.2</version>
+        <version>0.2-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.openestate.is24</groupId>
         <artifactId>OpenEstate-IS24-REST-hc42</artifactId>
-        <version>0.1.2</version>
+        <version>0.2-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.openestate.is24</groupId>
         <artifactId>OpenEstate-IS24-REST-hc43</artifactId>
-        <version>0.1.2</version>
+        <version>0.2-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>com.google.code.findbugs</groupId>
