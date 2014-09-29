@@ -31,6 +31,7 @@ public class Resource
 {
   //private final static Logger LOGGER = LoggerFactory.getLogger( Resource.class );
   private static Pattern CREATED_PATTERN = null;
+  private static Pattern MESSAGE_PATTERN = null;
   public final String type;
   public final long id;
 
@@ -66,6 +67,39 @@ public class Resource
     if (CREATED_PATTERN==null)
       CREATED_PATTERN = Pattern.compile( "^.*\\[([\\w]+)\\].*\\[([\\d]+)\\].*" );
     Matcher m = CREATED_PATTERN.matcher( txt );
+    if (!m.find()) return null;
+    return new Resource(
+      StringUtils.trimToNull( m.group( 1 ) ),
+      Long.valueOf( StringUtils.defaultIfBlank( StringUtils.trimToNull( m.group( 2 ) ), "0" ) )
+    );
+  }
+
+  public static Resource getMessageResource( Messages messages )
+  {
+    return (messages!=null && !messages.getMessage().isEmpty())?
+      getMessageResource( messages.getMessage().get( 0 ) ): null;
+
+  }
+
+  public static Resource getMessageResource( Message message )
+  {
+    if (message==null)
+      return null;
+    //if (!MessageCode.MESSAGE_RESOURCE_CREATED.equals( message.getMessageCode() ))
+    //  return null;
+
+    String txt = StringUtils.trimToNull( message.getMessage() );
+    if (txt==null)
+      return null;
+
+    //LOGGER.debug( "Parse response message after creation." );
+    //LOGGER.debug( "> " + txt );
+
+    // parse resource type and ID from a text like:
+    // The operation for your request causes a conflict. [MESSAGE: duplicated contactDetails:59476923]
+    if (MESSAGE_PATTERN==null)
+      MESSAGE_PATTERN = Pattern.compile( "^.*\\[MESSAGE:([^\\]]*):([\\d]+)\\].*" );
+    Matcher m = MESSAGE_PATTERN.matcher( txt );
     if (!m.find()) return null;
     return new Resource(
       StringUtils.trimToNull( m.group( 1 ) ),

@@ -344,6 +344,26 @@ public class ExportPool
     return "1".equals( this.getSetting( FULL_TRANSFER, "0" ) );
   }*/
 
+  public boolean hasContactForExport( String externalContactId )
+  {
+    if (StringUtils.isBlank( externalContactId )) return false;
+    final File xmlFile = new File( new File( this.contactsDir, externalContactId ), "contact.xml" );
+    return xmlFile.isFile();
+  }
+
+  public boolean hasObjectForExport( String externalObjectId )
+  {
+    if (StringUtils.isBlank( externalObjectId )) return false;
+    final File xmlFile = new File( new File( this.objectsDir, externalObjectId ), "object.xml" );
+    return xmlFile.isFile();
+  }
+
+  public boolean hasObjectForRemoval( String externalObjectId )
+  {
+    if (StringUtils.isBlank( externalObjectId )) return false;
+    return REMOVE.equalsIgnoreCase( this.getSetting( "object."+externalObjectId ) );
+  }
+
   public synchronized void putContact( RealtorContactDetails contact ) throws IOException
   {
     if (contact==null) return;

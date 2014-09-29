@@ -63,10 +63,25 @@ public class ExportMessage
     return this.objectId;
   }
 
+  public boolean isError()
+  {
+    return Level.ERROR.equals( this.getLevel() );
+  }
+
   public boolean isGeneral()
   {
     return StringUtils.isBlank( this.objectId )
       && StringUtils.isBlank( this.contactId );
+  }
+
+  public boolean isNotice()
+  {
+    return Level.NOTICE.equals( this.getLevel() );
+  }
+
+  public boolean isWarning()
+  {
+    return Level.WARNING.equals( this.getLevel() );
   }
 
   public static ExportMessage newContactMessage( String contactId, Code code, String message )
