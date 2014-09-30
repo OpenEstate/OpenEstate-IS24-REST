@@ -23,7 +23,7 @@ Features
 -   authentication through [OAuth](http://api.immobilienscout24.de/useful/authentication.html)
 -   read and write XML according to the specifications of the Webservice
 -   helper functions to call the [Import/Export-API](http://api.immobilienscout24.de/our-apis/import-export.html)
-    (see [ImportExport.java](OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/ImportExport.java))
+    (see [`ImportExport.java`](OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/ImportExport.java))
 -   bulk export of multiple properties (including contacts, attachments and
     streaming videos)
 
@@ -37,18 +37,18 @@ The library is splitted into different components:
 
     -   XML reading and writing
     -   implement methods to access the Webservice
-    -   communicate with the Webservice through [java.net.HttpURLConnection](http://docs.oracle.com/javase/6/docs/api/java/net/HttpURLConnection.html)
-        (see [DefaultClient.java](OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/DefaultClient.java))
+    -   communicate with the Webservice through [`java.net.HttpURLConnection`](http://docs.oracle.com/javase/6/docs/api/java/net/HttpURLConnection.html)
+        (see [`DefaultClient.java`](OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/DefaultClient.java))
 
 -   **OpenEstate-IS24-REST-hc42**
 
     -   communicate with the Webservice through [Apache HttpComponents 4.2](http://hc.apache.org/httpcomponents-client-4.2.x/)
-        (see [HttpComponents42Client.java](OpenEstate-IS24-REST-hc42/src/main/java/org/openestate/is24/restapi/hc42/HttpComponents42Client.java))
+        (see [`HttpComponents42Client.java`](OpenEstate-IS24-REST-hc42/src/main/java/org/openestate/is24/restapi/hc42/HttpComponents42Client.java))
 
 -   **OpenEstate-IS24-REST-hc43**
 
     -   communicate with the Webservice through [Apache HttpComponents 4.3](http://hc.apache.org/httpcomponents-client-4.3.x/)
-        (see [HttpComponents43Client.java](OpenEstate-IS24-REST-hc43/src/main/java/org/openestate/is24/restapi/hc43/HttpComponents43Client.java))
+        (see [`HttpComponents43Client.java`](OpenEstate-IS24-REST-hc43/src/main/java/org/openestate/is24/restapi/hc43/HttpComponents43Client.java))
 
 -   **OpenEstate-IS24-REST-examples**
 
@@ -60,7 +60,7 @@ How to use
 
 You can find further informations in the
 [project wiki](https://github.com/OpenEstate/OpenEstate-IS24-REST/wiki) or in
-the **docs** subfolder.
+the `docs` subfolder.
 
 
 Requirements
@@ -107,7 +107,7 @@ Todo
 -   further testing
 -   add missing javadoc comments
 -   publish at Maven Central Repository
--   implement other API's - e.g.:
+-   implement other API's - e.g.
     [Expose API](http://api.immobilienscout24.de/our-apis/expose.html),
     [Search API](http://api.immobilienscout24.de/our-apis/search.html),
     [Geo Information Service API](http://api.immobilienscout24.de/our-apis/gis.html),
