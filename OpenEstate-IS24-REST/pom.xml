@@ -47,6 +47,10 @@
       <scope>compile</scope>
     </dependency>
     <dependency>
+      <groupId>org.jvnet.jaxb2_commons</groupId>
+      <artifactId>jaxb2-basics</artifactId>
+    </dependency>
+    <dependency>
       <groupId>oauth.signpost</groupId>
       <artifactId>signpost-core</artifactId>
       <scope>compile</scope>
@@ -174,9 +178,14 @@
           <clearOutputDir>false</clearOutputDir>
           <target>2.1</target>
           <extension>true</extension>
-          <arguments>-Xannotate</arguments>
+          <arguments>-Xannotate -XtoString -Xcopyable -Xequals</arguments>
         </configuration>
         <dependencies>
+          <dependency>
+            <groupId>org.jvnet.jaxb2_commons</groupId>
+            <artifactId>jaxb2-basics</artifactId>
+            <version>0.6.5</version>
+          </dependency>
           <dependency>
             <groupId>org.jvnet.jaxb2_commons</groupId>
             <artifactId>jaxb2-basics-annotate</artifactId>
