@@ -80,6 +80,7 @@ public class ExportHandler
 
   protected void doArchiveObject( String externalObjectId ) throws IOException
   {
+    LOGGER.info( "archivating object '" + externalObjectId + "'" );
     try
     {
       // Immobilie ermitteln
@@ -232,6 +233,7 @@ public class ExportHandler
 
   protected void doRemoveObject( String externalObjectId ) throws IOException
   {
+    LOGGER.info( "removing object '" + externalObjectId + "'" );
     try
     {
       // Immobilie ermitteln
@@ -412,6 +414,8 @@ public class ExportHandler
 
   protected void doUpdateContact( String externalContactId ) throws IOException
   {
+    LOGGER.info( "updating contact '" + externalContactId + "'" );
+
     // Ansprechpartner ermitteln
     final RealtorContactDetails newIs24Contact = this.pool.getContact( externalContactId );
     if (newIs24Contact==null)
@@ -551,6 +555,7 @@ public class ExportHandler
 
   protected void doUpdateObject( String externalObjectId ) throws IOException
   {
+    LOGGER.info( "updating object '" + externalObjectId + "'" );
     final org.openestate.is24.restapi.xml.common.ObjectFactory commonFactory =
       new org.openestate.is24.restapi.xml.common.ObjectFactory();
     final org.openestate.is24.restapi.xml.realestates.ObjectFactory realEstatesFactory =
@@ -1148,14 +1153,12 @@ public class ExportHandler
     // updating contacts
     for (String contactId : this.pool.getContactIds())
     {
-      LOGGER.info( "updating contact '" + contactId + "'" );
       this.doUpdateContact( contactId );
     }
 
     // updating objects
     for (String objectId : this.pool.getObjectIds())
     {
-      LOGGER.info( "updating object '" + objectId + "'" );
       this.doUpdateObject( objectId );
     }
 
@@ -1164,12 +1167,10 @@ public class ExportHandler
     {
       if (archivateUnpublishedObjects)
       {
-        LOGGER.info( "archivating object '" + objectId + "'" );
         this.doArchiveObject( objectId );
       }
       else
       {
-        LOGGER.info( "removing object '" + objectId + "'" );
         this.doRemoveObject( objectId );
       }
     }
@@ -1179,14 +1180,13 @@ public class ExportHandler
     {
       for (String objectId : this.doListUntouchedObjects())
       {
+        LOGGER.info( "object '" + objectId + "' is untouched" );
         if (archivateUnpublishedObjects)
         {
-          LOGGER.info( "archivating untouched object '" + objectId + "'" );
           this.doArchiveObject( objectId );
         }
         else
         {
-          LOGGER.info( "removing untouched object '" + objectId + "'" );
           this.doRemoveObject( objectId );
         }
       }
