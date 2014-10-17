@@ -243,7 +243,7 @@ public class ExportPool
 
   public File getObjectAttachmentFile( String externalObjectId, URL href ) throws IOException
   {
-    return (href!=null)?
+    return (href!=null && href.getProtocol().equalsIgnoreCase( "file" ))?
       getObjectAttachmentFile( externalObjectId, StringUtils.trimToNull( href.getHost() ) ): null;
   }
 
@@ -259,6 +259,12 @@ public class ExportPool
     if (StringUtils.isBlank( externalObjectId ) || StringUtils.isBlank( attachmentId )) return 0;
     File file = new File( new File( this.objectsDir, externalObjectId ), "attachment." + attachmentId + ".xml" );
     return (file.isFile())? FileUtils.sizeOf( file ): 0;
+  }
+
+  public URL getObjectAttachmentURL( String externalObjectId, String attachmentId ) throws IOException
+  {
+    Attachment attachment = this.getObjectAttachment( externalObjectId, attachmentId );
+    return (attachment!=null)? attachment.getHref(): null;
   }
 
   public String[] getObjectAttachmentIds( String externalObjectId )
@@ -436,6 +442,39 @@ public class ExportPool
     final File destFile = new File( objectDir, file.getName() );
     FileUtils.copyFile( file, destFile );
     attachment.setHref( new URL( "file://" + file.getName() ) );
+
+    OutputStream output = null;
+    try
+    {
+      output = new FileOutputStream( new File( objectDir, "attachment."+(attachmentCount+1)+".xml" ) );
+      XmlUtils.writeXml( attachment, output );
+    }
+    catch (JAXBException ex)
+    {
+      throw new IOExceptionWithCause( "Can't write XML for an attachment of object '" + externalObjectId + "'!", ex );
+    }
+    finally
+    {
+      IOUtils.closeQuietly( output );
+    }
+  }
+
+  public synchronized void putObjectAttachedFile( String externalObjectId, Attachment attachment, URL file ) throws IOException
+  {
+    if (StringUtils.isBlank( externalObjectId ) || attachment==null || file==null) return;
+
+    final File objectDir = new File( this.objectsDir, externalObjectId );
+    if (!objectDir.exists() && !objectDir.mkdirs())
+      throw new IOException( "Can't create folder at '" + objectDir.getAbsolutePath() + "'!" );
+
+    int attachmentCount = 0;
+    for (File f : objectDir.listFiles())
+    {
+      String n = f.getName();
+      if (n.startsWith( "attachment." ) && n.endsWith( ".xml" ))
+        attachmentCount++;
+    }
+    attachment.setHref( file );
 
     OutputStream output = null;
     try

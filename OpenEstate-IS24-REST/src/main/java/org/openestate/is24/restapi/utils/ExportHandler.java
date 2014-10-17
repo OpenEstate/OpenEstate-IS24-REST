@@ -18,8 +18,11 @@ package org.openestate.is24.restapi.utils;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -228,6 +231,29 @@ public class ExportHandler
       //LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
       throw new IOExceptionWithCause(
         "Communication failed!", ex );
+    }
+  }
+
+  protected File doDownloadFile( URL url ) throws IOException
+  {
+    if (url==null) return null;
+    LOGGER.info( "downloading " + url );
+    InputStream input = null;
+    OutputStream output = null;
+    try
+    {
+      input = url.openStream();
+      File tempFile = File.createTempFile( "is24-export-attachment-", ".bin" );
+      tempFile.deleteOnExit();
+      output = new FileOutputStream( tempFile );
+      IOUtils.copy( input, output );
+      output.flush();
+      return tempFile;
+    }
+    finally
+    {
+      IOUtils.closeQuietly( output );
+      IOUtils.closeQuietly( input );
     }
   }
 
@@ -879,6 +905,25 @@ public class ExportHandler
 
           // Datei ermitteln
           File attachFile = this.pool.getObjectAttachmentFile( externalObjectId, is24Attachment );
+
+          // ggf. Datei herunterladen, wenn noch nicht im Pool hinterlegt
+          if (attachFile==null)
+          {
+            URL attachUrl = this.pool.getObjectAttachmentURL( externalObjectId, attachmentId );
+            if (attachUrl!=null)
+            {
+              try
+              {
+                attachFile = doDownloadFile( attachUrl );
+              }
+              catch (Exception ex)
+              {
+                LOGGER.warn( "Can't download file from URL: " + attachUrl );
+                LOGGER.warn( "> " + ex.getLocalizedMessage(), ex );
+              }
+            }
+          }
+
           if (attachFile==null || !attachFile.isFile())
           {
             LOGGER.error( "Can't find file for attachment!" );
