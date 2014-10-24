@@ -26,6 +26,7 @@ Features
     (see [`ImportExport.java`](OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/ImportExport.java))
 -   bulk export of multiple properties (including contacts, attachments and
     streaming videos)
+-   create properties randomly
 
 
 Components

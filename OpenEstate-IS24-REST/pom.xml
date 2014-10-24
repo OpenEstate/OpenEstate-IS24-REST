@@ -49,6 +49,13 @@
     <dependency>
       <groupId>org.jvnet.jaxb2_commons</groupId>
       <artifactId>jaxb2-basics</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.thedeanda</groupId>
+      <artifactId>lorem</artifactId>
+      <scope>compile</scope>
+      <!--<optional>true</optional>-->
     </dependency>
     <dependency>
       <groupId>oauth.signpost</groupId>
@@ -58,6 +65,7 @@
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
+      <scope>compile</scope>
     </dependency>
 
     <!-- further test dependencies -->
