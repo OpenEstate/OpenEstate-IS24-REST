@@ -27,6 +27,10 @@ import org.openestate.is24.restapi.xml.XmlUtils;
 import org.openestate.is24.restapi.xml.offerlistelement.OfferRealEstateForList;
 import org.openestate.is24.restapi.xml.realestates.RealEstates;
 
+/**
+ *
+ * @author Andreas Rudolph <andy@openindex.de>
+ */
 public class ExportRealEstatesExample
 {
   final static String WEBSERVICE_URL = AbstractClient.LIVE_API;

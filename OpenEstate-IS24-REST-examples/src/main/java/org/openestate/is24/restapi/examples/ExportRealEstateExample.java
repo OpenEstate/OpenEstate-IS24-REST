@@ -26,6 +26,10 @@ import org.openestate.is24.restapi.utils.RequestFailedException;
 import org.openestate.is24.restapi.xml.XmlUtils;
 import org.openestate.is24.restapi.xml.realestates.RealEstate;
 
+/**
+ *
+ * @author Andreas Rudolph <andy@openindex.de>
+ */
 public class ExportRealEstateExample
 {
   final static String WEBSERVICE_URL = AbstractClient.LIVE_API;

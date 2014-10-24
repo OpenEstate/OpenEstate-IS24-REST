@@ -19,6 +19,10 @@ package org.openestate.is24.restapi.examples;
 import org.openestate.is24.restapi.AbstractClient;
 import org.openestate.is24.restapi.hc42.HttpComponents42Client;
 
+/**
+ *
+ * @author Andreas Rudolph <andy@openindex.de>
+ */
 public class HttpComponents42ClientExample
 {
   final static String WEBSERVICE_URL = AbstractClient.LIVE_API;

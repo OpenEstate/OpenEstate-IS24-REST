@@ -25,6 +25,10 @@ import org.openestate.is24.restapi.DefaultClient;
 import org.openestate.is24.restapi.utils.Authorization;
 import org.openestate.is24.restapi.utils.Verification;
 
+/**
+ *
+ * @author Andreas Rudolph <andy@openindex.de>
+ */
 public class VerificationExample
 {
   final static String WEBSERVICE_URL = AbstractClient.LIVE_API;

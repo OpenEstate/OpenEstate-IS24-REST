@@ -38,6 +38,10 @@ import org.openestate.is24.restapi.xml.common.YesNoNotApplicableType;
 import org.openestate.is24.restapi.xml.common.YesNotApplicableType;
 import org.openestate.is24.restapi.xml.realestates.HouseBuy;
 
+/**
+ *
+ * @author Andreas Rudolph <andy@openindex.de>
+ */
 public class ImportRealEstateExample
 {
   final static String WEBSERVICE_URL = AbstractClient.LIVE_API;
