@@ -36,7 +36,6 @@
     </xs:annotation>
   </xs:element>
 
-
   <xs:complexType name="RealEstateProject">
     <xs:annotation>
       <xs:documentation xml:lang="en">realestateproject</xs:documentation>

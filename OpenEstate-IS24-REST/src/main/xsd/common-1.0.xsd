@@ -386,15 +386,20 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
       <xs:documentation xml:lang="de-DE">Definition der Basisfelder einer Adresse.</xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:element name="street" type="TextField" minOccurs="0">
+      <xs:element name="street" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Street without house number. Mandatory for germany, optional
             for foreign real estates.</xs:documentation>
           <xs:documentation xml:lang="de-DE">Straße ohne Hausnummer. Pflichtfeld für Deutschland,
             optional für Auslandsimmobilien.</xs:documentation>
         </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="TextField">
+            <xs:maxLength value="100"/>
+          </xs:restriction>
+        </xs:simpleType>
       </xs:element>
-      <xs:element name="houseNumber" type="TextField" minOccurs="0">
+      <xs:element name="houseNumber" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">House number. Mandatory for germany, optional for foreign
             real estates. Also optional for LIVING_RENT_SITE, LIVING_BUY_SITE and TRADE_SITE</xs:documentation>
@@ -402,12 +407,22 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
             Auslandsimmobilien. Weiterhin optional für LIVING_RENT_SITE,
             LIVING_BUY_SITE and TRADE_SITE</xs:documentation>
         </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="TextField">
+            <xs:maxLength value="30"/>
+          </xs:restriction>
+        </xs:simpleType>
       </xs:element>
-      <xs:element name="postcode" type="TextField" minOccurs="0">
+      <xs:element name="postcode" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">zip code</xs:documentation>
           <xs:documentation xml:lang="de-DE">Postleitzahl</xs:documentation>
         </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="TextField">
+            <xs:maxLength value="20"/>
+          </xs:restriction>
+        </xs:simpleType>
       </xs:element>
       <xs:element name="city" minOccurs="0">
         <xs:annotation>
@@ -672,7 +687,7 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
         </xs:annotation>
         <xs:simpleType>
           <xs:restriction base="TextField">
-            <xs:maxLength value="50"/>
+            <xs:maxLength value="15"/>
           </xs:restriction>
         </xs:simpleType>
       </xs:element>
@@ -1044,7 +1059,7 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
     <xs:complexContent>
       <xs:extension base="Attachment">
         <xs:sequence>
-          <xs:element name="videoId" type="TextField" minOccurs="0">
+          <xs:element name="videoId" type="TextField" minOccurs="0" maxOccurs="1">
             <xs:annotation>
               <xs:documentation xml:lang="en">the video identifier</xs:documentation>
               <xs:documentation xml:lang="de-DE">Die Identifikationsnummer des Videos</xs:documentation>
@@ -1361,8 +1376,20 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
 
   <xs:complexType name="CountyCourt">
     <xs:all>
-      <xs:element name="courtNumber" type="TextField" minOccurs="0"/>
-      <xs:element name="name" type="TextField" minOccurs="0"/>
+      <xs:element name="courtNumber" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="TextField">
+            <xs:maxLength value="16"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="name" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="TextField">
+            <xs:maxLength value="40"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
     </xs:all>
   </xs:complexType>
 
@@ -1409,7 +1436,7 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
       <xs:documentation xml:lang="de-DE">wesentliche Energieträger</xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:element name="energySourceEnev2014" type="EnergySourceEnev2014" minOccurs="0" maxOccurs="20">
+      <xs:element name="energySourceEnev2014" type="EnergySourceEnev2014" minOccurs="0" maxOccurs="25">
         <xs:annotation>
           <xs:documentation xml:lang="en">energy source</xs:documentation>
           <xs:documentation xml:lang="de-DE">wesentliche Energieträger</xs:documentation>
@@ -10552,17 +10579,27 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
           </xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="fileReferenceAtCountyCourt" type="TextField" minOccurs="0">
+      <xs:element name="fileReferenceAtCountyCourt" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">the file reference at the county court</xs:documentation>
           <xs:documentation xml:lang="de-DE">Das Aktenzeichen beim Amtsgericht</xs:documentation>
         </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="TextField">
+            <xs:maxLength value="18"/>
+          </xs:restriction>
+        </xs:simpleType>
       </xs:element>
-      <xs:element name="numberOfFolio" type="TextField" minOccurs="0">
+      <xs:element name="numberOfFolio" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">number of folio</xs:documentation>
           <xs:documentation xml:lang="de-DE">Grundbuchsblatt-Nummer</xs:documentation>
         </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="TextField">
+            <xs:maxLength value="40"/>
+          </xs:restriction>
+        </xs:simpleType>
       </xs:element>
       <xs:element name="splittingAuction" type="xs:boolean" minOccurs="0" default="false">
         <xs:annotation>
@@ -10570,11 +10607,16 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
           <xs:documentation xml:lang="de-DE">Teilungsversteigerung</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="owner" type="TextField" minOccurs="0">
+      <xs:element name="owner" minOccurs="0">
         <xs:annotation>
           <xs:documentation xml:lang="en">Owner of the object to be auctioned</xs:documentation>
           <xs:documentation xml:lang="de-DE">Besitzer des zu versteigernden Objekts</xs:documentation>
         </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="TextField">
+            <xs:maxLength value="80"/>
+          </xs:restriction>
+        </xs:simpleType>
       </xs:element>
       <xs:element name="energyCertificate" type="EnergyPerformanceCertificate" minOccurs="0">
         <xs:annotation>

@@ -46,23 +46,33 @@
       <jaxb:package name="org.openestate.is24.restapi.xml.common"/>
     </jaxb:schemaBindings>
 
+    <jaxb:bindings node="//xsd:simpleType/xsd:restriction[@base='TextField']/xsd:maxLength[@value='15']/../.." multiple="true">
+      <jaxb:javaType name="java.lang.String" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseText15" printMethod="org.openestate.is24.restapi.utils.XmlUtils.printText15" />
+    </jaxb:bindings>
     <jaxb:bindings node="//xsd:simpleType/xsd:restriction[@base='TextField']/xsd:maxLength[@value='16']/../.." multiple="true">
       <jaxb:javaType name="java.lang.String" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseText16" printMethod="org.openestate.is24.restapi.utils.XmlUtils.printText16" />
+    </jaxb:bindings>
+    <jaxb:bindings node="//xsd:simpleType/xsd:restriction[@base='TextField']/xsd:maxLength[@value='18']/../.." multiple="true">
+      <jaxb:javaType name="java.lang.String" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseText18" printMethod="org.openestate.is24.restapi.utils.XmlUtils.printText18" />
+    </jaxb:bindings>
+    <jaxb:bindings node="//xsd:simpleType/xsd:restriction[@base='TextField']/xsd:maxLength[@value='20']/../.." multiple="true">
+      <jaxb:javaType name="java.lang.String" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseText20" printMethod="org.openestate.is24.restapi.utils.XmlUtils.printText20" />
     </jaxb:bindings>
     <jaxb:bindings node="//xsd:simpleType/xsd:restriction[@base='TextField']/xsd:maxLength[@value='30']/../.." multiple="true">
       <jaxb:javaType name="java.lang.String" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseText30" printMethod="org.openestate.is24.restapi.utils.XmlUtils.printText30" />
     </jaxb:bindings>
+    <jaxb:bindings node="//xsd:simpleType/xsd:restriction[@base='TextField']/xsd:maxLength[@value='40']/../.." multiple="true">
+      <jaxb:javaType name="java.lang.String" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseText40" printMethod="org.openestate.is24.restapi.utils.XmlUtils.printText40" />
+    </jaxb:bindings>
     <jaxb:bindings node="//xsd:simpleType/xsd:restriction[@base='TextField']/xsd:maxLength[@value='50']/../.." multiple="true">
       <jaxb:javaType name="java.lang.String" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseText50" printMethod="org.openestate.is24.restapi.utils.XmlUtils.printText50" />
+    </jaxb:bindings>
+    <jaxb:bindings node="//xsd:simpleType/xsd:restriction[@base='TextField']/xsd:maxLength[@value='80']/../.." multiple="true">
+      <jaxb:javaType name="java.lang.String" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseText80" printMethod="org.openestate.is24.restapi.utils.XmlUtils.printText80" />
     </jaxb:bindings>
     <jaxb:bindings node="//xsd:simpleType/xsd:restriction[@base='TextField']/xsd:maxLength[@value='100']/../.." multiple="true">
       <jaxb:javaType name="java.lang.String" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseText100" printMethod="org.openestate.is24.restapi.utils.XmlUtils.printText100" />
     </jaxb:bindings>
-    <!--
-    <jaxb:bindings node="//xsd:simpleType/xsd:restriction[@base='TextField']/xsd:maxLength[@value='500']/../.." multiple="true">
-      <jaxb:javaType name="java.lang.String" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseText500" printMethod="org.openestate.is24.restapi.utils.XmlUtils.printText500" />
-    </jaxb:bindings>
-    -->
     <jaxb:bindings node="//xsd:simpleType/xsd:restriction[@base='TextField']/xsd:maxLength[@value='1000']/../.." multiple="true">
       <jaxb:javaType name="java.lang.String" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseText1000" printMethod="org.openestate.is24.restapi.utils.XmlUtils.printText1000" />
     </jaxb:bindings>
@@ -266,6 +276,18 @@
   <jaxb:bindings schemaLocation="../xsd/realtorbadges-1.0.xsd">
     <jaxb:schemaBindings>
       <jaxb:package name="org.openestate.is24.restapi.xml.realtorbadges"/>
+    </jaxb:schemaBindings>
+  </jaxb:bindings>
+
+  <jaxb:bindings schemaLocation="../xsd/showcaseplacement-1.0.xsd">
+    <jaxb:schemaBindings>
+      <jaxb:package name="org.openestate.is24.restapi.xml.showcaseplacement"/>
+    </jaxb:schemaBindings>
+  </jaxb:bindings>
+
+  <jaxb:bindings schemaLocation="../xsd/topplacement-1.0.xsd">
+    <jaxb:schemaBindings>
+      <jaxb:package name="org.openestate.is24.restapi.xml.topplacement"/>
     </jaxb:schemaBindings>
   </jaxb:bindings>
 

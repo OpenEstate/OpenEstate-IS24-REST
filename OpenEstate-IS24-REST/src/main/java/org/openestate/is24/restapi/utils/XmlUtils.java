@@ -88,6 +88,8 @@ public final class XmlUtils
     + ":org.openestate.is24.restapi.xml.realestatestock"
     + ":org.openestate.is24.restapi.xml.realtor"
     + ":org.openestate.is24.restapi.xml.realtorbadges"
+    + ":org.openestate.is24.restapi.xml.showcaseplacement"
+    + ":org.openestate.is24.restapi.xml.topplacement"
     + ":org.openestate.is24.restapi.xml.videoupload"
     + ":org.openestate.is24.restapi.xml.zipandlocationtoregion";
 
@@ -269,11 +271,6 @@ public final class XmlUtils
     return parseInteger( value, 0, 99999 );
   }
 
-  /*public static Integer parseIntegerPositive( String value )
-  {
-    return parseInteger( value, 0, null );
-  }*/
-
   public static Double parseLatitude( String value )
   {
     return parseDouble( value, -90d, 90d, 10 );
@@ -334,9 +331,24 @@ public final class XmlUtils
     return StringUtils.trimToNull( value );
   }
 
+  public static String parseText15( String value )
+  {
+    return parseText( value, null, 15 );
+  }
+
   public static String parseText16( String value )
   {
     return parseText( value, null, 16 );
+  }
+
+  public static String parseText18( String value )
+  {
+    return parseText( value, null, 18 );
+  }
+
+  public static String parseText20( String value )
+  {
+    return parseText( value, null, 20 );
   }
 
   public static String parseText30( String value )
@@ -344,20 +356,25 @@ public final class XmlUtils
     return parseText( value, null, 30 );
   }
 
+  public static String parseText40( String value )
+  {
+    return parseText( value, null, 40 );
+  }
+
   public static String parseText50( String value )
   {
     return parseText( value, null, 50 );
+  }
+
+  public static String parseText80( String value )
+  {
+    return parseText( value, null, 80 );
   }
 
   public static String parseText100( String value )
   {
     return parseText( value, null, 100 );
   }
-
-  /*public static String parseText500( String value )
-  {
-    return parseText( value, null, 500 );
-  }*/
 
   public static String parseText1000( String value )
   {
@@ -525,11 +542,6 @@ public final class XmlUtils
     return printInteger( value, 0, 99999 );
   }
 
-  /*public static String printIntegerPositive( Integer value )
-  {
-    return printInteger( value, 0, null );
-  }*/
-
   public static String printLatitude( Double value )
   {
     return printDouble( value, -90d, 90d, 10 );
@@ -668,9 +680,24 @@ public final class XmlUtils
       StringUtils.abbreviate( val, maxLength.intValue() ): val;
   }
 
+  public static String printText15( String value )
+  {
+    return printText( value, null, 15 );
+  }
+
   public static String printText16( String value )
   {
     return printText( value, null, 16 );
+  }
+
+  public static String printText18( String value )
+  {
+    return printText( value, null, 18 );
+  }
+
+  public static String printText20( String value )
+  {
+    return printText( value, null, 20 );
   }
 
   public static String printText30( String value )
@@ -678,20 +705,25 @@ public final class XmlUtils
     return printText( value, null, 30 );
   }
 
+  public static String printText40( String value )
+  {
+    return printText( value, null, 40 );
+  }
+
   public static String printText50( String value )
   {
     return printText( value, null, 50 );
+  }
+
+  public static String printText80( String value )
+  {
+    return printText( value, null, 80 );
   }
 
   public static String printText100( String value )
   {
     return printText( value, null, 100 );
   }
-
-  /*public static String printText500( String value )
-  {
-    return printText( value, null, 500 );
-  }*/
 
   public static String printText1000( String value )
   {
