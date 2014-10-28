@@ -66,6 +66,13 @@
       <filtered>false</filtered>
     </fileSet>
     <fileSet>
+      <directory>${basedir}/OpenEstate-IS24-REST-webapp/release</directory>
+      <outputDirectory>OpenEstate-IS24-REST-webapp</outputDirectory>
+      <directoryMode>0755</directoryMode>
+      <fileMode>0644</fileMode>
+      <filtered>false</filtered>
+    </fileSet>
+    <fileSet>
       <directory>${basedir}/target/javadoc</directory>
       <outputDirectory>javadoc</outputDirectory>
       <directoryMode>0755</directoryMode>
