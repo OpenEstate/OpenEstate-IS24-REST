@@ -1396,10 +1396,34 @@ public final class ImportExport
      */
     public static Messages post( AbstractClient client, RealEstate realEstate ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
+      return post( client, realEstate, true );
+    }
+
+    /**
+     * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/User/Realestate/POST">POST method</a>.
+     *
+     * @param client
+     * @param realEstate
+     * @param useNewEnergySourceEnev2014Values
+     * @return
+     * @throws IOException
+     * @throws OAuthException
+     * @throws JAXBException
+     * @throws RequestFailedException
+     */
+    public static Messages post( AbstractClient client, RealEstate realEstate, boolean useNewEnergySourceEnev2014Values ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    {
       if (realEstate==null) throw new NullPointerException( "No property was provided!" );
 
       // build request URL
       String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate";
+
+      // init URL parameters
+      List<String> params = new ArrayList<String>();
+      if (useNewEnergySourceEnev2014Values) params.add( "usenewenergysourceenev2014values=true" );
+
+      // append URL parameters
+      if (!params.isEmpty()) url += "?" + StringUtils.join( params, "&" );
 
       // write object into xml
       String xml = XmlUtils.marshal( realEstate, client.getEncoding() );
@@ -1440,8 +1464,33 @@ public final class ImportExport
      */
     public static Messages putByExternalId( AbstractClient client, RealEstate realEstate, String externalId ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
+      return putByExternalId( client, realEstate, externalId, true );
+    }
+
+    /**
+     * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/User/Realestate/PUTbyID">PUTBYID method</a>.
+     *
+     * @param client
+     * @param realEstate
+     * @param externalId
+     * @param useNewEnergySourceEnev2014Values
+     * @return
+     * @throws IOException
+     * @throws OAuthException
+     * @throws JAXBException
+     * @throws RequestFailedException
+     */
+    public static Messages putByExternalId( AbstractClient client, RealEstate realEstate, String externalId, boolean useNewEnergySourceEnev2014Values ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    {
       // build request URL
       String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/ext-"+externalId;
+
+      // init URL parameters
+      List<String> params = new ArrayList<String>();
+      if (useNewEnergySourceEnev2014Values) params.add( "usenewenergysourceenev2014values=true" );
+
+      // append URL parameters
+      if (!params.isEmpty()) url += "?" + StringUtils.join( params, "&" );
 
       // write object into xml
       String xml = XmlUtils.marshal( realEstate, client.getEncoding() );
@@ -1479,8 +1528,33 @@ public final class ImportExport
      */
     public static Messages putByIs24Id( AbstractClient client, RealEstate realEstate, long is24Id ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
+      return putByIs24Id( client, realEstate, is24Id, true );
+    }
+
+    /**
+     * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/User/Realestate/PUTbyID">PUTBYID method</a>.
+     *
+     * @param client
+     * @param realEstate
+     * @param is24Id
+     * @param useNewEnergySourceEnev2014Values
+     * @return
+     * @throws IOException
+     * @throws OAuthException
+     * @throws JAXBException
+     * @throws RequestFailedException
+     */
+    public static Messages putByIs24Id( AbstractClient client, RealEstate realEstate, long is24Id, boolean useNewEnergySourceEnev2014Values ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    {
       // build request URL
       String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/"+is24Id;
+
+      // init URL parameters
+      List<String> params = new ArrayList<String>();
+      if (useNewEnergySourceEnev2014Values) params.add( "usenewenergysourceenev2014values=true" );
+
+      // append URL parameters
+      if (!params.isEmpty()) url += "?" + StringUtils.join( params, "&" );
 
       // write object into xml
       String xml = XmlUtils.marshal( realEstate, client.getEncoding() );
