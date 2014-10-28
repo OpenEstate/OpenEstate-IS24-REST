@@ -16,6 +16,7 @@
     <project.baseName>OpenEstate-IS24-REST</project.baseName>
     <project.releaseDir>${basedir}/release</project.releaseDir>
   </properties>
+
   <build>
     <plugins>
 
@@ -83,12 +84,15 @@
 
     </plugins>
   </build>
+
   <modules>
     <module>OpenEstate-IS24-REST</module>
     <module>OpenEstate-IS24-REST-hc42</module>
     <module>OpenEstate-IS24-REST-hc43</module>
     <module>OpenEstate-IS24-REST-examples</module>
+    <module>OpenEstate-IS24-REST-webapp</module>
   </modules>
+
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -132,6 +136,11 @@
         <version>0.6.5</version>
       </dependency>
       <dependency>
+        <groupId>javax.servlet.jsp</groupId>
+        <artifactId>jsp-api</artifactId>
+        <version>2.2</version>
+      </dependency>
+      <dependency>
         <groupId>junit</groupId>
         <artifactId>junit</artifactId>
         <version>4.11</version>
@@ -145,6 +154,11 @@
         <groupId>com.thedeanda</groupId>
         <artifactId>lorem</artifactId>
         <version>1.2</version>
+      </dependency>
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>servlet-api</artifactId>
+        <version>2.5</version>
       </dependency>
       <dependency>
         <groupId>oauth.signpost</groupId>
@@ -168,10 +182,12 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
+
   <organization>
     <name>OpenEstate</name>
     <url>http://openestate.org/</url>
   </organization>
+
   <developers>
     <developer>
       <id>andy</id>
@@ -188,6 +204,7 @@
       <organizationUrl>http://www.openindex.de/</organizationUrl>
     </developer>
   </developers>
+
   <licenses>
     <license>
       <name>The Apache Software License, Version 2.0</name>

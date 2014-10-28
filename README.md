@@ -27,6 +27,7 @@ Features
 -   bulk export of multiple properties (including contacts, attachments and
     streaming videos)
 -   create properties randomly
+-   example web application for the OAuth verification process
 
 
 Components

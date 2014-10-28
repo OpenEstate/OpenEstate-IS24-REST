@@ -1,0 +1,75 @@
+p.center {
+  text-align: center;
+  padding: 1em;
+}
+
+p.success {
+  border: 1px solid #999900;
+  background-color: #99FF99;
+  padding: 1em;
+}
+
+p.warning {
+  border: 1px solid red;
+  background-color: #FF3300;
+  color: white;
+  padding: 1em;
+}
+
+a.button {
+  border: 1px solid black;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  text-decoration: none;
+  background-color: #c0c0c0;
+  color: black;
+  padding: 4px;
+  width: 33%;
+  display: inline-block;
+}
+
+a.button:hover {
+  background-color: #F9966B;
+}
+
+input[type=text] {
+  border: 1px solid #c0c0c0;
+  display: block;
+  font-family: monospace;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  padding: 5px;
+  width: 95%;
+}
+
+fieldset {
+  background-color: #ececec;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+
+fieldset legend {
+  font-weight: bold;
+}
+
+hr {
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+#logo-is24 {
+  float: right;
+  margin-left: 1em;
+  margin-bottom: 1em;
+  border: 0;
+}
+
+#logo-github {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+}
