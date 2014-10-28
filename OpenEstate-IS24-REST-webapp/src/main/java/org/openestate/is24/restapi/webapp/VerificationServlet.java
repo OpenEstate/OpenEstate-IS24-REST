@@ -17,17 +17,10 @@
 package org.openestate.is24.restapi.webapp;
 
 import java.io.IOException;
-import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSession;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -40,6 +33,7 @@ import org.apache.commons.lang.StringUtils;
 import org.openestate.is24.restapi.AbstractClient;
 import org.openestate.is24.restapi.DefaultClient;
 import org.openestate.is24.restapi.utils.Authorization;
+import org.openestate.is24.restapi.utils.SslUtils;
 import org.openestate.is24.restapi.utils.Verification;
 
 /**
@@ -296,17 +290,14 @@ public class VerificationServlet extends HttpServlet
       try
       {
         // install all-trusting trust manager
-        TrustManager[] trustAllCerts = new TrustManager[]{ new InsecureTrustManager() };
-        SSLContext sc = SSLContext.getInstance( "SSL" );
-        sc.init(null, trustAllCerts, new java.security.SecureRandom());
-        HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
+        SslUtils.disableCertificateChecks();
 
         // install all-trusting host verifier
-        HttpsURLConnection.setDefaultHostnameVerifier( new InsecureHostnameVerifier() );
+        SslUtils.disableHostnameVerification();
       }
       catch (Exception ex)
       {
-        throw new ServletException( "Can't setup SSL context!", ex );
+        throw new ServletException( "Can't setup insecure SSL context!", ex );
       }
     }
   }
@@ -339,50 +330,6 @@ public class VerificationServlet extends HttpServlet
   {
     // keep verification informations in local memory
     this.verifications.put( verification );
-  }
-
-  /**
-   * A {@link HostnameVerifier} that accepts all hostnames.
-   * <p>
-   * This class disables hostname verification for encrypted connections. You
-   * should disable the option 'TrustAllCertificates' in 'web.xml' on productive
-   * systems and use a TrustStore instead.
-   *
-   * @see <a href="http://docs.oracle.com/cd/E21454_01/html/821-2544/cnfg_ssl-overview_c.html">Secure Sockets Layer (SSL) Overview</a>
-   */
-  private final static class InsecureHostnameVerifier implements HostnameVerifier
-  {
-    @Override
-    public boolean verify(String hostname, SSLSession session)
-    {
-      return true;
-    }
-  }
-
-  /**
-   * A {@link X509TrustManager} that accepts all certificates.
-   * <p>
-   * This class disables certificate checks for encrypted connections. You
-   * should disable the option 'TrustAllCertificates' in 'web.xml' on productive
-   * systems and use a TrustStore instead.
-   *
-   * @see <a href="http://docs.oracle.com/cd/E21454_01/html/821-2544/cnfg_ssl-overview_c.html">Secure Sockets Layer (SSL) Overview</a>
-   */
-  private final static class InsecureTrustManager implements X509TrustManager
-  {
-    @Override
-    public java.security.cert.X509Certificate[] getAcceptedIssuers()
-    {
-      return null;
-    }
-    @Override
-    public void checkClientTrusted(X509Certificate[] certs, String authType)
-    {
-    }
-    @Override
-    public void checkServerTrusted(X509Certificate[] certs, String authType)
-    {
-    }
   }
 
   /**

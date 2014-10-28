@@ -17,7 +17,6 @@
 package org.openestate.is24.restapi.utils;
 
 import org.apache.commons.lang.StringUtils;
-import org.openestate.is24.restapi.xml.XmlUtils;
 import org.openestate.is24.restapi.xml.common.Message;
 import org.openestate.is24.restapi.xml.common.Messages;
 import org.slf4j.Logger;

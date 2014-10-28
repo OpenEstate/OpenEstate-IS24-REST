@@ -35,7 +35,6 @@ import org.apache.commons.io.IOExceptionWithCause;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.SystemUtils;
-import org.openestate.is24.restapi.xml.XmlUtils;
 import org.openestate.is24.restapi.xml.common.Attachment;
 import org.openestate.is24.restapi.xml.common.RealtorContactDetails;
 import org.openestate.is24.restapi.xml.realestates.RealEstate;
@@ -92,7 +91,7 @@ public class ExportPool
     final Unmarshaller unmarshaller;
     try
     {
-      unmarshaller = org.openestate.is24.restapi.xml.XmlUtils.createUnmarshaller();
+      unmarshaller = org.openestate.is24.restapi.utils.XmlUtils.createUnmarshaller();
       if (unmarshaller==null)
       {
         throw new IOException(
@@ -159,7 +158,7 @@ public class ExportPool
     final Unmarshaller unmarshaller;
     try
     {
-      unmarshaller = org.openestate.is24.restapi.xml.XmlUtils.createUnmarshaller();
+      unmarshaller = org.openestate.is24.restapi.utils.XmlUtils.createUnmarshaller();
       if (unmarshaller==null)
       {
         throw new IOException(
@@ -202,7 +201,7 @@ public class ExportPool
     final Unmarshaller unmarshaller;
     try
     {
-      unmarshaller = org.openestate.is24.restapi.xml.XmlUtils.createUnmarshaller();
+      unmarshaller = org.openestate.is24.restapi.utils.XmlUtils.createUnmarshaller();
       if (unmarshaller==null)
       {
         throw new IOException(

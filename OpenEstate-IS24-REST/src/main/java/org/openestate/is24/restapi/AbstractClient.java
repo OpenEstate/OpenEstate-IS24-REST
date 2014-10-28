@@ -32,7 +32,7 @@ import org.apache.commons.lang.StringUtils;
 import org.openestate.is24.restapi.utils.Authorization;
 import org.openestate.is24.restapi.utils.RequestMethod;
 import org.openestate.is24.restapi.utils.Response;
-import org.openestate.is24.restapi.xml.XmlUtils;
+import org.openestate.is24.restapi.utils.XmlUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

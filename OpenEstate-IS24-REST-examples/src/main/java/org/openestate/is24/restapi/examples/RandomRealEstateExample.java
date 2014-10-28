@@ -22,7 +22,7 @@ import java.nio.charset.Charset;
 import javax.xml.bind.JAXBException;
 import org.apache.commons.io.IOUtils;
 import org.openestate.is24.restapi.utils.RandomRealEstateFactory;
-import org.openestate.is24.restapi.xml.XmlUtils;
+import org.openestate.is24.restapi.utils.XmlUtils;
 import org.openestate.is24.restapi.xml.realestates.RealEstate;
 
 /**

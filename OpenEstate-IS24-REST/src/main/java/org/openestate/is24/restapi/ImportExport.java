@@ -28,7 +28,7 @@ import org.apache.commons.lang.StringUtils;
 import org.openestate.is24.restapi.utils.RequestFailedException;
 import org.openestate.is24.restapi.utils.RequestMethod;
 import org.openestate.is24.restapi.utils.Response;
-import org.openestate.is24.restapi.xml.XmlUtils;
+import org.openestate.is24.restapi.utils.XmlUtils;
 import org.openestate.is24.restapi.xml.common.Attachment;
 import org.openestate.is24.restapi.xml.common.Attachments;
 import org.openestate.is24.restapi.xml.common.Messages;

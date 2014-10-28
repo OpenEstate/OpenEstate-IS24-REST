@@ -56,9 +56,9 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.SystemUtils;
 import org.apache.commons.lang.exception.ExceptionUtils;
 import org.openestate.is24.restapi.utils.Authorization;
-import org.openestate.is24.restapi.utils.SSLUtils;
+import org.openestate.is24.restapi.utils.SslUtils;
 import org.openestate.is24.restapi.utils.Verification;
-import org.openestate.is24.restapi.xml.XmlUtils;
+import org.openestate.is24.restapi.utils.XmlUtils;
 import org.openestate.is24.restapi.xml.realestates.RealEstates;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -818,7 +818,7 @@ public class Is24RestApp extends javax.swing.JFrame
     // Disable certificate checks to make things easier
     try
     {
-      SSLUtils.disableCertificateChecks();
+      SslUtils.disableCertificateChecks();
     }
     catch (Exception ex)
     {

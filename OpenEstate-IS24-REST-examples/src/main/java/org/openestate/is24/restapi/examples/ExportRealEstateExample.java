@@ -23,7 +23,7 @@ import org.openestate.is24.restapi.AbstractClient;
 import org.openestate.is24.restapi.DefaultClient;
 import org.openestate.is24.restapi.ImportExport;
 import org.openestate.is24.restapi.utils.RequestFailedException;
-import org.openestate.is24.restapi.xml.XmlUtils;
+import org.openestate.is24.restapi.utils.XmlUtils;
 import org.openestate.is24.restapi.xml.realestates.RealEstate;
 
 /**
