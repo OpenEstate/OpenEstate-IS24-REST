@@ -70,7 +70,7 @@ public class Resource
     if (!m.find()) return null;
     return new Resource(
       StringUtils.trimToNull( m.group( 1 ) ),
-      Long.valueOf( StringUtils.defaultIfBlank( StringUtils.trimToNull( m.group( 2 ) ), "0" ) )
+      Long.parseLong( StringUtils.defaultIfBlank( StringUtils.trimToNull( m.group( 2 ) ), "0" ) )
     );
   }
 
@@ -103,7 +103,7 @@ public class Resource
     if (!m.find()) return null;
     return new Resource(
       StringUtils.trimToNull( m.group( 1 ) ),
-      Long.valueOf( StringUtils.defaultIfBlank( StringUtils.trimToNull( m.group( 2 ) ), "0" ) )
+      Long.parseLong( StringUtils.defaultIfBlank( StringUtils.trimToNull( m.group( 2 ) ), "0" ) )
     );
   }
 }

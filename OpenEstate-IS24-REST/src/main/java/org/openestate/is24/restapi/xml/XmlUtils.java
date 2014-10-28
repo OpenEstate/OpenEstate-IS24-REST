@@ -413,7 +413,7 @@ public final class XmlUtils
     if (value==null)
     {
       throw new IllegalArgumentException(
-        "The provided double value " + value + " is invalid!" );
+        "The provided double value NULL is invalid!" );
     }
     if (min!=null && value.doubleValue()<min.doubleValue())
     {
@@ -479,7 +479,7 @@ public final class XmlUtils
     if (value==null)
     {
       throw new IllegalArgumentException(
-        "The provided integer value " + value + " is invalid!" );
+        "The provided integer value NULL is invalid!" );
     }
     if (min!=null && value.intValue()<min.intValue())
     {
@@ -717,7 +717,7 @@ public final class XmlUtils
     if (value==null)
     {
       throw new IllegalArgumentException(
-        "The provided URL '" + value + "' is invalid!" );
+        "The provided URL NULL is invalid!" );
     }
     return value.toString();
   }
