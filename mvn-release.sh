@@ -6,5 +6,6 @@ export LANG=en
 set -e
 
 cd $PROJECT_DIR
+./git-submodule-update.sh
 $MVN clean install javadoc:aggregate
 $MVN --non-recursive assembly:single
