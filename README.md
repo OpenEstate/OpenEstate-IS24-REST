@@ -140,5 +140,5 @@ Further informations
 -   [API registration for the *production* system](http://rest.immobilienscout24.de/restapi/security/registration)
 -   [API registration for the *sandbox* system](http://rest.sandbox-immobilienscout24.de/restapi/security/registration)
 -   [XML-Schemas for the *production* system](http://rest.immobilienscout24.de/restapi/api/offer/v1.0/?_wadl&_schema)
--   [XML-Schemas for the *sandbox* system)](http://rest.sandbox-immobilienscout24.de/restapi/api/offer/v1.0/?_wadl&_schema)
+-   [XML-Schemas for the *sandbox* system](http://rest.sandbox-immobilienscout24.de/restapi/api/offer/v1.0/?_wadl&_schema)
 -   [alternative Java SDK by ImmobilienScout24](https://github.com/ImmobilienScout24/restapi-java-sdk)
