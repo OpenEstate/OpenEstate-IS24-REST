@@ -38,6 +38,13 @@
       </excludes>
     </fileSet>
     <fileSet>
+      <directory>${basedir}/OpenEstate-IS24-REST/src/main/xsd</directory>
+      <outputDirectory>xsd</outputDirectory>
+      <directoryMode>0755</directoryMode>
+      <fileMode>0644</fileMode>
+      <filtered>false</filtered>
+    </fileSet>
+    <fileSet>
       <directory>${basedir}/OpenEstate-IS24-REST/release</directory>
       <outputDirectory>OpenEstate-IS24-REST</outputDirectory>
       <directoryMode>0755</directoryMode>
