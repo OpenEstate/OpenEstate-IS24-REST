@@ -13,8 +13,8 @@ Work in progress
 
 This library is in an early stage of development. The API may change along with
 updates. But we're trying to mark changes as *deprecated* and keep them for some
-time. Also we're going to document incompabilities in the change log of a new
-release.
+time. Also we're going to document incompabilities in
+[`CHANGELOG.md`](CHANGELOG.md).
 
 
 Features
@@ -134,6 +134,9 @@ Further informations
 --------------------
 
 -   [OpenEstate-IS24-REST at GitHub](https://github.com/OpenEstate/OpenEstate-IS24-REST)
+-   [Releases of OpenEstate-IS24-REST](https://github.com/OpenEstate/OpenEstate-IS24-REST/releases)
+-   [Changelog of OpenEstate-IS24-REST](https://github.com/OpenEstate/OpenEstate-IS24-REST/blob/develop/CHANGELOG.md)
+-   [Javadocs of OpenEstate-IS24-REST](http://manual.openestate.org/OpenEstate-IS24-REST/)
 -   [ImmobilienScout24 Developer Center](http://api.immobilienscout24.de/)
 -   [ImmobilienScout24-REST-API Forum](https://groups.google.com/forum/#!forum/immobilienscout24-development)
 -   [ImmobilienScout24-REST-API Playground](http://playground.immobilienscout24.de/rest/playground)
