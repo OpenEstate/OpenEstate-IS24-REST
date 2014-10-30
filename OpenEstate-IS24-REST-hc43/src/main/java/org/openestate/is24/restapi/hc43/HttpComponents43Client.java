@@ -51,7 +51,12 @@ import org.openestate.is24.restapi.utils.RequestMethod;
 import org.openestate.is24.restapi.utils.Response;
 
 /**
+ * An implementation of {@link AbstractClient}, that makes use of
+ * <a href="http://hc.apache.org/httpcomponents-client-4.3.x/">Apache HttpComponents 4.3</a>
+ * for HTTP transfers.
  *
+ * @since 0.1
+ * @see <a href="http://hc.apache.org/httpcomponents-client-4.3.x/">Apache HttpComponents 4.3</a>
  * @author Andreas Rudolph <andy@openindex.de>
  */
 public class HttpComponents43Client extends AbstractClient
@@ -59,14 +64,41 @@ public class HttpComponents43Client extends AbstractClient
   //private final static Logger LOGGER = LoggerFactory.getLogger( HttpComponents43Client.class );
   private transient HttpClient httpClient = null;
 
-  public HttpComponents43Client( String apiBaseUrl, String apiAccessKey, String apiAccessSecret )
+  /**
+   * Create an instance of {@link HttpComponents43Client}.
+   *
+   * @param apiBaseUrl
+   *  URL of the IS24-Webservice
+   *
+   * @param consumerToken
+   *  consumer token, that identifies the application at the IS24-Webservice
+   *
+   * @param consumerSecret
+   *  consumer secret, that identifies the application at the IS24-Webservice
+   */
+  public HttpComponents43Client( String apiBaseUrl, String consumerToken, String consumerSecret )
   {
-    this( apiBaseUrl, apiAccessKey, apiAccessSecret, null );
+    this( apiBaseUrl, consumerToken, consumerSecret, null );
   }
 
-  public HttpComponents43Client( String apiBaseUrl, String apiAccessKey, String apiAccessSecret, HttpClient httpClient )
+  /**
+   * Create an instance of {@link HttpComponents43Client}.
+   *
+   * @param apiBaseUrl
+   *  URL of the IS24-Webservice
+   *
+   * @param consumerToken
+   *  consumer token, that identifies the application at the IS24-Webservice
+   *
+   * @param consumerSecret
+   *  consumer secret, that identifies the application at the IS24-Webservice
+   *
+   * @param httpClient
+   *  {@link HttpClient}, that is used for HTTP transfers
+   */
+  public HttpComponents43Client( String apiBaseUrl, String consumerToken, String consumerSecret, HttpClient httpClient )
   {
-    super( apiBaseUrl, apiAccessKey, apiAccessSecret );
+    super( apiBaseUrl, consumerToken, consumerSecret );
     this.httpClient = httpClient;
   }
 
@@ -87,6 +119,18 @@ public class HttpComponents43Client extends AbstractClient
       httpClient );
   }
 
+  /**
+   * Retrieve a {@link Response} from a {@link HttpResponse}.
+   *
+   * @param response
+   *  {@link HttpResponse}, that was received by the client
+   *
+   * @return
+   *  {@link Response} of the request
+   *
+   * @throws IOException
+   *  if the {@link Response} can't be obtained
+   */
   protected Response createResponse( HttpResponse response ) throws IOException
   {
     HttpEntity responseEntity = null;
@@ -312,11 +356,20 @@ public class HttpComponents43Client extends AbstractClient
     return createResponse( response );
   }
 
+  /**
+   * Use a default {@link HttpClient} for HTTP traffic.
+   */
   public void setDefaultHttpClient()
   {
     setDefaultHttpClient( 30000 );
   }
 
+  /**
+   * Use a default {@link HttpClient} for HTTP traffic.
+   *
+   * @param timeout
+   *  timeout for HTTP communication (in milliseconds)
+   */
   public void setDefaultHttpClient( int timeout )
   {
     if (timeout<0) timeout = 0;
@@ -352,6 +405,12 @@ public class HttpComponents43Client extends AbstractClient
     setHttpClient( b.build() );
   }
 
+  /**
+   * Use a specific {@link HttpClient} for HTTP traffic.
+   *
+   * @param httpClient
+   *  {@link HttpClient}, that is used for HTTP communication
+   */
   public synchronized void setHttpClient( HttpClient httpClient )
   {
     this.httpClient = httpClient;

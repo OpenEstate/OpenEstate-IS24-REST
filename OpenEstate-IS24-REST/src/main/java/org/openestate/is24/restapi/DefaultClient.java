@@ -31,18 +31,46 @@ import org.openestate.is24.restapi.utils.RequestMethod;
 import org.openestate.is24.restapi.utils.Response;
 
 /**
+ * An implementation of {@link AbstractClient}, that makes use of
+ * {@link HttpURLConnection} for HTTP transfers.
  *
+ * @since 0.1
  * @author Andreas Rudolph <andy@openindex.de>
  */
 public class DefaultClient extends AbstractClient
 {
   //private final static Logger LOGGER = LoggerFactory.getLogger( DefaultClient.class );
 
-  public DefaultClient( String apiBaseUrl, String apiAccessKey, String apiAccessSecret )
+  /**
+   * Create an instance of {@link DefaultClient}.
+   *
+   * @param apiBaseUrl
+   *  URL of the IS24-Webservice
+   *
+   * @param consumerToken
+   *  consumer token, that identifies the application at the IS24-Webservice
+   *
+   * @param consumerSecret
+   *  consumer secret, that identifies the application at the IS24-Webservice
+   */
+  public DefaultClient( String apiBaseUrl, String consumerToken, String consumerSecret )
   {
-    super( apiBaseUrl, apiAccessKey, apiAccessSecret );
+    super( apiBaseUrl, consumerToken, consumerSecret );
   }
 
+  /**
+   * Retrieve a {@link Response} from a request, that was sent through
+   * {@link HttpURLConnection}.
+   *
+   * @param connection
+   *  {@link HttpURLConnection}, that contains the server response
+   *
+   * @return
+   *  {@link Response} of the request
+   *
+   * @throws IOException
+   *  if the {@link Response} can't be obtained
+   */
   protected Response createResponse( HttpURLConnection connection ) throws IOException
   {
     InputStream responseInput = null;
