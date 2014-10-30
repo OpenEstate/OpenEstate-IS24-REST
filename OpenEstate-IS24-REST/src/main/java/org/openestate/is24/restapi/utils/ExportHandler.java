@@ -71,6 +71,7 @@ public class ExportHandler
   private ExportPool pool = null;
   private long progress = 0;
   private long totalProgress = 0;
+  private boolean useNewEnergySourceEnev2014Values = true;
 
   public ExportHandler()
   {
@@ -133,7 +134,7 @@ public class ExportHandler
         try
         {
           ImportExport.RealEstateService.putByIs24Id(
-            this.client, is24Object, is24ObjectId );
+            this.client, is24Object, is24ObjectId, this.isUseNewEnergySourceEnev2014Values() );
         }
         catch (RequestFailedException ex)
         {
@@ -704,7 +705,7 @@ public class ExportHandler
         try
         {
           ImportExport.RealEstateService.post(
-            this.client, newIs24Object );
+            this.client, newIs24Object, this.isUseNewEnergySourceEnev2014Values() );
         }
         catch (RequestFailedException ex)
         {
@@ -779,7 +780,7 @@ public class ExportHandler
         try
         {
           ImportExport.RealEstateService.putByIs24Id(
-            this.client, newIs24Object, is24ObjectId );
+            this.client, newIs24Object, is24ObjectId, this.isUseNewEnergySourceEnev2014Values() );
         }
         catch (RequestFailedException ex)
         {
@@ -1299,6 +1300,11 @@ public class ExportHandler
     return totalProgress;
   }
 
+  public boolean isUseNewEnergySourceEnev2014Values()
+  {
+    return useNewEnergySourceEnev2014Values;
+  }
+
   private void logMessagesAsError( Messages messages )
   {
     if (messages==null || messages.getMessage().isEmpty()) return;
@@ -1395,6 +1401,11 @@ public class ExportHandler
 
     // launch callback function for progress
     progressUpdated( this.progress, this.totalProgress );
+  }
+
+  public void setUseNewEnergySourceEnev2014Values( boolean useNewEnergySourceEnev2014Values )
+  {
+    this.useNewEnergySourceEnev2014Values = useNewEnergySourceEnev2014Values;
   }
 
   public static enum ErrorCode
