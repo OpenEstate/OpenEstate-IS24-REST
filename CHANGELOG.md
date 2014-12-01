@@ -18,7 +18,8 @@ Changelog for OpenEstate-IS24-REST
 
 ### updates
 
--   updated JAXB classes for XML reading / writing to the latest XML schemas from *13th October 2014*
+-   updated JAXB classes for XML reading / writing to the latest XML schemas
+    from *17th November 2014*
     (see [IS24-Changelog](http://api.immobilienscout24.de/useful/changelog.html))
 -   moved class `XmlUtils` from `org.openestate.is24.restapi.xml` into `org.openestate.is24.restapi.utils`
 -   renamed class `SSLUtils` to `SslUtils` in `org.openestate.is24.restapi.utils`
@@ -34,10 +35,10 @@ Changelog for OpenEstate-IS24-REST
 
 -   deprecated class `org.openestate.is24.restapi.xml.XmlUtils`
     -   calls to this class are redirected to `org.openestate.is24.restapi.utils.XmlUtils`
-    -   this deprecated class will be removed with one of the next major releases
+    -   this class will be removed with one of the next major releases
 -   deprecated class `org.openestate.is24.restapi.utils.SSLUtils`
     -   calls to this class are redirected to `org.openestate.is24.restapi.utils.SslUtils`
-    -   this deprecated class will be removed with one of the next major releases
+    -   this class will be removed with one of the next major releases
 
 
 0.1.2 (24 Aug 2014)
