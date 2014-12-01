@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.openestate.is24.restapi.utils;
+package org.openestate.is24.restapi.examples;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.io.BufferedReader;
@@ -48,9 +48,9 @@ import org.slf4j.LoggerFactory;
 @SuppressFBWarnings(
   value = {"NP_DEREFERENCE_OF_READLINE_VALUE", "DM_DEFAULT_ENCODING"},
   justification = "Keep example code untouched." )
-public class OauthTesterIS24
+public class IS24OauthExample
 {
-  private final static Logger LOGGER = LoggerFactory.getLogger( OauthTesterIS24.class );
+  private final static Logger LOGGER = LoggerFactory.getLogger( IS24OauthExample.class );
 
   public static void main( String[] args ) throws Exception
   {
