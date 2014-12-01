@@ -1534,6 +1534,8 @@ public final class ImportExport
      * for which the publishing is removed
      *
      * @return
+     * requested publishing
+     *
      * @throws IOException
      * if communication with the Webservice failed
      *

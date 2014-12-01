@@ -62,10 +62,10 @@ import org.slf4j.LoggerFactory;
  * The {@link ExportHandler} is part of the high level API for bulk exports of real
  * estate data.
  * <p>
- * A previously created {@ExportPool} can be processed with the
+ * A previously created {@link ExportPool} can be processed with the
  * {@link ExportHandler#export(org.openestate.is24.restapi.AbstractClient, org.openestate.is24.restapi.utils.ExportPool, boolean, boolean)}
  * method. The {@link ExportHandler} will launch the required low level
- * operations of the {@ImportExport}-API for each pooled object.
+ * operations of the {@link ImportExport}-API for each pooled object.
  *
  * @since 0.2
  * @author Andreas Rudolph <andy@openindex.de>
