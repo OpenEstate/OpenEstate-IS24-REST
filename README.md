@@ -14,9 +14,8 @@ Features
 -   authentication through [OAuth](http://api.immobilienscout24.de/useful/authentication.html)
 -   read and write XML according to the specifications of the Webservice
 -   low level functions to call the [Import/Export-API](http://api.immobilienscout24.de/our-apis/import-export.html)
-    (see [`ImportExport.java`](OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/ImportExport.java))
--   bulk export of multiple real estates (including contacts, attachments and
-    streaming videos)
+-   high level functions for the export of multiple real estates (including
+    contacts, attachments and streaming videos)
 -   create real estates randomly
 -   example web application for the [OAuth](http://api.immobilienscout24.de/useful/authentication.html)
     verification process
