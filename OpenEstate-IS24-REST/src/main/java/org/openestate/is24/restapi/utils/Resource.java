@@ -18,7 +18,7 @@ package org.openestate.is24.restapi.utils;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.openestate.is24.restapi.xml.common.Message;
 import org.openestate.is24.restapi.xml.common.MessageCode;
 import org.openestate.is24.restapi.xml.common.Messages;

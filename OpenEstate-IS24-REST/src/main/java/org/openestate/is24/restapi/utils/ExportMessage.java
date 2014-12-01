@@ -16,7 +16,7 @@
 
 package org.openestate.is24.restapi.utils;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * A message, that was returned during a bulk export.

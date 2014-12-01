@@ -21,10 +21,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
-import org.apache.commons.lang.ArrayUtils;
-import org.apache.commons.lang.RandomStringUtils;
-import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.math.RandomUtils;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.RandomUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.openestate.is24.restapi.xml.common.Address;
 import org.openestate.is24.restapi.xml.common.AirConditioningType;
 import org.openestate.is24.restapi.xml.common.ApartmentType;
@@ -306,7 +306,7 @@ public class RandomRealEstateFactory
    */
   public static boolean getRandomBoolean()
   {
-    return RandomUtils.nextBoolean();
+    return RandomUtils.nextInt( 0, 2 ) == 1;
   }
 
   /**
@@ -442,7 +442,7 @@ public class RandomRealEstateFactory
    * @return
    * random {@link Double} value
    */
-  public static double getRandomDouble( int min, int max )
+  public static double getRandomDouble( double min, double max )
   {
     if (min>max)
     {
@@ -453,7 +453,7 @@ public class RandomRealEstateFactory
     {
       return (double) min;
     }
-    return (RandomUtils.nextDouble() * (max - min)) + min;
+    return RandomUtils.nextDouble( min, max );
   }
 
   /**
@@ -625,8 +625,7 @@ public class RandomRealEstateFactory
     {
       return min;
     }
-    int value = RandomUtils.nextInt( max - min ) + 1;
-    return max - value;
+    return RandomUtils.nextInt( min, max );
   }
 
   /**
@@ -918,7 +917,7 @@ public class RandomRealEstateFactory
   public static Object getRandomValue( Object[] values )
   {
     return (!ArrayUtils.isEmpty( values ))?
-      values[RandomUtils.nextInt( values.length )]: null;
+      values[RandomUtils.nextInt( 0, values.length )]: null;
   }
 
   /**

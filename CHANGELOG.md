@@ -29,6 +29,7 @@ Changelog for OpenEstate-IS24-REST
 -   moved [Java Signpost Example](http://api.immobilienscout24.de/useful/tutorials-sdks-plugins/tutorial-java-signpost.html)
     into the `examples` component
     (see [`RandomRealEstateFactory.java`](OpenEstate-IS24-REST-examples/src/main/java/org/openestate/is24/restapi/examples/IS24OauthExample.java))
+-   migrated from "`commons-lang` 2" to "`commons-lang` 3"
 -   API documentation completed
 
 ### deprecations
