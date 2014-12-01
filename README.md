@@ -8,15 +8,6 @@ some of our clients projects in order to import / export their real estates to
 [ImmobilienScout24.de](http://www.immobilienscout24.de/).
 
 
-Work in progress
-----------------
-
-This library is in an early stage of development. The API may change along with
-updates. But we're trying to mark changes as *deprecated* and keep them for some
-time. Also we're going to document incompabilities in
-[`CHANGELOG.md`](CHANGELOG.md).
-
-
 Features
 --------
 
