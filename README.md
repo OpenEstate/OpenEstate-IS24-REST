@@ -108,6 +108,12 @@ operations per day. Contact <service@immobilienscout24.de> if the limit is too
 low for your use case.
 
 
+Changelog
+---------
+
+Take a look at [`CHANGELOG.md`](CHANGELOG.md) for the full changelog.
+
+
 License
 -------
 

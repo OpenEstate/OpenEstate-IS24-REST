@@ -25,6 +25,10 @@ Changelog for OpenEstate-IS24-REST
 -   support new values for `EnergySourceEnev2014` for `POST` and `UPDATE` of real
     estates with request paramater `usenewenergysourceenev2014values=true`
     (see [notes by IS24](http://api.immobilienscout24.de/useful/energy-certificate-2014.html))
+-   moved [Java Signpost Example](http://api.immobilienscout24.de/useful/tutorials-sdks-plugins/tutorial-java-signpost.html)
+    into the `examples` component
+    (see [`RandomRealEstateFactory.java`](OpenEstate-IS24-REST-examples/src/main/java/org/openestate/is24/restapi/examples/IS24OauthExample.java))
+-   API documentation completed
 
 ### deprecations
 
