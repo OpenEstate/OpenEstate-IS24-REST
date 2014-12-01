@@ -20,7 +20,9 @@ import java.io.InputStream;
 import org.apache.http.entity.mime.content.InputStreamBody;
 
 /**
+ * An extended {@link InputStreamBody}, that holds the total streamed size.
  *
+ * @since 0.1
  * @author Andreas Rudolph <andy@openindex.de>
  */
 public class InputStreamBodyWithLength extends InputStreamBody
@@ -28,18 +30,51 @@ public class InputStreamBodyWithLength extends InputStreamBody
   //private final static Logger LOGGER = LoggerFactory.getLogger( InputStreamBodyWithLength.class );
   private final long length;
 
+  /**
+   * Creates an instance of {@link InputStreamBodyWithLength}.
+   *
+   * @param in
+   * inputstream
+   *
+   * @param filename
+   * file name
+   *
+   * @param length
+   * file size
+   */
   public InputStreamBodyWithLength( InputStream in, String filename, long length )
   {
     super( in, filename );
     this.length = length;
   }
 
+  /**
+   * Creates an instance of {@link InputStreamBodyWithLength}.
+   *
+   * @param in
+   * inputstream
+   *
+   * @param mimeType
+   * file mime type
+   *
+   * @param filename
+   * file name
+   *
+   * @param length
+   * file size
+   */
   public InputStreamBodyWithLength( InputStream in, String mimeType, String filename, long length )
   {
     super( in, mimeType, filename );
     this.length = length;
   }
 
+  /**
+   * Returns size of the streamed content.
+   *
+   * @return
+   * size in bytes
+   */
   @Override
   public long getContentLength()
   {

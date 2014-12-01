@@ -24,7 +24,9 @@ import org.openestate.is24.restapi.xml.common.MessageCode;
 import org.openestate.is24.restapi.xml.common.Messages;
 
 /**
+ * Informations about a modified resource.
  *
+ * @since 0.1
  * @author Andreas Rudolph <andy@openindex.de>
  */
 public class Resource
@@ -32,7 +34,15 @@ public class Resource
   //private final static Logger LOGGER = LoggerFactory.getLogger( Resource.class );
   private static Pattern CREATED_PATTERN = null;
   private static Pattern MESSAGE_PATTERN = null;
+
+  /**
+   * resource type
+   */
   public final String type;
+
+  /**
+   * resource ID
+   */
   public final long id;
 
   public Resource( String type, long id )
@@ -41,13 +51,32 @@ public class Resource
     this.id = id;
   }
 
+  /**
+   * Loads resource informations from the response {@link Messages} of a created
+   * object.
+   *
+   * @param messages
+   * messages from the body of the HTTP response
+   *
+   * @return
+   * resource informations
+   */
   public static Resource getCreatedResource( Messages messages )
   {
     return (messages!=null && !messages.getMessage().isEmpty())?
       getCreatedResource( messages.getMessage().get( 0 ) ): null;
-
   }
 
+  /**
+   * Loads resource informations from the response {@link Message} of a created
+   * object.
+   *
+   * @param message
+   * message from the body of the HTTP response
+   *
+   * @return
+   * resource informations
+   */
   public static Resource getCreatedResource( Message message )
   {
     if (message==null)
@@ -74,6 +103,15 @@ public class Resource
     );
   }
 
+  /**
+   * Loads resource informations from the response {@link Messages}.
+   *
+   * @param messages
+   * messages from the body of the HTTP response
+   *
+   * @return
+   * resource informations
+   */
   public static Resource getMessageResource( Messages messages )
   {
     return (messages!=null && !messages.getMessage().isEmpty())?
@@ -81,6 +119,15 @@ public class Resource
 
   }
 
+  /**
+   * Loads resource informations from the response {@link Message}.
+   *
+   * @param message
+   * message from the body of the HTTP response
+   *
+   * @return
+   * resource informations
+   */
   public static Resource getMessageResource( Message message )
   {
     if (message==null)

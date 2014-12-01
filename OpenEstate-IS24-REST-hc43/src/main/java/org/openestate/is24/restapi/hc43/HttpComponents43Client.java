@@ -65,16 +65,17 @@ public class HttpComponents43Client extends AbstractClient
   private transient HttpClient httpClient = null;
 
   /**
-   * Create an instance of {@link HttpComponents43Client}.
+   * Creates an instance of {@link HttpComponents43Client}.
    *
    * @param apiBaseUrl
-   *  URL of the IS24-Webservice
+   * base URL of the IS24-Webservice (see {@link AbstractClient#LIVE_API} and
+   * {@link AbstractClient#SANDBOX_API})
    *
    * @param consumerToken
-   *  consumer token, that identifies the application at the IS24-Webservice
+   * consumer token, that identifies the application at the IS24-Webservice
    *
    * @param consumerSecret
-   *  consumer secret, that identifies the application at the IS24-Webservice
+   * consumer secret, that identifies the application at the IS24-Webservice
    */
   public HttpComponents43Client( String apiBaseUrl, String consumerToken, String consumerSecret )
   {
@@ -82,19 +83,20 @@ public class HttpComponents43Client extends AbstractClient
   }
 
   /**
-   * Create an instance of {@link HttpComponents43Client}.
+   * Creates an instance of {@link HttpComponents43Client}.
    *
    * @param apiBaseUrl
-   *  URL of the IS24-Webservice
+   * base URL of the IS24-Webservice (see {@link AbstractClient#LIVE_API} and
+   * {@link AbstractClient#SANDBOX_API})
    *
    * @param consumerToken
-   *  consumer token, that identifies the application at the IS24-Webservice
+   * consumer token, that identifies the application at the IS24-Webservice
    *
    * @param consumerSecret
-   *  consumer secret, that identifies the application at the IS24-Webservice
+   * consumer secret, that identifies the application at the IS24-Webservice
    *
    * @param httpClient
-   *  {@link HttpClient}, that is used for HTTP transfers
+   * {@link HttpClient}, that is used for HTTP transfers
    */
   public HttpComponents43Client( String apiBaseUrl, String consumerToken, String consumerSecret, HttpClient httpClient )
   {
@@ -120,16 +122,16 @@ public class HttpComponents43Client extends AbstractClient
   }
 
   /**
-   * Retrieve a {@link Response} from a {@link HttpResponse}.
+   * Retrieves a {@link Response} from a {@link HttpResponse}.
    *
    * @param response
-   *  {@link HttpResponse}, that was received by the client
+   * {@link HttpResponse}, that was received by the client
    *
    * @return
-   *  {@link Response} of the request
+   * {@link Response} of the request
    *
    * @throws IOException
-   *  if the {@link Response} can't be obtained
+   * if the {@link Response} can't be obtained
    */
   protected Response createResponse( HttpResponse response ) throws IOException
   {
@@ -368,7 +370,7 @@ public class HttpComponents43Client extends AbstractClient
    * Use a default {@link HttpClient} for HTTP traffic.
    *
    * @param timeout
-   *  timeout for HTTP communication (in milliseconds)
+   * timeout for HTTP communication (in milliseconds)
    */
   public void setDefaultHttpClient( int timeout )
   {
@@ -409,7 +411,7 @@ public class HttpComponents43Client extends AbstractClient
    * Use a specific {@link HttpClient} for HTTP traffic.
    *
    * @param httpClient
-   *  {@link HttpClient}, that is used for HTTP communication
+   * {@link HttpClient}, that is used for HTTP communication
    */
   public synchronized void setHttpClient( HttpClient httpClient )
   {

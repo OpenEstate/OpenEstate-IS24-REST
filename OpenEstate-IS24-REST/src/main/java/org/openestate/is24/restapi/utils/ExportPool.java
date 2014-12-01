@@ -42,14 +42,23 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * ExportPool.
-*
+ * A pool of exportable real estates, attachments and contacts.
+ * <p>
+ * The {@link ExportPool} is part of the high level API for bulk exports of real
+ * estate data.
+ * <p>
+ * Multiple real estates and contacts (including attachments) can be collected
+ * in the {@link ExportPool}. The corresponding data is stored into a temporary
+ * folder on the local harddisk. After the {@link ExportPool} was created and
+ * initialized with some data, the bulk export can be started via
+ * {@link ExportHandler}.
+ *
+ * @since 0.2
  * @author Andreas Rudolph <andy@openindex.de>
  */
 public class ExportPool
 {
   private final static Logger LOGGER = LoggerFactory.getLogger( ExportPool.class );
-  //private final static String FULL_TRANSFER = "FullTransfer";
   private final static String UPDATE = "UPDATE";
   private final static String REMOVE = "REMOVE";
   private final File baseDir;
@@ -57,11 +66,23 @@ public class ExportPool
   private final File objectsDir;
   private final Properties settings;
 
+  /**
+   * Creates an empty {@link ExportPool}.
+   * <p>
+   * Files are stored into the default temporary directory of the Java runtime
+   * environment.
+   */
   public ExportPool()
   {
     this( new File( SystemUtils.getJavaIoTmpDir(), "pool-"+System.currentTimeMillis() ) );
   }
 
+  /**
+   * Creates an empty {@link ExportPool}.
+   *
+   * @param baseDir
+   * directory, where pooled files are stored
+   */
   public ExportPool( File baseDir )
   {
     this.baseDir = baseDir;
@@ -70,17 +91,38 @@ public class ExportPool
     this.settings = new Properties();
   }
 
+  /**
+   * Clear settings and empty the local directory.
+   */
   public void cleanup()
   {
     this.settings.clear();
     FileUtils.deleteQuietly( this.baseDir );
   }
 
+  /**
+   * Returns directory, where local files are stored.
+   *
+   * @return
+   * directory
+   */
   public final File getBaseDir()
   {
     return baseDir;
   }
 
+  /**
+   * Returns a pooled contact.
+   *
+   * @param externalContactId
+   * ID of the contact
+   *
+   * @return
+   * contact
+   *
+   * @throws IOException
+   * if object is not readable from local directory
+   */
   public RealtorContactDetails getContact( String externalContactId ) throws IOException
   {
     if (StringUtils.isBlank( externalContactId )) return null;
@@ -124,6 +166,12 @@ public class ExportPool
     }
   }
 
+  /**
+   * Returns ID's of pooled contacts.
+   *
+   * @return
+   * contact ID's
+   */
   public String[] getContactIds()
   {
     if (!this.contactsDir.isDirectory()) return new String[]{};
@@ -135,6 +183,18 @@ public class ExportPool
     return ids.toArray( new String[ids.size()] );
   }
 
+  /**
+   * Returns size of a pooled contact.
+   *
+   * @param externalContactId
+   * ID of the contact
+   *
+   * @param completely
+   * calculate the complete size (including attachments)
+   *
+   * @return
+   * size in bytes
+   */
   public long getContactSize( String externalContactId, boolean completely )
   {
     if (StringUtils.isBlank( externalContactId )) return 0;
@@ -143,11 +203,29 @@ public class ExportPool
     return (file.isFile())? FileUtils.sizeOf( file ): 0;
   }
 
+  /**
+   * Returns directory, where pooled contacts are stored.
+   *
+   * @return
+   * directory
+   */
   public final File getContactsDir()
   {
     return contactsDir;
   }
 
+  /**
+   * Returns a pooled real estate.
+   *
+   * @param externalObjectId
+   * ID of the real estate
+   *
+   * @return
+   * real estate
+   *
+   * @throws IOException
+   * if object is not readable from local directory
+   */
   public RealEstate getObject( String externalObjectId ) throws IOException
   {
     if (StringUtils.isBlank( externalObjectId )) return null;
@@ -191,6 +269,21 @@ public class ExportPool
     }
   }
 
+  /**
+   * Returns a pooled attachment for a real estate.
+   *
+   * @param externalObjectId
+   * ID of the real estate
+   *
+   * @param attachmentId
+   * ID of the attachment
+   *
+   * @return
+   * attachment
+   *
+   * @throws IOException
+   * if object is not readable from local directory
+   */
   public Attachment getObjectAttachment( String externalObjectId, String attachmentId ) throws IOException
   {
     if (StringUtils.isBlank( externalObjectId ) || StringUtils.isBlank( attachmentId )) return null;
@@ -234,38 +327,110 @@ public class ExportPool
     }
   }
 
-  public File getObjectAttachmentFile( String externalObjectId, Attachment attachment ) throws IOException
+  /**
+   * Returns the file of a pooled attachment for a real estate.
+   *
+   * @param externalObjectId
+   * ID of the real estate
+   *
+   * @param attachment
+   * attachment to lookup
+   *
+   * @return
+   * file
+   */
+  public File getObjectAttachmentFile( String externalObjectId, Attachment attachment )
   {
     return (attachment!=null)?
       getObjectAttachmentFile( externalObjectId, attachment.getHref() ): null;
   }
 
-  public File getObjectAttachmentFile( String externalObjectId, URL href ) throws IOException
+  /**
+   * Returns the file of a pooled attachment for a real estate.
+   *
+   * @param externalObjectId
+   * ID of the real estate
+   *
+   * @param href
+   * attachment href
+   *
+   * @return
+   * file
+   */
+  public File getObjectAttachmentFile( String externalObjectId, URL href )
   {
     return (href!=null && href.getProtocol().equalsIgnoreCase( "file" ))?
       getObjectAttachmentFile( externalObjectId, StringUtils.trimToNull( href.getHost() ) ): null;
   }
 
-  public File getObjectAttachmentFile( String externalObjectId, String name ) throws IOException
+  /**
+   * Returns the file of a pooled attachment for a real estate.
+   *
+   * @param externalObjectId
+   * ID of the real estate
+   *
+   * @param name
+   * file name
+   *
+   * @return
+   * file
+   */
+  public File getObjectAttachmentFile( String externalObjectId, String name )
   {
     if (StringUtils.isBlank( name )) return null;
     final File file = new File( new File( this.objectsDir, externalObjectId ), name );
     return (file.isFile())? file: null;
   }
 
-  public long getObjectAttachmentSize( String externalObjectId, String attachmentId ) throws IOException
+  /**
+   * Returns size of a pooled attachment for a real estate.
+   *
+   * @param externalObjectId
+   * ID of the real estate
+   *
+   * @param attachmentId
+   * ID of the attachment
+   *
+   * @return
+   * size in bytes
+   */
+  public long getObjectAttachmentSize( String externalObjectId, String attachmentId )
   {
     if (StringUtils.isBlank( externalObjectId ) || StringUtils.isBlank( attachmentId )) return 0;
     File file = new File( new File( this.objectsDir, externalObjectId ), "attachment." + attachmentId + ".xml" );
     return (file.isFile())? FileUtils.sizeOf( file ): 0;
   }
 
+  /**
+   * Returns the URL of a pooled attachment for a real estate.
+   *
+   * @param externalObjectId
+   * ID of the real estate
+   *
+   * @param attachmentId
+   * ID of the attachment
+   *
+   * @return
+   * file
+   *
+   * @throws IOException
+   * if object is not readable from local directory
+   */
   public URL getObjectAttachmentURL( String externalObjectId, String attachmentId ) throws IOException
   {
     Attachment attachment = this.getObjectAttachment( externalObjectId, attachmentId );
     return (attachment!=null)? attachment.getHref(): null;
   }
 
+  /**
+   * Returns attachment ID's of a pooled real estate.
+   *
+   * @param externalObjectId
+   * ID of the real estate
+   *
+   * @return
+   * attachment ID's
+   */
   public String[] getObjectAttachmentIds( String externalObjectId )
   {
     final File objectDir = new File( this.objectsDir, externalObjectId );
@@ -289,6 +454,12 @@ public class ExportPool
     return ids.toArray( new String[ids.size()] );
   }
 
+  /**
+   * Returns ID's of pooled real estates.
+   *
+   * @return
+   * real estate ID's
+   */
   public String[] getObjectIds()
   {
     if (!this.objectsDir.isDirectory()) return new String[]{};
@@ -300,6 +471,12 @@ public class ExportPool
     return ids.toArray( new String[ids.size()] );
   }
 
+  /**
+   * Returns ID's of real estates, that were pooled for removal.
+   *
+   * @return
+   * real estate ID's
+   */
   public String[] getObjectIdsForRemoval()
   {
     List<String> ids = new ArrayList<String>();
@@ -315,6 +492,18 @@ public class ExportPool
     return ids.toArray( new String[ids.size()] );
   }
 
+  /**
+   * Returns size of a pooled real estate.
+   *
+   * @param externalObjectId
+   * ID of the real estate
+   *
+   * @param completely
+   * calculate the complete size (including attachments)
+   *
+   * @return
+   * size in bytes
+   */
   public long getObjectSize( String externalObjectId, boolean completely )
   {
     if (StringUtils.isBlank( externalObjectId )) return 0;
@@ -323,32 +512,69 @@ public class ExportPool
     return (file.isFile())? FileUtils.sizeOf( file ): 0;
   }
 
+  /**
+   * Returns directory, where pooled real estates are stored.
+   *
+   * @return
+   * directory
+   */
   public final File getObjectsDir()
   {
     return objectsDir;
   }
 
+  /**
+   * Returns a settings from the export pool.
+   *
+   * @param key
+   * setting key
+   *
+   * @return
+   * setting value
+   */
   public String getSetting( String key )
   {
     return this.getSetting( key, null );
   }
 
+  /**
+   * Returns a settings from the export pool.
+   *
+   * @param key
+   * setting key
+   *
+   * @param defaultValue
+   * default value, if the setting is not defined
+   *
+   * @return
+   * setting value or the provided default value
+   */
   public String getSetting( String key, String defaultValue )
   {
     return this.settings.getProperty( key, defaultValue );
   }
 
+  /**
+   * Returns the total size of the local pool directory.
+   *
+   * @return
+   * size in bytes
+   */
   public long getTotalSize()
   {
     return (this.baseDir.exists())?
       FileUtils.sizeOf( this.baseDir ): 0;
   }
 
-  /*public boolean isFullTransfer()
-  {
-    return "1".equals( this.getSetting( FULL_TRANSFER, "0" ) );
-  }*/
-
+  /**
+   * Checks, if a contact was pooled for export.
+   *
+   * @param externalContactId
+   * contact ID
+   *
+   * @return
+   * true, if the object with the provided ID is already pooled
+   */
   public boolean hasContactForExport( String externalContactId )
   {
     if (StringUtils.isBlank( externalContactId )) return false;
@@ -356,6 +582,15 @@ public class ExportPool
     return xmlFile.isFile();
   }
 
+  /**
+   * Checks, if a real estate was pooled for export.
+   *
+   * @param externalObjectId
+   * real estate ID
+   *
+   * @return
+   * true, if the object with the provided ID is already pooled
+   */
   public boolean hasObjectForExport( String externalObjectId )
   {
     if (StringUtils.isBlank( externalObjectId )) return false;
@@ -363,12 +598,30 @@ public class ExportPool
     return xmlFile.isFile();
   }
 
+  /**
+   * Checks, if a real estate was pooled for removal.
+   *
+   * @param externalObjectId
+   * real estate ID
+   *
+   * @return
+   * true, if the object with the provided ID is already pooled for removal
+   */
   public boolean hasObjectForRemoval( String externalObjectId )
   {
     if (StringUtils.isBlank( externalObjectId )) return false;
     return REMOVE.equalsIgnoreCase( this.getSetting( "object."+externalObjectId ) );
   }
 
+  /**
+   * Adds a contact to export pool.
+   *
+   * @param contact
+   * contact
+   *
+   * @throws IOException
+   * if pooling failed
+   */
   public synchronized void putContact( RealtorContactDetails contact ) throws IOException
   {
     if (contact==null) return;
@@ -395,6 +648,15 @@ public class ExportPool
     }
   }
 
+  /**
+   * Adds a real estate to export pool.
+   *
+   * @param object
+   * real estate
+   *
+   * @throws IOException
+   * if pooling failed
+   */
   public synchronized void putObject( RealEstate object ) throws IOException
   {
     if (object==null) return;
@@ -422,6 +684,21 @@ public class ExportPool
     }
   }
 
+  /**
+   * Adds an attachment for a real estate to export pool.
+   *
+   * @param externalObjectId
+   * real estate ID
+   *
+   * @param attachment
+   * attachment informations
+   *
+   * @param file
+   * attached file
+   *
+   * @throws IOException
+   * if pooling failed
+   */
   public synchronized void putObjectAttachedFile( String externalObjectId, Attachment attachment, File file ) throws IOException
   {
     if (StringUtils.isBlank( externalObjectId ) || attachment==null || file==null || !file.isFile()) return;
@@ -458,6 +735,21 @@ public class ExportPool
     }
   }
 
+  /**
+   * Adds an attachment for a real estate to export pool.
+   *
+   * @param externalObjectId
+   * real estate ID
+   *
+   * @param attachment
+   * attachment informations
+   *
+   * @param file
+   * URL, that points to the attached file
+   *
+   * @throws IOException
+   * if pooling failed
+   */
   public synchronized void putObjectAttachedFile( String externalObjectId, Attachment attachment, URL file ) throws IOException
   {
     if (StringUtils.isBlank( externalObjectId ) || attachment==null || file==null) return;
@@ -491,6 +783,18 @@ public class ExportPool
     }
   }
 
+  /**
+   * Adds an web link for a real estate to export pool.
+   *
+   * @param externalObjectId
+   * real estate ID
+   *
+   * @param link
+   * web link
+   *
+   * @throws IOException
+   * if pooling failed
+   */
   public synchronized void putObjectAttachedLink( String externalObjectId, Attachment link ) throws IOException
   {
     if (StringUtils.isBlank( externalObjectId ) || link==null) return;
@@ -523,6 +827,12 @@ public class ExportPool
     }
   }
 
+  /**
+   * Registers an real estate object for removal.
+   *
+   * @param externalObjectId
+   * real estate ID
+   */
   public synchronized void putObjectForRemoval( String externalObjectId )
   {
     externalObjectId = StringUtils.trimToNull( externalObjectId) ;
@@ -530,6 +840,15 @@ public class ExportPool
       this.putSetting( "object."+externalObjectId, REMOVE );
   }
 
+  /**
+   * Puts a settings to the export pool.
+   *
+   * @param key
+   * setting key
+   *
+   * @param value
+   * setting value
+   */
   public synchronized void putSetting( String key, String value )
   {
     key = StringUtils.trimToNull( key );
@@ -541,6 +860,12 @@ public class ExportPool
       this.settings.setProperty( key, value );
   }
 
+  /**
+   * Read export pool settings from local directory.
+   *
+   * @throws IOException
+   * if settings are not loadable
+   */
   public void readSettings() throws IOException
   {
     this.settings.clear();
@@ -560,11 +885,12 @@ public class ExportPool
     }
   }
 
-  /*public void setFullTransfer( boolean fullTransfer )
-  {
-    this.putSetting( FULL_TRANSFER, (fullTransfer)? "1": "0" );
-  }*/
-
+  /**
+   * Writes export pool settings to local directory.
+   *
+   * @throws IOException
+   * if settings are not wriable
+   */
   public void writeSettings() throws IOException
   {
     if (!this.baseDir.exists() && !this.baseDir.mkdirs())

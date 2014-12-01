@@ -42,8 +42,12 @@ import org.openestate.is24.restapi.xml.realestates.RealEstates;
 import org.openestate.is24.restapi.xml.videoupload.VideoUploadTicket;
 
 /**
- * Client methods for the <a href="http://developerwiki.immobilienscout24.de/wiki/Import-Export-API">Import-/Export-API</a>.
+ * Low level methods for the Import-/Export-API.
+ * <p>
+ * These methods are calling the different Webservices of the Import-/Export-API.
  *
+ * @see <a href="http://api.immobilienscout24.de/our-apis/import-export.html">Import-/Export-API</a>
+ * @since 0.1
  * @author Andreas Rudolph <andy@openindex.de>
  */
 public final class ImportExport
@@ -61,9 +65,14 @@ public final class ImportExport
   }
 
   /**
-   * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/User/Realestate/attachment">Attachment Webservice</a>,
-   * that is part of the <a href="http://developerwiki.immobilienscout24.de/wiki/Import-Export-API">Import-/Export-API</a>.
+   * Low level methods for the Attachment Webservice.
+   * <p>
+   * The Attachment Webservice is used in the Import-/Export-API to get / add /
+   * edit / remove attachments of a real estate object.
    *
+   * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments.html">Attachment Webservice</a>
+   * @see <a href="http://api.immobilienscout24.de/our-apis/import-export.html">Import-/Export-API</a>
+   * @since 0.1
    * @author Andreas Rudolph <andy@openindex.de>
    */
   public final static class AttachmentService
@@ -73,21 +82,43 @@ public final class ImportExport
     }
 
     /**
-     * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/User/Realestate/attachment/DELETEbyID">DELETEBYID method</a>.
+     * Calls the DELETEbyID method of the Attachment Webservice.
+     * <p>
+     * This method removes the attachment of a real estate object.
      *
      * @param client
-     * @param externalId
-     * @param attachmentId
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
+     * @param externalRealEstateId
+     * user defined ID of the real estate object, for which the attachment is
+     * removed
+     *
+     * @param is24AttachmentId
+     * ID of the attachment to remove, that was returned by
+     * {@link AttachmentService#post(org.openestate.is24.restapi.AbstractClient, java.lang.String, org.openestate.is24.restapi.xml.common.Attachment, java.io.InputStream, java.lang.String, java.lang.String)}
+     *
      * @return
+     * response of the Webservice after a successful request
+     *
      * @throws IOException
+     * if communication with the Webservice failed
+     *
      * @throws OAuthException
+     * if authorization failed
+     *
      * @throws JAXBException
+     * if XML reading / writing failed
+     *
      * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments/delete-by-id.html">DELETEbyID method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments.html">Attachment Webservice</a>
      */
-    public static Messages deleteById( AbstractClient client, String externalId, long attachmentId ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    public static Messages deleteById( AbstractClient client, String externalRealEstateId, long is24AttachmentId ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/ext-"+externalId+"/attachment/"+attachmentId;
+      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/ext-" + externalRealEstateId + "/attachment/" + is24AttachmentId;
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.DELETE, null );
@@ -115,21 +146,44 @@ public final class ImportExport
     }
 
     /**
-     * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/User/Realestate/attachment/DELETEbyID">DELETEBYID method</a>.
+     * Calls the DELETEbyID method of the Attachment Webservice.
+     * <p>
+     * This method removes the attachment of a real estate object.
      *
      * @param client
-     * @param is24Id
-     * @param attachmentId
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
+     * @param is24RealEstateIdId
+     * ID of the real estate object, that was returned by
+     * {@link RealEstateService#post(org.openestate.is24.restapi.AbstractClient, org.openestate.is24.restapi.xml.realestates.RealEstate)},
+     * for which the attachment is removed
+     *
+     * @param is24AttachmentId
+     * ID of the attachment to remove, that was returned by
+     * {@link AttachmentService#post(org.openestate.is24.restapi.AbstractClient, long, org.openestate.is24.restapi.xml.common.Attachment, java.io.InputStream, java.lang.String, java.lang.String)}
+     *
      * @return
+     * response of the Webservice after a successful request
+     *
      * @throws IOException
+     * if communication with the Webservice failed
+     *
      * @throws OAuthException
+     * if authorization failed
+     *
      * @throws JAXBException
+     * if XML reading / writing failed
+     *
      * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments/delete-by-id.html">DELETEbyID method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments.html">Attachment Webservice</a>
      */
-    public static Messages deleteById( AbstractClient client, long is24Id, long attachmentId ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    public static Messages deleteById( AbstractClient client, long is24RealEstateIdId, long is24AttachmentId ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/"+is24Id+"/attachment/"+attachmentId;
+      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/" + is24RealEstateIdId + "/attachment/" + is24AttachmentId;
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.DELETE, null );
@@ -157,20 +211,39 @@ public final class ImportExport
     }
 
     /**
-     * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/User/Realestate/attachment/GETALL">GETALL method</a>.
+     * Calls the GETall method of the Attachment Webservice.
+     * <p>
+     * This method returns the list of attachments for a real estate object.
      *
      * @param client
-     * @param externalId
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
+     * @param externalRealEstateId
+     * user defined ID of the real estate object, for which the list of
+     * attachments is retrieved
+     *
      * @return
+     * list of attachments for the requested real estate object
+     *
      * @throws IOException
+     * if communication with the Webservice failed
+     *
      * @throws OAuthException
+     * if authorization failed
+     *
      * @throws JAXBException
+     * if XML reading / writing failed
+     *
      * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments/get-all.html">GETall method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments.html">Attachment Webservice</a>
      */
-    public static Attachments getAll( AbstractClient client, String externalId ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    public static Attachments getAll( AbstractClient client, String externalRealEstateId ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/ext-"+externalId+"/attachment";
+      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/ext-" + externalRealEstateId + "/attachment";
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.GET, null );
@@ -199,20 +272,40 @@ public final class ImportExport
     }
 
     /**
-     * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/User/Realestate/attachment/GETALL">GETALL method</a>.
+     * Calls the GETall method of the Attachment Webservice.
+     * <p>
+     * This method returns the list of attachments for a real estate object.
      *
      * @param client
-     * @param is24Id
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
+     * @param is24RealEstateIdId
+     * ID of the real estate object, that was returned by
+     * {@link RealEstateService#post(org.openestate.is24.restapi.AbstractClient, org.openestate.is24.restapi.xml.realestates.RealEstate)},
+     * for which the list of attachments is retrieved
+     *
      * @return
+     * list of attachments for the requested real estate object
+     *
      * @throws IOException
+     * if communication with the Webservice failed
+     *
      * @throws OAuthException
+     * if authorization failed
+     *
      * @throws JAXBException
+     * if XML reading / writing failed
+     *
      * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments/get-all.html">GETall method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments.html">Attachment Webservice</a>
      */
-    public static Attachments getAll( AbstractClient client, long is24Id ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    public static Attachments getAll( AbstractClient client, long is24RealEstateIdId ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/"+is24Id+"/attachment";
+      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/" + is24RealEstateIdId + "/attachment";
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.GET, null );
@@ -241,21 +334,43 @@ public final class ImportExport
     }
 
     /**
-     * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/User/Realestate/attachment/GETbyID">GETBYID method</a>.
+     * Calls the GETbyID method of the Attachment Webservice.
+     * <p>
+     * This method returns a specific attachment for a real estate object.
      *
      * @param client
-     * @param externalId
-     * @param attachmentId
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
+     * @param externalRealEstateId
+     * user defined ID of the real estate object, for which the attachment is
+     * retrieved
+     *
+     * @param is24AttachmentId
+     * ID of the requested attachment, that was returned by
+     * {@link AttachmentService#post(org.openestate.is24.restapi.AbstractClient, java.lang.String, org.openestate.is24.restapi.xml.common.Attachment, java.io.InputStream, java.lang.String, java.lang.String)}
+     *
      * @return
+     * requested attachment
+     *
      * @throws IOException
+     * if communication with the Webservice failed
+     *
      * @throws OAuthException
+     * if authorization failed
+     *
      * @throws JAXBException
+     * if XML reading / writing failed
+     *
      * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments/get-by-id.html">GETbyID method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments.html">Attachment Webservice</a>
      */
-    public static Attachment getById( AbstractClient client, String externalId, long attachmentId ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    public static Attachment getById( AbstractClient client, String externalRealEstateId, long is24AttachmentId ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/ext-"+externalId+"/attachment/"+attachmentId;
+      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/ext-" + externalRealEstateId + "/attachment/" + is24AttachmentId;
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.GET, null );
@@ -284,21 +399,44 @@ public final class ImportExport
     }
 
     /**
-     * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/User/Realestate/attachment/GETbyID">GETBYID method</a>.
+     * Calls the GETbyID method of the Attachment Webservice.
+     * <p>
+     * This method returns a specific attachment for a real estate object.
      *
      * @param client
-     * @param is24Id
-     * @param attachmentId
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
+     * @param is24RealEstateIdId
+     * ID of the real estate object, that was returned by
+     * {@link RealEstateService#post(org.openestate.is24.restapi.AbstractClient, org.openestate.is24.restapi.xml.realestates.RealEstate)},
+     * for which the attachment is retrieved
+     *
+     * @param is24AttachmentId
+     * ID of the requested attachment, that was returned by
+     * {@link AttachmentService#post(org.openestate.is24.restapi.AbstractClient, long, org.openestate.is24.restapi.xml.common.Attachment, java.io.InputStream, java.lang.String, java.lang.String)}
+     *
      * @return
+     * requested attachment
+     *
      * @throws IOException
+     * if communication with the Webservice failed
+     *
      * @throws OAuthException
+     * if authorization failed
+     *
      * @throws JAXBException
+     * if XML reading / writing failed
+     *
      * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments/get-by-id.html">GETbyID method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments.html">Attachment Webservice</a>
      */
-    public static Attachment getById( AbstractClient client, long is24Id, long attachmentId ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    public static Attachment getById( AbstractClient client, long is24RealEstateIdId, long is24AttachmentId ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/"+is24Id+"/attachment/"+attachmentId;
+      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/" + is24RealEstateIdId + "/attachment/" + is24AttachmentId;
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.GET, null );
@@ -327,27 +465,54 @@ public final class ImportExport
     }
 
     /**
-     * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/User/Realestate/attachment/POST">POST method</a>.
+     * Calls the POST method of the Attachment Webservice.
+     * <p>
+     * This method stores a new attachment for a specific real estate object.
      *
      * @param client
-     * @param externalId
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
+     * @param externalRealEstateId
+     * user defined ID of the real estate object, for which the attachment is
+     * stored
+     *
      * @param attachment
+     * details about the attachment
+     *
      * @param input
+     * {@link InputStream} with the file content of the attachment
+     *
      * @param fileName
+     * file name of the attachment
+     *
      * @param mimeType
+     * MIME type of the attachment
+     *
      * @return
+     * response of the Webservice after a successful request
+     *
      * @throws IOException
+     * if communication with the Webservice failed
+     *
      * @throws OAuthException
+     * if authorization failed
+     *
      * @throws JAXBException
+     * if XML reading / writing failed
+     *
      * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments/post.html">POST method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments.html">Attachment Webservice</a>
      */
-    public static Messages post( AbstractClient client, String externalId, Attachment attachment, InputStream input, String fileName, String mimeType ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    public static Messages post( AbstractClient client, String externalRealEstateId, Attachment attachment, InputStream input, String fileName, String mimeType ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/ext-"+externalId+"/attachment";
+      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/ext-" + externalRealEstateId + "/attachment";
 
       // write object into xml
-      String xml = XmlUtils.marshal( attachment, client.getEncoding() );
+      String xml = XmlUtils.marshal( attachment, AbstractClient.getEncoding() );
 
       final Response response;
 
@@ -376,27 +541,55 @@ public final class ImportExport
     }
 
     /**
-     * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/User/Realestate/attachment/POST">POST method</a>.
+     * Calls the POST method of the Attachment Webservice.
+     * <p>
+     * This method stores a new attachment for a specific real estate object.
      *
      * @param client
-     * @param is24Id
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
+     * @param is24RealEstateIdId
+     * ID of the real estate object, that was returned by
+     * {@link RealEstateService#post(org.openestate.is24.restapi.AbstractClient, org.openestate.is24.restapi.xml.realestates.RealEstate)},
+     * for which the attachment is stored
+     *
      * @param attachment
+     * details about the attachment
+     *
      * @param input
+     * {@link InputStream} with the file content of the attachment
+     *
      * @param fileName
+     * file name of the attachment
+     *
      * @param mimeType
+     * MIME type of the attachment
+     *
      * @return
+     * response of the Webservice after a successful request
+     *
      * @throws IOException
+     * if communication with the Webservice failed
+     *
      * @throws OAuthException
+     * if authorization failed
+     *
      * @throws JAXBException
+     * if XML reading / writing failed
+     *
      * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments/post.html">POST method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments.html">Attachment Webservice</a>
      */
-    public static Messages post( AbstractClient client, long is24Id, Attachment attachment, InputStream input, String fileName, String mimeType ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    public static Messages post( AbstractClient client, long is24RealEstateIdId, Attachment attachment, InputStream input, String fileName, String mimeType ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/"+is24Id+"/attachment";
+      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/" + is24RealEstateIdId + "/attachment";
 
       // write object into xml
-      String xml = XmlUtils.marshal( attachment, client.getEncoding() );
+      String xml = XmlUtils.marshal( attachment, AbstractClient.getEncoding() );
 
       // send request
       Response response = client.sendXmlAttachmentRequest( new URL( url ), RequestMethod.POST, xml, input, fileName, mimeType );
@@ -418,25 +611,53 @@ public final class ImportExport
     }
 
     /**
-     * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/User/Realestate/attachment/PUTbyID">PUTBYID method</a>.
+     * Calls the PUTbyID method of the Attachment Webservice.
+     * <p>
+     * This method updates the informations about an attachment for a specific
+     * real estate object.
+     * <p>
+     * This method only updates the metadata of an attachment. If the file
+     * content itself has changed, a new POST request must be executed.
      *
      * @param client
-     * @param externalId
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
+     * @param externalRealEstateId
+     * user defined ID of the real estate object, for which the attachment is
+     * updated
+     *
      * @param attachmentId
+     * ID of the attachment to update, that was returned by
+     * {@link AttachmentService#post(org.openestate.is24.restapi.AbstractClient, java.lang.String, org.openestate.is24.restapi.xml.common.Attachment, java.io.InputStream, java.lang.String, java.lang.String)}
+     *
      * @param attachment
+     * details about the attachment
+     *
      * @return
+     * response of the Webservice after a successful request
+     *
      * @throws IOException
+     * if communication with the Webservice failed
+     *
      * @throws OAuthException
+     * if authorization failed
+     *
      * @throws JAXBException
+     * if XML reading / writing failed
+     *
      * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments/put-by-id.html">PUTbyID method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments.html">Attachment Webservice</a>
      */
-    public static Messages putById( AbstractClient client, String externalId, long attachmentId, Attachment attachment ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    public static Messages putById( AbstractClient client, String externalRealEstateId, long attachmentId, Attachment attachment ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/ext-"+externalId+"/attachment/"+attachmentId;
+      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/ext-" + externalRealEstateId + "/attachment/" + attachmentId;
 
       // write object into xml
-      String xml = XmlUtils.marshal( attachment, client.getEncoding() );
+      String xml = XmlUtils.marshal( attachment, AbstractClient.getEncoding() );
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.PUT, xml );
@@ -458,25 +679,54 @@ public final class ImportExport
     }
 
     /**
-     * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/User/Realestate/attachment/PUTbyID">PUTBYID method</a>.
+     * Calls the PUTbyID method of the Attachment Webservice.
+     * <p>
+     * This method updates the informations about an attachment for a specific
+     * real estate object.
+     * <p>
+     * This method only updates the metadata of an attachment. If the file
+     * content itself has changed, a new POST request must be executed.
      *
      * @param client
-     * @param is24Id
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
+     * @param is24RealEstateIdId
+     * ID of the real estate object, that was returned by
+     * {@link RealEstateService#post(org.openestate.is24.restapi.AbstractClient, org.openestate.is24.restapi.xml.realestates.RealEstate)},
+     * for which the attachment is updated
+     *
      * @param attachmentId
+     * ID of the attachment to update, that was returned by
+     * {@link AttachmentService#post(org.openestate.is24.restapi.AbstractClient, long, org.openestate.is24.restapi.xml.common.Attachment, java.io.InputStream, java.lang.String, java.lang.String)}
+     *
      * @param attachment
+     * details about the attachment
+     *
      * @return
+     * response of the Webservice after a successful request
+     *
      * @throws IOException
+     * if communication with the Webservice failed
+     *
      * @throws OAuthException
+     * if authorization failed
+     *
      * @throws JAXBException
+     * if XML reading / writing failed
+     *
      * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments/put-by-id.html">PUTbyID method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments.html">Attachment Webservice</a>
      */
-    public static Messages putById( AbstractClient client, long is24Id, long attachmentId, Attachment attachment ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    public static Messages putById( AbstractClient client, long is24RealEstateIdId, long attachmentId, Attachment attachment ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/"+is24Id+"/attachment/"+attachmentId;
+      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/" + is24RealEstateIdId + "/attachment/" + attachmentId;
 
       // write object into xml
-      String xml = XmlUtils.marshal( attachment, client.getEncoding() );
+      String xml = XmlUtils.marshal( attachment, AbstractClient.getEncoding() );
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.PUT, xml );
@@ -499,28 +749,53 @@ public final class ImportExport
   }
 
   /**
-   * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/User/Realestate/attachment/attachmentsorder">Attachmentsorder Webservice</a>,
-   * that is part of the <a href="http://developerwiki.immobilienscout24.de/wiki/Import-Export-API">Import-/Export-API</a>.
+   * Low level methods for the AttachmentsOrder Webservice.
+   * <p>
+   * The AttachmentsOrder Webservice is used in the Import-/Export-API to set
+   * a specific ordering for the attachments of a real estate object.
    *
+   * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments.html">Attachment Webservice</a>
+   * @see <a href="http://api.immobilienscout24.de/our-apis/import-export.html">Import-/Export-API</a>
+   * @since 0.1
    * @author Andreas Rudolph <andy@openindex.de>
    */
   public final static class AttachmentsOrderService
   {
     /**
-     * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/User/Realestate/attachment/attachmentsorder/GET">GET method</a>.
+     * Calls the GET method of the AttachmentsOrder Webservice.
+     * <p>
+     * This method returns the attachment ordering for a specific real estate
+     * object.
      *
      * @param client
-     * @param externalId
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
+     * @param externalRealEstateId
+     * user defined ID of the real estate object, for which the attachment
+     * ordering is retrieved
+     *
      * @return
+     * attachment ordering for the requested real estate object
+     *
      * @throws IOException
+     * if communication with the Webservice failed
+     *
      * @throws OAuthException
+     * if authorization failed
+     *
      * @throws JAXBException
+     * if XML reading / writing failed
+     *
      * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments/attachmentsorder-get.html">GET method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments.html">Attachment Webservice</a>
      */
-    public static org.openestate.is24.restapi.xml.attachmentsorder.List get( AbstractClient client, String externalId ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    public static org.openestate.is24.restapi.xml.attachmentsorder.List get( AbstractClient client, String externalRealEstateId ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/ext-"+externalId+"/attachment/attachmentsorder";
+      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/ext-" + externalRealEstateId + "/attachment/attachmentsorder";
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.GET, null );
@@ -543,20 +818,41 @@ public final class ImportExport
     }
 
     /**
-     * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/User/Realestate/attachment/attachmentsorder/GET">GET method</a>.
+     * Calls the GET method of the AttachmentsOrder Webservice.
+     * <p>
+     * This method returns the attachment ordering for a specific real estate
+     * object.
      *
      * @param client
-     * @param is24Id
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
+     * @param is24RealEstateIdId
+     * ID of the real estate object, that was returned by
+     * {@link RealEstateService#post(org.openestate.is24.restapi.AbstractClient, org.openestate.is24.restapi.xml.realestates.RealEstate)},
+     * for which the attachment ordering is retrieved
+     *
      * @return
+     * attachment ordering for the requested real estate object
+     *
      * @throws IOException
+     * if communication with the Webservice failed
+     *
      * @throws OAuthException
+     * if authorization failed
+     *
      * @throws JAXBException
+     * if XML reading / writing failed
+     *
      * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments/attachmentsorder-get.html">GET method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments.html">Attachment Webservice</a>
      */
-    public static org.openestate.is24.restapi.xml.attachmentsorder.List get( AbstractClient client, long is24Id ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    public static org.openestate.is24.restapi.xml.attachmentsorder.List get( AbstractClient client, long is24RealEstateIdId ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/"+is24Id+"/attachment/attachmentsorder";
+      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/" + is24RealEstateIdId + "/attachment/attachmentsorder";
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.GET, null );
@@ -579,26 +875,48 @@ public final class ImportExport
     }
 
     /**
-     * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/User/Realestate/attachment/attachmentsorder/PUT">PUT method</a>.
+     * Calls the PUT method of the AttachmentsOrder Webservice.
+     * <p>
+     * This method changes the attachment ordering for a specific real estate
+     * object.
      *
      * @param client
-     * @param externalId
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
+     * @param externalRealEstateId
+     * user defined ID of the real estate object, for which the attachment
+     * ordering is changed
+     *
      * @param list
+     * attachment ordering to set
+     *
      * @return
+     * response of the Webservice after a successful request
+     *
      * @throws IOException
+     * if communication with the Webservice failed
+     *
      * @throws OAuthException
+     * if authorization failed
+     *
      * @throws JAXBException
+     * if XML reading / writing failed
+     *
      * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments/attachmentsorder-put.html">PUT method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments.html">Attachment Webservice</a>
      */
-    public static Messages put( AbstractClient client, String externalId, org.openestate.is24.restapi.xml.attachmentsorder.List list ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    public static Messages put( AbstractClient client, String externalRealEstateId, org.openestate.is24.restapi.xml.attachmentsorder.List list ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       if (list==null) throw new NullPointerException( "No object was provided for publishing!" );
 
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/ext-"+externalId+"/attachment/attachmentsorder";
+      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/ext-" + externalRealEstateId + "/attachment/attachmentsorder";
 
       // write object into xml
-      String xml = XmlUtils.marshal( new org.openestate.is24.restapi.xml.attachmentsorder.ObjectFactory().createAttachmentsorder( list ), client.getEncoding() );
+      String xml = XmlUtils.marshal( new org.openestate.is24.restapi.xml.attachmentsorder.ObjectFactory().createAttachmentsorder( list ), AbstractClient.getEncoding() );
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.PUT, xml );
@@ -620,26 +938,49 @@ public final class ImportExport
     }
 
     /**
-     * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/User/Realestate/attachment/attachmentsorder/PUT">PUT method</a>.
+     * Calls the PUT method of the AttachmentsOrder Webservice.
+     * <p>
+     * This method changes the attachment ordering for a specific real estate
+     * object.
      *
      * @param client
-     * @param is24Id
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
+     * @param is24RealEstateIdId
+     * ID of the real estate object, that was returned by
+     * {@link RealEstateService#post(org.openestate.is24.restapi.AbstractClient, org.openestate.is24.restapi.xml.realestates.RealEstate)},
+     * for which the attachment ordering is changed
+     *
      * @param list
+     * attachment ordering to set
+     *
      * @return
+     * response of the Webservice after a successful request
+     *
      * @throws IOException
+     * if communication with the Webservice failed
+     *
      * @throws OAuthException
+     * if authorization failed
+     *
      * @throws JAXBException
+     * if XML reading / writing failed
+     *
      * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments/attachmentsorder-put.html">PUT method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments.html">Attachment Webservice</a>
      */
-    public static Messages put( AbstractClient client, long is24Id, org.openestate.is24.restapi.xml.attachmentsorder.List list ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    public static Messages put( AbstractClient client, long is24RealEstateIdId, org.openestate.is24.restapi.xml.attachmentsorder.List list ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       if (list==null) throw new NullPointerException( "No object was provided for publishing!" );
 
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/"+is24Id+"/attachment/attachmentsorder";
+      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/" + is24RealEstateIdId + "/attachment/attachmentsorder";
 
       // write object into xml
-      String xml = XmlUtils.marshal( new org.openestate.is24.restapi.xml.attachmentsorder.ObjectFactory().createAttachmentsorder( list ), client.getEncoding() );
+      String xml = XmlUtils.marshal( new org.openestate.is24.restapi.xml.attachmentsorder.ObjectFactory().createAttachmentsorder( list ), AbstractClient.getEncoding() );
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.PUT, xml );
@@ -662,9 +1003,14 @@ public final class ImportExport
   }
 
   /**
-   * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/User/Contact">Contact Address Webservice</a>,
-   * that is part of the <a href="http://developerwiki.immobilienscout24.de/wiki/Import-Export-API">Import-/Export-API</a>.
+   * Low level methods for the Contact Webservice.
+   * <p>
+   * The Contact Webservice is used in the Import-/Export-API to get / add /
+   * edit / remove contact informations of a real estate object.
    *
+   * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/contact.html">Contact Webservice</a>
+   * @see <a href="http://api.immobilienscout24.de/our-apis/import-export.html">Import-/Export-API</a>
+   * @since 0.1
    * @author Andreas Rudolph <andy@openindex.de>
    */
   public final static class ContactAddressService
@@ -674,14 +1020,30 @@ public final class ImportExport
     }
 
     /**
-     * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/User/Contact/GETALL">GETALL method</a>.
+     * Calls the GETall method of the Contact Webservice.
+     * <p>
+     * This method returns the list of contacts for the agency.
      *
      * @param client
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
      * @return
+     * list of contacts
+     *
      * @throws IOException
+     * if communication with the Webservice failed
+     *
      * @throws OAuthException
+     * if authorization failed
+     *
      * @throws JAXBException
+     * if XML reading / writing failed
+     *
      * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/contact/get-all.html">GETall method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/contact.html">Contact Webservice</a>
      */
     public static RealtorContactDetailsList getAll( AbstractClient client ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
@@ -708,20 +1070,39 @@ public final class ImportExport
     }
 
     /**
-     * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/User/Contact/GETbyID">GETBYID method</a>.
+     * Calls the GETbyID method of the Contact Webservice.
+     * <p>
+     * This method returns a specific contact for the agency.
      *
      * @param client
-     * @param externalId
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
+     * @param externalContactId
+     * user defined ID of the real estate object, for which the contact is
+     * retrieved
+     *
      * @return
+     * requested contact
+     *
      * @throws IOException
+     * if communication with the Webservice failed
+     *
      * @throws OAuthException
+     * if authorization failed
+     *
      * @throws JAXBException
+     * if XML reading / writing failed
+     *
      * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/contact/get-by-id.html">GETbyID method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/contact.html">Contact Webservice</a>
      */
-    public static RealtorContactDetails getByExternalId( AbstractClient client, String externalId ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    public static RealtorContactDetails getByExternalId( AbstractClient client, String externalContactId ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/contact/ext-"+externalId;
+      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/contact/ext-" + externalContactId;
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.GET, null );
@@ -750,20 +1131,40 @@ public final class ImportExport
     }
 
     /**
-     * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/User/Contact/GETbyID">GETBYID method</a>.
+     * Calls the GETbyID method of the Contact Webservice.
+     * <p>
+     * This method returns a specific contact for the agency.
      *
      * @param client
-     * @param is24Id
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
+     * @param is24ContactId
+     * ID of the contact object, that was returned by
+     * {@link ContactAddressService#post(org.openestate.is24.restapi.AbstractClient, org.openestate.is24.restapi.xml.common.RealtorContactDetails)},
+     * for which the contact is retrieved
+     *
      * @return
+     * requested contact
+     *
      * @throws IOException
+     * if communication with the Webservice failed
+     *
      * @throws OAuthException
+     * if authorization failed
+     *
      * @throws JAXBException
+     * if XML reading / writing failed
+     *
      * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/contact/get-by-id.html">GETbyID method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/contact.html">Contact Webservice</a>
      */
-    public static RealtorContactDetails getByIs24Id( AbstractClient client, long is24Id ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    public static RealtorContactDetails getByIs24Id( AbstractClient client, long is24ContactId ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/contact/"+is24Id;
+      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/contact/" + is24ContactId;
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.GET, null );
@@ -792,15 +1193,33 @@ public final class ImportExport
     }
 
     /**
-     * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/User/Contact/POST">POST method</a>.
+     * Calls the POST method of the Contact Webservice.
+     * <p>
+     * This method stores a new contact for the agency.
      *
      * @param client
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
      * @param contact
+     * contact to set
+     *
      * @return
+     * response of the Webservice after a successful request
+     *
      * @throws IOException
+     * if communication with the Webservice failed
+     *
      * @throws OAuthException
+     * if authorization failed
+     *
      * @throws JAXBException
+     * if XML reading / writing failed
+     *
      * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/contact/post.html">POST method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/contact.html">Contact Webservice</a>
      */
     public static Messages post( AbstractClient client, RealtorContactDetails contact ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
@@ -810,7 +1229,7 @@ public final class ImportExport
       String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/contact";
 
       // write object into xml
-      String xml = XmlUtils.marshal( contact, client.getEncoding() );
+      String xml = XmlUtils.marshal( contact, AbstractClient.getEncoding() );
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.POST, xml );
@@ -832,24 +1251,44 @@ public final class ImportExport
     }
 
     /**
-     * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/User/Contact/PUTbyID">PUTBYID method</a>.
+     * Calls the PUTbyID method of the Contact Webservice.
+     * <p>
+     * This method updates a specific contact for the agency.
      *
      * @param client
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
      * @param contact
-     * @param externalId
+     * contact to set
+     *
+     * @param externalContactId
+     * user defined ID of the contact, for which contact is updated
+     *
      * @return
+     * response of the Webservice after a successful request
+     *
      * @throws IOException
+     * if communication with the Webservice failed
+     *
      * @throws OAuthException
+     * if authorization failed
+     *
      * @throws JAXBException
+     * if XML reading / writing failed
+     *
      * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/contact/put-by-id.html">PUTbyID method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/contact.html">Contact Webservice</a>
      */
-    public static Messages putByExternalId( AbstractClient client, RealtorContactDetails contact, String externalId ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    public static Messages putByExternalId( AbstractClient client, RealtorContactDetails contact, String externalContactId ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/contact/ext-"+externalId;
+      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/contact/ext-" + externalContactId;
 
       // write object into xml
-      String xml = XmlUtils.marshal( contact, client.getEncoding() );
+      String xml = XmlUtils.marshal( contact, AbstractClient.getEncoding() );
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.PUT, xml );
@@ -871,24 +1310,46 @@ public final class ImportExport
     }
 
     /**
-     * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/User/Contact/PUTbyID">PUTBYID method</a>.
+     * Calls the PUTbyID method of the Contact Webservice.
+     * <p>
+     * This method updates a specific contact for the agency.
      *
      * @param client
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
      * @param contact
-     * @param is24Id
+     * contact to set
+     *
+     * @param is24ContactId
+     * ID of the contact object, that was returned by
+     * {@link ContactAddressService#post(org.openestate.is24.restapi.AbstractClient, org.openestate.is24.restapi.xml.common.RealtorContactDetails)},
+     * for which the contact is updated
+     *
      * @return
+     * response of the Webservice after a successful request
+     *
      * @throws IOException
+     * if communication with the Webservice failed
+     *
      * @throws OAuthException
+     * if authorization failed
+     *
      * @throws JAXBException
+     * if XML reading / writing failed
+     *
      * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/contact/put-by-id.html">PUTbyID method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/contact.html">Contact Webservice</a>
      */
-    public static Messages putByIs24Id( AbstractClient client, RealtorContactDetails contact, long is24Id ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    public static Messages putByIs24Id( AbstractClient client, RealtorContactDetails contact, long is24ContactId ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/contact/"+is24Id;
+      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/contact/" + is24ContactId;
 
       // write object into xml
-      String xml = XmlUtils.marshal( contact, client.getEncoding() );
+      String xml = XmlUtils.marshal( contact, AbstractClient.getEncoding() );
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.PUT, xml );
@@ -911,9 +1372,14 @@ public final class ImportExport
   }
 
   /**
-   * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/Publish">Publish Webservice</a>,
-   * that is part of the <a href="http://developerwiki.immobilienscout24.de/wiki/Import-Export-API">Import-/Export-API</a>.
+   * Low level methods for the Publish Webservice.
+   * <p>
+   * The Publish Webservice is used in the Import-/Export-API to publish /
+   * unpublish a real estate object.
    *
+   * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/publish.html">Publish Webservice</a>
+   * @see <a href="http://api.immobilienscout24.de/our-apis/import-export.html">Import-/Export-API</a>
+   * @since 0.1
    * @author Andreas Rudolph <andy@openindex.de>
    */
   public final static class PublishService
@@ -923,21 +1389,41 @@ public final class ImportExport
     }
 
     /**
-     * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/Publish/DELETEbyID">DELETEBYID method</a>.
+     * Calls the DELETEbyID method of the Publish Webservice.
+     * <p>
+     * This method removes the attribution of a real estate object to a publish
+     * channel.
      *
      * @param client
-     * @param publishId
-     *        the unique publish id, generated by Immobilienscout24
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
+     * @param is24PublishId
+     * the unique publishing ID, that was returned by
+     * {@link PublishService#post(org.openestate.is24.restapi.AbstractClient, org.openestate.is24.restapi.xml.common.PublishObject)},
+     * for which the publishing is removed
+     *
      * @return
+     * response of the Webservice after a successful request
+     *
      * @throws IOException
+     * if communication with the Webservice failed
+     *
      * @throws OAuthException
+     * if authorization failed
+     *
      * @throws JAXBException
+     * if XML reading / writing failed
+     *
      * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/publish/delete-by-id.html">DELETEbyID method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/publish.html">Publish Webservice</a>
      */
-    public static Messages deleteById( AbstractClient client, String publishId ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    public static Messages deleteById( AbstractClient client, String is24PublishId ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/publish/"+publishId;
+      String url = client.getApiBaseUrl() + "/api/offer/v1.0/publish/" + is24PublishId;
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.DELETE, null );
@@ -965,20 +1451,42 @@ public final class ImportExport
     }
 
     /**
-     * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/Publish/GET">GET method</a>.
+     * Calls the GET method of the Publish Webservice.
+     * <p>
+     * This method returns a list of the publish channels, where a real estate
+     * object is published.
      *
      * @param client
-     * @param is24Id
-     *        the immoscout object id of the real estate object
-     * @param publishChannelId
-     *        the ID of a certain publish channel (optional, default 0)
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
+     * @param is24RealEstateIdId
+     * ID of the real estate object, that was returned by
+     * {@link RealEstateService#post(org.openestate.is24.restapi.AbstractClient, org.openestate.is24.restapi.xml.realestates.RealEstate)},
+     * for which the publishing are retrieved
+     *
+     * @param is24PublishChannelId
+     * the ID of a certain publish channel (optional, default 0)
+     *
      * @return
+     * list of publish channels, that the requested real estate object is
+     * assigned to
+     *
      * @throws IOException
+     * if communication with the Webservice failed
+     *
      * @throws OAuthException
+     * if authorization failed
+     *
      * @throws JAXBException
+     * if XML reading / writing failed
+     *
      * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/publish/get.html">GET method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/publish.html">Publish Webservice</a>
      */
-    public static PublishObjects get( AbstractClient client, long is24Id, long publishChannelId ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    public static PublishObjects get( AbstractClient client, long is24RealEstateIdId, long is24PublishChannelId ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
       String url = client.getApiBaseUrl() + "/api/offer/v1.0/publish";
@@ -986,9 +1494,8 @@ public final class ImportExport
       // init URL parameters
       List<String> params = new ArrayList<String>();
 
-      if (is24Id>0) params.add( "realestate=" + is24Id );
-
-      if (publishChannelId>0) params.add( "publishchannel=" + publishChannelId );
+      if (is24RealEstateIdId>0) params.add( "realestate=" + is24RealEstateIdId );
+      if (is24PublishChannelId>0) params.add( "publishchannel=" + is24PublishChannelId );
 
       // append URL parameters
       if (!params.isEmpty()) url += "?" + StringUtils.join( params, "&" );
@@ -1013,21 +1520,39 @@ public final class ImportExport
     }
 
     /**
-     * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/Publish/GETbyID">GETBYID method</a>.
+     * Calls the GETbyID method of the Publish Webservice.
+     * <p>
+     * This method returns a specific publish channel, where a real estate
+     * object is published.
      *
      * @param client
-     * @param publishId
-     *        the unique publish id, generated by Immobilienscout24
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
+     * @param is24PublishId
+     * the unique publishing ID, that was returned by
+     * {@link PublishService#post(org.openestate.is24.restapi.AbstractClient, org.openestate.is24.restapi.xml.common.PublishObject)},
+     * for which the publishing is removed
+     *
      * @return
      * @throws IOException
+     * if communication with the Webservice failed
+     *
      * @throws OAuthException
+     * if authorization failed
+     *
      * @throws JAXBException
+     * if XML reading / writing failed
+     *
      * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/publish/get-by-id.html">GETbyID method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/publish.html">Publish Webservice</a>
      */
-    public static PublishObject getById( AbstractClient client, String publishId ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    public static PublishObject getById( AbstractClient client, String is24PublishId ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/publish/"+publishId;
+      String url = client.getApiBaseUrl() + "/api/offer/v1.0/publish/" + is24PublishId;
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.GET, null );
@@ -1056,15 +1581,33 @@ public final class ImportExport
     }
 
     /**
-     * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/Publish/POST">POST method</a>.
+     * Calls the POST method of the Publish Webservice.
+     * <p>
+     * This method publish a real estate object in a publish channel.
      *
      * @param client
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
      * @param publishObject
+     * publishing to set
+     *
      * @return
+     * response of the Webservice after a successful request
+     *
      * @throws IOException
+     * if communication with the Webservice failed
+     *
      * @throws OAuthException
+     * if authorization failed
+     *
      * @throws JAXBException
+     * if XML reading / writing failed
+     *
      * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/publish/get-by-id.html">POST method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/publish.html">Publish Webservice</a>
      */
     public static Messages post( AbstractClient client, PublishObject publishObject ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
@@ -1074,7 +1617,7 @@ public final class ImportExport
       String url = client.getApiBaseUrl() + "/api/offer/v1.0/publish";
 
       // write object into xml
-      String xml = XmlUtils.marshal( publishObject, client.getEncoding() );
+      String xml = XmlUtils.marshal( publishObject, AbstractClient.getEncoding() );
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.POST, xml );
@@ -1097,9 +1640,18 @@ public final class ImportExport
   }
 
   /**
-   * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/PublishChannel/GET">PublishChannel Webservice</a>,
-   * that is part of the <a href="http://developerwiki.immobilienscout24.de/wiki/Import-Export-API">Import-/Export-API</a>.
+   * Low level methods for the PublishChannel Webservice.
+   * <p>
+   * The PublishChannel Webservice is used in the Import-/Export-API to get a
+   * list of channels on which a real estate object can be published.
+   * <p>
+   * By default all users with an active product are allowed to publish in
+   * the channels "10000" for www.immobilienscout24.de and "10001" for the
+   * customers homepage.
    *
+   * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/publish.html">PublishChannel Webservice</a>
+   * @see <a href="http://api.immobilienscout24.de/our-apis/import-export.html">Import-/Export-API</a>
+   * @since 0.1
    * @author Andreas Rudolph <andy@openindex.de>
    */
   public final static class PublishChannelService
@@ -1109,14 +1661,35 @@ public final class ImportExport
     }
 
     /**
-     * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/PublishChannel/GET">GET method</a>.
+     * Calls the GET method of the PublishChannel Webservice.
+     * <p>
+     * This method returns a list of the publish channels, that are usable for
+     * the agency.
+     * <p>
+     * By default all users with an active product are allowed to publish in
+     * the channels "10000" for www.immobilienscout24.de and "10001" for the
+     * customers homepage.
      *
      * @param client
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
      * @return
+     * list of supported publish channels
+     *
      * @throws IOException
+     * if communication with the Webservice failed
+     *
      * @throws OAuthException
+     * if authorization failed
+     *
      * @throws JAXBException
+     * if XML reading / writing failed
+     *
      * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/publish/channel-get.html">GET method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/publish.html">PublishChannel Webservice</a>
      */
     public static PublishChannels get( AbstractClient client ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
@@ -1144,9 +1717,14 @@ public final class ImportExport
   }
 
   /**
-   * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/User/Realestate">RealEstate Webservice</a>,
-   * that is part of the <a href="http://developerwiki.immobilienscout24.de/wiki/Import-Export-API">Import-/Export-API</a>.
+   * Low level methods for the RealEstate Webservice.
+   * <p>
+   * The RealEstate Webservice is used in the Import-/Export-API to get / add /
+   * edit / remove real estate objects.
    *
+   * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/realestate.html">RealEstate Webservice</a>
+   * @see <a href="http://api.immobilienscout24.de/our-apis/import-export.html">Import-/Export-API</a>
+   * @since 0.1
    * @author Andreas Rudolph <andy@openindex.de>
    */
   public final static class RealEstateService
@@ -1156,20 +1734,38 @@ public final class ImportExport
     }
 
     /**
-     * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/User/Realestate/DELETEbyID">DELETEbyID method</a>.
+     * Calls the DELETEbyID method of the RealEstate Webservice.
+     * <p>
+     * This method removes a real estate object.
      *
      * @param client
-     * @param externalId
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
+     * @param externalRealEstateId
+     * user defined ID of the real estate object to remove
+     *
      * @return
+     * response of the Webservice after a successful request
+     *
      * @throws IOException
+     * if communication with the Webservice failed
+     *
      * @throws OAuthException
+     * if authorization failed
+     *
      * @throws JAXBException
+     * if XML reading / writing failed
+     *
      * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/realestate/delete-by-id.html">DELETEbyID method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/realestate.html">RealEstate Webservice</a>
      */
-    public static Messages deleteByExternalId( AbstractClient client, String externalId ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    public static Messages deleteByExternalId( AbstractClient client, String externalRealEstateId ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/ext-"+externalId;
+      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/ext-" + externalRealEstateId;
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.DELETE, null );
@@ -1197,20 +1793,39 @@ public final class ImportExport
     }
 
     /**
-     * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/User/Realestate/DELETEbyID">DELETEbyID method</a>.
+     * Calls the DELETEbyID method of the RealEstate Webservice.
+     * <p>
+     * This method removes a real estate object.
      *
      * @param client
-     * @param is24Id
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
+     * @param is24RealEstateId
+     * ID of the real estate object to remove, that was returned by
+     * {@link RealEstateService#post(org.openestate.is24.restapi.AbstractClient, org.openestate.is24.restapi.xml.realestates.RealEstate)}
+     *
      * @return
+     * response of the Webservice after a successful request
+     *
      * @throws IOException
+     * if communication with the Webservice failed
+     *
      * @throws OAuthException
+     * if authorization failed
+     *
      * @throws JAXBException
+     * if XML reading / writing failed
+     *
      * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/realestate/delete-by-id.html">DELETEbyID method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/realestate.html">RealEstate Webservice</a>
      */
-    public static Messages deleteByIs24Id( AbstractClient client, long is24Id ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    public static Messages deleteByIs24Id( AbstractClient client, long is24RealEstateId ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/"+is24Id;
+      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/" + is24RealEstateId;
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.DELETE, null );
@@ -1238,24 +1853,45 @@ public final class ImportExport
     }
 
     /**
-     * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/User/Realestate/GETALL">GETALL method</a>.
+     * Calls the GETall method of the RealEstate Webservice.
+     * <p>
+     * This method returns the list of real estate objects for the agency.
      *
      * @param client
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
      * @param inPublishChannel
-     *        the name of the publish channel to look for properties
+     * the name of the publish channel to look for properties
+     *
      * @param notInPublishChannel
-     *        the name of the publish channel not to look for properties
+     * the name of the publish channel not to look for properties
+     *
      * @param pageSize
-     *        the number of properties per page (from min 1 until max 100, default 20)
+     * the number of properties per page (from min 1 until max 100, default 20)
+     *
      * @param pageNumber
-     *        the page number to return (starts with 1, default 1)
+     * the page number to return (starts with 1, default 1)
+     *
      * @param archivedObjectsIncluded
-     *        include archived objects into the result
+     * include archived objects into the result
+     *
      * @return
+     * list of real estate objects
+     *
      * @throws IOException
+     * if communication with the Webservice failed
+     *
      * @throws OAuthException
+     * if authorization failed
+     *
      * @throws JAXBException
+     * if XML reading / writing failed
+     *
      * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/realestate/get-all.html">GETall method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/realestate.html">RealEstate Webservice</a>
      */
     public static RealEstates getAll( AbstractClient client, String inPublishChannel, String notInPublishChannel, int pageSize, int pageNumber, boolean archivedObjectsIncluded ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
@@ -1265,10 +1901,10 @@ public final class ImportExport
       // init URL parameters
       List<String> params = new ArrayList<String>();
 
-      inPublishChannel = client.getEncodedParameterValue( inPublishChannel );
+      inPublishChannel = AbstractClient.getEncodedParameterValue( inPublishChannel );
       if (inPublishChannel!=null) params.add( "publishchannel=" + inPublishChannel );
 
-      notInPublishChannel = client.getEncodedParameterValue( notInPublishChannel );
+      notInPublishChannel = AbstractClient.getEncodedParameterValue( notInPublishChannel );
       if (inPublishChannel!=null) params.add( "notinpublishchannel=" + notInPublishChannel );
 
       if (pageSize>=1 && pageSize<=100) params.add( "pagesize=" + pageSize );
@@ -1300,20 +1936,38 @@ public final class ImportExport
     }
 
     /**
-     * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/User/Realestate/GETbyID">GETBYID method</a>.
+     * Calls the GETbyID method of the RealEstate Webservice.
+     * <p>
+     * This method returns a specific real estate object.
      *
      * @param client
-     * @param externalId
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
+     * @param externalRealEstateId
+     * user defined ID of the real estate object to retrieve
+     *
      * @return
+     * real estate object
+     *
      * @throws IOException
+     * if communication with the Webservice failed
+     *
      * @throws OAuthException
+     * if authorization failed
+     *
      * @throws JAXBException
+     * if XML reading / writing failed
+     *
      * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/realestate/get-by-id.html">GETbyID method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/realestate.html">RealEstate Webservice</a>
      */
-    public static RealEstate getByExternalId( AbstractClient client, String externalId ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    public static RealEstate getByExternalId( AbstractClient client, String externalRealEstateId ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/ext-"+externalId;
+      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/ext-" + externalRealEstateId;
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.GET, null );
@@ -1342,20 +1996,39 @@ public final class ImportExport
     }
 
     /**
-     * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/User/Realestate/GETbyID">GETBYID method</a>.
+     * Calls the GETbyID method of the RealEstate Webservice.
+     * <p>
+     * This method returns a specific real estate object.
      *
      * @param client
-     * @param is24Id
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
+     * @param is24RealEstateId
+     * ID of the real estate object to retrieve, that was returned by
+     * {@link RealEstateService#post(org.openestate.is24.restapi.AbstractClient, org.openestate.is24.restapi.xml.realestates.RealEstate)}
+     *
      * @return
+     * real estate object
+     *
      * @throws IOException
+     * if communication with the Webservice failed
+     *
      * @throws OAuthException
+     * if authorization failed
+     *
      * @throws JAXBException
+     * if XML reading / writing failed
+     *
      * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/realestate/get-by-id.html">GETbyID method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/realestate.html">RealEstate Webservice</a>
      */
-    public static RealEstate getByIs24Id( AbstractClient client, long is24Id ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    public static RealEstate getByIs24Id( AbstractClient client, long is24RealEstateId ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/"+is24Id;
+      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/" + is24RealEstateId;
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.GET, null );
@@ -1384,15 +2057,33 @@ public final class ImportExport
     }
 
     /**
-     * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/User/Realestate/POST">POST method</a>.
+     * Calls the POST method of the RealEstate Webservice.
+     * <p>
+     * This method stores a new real estate object.
      *
      * @param client
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
      * @param realEstate
+     * real estate object to store
+     *
      * @return
+     * response of the Webservice after a successful request
+     *
      * @throws IOException
+     * if communication with the Webservice failed
+     *
      * @throws OAuthException
+     * if authorization failed
+     *
      * @throws JAXBException
+     * if XML reading / writing failed
+     *
      * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/realestate/post.html">POST method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/realestate.html">RealEstate Webservice</a>
      */
     public static Messages post( AbstractClient client, RealEstate realEstate ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
@@ -1400,16 +2091,39 @@ public final class ImportExport
     }
 
     /**
-     * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/User/Realestate/POST">POST method</a>.
+     * Calls the POST method of the RealEstate Webservice.
+     * <p>
+     * This method stores a new real estate object.
      *
      * @param client
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
      * @param realEstate
+     * real estate object to store
+     *
      * @param useNewEnergySourceEnev2014Values
+     * tells the Webservice to make use of all values for "energySourceEnev2014"
+     * as described <a href="http://api.immobilienscout24.de/useful/energy-certificate-2014.html">here</a>
+     * (true by default)
+     *
      * @return
+     * response of the Webservice after a successful request
+     *
      * @throws IOException
+     * if communication with the Webservice failed
+     *
      * @throws OAuthException
+     * if authorization failed
+     *
      * @throws JAXBException
+     * if XML reading / writing failed
+     *
      * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/realestate/post.html">POST method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/realestate.html">RealEstate Webservice</a>
+     * @since 0.2
      */
     public static Messages post( AbstractClient client, RealEstate realEstate, boolean useNewEnergySourceEnev2014Values ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
@@ -1426,7 +2140,7 @@ public final class ImportExport
       if (!params.isEmpty()) url += "?" + StringUtils.join( params, "&" );
 
       // write object into xml
-      String xml = XmlUtils.marshal( realEstate, client.getEncoding() );
+      String xml = XmlUtils.marshal( realEstate, AbstractClient.getEncoding() );
       //LOGGER.debug( StringUtils.repeat( "-", 50 ) );
       //LOGGER.debug( xml );
       //LOGGER.debug( StringUtils.repeat( "-", 50 ) );
@@ -1451,39 +2165,84 @@ public final class ImportExport
     }
 
     /**
-     * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/User/Realestate/PUTbyID">PUTBYID method</a>.
+     * Calls the PUTbyID method of the RealEstate Webservice.
+     * <p>
+     * This method updates a real estate object.
      *
      * @param client
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
      * @param realEstate
-     * @param externalId
+     * real estate object to update
+     *
+     * @param externalRealEstateId
+     * user defined ID of the real estate object to update
+     *
      * @return
+     * response of the Webservice after a successful request
+     *
      * @throws IOException
+     * if communication with the Webservice failed
+     *
      * @throws OAuthException
+     * if authorization failed
+     *
      * @throws JAXBException
+     * if XML reading / writing failed
+     *
      * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/realestate/put-by-id.html">PUTbyID method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/realestate.html">RealEstate Webservice</a>
      */
-    public static Messages putByExternalId( AbstractClient client, RealEstate realEstate, String externalId ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    public static Messages putByExternalId( AbstractClient client, RealEstate realEstate, String externalRealEstateId ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
-      return putByExternalId( client, realEstate, externalId, true );
+      return putByExternalId( client, realEstate, externalRealEstateId, true );
     }
 
     /**
-     * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/User/Realestate/PUTbyID">PUTBYID method</a>.
+     * Calls the PUTbyID method of the RealEstate Webservice.
+     * <p>
+     * This method updates a real estate object.
      *
      * @param client
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
      * @param realEstate
-     * @param externalId
+     * real estate object to update
+     *
+     * @param externalRealEstateId
+     * user defined ID of the real estate object to update
+     *
      * @param useNewEnergySourceEnev2014Values
+     * tells the Webservice to make use of all values for "energySourceEnev2014"
+     * as described <a href="http://api.immobilienscout24.de/useful/energy-certificate-2014.html">here</a>
+     * (true by default)
+     *
      * @return
+     * response of the Webservice after a successful request
+     *
      * @throws IOException
+     * if communication with the Webservice failed
+     *
      * @throws OAuthException
+     * if authorization failed
+     *
      * @throws JAXBException
+     * if XML reading / writing failed
+     *
      * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/realestate/put-by-id.html">PUTbyID method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/realestate.html">RealEstate Webservice</a>
+     * @since 0.2
      */
-    public static Messages putByExternalId( AbstractClient client, RealEstate realEstate, String externalId, boolean useNewEnergySourceEnev2014Values ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    public static Messages putByExternalId( AbstractClient client, RealEstate realEstate, String externalRealEstateId, boolean useNewEnergySourceEnev2014Values ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/ext-"+externalId;
+      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/ext-" + externalRealEstateId;
 
       // init URL parameters
       List<String> params = new ArrayList<String>();
@@ -1493,7 +2252,7 @@ public final class ImportExport
       if (!params.isEmpty()) url += "?" + StringUtils.join( params, "&" );
 
       // write object into xml
-      String xml = XmlUtils.marshal( realEstate, client.getEncoding() );
+      String xml = XmlUtils.marshal( realEstate, AbstractClient.getEncoding() );
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.PUT, xml );
@@ -1515,39 +2274,86 @@ public final class ImportExport
     }
 
     /**
-     * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/User/Realestate/PUTbyID">PUTBYID method</a>.
+     * Calls the PUTbyID method of the RealEstate Webservice.
+     * <p>
+     * This method updates a real estate object.
      *
      * @param client
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
      * @param realEstate
-     * @param is24Id
+     * real estate object to update
+     *
+     * @param is24RealEstateId
+     * ID of the real estate object to update, that was returned by
+     * {@link RealEstateService#post(org.openestate.is24.restapi.AbstractClient, org.openestate.is24.restapi.xml.realestates.RealEstate)}
+     *
      * @return
+     * response of the Webservice after a successful request
+     *
      * @throws IOException
+     * if communication with the Webservice failed
+     *
      * @throws OAuthException
+     * if authorization failed
+     *
      * @throws JAXBException
+     * if XML reading / writing failed
+     *
      * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/realestate/put-by-id.html">PUTbyID method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/realestate.html">RealEstate Webservice</a>
      */
-    public static Messages putByIs24Id( AbstractClient client, RealEstate realEstate, long is24Id ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    public static Messages putByIs24Id( AbstractClient client, RealEstate realEstate, long is24RealEstateId ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
-      return putByIs24Id( client, realEstate, is24Id, true );
+      return putByIs24Id( client, realEstate, is24RealEstateId, true );
     }
 
     /**
-     * Calls the <a href="http://developerwiki.immobilienscout24.de/wiki/User/Realestate/PUTbyID">PUTBYID method</a>.
+     * Calls the PUTbyID method of the RealEstate Webservice.
+     * <p>
+     * This method updates a real estate object.
      *
      * @param client
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
      * @param realEstate
-     * @param is24Id
+     * real estate object to update
+     *
+     * @param is24RealEstateId
+     * ID of the real estate object to update, that was returned by
+     * {@link RealEstateService#post(org.openestate.is24.restapi.AbstractClient, org.openestate.is24.restapi.xml.realestates.RealEstate)}
+     *
      * @param useNewEnergySourceEnev2014Values
+     * tells the Webservice to make use of all values for "energySourceEnev2014"
+     * as described <a href="http://api.immobilienscout24.de/useful/energy-certificate-2014.html">here</a>
+     * (true by default)
+     *
      * @return
+     * response of the Webservice after a successful request
+     *
      * @throws IOException
+     * if communication with the Webservice failed
+     *
      * @throws OAuthException
+     * if authorization failed
+     *
      * @throws JAXBException
+     * if XML reading / writing failed
+     *
      * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/realestate/put-by-id.html">PUTbyID method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/realestate.html">RealEstate Webservice</a>
+     * @since 0.2
      */
-    public static Messages putByIs24Id( AbstractClient client, RealEstate realEstate, long is24Id, boolean useNewEnergySourceEnev2014Values ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    public static Messages putByIs24Id( AbstractClient client, RealEstate realEstate, long is24RealEstateId, boolean useNewEnergySourceEnev2014Values ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/"+is24Id;
+      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/" + is24RealEstateId;
 
       // init URL parameters
       List<String> params = new ArrayList<String>();
@@ -1557,7 +2363,7 @@ public final class ImportExport
       if (!params.isEmpty()) url += "?" + StringUtils.join( params, "&" );
 
       // write object into xml
-      String xml = XmlUtils.marshal( realEstate, client.getEncoding() );
+      String xml = XmlUtils.marshal( realEstate, AbstractClient.getEncoding() );
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.PUT, xml );
@@ -1580,9 +2386,14 @@ public final class ImportExport
   }
 
   /**
-   * Calls the VideoUploadTicket Webservice as documented in the
-   * <a href="http://developerwiki.immobilienscout24.de/wiki/User/Realestate/attachment/POST#Example_for_streaming_video_with_videoId">description for video uploads</a>.
+   * Low level methods for the VideoUploadTicket Webservice.
+   * <p>
+   * The VideoUploadTicket Webservice is used in the Import-/Export-API to
+   * obtain a ticket to upload a video and to transfer the video itself.
    *
+   * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments/post.html">description for video uploads</a>
+   * @see <a href="http://api.immobilienscout24.de/our-apis/import-export.html">Import-/Export-API</a>
+   * @since 0.1
    * @author Andreas Rudolph <andy@openindex.de>
    */
   public final static class VideoUploadService
@@ -1592,20 +2403,41 @@ public final class ImportExport
     }
 
     /**
-     * A helper method, that obtains an upload ticket and sends the video file
-     * to the specified upload service.
+     * Upload a video.
+     * <p>
+     * This helper method obtains an upload ticket and sends the video file
+     * to the destination, that is specified in the upload ticket.
      *
      * @param client
-     * @param input
-     * @param fileName
-     * @param fileSize
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
+     * @param videoInput
+     * content of the video file to transfer
+     *
+     * @param videoFileName
+     * name of the video file to transfer
+     *
+     * @param videoFileSize
+     * size of the video file to transfer (in bytes)
+     *
      * @return
+     * ID of the ticket, that was used to upload the video file
+     *
      * @throws IOException
+     * if communication with the Webservice failed
+     *
      * @throws OAuthException
+     * if authorization failed
+     *
      * @throws JAXBException
+     * if XML reading / writing failed
+     *
      * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments/post.html">description for video uploads</a>
      */
-    public static String doVideoUpload( AbstractClient client, InputStream input, String fileName, long fileSize ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    public static String doVideoUpload( AbstractClient client, InputStream videoInput, String videoFileName, long videoFileSize ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // obtain a ticket for video upload
       VideoUploadTicket ticket = VideoUploadService.get( client );
@@ -1623,9 +2455,9 @@ public final class ImportExport
         ticket.getUploadUrl(),
         RequestMethod.POST,
         ticket.getAuth(),
-        input,
-        fileName,
-        fileSize );
+        videoInput,
+        videoFileName,
+        videoFileSize );
 
       // return the video-id on successful upload
       if (response.statusCode==Response.OK || response.statusCode==Response.CREATED)
@@ -1644,15 +2476,30 @@ public final class ImportExport
     }
 
     /**
-     * Calls the GET method as documented in the
-     * <a href="http://developerwiki.immobilienscout24.de/wiki/User/Realestate/attachment/POST#Example_for_streaming_video_with_videoId">description for video uploads</a>.
+     * Calls the GET method of the VideoUploadTicket Webservice.
+     * <p>
+     * This method retrieves a ticket from the Webservice, that is required to
+     * upload a new video file.
      *
      * @param client
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
      * @return
+     * created ticket for the video upload
+     *
      * @throws IOException
+     * if communication with the Webservice failed
+     *
      * @throws OAuthException
+     * if authorization failed
+     *
      * @throws JAXBException
+     * if XML reading / writing failed
+     *
      * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments/post.html">description for video uploads</a>
      */
     public static VideoUploadTicket get( AbstractClient client ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {

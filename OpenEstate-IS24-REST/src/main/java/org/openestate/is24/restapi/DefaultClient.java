@@ -45,13 +45,13 @@ public class DefaultClient extends AbstractClient
    * Create an instance of {@link DefaultClient}.
    *
    * @param apiBaseUrl
-   *  URL of the IS24-Webservice
+   * URL of the IS24-Webservice
    *
    * @param consumerToken
-   *  consumer token, that identifies the application at the IS24-Webservice
+   * consumer token, that identifies the application at the IS24-Webservice
    *
    * @param consumerSecret
-   *  consumer secret, that identifies the application at the IS24-Webservice
+   * consumer secret, that identifies the application at the IS24-Webservice
    */
   public DefaultClient( String apiBaseUrl, String consumerToken, String consumerSecret )
   {
@@ -63,13 +63,13 @@ public class DefaultClient extends AbstractClient
    * {@link HttpURLConnection}.
    *
    * @param connection
-   *  {@link HttpURLConnection}, that contains the server response
+   * {@link HttpURLConnection}, that contains the server response
    *
    * @return
-   *  {@link Response} of the request
+   * {@link Response} of the request
    *
    * @throws IOException
-   *  if the {@link Response} can't be obtained
+   * if the {@link Response} can't be obtained
    */
   protected Response createResponse( HttpURLConnection connection ) throws IOException
   {

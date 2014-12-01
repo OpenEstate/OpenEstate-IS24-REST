@@ -35,8 +35,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * The oAuth example from <a href="http://developerwiki.immobilienscout24.de/wiki/Java-Signpost_Tutorial#Complete_Example_Code">Java-Signpost Tutorial</a>.
+ * An oAuth example from the Java-Signpost Tutorial by ImmobilienScout24.
+ * <p>
+ * Some small adjustments were made to the tutorial in order to integrate better
+ * into this library.
+ *
+ * @see <a href="http://api.immobilienscout24.de/useful/tutorials-sdks-plugins/tutorial-java-signpost.html">Java-Signpost Tutorial</a>
+ * @since 0.1
  * @author ImmobilienScout24
+ * @author Andreas Rudolph <andy@openindex.de>
  */
 @SuppressFBWarnings(
   value = {"NP_DEREFERENCE_OF_READLINE_VALUE", "DM_DEFAULT_ENCODING"},

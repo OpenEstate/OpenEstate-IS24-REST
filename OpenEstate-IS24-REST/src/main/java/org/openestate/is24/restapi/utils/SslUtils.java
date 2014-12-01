@@ -27,6 +27,7 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
 /**
+ * SSL helper methods.
  *
  * @since 0.2
  * @author Andreas Rudolph <andy@openindex.de>
@@ -39,6 +40,12 @@ public final class SslUtils
   {
   }
 
+  /**
+   * Disable checking of SSL certificates in the application environment.
+   *
+   * @throws NoSuchAlgorithmException
+   * @throws KeyManagementException
+   */
   public static void disableCertificateChecks() throws NoSuchAlgorithmException, KeyManagementException
   {
     // Create a trust manager that does not validate certificate chains
@@ -50,6 +57,10 @@ public final class SslUtils
     HttpsURLConnection.setDefaultSSLSocketFactory( sc.getSocketFactory() );
   }
 
+  /**
+   * Disable hostname verification for SSL connections in the application
+   * environment.
+   */
   public static void disableHostnameVerification()
   {
     HttpsURLConnection.setDefaultHostnameVerifier( new InsecureHostnameVerifier() );

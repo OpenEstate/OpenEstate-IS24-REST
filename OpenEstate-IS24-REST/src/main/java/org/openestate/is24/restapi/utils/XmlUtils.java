@@ -29,6 +29,7 @@ import java.nio.charset.Charset;
 import java.text.NumberFormat;
 import java.util.Locale;
 import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
@@ -64,6 +65,7 @@ import org.openestate.is24.restapi.xml.realestates.Store;
 import org.openestate.is24.restapi.xml.realestates.TradeSite;
 
 /**
+ * XML helper methods.
  *
  * @since 0.2
  * @author Andreas Rudolph <andy@openindex.de>
@@ -97,11 +99,35 @@ public final class XmlUtils
   {
   }
 
+  /**
+   * Creates a marshaller for XML generation.
+   *
+   * @return
+   * marshaller
+   *
+   * @throws JAXBException
+   * if the marshaller is not creatable
+   */
   public static Marshaller createMarshaller() throws JAXBException
   {
     return createMarshaller( Charset.defaultCharset().name(), true );
   }
 
+  /**
+   * Creates a marshaller for XML generation.
+   *
+   * @param encoding
+   * encoding of generated XML output
+   *
+   * @param prettyPrint
+   * enable pretty printing for generated XML output
+   *
+   * @return
+   * marshaller
+   *
+   * @throws JAXBException
+   * if the marshaller is not creatable
+   */
   public static Marshaller createMarshaller( String encoding, boolean prettyPrint ) throws JAXBException
   {
     Marshaller m = getContext().createMarshaller();
@@ -110,32 +136,113 @@ public final class XmlUtils
     return m;
   }
 
+  /**
+   * Creates an unmarshaller for XML parsing.
+   *
+   * @return
+   * unmarshaller
+   *
+   * @throws JAXBException
+   * if the unmarshaller is not creatable
+   */
   public static Unmarshaller createUnmarshaller() throws JAXBException
   {
     return getContext().createUnmarshaller();
   }
 
+  /**
+   * Returns the JAXB context for XML parsing / generation.
+   *
+   * @return
+   * JAXB context
+   *
+   * @throws JAXBException
+   * if the JAXB context is not initialized properly
+   */
   public synchronized static JAXBContext getContext() throws JAXBException
   {
     if (JAXB==null) initContext( Thread.currentThread().getContextClassLoader() );
     return JAXB;
   }
 
+  /**
+   * Initialize the JAXB context.
+   *
+   * @param classloader
+   * class loader to access JAXB classes
+   *
+   * @throws JAXBException
+   * if the JAXB context is not initialized properly
+   */
   public synchronized static void initContext( ClassLoader classloader ) throws JAXBException
   {
     JAXB = JAXBContext.newInstance( JAXB_PACKAGES, classloader );
   }
 
+  /**
+   * Creates a XML string for a JAXB object.
+   *
+   * @param object
+   * JAXB object, that is converted into XML output
+   *
+   * @return
+   * XML output
+   *
+   * @throws JAXBException
+   * if XML can't be written
+   *
+   * @throws IOException
+   * if XML can't be written
+   */
   public static String marshal( Object object ) throws JAXBException, IOException
   {
     return marshal( object, DEFAULT_ENCODING, true );
   }
 
+  /**
+   * Creates a XML string for a JAXB object.
+   *
+   * @param object
+   * JAXB object, that is converted into XML output
+   *
+   * @param encoding
+   * encoding of generated XML output
+   *
+   * @return
+   * XML output
+   *
+   * @throws JAXBException
+   * if XML can't be written
+   *
+   * @throws IOException
+   * if XML can't be written
+   */
   public static String marshal( Object object, String encoding ) throws JAXBException, IOException
   {
     return marshal( object, encoding, true );
   }
 
+  /**
+   * Creates a XML string for a JAXB object.
+   *
+   * @param object
+   * JAXB object, that is converted into XML output
+   *
+   * @param encoding
+   * encoding of generated XML output
+   *
+   * @param prettyPrint
+   * enable pretty printing for generated XML output
+   *
+   * @return
+   * XML output
+   *
+   * @throws JAXBException
+   * if XML can't be written
+   *
+   * @throws IOException
+   * if XML can't be written
+   */
   public static String marshal( Object object, String encoding, boolean prettyPrint ) throws JAXBException, IOException
   {
     if (object==null) return null;
@@ -175,6 +282,15 @@ public final class XmlUtils
     }
   }
 
+  /**
+   * Reads a {@link Color} value from XML.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value
+   */
   public static Color parseColor( String value )
   {
     String val = StringUtils.trimToNull( value );
@@ -184,6 +300,24 @@ public final class XmlUtils
     return Color.decode( val );
   }
 
+  /**
+   * Reads a {@link Double} value from XML.
+   *
+   * @param value
+   * XML string
+   *
+   * @param min
+   * minimal value
+   *
+   * @param max
+   * maximal value
+   *
+   * @param precision
+   * number of decimal places
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
   private static Double parseDouble( String value, Double min, Double max, int precision )
   {
     if (StringUtils.isBlank( value )) return null;
@@ -197,21 +331,60 @@ public final class XmlUtils
     }
   }
 
+  /**
+   * Reads a {@link Double} value from XML
+   * with maximal 8 digits and 2 decimal places.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
   public static Double parseDouble8_2( String value )
   {
     return parseDouble( value, 0d, 99999999d, 2 );
   }
 
+  /**
+   * Reads a {@link Double} value from XML
+   * with maximal 13 digits and 2 decimal places.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
   public static Double parseDouble13_2( String value )
   {
     return parseDouble( value, 0d, 9999999999999d, 2 );
   }
 
+  /**
+   * Reads a positive {@link Double} value from XML
+   * with maximal 3 decimal places.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
   public static Double parseDoublePositive( String value )
   {
     return parseDouble( value, 0.001d, null, 3 );
   }
 
+  /**
+   * Reads an e-mail address from XML.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
   public static String parseEmail( String value )
   {
     String val = parseText( value, 5, 300 );
@@ -219,21 +392,66 @@ public final class XmlUtils
     return (EmailValidator.getInstance().isValid( val ))? val: null;
   }
 
+  /**
+   * Reads an {@link Integer} value from XML,
+   * that matches the 'FlatShareSearchSize' simple type.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
   public static Integer parseFlatShareSearchSize( String value )
   {
     return parseInteger( value, 2, 11 );
   }
 
+  /**
+   * Reads an {@link Integer} value from XML,
+   * that matches the type of the 'numberOfFloors' element.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
   public static Integer parseFloorNr( String value )
   {
     return parseInteger( value, -1, null );
   }
 
+  /**
+   * Reads an {@link Integer} value from XML,
+   * that matches the type of the 'groupNumber' element.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
   public static Integer parseGroupNr( String value )
   {
     return parseInteger( value, 0, 2147483647 );
   }
 
+  /**
+   * Reads an {@link Integer} value from XML.
+   *
+   * @param value
+   * XML string
+   *
+   * @param min
+   * minimal value
+   *
+   * @param max
+   * maximal value
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
   private static Integer parseInteger( String value, Integer min, Integer max )
   {
     String val = StringUtils.trimToNull( value );
@@ -241,161 +459,485 @@ public final class XmlUtils
       Integer.valueOf( val ): null;
   }
 
+  /**
+   * Reads a positive {@link Integer} value from XML
+   * with maximal 9 digits.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
   public static Integer parseInteger9Positive( String value )
   {
     return parseInteger( value, 1, 9 );
   }
 
+  /**
+   * Reads an {@link Integer} value from XML
+   * from 0 to 99.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
   public static Integer parseInteger99( String value )
   {
     return parseInteger( value, 0, 99 );
   }
 
+  /**
+   * Reads an {@link Integer} value from XML
+   * from 0 to 999.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
   public static Integer parseInteger999( String value )
   {
     return parseInteger( value, 0, 999 );
   }
 
+  /**
+   * Reads an {@link Integer} value from XML
+   * from 0 to 9999.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
   public static Integer parseInteger9999( String value )
   {
     return parseInteger( value, 0, 9999 );
   }
 
+  /**
+   * Reads a positive {@link Integer} value from XML
+   * up to 9999.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
   public static Integer parseInteger9999Positive( String value )
   {
     return parseInteger( value, 1, 9999 );
   }
 
+  /**
+   * Reads an {@link Integer} value from XML
+   * from 0 to 99999.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
   public static Integer parseInteger99999( String value )
   {
     return parseInteger( value, 0, 99999 );
   }
 
+  /**
+   * Reads a {@link Double} value from XML
+   * with a valid latitude range.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
   public static Double parseLatitude( String value )
   {
     return parseDouble( value, -90d, 90d, 10 );
   }
 
+  /**
+   * Reads a {@link Double} value from XML
+   * with a valid longitude range.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
   public static Double parseLongitude( String value )
   {
     return parseDouble( value, -180d, 180d, 10 );
   }
 
+  /**
+   * Reads a {@link String} value from XML
+   * with a at least 1 character.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
   public static String parseNonEmptyText( String value )
   {
     return parseText( value, 1, null );
   }
 
+  /**
+   * Reads a {@link String} value from XML,
+   * that matches the 'Password' simple type.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
   public static String parsePassword( String value )
   {
     return parseText( value, 5, 40 );
   }
 
+  /**
+   * Reads a {@link String} value from XML
+   * with a valid phone number.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
   public static String parsePhoneNumber( String value )
   {
     return StringUtils.trimToNull( value );
   }
 
+  /**
+   * Reads a {@link String} value from XML
+   * with a valid phone number area code.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
   public static String parsePhoneNumberAreaCode( String value )
   {
     return StringUtils.trimToNull( value );
   }
 
+  /**
+   * Reads a {@link String} value from XML
+   * with a valid phone number country code.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
   public static String parsePhoneNumberCountryCode( String value )
   {
     return StringUtils.trimToNull( value );
   }
 
+  /**
+   * Reads a {@link String} value from XML
+   * with a valid phone number subscriber part.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
   public static String parsePhoneNumberSubscriber( String value )
   {
     return StringUtils.trimToNull( value );
   }
 
+  /**
+   * Reads a {@link Double} value from XML,
+   * that matches the 'PriceMultiplierType' simple type.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
   public static Double parsePriceMultiplier( String value )
   {
     return parseDouble( value, 0d, 99d, 1 );
   }
 
+  /**
+   * Reads a {@link Double} value from XML,
+   * that matches the 'NumberOfRoomsType' simple type.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
   public static Double parseRoomNr( String value )
   {
     return parseDouble( value, 0.5d, 9999d, 2 );
   }
 
+  /**
+   * Reads a {@link Double} value from XML,
+   * that matches the type of the 'numberOfRooms' element in "BaseHouse".
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
   public static Double parseRoomNrForBaseHouse( String value )
   {
     return parseDouble( value, 0d, 999d, 2 );
   }
 
+  /**
+   * Reads a {@link String} value from XML.
+   *
+   * @param value
+   * XML string
+   *
+   * @param minLength
+   * minimal length
+   *
+   * @param maxLength
+   * maximal length
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
   private static String parseText( String value, Integer minLength, Integer maxLength )
   {
     return StringUtils.trimToNull( value );
   }
 
+  /**
+   * Reads a {@link String} value from XML
+   * with maximal 15 characters.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
   public static String parseText15( String value )
   {
     return parseText( value, null, 15 );
   }
 
+  /**
+   * Reads a {@link String} value from XML
+   * with maximal 16 characters.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
   public static String parseText16( String value )
   {
     return parseText( value, null, 16 );
   }
 
+  /**
+   * Reads a {@link String} value from XML
+   * with maximal 18 characters.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
   public static String parseText18( String value )
   {
     return parseText( value, null, 18 );
   }
 
+  /**
+   * Reads a {@link String} value from XML
+   * with maximal 20 characters.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
   public static String parseText20( String value )
   {
     return parseText( value, null, 20 );
   }
 
+  /**
+   * Reads a {@link String} value from XML
+   * with maximal 30 characters.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
   public static String parseText30( String value )
   {
     return parseText( value, null, 30 );
   }
 
+  /**
+   * Reads a {@link String} value from XML
+   * with maximal 40 characters.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
   public static String parseText40( String value )
   {
     return parseText( value, null, 40 );
   }
 
+  /**
+   * Reads a {@link String} value from XML
+   * with maximal 50 characters.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
   public static String parseText50( String value )
   {
     return parseText( value, null, 50 );
   }
 
+  /**
+   * Reads a {@link String} value from XML
+   * with maximal 80 characters.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
   public static String parseText80( String value )
   {
     return parseText( value, null, 80 );
   }
 
+  /**
+   * Reads a {@link String} value from XML
+   * with maximal 100 characters.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
   public static String parseText100( String value )
   {
     return parseText( value, null, 100 );
   }
 
+  /**
+   * Reads a {@link String} value from XML
+   * with maximal 1000 characters.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
   public static String parseText1000( String value )
   {
     return parseText( value, null, 1000 );
   }
 
+  /**
+   * Reads a {@link String} value from XML
+   * with maximal 1800 characters.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
   public static String parseText1800( String value )
   {
     return parseText( value, null, 1800 );
   }
 
+  /**
+   * Reads a {@link String} value from XML
+   * with maximal 2000 characters.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
   public static String parseText2000( String value )
   {
     return parseText( value, null, 2000 );
   }
 
+  /**
+   * Reads a {@link Double} value from XML,
+   * that matches the type of the "thermalCharacteristic" element.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
   public static Double parseThermalCharacteristic( String value )
   {
     return parseDouble( value, 0d, 1999d, 2 );
   }
 
+  /**
+   * Reads an {@link URL} value from XML.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
   public static URL parseUrl( String value )
   {
     String val = StringUtils.trimToNull( value );
@@ -409,6 +951,18 @@ public final class XmlUtils
     }
   }
 
+  /**
+   * Writes a {@link Color} value into XML output.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
   public static String printColor( Color value )
   {
     if (value==null)
@@ -426,6 +980,27 @@ public final class XmlUtils
     return "#" + r + g + b;
   }
 
+  /**
+   * Writes a {@link Double} value into XML output.
+   *
+   * @param value
+   * value to write
+   *
+   * @param min
+   * minimal value
+   *
+   * @param max
+   * maximal value
+   *
+   * @param precision
+   * number of decimal places
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
   private static String printDouble( Double value, Double min, Double max, int precision )
   {
     if (value==null)
@@ -451,21 +1026,72 @@ public final class XmlUtils
     return format.format( value );
   }
 
+  /**
+   * Writes a {@link Double} value into XML output
+   * with maximal 8 digits and 2 decimal places.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
   public static String printDouble8_2( Double value )
   {
     return printDouble( value, 0d, 99999999d, 2 );
   }
 
+  /**
+   * Writes a {@link Double} value into XML output
+   * with maximal 13 digits and 2 decimal places.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
   public static String printDouble13_2( Double value )
   {
     return printDouble( value, 0d, 9999999999999d, 2 );
   }
 
+  /**
+   * Writes a positive {@link Double} value into XML output
+   * with maximal 3 decimal places.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
   public static String printDoublePositive( Double value )
   {
     return printDouble( value, 0.001d, null, 3 );
   }
 
+  /**
+   * Writes an e-mail address into XML output.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
   public static String printEmail( String value )
   {
     String val = printText( value, 5, 300 );
@@ -477,21 +1103,78 @@ public final class XmlUtils
     return val;
   }
 
+  /**
+   * Writes an {@link Integer} value into XML output,
+   * that matches the 'FlatShareSearchSize' simple type.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
   public static String printFlatShareSearchSize( Integer value )
   {
     return printInteger( value, 2, 11 );
   }
 
+  /**
+   * Writes an {@link Integer} value into XML output,
+   * that matches the type of the 'numberOfFloors' element.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
   public static String printFloorNr( Integer value )
   {
     return printInteger( value, -1, null );
   }
 
+  /**
+   * Writes an {@link Integer} value into XML output,
+   * that matches the type of the 'groupNumber' element.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
   public static String printGroupNr( Integer value )
   {
     return printInteger( value, 0, 2147483647 );
   }
 
+  /**
+   * Writes an {@link Integer} value into XML output.
+   *
+   * @param value
+   * value to write
+   *
+   * @param min
+   * minimal value
+   *
+   * @param max
+   * maximal value
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
   private static String printInteger( Integer value, Integer min, Integer max )
   {
     if (value==null)
@@ -512,56 +1195,199 @@ public final class XmlUtils
     return value.toString();
   }
 
+  /**
+   * Writes a positive {@link Integer} value into XML output
+   * with maximal 9 digits.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
   public static String printInteger9Positive( Integer value )
   {
     return printInteger( value, 1, 9 );
   }
 
+  /**
+   * Writes an {@link Integer} value into XML output
+   * from 0 to 99.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
   public static String printInteger99( Integer value )
   {
     return printInteger( value, 0, 99 );
   }
 
+  /**
+   * Writes an {@link Integer} value into XML output
+   * from 0 to 999.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
   public static String printInteger999( Integer value )
   {
     return printInteger( value, 0, 999 );
   }
 
+  /**
+   * Writes an {@link Integer} value into XML output
+   * from 0 to 9999.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
   public static String printInteger9999( Integer value )
   {
     return printInteger( value, 0, 9999 );
   }
 
+  /**
+   * Writes a positive {@link Integer} value into XML output
+   * up to 9999.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
   public static String printInteger9999Positive( Integer value )
   {
     return printInteger( value, 1, 9999 );
   }
 
+  /**
+   * Writes an {@link Integer} value into XML output
+   * from 0 to 99999.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
   public static String printInteger99999( Integer value )
   {
     return printInteger( value, 0, 99999 );
   }
 
+  /**
+   * Writes a {@link Double} value into XML output
+   * with a valid latitude range.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
   public static String printLatitude( Double value )
   {
     return printDouble( value, -90d, 90d, 10 );
   }
 
+  /**
+   * Writes a {@link Double} value into XML output
+   * with a valid longitude range.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
   public static String printLongitude( Double value )
   {
     return printDouble( value, -180d, 180d, 10 );
   }
 
+  /**
+   * Writes a {@link String} value into XML output
+   * with a at least 1 character.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
   public static String printNonEmptyText( String value )
   {
     return printText( value, 1, null );
   }
 
+  /**
+   * Writes a {@link String} value into XML output,
+   * that matches the 'Password' simple type.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
   public static String printPassword( String value )
   {
     return printText( value, 5, 40 );
   }
 
+  /**
+   * Writes a {@link String} value into XML output
+   * with a valid phone number.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
   public static String printPhoneNumber( String value )
   {
     String val = StringUtils.trimToNull( value );
@@ -575,6 +1401,19 @@ public final class XmlUtils
     return val;
   }
 
+  /**
+   * Writes a {@link String} value into XML output
+   * with a valid phone number area code.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
   public static String printPhoneNumberAreaCode( String value )
   {
     String val = StringUtils.trimToNull( value );
@@ -594,6 +1433,19 @@ public final class XmlUtils
     return val;
   }
 
+  /**
+   * Writes a {@link String} value into XML output
+   * with a valid phone number country code.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
   public static String printPhoneNumberCountryCode( String value )
   {
     String val = StringUtils.trimToNull( value );
@@ -616,6 +1468,19 @@ public final class XmlUtils
     return val;
   }
 
+  /**
+   * Writes a {@link String} value into XML output
+   * with a valid phone number subscriber part.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
   public static String printPhoneNumberSubscriber( String value )
   {
     String val = StringUtils.trimToNull( value );
@@ -648,21 +1513,78 @@ public final class XmlUtils
     return val;
   }
 
+  /**
+   * Writes a {@link Double} value into XML output,
+   * that matches the 'PriceMultiplierType' simple type.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
   public static String printPriceMultiplier( Double value )
   {
     return printDouble( value, 0d, 99d, 1 );
   }
 
+  /**
+   * Writes a {@link Double} value into XML output,
+   * that matches the 'NumberOfRoomsType' simple type.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
   public static String printRoomNr( Double value )
   {
     return printDouble( value, 0.5d, 9999d, 2 );
   }
 
+  /**
+   * Writes a {@link Double} value into XML output,
+   * that matches the type of the 'numberOfRooms' element in "BaseHouse".
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
   public static String printRoomNrForBaseHouse( Double value )
   {
     return printDouble( value, 0d, 999d, 2 );
   }
 
+  /**
+   * Writes a {@link String} value into XML output.
+   *
+   * @param value
+   * XML string
+   *
+   * @param minLength
+   * minimal length
+   *
+   * @param maxLength
+   * maximal length
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
   private static String printText( String value, Integer minLength, Integer maxLength )
   {
     String val = StringUtils.trimToNull( value );
@@ -680,71 +1602,252 @@ public final class XmlUtils
       StringUtils.abbreviate( val, maxLength.intValue() ): val;
   }
 
+  /**
+   * Writes a {@link String} value into XML output
+   * with maximal 15 characters.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
   public static String printText15( String value )
   {
     return printText( value, null, 15 );
   }
 
+  /**
+   * Writes a {@link String} value into XML output
+   * with maximal 16 characters.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
   public static String printText16( String value )
   {
     return printText( value, null, 16 );
   }
 
+  /**
+   * Writes a {@link String} value into XML output
+   * with maximal 18 characters.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
   public static String printText18( String value )
   {
     return printText( value, null, 18 );
   }
 
+  /**
+   * Writes a {@link String} value into XML output
+   * with maximal 20 characters.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
   public static String printText20( String value )
   {
     return printText( value, null, 20 );
   }
 
+  /**
+   * Writes a {@link String} value into XML output
+   * with maximal 30 characters.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
   public static String printText30( String value )
   {
     return printText( value, null, 30 );
   }
 
+  /**
+   * Writes a {@link String} value into XML output
+   * with maximal 40 characters.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
   public static String printText40( String value )
   {
     return printText( value, null, 40 );
   }
 
+  /**
+   * Writes a {@link String} value into XML output
+   * with maximal 50 characters.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
   public static String printText50( String value )
   {
     return printText( value, null, 50 );
   }
 
+  /**
+   * Writes a {@link String} value into XML output
+   * with maximal 80 characters.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
   public static String printText80( String value )
   {
     return printText( value, null, 80 );
   }
 
+  /**
+   * Writes a {@link String} value into XML output
+   * with maximal 100 characters.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
   public static String printText100( String value )
   {
     return printText( value, null, 100 );
   }
 
+  /**
+   * Writes a {@link String} value into XML output
+   * with maximal 1000 characters.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
   public static String printText1000( String value )
   {
     return printText( value, null, 1000 );
   }
 
+  /**
+   * Writes a {@link String} value into XML output
+   * with maximal 1800 characters.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
   public static String printText1800( String value )
   {
     return printText( value, null, 1800 );
   }
 
+  /**
+   * Writes a {@link String} value into XML output
+   * with maximal 2000 characters.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
   public static String printText2000( String value )
   {
     return printText( value, null, 2000 );
   }
 
+  /**
+   * Writes a {@link Double} value into XML output,
+   * that matches the type of the "thermalCharacteristic" element.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
   public static String printThermalCharacteristic( Double value )
   {
     return printDouble( value, 0d, 1999d, 2 );
   }
 
+  /**
+   * Writes an {@link URL} value into XML output.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
   public static String printUrl( URL value )
   {
     if (value==null)
@@ -755,6 +1858,18 @@ public final class XmlUtils
     return value.toString();
   }
 
+  /**
+   * Creates a JAXB object from a XML string.
+   *
+   * @param xml
+   * XML string
+   *
+   * @return
+   * JAXB object
+   *
+   * @throws JAXBException
+   * if XML can't be read
+   */
   public static Object unmarshal( String xml ) throws JAXBException
   {
     if (StringUtils.isBlank( xml )) return null;
@@ -770,21 +1885,105 @@ public final class XmlUtils
     }
   }
 
+  /**
+   * Writes an {@link Attachment} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param attachment
+   * object to write
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
   public static void writeXml( Attachment attachment, OutputStream output ) throws JAXBException
   {
     writeXml( attachment, DEFAULT_ENCODING, true, output );
   }
 
+  /**
+   * Writes an {@link Attachment} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param attachment
+   * object to write
+   *
+   * @param encoding
+   * encoding of generated XML output
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
   public static void writeXml( Attachment attachment, String encoding, OutputStream output ) throws JAXBException
   {
     writeXml( attachment, encoding, true, output );
   }
 
+  /**
+   * Writes an {@link Attachment} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param attachment
+   * object to write
+   *
+   * @param encoding
+   * encoding of generated XML output
+   *
+   * @param prettyPrint
+   * enable pretty printing for generated XML output
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
   public static void writeXml( Attachment attachment, String encoding, boolean prettyPrint, OutputStream output ) throws JAXBException
   {
     writeXml( attachment, createMarshaller( encoding, prettyPrint ), output );
   }
 
+  /**
+   * Writes an {@link Attachment} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param attachment
+   * object to write
+   *
+   * @param marshaller
+   * marshaller, that is used for XML generation
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
   public static void writeXml( Attachment attachment, Marshaller marshaller, OutputStream output ) throws JAXBException
   {
     final org.openestate.is24.restapi.xml.common.ObjectFactory factory =
@@ -803,21 +2002,105 @@ public final class XmlUtils
       factory.createAttachment( attachment ), output );
   }
 
+  /**
+   * Writes a {@link PublishObject} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param publishing
+   * object to write
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
   public static void writeXml( PublishObject publishing, OutputStream output ) throws JAXBException
   {
     writeXml( publishing, DEFAULT_ENCODING, true, output );
   }
 
+  /**
+   * Writes a {@link PublishObject} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param publishing
+   * object to write
+   *
+   * @param encoding
+   * encoding of generated XML output
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
   public static void writeXml( PublishObject publishing, String encoding, OutputStream output ) throws JAXBException
   {
     writeXml( publishing, encoding, true, output );
   }
 
+  /**
+   * Writes a {@link PublishObject} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param publishing
+   * object to write
+   *
+   * @param encoding
+   * encoding of generated XML output
+   *
+   * @param prettyPrint
+   * enable pretty printing for generated XML output
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
   public static void writeXml( PublishObject publishing, String encoding, boolean prettyPrint, OutputStream output ) throws JAXBException
   {
     writeXml( publishing, createMarshaller( encoding, prettyPrint ), output );
   }
 
+  /**
+   * Writes a {@link PublishObject} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param publishing
+   * object to write
+   *
+   * @param marshaller
+   * marshaller, that is used for XML generation
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
   public static void writeXml( PublishObject publishing, Marshaller marshaller, OutputStream output ) throws JAXBException
   {
     final org.openestate.is24.restapi.xml.common.ObjectFactory factory =
@@ -836,21 +2119,105 @@ public final class XmlUtils
       factory.createPublishObject( publishing ), output );
   }
 
+  /**
+   * Writes a {@link RealtorContactDetails} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param contact
+   * object to write
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
   public static void writeXml( RealtorContactDetails contact, OutputStream output ) throws JAXBException
   {
     writeXml( contact, DEFAULT_ENCODING, true, output );
   }
 
+  /**
+   * Writes a {@link RealtorContactDetails} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param contact
+   * object to write
+   *
+   * @param encoding
+   * encoding of generated XML output
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
   public static void writeXml( RealtorContactDetails contact, String encoding, OutputStream output ) throws JAXBException
   {
     writeXml( contact, encoding, true, output );
   }
 
+  /**
+   * Writes a {@link RealtorContactDetails} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param contact
+   * object to write
+   *
+   * @param encoding
+   * encoding of generated XML output
+   *
+   * @param prettyPrint
+   * enable pretty printing for generated XML output
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
   public static void writeXml( RealtorContactDetails contact, String encoding, boolean prettyPrint, OutputStream output ) throws JAXBException
   {
     writeXml( contact, createMarshaller( encoding, prettyPrint ), output );
   }
 
+  /**
+   * Writes a {@link RealtorContactDetails} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param contact
+   * object to write
+   *
+   * @param marshaller
+   * marshaller, that is used for XML generation
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
   public static void writeXml( RealtorContactDetails contact, Marshaller marshaller, OutputStream output ) throws JAXBException
   {
     final org.openestate.is24.restapi.xml.common.ObjectFactory factory =
@@ -869,21 +2236,105 @@ public final class XmlUtils
       factory.createRealtorContactDetail( contact ), output );
   }
 
+  /**
+   * Writes a {@link RealEstate} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param realEstate
+   * object to write
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
   public static void writeXml( RealEstate realEstate, OutputStream output ) throws JAXBException
   {
     writeXml( realEstate, DEFAULT_ENCODING, true, output );
   }
 
+  /**
+   * Writes a {@link RealEstate} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param realEstate
+   * object to write
+   *
+   * @param encoding
+   * encoding of generated XML output
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
   public static void writeXml( RealEstate realEstate, String encoding, OutputStream output ) throws JAXBException
   {
     writeXml( realEstate, encoding, true, output );
   }
 
+  /**
+   * Writes a {@link RealEstate} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param realEstate
+   * object to write
+   *
+   * @param encoding
+   * encoding of generated XML output
+   *
+   * @param prettyPrint
+   * enable pretty printing for generated XML output
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
   public static void writeXml( RealEstate realEstate, String encoding, boolean prettyPrint, OutputStream output ) throws JAXBException
   {
     writeXml( realEstate, createMarshaller( encoding, prettyPrint ), output );
   }
 
+  /**
+   * Writes a {@link RealEstate} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param realEstate
+   * object to write
+   *
+   * @param marshaller
+   * marshaller, that is used for XML generation
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
   public static void writeXml( RealEstate realEstate, Marshaller marshaller, OutputStream output ) throws JAXBException
   {
     final org.openestate.is24.restapi.xml.realestates.ObjectFactory factory =

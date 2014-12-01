@@ -111,7 +111,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
+ * Factory for random real estate objects.
+ * <p>
+ * Creates random real estate objects according, that match with the
+ * specifications of the Webservice.
  *
+ * @since 0.2
  * @author Andreas Rudolph <andy@openindex.de>
  */
 public class RandomRealEstateFactory
@@ -122,6 +127,13 @@ public class RandomRealEstateFactory
   private final org.openestate.is24.restapi.xml.realestates.ObjectFactory realEstatesFactory =
     new org.openestate.is24.restapi.xml.realestates.ObjectFactory();
 
+  /**
+   * Creates a {@link EnergySourcesEnev2014}, that contains random
+   * {@link EnergySourceEnev2014} values.
+   *
+   * @return
+   * randomly filled {@link EnergySourcesEnev2014} object
+   */
   public EnergySourcesEnev2014 createRandomEnergySourcesEnev2014()
   {
     EnergySourcesEnev2014 output = commonFactory.createEnergySourcesEnev2014();
@@ -143,11 +155,26 @@ public class RandomRealEstateFactory
     return output;
   }
 
+  /**
+   * Creates a random {@link RealEstate} of a random {@link Type}.
+   *
+   * @return
+   * randomly filled {@link RealEstate} object
+   */
   public RealEstate createRandomObject()
   {
     return createRandomObject( null );
   }
 
+  /**
+   * Creates a random {@link RealEstate} of a specific {@link Type}.
+   *
+   * @param type
+   * type of the real estate object to create
+   *
+   * @return
+   * randomly filled {@link RealEstate} object
+   */
   public RealEstate createRandomObject( Type type )
   {
     if (type==null) type = getRandomObjectType();
@@ -156,6 +183,12 @@ public class RandomRealEstateFactory
     return realEstate;
   }
 
+  /**
+   * Creates a random {@link Wgs84Address}.
+   *
+   * @return
+   * randomly filled {@link Wgs84Address} object
+   */
   public Wgs84Address createRandomObjectAddress()
   {
     Wgs84Address address = commonFactory.createWgs84Address();
@@ -163,6 +196,13 @@ public class RandomRealEstateFactory
     return address;
   }
 
+  /**
+   * Creates a {@link SiteRecommendedUseForTradeTypes}, that contains random
+   * {@link SiteRecommendedUseForTradeType} values.
+   *
+   * @return
+   * randomly filled {@link SiteRecommendedUseForTradeTypes} object
+   */
   public SiteRecommendedUseForTradeTypes createRandomSiteRecommendedUseForTradeTypes()
   {
     SiteRecommendedUseForTradeTypes output = commonFactory.createSiteRecommendedUseForTradeTypes();
@@ -184,6 +224,13 @@ public class RandomRealEstateFactory
     return output;
   }
 
+  /**
+   * Creates a {@link SiteRecommendedUseTypes}, that contains random
+   * {@link SiteRecommendedUseType} values.
+   *
+   * @return
+   * randomly filled {@link SiteRecommendedUseTypes} object
+   */
   public SiteRecommendedUseTypes createRandomSiteRecommendedUseTypes()
   {
     SiteRecommendedUseTypes output = commonFactory.createSiteRecommendedUseTypes();
@@ -205,6 +252,12 @@ public class RandomRealEstateFactory
     return output;
   }
 
+  /**
+   * Creates the default {@link Price} for randomly created data.
+   *
+   * @return
+   * default{@link Price} object
+   */
   public Price getDefaultPrice()
   {
     Price price = commonFactory.createPrice();
@@ -212,36 +265,84 @@ public class RandomRealEstateFactory
     return price;
   }
 
+  /**
+   * Creates a random {@link AirConditioningType} value.
+   *
+   * @return
+   * random {@link AirConditioningType} value
+   */
   public static AirConditioningType getRandomAirConditioningType()
   {
     return (AirConditioningType) getRandomValue( AirConditioningType.values() );
   }
 
+  /**
+   * Creates a random {@link ApartmentType} value.
+   *
+   * @return
+   * random {@link ApartmentType} value
+   */
   public static ApartmentType getRandomApartmentType()
   {
     return (ApartmentType) getRandomValue( ApartmentType.values() );
   }
 
+  /**
+   * Creates a random {@link BalconyAvailableType} value.
+   *
+   * @return
+   * random {@link BalconyAvailableType} value
+   */
   public static BalconyAvailableType getRandomBalconyAvailableType()
   {
     return (BalconyAvailableType) getRandomValue( BalconyAvailableType.values() );
   }
 
+  /**
+   * Creates a random {@link Boolean} value.
+   *
+   * @return
+   * random {@link Boolean} value
+   */
   public static boolean getRandomBoolean()
   {
     return RandomUtils.nextBoolean();
   }
 
+  /**
+   * Creates a random {@link BuildingType} value.
+   *
+   * @return
+   * random {@link BuildingType} value
+   */
   public static BuildingType getRandomBuildingType()
   {
     return (BuildingType) getRandomValue( BuildingType.values() );
   }
 
+  /**
+   * Creates a random {@link Calendar} value between 1990 and 2015.
+   *
+   * @return
+   * random {@link Calendar} value
+   */
   public static Calendar getRandomCalendar()
   {
     return getRandomCalendar( 1990, 2015 );
   }
 
+  /**
+   * Creates a random {@link Calendar} value in a specific timeframe.
+   *
+   * @param minYear
+   * minimal calendar year
+   *
+   * @param maxYear
+   * maximal calendar year
+   *
+   * @return
+   * random {@link Calendar} value
+   */
   public static Calendar getRandomCalendar( int minYear, int maxYear )
   {
     Calendar cal = Calendar.getInstance();
@@ -254,36 +355,93 @@ public class RandomRealEstateFactory
     return cal;
   }
 
+  /**
+   * Creates a random {@link CareLevelExpose} value.
+   *
+   * @return
+   * random {@link CareLevelExpose} value
+   */
   public static CareLevelExpose getRandomCareLevel()
   {
     return (CareLevelExpose) getRandomValue( CareLevelExpose.values() );
   }
 
+  /**
+   * Creates a random {@link CompulsoryAuctionType} value.
+   *
+   * @return
+   * random {@link CompulsoryAuctionType} value
+   */
   public static CompulsoryAuctionType getRandomCompulsoryAuctionType()
   {
     return (CompulsoryAuctionType) getRandomValue( CompulsoryAuctionType.values() );
   }
 
+  /**
+   * Creates a random {@link ConstructionPhaseType} value.
+   *
+   * @return
+   * random {@link ConstructionPhaseType} value
+   */
   public static ConstructionPhaseType getRandomConstructionPhaseType()
   {
     return (ConstructionPhaseType) getRandomValue( ConstructionPhaseType.values() );
   }
 
+  /**
+   * Creates a random {@link Date} value between 1990 and 2015.
+   *
+   * @return
+   * random {@link Date} value
+   */
   public static Date getRandomDate()
   {
     return getRandomCalendar().getTime();
   }
 
+  /**
+   * Creates a random {@link Date} value in a specific timeframe.
+   *
+   * @param minYear
+   * minimal calendar year
+   *
+   * @param maxYear
+   * maximal calendar year
+   *
+   * @return
+   * random {@link Date} value
+   */
   public static Date getRandomDate( int minYear, int maxYear )
   {
     return getRandomCalendar( minYear, maxYear ).getTime();
   }
 
+  /**
+   * Creates a random {@link Double} value with a specific maximum.
+   *
+   * @param max
+   * maximum value
+   *
+   * @return
+   * random {@link Double} value
+   */
   public static double getRandomDouble( int max )
   {
     return getRandomDouble( 0, max );
   }
 
+  /**
+   * Creates a random {@link Double} value within a specific interval.
+   *
+   * @param min
+   * minimum value
+   *
+   * @param max
+   * maximum value
+   *
+   * @return
+   * random {@link Double} value
+   */
   public static double getRandomDouble( int min, int max )
   {
     if (min>max)
@@ -298,71 +456,164 @@ public class RandomRealEstateFactory
     return (RandomUtils.nextDouble() * (max - min)) + min;
   }
 
+  /**
+   * Creates a random {@link EnergyEfficiencyClass} value.
+   *
+   * @return
+   * random {@link EnergyEfficiencyClass} value
+   */
   public static EnergyEfficiencyClass getRandomEnergyEfficiencyClass()
   {
     return (EnergyEfficiencyClass) getRandomValue( EnergyEfficiencyClass.values() );
   }
 
+  /**
+   * Creates a random {@link FacilityType} value.
+   *
+   * @return
+   * random {@link FacilityType} value
+   */
   public static FacilityType getRandomFacilityType()
   {
     return (FacilityType) getRandomValue( FacilityType.values() );
   }
 
+  /**
+   * Creates a random {@link FlatMateGenderType} value.
+   *
+   * @return
+   * random {@link FlatMateGenderType} value
+   */
   public static FlatMateGenderType getRandomFlatMateGenderType()
   {
     return (FlatMateGenderType) getRandomValue( FlatMateGenderType.values() );
   }
 
+  /**
+   * Creates a random {@link FlooringType} value.
+   *
+   * @return
+   * random {@link FlooringType} value
+   */
   public static FlooringType getRandomFlooringType()
   {
     return (FlooringType) getRandomValue( FlooringType.values() );
   }
 
+  /**
+   * Creates a random {@link GarageType} value.
+   *
+   * @return
+   * random {@link GarageType} value
+   */
   public static GarageType getRandomGarageType()
   {
     return (GarageType) getRandomValue( GarageType.values() );
   }
 
+  /**
+   * Creates a random {@link GastronomyType} value.
+   *
+   * @return
+   * random {@link GastronomyType} value
+   */
   public static GastronomyType getRandomGastronomyType()
   {
     return (GastronomyType) getRandomValue( GastronomyType.values() );
   }
 
+  /**
+   * Creates a random {@link HeatingTypeEnev2014} value.
+   *
+   * @return
+   * random {@link HeatingTypeEnev2014} value
+   */
   public static HeatingTypeEnev2014 getRandomHeatingTypeEnev2014()
   {
     return (HeatingTypeEnev2014) getRandomValue( HeatingTypeEnev2014.values() );
   }
 
+  /**
+   * Creates a random {@link HouseTypeBuildingType} value.
+   *
+   * @return
+   * random {@link HouseTypeBuildingType} value
+   */
   public static HouseTypeBuildingType getRandomHouseTypeBuildingType()
   {
     return (HouseTypeBuildingType) getRandomValue( HouseTypeBuildingType.values() );
   }
 
+  /**
+   * Creates a random {@link HouseTypeConstructionMethodType} value.
+   *
+   * @return
+   * random {@link HouseTypeConstructionMethodType} value
+   */
   public static HouseTypeConstructionMethodType getRandomHouseTypeConstructionMethodType()
   {
     return (HouseTypeConstructionMethodType) getRandomValue( HouseTypeConstructionMethodType.values() );
   }
 
+  /**
+   * Creates a random {@link HouseTypeEnergyStandardType} value.
+   *
+   * @return
+   * random {@link HouseTypeEnergyStandardType} value
+   */
   public static HouseTypeEnergyStandardType getRandomHouseTypeEnergyStandardType()
   {
     return (HouseTypeEnergyStandardType) getRandomValue( HouseTypeEnergyStandardType.values() );
   }
 
+  /**
+   * Creates a random {@link HouseTypeStageOfCompletionType} value.
+   *
+   * @return
+   * random {@link HouseTypeStageOfCompletionType} value
+   */
   public static HouseTypeStageOfCompletionType getRandomHouseTypeStageOfCompletionType()
   {
     return (HouseTypeStageOfCompletionType) getRandomValue( HouseTypeStageOfCompletionType.values() );
   }
 
+  /**
+   * Creates a random {@link IndustryType} value.
+   *
+   * @return
+   * random {@link IndustryType} value
+   */
   public static IndustryType getRandomIndustryType()
   {
     return (IndustryType) getRandomValue( IndustryType.values() );
   }
 
+  /**
+   * Creates a random {@link Integer} value with a specific maximum.
+   *
+   * @param max
+   * maximum value
+   *
+   * @return
+   * random {@link Integer} value
+   */
   public static int getRandomInt( int max )
   {
     return getRandomInt( 0, max );
   }
 
+  /**
+   * Creates a random {@link Integer} value within a specific interval.
+   *
+   * @param min
+   * minimum value
+   *
+   * @param max
+   * maximum value
+   *
+   * @return
+   * random {@link Double} value
+   */
   public static int getRandomInt( int min, int max )
   {
     if (min>max)
@@ -378,138 +629,304 @@ public class RandomRealEstateFactory
     return max - value;
   }
 
+  /**
+   * Creates a random {@link InteriorQuality} value.
+   *
+   * @return
+   * random {@link InteriorQuality} value
+   */
   public static InteriorQuality getRandomInteriorQuality()
   {
     return (InteriorQuality) getRandomValue( InteriorQuality.values() );
   }
 
+  /**
+   * Creates a random {@link InternetConnectionType} value.
+   *
+   * @return
+   * random {@link InternetConnectionType} value
+   */
   public static InternetConnectionType getRandomInternetConnectionType()
   {
     return (InternetConnectionType) getRandomValue( InternetConnectionType.values() );
   }
 
+  /**
+   * Creates a random {@link InvestmentType} value.
+   *
+   * @return
+   * random {@link InvestmentType} value
+   */
   public static InvestmentType getRandomInvestmentType()
   {
     return (InvestmentType) getRandomValue( InvestmentType.values() );
   }
 
+  /**
+   * Creates a random {@link ItInfrastructureType} value.
+   *
+   * @return
+   * random {@link ItInfrastructureType} value
+   */
   public static ItInfrastructureType getRandomItInfrastructureType()
   {
     return (ItInfrastructureType) getRandomValue( ItInfrastructureType.values() );
   }
 
+  /**
+   * Creates a random {@link LocationClassificationType} value.
+   *
+   * @return
+   * random {@link LocationClassificationType} value
+   */
   public static LocationClassificationType getRandomLocationClassificationType()
   {
     return (LocationClassificationType) getRandomValue( LocationClassificationType.values() );
   }
 
+  /**
+   * Creates a random {@link Type} value.
+   *
+   * @return
+   * random {@link Type} value
+   */
   public static Type getRandomObjectType()
   {
     return (Type) getRandomValue( Type.values() );
   }
 
+  /**
+   * Creates a random {@link OfficeType} value.
+   *
+   * @return
+   * random {@link OfficeType} value
+   */
   public static OfficeType getRandomOfficeType()
   {
     return (OfficeType) getRandomValue( OfficeType.values() );
   }
 
+  /**
+   * Creates a random {@link ParkingSituationType} value.
+   *
+   * @return
+   * random {@link ParkingSituationType} value
+   */
   public static ParkingSituationType getRandomParkingSituationType()
   {
     return (ParkingSituationType) getRandomValue( ParkingSituationType.values() );
   }
 
+  /**
+   * Creates a random {@link ParkingSpaceType} value.
+   *
+   * @return
+   * random {@link ParkingSpaceType} value
+   */
   public static ParkingSpaceType getRandomParkingSpaceType()
   {
     return (ParkingSpaceType) getRandomValue( ParkingSpaceType.values() );
   }
 
+  /**
+   * Creates a random {@link PetsAllowedType} value.
+   *
+   * @return
+   * random {@link PetsAllowedType} value
+   */
   public static PetsAllowedType getRandomPetsAllowedType()
   {
     return (PetsAllowedType) getRandomValue( PetsAllowedType.values() );
   }
 
+  /**
+   * Creates a random {@link RealEstateCondition} value.
+   *
+   * @return
+   * random {@link RealEstateCondition} value
+   */
   public static RealEstateCondition getRandomRealEstateCondition()
   {
     return (RealEstateCondition) getRandomValue( RealEstateCondition.values() );
   }
 
+  /**
+   * Creates a random {@link RoomType} value.
+   *
+   * @return
+   * random {@link RoomType} value
+   */
   public static RoomType getRandomRoomType()
   {
     return (RoomType) getRandomValue( RoomType.values() );
   }
 
+  /**
+   * Creates a random {@link ShortTermAccommodationType} value.
+   *
+   * @return
+   * random {@link ShortTermAccommodationType} value
+   */
   public static ShortTermAccommodationType getRandomShortTermAccommodationType()
   {
     return (ShortTermAccommodationType) getRandomValue( ShortTermAccommodationType.values() );
   }
 
+  /**
+   * Creates a random {@link SiteConstructibleType} value.
+   *
+   * @return
+   * random {@link SiteConstructibleType} value
+   */
   public static SiteConstructibleType getRandomSiteConstructibleType()
   {
     return (SiteConstructibleType) getRandomValue( SiteConstructibleType.values() );
   }
 
+  /**
+   * Creates a random {@link SiteDevelopmentType} value.
+   *
+   * @return
+   * random {@link SiteDevelopmentType} value
+   */
   public static SiteDevelopmentType getRandomSiteDevelopmentType()
   {
     return (SiteDevelopmentType) getRandomValue( SiteDevelopmentType.values() );
   }
 
+  /**
+   * Creates a random {@link SmokingAllowedType} value.
+   *
+   * @return
+   * random {@link SmokingAllowedType} value
+   */
   public static SmokingAllowedType getRandomSmokingAllowedType()
   {
     return (SmokingAllowedType) getRandomValue( SmokingAllowedType.values() );
   }
 
+  /**
+   * Creates a random {@link SpecialPurposeType} value.
+   *
+   * @return
+   * random {@link SpecialPurposeType} value
+   */
   public static SpecialPurposeType getRandomSpecialPurposeType()
   {
     return (SpecialPurposeType) getRandomValue( SpecialPurposeType.values() );
   }
 
+  /**
+   * Creates a random {@link StoreType} value.
+   *
+   * @return
+   * random {@link StoreType} value
+   */
   public static StoreType getRandomStoreType()
   {
     return (StoreType) getRandomValue( StoreType.values() );
   }
 
+  /**
+   * Creates a random {@link SupplyType} value.
+   *
+   * @return
+   * random {@link SupplyType} value
+   */
   public static SupplyType getRandomSupplyType()
   {
     return (SupplyType) getRandomValue( SupplyType.values() );
   }
 
+  /**
+   * Creates a random {@link TelephoneConnectionType} value.
+   *
+   * @return
+   * random {@link TelephoneConnectionType} value
+   */
   public static TelephoneConnectionType getRandomTelephoneConnectionType()
   {
     return (TelephoneConnectionType) getRandomValue( TelephoneConnectionType.values() );
   }
 
+  /**
+   * Creates a random {@link TvConnectionType} value.
+   *
+   * @return
+   * random {@link TvConnectionType} value
+   */
   public static TvConnectionType getRandomTvConnectionType()
   {
     return (TvConnectionType) getRandomValue( TvConnectionType.values() );
   }
 
+  /**
+   * Creates a random {@link UtilizationTradeSite} value.
+   *
+   * @return
+   * random {@link UtilizationTradeSite} value
+   */
   public static UtilizationTradeSite getRandomUtilizationTradeSite()
   {
     return (UtilizationTradeSite) getRandomValue( UtilizationTradeSite.values() );
   }
 
+  /**
+   * Creates a random {@link YesNoNotApplicableType} value without
+   * {@link YesNoNotApplicableType#NOT_APPLICABLE}.
+   *
+   * @return
+   * random {@link YesNoNotApplicableType} value
+   */
   public static YesNoNotApplicableType getRandomYesNo()
   {
     return (getRandomBoolean())?
       YesNoNotApplicableType.YES: YesNoNotApplicableType.NO;
   }
 
+  /**
+   * Creates a random {@link YesNoNotApplicableType} value.
+   *
+   * @return
+   * random {@link YesNoNotApplicableType} value
+   */
   public static YesNoNotApplicableType getRandomYesNoNotApplicableType()
   {
     return (YesNoNotApplicableType) getRandomValue( YesNoNotApplicableType.values() );
   }
 
+  /**
+   * Creates a random {@link YesNotApplicableType} value.
+   *
+   * @return
+   * random {@link YesNotApplicableType} value
+   */
   public static YesNotApplicableType getRandomYesNotApplicableType()
   {
     return (YesNotApplicableType) getRandomValue( YesNotApplicableType.values() );
   }
 
+  /**
+   * Retrieves a random value from an array of values.
+   *
+   * @param values
+   * array of values to lookup
+   *
+   * @return
+   * one of the provided values
+   */
   public static Object getRandomValue( Object[] values )
   {
     return (!ArrayUtils.isEmpty( values ))?
       values[RandomUtils.nextInt( values.length )]: null;
   }
 
+  /**
+   * Initialize a {@link RealEstate} object with random values.
+   *
+   * @param realEstate
+   * object to initialize
+   */
   public void init( RealEstate realEstate )
   {
     realEstate.setAddress( createRandomObjectAddress() );
@@ -579,6 +996,12 @@ public class RandomRealEstateFactory
       initRealEstate( (TradeSite) realEstate );
   }
 
+  /**
+   * Initialize an {@link Address} object with random values.
+   *
+   * @param address
+   * object to initialize
+   */
   protected void initAddress( Address address )
   {
     address.setCity( "Berlin" );
@@ -588,6 +1011,12 @@ public class RandomRealEstateFactory
     address.setStreet( "Beispielstraße" );
   }
 
+  /**
+   * Initialize an {@link Wgs84Address} object with random values.
+   *
+   * @param address
+   * object to initialize
+   */
   protected void initAddress( Wgs84Address address )
   {
     initAddress( (Address) address );
@@ -611,6 +1040,12 @@ public class RandomRealEstateFactory
     //address.getWgs84Coordinate().setLongitude( value );
   }
 
+  /**
+   * Initialize an {@link ApartmentBuy} object with random values.
+   *
+   * @param realEstate
+   * object to initialize
+   */
   protected void initRealEstate( ApartmentBuy realEstate )
   {
     realEstate.setApartmentType( getRandomApartmentType() );
@@ -707,6 +1142,12 @@ public class RandomRealEstateFactory
     realEstate.getPrice().setValue( getRandomDouble( 10000, 9999999 ) );
   }
 
+  /**
+   * Initialize an {@link ApartmentRent} object with random values.
+   *
+   * @param realEstate
+   * object to initialize
+   */
   protected void initRealEstate( ApartmentRent realEstate )
   {
     realEstate.setApartmentType( getRandomApartmentType() );
@@ -806,6 +1247,12 @@ public class RandomRealEstateFactory
     realEstate.getPrice().setValue( getRandomDouble( 200, 9999 ) );
   }
 
+  /**
+   * Initialize an {@link AssistedLiving} object with random values.
+   *
+   * @param realEstate
+   * object to initialize
+   */
   protected void initRealEstate( AssistedLiving realEstate )
   {
     realEstate.setAmbulantNursingServiceAvailable( getRandomYesNotApplicableType() );
@@ -918,6 +1365,12 @@ public class RandomRealEstateFactory
     }
   }
 
+  /**
+   * Initialize a {@link CompulsoryAuction} object with random values.
+   *
+   * @param realEstate
+   * object to initialize
+   */
   protected void initRealEstate( CompulsoryAuction realEstate )
   {
     realEstate.setArea( getRandomDouble( 50, 500 ) );
@@ -1007,6 +1460,12 @@ public class RandomRealEstateFactory
     realEstate.getMarketValue().setValue( getRandomDouble( 50000, 500000 ) );
   }
 
+  /**
+   * Initialize a {@link FlatShareRoom} object with random values.
+   *
+   * @param realEstate
+   * object to initialize
+   */
   protected void initRealEstate( FlatShareRoom realEstate )
   {
     realEstate.setAgeOfFlatMatesFrom( getRandomInt( 16, 30 ) );
@@ -1115,6 +1574,12 @@ public class RandomRealEstateFactory
     }
   }
 
+  /**
+   * Initialize a {@link GarageBuy} object with random values.
+   *
+   * @param realEstate
+   * object to initialize
+   */
   protected void initRealEstate( GarageBuy realEstate )
   {
     realEstate.setCondition( getRandomRealEstateCondition() );
@@ -1139,6 +1604,12 @@ public class RandomRealEstateFactory
     realEstate.getPrice().setValue( getRandomDouble( 1000, 9999 ) );
   }
 
+  /**
+   * Initialize a {@link GarageRent} object with random values.
+   *
+   * @param realEstate
+   * object to initialize
+   */
   protected void initRealEstate( GarageRent realEstate )
   {
     realEstate.setCondition( getRandomRealEstateCondition() );
@@ -1165,6 +1636,12 @@ public class RandomRealEstateFactory
     realEstate.getPrice().setValue( getRandomDouble( 50, 999 ) );
   }
 
+  /**
+   * Initialize a {@link Gastronomy} object with random values.
+   *
+   * @param realEstate
+   * object to initialize
+   */
   protected void initRealEstate( Gastronomy realEstate )
   {
     realEstate.setAdditionalArea( getRandomDouble( 10, 500 ) );
@@ -1284,6 +1761,12 @@ public class RandomRealEstateFactory
     //realEstate.getCalculatedPrice().setValue( value );
   }
 
+  /**
+   * Initialize a {@link HouseBuy} object with random values.
+   *
+   * @param realEstate
+   * object to initialize
+   */
   protected void initRealEstate( HouseBuy realEstate )
   {
     realEstate.setBuildingType( getRandomBuildingType() );
@@ -1376,6 +1859,12 @@ public class RandomRealEstateFactory
     realEstate.getPrice().setValue( getRandomDouble( 10000, 9999999 ) );
   }
 
+  /**
+   * Initialize a {@link HouseRent} object with random values.
+   *
+   * @param realEstate
+   * object to initialize
+   */
   protected void initRealEstate( HouseRent realEstate )
   {
     realEstate.setBaseRent( getRandomDouble( 500, 5000 ) );
@@ -1471,6 +1960,12 @@ public class RandomRealEstateFactory
     realEstate.getPrice().setValue( getRandomDouble( 250, 9999 ) );
   }
 
+  /**
+   * Initialize a {@link HouseType} object with random values.
+   *
+   * @param realEstate
+   * object to initialize
+   */
   protected void initRealEstate( HouseType realEstate )
   {
     // Type houses require an <address> element without children or with a
@@ -1506,6 +2001,12 @@ public class RandomRealEstateFactory
     realEstate.getPrice().setValue( getRandomDouble( 10000, 9999999 ) );
   }
 
+  /**
+   * Initialize an {@link Industry} object with random values.
+   *
+   * @param realEstate
+   * object to initialize
+   */
   protected void initRealEstate( Industry realEstate )
   {
     realEstate.setAdditionalArea( getRandomDouble( 250, 5000 ) );
@@ -1631,6 +2132,12 @@ public class RandomRealEstateFactory
     //realEstate.getCalculatedPrice().setValue( value );
   }
 
+  /**
+   * Initialize an {@link Investment} object with random values.
+   *
+   * @param realEstate
+   * object to initialize
+   */
   protected void initRealEstate( Investment realEstate )
   {
     realEstate.setAdditionalArea( getRandomDouble( 250, 5000 ) );
@@ -1738,6 +2245,12 @@ public class RandomRealEstateFactory
     realEstate.getRentalIncomeTarget().setValue( getRandomDouble( 50000, 9999999 ) );
   }
 
+  /**
+   * Initialize a {@link LivingBuySite} object with random values.
+   *
+   * @param realEstate
+   * object to initialize
+   */
   protected void initRealEstate( LivingBuySite realEstate )
   {
     realEstate.setBuildingPermission( getRandomBoolean() );
@@ -1767,6 +2280,12 @@ public class RandomRealEstateFactory
     realEstate.getPrice().setValue( getRandomDouble( 50000, 999999 ) );
   }
 
+  /**
+   * Initialize a {@link LivingRentSite} object with random values.
+   *
+   * @param realEstate
+   * object to initialize
+   */
   protected void initRealEstate( LivingRentSite realEstate )
   {
     realEstate.setBuildingPermission( getRandomBoolean() );
@@ -1796,6 +2315,12 @@ public class RandomRealEstateFactory
     realEstate.getPrice().setValue( getRandomDouble( 500, 999999 ) );
   }
 
+  /**
+   * Initialize an {@link Office} object with random values.
+   *
+   * @param realEstate
+   * object to initialize
+   */
   protected void initRealEstate( Office realEstate )
   {
     realEstate.setAdditionalArea( getRandomDouble( 250, 5000 ) );
@@ -1923,6 +2448,12 @@ public class RandomRealEstateFactory
     //realEstate.getCalculatedPrice().setValue( value );
   }
 
+  /**
+   * Initialize a {@link SeniorCare} object with random values.
+   *
+   * @param realEstate
+   * object to initialize
+   */
   protected void initRealEstate( SeniorCare realEstate )
   {
     realEstate.setBalconyAvailable( getRandomBalconyAvailableType() );
@@ -1971,6 +2502,12 @@ public class RandomRealEstateFactory
     realEstate.getPrice().setValue( getRandomDouble( 500, 9999 ) );
   }
 
+  /**
+   * Initialize a {@link ShortTermAccommodation} object with random values.
+   *
+   * @param realEstate
+   * object to initialize
+   */
   protected void initRealEstate( ShortTermAccommodation realEstate )
   {
     realEstate.setBalcony( getRandomBoolean() );
@@ -2065,6 +2602,12 @@ public class RandomRealEstateFactory
     realEstate.getPrice().setValue( getRandomDouble( 200, 9999 ) );
   }
 
+  /**
+   * Initialize a {@link SpecialPurpose} object with random values.
+   *
+   * @param realEstate
+   * object to initialize
+   */
   protected void initRealEstate( SpecialPurpose realEstate )
   {
     realEstate.setAdditionalArea( getRandomDouble( 250, 5000 ) );
@@ -2183,6 +2726,12 @@ public class RandomRealEstateFactory
     //realEstate.getCalculatedPrice().setValue( value );
   }
 
+  /**
+   * Initialize a {@link Store} object with random values.
+   *
+   * @param realEstate
+   * object to initialize
+   */
   protected void initRealEstate( Store realEstate )
   {
     realEstate.setAdditionalArea( getRandomDouble( 250, 5000 ) );
@@ -2307,6 +2856,12 @@ public class RandomRealEstateFactory
     //realEstate.getCalculatedPrice().setValue( value );
   }
 
+  /**
+   * Initialize a {@link TradeSite} object with random values.
+   *
+   * @param realEstate
+   * object to initialize
+   */
   protected void initRealEstate( TradeSite realEstate )
   {
     realEstate.setBuildingPermission( getRandomBoolean() );
@@ -2350,6 +2905,12 @@ public class RandomRealEstateFactory
     }
   }
 
+  /**
+   * Enumeration of real estate types.
+   * <p>
+   * These real estate types are supported by the
+   * {@link RandomRealEstateFactory}.
+   */
   public static enum Type {
     APARTMENT_BUY(ApartmentBuy.class),
     APARTMENT_RENT(ApartmentRent.class),
@@ -2380,6 +2941,12 @@ public class RandomRealEstateFactory
       this.typeClass = typeClass;
     }
 
+    /**
+     * Creates an empty {@link RealEstate} object of this type.
+     *
+     * @return
+     * empty {@link RealEstate} object
+     */
     public RealEstate create()
     {
       try
@@ -2394,6 +2961,13 @@ public class RandomRealEstateFactory
       }
     }
 
+    /**
+     * Returns the corresponding JAXB class to create a real estate object of
+     * this type.
+     *
+     * @return
+     * JAXB class of this type
+     */
     public Class getTypeClass()
     {
       return typeClass;

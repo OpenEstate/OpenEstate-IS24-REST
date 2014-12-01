@@ -120,7 +120,6 @@ Todo
 ----
 
 -   further testing
--   add missing javadoc comments
 -   publish at Maven Central Repository
 -   implement other API's - e.g.
     [Expose API](http://api.immobilienscout24.de/our-apis/expose.html),

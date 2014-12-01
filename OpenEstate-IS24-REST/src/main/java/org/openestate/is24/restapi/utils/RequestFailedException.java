@@ -23,14 +23,31 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
+ * Exception for failed Webservice requests.
+ * <p>
+ * This exception is thrown, when a request to the Webservice failed. The
+ * exception holds further informations about the failed request.
  *
+ * @since 0.1
  * @author Andreas Rudolph <andy@openindex.de>
  */
 public class RequestFailedException extends Exception
 {
   private final static Logger LOGGER = LoggerFactory.getLogger( RequestFailedException.class );
+
+  /**
+   * Status code of the failed HTTP request.
+   */
   public final int statusCode;
+
+  /**
+   * Status message of the failed HTTP request.
+   */
   public final String statusMessage;
+
+  /**
+   * {@link Messages}, that were received in the body of the HTTP response.
+   */
   public final Messages responseMessages;
 
   public RequestFailedException( Response response, String message )

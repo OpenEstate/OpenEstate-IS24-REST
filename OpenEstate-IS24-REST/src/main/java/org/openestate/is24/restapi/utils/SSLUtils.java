@@ -20,6 +20,7 @@ import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 
 /**
+ * SSL helper methods.
  *
  * @since 0.1
  * @deprecated use {@link SslUtils} instead
@@ -33,7 +34,6 @@ public final class SSLUtils
   }
 
   /**
-   *
    * @deprecated use {@link SslUtils#disableCertificateChecks()} instead
    */
   @Deprecated
@@ -43,7 +43,6 @@ public final class SSLUtils
   }
 
   /**
-   *
    * @deprecated use {@link SslUtils#disableHostnameVerification()} instead
    */
   @Deprecated

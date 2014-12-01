@@ -58,16 +58,17 @@ public abstract class AbstractClient
   private OAuthProvider oAuthProvider = null;
 
   /**
-   * Create an instance of {@link AbstractClient}.
+   * Creates an instance of {@link AbstractClient}.
    *
    * @param apiBaseUrl
-   *  URL of the IS24-Webservice
+   * base URL of the IS24-Webservice (see {@link AbstractClient#LIVE_API} and
+   * {@link AbstractClient#SANDBOX_API})
    *
    * @param consumerToken
-   *  consumer token, that identifies the application at the IS24-Webservice
+   * consumer token, that identifies the application at the IS24-Webservice
    *
    * @param consumerSecret
-   *  consumer secret, that identifies the application at the IS24-Webservice
+   * consumer secret, that identifies the application at the IS24-Webservice
    */
   protected AbstractClient( String apiBaseUrl, String consumerToken, String consumerSecret )
   {
@@ -79,14 +80,14 @@ public abstract class AbstractClient
   }
 
   /**
-   * Initialize client with access credentials.
+   * Initializes client with access credentials.
    *
    * @param authorization
-   *  {@link Authorization} object, that contains the credentials for permanent
-   *  access to the IS24-Webservice
+   * {@link Authorization} object, that contains the credentials for permanent
+   * access to the IS24-Webservice
    *
    * @throws OAuthException
-   *  if intitalization of the authorization failed
+   * if intitalization of the authorization failed
    */
   public final void authorize( Authorization authorization ) throws OAuthException
   {
@@ -94,16 +95,16 @@ public abstract class AbstractClient
   }
 
   /**
-   * Initialize client with access credentials.
+   * Initializes client with access credentials.
    *
    * @param accessToken
-   *  token for permanent access to the IS24-Webservice
+   * token for permanent access to the IS24-Webservice
    *
    * @param accessSecret
-   *  secret for permanent access to the IS24-Webservice
+   * secret for permanent access to the IS24-Webservice
    *
    * @throws OAuthException
-   *  if intitalization of the authorization failed
+   * if intitalization of the authorization failed
    */
   public final void authorize( String accessToken, String accessSecret ) throws OAuthException
   {
@@ -115,21 +116,21 @@ public abstract class AbstractClient
   }
 
   /**
-   * Initialize client after a succesful verification.
+   * Initializes client after a succesful verification.
    *
    * @param verification
-   *  {@link Verification} object, that contains the credentials for temporary
-   *  access to the IS24-Webservice during verification
+   * {@link Verification} object, that contains the credentials for temporary
+   * access to the IS24-Webservice during verification
    *
    * @param verificationCode
-   *  verification code, that was received after the verification was finished
+   * verification code, that was received after the verification was finished
    *
    * @return
-   *  {@link Authorization} object, that contains the access credentials for
-   *  future use
+   * {@link Authorization} object, that contains the access credentials for
+   * future use
    *
    * @throws OAuthException
-   *  if intitalization of the authorization failed
+   * if intitalization of the authorization failed
    */
   public final Authorization authorizeAfterVerification( Verification verification, String verificationCode ) throws OAuthException
   {
@@ -137,23 +138,23 @@ public abstract class AbstractClient
   }
 
   /**
-   * Initialize client after a succesful verification.
+   * Initializes client after a succesful verification.
    *
    * @param verificationToken
-   *  token for temporary access to the IS24-Webservice during verification
+   * token for temporary access to the IS24-Webservice during verification
    *
    * @param verificationSecret
-   *  secret for temporary access to the IS24-Webservice during verification
+   * secret for temporary access to the IS24-Webservice during verification
    *
    * @param verificationCode
-   *  verification code, that was received after the verification was finished
+   * verification code, that was received after the verification was finished
    *
    * @return
-   *  {@link Authorization} object, that contains the access credentials for
-   *  future use
+   * {@link Authorization} object, that contains the access credentials for
+   * future use
    *
    * @throws OAuthException
-   *  if intitalization of the authorization failed
+   * if intitalization of the authorization failed
    */
   public final Authorization authorizeAfterVerification( String verificationToken, String verificationSecret, String verificationCode ) throws OAuthException
   {
@@ -174,19 +175,19 @@ public abstract class AbstractClient
   }
 
   /**
-   * Create an {@link OAuthConsumer} object for access credentials.
+   * Creates an {@link OAuthConsumer} object for access credentials.
    * <p>
    * Different implementations of {@link AbstractClient} may create different
    * {@link OAuthConsumer} objects.
    *
    * @param token
-   *  access or verification token
+   * access or verification token
    *
    * @param secret
-   *  access or verification secret
+   * access or verification secret
    *
    * @return
-   *  an instance of {@link OAuthConsumer} for the provided credentials
+   * an instance of {@link OAuthConsumer} for the provided credentials
    */
   protected OAuthConsumer buildOAuthConsumer( String token, String secret )
   {
@@ -194,16 +195,16 @@ public abstract class AbstractClient
   }
 
   /**
-   * Create an {@link OAuthProvider} for the IS24-Webservice.
+   * Creates an {@link OAuthProvider} for the IS24-Webservice.
    * <p>
    * Different implementations of {@link AbstractClient} may create different
    * {@link OAuthProvider} objects.
    *
    * @param apiBaseUrl
-   *  URL of the IS24-Webservice
+   * URL of the IS24-Webservice
    *
    * @return
-   *  an instance of {@link OAuthProvider} for the provided URL
+   * an instance of {@link OAuthProvider} for the provided URL
    */
   protected OAuthProvider buildOAuthProvider( String apiBaseUrl )
   {
@@ -214,14 +215,14 @@ public abstract class AbstractClient
   }
 
   /**
-   * Initiate a verification process.
+   * Initiates a verification process.
    *
    * @return
-   *  an instance of {@link Verification} that contains informations about the
-   *  initiated verification process
+   * an instance of {@link Verification} that contains informations about the
+   * initiated verification process
    *
    * @throws OAuthException
-   *  if initiation failed
+   * if initiation failed
    */
   public final Verification fetchVerification() throws OAuthException
   {
@@ -229,18 +230,18 @@ public abstract class AbstractClient
   }
 
   /**
-   * Initiate a verification process.
+   * Initiates a verification process.
    *
    * @param callbackUrl
-   *  the URL, where the user is redirected to, after the verification was
-   *  finished / cancelled
+   * the URL, where the user is redirected to, after the verification was
+   * finished / cancelled
    *
    * @return
-   *  an instance of {@link Verification} that contains informations about the
-   *  initiated verification process
+   * an instance of {@link Verification} that contains informations about the
+   * initiated verification process
    *
    * @throws OAuthException
-   *  if initiation failed
+   * if initiation failed
    */
   public final Verification fetchVerification( String callbackUrl ) throws OAuthException
   {
@@ -251,10 +252,10 @@ public abstract class AbstractClient
   }
 
   /**
-   * Get URL of the configured IS24-Webservice.
+   * Returns URL of the configured IS24-Webservice.
    *
    * @return
-   *  URL of the configured IS24-Webservice
+   * URL of the configured IS24-Webservice
    */
   public final String getApiBaseUrl()
   {
@@ -262,13 +263,13 @@ public abstract class AbstractClient
   }
 
   /**
-   * Get {@link OAuthConsumer} of the client for the current authorization.
+   * Returns {@link OAuthConsumer} of the client for the current authorization.
    *
    * @return
-   *  {@link OAuthConsumer} instance of the client
+   * {@link OAuthConsumer} instance of the client
    *
    * @throws OAuthNotAuthorizedException
-   *  if the client is not authorized
+   * if the client is not authorized
    */
   public final OAuthConsumer getAuthConsumer() throws OAuthNotAuthorizedException
   {
@@ -277,13 +278,13 @@ public abstract class AbstractClient
   }
 
   /**
-   * Get {@link OAuthProvider} of the client for the current authorization.
+   * Returns {@link OAuthProvider} of the client for the current authorization.
    *
    * @return
-   *  {@link OAuthProvider} instance of the client
+   * {@link OAuthProvider} instance of the client
    *
    * @throws OAuthNotAuthorizedException
-   *  if the client is not authorized
+   * if the client is not authorized
    */
   public final OAuthProvider getAuthProvider() throws OAuthNotAuthorizedException
   {
@@ -292,13 +293,13 @@ public abstract class AbstractClient
   }
 
   /**
-   * Encode a string value for use in an URL.
+   * Encodes a string value for use in an URL.
    *
    * @param value
-   *  the value to encode
+   * the value to encode
    *
    * @return
-   *  the encoded value
+   * the encoded value
    */
   public static String getEncodedParameterValue( String value )
   {
@@ -315,12 +316,12 @@ public abstract class AbstractClient
   }
 
   /**
-   * Get encoding for transferred data.
+   * Returns encoding for transferred data.
    * <p>
    * This function always returns {@link XmlUtils#DEFAULT_ENCODING}.
    *
    * @return
-   *  encoding for transferred data
+   * encoding for transferred data
    */
   public static String getEncoding()
   {
@@ -328,98 +329,98 @@ public abstract class AbstractClient
   }
 
   /**
-   * Send a XML string to the IS24-Webservice.
+   * Sends a XML string to the IS24-Webservice.
    * <p>
    * This function must be implemendet by specific implementations of
    * {@link AbstractClient}.
    *
    * @param url
-   *  URL of the IS24-Webservice, where the request is sent to
+   * URL of the IS24-Webservice, where the request is sent to
    *
    * @param method
-   *  HTTP method of the outgoing request
+   * HTTP method of the outgoing request
    *
    * @param xml
-   *  XML string, that is sent to the IS24-Webservice
+   * XML string, that is sent to the IS24-Webservice
    *
    * @return
-   *  response, that was received from the IS24-Webservice
+   * response, that was received from the IS24-Webservice
    *
    * @throws IOException
-   *  if communication with IS24-Webservice failed
+   * if communication with IS24-Webservice failed
    *
    * @throws OAuthException
-   *  if authorization failed
+   * if authorization failed
    */
   protected abstract Response sendXmlRequest( URL url, RequestMethod method, String xml ) throws IOException, OAuthException;
 
   /**
-   * Send a XML string together with a file to the IS24-Webservice.
+   * Sends a XML string together with a file to the IS24-Webservice.
    * <p>
    * This function must be implemendet by specific implementations of
    * {@link AbstractClient}.
    *
    * @param url
-   *  URL of the IS24-Webservice, where the request is sent to
+   * URL of the IS24-Webservice, where the request is sent to
    *
    * @param method
-   *        the HTTP method of the outgoing request
+   * the HTTP method of the outgoing request
    *
    * @param xml
-   *        the XML string, that is sent to the IS24-Webservice
+   * the XML string, that is sent to the IS24-Webservice
    *
    * @param input
-   *        the file content, that is sent to the IS24-Webservice
+   * the file content, that is sent to the IS24-Webservice
    *
    * @param fileName
-   *        the name of the file, that is sent to the IS24-Webservice
+   * the name of the file, that is sent to the IS24-Webservice
    *
    * @param mimeType
-   *        the MIME-type of the file, that is sent to the IS24-Webservice
+   * the MIME-type of the file, that is sent to the IS24-Webservice
    *
    * @return
-   *        the response, that was received from the IS24-Webservice
+   * the response, that was received from the IS24-Webservice
    *
    * @throws IOException
-   *  if communication with IS24-Webservice failed
+   * if communication with IS24-Webservice failed
    *
    * @throws OAuthException
-   *  if authorization failed
+   * if authorization failed
    */
   protected abstract Response sendXmlAttachmentRequest( URL url, RequestMethod method, String xml, InputStream input, String fileName, String mimeType ) throws IOException, OAuthException;
 
   /**
-   * Send a video with an authentication value to the IS24-Webservice.
+   * Sends a video with an authentication value to the IS24-Webservice.
    * <p>
    * This function must be implemendet by specific implementations of
    * {@link AbstractClient}.
    *
    * @param url
-   *  URL of the IS24-Webservice, where the request is sent to
+   * URL of the IS24-Webservice, where the request is sent to
    *
    * @param method
-   *  HTTP method of the outgoing request
+   * HTTP method of the outgoing request
    *
    * @param auth
-   *  authentication value, that is sent to the IS24-Webservice
+   * authentication value, that is sent to the IS24-Webservice
    *
    * @param input
-   *  file content, that is sent to the IS24-Webservice
+   * file content, that is sent to the IS24-Webservice
    *
    * @param fileName
-   *  name of the file, that is sent to the IS24-Webservice
+   * name of the file, that is sent to the IS24-Webservice
    *
    * @param fileSize
-   *  size of the file, that is sent to the IS24-Webservice (in bytes)
+   * size of the file, that is sent to the IS24-Webservice (in bytes)
    *
    * @return
-   *  response, that was received from the IS24-Webservice
+   * response, that was received from the IS24-Webservice
    *
    * @throws IOException
-   *  if communication with IS24-Webservice failed
+   * if communication with IS24-Webservice failed
    *
    * @throws OAuthException
-   *  if authorization failed
+   * if authorization failed
    */
   protected abstract Response sendVideoUploadRequest( URL url, RequestMethod method, String auth, InputStream input, String fileName, long fileSize ) throws IOException, OAuthException;
 }

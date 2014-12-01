@@ -57,8 +57,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * ExportHandler.
+ * Handler for bulk exports.
+ * <p>
+ * The {@link ExportHandler} is part of the high level API for bulk exports of real
+ * estate data.
+ * <p>
+ * A previously created {@ExportPool} can be processed with the
+ * {@link ExportHandler#export(org.openestate.is24.restapi.AbstractClient, org.openestate.is24.restapi.utils.ExportPool, boolean, boolean)}
+ * method. The {@link ExportHandler} will launch the required low level
+ * operations of the {@ImportExport}-API for each pooled object.
  *
+ * @since 0.2
  * @author Andreas Rudolph <andy@openindex.de>
  */
 public class ExportHandler
@@ -73,15 +82,36 @@ public class ExportHandler
   private long totalProgress = 0;
   private boolean useNewEnergySourceEnev2014Values = true;
 
+  /**
+   * Creates a new {@link ExportHandler}.
+   */
   public ExportHandler()
   {
   }
 
+  /**
+   * Calback method to track progress during the export process.
+   * <p>
+   * This method may be overridden by inheriting classes in order to track the
+   * progress of the export process.
+   *
+   * @param value
+   * value of additional progress
+   */
   protected final void addProgress( long value )
   {
     this.setProgress( this.progress + Math.abs( value ) );
   }
 
+  /**
+   * Archivates a real estate object at the Webservice.
+   *
+   * @param externalObjectId
+   * external real estate ID
+   *
+   * @throws IOException
+   * if the operation failed
+   */
   protected void doArchiveObject( String externalObjectId ) throws IOException
   {
     LOGGER.info( "archivating object '" + externalObjectId + "'" );
@@ -235,6 +265,18 @@ public class ExportHandler
     }
   }
 
+  /**
+   * Downloads an {@link URL} into a {@link File}.
+   *
+   * @param url
+   * URL to download
+   *
+   * @return
+   * downloaded file
+   *
+   * @throws IOException
+   * if the operation failed
+   */
   protected File doDownloadFile( URL url ) throws IOException
   {
     if (url==null) return null;
@@ -258,6 +300,15 @@ public class ExportHandler
     }
   }
 
+  /**
+   * Removes a real estate object from the Webservice.
+   *
+   * @param externalObjectId
+   * external real estate ID
+   *
+   * @throws IOException
+   * if the operation failed
+   */
   protected void doRemoveObject( String externalObjectId ) throws IOException
   {
     LOGGER.info( "removing object '" + externalObjectId + "'" );
@@ -345,6 +396,16 @@ public class ExportHandler
     }
   }
 
+  /**
+   * Returns external ID's of real estates from the Webservice, that were not
+   * changed during the current export process.
+   *
+   * @return
+   * external ID's of untouched real estates
+   *
+   * @throws IOException
+   * if the operation failed
+   */
   protected String[] doListUntouchedObjects() throws IOException
   {
     try
@@ -439,6 +500,15 @@ public class ExportHandler
     }
   }
 
+  /**
+   * Saves a contact person to the Webservice.
+   *
+   * @param externalContactId
+   * external contact ID
+   *
+   * @throws IOException
+   * if the operation failed
+   */
   protected void doUpdateContact( String externalContactId ) throws IOException
   {
     LOGGER.info( "updating contact '" + externalContactId + "'" );
@@ -580,6 +650,15 @@ public class ExportHandler
     }
   }
 
+  /**
+   * Saves a real estate to the Webservice.
+   *
+   * @param externalObjectId
+   * external real estate ID
+   *
+   * @throws IOException
+   * if the operation failed
+   */
   protected void doUpdateObject( String externalObjectId ) throws IOException
   {
     LOGGER.info( "updating object '" + externalObjectId + "'" );
@@ -1185,6 +1264,28 @@ public class ExportHandler
     }
   }
 
+  /**
+   * Starts the export of an {@link ExportPool}.
+   *
+   * @param client
+   * client, that is used for transfers
+   *
+   * @param pool
+   * pool with exportable data
+   *
+   * @param archivateUnpublishedObjects
+   * archivate old real estates instead of removal
+   *
+   * @param unpublishUntouchedObjects
+   * archivate or remove untouched real estates (means full transfer instead of
+   * incremental)
+   *
+   * @return
+   * messages, that occured during the export process
+   *
+   * @throws IOException
+   * if the operation failed
+   */
   public ExportMessage[] export( AbstractClient client, ExportPool pool, boolean archivateUnpublishedObjects, boolean unpublishUntouchedObjects ) throws IOException
   {
     this.client = client;
@@ -1241,16 +1342,38 @@ public class ExportHandler
     return this.getMessages();
   }
 
+  /**
+   * Returns the client of the current export process.
+   *
+   * @return
+   * client
+   */
   protected final AbstractClient getClient()
   {
     return client;
   }
 
+  /**
+   * Returns messages, that occured during the last export process.
+   *
+   * @return
+   * messages
+   */
   public final ExportMessage[] getMessages()
   {
     return this.messages.toArray( new ExportMessage[this.messages.size()] );
   }
 
+  /**
+   * Returns messages for a certain contact person, that occured during the last
+   * export process.
+   *
+   * @param externalContactId
+   * external contact ID
+   *
+   * @return
+   * messages
+   */
   public final ExportMessage[] getMessagesForContact( String externalContactId )
   {
     externalContactId = StringUtils.trimToNull( externalContactId );
@@ -1263,6 +1386,16 @@ public class ExportHandler
     return msgs.toArray( new ExportMessage[msgs.size()] );
   }
 
+  /**
+   * Returns messages for a certain real estate, that occured during the last
+   * export process.
+   *
+   * @param externalObjectId
+   * real estate ID
+   *
+   * @return
+   * messages
+   */
   public final ExportMessage[] getMessagesForObject( String externalObjectId )
   {
     externalObjectId = StringUtils.trimToNull( externalObjectId );
@@ -1275,6 +1408,12 @@ public class ExportHandler
     return msgs.toArray( new ExportMessage[msgs.size()] );
   }
 
+  /**
+   * Returns general messages, that occured during the last export process.
+   *
+   * @return
+   * messages
+   */
   public final ExportMessage[] getMessagesGeneral()
   {
     List<ExportMessage> msgs = new ArrayList<ExportMessage>();
@@ -1285,26 +1424,58 @@ public class ExportHandler
     return msgs.toArray( new ExportMessage[msgs.size()] );
   }
 
+  /**
+   * Returns the pool of the current export process.
+   *
+   * @return
+   * pool
+   */
   protected final ExportPool getPool()
   {
     return pool;
   }
 
+  /**
+   * Returns the progress of the current export process.
+   *
+   * @return
+   * current progress value
+   */
   protected final long getProgress()
   {
     return progress;
   }
 
+  /**
+   * Returns the total progress of the current export process.
+   *
+   * @return
+   * total progress value
+   */
   protected final long getTotalProgress()
   {
     return totalProgress;
   }
 
+  /**
+   * Checks, if all values for "energySourceEnev2014" are enabled.
+   *
+   * @return
+   * true, if all values for "energySourceEnev2014" are enabled
+   *
+   * @see <a href="http://api.immobilienscout24.de/useful/energy-certificate-2014.html">notes about Energy Certificate 2014</a>
+   */
   public boolean isUseNewEnergySourceEnev2014Values()
   {
     return useNewEnergySourceEnev2014Values;
   }
 
+  /**
+   * Sends {@link Messages} from a Webservice response to the local logger.
+   *
+   * @param messages
+   * messages
+   */
   private void logMessagesAsError( Messages messages )
   {
     if (messages==null || messages.getMessage().isEmpty()) return;
@@ -1314,16 +1485,52 @@ public class ExportHandler
     }
   }
 
+  /**
+   * Calback method, that is called after the progress has changed.
+   * <p>
+   * This method may be overridden by inheriting classes in order to track the
+   * progress of the export process.
+   *
+   * @param progress
+   * current progress value
+   *
+   * @param totalProgress
+   * total progress value
+   */
   protected void progressUpdated( long progress, long totalProgress )
   {
   }
 
-  protected void putContactMessage( String contactId, ExportMessage.Code code, String msg )
+  /**
+   * Registers a message for a contact person.
+   *
+   * @param externalContactId
+   * external contact ID
+   *
+   * @param code
+   * message code
+   *
+   * @param msg
+   * message text
+   */
+  protected void putContactMessage( String externalContactId, ExportMessage.Code code, String msg )
   {
-    this.messages.add( ExportMessage.newContactMessage( contactId, code, msg ) );
+    this.messages.add( ExportMessage.newContactMessage( externalContactId, code, msg ) );
   }
 
-  protected void putContactMessage( String contactId, ExportMessage.Code code, Messages msgs )
+  /**
+   * Registers messages for a contact person.
+   *
+   * @param externalContactId
+   * external contact ID
+   *
+   * @param code
+   * message code
+   *
+   * @param msgs
+   * messages, that were received from the Webservice
+   */
+  protected void putContactMessage( String externalContactId, ExportMessage.Code code, Messages msgs )
   {
     if (msgs==null) return;
     for (Message message : msgs.getMessage())
@@ -1339,15 +1546,33 @@ public class ExportHandler
         txt += is24Msg;
       }
 
-      this.putContactMessage( contactId, code, txt );
+      this.putContactMessage( externalContactId, code, txt );
     }
   }
 
+  /**
+   * Registers a general message.
+   *
+   * @param code
+   * message code
+   *
+   * @param msg
+   * message text
+   */
   protected void putGeneralMessage( ExportMessage.Code code, String msg )
   {
     this.messages.add( ExportMessage.newGeneralMessage( msg, code ) );
   }
 
+  /**
+   * Registers general messages.
+   *
+   * @param code
+   * message code
+   *
+   * @param msgs
+   * messages, that were received from the Webservice
+   */
   protected void putGeneralMessage( ExportMessage.Code code, Messages msgs )
   {
     if (msgs==null) return;
@@ -1368,12 +1593,36 @@ public class ExportHandler
     }
   }
 
-  protected void putObjectMessage( String objectId, ExportMessage.Code code, String msg )
+  /**
+   * Registers a message for a real estate.
+   *
+   * @param externalObjectId
+   * external real estate ID
+   *
+   * @param code
+   * message code
+   *
+   * @param msg
+   * message text
+   */
+  protected void putObjectMessage( String externalObjectId, ExportMessage.Code code, String msg )
   {
-    this.messages.add( ExportMessage.newObjectMessage( objectId, code, msg ) );
+    this.messages.add( ExportMessage.newObjectMessage( externalObjectId, code, msg ) );
   }
 
-  protected void putObjectMessage( String objectId, ExportMessage.Code code, Messages msgs )
+  /**
+   * Registers messages for a real estate.
+   *
+   * @param externalObjectId
+   * external real estate ID
+   *
+   * @param code
+   * message code
+   *
+   * @param msgs
+   * messages, that were received from the Webservice
+   */
+  protected void putObjectMessage( String externalObjectId, ExportMessage.Code code, Messages msgs )
   {
     if (msgs==null) return;
     for (Message message : msgs.getMessage())
@@ -1389,10 +1638,16 @@ public class ExportHandler
         txt += is24Msg;
       }
 
-      this.putObjectMessage( objectId, code, txt );
+      this.putObjectMessage( externalObjectId, code, txt );
     }
   }
 
+  /**
+   * Sets the progress of the current export process.
+   *
+   * @param progress
+   * current progress value
+   */
   protected final void setProgress( long progress )
   {
     progress = Math.abs( progress );
@@ -1403,18 +1658,16 @@ public class ExportHandler
     progressUpdated( this.progress, this.totalProgress );
   }
 
+  /**
+   * Enables / disables all values for "energySourceEnev2014".
+   *
+   * @param useNewEnergySourceEnev2014Values
+   * enabled / disabled
+   *
+   * @see <a href="http://api.immobilienscout24.de/useful/energy-certificate-2014.html">notes about Energy Certificate 2014</a>
+   */
   public void setUseNewEnergySourceEnev2014Values( boolean useNewEnergySourceEnev2014Values )
   {
     this.useNewEnergySourceEnev2014Values = useNewEnergySourceEnev2014Values;
-  }
-
-  public static enum ErrorCode
-  {
-
-  }
-
-  public static enum ErrorLevel
-  {
-    NOTICE, WARNING, ERROR;
   }
 }

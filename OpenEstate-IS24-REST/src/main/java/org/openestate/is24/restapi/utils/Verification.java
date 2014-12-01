@@ -17,7 +17,9 @@
 package org.openestate.is24.restapi.utils;
 
 /**
+ * Token for access verification at the Webservice.
  *
+ * @since 0.1
  * @author Andreas Rudolph <andy@openindex.de>
  */
 public final class Verification

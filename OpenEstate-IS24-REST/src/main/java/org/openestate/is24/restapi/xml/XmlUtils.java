@@ -28,6 +28,7 @@ import org.openestate.is24.restapi.xml.common.RealtorContactDetails;
 import org.openestate.is24.restapi.xml.realestates.RealEstate;
 
 /**
+ * XML helper methods.
  *
  * @since 0.1
  * @deprecated use {@link org.openestate.is24.restapi.utils.XmlUtils} instead
@@ -41,7 +42,6 @@ public final class XmlUtils
   }
 
   /**
-   *
    * @deprecated use {@link org.openestate.is24.restapi.utils.XmlUtils#createMarshaller()} instead
    */
   @Deprecated
@@ -51,7 +51,6 @@ public final class XmlUtils
   }
 
   /**
-   *
    * @deprecated use {@link org.openestate.is24.restapi.utils.XmlUtils#createMarshaller(java.lang.String, boolean)} instead
    */
   @Deprecated
@@ -61,7 +60,6 @@ public final class XmlUtils
   }
 
   /**
-   *
    * @deprecated use {@link org.openestate.is24.restapi.utils.XmlUtils#createUnmarshaller()} instead
    */
   @Deprecated
@@ -71,7 +69,6 @@ public final class XmlUtils
   }
 
   /**
-   *
    * @deprecated use {@link org.openestate.is24.restapi.utils.XmlUtils#getContext()} instead
    */
   @Deprecated
@@ -81,7 +78,6 @@ public final class XmlUtils
   }
 
   /**
-   *
    * @deprecated use {@link org.openestate.is24.restapi.utils.XmlUtils#initContext(java.lang.ClassLoader)} instead
    */
   @Deprecated
@@ -91,7 +87,6 @@ public final class XmlUtils
   }
 
   /**
-   *
    * @deprecated use {@link org.openestate.is24.restapi.utils.XmlUtils#marshal(java.lang.Object)} instead
    */
   @Deprecated
@@ -101,7 +96,6 @@ public final class XmlUtils
   }
 
   /**
-   *
    * @deprecated use {@link org.openestate.is24.restapi.utils.XmlUtils#marshal(java.lang.Object, java.lang.String)} instead
    */
   @Deprecated
@@ -111,7 +105,6 @@ public final class XmlUtils
   }
 
   /**
-   *
    * @deprecated use {@link org.openestate.is24.restapi.utils.XmlUtils#marshal(java.lang.Object, java.lang.String, boolean)} instead
    */
   @Deprecated
@@ -121,7 +114,6 @@ public final class XmlUtils
   }
 
   /**
-   *
    * @deprecated use {@link org.openestate.is24.restapi.utils.XmlUtils#unmarshal(java.lang.String)} instead
    */
   @Deprecated
@@ -131,7 +123,6 @@ public final class XmlUtils
   }
 
   /**
-   *
    * @deprecated use {@link org.openestate.is24.restapi.utils.XmlUtils#writeXml(org.openestate.is24.restapi.xml.common.Attachment, java.io.OutputStream)} instead
    */
   @Deprecated
@@ -141,7 +132,6 @@ public final class XmlUtils
   }
 
   /**
-   *
    * @deprecated use {@link org.openestate.is24.restapi.utils.XmlUtils#writeXml(org.openestate.is24.restapi.xml.common.Attachment, java.lang.String, java.io.OutputStream)} instead
    */
   @Deprecated
@@ -151,7 +141,6 @@ public final class XmlUtils
   }
 
   /**
-   *
    * @deprecated use {@link org.openestate.is24.restapi.utils.XmlUtils#writeXml(org.openestate.is24.restapi.xml.common.Attachment, java.lang.String, boolean, java.io.OutputStream)} instead
    */
   @Deprecated
@@ -161,7 +150,6 @@ public final class XmlUtils
   }
 
   /**
-   *
    * @deprecated use {@link org.openestate.is24.restapi.utils.XmlUtils#writeXml(org.openestate.is24.restapi.xml.common.Attachment, javax.xml.bind.Marshaller, java.io.OutputStream)} instead
    */
   @Deprecated
@@ -171,7 +159,6 @@ public final class XmlUtils
   }
 
   /**
-   *
    * @deprecated use {@link org.openestate.is24.restapi.utils.XmlUtils#writeXml(org.openestate.is24.restapi.xml.common.PublishObject, java.io.OutputStream)} instead
    */
   @Deprecated
@@ -181,7 +168,6 @@ public final class XmlUtils
   }
 
   /**
-   *
    * @deprecated use {@link org.openestate.is24.restapi.utils.XmlUtils#writeXml(org.openestate.is24.restapi.xml.common.PublishObject, java.lang.String, java.io.OutputStream)} instead
    */
   @Deprecated
@@ -191,7 +177,6 @@ public final class XmlUtils
   }
 
   /**
-   *
    * @deprecated use {@link org.openestate.is24.restapi.utils.XmlUtils#writeXml(org.openestate.is24.restapi.xml.common.PublishObject, java.lang.String, boolean, java.io.OutputStream)} instead
    */
   @Deprecated
@@ -201,7 +186,6 @@ public final class XmlUtils
   }
 
   /**
-   *
    * @deprecated use {@link org.openestate.is24.restapi.utils.XmlUtils#writeXml(org.openestate.is24.restapi.xml.common.PublishObject, javax.xml.bind.Marshaller, java.io.OutputStream)} instead
    */
   @Deprecated
@@ -211,7 +195,6 @@ public final class XmlUtils
   }
 
   /**
-   *
    * @deprecated use {@link org.openestate.is24.restapi.utils.XmlUtils#writeXml(org.openestate.is24.restapi.xml.common.RealtorContactDetails, java.io.OutputStream)} instead
    */
   @Deprecated
@@ -221,7 +204,6 @@ public final class XmlUtils
   }
 
   /**
-   *
    * @deprecated use {@link org.openestate.is24.restapi.utils.XmlUtils#writeXml(org.openestate.is24.restapi.xml.common.RealtorContactDetails, java.lang.String, java.io.OutputStream)} instead
    */
   @Deprecated
@@ -231,7 +213,6 @@ public final class XmlUtils
   }
 
   /**
-   *
    * @deprecated use {@link org.openestate.is24.restapi.utils.XmlUtils#writeXml(org.openestate.is24.restapi.xml.common.RealtorContactDetails, java.lang.String, boolean, java.io.OutputStream)} instead
    */
   @Deprecated
@@ -241,7 +222,6 @@ public final class XmlUtils
   }
 
   /**
-   *
    * @deprecated use {@link org.openestate.is24.restapi.utils.XmlUtils#writeXml(org.openestate.is24.restapi.xml.common.RealtorContactDetails, javax.xml.bind.Marshaller, java.io.OutputStream)} instead
    */
   @Deprecated
@@ -251,7 +231,6 @@ public final class XmlUtils
   }
 
   /**
-   *
    * @deprecated use {@link org.openestate.is24.restapi.utils.XmlUtils#writeXml(org.openestate.is24.restapi.xml.realestates.RealEstate, java.io.OutputStream)} instead
    */
   @Deprecated
@@ -261,7 +240,6 @@ public final class XmlUtils
   }
 
   /**
-   *
    * @deprecated use {@link org.openestate.is24.restapi.utils.XmlUtils#writeXml(org.openestate.is24.restapi.xml.realestates.RealEstate, java.lang.String, java.io.OutputStream)} instead
    */
   @Deprecated
@@ -271,7 +249,6 @@ public final class XmlUtils
   }
 
   /**
-   *
    * @deprecated use {@link org.openestate.is24.restapi.utils.XmlUtils#writeXml(org.openestate.is24.restapi.xml.realestates.RealEstate, java.lang.String, boolean, java.io.OutputStream)} instead
    */
   @Deprecated
@@ -281,7 +258,6 @@ public final class XmlUtils
   }
 
   /**
-   *
    * @deprecated use {@link org.openestate.is24.restapi.utils.XmlUtils#writeXml(org.openestate.is24.restapi.xml.realestates.RealEstate, javax.xml.bind.Marshaller, java.io.OutputStream)} instead
    */
   @Deprecated
