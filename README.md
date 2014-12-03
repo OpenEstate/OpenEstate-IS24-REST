@@ -84,7 +84,8 @@ Dependencies
 -   [jaxb2-basics-runtime 0.9.1](https://github.com/highsource/jaxb2-basics)
 -   [oauth-signpost 1.2.1.2](https://code.google.com/p/oauth-signpost/)
 -   [SLF4J 1.7.7](http://www.slf4j.org/)
--   [Lorem 1.2](https://github.com/mdeanda/lorem)
+-   [Lorem 1.2](https://github.com/mdeanda/lorem) (only required by
+    [`RandomRealEstateFactory.java`](OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/utils/RandomRealEstateFactory.java))
 -   [Apache HttpComponents 4.2](http://hc.apache.org/httpcomponents-client-4.2.x/) or
     [Apache HttpComponents 4.3](http://hc.apache.org/httpcomponents-client-4.3.x/) (optional)
 
