@@ -118,7 +118,10 @@ public final class ImportExport
     public static Messages deleteById( AbstractClient client, String externalRealEstateId, long is24AttachmentId ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/ext-" + externalRealEstateId + "/attachment/" + is24AttachmentId;
+      String url = client.getApiBaseUrl()
+        + "/api/offer/v1.0/user/me/realestate"
+        + "/ext-" + AbstractClient.getUrlEncodedValue( externalRealEstateId )
+        + "/attachment/" + is24AttachmentId;
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.DELETE, null );
@@ -183,7 +186,9 @@ public final class ImportExport
     public static Messages deleteById( AbstractClient client, long is24RealEstateIdId, long is24AttachmentId ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/" + is24RealEstateIdId + "/attachment/" + is24AttachmentId;
+      String url = client.getApiBaseUrl()
+        + "/api/offer/v1.0/user/me/realestate/" + is24RealEstateIdId
+        + "/attachment/" + is24AttachmentId;
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.DELETE, null );
@@ -243,7 +248,10 @@ public final class ImportExport
     public static Attachments getAll( AbstractClient client, String externalRealEstateId ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/ext-" + externalRealEstateId + "/attachment";
+      String url = client.getApiBaseUrl()
+        + "/api/offer/v1.0/user/me/realestate"
+        + "/ext-" + AbstractClient.getUrlEncodedValue( externalRealEstateId )
+        + "/attachment";
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.GET, null );
@@ -305,7 +313,9 @@ public final class ImportExport
     public static Attachments getAll( AbstractClient client, long is24RealEstateIdId ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/" + is24RealEstateIdId + "/attachment";
+      String url = client.getApiBaseUrl()
+        + "/api/offer/v1.0/user/me/realestate/" + is24RealEstateIdId
+        + "/attachment";
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.GET, null );
@@ -370,7 +380,10 @@ public final class ImportExport
     public static Attachment getById( AbstractClient client, String externalRealEstateId, long is24AttachmentId ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/ext-" + externalRealEstateId + "/attachment/" + is24AttachmentId;
+      String url = client.getApiBaseUrl()
+        + "/api/offer/v1.0/user/me/realestate"
+        + "/ext-" + AbstractClient.getUrlEncodedValue( externalRealEstateId )
+        + "/attachment/" + is24AttachmentId;
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.GET, null );
@@ -436,7 +449,9 @@ public final class ImportExport
     public static Attachment getById( AbstractClient client, long is24RealEstateIdId, long is24AttachmentId ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/" + is24RealEstateIdId + "/attachment/" + is24AttachmentId;
+      String url = client.getApiBaseUrl()
+        + "/api/offer/v1.0/user/me/realestate/" + is24RealEstateIdId
+        + "/attachment/" + is24AttachmentId;
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.GET, null );
@@ -509,7 +524,10 @@ public final class ImportExport
     public static Messages post( AbstractClient client, String externalRealEstateId, Attachment attachment, InputStream input, String fileName, String mimeType ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/ext-" + externalRealEstateId + "/attachment";
+      String url = client.getApiBaseUrl()
+        + "/api/offer/v1.0/user/me/realestate"
+        + "/ext-" + AbstractClient.getUrlEncodedValue( externalRealEstateId )
+        + "/attachment";
 
       // write object into xml
       String xml = XmlUtils.marshal( attachment, AbstractClient.getEncoding() );
@@ -586,7 +604,9 @@ public final class ImportExport
     public static Messages post( AbstractClient client, long is24RealEstateIdId, Attachment attachment, InputStream input, String fileName, String mimeType ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/" + is24RealEstateIdId + "/attachment";
+      String url = client.getApiBaseUrl()
+        + "/api/offer/v1.0/user/me/realestate/" + is24RealEstateIdId
+        + "/attachment";
 
       // write object into xml
       String xml = XmlUtils.marshal( attachment, AbstractClient.getEncoding() );
@@ -654,7 +674,10 @@ public final class ImportExport
     public static Messages putById( AbstractClient client, String externalRealEstateId, long attachmentId, Attachment attachment ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/ext-" + externalRealEstateId + "/attachment/" + attachmentId;
+      String url = client.getApiBaseUrl()
+        + "/api/offer/v1.0/user/me/realestate"
+        + "/ext-" + AbstractClient.getUrlEncodedValue( externalRealEstateId )
+        + "/attachment/" + attachmentId;
 
       // write object into xml
       String xml = XmlUtils.marshal( attachment, AbstractClient.getEncoding() );
@@ -723,7 +746,9 @@ public final class ImportExport
     public static Messages putById( AbstractClient client, long is24RealEstateIdId, long attachmentId, Attachment attachment ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/" + is24RealEstateIdId + "/attachment/" + attachmentId;
+      String url = client.getApiBaseUrl()
+        + "/api/offer/v1.0/user/me/realestate/" + is24RealEstateIdId
+        + "/attachment/" + attachmentId;
 
       // write object into xml
       String xml = XmlUtils.marshal( attachment, AbstractClient.getEncoding() );
@@ -795,7 +820,10 @@ public final class ImportExport
     public static org.openestate.is24.restapi.xml.attachmentsorder.List get( AbstractClient client, String externalRealEstateId ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/ext-" + externalRealEstateId + "/attachment/attachmentsorder";
+      String url = client.getApiBaseUrl()
+        + "/api/offer/v1.0/user/me/realestate"
+        + "/ext-" + AbstractClient.getUrlEncodedValue( externalRealEstateId )
+        + "/attachment/attachmentsorder";
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.GET, null );
@@ -852,7 +880,9 @@ public final class ImportExport
     public static org.openestate.is24.restapi.xml.attachmentsorder.List get( AbstractClient client, long is24RealEstateIdId ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/" + is24RealEstateIdId + "/attachment/attachmentsorder";
+      String url = client.getApiBaseUrl()
+        + "/api/offer/v1.0/user/me/realestate/" + is24RealEstateIdId
+        + "/attachment/attachmentsorder";
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.GET, null );
@@ -913,7 +943,10 @@ public final class ImportExport
       if (list==null) throw new NullPointerException( "No object was provided for publishing!" );
 
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/ext-" + externalRealEstateId + "/attachment/attachmentsorder";
+      String url = client.getApiBaseUrl()
+        + "/api/offer/v1.0/user/me/realestate"
+        + "/ext-" + AbstractClient.getUrlEncodedValue( externalRealEstateId )
+        + "/attachment/attachmentsorder";
 
       // write object into xml
       String xml = XmlUtils.marshal( new org.openestate.is24.restapi.xml.attachmentsorder.ObjectFactory().createAttachmentsorder( list ), AbstractClient.getEncoding() );
@@ -977,7 +1010,9 @@ public final class ImportExport
       if (list==null) throw new NullPointerException( "No object was provided for publishing!" );
 
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/" + is24RealEstateIdId + "/attachment/attachmentsorder";
+      String url = client.getApiBaseUrl()
+        + "/api/offer/v1.0/user/me/realestate/" + is24RealEstateIdId
+        + "/attachment/attachmentsorder";
 
       // write object into xml
       String xml = XmlUtils.marshal( new org.openestate.is24.restapi.xml.attachmentsorder.ObjectFactory().createAttachmentsorder( list ), AbstractClient.getEncoding() );
@@ -1048,7 +1083,8 @@ public final class ImportExport
     public static RealtorContactDetailsList getAll( AbstractClient client ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/contact";
+      String url = client.getApiBaseUrl()
+        + "/api/offer/v1.0/user/me/contact";
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.GET, null );
@@ -1102,7 +1138,9 @@ public final class ImportExport
     public static RealtorContactDetails getByExternalId( AbstractClient client, String externalContactId ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/contact/ext-" + externalContactId;
+      String url = client.getApiBaseUrl()
+        + "/api/offer/v1.0/user/me/contact"
+        + "/ext-" + AbstractClient.getUrlEncodedValue( externalContactId );
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.GET, null );
@@ -1164,7 +1202,8 @@ public final class ImportExport
     public static RealtorContactDetails getByIs24Id( AbstractClient client, long is24ContactId ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/contact/" + is24ContactId;
+      String url = client.getApiBaseUrl()
+        + "/api/offer/v1.0/user/me/contact/" + is24ContactId;
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.GET, null );
@@ -1226,7 +1265,8 @@ public final class ImportExport
       if (contact==null) throw new NullPointerException( "No contact was provided!" );
 
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/contact";
+      String url = client.getApiBaseUrl()
+        + "/api/offer/v1.0/user/me/contact";
 
       // write object into xml
       String xml = XmlUtils.marshal( contact, AbstractClient.getEncoding() );
@@ -1285,7 +1325,9 @@ public final class ImportExport
     public static Messages putByExternalId( AbstractClient client, RealtorContactDetails contact, String externalContactId ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/contact/ext-" + externalContactId;
+      String url = client.getApiBaseUrl()
+        + "/api/offer/v1.0/user/me/contact"
+        + "/ext-" + AbstractClient.getUrlEncodedValue( externalContactId );
 
       // write object into xml
       String xml = XmlUtils.marshal( contact, AbstractClient.getEncoding() );
@@ -1346,7 +1388,8 @@ public final class ImportExport
     public static Messages putByIs24Id( AbstractClient client, RealtorContactDetails contact, long is24ContactId ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/contact/" + is24ContactId;
+      String url = client.getApiBaseUrl()
+        + "/api/offer/v1.0/user/me/contact/" + is24ContactId;
 
       // write object into xml
       String xml = XmlUtils.marshal( contact, AbstractClient.getEncoding() );
@@ -1423,7 +1466,9 @@ public final class ImportExport
     public static Messages deleteById( AbstractClient client, String is24PublishId ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/publish/" + is24PublishId;
+      String url = client.getApiBaseUrl()
+        + "/api/offer/v1.0/publish"
+        + "/" + AbstractClient.getUrlEncodedValue( is24PublishId );
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.DELETE, null );
@@ -1489,7 +1534,8 @@ public final class ImportExport
     public static PublishObjects get( AbstractClient client, long is24RealEstateIdId, long is24PublishChannelId ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/publish";
+      String url = client.getApiBaseUrl()
+        + "/api/offer/v1.0/publish";
 
       // init URL parameters
       List<String> params = new ArrayList<String>();
@@ -1554,7 +1600,9 @@ public final class ImportExport
     public static PublishObject getById( AbstractClient client, String is24PublishId ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/publish/" + is24PublishId;
+      String url = client.getApiBaseUrl()
+        + "/api/offer/v1.0/publish"
+        + "/" + AbstractClient.getUrlEncodedValue( is24PublishId );
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.GET, null );
@@ -1616,7 +1664,8 @@ public final class ImportExport
       if (publishObject==null) throw new NullPointerException( "No object was provided for publishing!" );
 
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/publish";
+      String url = client.getApiBaseUrl()
+        + "/api/offer/v1.0/publish";
 
       // write object into xml
       String xml = XmlUtils.marshal( publishObject, AbstractClient.getEncoding() );
@@ -1696,7 +1745,8 @@ public final class ImportExport
     public static PublishChannels get( AbstractClient client ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/publishchannel";
+      String url = client.getApiBaseUrl()
+        + "/api/offer/v1.0/user/me/publishchannel";
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.GET, null );
@@ -1767,7 +1817,9 @@ public final class ImportExport
     public static Messages deleteByExternalId( AbstractClient client, String externalRealEstateId ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/ext-" + externalRealEstateId;
+      String url = client.getApiBaseUrl()
+        + "/api/offer/v1.0/user/me/realestate"
+        + "/ext-" + AbstractClient.getUrlEncodedValue( externalRealEstateId );
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.DELETE, null );
@@ -1827,7 +1879,8 @@ public final class ImportExport
     public static Messages deleteByIs24Id( AbstractClient client, long is24RealEstateId ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/" + is24RealEstateId;
+      String url = client.getApiBaseUrl()
+        + "/api/offer/v1.0/user/me/realestate/" + is24RealEstateId;
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.DELETE, null );
@@ -1898,15 +1951,16 @@ public final class ImportExport
     public static RealEstates getAll( AbstractClient client, String inPublishChannel, String notInPublishChannel, int pageSize, int pageNumber, boolean archivedObjectsIncluded ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate";
+      String url = client.getApiBaseUrl()
+        + "/api/offer/v1.0/user/me/realestate";
 
       // init URL parameters
       List<String> params = new ArrayList<String>();
 
-      inPublishChannel = AbstractClient.getEncodedParameterValue( inPublishChannel );
+      inPublishChannel = AbstractClient.getUrlEncodedValue( inPublishChannel );
       if (inPublishChannel!=null) params.add( "publishchannel=" + inPublishChannel );
 
-      notInPublishChannel = AbstractClient.getEncodedParameterValue( notInPublishChannel );
+      notInPublishChannel = AbstractClient.getUrlEncodedValue( notInPublishChannel );
       if (inPublishChannel!=null) params.add( "notinpublishchannel=" + notInPublishChannel );
 
       if (pageSize>=1 && pageSize<=100) params.add( "pagesize=" + pageSize );
@@ -1969,7 +2023,9 @@ public final class ImportExport
     public static RealEstate getByExternalId( AbstractClient client, String externalRealEstateId ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/ext-" + externalRealEstateId;
+      String url = client.getApiBaseUrl()
+        + "/api/offer/v1.0/user/me/realestate"
+        + "/ext-" + AbstractClient.getUrlEncodedValue( externalRealEstateId );
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.GET, null );
@@ -2030,7 +2086,8 @@ public final class ImportExport
     public static RealEstate getByIs24Id( AbstractClient client, long is24RealEstateId ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/" + is24RealEstateId;
+      String url = client.getApiBaseUrl()
+        + "/api/offer/v1.0/user/me/realestate/" + is24RealEstateId;
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.GET, null );
@@ -2132,7 +2189,8 @@ public final class ImportExport
       if (realEstate==null) throw new NullPointerException( "No property was provided!" );
 
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate";
+      String url = client.getApiBaseUrl()
+        + "/api/offer/v1.0/user/me/realestate";
 
       // init URL parameters
       List<String> params = new ArrayList<String>();
@@ -2244,7 +2302,9 @@ public final class ImportExport
     public static Messages putByExternalId( AbstractClient client, RealEstate realEstate, String externalRealEstateId, boolean useNewEnergySourceEnev2014Values ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/ext-" + externalRealEstateId;
+      String url = client.getApiBaseUrl()
+        + "/api/offer/v1.0/user/me/realestate"
+        + "/ext-" + AbstractClient.getUrlEncodedValue( externalRealEstateId );
 
       // init URL parameters
       List<String> params = new ArrayList<String>();
@@ -2355,7 +2415,8 @@ public final class ImportExport
     public static Messages putByIs24Id( AbstractClient client, RealEstate realEstate, long is24RealEstateId, boolean useNewEnergySourceEnev2014Values ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/realestate/" + is24RealEstateId;
+      String url = client.getApiBaseUrl()
+        + "/api/offer/v1.0/user/me/realestate/" + is24RealEstateId;
 
       // init URL parameters
       List<String> params = new ArrayList<String>();
@@ -2506,7 +2567,8 @@ public final class ImportExport
     public static VideoUploadTicket get( AbstractClient client ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
-      String url = client.getApiBaseUrl() + "/api/offer/v1.0/user/me/videouploadticket";
+      String url = client.getApiBaseUrl()
+        + "/api/offer/v1.0/user/me/videouploadticket";
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.GET, null );

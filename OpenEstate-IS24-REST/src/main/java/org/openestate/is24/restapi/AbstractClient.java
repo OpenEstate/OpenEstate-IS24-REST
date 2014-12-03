@@ -300,19 +300,13 @@ public abstract class AbstractClient
    *
    * @return
    * the encoded value
+   *
+   * @deprecated use {@link #getUrlEncodedValue(java.lang.String)} instead
    */
+  @Deprecated
   public static String getEncodedParameterValue( String value )
   {
-    try
-    {
-      value = StringUtils.trimToNull( value );
-      return (value!=null)? URLEncoder.encode( value, getEncoding() ): null;
-    }
-    catch (UnsupportedEncodingException ex)
-    {
-      LOGGER.error( "Unsupported encoding!", ex );
-      return null;
-    }
+    return getUrlEncodedValue( value );
   }
 
   /**
@@ -326,6 +320,29 @@ public abstract class AbstractClient
   public static String getEncoding()
   {
     return XmlUtils.DEFAULT_ENCODING;
+  }
+
+  /**
+   * Encodes a string value for use in an URL.
+   *
+   * @param value
+   * the value to encode
+   *
+   * @return
+   * the encoded value
+   */
+  public static String getUrlEncodedValue( String value )
+  {
+    try
+    {
+      value = StringUtils.trimToNull( value );
+      return (value!=null)? URLEncoder.encode( value, getEncoding() ): null;
+    }
+    catch (UnsupportedEncodingException ex)
+    {
+      LOGGER.error( "Unsupported encoding!", ex );
+      return null;
+    }
   }
 
   /**

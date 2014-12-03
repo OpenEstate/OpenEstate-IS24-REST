@@ -21,16 +21,19 @@ Changelog for OpenEstate-IS24-REST
 -   updated JAXB classes for XML reading / writing to the latest XML schemas
     from *17th November 2014*
     (see [IS24-Changelog](http://api.immobilienscout24.de/useful/changelog.html))
--   moved class `XmlUtils` from `org.openestate.is24.restapi.xml` into `org.openestate.is24.restapi.utils`
--   renamed class `SSLUtils` to `SslUtils` in `org.openestate.is24.restapi.utils`
--   support new values for `EnergySourceEnev2014` for `POST` and `UPDATE` of real
-    estates with request paramater `usenewenergysourceenev2014values=true`
+-   support new values for `EnergySourceEnev2014` for `POST` and `UPDATE` of
+    real estates with request paramater `usenewenergysourceenev2014values=true`
     (see [notes by IS24](http://api.immobilienscout24.de/useful/energy-certificate-2014.html))
--   moved [Java Signpost Example](http://api.immobilienscout24.de/useful/tutorials-sdks-plugins/tutorial-java-signpost.html)
-    into the `examples` component
-    (see [`RandomRealEstateFactory.java`](OpenEstate-IS24-REST-examples/src/main/java/org/openestate/is24/restapi/examples/IS24OauthExample.java))
+-   properly escape external ID's in request URL's
 -   migrated `commons-lang` from version 2 to version 3
 -   API documentation completed
+-   refactorings
+    -   moved class `XmlUtils` from `org.openestate.is24.restapi.xml` into `org.openestate.is24.restapi.utils`
+    -   renamed class `SSLUtils` to `SslUtils` in `org.openestate.is24.restapi.utils`
+    -   renamed method `getEncodedParameterValue` to `getUrlEncodedValue` in `org.openestate.is24.restapi.AbstractClient`
+    -   moved [Java Signpost Example](http://api.immobilienscout24.de/useful/tutorials-sdks-plugins/tutorial-java-signpost.html)
+        into the `examples` component
+        (see [`IS24OauthExample.java`](OpenEstate-IS24-REST-examples/src/main/java/org/openestate/is24/restapi/examples/IS24OauthExample.java))
 
 ### deprecations
 
@@ -40,6 +43,9 @@ Changelog for OpenEstate-IS24-REST
 -   deprecated class `org.openestate.is24.restapi.utils.SSLUtils`
     -   calls to this class are redirected to `org.openestate.is24.restapi.utils.SslUtils`
     -   this class will be removed with one of the next major releases
+-   deprecated method `org.openestate.is24.restapi.AbstractClient.getEncodedParameterValue`
+    -   calls to this method are redirected to `org.openestate.is24.restapi.AbstractClient.getUrlEncodedValue`
+    -   this method will be removed with one of the next major releases
 
 
 0.1.2 (24 Aug 2014)
