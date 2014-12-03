@@ -80,8 +80,7 @@ Dependencies
 
 -   Java 6 or newer
 -   [commons-io 2.4](http://commons.apache.org/proper/commons-io/)
--   [commons-lang 2.6](http://commons.apache.org/proper/commons-lang/)
--   [commons-validator 1.4](http://commons.apache.org/proper/commons-validator/)
+-   [commons-lang 3.3.2](http://commons.apache.org/proper/commons-lang/)
 -   [oauth-signpost 1.2.1.2](https://code.google.com/p/oauth-signpost/)
 -   [SLF4J 1.7.7](http://www.slf4j.org/)
 -   [Lorem 1.2](https://github.com/mdeanda/lorem)
