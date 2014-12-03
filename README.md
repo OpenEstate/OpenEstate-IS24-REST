@@ -81,6 +81,7 @@ Dependencies
 -   Java 6 or newer
 -   [commons-io 2.4](http://commons.apache.org/proper/commons-io/)
 -   [commons-lang 3.3.2](http://commons.apache.org/proper/commons-lang/)
+-   [jaxb2-basics-runtime 0.9.1](https://github.com/highsource/jaxb2-basics)
 -   [oauth-signpost 1.2.1.2](https://code.google.com/p/oauth-signpost/)
 -   [SLF4J 1.7.7](http://www.slf4j.org/)
 -   [Lorem 1.2](https://github.com/mdeanda/lorem)

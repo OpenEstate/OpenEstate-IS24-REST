@@ -132,7 +132,7 @@
       </dependency>
       <dependency>
         <groupId>org.jvnet.jaxb2_commons</groupId>
-        <artifactId>jaxb2-basics</artifactId>
+        <artifactId>jaxb2-basics-runtime</artifactId>
         <version>0.9.1</version>
       </dependency>
       <dependency>
