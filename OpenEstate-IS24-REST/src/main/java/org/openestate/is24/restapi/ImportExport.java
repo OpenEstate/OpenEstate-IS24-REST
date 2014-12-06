@@ -24,6 +24,7 @@ import java.util.List;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
 import oauth.signpost.exception.OAuthException;
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.openestate.is24.restapi.utils.RequestFailedException;
 import org.openestate.is24.restapi.utils.RequestMethod;
@@ -1636,8 +1637,9 @@ public final class ImportExport
      *
      * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/publish/delete-by-id.html">DELETEbyID method</a>
      * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/publish.html">Publish Webservice</a>
+     * @since 0.2
      */
-    public static Messages deleteById( AbstractClient client, String is24PublishId ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    public static Messages delete( AbstractClient client, String is24PublishId ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {
       // build request URL
       String url = client.getApiBaseUrl()
@@ -1672,6 +1674,127 @@ public final class ImportExport
         msg += " (" + response.statusCode + ")";
         throw new RequestFailedException( response, msg );
       }
+    }
+
+    /**
+     * Calls the DELETEbyList method of the Publish Webservice.
+     * <p>
+     * This method removes the attribution of a real estate object to a publish
+     * channel.
+     *
+     * @param client
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
+     * @param is24PublishIds
+     * list of unique publishing ID's, that were returned by
+     * {@link PublishService#post(org.openestate.is24.restapi.AbstractClient, org.openestate.is24.restapi.xml.common.PublishObject)},
+     * for which the publishing are removed
+     *
+     * @return
+     * response of the Webservice after a successful request
+     *
+     * @throws IOException
+     * if communication with the Webservice failed
+     *
+     * @throws OAuthException
+     * if authorization failed
+     *
+     * @throws JAXBException
+     * if XML reading / writing failed
+     *
+     * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/publish/delete-by-list.html">DELETEbyList method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/publish.html">Publish Webservice</a>
+     * @since 0.2
+     */
+    public static PublishObjects delete( AbstractClient client, String[] is24PublishIds ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    {
+      // build request URL
+      String url = client.getApiBaseUrl()
+        + "/api/offer/v1.0/publish"
+        + "/list";
+
+      // init URL parameters
+      List<String> params = new ArrayList<String>();
+
+      List<String> ids = new ArrayList<String>();
+      if (!ArrayUtils.isEmpty( is24PublishIds ))
+      {
+        for (String id : is24PublishIds)
+        {
+          id = StringUtils.trimToNull( id );
+          if (id!=null) ids.add( AbstractClient.getUrlEncodedValue( id ) );
+        }
+      }
+      if (ids.isEmpty()) return null;
+      params.add( "publishids=" + StringUtils.join( ids, "," ) );
+
+      // append URL parameters
+      if (!params.isEmpty()) url += "?" + StringUtils.join( params, "&" );
+
+      // send request
+      Response response = client.sendXmlRequest( new URL( url ), RequestMethod.DELETE, null );
+
+      // parse result from response body after successful execution
+      if (response.statusCode==Response.OK)
+      {
+        //LOGGER.debug( "------------------------------------" );
+        //LOGGER.debug( "PublishService.delete" );
+        //LOGGER.debug( url );
+        //LOGGER.debug( response.body );
+        //LOGGER.debug( "------------------------------------" );
+        return (PublishObjects) XmlUtils.unmarshal( response.body );
+      }
+
+      // throw an error for any other status codes
+      else
+      {
+        String msg = StringUtils.trimToNull( response.statusMessage );
+        if (msg==null) msg = "Request failed!";
+        msg += " (" + response.statusCode + ")";
+        throw new RequestFailedException( response, msg );
+      }
+    }
+
+    /**
+     * Calls the DELETEbyID method of the Publish Webservice.
+     * <p>
+     * This method removes the attribution of a real estate object to a publish
+     * channel.
+     *
+     * @param client
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
+     * @param is24PublishId
+     * the unique publishing ID, that was returned by
+     * {@link PublishService#post(org.openestate.is24.restapi.AbstractClient, org.openestate.is24.restapi.xml.common.PublishObject)},
+     * for which the publishing is removed
+     *
+     * @return
+     * response of the Webservice after a successful request
+     *
+     * @throws IOException
+     * if communication with the Webservice failed
+     *
+     * @throws OAuthException
+     * if authorization failed
+     *
+     * @throws JAXBException
+     * if XML reading / writing failed
+     *
+     * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/publish/delete-by-id.html">DELETEbyID method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/publish.html">Publish Webservice</a>
+     * @deprecated use {@link #delete(org.openestate.is24.restapi.AbstractClient, java.lang.String)} instead
+     */
+    @Deprecated
+    public static Messages deleteById( AbstractClient client, String is24PublishId ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    {
+      return delete( client, is24PublishId );
     }
 
     /**
@@ -1916,6 +2039,7 @@ public final class ImportExport
      *
      * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/publish/post.html">POST method</a>
      * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/publish.html">Publish Webservice</a>
+     * @since 0.2
      */
     public static PublishObjects post( AbstractClient client, PublishObjects publishObjects ) throws IOException, OAuthException, JAXBException, RequestFailedException
     {

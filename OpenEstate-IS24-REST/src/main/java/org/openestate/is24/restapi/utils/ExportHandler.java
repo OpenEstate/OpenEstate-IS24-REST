@@ -177,7 +177,7 @@ public class ExportHandler
           String publishId = StringUtils.trimToNull( publishing.getId() );
           try
           {
-            ImportExport.PublishService.deleteById(
+            ImportExport.PublishService.delete(
               this.client, publishId );
           }
           catch (RequestFailedException ex)

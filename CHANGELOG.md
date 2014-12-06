@@ -34,6 +34,9 @@ Changelog for OpenEstate-IS24-REST
 -   added low level method
     [Publish/Post](http://api.immobilienscout24.de/our-apis/import-export/publish/post.html)
     on the Import/Export API for publishing multiple objects at once
+-   added low level method
+    [Publish/DELETEbyList](http://api.immobilienscout24.de/our-apis/import-export/publish/delete-by-list.html)
+    on the Import/Export API for removing multiple publishings at once
 -   migrated `commons-lang` from version 2 to version 3
 -   API documentation completed
 -   refactorings
@@ -54,6 +57,9 @@ Changelog for OpenEstate-IS24-REST
     -   this class will be removed with one of the next major releases
 -   deprecated method `org.openestate.is24.restapi.AbstractClient.getEncodedParameterValue`
     -   calls to this method are redirected to `org.openestate.is24.restapi.AbstractClient.getUrlEncodedValue`
+    -   this method will be removed with one of the next major releases
+-   deprecated method `org.openestate.is24.restapi.ImportExport.PublishService.deleteById`
+    -   calls to this method are redirected to `org.openestate.is24.restapi.ImportExport.PublishService.delete`
     -   this method will be removed with one of the next major releases
 
 
