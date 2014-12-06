@@ -2883,12 +2883,6 @@ public final class ImportExport
         return (RealEstateCounts) XmlUtils.unmarshal( response.body );
       }
 
-      // return null, if the requested object was not found
-      else if (response.statusCode==Response.NOT_FOUND)
-      {
-        return null;
-      }
-
       // throw an error for any other status codes
       else
       {
