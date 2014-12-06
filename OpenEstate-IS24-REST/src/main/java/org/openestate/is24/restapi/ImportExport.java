@@ -127,33 +127,8 @@ public final class ImportExport
         + "/ext-" + AbstractClient.getUrlEncodedValue( externalRealEstateId )
         + "/attachment/" + is24AttachmentId;
 
-      // send request
-      Response response = client.sendXmlRequest( new URL( url ), RequestMethod.DELETE, null );
-
-      // parse result from response body after successfull execution
-      if (response.statusCode==Response.OK)
-      {
-        //LOGGER.debug( "------------------------------------" );
-        //LOGGER.debug( "AttachmentService.deleteById / " + externalRealEstateId + " / " + is24AttachmentId );
-        //LOGGER.debug( response.body );
-        //LOGGER.debug( "------------------------------------" );
-        return (Messages) XmlUtils.unmarshal( response.body );
-      }
-
-      // return null, if the requested object was not found
-      else if (response.statusCode==Response.NOT_FOUND)
-      {
-        return null;
-      }
-
-      // throw an error for any other status codes
-      else
-      {
-        String msg = StringUtils.trimToNull( response.statusMessage );
-        if (msg==null) msg = "Request failed!";
-        msg += " (" + response.statusCode + ")";
-        throw new RequestFailedException( response, msg );
-      }
+      // execute request
+      return _deleteById( client, url );
     }
 
     /**
@@ -198,14 +173,21 @@ public final class ImportExport
         + "/api/offer/v1.0/user/me/realestate/" + is24RealEstateIdId
         + "/attachment/" + is24AttachmentId;
 
+      // execute request
+      return _deleteById( client, url );
+    }
+
+    private static Messages _deleteById( AbstractClient client, String url ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    {
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.DELETE, null );
 
-      // parse result from response body after successfull execution
+      // parse result from response body after successful execution
       if (response.statusCode==Response.OK)
       {
         //LOGGER.debug( "------------------------------------" );
-        //LOGGER.debug( "AttachmentService.deleteById / " + is24RealEstateIdId + " / " + is24AttachmentId );
+        //LOGGER.debug( "AttachmentService.deleteById" );
+        //LOGGER.debug( url );
         //LOGGER.debug( response.body );
         //LOGGER.debug( "------------------------------------" );
         return (Messages) XmlUtils.unmarshal( response.body );
@@ -265,30 +247,8 @@ public final class ImportExport
         + "/ext-" + AbstractClient.getUrlEncodedValue( externalRealEstateId )
         + "/attachment";
 
-      // send request
-      Response response = client.sendXmlRequest( new URL( url ), RequestMethod.GET, null );
-
-      // parse result from response body after successfull execution
-      if (response.statusCode==Response.OK)
-      {
-        return ((JAXBElement<Attachments>)
-          XmlUtils.unmarshal( response.body )).getValue();
-      }
-
-      // return null, if the requested object was not found
-      else if (response.statusCode==Response.NOT_FOUND)
-      {
-        return null;
-      }
-
-      // throw an error for any other status codes
-      else
-      {
-        String msg = StringUtils.trimToNull( response.statusMessage );
-        if (msg==null) msg = "Request failed!";
-        msg += " (" + response.statusCode + ")";
-        throw new RequestFailedException( response, msg );
-      }
+      // execute request
+      return _getAll( client, url );
     }
 
     /**
@@ -329,10 +289,16 @@ public final class ImportExport
         + "/api/offer/v1.0/user/me/realestate/" + is24RealEstateIdId
         + "/attachment";
 
+      // execute request
+      return _getAll( client, url );
+    }
+
+    private static Attachments _getAll( AbstractClient client, String url ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    {
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.GET, null );
 
-      // parse result from response body after successfull execution
+      // parse result from response body after successful execution
       if (response.statusCode==Response.OK)
       {
         return ((JAXBElement<Attachments>)
@@ -397,30 +363,8 @@ public final class ImportExport
         + "/ext-" + AbstractClient.getUrlEncodedValue( externalRealEstateId )
         + "/attachment/" + is24AttachmentId;
 
-      // send request
-      Response response = client.sendXmlRequest( new URL( url ), RequestMethod.GET, null );
-
-      // parse result from response body after successfull execution
-      if (response.statusCode==Response.OK)
-      {
-        return ((JAXBElement<Attachment>)
-          XmlUtils.unmarshal( response.body )).getValue();
-      }
-
-      // return null, if the requested object was not found
-      else if (response.statusCode==Response.NOT_FOUND)
-      {
-        return null;
-      }
-
-      // throw an error for any other status codes
-      else
-      {
-        String msg = StringUtils.trimToNull( response.statusMessage );
-        if (msg==null) msg = "Request failed!";
-        msg += " (" + response.statusCode + ")";
-        throw new RequestFailedException( response, msg );
-      }
+      // execute request
+      return _getById( client, url );
     }
 
     /**
@@ -465,10 +409,16 @@ public final class ImportExport
         + "/api/offer/v1.0/user/me/realestate/" + is24RealEstateIdId
         + "/attachment/" + is24AttachmentId;
 
+      // execute request
+      return _getById( client, url );
+    }
+
+    private static Attachment _getById( AbstractClient client, String url ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    {
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.GET, null );
 
-      // parse result from response body after successfull execution
+      // parse result from response body after successful execution
       if (response.statusCode==Response.OK)
       {
         return ((JAXBElement<Attachment>)
@@ -542,60 +492,8 @@ public final class ImportExport
         + "/ext-" + AbstractClient.getUrlEncodedValue( externalRealEstateId )
         + "/attachment";
 
-      // write object into xml
-      String xml = XmlUtils.marshal( attachment, AbstractClient.getEncoding() );
-
-      final Response response;
-
-      // send multipart request
-      if (input!=null)
-        response = client.sendXmlAttachmentRequest( new URL( url ), RequestMethod.POST, xml, input, fileName, mimeType );
-
-      // send singlepart request
-      else
-        response = client.sendXmlRequest( new URL( url ), RequestMethod.POST, xml );
-
-      // parse result from response body after successfull execution
-      if (response.statusCode==Response.CREATED)
-      {
-        //LOGGER.debug( "------------------------------------" );
-        //LOGGER.debug( "AttachmentService.post" );
-        //LOGGER.debug( response.body );
-        //LOGGER.debug( "------------------------------------" );
-        Messages msgs = (Messages) XmlUtils.unmarshal( response.body );
-        if (msgs!=null)
-        {
-          for (Message msg : msgs.getMessage())
-          {
-            if (!MessageCode.MESSAGE_RESOURCE_CREATED.equals( msg.getMessageCode() ))
-              continue;
-            String idValue = StringUtils.trimToNull( msg.getId() );
-            if (idValue==null)
-              continue;
-            try
-            {
-              return Long.parseLong( idValue );
-            }
-            catch (NumberFormatException ex)
-            {
-              LOGGER.warn( "Can't determine ID of the created attachment!" );
-              LOGGER.warn( "> " + ex.getLocalizedMessage(), ex );
-              return 0;
-            }
-          }
-        }
-        LOGGER.warn( "Can't determine ID of the created attachment!" );
-        return 0;
-      }
-
-      // throw an error for any other status codes
-      else
-      {
-        String msg = StringUtils.trimToNull( response.statusMessage );
-        if (msg==null) msg = "Request failed!";
-        msg += " (" + response.statusCode + ")";
-        throw new RequestFailedException( response, msg );
-      }
+      // execute request
+      return _post( client, url, attachment, input, fileName, mimeType );
     }
 
     /**
@@ -649,17 +547,31 @@ public final class ImportExport
         + "/api/offer/v1.0/user/me/realestate/" + is24RealEstateIdId
         + "/attachment";
 
+      // execute request
+      return _post( client, url, attachment, input, fileName, mimeType );
+    }
+
+    private static long _post( AbstractClient client, String url, Attachment attachment, InputStream input, String fileName, String mimeType ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    {
       // write object into xml
       String xml = XmlUtils.marshal( attachment, AbstractClient.getEncoding() );
 
-      // send request
-      Response response = client.sendXmlAttachmentRequest( new URL( url ), RequestMethod.POST, xml, input, fileName, mimeType );
+      final Response response;
 
-      // parse result from response body after successfull execution
+      // send multipart request
+      if (input!=null)
+        response = client.sendXmlAttachmentRequest( new URL( url ), RequestMethod.POST, xml, input, fileName, mimeType );
+
+      // send singlepart request
+      else
+        response = client.sendXmlRequest( new URL( url ), RequestMethod.POST, xml );
+
+      // parse result from response body after successful execution
       if (response.statusCode==Response.CREATED)
       {
         //LOGGER.debug( "------------------------------------" );
         //LOGGER.debug( "AttachmentService.post" );
+        //LOGGER.debug( url );
         //LOGGER.debug( response.body );
         //LOGGER.debug( "------------------------------------" );
         Messages msgs = (Messages) XmlUtils.unmarshal( response.body );
@@ -747,30 +659,8 @@ public final class ImportExport
         + "/ext-" + AbstractClient.getUrlEncodedValue( externalRealEstateId )
         + "/attachment/" + is24AttachmentId;
 
-      // write object into xml
-      String xml = XmlUtils.marshal( attachment, AbstractClient.getEncoding() );
-
-      // send request
-      Response response = client.sendXmlRequest( new URL( url ), RequestMethod.PUT, xml );
-
-      // parse result from response body after successfull execution
-      if (response.statusCode==Response.OK)
-      {
-        //LOGGER.debug( "------------------------------------" );
-        //LOGGER.debug( "AttachmentService.putById / " + externalRealEstateId + " / " + attachmentId );
-        //LOGGER.debug( response.body );
-        //LOGGER.debug( "------------------------------------" );
-        return (Messages) XmlUtils.unmarshal( response.body );
-      }
-
-      // throw an error for any other status codes
-      else
-      {
-        String msg = StringUtils.trimToNull( response.statusMessage );
-        if (msg==null) msg = "Request failed!";
-        msg += " (" + response.statusCode + ")";
-        throw new RequestFailedException( response, msg );
-      }
+      // execute request
+      return _putById( client, url, attachment );
     }
 
     /**
@@ -822,17 +712,24 @@ public final class ImportExport
         + "/api/offer/v1.0/user/me/realestate/" + is24RealEstateIdId
         + "/attachment/" + is24AttachmentId;
 
+      // execute request
+      return _putById( client, url, attachment );
+    }
+
+    private static Messages _putById( AbstractClient client, String url, Attachment attachment ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    {
       // write object into xml
       String xml = XmlUtils.marshal( attachment, AbstractClient.getEncoding() );
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.PUT, xml );
 
-      // parse result from response body after successfull execution
+      // parse result from response body after successful execution
       if (response.statusCode==Response.OK)
       {
         //LOGGER.debug( "------------------------------------" );
-        //LOGGER.debug( "AttachmentService.putById / " + is24RealEstateIdId + " / " + is24AttachmentId );
+        //LOGGER.debug( "AttachmentService.putById" );
+        //LOGGER.debug( url );
         //LOGGER.debug( response.body );
         //LOGGER.debug( "------------------------------------" );
         return (Messages) XmlUtils.unmarshal( response.body );
@@ -901,24 +798,8 @@ public final class ImportExport
         + "/ext-" + AbstractClient.getUrlEncodedValue( externalRealEstateId )
         + "/attachment/attachmentsorder";
 
-      // send request
-      Response response = client.sendXmlRequest( new URL( url ), RequestMethod.GET, null );
-
-      // parse result from response body after successfull execution
-      if (response.statusCode==Response.OK)
-      {
-        return ((JAXBElement<org.openestate.is24.restapi.xml.attachmentsorder.List>)
-          XmlUtils.unmarshal( response.body )).getValue();
-      }
-
-      // throw an error for any other status codes
-      else
-      {
-        String msg = StringUtils.trimToNull( response.statusMessage );
-        if (msg==null) msg = "Request failed!";
-        msg += " (" + response.statusCode + ")";
-        throw new RequestFailedException( response, msg );
-      }
+      // execute request
+      return _get( client, url );
     }
 
     /**
@@ -960,10 +841,16 @@ public final class ImportExport
         + "/api/offer/v1.0/user/me/realestate/" + is24RealEstateIdId
         + "/attachment/attachmentsorder";
 
+      // execute request
+      return _get( client, url );
+    }
+
+    private static org.openestate.is24.restapi.xml.attachmentsorder.List _get( AbstractClient client, String url ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    {
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.GET, null );
 
-      // parse result from response body after successfull execution
+      // parse result from response body after successful execution
       if (response.statusCode==Response.OK)
       {
         return ((JAXBElement<org.openestate.is24.restapi.xml.attachmentsorder.List>)
@@ -1024,30 +911,8 @@ public final class ImportExport
         + "/ext-" + AbstractClient.getUrlEncodedValue( externalRealEstateId )
         + "/attachment/attachmentsorder";
 
-      // write object into xml
-      String xml = XmlUtils.marshal( new org.openestate.is24.restapi.xml.attachmentsorder.ObjectFactory().createAttachmentsorder( list ), AbstractClient.getEncoding() );
-
-      // send request
-      Response response = client.sendXmlRequest( new URL( url ), RequestMethod.PUT, xml );
-
-      // parse result from response body after successfull execution
-      if (response.statusCode==Response.OK)
-      {
-        //LOGGER.debug( "------------------------------------" );
-        //LOGGER.debug( "AttachmentsOrderService.put / " + externalRealEstateId );
-        //LOGGER.debug( response.body );
-        //LOGGER.debug( "------------------------------------" );
-        return (Messages) XmlUtils.unmarshal( response.body );
-      }
-
-      // throw an error for any other status codes
-      else
-      {
-        String msg = StringUtils.trimToNull( response.statusMessage );
-        if (msg==null) msg = "Request failed!";
-        msg += " (" + response.statusCode + ")";
-        throw new RequestFailedException( response, msg );
-      }
+      // execute request
+      return _put( client, url, list );
     }
 
     /**
@@ -1094,17 +959,24 @@ public final class ImportExport
         + "/api/offer/v1.0/user/me/realestate/" + is24RealEstateIdId
         + "/attachment/attachmentsorder";
 
+      // execute request
+      return _put( client, url, list );
+    }
+
+    private static Messages _put( AbstractClient client, String url, org.openestate.is24.restapi.xml.attachmentsorder.List list ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    {
       // write object into xml
       String xml = XmlUtils.marshal( new org.openestate.is24.restapi.xml.attachmentsorder.ObjectFactory().createAttachmentsorder( list ), AbstractClient.getEncoding() );
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.PUT, xml );
 
-      // parse result from response body after successfull execution
+      // parse result from response body after successful execution
       if (response.statusCode==Response.OK)
       {
         //LOGGER.debug( "------------------------------------" );
-        //LOGGER.debug( "AttachmentsOrderService.put / " + is24RealEstateIdId );
+        //LOGGER.debug( "AttachmentsOrderService.put" );
+        //LOGGER.debug( url );
         //LOGGER.debug( response.body );
         //LOGGER.debug( "------------------------------------" );
         return (Messages) XmlUtils.unmarshal( response.body );
@@ -1223,33 +1095,8 @@ public final class ImportExport
       // append URL parameters
       if (!params.isEmpty()) url += "?" + StringUtils.join( params, "&" );
 
-      // send request
-      Response response = client.sendXmlRequest( new URL( url ), RequestMethod.DELETE, null );
-
-      // parse result from response body after successfull execution
-      if (response.statusCode==Response.OK)
-      {
-        //LOGGER.debug( "------------------------------------" );
-        //LOGGER.debug( "ContactAddressService.deleteByExternalId / " + externalRealEstateId );
-        //LOGGER.debug( response.body );
-        //LOGGER.debug( "------------------------------------" );
-        return (Messages) XmlUtils.unmarshal( response.body );
-      }
-
-      // return null, if the requested object was not found
-      else if (response.statusCode==Response.NOT_FOUND)
-      {
-        return null;
-      }
-
-      // throw an error for any other status codes
-      else
-      {
-        String msg = StringUtils.trimToNull( response.statusMessage );
-        if (msg==null) msg = "Request failed!";
-        msg += " (" + response.statusCode + ")";
-        throw new RequestFailedException( response, msg );
-      }
+      // execute request
+      return _delete( client, url );
     }
 
     /**
@@ -1340,14 +1187,21 @@ public final class ImportExport
       // append URL parameters
       if (!params.isEmpty()) url += "?" + StringUtils.join( params, "&" );
 
+      // execute request
+      return _delete( client, url );
+    }
+
+    private static Messages _delete( AbstractClient client, String url ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    {
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.DELETE, null );
 
-      // parse result from response body after successfull execution
+      // parse result from response body after successful execution
       if (response.statusCode==Response.OK)
       {
         //LOGGER.debug( "------------------------------------" );
-        //LOGGER.debug( "ContactAddressService.deleteByIs24Id / " + is24RealEstateId );
+        //LOGGER.debug( "ContactAddressService.delete" );
+        //LOGGER.debug( url );
         //LOGGER.debug( response.body );
         //LOGGER.debug( "------------------------------------" );
         return (Messages) XmlUtils.unmarshal( response.body );
@@ -1404,7 +1258,7 @@ public final class ImportExport
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.GET, null );
 
-      // parse result from response body after successfull execution
+      // parse result from response body after successful execution
       if (response.statusCode==Response.OK)
       {
         return (RealtorContactDetailsList) XmlUtils.unmarshal( response.body );
@@ -1456,30 +1310,8 @@ public final class ImportExport
         + "/api/offer/v1.0/user/me/contact"
         + "/ext-" + AbstractClient.getUrlEncodedValue( externalContactId );
 
-      // send request
-      Response response = client.sendXmlRequest( new URL( url ), RequestMethod.GET, null );
-
-      // parse result from response body after successfull execution
-      if (response.statusCode==Response.OK)
-      {
-        return ((JAXBElement<RealtorContactDetails>)
-          XmlUtils.unmarshal( response.body )).getValue();
-      }
-
-      // return null, if the requested object was not found
-      else if (response.statusCode==Response.NOT_FOUND)
-      {
-        return null;
-      }
-
-      // throw an error for any other status codes
-      else
-      {
-        String msg = StringUtils.trimToNull( response.statusMessage );
-        if (msg==null) msg = "Request failed!";
-        msg += " (" + response.statusCode + ")";
-        throw new RequestFailedException( response, msg );
-      }
+      // execute request
+      return _get( client, url );
     }
 
     /**
@@ -1519,10 +1351,16 @@ public final class ImportExport
       String url = client.getApiBaseUrl()
         + "/api/offer/v1.0/user/me/contact/" + is24ContactId;
 
+      // execute request
+      return _get( client, url );
+    }
+
+    private static RealtorContactDetails _get( AbstractClient client, String url ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    {
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.GET, null );
 
-      // parse result from response body after successfull execution
+      // parse result from response body after successful execution
       if (response.statusCode==Response.OK)
       {
         return ((JAXBElement<RealtorContactDetails>)
@@ -1589,11 +1427,12 @@ public final class ImportExport
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.POST, xml );
 
-      // parse result from response body after successfull execution
+      // parse result from response body after successful execution
       if (response.statusCode==Response.CREATED)
       {
         //LOGGER.debug( "------------------------------------" );
         //LOGGER.debug( "ContactAddressService.post" );
+        //LOGGER.debug( url );
         //LOGGER.debug( response.body );
         //LOGGER.debug( "------------------------------------" );
         Messages msgs = (Messages) XmlUtils.unmarshal( response.body );
@@ -1671,30 +1510,8 @@ public final class ImportExport
         + "/api/offer/v1.0/user/me/contact"
         + "/ext-" + AbstractClient.getUrlEncodedValue( externalContactId );
 
-      // write object into xml
-      String xml = XmlUtils.marshal( contact, AbstractClient.getEncoding() );
-
-      // send request
-      Response response = client.sendXmlRequest( new URL( url ), RequestMethod.PUT, xml );
-
-      // parse result from response body after successfull execution
-      if (response.statusCode==Response.OK)
-      {
-        //LOGGER.debug( "------------------------------------" );
-        //LOGGER.debug( "ContactAddressService.putByExternalId / " + externalContactId );
-        //LOGGER.debug( response.body );
-        //LOGGER.debug( "------------------------------------" );
-        return (Messages) XmlUtils.unmarshal( response.body );
-      }
-
-      // throw an error for any other status codes
-      else
-      {
-        String msg = StringUtils.trimToNull( response.statusMessage );
-        if (msg==null) msg = "Request failed!";
-        msg += " (" + response.statusCode + ")";
-        throw new RequestFailedException( response, msg );
-      }
+      // execute request
+      return _put( client, url, contact );
     }
 
     /**
@@ -1737,17 +1554,24 @@ public final class ImportExport
       String url = client.getApiBaseUrl()
         + "/api/offer/v1.0/user/me/contact/" + is24ContactId;
 
+      // execute request
+      return _put( client, url, contact );
+    }
+
+    private static Messages _put( AbstractClient client, String url, RealtorContactDetails contact ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    {
       // write object into xml
       String xml = XmlUtils.marshal( contact, AbstractClient.getEncoding() );
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.PUT, xml );
 
-      // parse result from response body after successfull execution
+      // parse result from response body after successful execution
       if (response.statusCode==Response.OK)
       {
         //LOGGER.debug( "------------------------------------" );
-        //LOGGER.debug( "ContactAddressService.putByIs24Id / " + is24ContactId );
+        //LOGGER.debug( "ContactAddressService.put" );
+        //LOGGER.debug( url );
         //LOGGER.debug( response.body );
         //LOGGER.debug( "------------------------------------" );
         return (Messages) XmlUtils.unmarshal( response.body );
@@ -1823,11 +1647,12 @@ public final class ImportExport
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.DELETE, null );
 
-      // parse result from response body after successfull execution
+      // parse result from response body after successful execution
       if (response.statusCode==Response.OK)
       {
         //LOGGER.debug( "------------------------------------" );
-        //LOGGER.debug( "PublishService.deleteById / " + is24PublishId );
+        //LOGGER.debug( "PublishService.delete" );
+        //LOGGER.debug( url );
         //LOGGER.debug( response.body );
         //LOGGER.debug( "------------------------------------" );
         return (Messages) XmlUtils.unmarshal( response.body );
@@ -1903,7 +1728,7 @@ public final class ImportExport
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.GET, null );
 
-      // parse result from response body after successfull execution
+      // parse result from response body after successful execution
       if (response.statusCode==Response.OK)
       {
         return (PublishObjects) XmlUtils.unmarshal( response.body );
@@ -1961,7 +1786,7 @@ public final class ImportExport
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.GET, null );
 
-      // parse result from response body after successfull execution
+      // parse result from response body after successful execution
       if (response.statusCode==Response.OK)
       {
         return ((JAXBElement<PublishObject>)
@@ -2028,11 +1853,12 @@ public final class ImportExport
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.POST, xml );
 
-      // parse result from response body after successfull execution
+      // parse result from response body after successful execution
       if (response.statusCode==Response.CREATED)
       {
         //LOGGER.debug( "------------------------------------" );
         //LOGGER.debug( "PublishService.post" );
+        //LOGGER.debug( url );
         //LOGGER.debug( response.body );
         //LOGGER.debug( "------------------------------------" );
         Messages msgs = (Messages) XmlUtils.unmarshal( response.body );
@@ -2123,7 +1949,7 @@ public final class ImportExport
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.GET, null );
 
-      // parse result from response body after successfull execution
+      // parse result from response body after successful execution
       if (response.statusCode==Response.OK)
       {
         return (PublishChannels) XmlUtils.unmarshal( response.body );
@@ -2193,33 +2019,8 @@ public final class ImportExport
         + "/api/offer/v1.0/user/me/realestate"
         + "/ext-" + AbstractClient.getUrlEncodedValue( externalRealEstateId );
 
-      // send request
-      Response response = client.sendXmlRequest( new URL( url ), RequestMethod.DELETE, null );
-
-      // parse result from response body after successfull execution
-      if (response.statusCode==Response.OK)
-      {
-        //LOGGER.debug( "------------------------------------" );
-        //LOGGER.debug( "RealEstateService.deleteByExternalId / " + externalRealEstateId );
-        //LOGGER.debug( response.body );
-        //LOGGER.debug( "------------------------------------" );
-        return (Messages) XmlUtils.unmarshal( response.body );
-      }
-
-      // return null, if the requested object was not found
-      else if (response.statusCode==Response.NOT_FOUND)
-      {
-        return null;
-      }
-
-      // throw an error for any other status codes
-      else
-      {
-        String msg = StringUtils.trimToNull( response.statusMessage );
-        if (msg==null) msg = "Request failed!";
-        msg += " (" + response.statusCode + ")";
-        throw new RequestFailedException( response, msg );
-      }
+      // execute request
+      return _delete( client, url );
     }
 
     /**
@@ -2258,14 +2059,21 @@ public final class ImportExport
       String url = client.getApiBaseUrl()
         + "/api/offer/v1.0/user/me/realestate/" + is24RealEstateId;
 
+      // execute request
+      return _delete( client, url );
+    }
+
+    private static Messages _delete( AbstractClient client, String url ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    {
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.DELETE, null );
 
-      // parse result from response body after successfull execution
+      // parse result from response body after successful execution
       if (response.statusCode==Response.OK)
       {
         //LOGGER.debug( "------------------------------------" );
-        //LOGGER.debug( "RealEstateService.deleteByIs24Id / " + is24RealEstateId );
+        //LOGGER.debug( "RealEstateService.delete" );
+        //LOGGER.debug( url );
         //LOGGER.debug( response.body );
         //LOGGER.debug( "------------------------------------" );
         return (Messages) XmlUtils.unmarshal( response.body );
@@ -2355,7 +2163,7 @@ public final class ImportExport
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.GET, null );
 
-      // parse result from response body after successfull execution
+      // parse result from response body after successful execution
       if (response.statusCode==Response.OK)
       {
         return (RealEstates) XmlUtils.unmarshal( response.body );
@@ -2407,30 +2215,8 @@ public final class ImportExport
         + "/api/offer/v1.0/user/me/realestate"
         + "/ext-" + AbstractClient.getUrlEncodedValue( externalRealEstateId );
 
-      // send request
-      Response response = client.sendXmlRequest( new URL( url ), RequestMethod.GET, null );
-
-      // parse result from response body after successfull execution
-      if (response.statusCode==Response.OK)
-      {
-        return ((JAXBElement<RealEstate>)
-          XmlUtils.unmarshal( response.body )).getValue();
-      }
-
-      // return null, if the requested object was not found
-      else if (response.statusCode==Response.NOT_FOUND)
-      {
-        return null;
-      }
-
-      // throw an error for any other status codes
-      else
-      {
-        String msg = StringUtils.trimToNull( response.statusMessage );
-        if (msg==null) msg = "Request failed!";
-        msg += " (" + response.statusCode + ")";
-        throw new RequestFailedException( response, msg );
-      }
+      // execute request
+      return _get( client, url );
     }
 
     /**
@@ -2469,10 +2255,16 @@ public final class ImportExport
       String url = client.getApiBaseUrl()
         + "/api/offer/v1.0/user/me/realestate/" + is24RealEstateId;
 
+      // execute request
+      return _get( client, url );
+    }
+
+    private static RealEstate _get( AbstractClient client, String url ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    {
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.GET, null );
 
-      // parse result from response body after successfull execution
+      // parse result from response body after successful execution
       if (response.statusCode==Response.OK)
       {
         return ((JAXBElement<RealEstate>)
@@ -2583,18 +2375,16 @@ public final class ImportExport
 
       // write object into xml
       String xml = XmlUtils.marshal( realEstate, AbstractClient.getEncoding() );
-      //LOGGER.debug( StringUtils.repeat( "-", 50 ) );
-      //LOGGER.debug( xml );
-      //LOGGER.debug( StringUtils.repeat( "-", 50 ) );
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.POST, xml );
 
-      // parse result from response body after successfull execution
+      // parse result from response body after successful execution
       if (response.statusCode==Response.CREATED)
       {
         //LOGGER.debug( "------------------------------------" );
         //LOGGER.debug( "RealEstateService.post" );
+        //LOGGER.debug( url );
         //LOGGER.debug( response.body );
         //LOGGER.debug( "------------------------------------" );
         Messages msgs = (Messages) XmlUtils.unmarshal( response.body );
@@ -2722,30 +2512,8 @@ public final class ImportExport
       // append URL parameters
       if (!params.isEmpty()) url += "?" + StringUtils.join( params, "&" );
 
-      // write object into xml
-      String xml = XmlUtils.marshal( realEstate, AbstractClient.getEncoding() );
-
-      // send request
-      Response response = client.sendXmlRequest( new URL( url ), RequestMethod.PUT, xml );
-
-      // parse result from response body after successfull execution
-      if (response.statusCode==Response.OK)
-      {
-        //LOGGER.debug( "------------------------------------" );
-        //LOGGER.debug( "RealEstateService.putByExternalId / " + externalRealEstateId );
-        //LOGGER.debug( response.body );
-        //LOGGER.debug( "------------------------------------" );
-        return (Messages) XmlUtils.unmarshal( response.body );
-      }
-
-      // throw an error for any other status codes
-      else
-      {
-        String msg = StringUtils.trimToNull( response.statusMessage );
-        if (msg==null) msg = "Request failed!";
-        msg += " (" + response.statusCode + ")";
-        throw new RequestFailedException( response, msg );
-      }
+      // execute request
+      return _put( client, url, realEstate );
     }
 
     /**
@@ -2838,17 +2606,24 @@ public final class ImportExport
       // append URL parameters
       if (!params.isEmpty()) url += "?" + StringUtils.join( params, "&" );
 
+      // execute request
+      return _put( client, url, realEstate );
+    }
+
+    private static Messages _put( AbstractClient client, String url, RealEstate realEstate ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    {
       // write object into xml
       String xml = XmlUtils.marshal( realEstate, AbstractClient.getEncoding() );
 
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.PUT, xml );
 
-      // parse result from response body after successfull execution
+      // parse result from response body after successful execution
       if (response.statusCode==Response.OK)
       {
         //LOGGER.debug( "------------------------------------" );
-        //LOGGER.debug( "RealEstateService.putByIs24Id / " + is24RealEstateId );
+        //LOGGER.debug( "RealEstateService.put" );
+        //LOGGER.debug( url );
         //LOGGER.debug( response.body );
         //LOGGER.debug( "------------------------------------" );
         return (Messages) XmlUtils.unmarshal( response.body );
@@ -2990,7 +2765,7 @@ public final class ImportExport
       // send request
       Response response = client.sendXmlRequest( new URL( url ), RequestMethod.GET, null );
 
-      // parse result from response body after successfull execution
+      // parse result from response body after successful execution
       if (response.statusCode==Response.OK)
       {
         return ((JAXBElement<VideoUploadTicket>)
