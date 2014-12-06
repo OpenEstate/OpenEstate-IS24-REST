@@ -114,8 +114,8 @@ public class ExportPool
   /**
    * Returns a pooled contact.
    *
-   * @param externalContactId
-   * ID of the contact
+   * @param pooledContactId
+   * ID of the contact within the pool
    *
    * @return
    * contact
@@ -123,11 +123,11 @@ public class ExportPool
    * @throws IOException
    * if object is not readable from local directory
    */
-  public RealtorContactDetails getContact( String externalContactId ) throws IOException
+  public RealtorContactDetails getContact( String pooledContactId ) throws IOException
   {
-    if (StringUtils.isBlank( externalContactId )) return null;
+    if (StringUtils.isBlank( pooledContactId )) return null;
 
-    final File xmlFile = new File( new File( this.contactsDir, externalContactId ), "contact.xml" );
+    final File xmlFile = new File( new File( this.contactsDir, pooledContactId ), "contact.xml" );
     if (!xmlFile.isFile()) return null;
 
     final Unmarshaller unmarshaller;
@@ -154,15 +154,14 @@ public class ExportPool
       if (contact==null)
       {
         throw new IOException(
-          "Can't read XML file for contact '" + externalContactId + "'!" );
+          "Can't read XML file for contact '" + pooledContactId + "'!" );
       }
-      contact.setExternalId( externalContactId );
       return contact;
     }
     catch (JAXBException ex)
     {
       throw new IOExceptionWithCause(
-        "Can't read XML file for contact '" + externalContactId + "'!", ex );
+        "Can't read XML file for contact '" + pooledContactId + "'!", ex );
     }
   }
 
@@ -170,7 +169,7 @@ public class ExportPool
    * Returns ID's of pooled contacts.
    *
    * @return
-   * contact ID's
+   * contact ID's within the pool
    */
   public String[] getContactIds()
   {
@@ -186,8 +185,8 @@ public class ExportPool
   /**
    * Returns size of a pooled contact.
    *
-   * @param externalContactId
-   * ID of the contact
+   * @param pooledContactId
+   * ID of the contact within the pool
    *
    * @param completely
    * calculate the complete size (including attachments)
@@ -195,10 +194,10 @@ public class ExportPool
    * @return
    * size in bytes
    */
-  public long getContactSize( String externalContactId, boolean completely )
+  public long getContactSize( String pooledContactId, boolean completely )
   {
-    if (StringUtils.isBlank( externalContactId )) return 0;
-    File file = new File( this.contactsDir, externalContactId );
+    if (StringUtils.isBlank( pooledContactId )) return 0;
+    File file = new File( this.contactsDir, pooledContactId );
     if (!completely) file = new File( file, "contact.xml" );
     return (file.isFile())? FileUtils.sizeOf( file ): 0;
   }
@@ -217,8 +216,8 @@ public class ExportPool
   /**
    * Returns a pooled real estate.
    *
-   * @param externalObjectId
-   * ID of the real estate
+   * @param pooledObjectId
+   * ID of the real estate within the pool
    *
    * @return
    * real estate
@@ -226,11 +225,11 @@ public class ExportPool
    * @throws IOException
    * if object is not readable from local directory
    */
-  public RealEstate getObject( String externalObjectId ) throws IOException
+  public RealEstate getObject( String pooledObjectId ) throws IOException
   {
-    if (StringUtils.isBlank( externalObjectId )) return null;
+    if (StringUtils.isBlank( pooledObjectId )) return null;
 
-    final File xmlFile = new File( new File( this.objectsDir, externalObjectId ), "object.xml" );
+    final File xmlFile = new File( new File( this.objectsDir, pooledObjectId ), "object.xml" );
     if (!xmlFile.isFile()) return null;
 
     final Unmarshaller unmarshaller;
@@ -257,23 +256,22 @@ public class ExportPool
       if (object==null)
       {
         throw new IOException(
-          "Can't read XML file for object '" + externalObjectId + "'!" );
+          "Can't read XML file for object '" + pooledObjectId + "'!" );
       }
-      object.setExternalId( externalObjectId );
       return object;
     }
     catch (JAXBException ex)
     {
       throw new IOExceptionWithCause(
-        "Can't read XML file for object '" + externalObjectId + "'!", ex );
+        "Can't read XML file for object '" + pooledObjectId + "'!", ex );
     }
   }
 
   /**
    * Returns a pooled attachment for a real estate.
    *
-   * @param externalObjectId
-   * ID of the real estate
+   * @param pooledObjectId
+   * ID of the real estate within the pool
    *
    * @param attachmentId
    * ID of the attachment
@@ -284,11 +282,11 @@ public class ExportPool
    * @throws IOException
    * if object is not readable from local directory
    */
-  public Attachment getObjectAttachment( String externalObjectId, String attachmentId ) throws IOException
+  public Attachment getObjectAttachment( String pooledObjectId, String attachmentId ) throws IOException
   {
-    if (StringUtils.isBlank( externalObjectId ) || StringUtils.isBlank( attachmentId )) return null;
+    if (StringUtils.isBlank( pooledObjectId ) || StringUtils.isBlank( attachmentId )) return null;
 
-    final File xmlFile = new File( new File( this.objectsDir, externalObjectId ), "attachment." + attachmentId + ".xml" );
+    final File xmlFile = new File( new File( this.objectsDir, pooledObjectId ), "attachment." + attachmentId + ".xml" );
     if (!xmlFile.isFile()) return null;
 
     final Unmarshaller unmarshaller;
@@ -315,23 +313,23 @@ public class ExportPool
       if (attachment==null)
       {
         throw new IOException(
-          "Can't read XML file for object '" + externalObjectId + "'!" );
+          "Can't read XML file for object '" + pooledObjectId + "'!" );
       }
-      attachment.setExternalId( externalObjectId );
+      //attachment.setExternalId( pooledObjectId );
       return attachment;
     }
     catch (JAXBException ex)
     {
       throw new IOExceptionWithCause(
-        "Can't read XML file for object '" + externalObjectId + "'!", ex );
+        "Can't read XML file for object '" + pooledObjectId + "'!", ex );
     }
   }
 
   /**
    * Returns the file of a pooled attachment for a real estate.
    *
-   * @param externalObjectId
-   * ID of the real estate
+   * @param pooledObjectId
+   * ID of the real estate within the pool
    *
    * @param attachment
    * attachment to lookup
@@ -339,17 +337,17 @@ public class ExportPool
    * @return
    * file
    */
-  public File getObjectAttachmentFile( String externalObjectId, Attachment attachment )
+  public File getObjectAttachmentFile( String pooledObjectId, Attachment attachment )
   {
     return (attachment!=null)?
-      getObjectAttachmentFile( externalObjectId, attachment.getHref() ): null;
+      getObjectAttachmentFile( pooledObjectId, attachment.getHref() ): null;
   }
 
   /**
    * Returns the file of a pooled attachment for a real estate.
    *
-   * @param externalObjectId
-   * ID of the real estate
+   * @param pooledObjectId
+   * ID of the real estate within the pool
    *
    * @param href
    * attachment href
@@ -357,17 +355,17 @@ public class ExportPool
    * @return
    * file
    */
-  public File getObjectAttachmentFile( String externalObjectId, URL href )
+  public File getObjectAttachmentFile( String pooledObjectId, URL href )
   {
     return (href!=null && href.getProtocol().equalsIgnoreCase( "file" ))?
-      getObjectAttachmentFile( externalObjectId, StringUtils.trimToNull( href.getHost() ) ): null;
+      getObjectAttachmentFile( pooledObjectId, StringUtils.trimToNull( href.getHost() ) ): null;
   }
 
   /**
    * Returns the file of a pooled attachment for a real estate.
    *
-   * @param externalObjectId
-   * ID of the real estate
+   * @param pooledObjectId
+   * ID of the real estate within the pool
    *
    * @param name
    * file name
@@ -375,18 +373,18 @@ public class ExportPool
    * @return
    * file
    */
-  public File getObjectAttachmentFile( String externalObjectId, String name )
+  public File getObjectAttachmentFile( String pooledObjectId, String name )
   {
     if (StringUtils.isBlank( name )) return null;
-    final File file = new File( new File( this.objectsDir, externalObjectId ), name );
+    final File file = new File( new File( this.objectsDir, pooledObjectId ), name );
     return (file.isFile())? file: null;
   }
 
   /**
    * Returns size of a pooled attachment for a real estate.
    *
-   * @param externalObjectId
-   * ID of the real estate
+   * @param pooledObjectId
+   * ID of the real estate within the pool
    *
    * @param attachmentId
    * ID of the attachment
@@ -394,18 +392,18 @@ public class ExportPool
    * @return
    * size in bytes
    */
-  public long getObjectAttachmentSize( String externalObjectId, String attachmentId )
+  public long getObjectAttachmentSize( String pooledObjectId, String attachmentId )
   {
-    if (StringUtils.isBlank( externalObjectId ) || StringUtils.isBlank( attachmentId )) return 0;
-    File file = new File( new File( this.objectsDir, externalObjectId ), "attachment." + attachmentId + ".xml" );
+    if (StringUtils.isBlank( pooledObjectId ) || StringUtils.isBlank( attachmentId )) return 0;
+    File file = new File( new File( this.objectsDir, pooledObjectId ), "attachment." + attachmentId + ".xml" );
     return (file.isFile())? FileUtils.sizeOf( file ): 0;
   }
 
   /**
    * Returns the URL of a pooled attachment for a real estate.
    *
-   * @param externalObjectId
-   * ID of the real estate
+   * @param pooledObjectId
+   * ID of the real estate within the pool
    *
    * @param attachmentId
    * ID of the attachment
@@ -416,24 +414,24 @@ public class ExportPool
    * @throws IOException
    * if object is not readable from local directory
    */
-  public URL getObjectAttachmentURL( String externalObjectId, String attachmentId ) throws IOException
+  public URL getObjectAttachmentURL( String pooledObjectId, String attachmentId ) throws IOException
   {
-    Attachment attachment = this.getObjectAttachment( externalObjectId, attachmentId );
+    Attachment attachment = this.getObjectAttachment( pooledObjectId, attachmentId );
     return (attachment!=null)? attachment.getHref(): null;
   }
 
   /**
    * Returns attachment ID's of a pooled real estate.
    *
-   * @param externalObjectId
-   * ID of the real estate
+   * @param pooledObjectId
+   * ID of the real estate within the pool
    *
    * @return
    * attachment ID's
    */
-  public String[] getObjectAttachmentIds( String externalObjectId )
+  public String[] getObjectAttachmentIds( String pooledObjectId )
   {
-    final File objectDir = new File( this.objectsDir, externalObjectId );
+    final File objectDir = new File( this.objectsDir, pooledObjectId );
     if (!objectDir.isDirectory()) return new String[]{};
 
     List<String> ids = new ArrayList<String>();
@@ -458,7 +456,7 @@ public class ExportPool
    * Returns ID's of pooled real estates.
    *
    * @return
-   * real estate ID's
+   * real estate ID's within the pool
    */
   public String[] getObjectIds()
   {
@@ -495,8 +493,8 @@ public class ExportPool
   /**
    * Returns size of a pooled real estate.
    *
-   * @param externalObjectId
-   * ID of the real estate
+   * @param pooledObjectId
+   * ID of the real estate within the pool
    *
    * @param completely
    * calculate the complete size (including attachments)
@@ -504,10 +502,10 @@ public class ExportPool
    * @return
    * size in bytes
    */
-  public long getObjectSize( String externalObjectId, boolean completely )
+  public long getObjectSize( String pooledObjectId, boolean completely )
   {
-    if (StringUtils.isBlank( externalObjectId )) return 0;
-    File file = new File( this.objectsDir, externalObjectId );
+    if (StringUtils.isBlank( pooledObjectId )) return 0;
+    File file = new File( this.objectsDir, pooledObjectId );
     if (!completely) file = new File( file, "object.xml" );
     return (file.isFile())? FileUtils.sizeOf( file ): 0;
   }
@@ -569,32 +567,32 @@ public class ExportPool
   /**
    * Checks, if a contact was pooled for export.
    *
-   * @param externalContactId
-   * contact ID
+   * @param pooledContactId
+   * ID of the contact within the pool
    *
    * @return
    * true, if the object with the provided ID is already pooled
    */
-  public boolean hasContactForExport( String externalContactId )
+  public boolean hasContactForExport( String pooledContactId )
   {
-    if (StringUtils.isBlank( externalContactId )) return false;
-    final File xmlFile = new File( new File( this.contactsDir, externalContactId ), "contact.xml" );
+    if (StringUtils.isBlank( pooledContactId )) return false;
+    final File xmlFile = new File( new File( this.contactsDir, pooledContactId ), "contact.xml" );
     return xmlFile.isFile();
   }
 
   /**
    * Checks, if a real estate was pooled for export.
    *
-   * @param externalObjectId
-   * real estate ID
+   * @param pooledObjectId
+   * ID of the real estate within the pool
    *
    * @return
    * true, if the object with the provided ID is already pooled
    */
-  public boolean hasObjectForExport( String externalObjectId )
+  public boolean hasObjectForExport( String pooledObjectId )
   {
-    if (StringUtils.isBlank( externalObjectId )) return false;
-    final File xmlFile = new File( new File( this.objectsDir, externalObjectId ), "object.xml" );
+    if (StringUtils.isBlank( pooledObjectId )) return false;
+    final File xmlFile = new File( new File( this.objectsDir, pooledObjectId ), "object.xml" );
     return xmlFile.isFile();
   }
 
@@ -624,9 +622,32 @@ public class ExportPool
    */
   public synchronized void putContact( RealtorContactDetails contact ) throws IOException
   {
-    if (contact==null) return;
+    if (contact!=null)
+      putContact( contact, contact.getExternalId() );
+  }
 
-    final File contactDir = new File( this.contactsDir, contact.getExternalId() );
+  /**
+   * Adds a contact to export pool.
+   *
+   * @param contact
+   * contact
+   *
+   * @param pooledContactId
+   * ID of the contact within the pool
+   *
+   * @throws IOException
+   * if pooling failed
+   */
+  public synchronized void putContact( RealtorContactDetails contact, String pooledContactId ) throws IOException
+  {
+    if (contact==null) return;
+    if (pooledContactId==null) pooledContactId = contact.getExternalId();
+    if (StringUtils.isBlank( pooledContactId ))
+      throw new IOException( "No pool ID was provided for the object!" );
+    if (StringUtils.isBlank( contact.getExternalId() ))
+      contact.setExternalId( pooledContactId );
+
+    final File contactDir = new File( this.contactsDir, pooledContactId );
     if (contactDir.exists())
       FileUtils.deleteDirectory( contactDir );
     if (!contactDir.mkdirs())
@@ -640,7 +661,7 @@ public class ExportPool
     }
     catch (JAXBException ex)
     {
-      throw new IOExceptionWithCause( "Can't write XML for contact '" + contact.getExternalId() + "'!", ex );
+      throw new IOExceptionWithCause( "Can't write XML for contact '" + pooledContactId + "'!", ex );
     }
     finally
     {
@@ -659,9 +680,32 @@ public class ExportPool
    */
   public synchronized void putObject( RealEstate object ) throws IOException
   {
-    if (object==null) return;
+    if (object!=null)
+      putObject( object, object.getExternalId() );
+  }
 
-    final File objectDir = new File( this.objectsDir, object.getExternalId() );
+  /**
+   * Adds a real estate to export pool.
+   *
+   * @param object
+   * real estate
+   *
+   * @param pooledObjectId
+   * ID of the real estate within the pool
+   *
+   * @throws IOException
+   * if pooling failed
+   */
+  public synchronized void putObject( RealEstate object, String pooledObjectId ) throws IOException
+  {
+    if (object==null) return;
+    if (pooledObjectId==null) pooledObjectId = object.getExternalId();
+    if (StringUtils.isBlank( pooledObjectId ))
+      throw new IOException( "No pool ID was provided for the object!" );
+    if (StringUtils.isBlank( object.getExternalId() ))
+      object.setExternalId( pooledObjectId );
+
+    final File objectDir = new File( this.objectsDir, pooledObjectId );
     if (objectDir.exists())
       FileUtils.deleteDirectory( objectDir );
     if (!objectDir.mkdirs())
@@ -672,11 +716,11 @@ public class ExportPool
     {
       output = new FileOutputStream( new File( objectDir, "object.xml" ) );
       XmlUtils.writeXml( object, output );
-      this.putSetting( "object."+object.getExternalId(), UPDATE );
+      this.putSetting( "object." + object.getExternalId(), UPDATE );
     }
     catch (JAXBException ex)
     {
-      throw new IOExceptionWithCause( "Can't write XML for object '" + object.getExternalId() + "'!", ex );
+      throw new IOExceptionWithCause( "Can't write XML for object '" + pooledObjectId + "'!", ex );
     }
     finally
     {
@@ -687,8 +731,8 @@ public class ExportPool
   /**
    * Adds an attachment for a real estate to export pool.
    *
-   * @param externalObjectId
-   * real estate ID
+   * @param pooledObjectId
+   * ID of the real estate within the pool
    *
    * @param attachment
    * attachment informations
@@ -699,11 +743,11 @@ public class ExportPool
    * @throws IOException
    * if pooling failed
    */
-  public synchronized void putObjectAttachedFile( String externalObjectId, Attachment attachment, File file ) throws IOException
+  public synchronized void putObjectAttachedFile( String pooledObjectId, Attachment attachment, File file ) throws IOException
   {
-    if (StringUtils.isBlank( externalObjectId ) || attachment==null || file==null || !file.isFile()) return;
+    if (StringUtils.isBlank( pooledObjectId ) || attachment==null || file==null || !file.isFile()) return;
 
-    final File objectDir = new File( this.objectsDir, externalObjectId );
+    final File objectDir = new File( this.objectsDir, pooledObjectId );
     if (!objectDir.exists() && !objectDir.mkdirs())
       throw new IOException( "Can't create folder at '" + objectDir.getAbsolutePath() + "'!" );
 
@@ -717,7 +761,7 @@ public class ExportPool
 
     final File destFile = new File( objectDir, file.getName() );
     FileUtils.copyFile( file, destFile );
-    attachment.setHref( new URL( "file://" + file.getName() ) );
+    attachment.setHref( new URL( "file://" + destFile.getName() ) );
 
     OutputStream output = null;
     try
@@ -727,7 +771,7 @@ public class ExportPool
     }
     catch (JAXBException ex)
     {
-      throw new IOExceptionWithCause( "Can't write XML for an attachment of object '" + externalObjectId + "'!", ex );
+      throw new IOExceptionWithCause( "Can't write XML for an attachment of object '" + pooledObjectId + "'!", ex );
     }
     finally
     {
@@ -738,8 +782,8 @@ public class ExportPool
   /**
    * Adds an attachment for a real estate to export pool.
    *
-   * @param externalObjectId
-   * real estate ID
+   * @param pooledObjectId
+   * ID of the real estate within the pool
    *
    * @param attachment
    * attachment informations
@@ -750,11 +794,11 @@ public class ExportPool
    * @throws IOException
    * if pooling failed
    */
-  public synchronized void putObjectAttachedFile( String externalObjectId, Attachment attachment, URL file ) throws IOException
+  public synchronized void putObjectAttachedFile( String pooledObjectId, Attachment attachment, URL file ) throws IOException
   {
-    if (StringUtils.isBlank( externalObjectId ) || attachment==null || file==null) return;
+    if (StringUtils.isBlank( pooledObjectId ) || attachment==null || file==null) return;
 
-    final File objectDir = new File( this.objectsDir, externalObjectId );
+    final File objectDir = new File( this.objectsDir, pooledObjectId );
     if (!objectDir.exists() && !objectDir.mkdirs())
       throw new IOException( "Can't create folder at '" + objectDir.getAbsolutePath() + "'!" );
 
@@ -775,7 +819,7 @@ public class ExportPool
     }
     catch (JAXBException ex)
     {
-      throw new IOExceptionWithCause( "Can't write XML for an attachment of object '" + externalObjectId + "'!", ex );
+      throw new IOExceptionWithCause( "Can't write XML for an attachment of object '" + pooledObjectId + "'!", ex );
     }
     finally
     {
@@ -786,8 +830,8 @@ public class ExportPool
   /**
    * Adds an web link for a real estate to export pool.
    *
-   * @param externalObjectId
-   * real estate ID
+   * @param pooledObjectId
+   * ID of the real estate within the pool
    *
    * @param link
    * web link
@@ -795,11 +839,11 @@ public class ExportPool
    * @throws IOException
    * if pooling failed
    */
-  public synchronized void putObjectAttachedLink( String externalObjectId, Attachment link ) throws IOException
+  public synchronized void putObjectAttachedLink( String pooledObjectId, Attachment link ) throws IOException
   {
-    if (StringUtils.isBlank( externalObjectId ) || link==null) return;
+    if (StringUtils.isBlank( pooledObjectId ) || link==null) return;
 
-    final File objectDir = new File( this.objectsDir, externalObjectId );
+    final File objectDir = new File( this.objectsDir, pooledObjectId );
     if (!objectDir.exists() && !objectDir.mkdirs())
       throw new IOException( "Can't create folder at '" + objectDir.getAbsolutePath() + "'!" );
 
@@ -819,7 +863,7 @@ public class ExportPool
     }
     catch (JAXBException ex)
     {
-      throw new IOExceptionWithCause( "Can't write XML for an attachment of object '" + externalObjectId + "'!", ex );
+      throw new IOExceptionWithCause( "Can't write XML for an attachment of object '" + pooledObjectId + "'!", ex );
     }
     finally
     {

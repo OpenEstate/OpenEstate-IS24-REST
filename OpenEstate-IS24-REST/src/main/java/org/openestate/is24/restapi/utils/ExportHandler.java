@@ -37,6 +37,7 @@ import org.openestate.is24.restapi.AbstractClient;
 import org.openestate.is24.restapi.ImportExport;
 import org.openestate.is24.restapi.xml.common.Attachment;
 import org.openestate.is24.restapi.xml.common.Attachments;
+import org.openestate.is24.restapi.xml.common.Link;
 import org.openestate.is24.restapi.xml.common.Message;
 import org.openestate.is24.restapi.xml.common.MessageCode;
 import org.openestate.is24.restapi.xml.common.Messages;
@@ -114,71 +115,33 @@ public class ExportHandler
    */
   protected void doArchiveObject( String externalObjectId ) throws IOException
   {
-    LOGGER.info( "archivating object '" + externalObjectId + "'" );
+    LOGGER.info( "archiving object '" + externalObjectId + "'" );
     try
     {
       // Immobilie ermitteln
       final RealEstate is24Object;
       final Long is24ObjectId;
-      final boolean isAlreadyDeleted;
       try
       {
         is24Object = ImportExport.RealEstateService.getByExternalId(
           this.client, externalObjectId );
         if (is24Object==null)
         {
-          //transport.addMessageToExportContext(
-          //  ResponseCode.IS24_TRANSPORT_CANT_LOOKUP_PROPERTY_FOR_DELETE,
-          //  externalObjectId,
-          //  "Property '" + externalObjectId + "' is not available anymore at the webservice!",
-          //  context );
           this.putObjectMessage(
-            externalObjectId, ExportMessage.Code.OBJECT_NOT_FOUND,
-            "Property '" + externalObjectId + "' is not available anymore at the webservice!" );
+            externalObjectId, ExportMessage.Code.OBJECT_NOT_FOUND_FOR_ARCHIVING,
+            "Property '" + externalObjectId + "' is not available anymore at the Webservice!" );
           return;
         }
-        isAlreadyDeleted = RealEstateState.TO_BE_DELETED.equals( is24Object.getRealEstateState() );
-        if (!isAlreadyDeleted) is24Object.setRealEstateState( RealEstateState.TO_BE_DELETED );
         is24ObjectId = is24Object.getId();
       }
       catch (RequestFailedException ex)
       {
-        LOGGER.error( "Can't get property '" + externalObjectId + "' from the webservice!" );
+        LOGGER.error( "Can't get property '" + externalObjectId + "' from the Webservice!" );
         logMessagesAsError( ex.responseMessages );
         LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
-        //transport.addMessagesToExportContext(
-        //  ResponseCode.IS24_TRANSPORT_CANT_LOOKUP_PROPERTY,
-        //  externalObjectId,
-        //  ex.responseMessages,
-        //  context );
         this.putObjectMessage(
-          externalObjectId, ExportMessage.Code.OBJECT_NOT_FOUND, ex.responseMessages );
+          externalObjectId, ExportMessage.Code.OBJECT_NOT_FOUND_FOR_ARCHIVING, ex.responseMessages );
         return;
-      }
-
-      // Archivierung durchführen
-
-      // ggf. den Lösch-Status in Immobilie speichern
-      if (!isAlreadyDeleted)
-      {
-        try
-        {
-          ImportExport.RealEstateService.putByIs24Id(
-            this.client, is24Object, is24ObjectId, this.isUseNewEnergySourceEnev2014Values() );
-        }
-        catch (RequestFailedException ex)
-        {
-          LOGGER.error( "Can't disable property '" + externalObjectId + "' (" + is24ObjectId + ") at the webservice!" );
-          logMessagesAsError( ex.responseMessages );
-          LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
-          //transport.addMessagesToExportContext(
-          //  ResponseCode.IS24_TRANSPORT_CANT_DISABLE_PROPERTY,
-          //  externalObjectId,
-          //  ex.responseMessages,
-          //  context );
-          this.putObjectMessage(
-            externalObjectId, ExportMessage.Code.OBJECT_NOT_DISABLED, ex.responseMessages );
-        }
       }
 
       // aktuelle Veröffentlichungen zur Immobilie ermitteln
@@ -187,34 +150,26 @@ public class ExportHandler
       {
         is24Publishings = ImportExport.PublishService.get(
           this.client, is24ObjectId, 0 );
-        if (is24Publishings==null)
-        {
-          //transport.addMessageToExportContext(
-          //  ResponseCode.IS24_TRANSPORT_CANT_LOOKUP_PROPERTY_PUBLISHINGS,
-          //  externalObjectId,
-          //  "Can't get publishings of property '" + externalObjectId + "' (" + is24ObjectId + ") from the webservice!",
-          //  context );
-          this.putObjectMessage(
-            externalObjectId, ExportMessage.Code.OBJECT_PUBLISHINGS_NOT_FOUND,
-            "Can't get publishings of property '" + externalObjectId + "' (" + is24ObjectId + ") from the webservice!" );
-        }
       }
       catch (RequestFailedException ex)
       {
-        LOGGER.error( "Can't get publishings of property '" + externalObjectId + "' (" + is24ObjectId + ") from the webservice!" );
+        LOGGER.error( "Can't get publishings of property '" + externalObjectId + "' (" + is24ObjectId + ") from the Webservice!" );
         logMessagesAsError( ex.responseMessages );
         LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
-        //transport.addMessagesToExportContext(
-        //  ResponseCode.IS24_TRANSPORT_CANT_LOOKUP_PROPERTY_PUBLISHINGS,
-        //  externalObjectId,
-        //  ex.responseMessages,
-        //  context );
         this.putObjectMessage(
           externalObjectId, ExportMessage.Code.OBJECT_PUBLISHINGS_NOT_FOUND, ex.responseMessages );
       }
 
-      // ggf. Veröffentlichungen zur Immobilie aktualisieren
-      if (is24Publishings!=null)
+      // keine Veröffentlichungen gefunden
+      if (is24Publishings==null)
+      {
+        this.putObjectMessage(
+          externalObjectId, ExportMessage.Code.OBJECT_PUBLISHINGS_NOT_FOUND,
+          "Can't get publishings of property '" + externalObjectId + "' (" + is24ObjectId + ") from the Webservice!" );
+      }
+
+      // ggf. Veröffentlichungen der Immobilie entfernen
+      else
       {
         for (PublishObject publishing : is24Publishings.getPublishObject())
         {
@@ -228,14 +183,9 @@ public class ExportHandler
           catch (RequestFailedException ex)
           {
             LOGGER.error( "Can't unpublish property '" + externalObjectId + "' (" + is24ObjectId + ") "
-              + "in channel '" + publishing.getPublishChannel().getTitle() + "' (" + is24ChannelId +  ") at the webservice!" );
+              + "in channel '" + publishing.getPublishChannel().getTitle() + "' (" + is24ChannelId +  ") at the Webservice!" );
             logMessagesAsError( ex.responseMessages );
             LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
-            //transport.addMessagesToExportContext(
-            //  ResponseCode.IS24_TRANSPORT_CANT_UNPUBLISH_PROPERTY,
-            //  externalObjectId,
-            //  ex.responseMessages,
-            //  context );
             this.putObjectMessage(
               externalObjectId, ExportMessage.Code.OBJECT_NOT_UNPUBLISHED, ex.responseMessages );
           }
@@ -244,22 +194,16 @@ public class ExportHandler
     }
     catch (JAXBException ex)
     {
-      //LOGGER.error( "Can't read / write XML while communicating with the webservice!" );
-      //LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
       throw new IOExceptionWithCause(
-        "Can't read / write XML while communicating with the webservice!", ex );
+        "Can't read / write XML while communicating with the Webservice!", ex );
     }
     catch (OAuthException ex)
     {
-      //LOGGER.error( "Can't authorize at the webservice!" );
-      //LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
       throw new IOExceptionWithCause(
         "Authorization failed!", ex );
     }
     catch (IOException ex)
     {
-      //LOGGER.error( "Can't communicate with the webservice!" );
-      //LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
       throw new IOExceptionWithCause(
         "Communication failed!", ex );
     }
@@ -314,83 +258,33 @@ public class ExportHandler
     LOGGER.info( "removing object '" + externalObjectId + "'" );
     try
     {
-      // Immobilie ermitteln
-      final RealEstate is24Object;
-      final Long is24ObjectId;
-      final boolean isAlreadyDeleted;
-      try
-      {
-        is24Object = ImportExport.RealEstateService.getByExternalId(
-          this.client, externalObjectId );
-        if (is24Object==null)
-        {
-          //transport.addMessageToExportContext(
-          //  ResponseCode.IS24_TRANSPORT_CANT_LOOKUP_PROPERTY_FOR_DELETE,
-          //  externalObjectId,
-          //  "Property '" + externalObjectId + "' is not available anymore at the webservice!",
-          //  context );
-          this.putObjectMessage(
-            externalObjectId, ExportMessage.Code.OBJECT_NOT_FOUND,
-            "Property '" + externalObjectId + "' is not available anymore at the webservice!" );
-          return;
-        }
-        isAlreadyDeleted = RealEstateState.TO_BE_DELETED.equals( is24Object.getRealEstateState() );
-        if (!isAlreadyDeleted) is24Object.setRealEstateState( RealEstateState.TO_BE_DELETED );
-        is24ObjectId = is24Object.getId();
-      }
-      catch (RequestFailedException ex)
-      {
-        LOGGER.error( "Can't get property '" + externalObjectId + "' from the webservice!" );
-        logMessagesAsError( ex.responseMessages );
-        LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
-        //transport.addMessagesToExportContext(
-        //  ResponseCode.IS24_TRANSPORT_CANT_LOOKUP_PROPERTY,
-        //  externalObjectId,
-        //  ex.responseMessages,
-        //  context );
-        this.putObjectMessage(
-          externalObjectId, ExportMessage.Code.OBJECT_NOT_FOUND, ex.responseMessages );
-        return;
-      }
-
       // Löschung durchführen
       try
       {
-        ImportExport.RealEstateService.deleteByIs24Id(
-          this.client, is24ObjectId );
+        ImportExport.RealEstateService.deleteByExternalId(
+          this.client, externalObjectId );
       }
       catch (RequestFailedException ex)
       {
-        LOGGER.error( "Can't delete property '" + externalObjectId + "' (" + is24ObjectId + ") at the webservice!" );
+        LOGGER.error( "Can't delete property '" + externalObjectId + "' at the Webservice!" );
         logMessagesAsError( ex.responseMessages );
         LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
-        //transport.addMessagesToExportContext(
-        //  ResponseCode.IS24_TRANSPORT_CANT_DELETE_PROPERTY,
-        //  externalObjectId,
-        //  ex.responseMessages,
-        //  context );
         this.putObjectMessage(
           externalObjectId, ExportMessage.Code.OBJECT_NOT_REMOVED, ex.responseMessages );
       }
     }
     catch (JAXBException ex)
     {
-      //LOGGER.error( "Can't read / write XML while communicating with the webservice!" );
-      //LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
       throw new IOExceptionWithCause(
-        "Can't read / write XML while communicating with the webservice!", ex );
+        "Can't read / write XML while communicating with the Webservice!", ex );
     }
     catch (OAuthException ex)
     {
-      //LOGGER.error( "Can't authorize at the webservice!" );
-      //LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
       throw new IOExceptionWithCause(
         "Authorization failed!", ex );
     }
     catch (IOException ex)
     {
-      //LOGGER.error( "Can't communicate with the webservice!" );
-      //LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
       throw new IOExceptionWithCause(
         "Communication failed!", ex );
     }
@@ -423,25 +317,17 @@ public class ExportHandler
             this.client, null, null, 0, page, false );
           if (is24Objects==null)
           {
-            //transport.addMessageToExportContext(
-            //  ResponseCode.IS24_TRANSPORT_CANT_LOOKUP_PROPERTIES,
-            //  "Can't get available properties from the webservice!",
-            //  context );
             this.putGeneralMessage(
               ExportMessage.Code.OBJECTS_NOT_FOUND,
-              "Can't get available properties from the webservice!" );
+              "Can't get available properties from the Webservice!" );
             return new String[]{};
           }
         }
         catch (RequestFailedException ex)
         {
-          LOGGER.error( "Can't get available properties from the webservice!" );
+          LOGGER.error( "Can't get available properties from the Webservice!" );
           logMessagesAsError( ex.responseMessages );
           LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
-          //transport.addMessagesToExportContext(
-          //  ResponseCode.IS24_TRANSPORT_CANT_LOOKUP_PROPERTIES,
-          //  ex.responseMessages,
-          //  context );
           this.putGeneralMessage(
             ExportMessage.Code.OBJECTS_NOT_FOUND, ex.responseMessages );
           return new String[]{};
@@ -479,21 +365,63 @@ public class ExportHandler
     }
     catch (JAXBException ex)
     {
-      //LOGGER.error( "Can't read / write XML while communicating with the webservice!" );
-      //LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
       throw new IOExceptionWithCause(
-        "Can't read / write XML while communicating with the webservice!", ex );
+        "Can't read / write XML while communicating with the Webservice!", ex );
     }
     catch (OAuthException ex)
     {
-      //LOGGER.error( "Can't authorize at the webservice!" );
+      throw new IOExceptionWithCause(
+        "Authorization failed!", ex );
+    }
+    catch (IOException ex)
+    {
+      throw new IOExceptionWithCause(
+        "Communication failed!", ex );
+    }
+  }
+
+  /**
+   * Returns publish channels for the authorized agency.
+   *
+   * @return
+   * publish channels
+   *
+   * @throws IOException
+   * if the operation failed
+   */
+  protected PublishChannels doLoadPublishChannels() throws IOException
+  {
+    LOGGER.info( "load available publish channels" );
+    try
+    {
+      return ImportExport.PublishChannelService.get( this.client );
+    }
+    catch (RequestFailedException ex)
+    {
+      LOGGER.error( "Can't get publish channels from the Webservice!" );
+      logMessagesAsError( ex.responseMessages );
+      LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
+      this.putGeneralMessage(
+        ExportMessage.Code.PUBLISH_CHANNELS_NOT_FOUND, ex.responseMessages );
+      return null;
+    }
+    catch (JAXBException ex)
+    {
+      //LOGGER.error( "Can't read / write XML while communicating with the Webservice!" );
+      //LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
+      throw new IOExceptionWithCause(
+        "Can't read / write XML while communicating with the Webservice!", ex );
+    }
+    catch (OAuthException ex)
+    {
+      //LOGGER.error( "Can't authorize at the Webservice!" );
       //LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
       throw new IOExceptionWithCause(
         "Authorization failed!", ex );
     }
     catch (IOException ex)
     {
-      //LOGGER.error( "Can't communicate with the webservice!" );
+      //LOGGER.error( "Can't communicate with the Webservice!" );
       //LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
       throw new IOExceptionWithCause(
         "Communication failed!", ex );
@@ -503,29 +431,19 @@ public class ExportHandler
   /**
    * Saves a contact person to the Webservice.
    *
-   * @param externalContactId
-   * external contact ID
+   * @param contact
+   * contact to save
+   *
+   * @param poolContactId
+   * contact ID within export pool
    *
    * @throws IOException
    * if the operation failed
    */
-  protected void doUpdateContact( String externalContactId ) throws IOException
+  protected void doUpdateContact( RealtorContactDetails contact, String poolContactId ) throws IOException
   {
+    final String externalContactId = contact.getExternalId();
     LOGGER.info( "updating contact '" + externalContactId + "'" );
-
-    // Ansprechpartner ermitteln
-    final RealtorContactDetails newIs24Contact = this.pool.getContact( externalContactId );
-    if (newIs24Contact==null)
-    {
-      // Fortschritt protokollieren
-      this.addProgress(
-        this.pool.getContactSize( externalContactId, true ) );
-
-      throw new IOException(
-        "Can't read XML file for contact '" + externalContactId + "'!" );
-    }
-    newIs24Contact.setExternalId( externalContactId );
-
     try
     {
       // prüfen, ob ein Ansprechpartner mit der externen ID bereits im Webservice existiert
@@ -537,13 +455,9 @@ public class ExportHandler
       }
       catch (RequestFailedException ex)
       {
-        LOGGER.error( "Can't get contact person '" + externalContactId + "' from the webservice!" );
+        LOGGER.error( "Can't get contact person '" + externalContactId + "' from the Webservice!" );
         logMessagesAsError( ex.responseMessages );
         LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
-        //transport.addMessagesToExportContext(
-        //  ResponseCode.IS24_TRANSPORT_CANT_LOOKUP_CONTACT_PERSON,
-        //  ex.responseMessages,
-        //  context );
         this.putContactMessage(
           externalContactId, ExportMessage.Code.CONTACT_NOT_FOUND, ex.responseMessages );
         return;
@@ -555,7 +469,7 @@ public class ExportHandler
         try
         {
           ImportExport.ContactAddressService.post(
-            this.client, newIs24Contact );
+            this.client, contact );
         }
         catch (RequestFailedException ex)
         {
@@ -563,18 +477,14 @@ public class ExportHandler
           if (resource!=null && "duplicated contactDetails".equalsIgnoreCase( resource.type ) && resource.id>0)
           {
             LOGGER.info( "contact '" + externalContactId + "' is already "
-              + "available at the webservice with ID " + resource.id + "." );
+              + "available at the Webservice with ID " + resource.id + "." );
             this.duplicatedContactIds.put( externalContactId, resource.id );
           }
           else
           {
-            LOGGER.error( "Can't add contact person '" + externalContactId + "' to the webservice!" );
+            LOGGER.error( "Can't add contact person '" + externalContactId + "' to the Webservice!" );
             logMessagesAsError( ex.responseMessages );
             LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
-            //transport.addMessagesToExportContext(
-            //  ResponseCode.IS24_TRANSPORT_CANT_SAVE_CONTACT_PERSON,
-            //  ex.responseMessages,
-            //  context );
             this.putContactMessage(
               externalContactId, ExportMessage.Code.CONTACT_NOT_SAVED, ex.responseMessages );
             return;
@@ -586,12 +496,12 @@ public class ExportHandler
       else
       {
         Long is24ContactId = oldIs24Contact.getId();
-        newIs24Contact.setId( is24ContactId );
+        contact.setId( is24ContactId );
 
         try
         {
           ImportExport.ContactAddressService.putByIs24Id(
-            this.client, newIs24Contact, is24ContactId );
+            this.client, contact, is24ContactId );
         }
         catch (RequestFailedException ex)
         {
@@ -599,18 +509,14 @@ public class ExportHandler
           if (resource!=null && "duplicated contactDetails".equalsIgnoreCase( resource.type ) && resource.id>0)
           {
             LOGGER.info( "contact '" + externalContactId + "' is already "
-              + "available at the webservice with ID " + resource.id + "." );
+              + "available at the Webservice with ID " + resource.id + "." );
             this.duplicatedContactIds.put( externalContactId, resource.id );
           }
           else
           {
-            LOGGER.error( "Can't update contact person '" + externalContactId + "' at the webservice!" );
+            LOGGER.error( "Can't update contact person '" + externalContactId + "' at the Webservice!" );
             logMessagesAsError( ex.responseMessages );
             LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
-            //transport.addMessagesToExportContext(
-            //  ResponseCode.IS24_TRANSPORT_CANT_SAVE_CONTACT_PERSON,
-            //  ex.responseMessages,
-            //  context );
             this.putContactMessage(
               externalContactId, ExportMessage.Code.CONTACT_NOT_SAVED, ex.responseMessages );
           }
@@ -623,22 +529,16 @@ public class ExportHandler
     }
     catch (JAXBException ex)
     {
-      //LOGGER.error( "Can't read / write XML while communicating with the webservice!" );
-      //LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
       throw new IOExceptionWithCause(
-        "Can't read / write XML while communicating with the webservice!", ex );
+        "Can't read / write XML while communicating with the Webservice!", ex );
     }
     catch (OAuthException ex)
     {
-      //LOGGER.error( "Can't authorize at the webservice!" );
-      //LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
       throw new IOExceptionWithCause(
         "Authorization failed!", ex );
     }
     catch (IOException ex)
     {
-      //LOGGER.error( "Can't communicate with the webservice!" );
-      //LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
       throw new IOExceptionWithCause(
         "Communication failed!", ex );
     }
@@ -646,22 +546,30 @@ public class ExportHandler
     {
       // Fortschritt protokollieren
       this.addProgress(
-        this.pool.getContactSize( externalContactId, true ) );
+        this.pool.getContactSize( poolContactId, true ) );
     }
   }
 
   /**
    * Saves a real estate to the Webservice.
    *
-   * @param externalObjectId
-   * external real estate ID
+   * @param object
+   * real estate to save
+   *
+   * @param is24PublishChannels
+   * channels, where the real estate should be published
+   *
+   * @param poolObjectId
+   * real estate ID within export pool
    *
    * @throws IOException
    * if the operation failed
    */
-  protected void doUpdateObject( String externalObjectId ) throws IOException
+  protected void doUpdateObject( RealEstate object, PublishChannels is24PublishChannels, String poolObjectId ) throws IOException
   {
+    final String externalObjectId = object.getExternalId();
     LOGGER.info( "updating object '" + externalObjectId + "'" );
+
     final org.openestate.is24.restapi.xml.common.ObjectFactory commonFactory =
       new org.openestate.is24.restapi.xml.common.ObjectFactory();
     final org.openestate.is24.restapi.xml.realestates.ObjectFactory realEstatesFactory =
@@ -669,45 +577,28 @@ public class ExportHandler
     final org.openestate.is24.restapi.xml.attachmentsorder.ObjectFactory attachmentsorderFactory =
       new org.openestate.is24.restapi.xml.attachmentsorder.ObjectFactory();
 
-    // Immobilie  aus ExportPool ermitteln
-    RealEstate newIs24Object = this.pool.getObject( externalObjectId );
-    if (newIs24Object==null)
-    {
-      // Fortschritt protokollieren
-      this.addProgress(
-        this.pool.getObjectSize( externalObjectId, true ) );
+    object.setRealEstateState( RealEstateState.ACTIVE );
 
-      throw new IOException(
-        "Can't read XML file for property '" + externalObjectId + "'!" );
-    }
-    newIs24Object.setExternalId( externalObjectId );
-    newIs24Object.setRealEstateState( RealEstateState.ACTIVE );
-
-    String externalContactId = (newIs24Object.getContact()!=null)?
-      StringUtils.trimToNull( newIs24Object.getContact().getExternalId() ): null;
+    String externalContactId = (object.getContact()!=null)?
+      StringUtils.trimToNull( object.getContact().getExternalId() ): null;
 
     // Duplikat des Ansprechpartners verwenden
     if (externalContactId!=null && this.duplicatedContactIds.containsKey( externalContactId ))
     {
       long is24ContactId = this.duplicatedContactIds.get( externalContactId );
-      if (newIs24Object.getContact()==null)
-        newIs24Object.setContact( realEstatesFactory.createRealEstateContact() );
-      newIs24Object.getContact().setId( is24ContactId );
-      newIs24Object.getContact().setExternalId( null );
+      if (object.getContact()==null)
+        object.setContact( realEstatesFactory.createRealEstateContact() );
+      object.getContact().setId( is24ContactId );
+      object.getContact().setExternalId( null );
     }
 
     // sicherstellen, dass der Ansprechpartner vorher erfolgreich während des Transports exportiert wurde
     else if (externalContactId!=null && !this.savedContactIds.contains( externalContactId ))
     {
-      //transport.addMessageToExportContext(
-      //  ResponseCode.IS24_TRANSPORT_PROPERTY_SENT_WITHOUT_CONTACT_PERSON,
-      //  externalObjectId,
-      //  "The contact '" + externalContactId + "' was not saved during the export process.",
-      //  context );
       this.putObjectMessage(
         externalObjectId, ExportMessage.Code.OBJECT_WITHOUT_CONTACT,
         "The contact '" + externalContactId + "' was not saved during the export process." );
-      newIs24Object.setContact( null );
+      object.setContact( null );
     }
 
     try
@@ -721,20 +612,15 @@ public class ExportHandler
       }
       catch (RequestFailedException ex)
       {
-        LOGGER.error( "Can't get property '" + externalObjectId + "' from the webservice!" );
+        LOGGER.error( "Can't get property '" + externalObjectId + "' from the Webservice!" );
         logMessagesAsError( ex.responseMessages );
         LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
-        //transport.addMessagesToExportContext(
-        //  ResponseCode.IS24_TRANSPORT_CANT_LOOKUP_PROPERTY,
-        //  externalObjectId,
-        //  ex.responseMessages,
-        //  context );
         this.putObjectMessage(
           externalObjectId, ExportMessage.Code.OBJECT_NOT_FOUND, ex.responseMessages );
 
         // Fortschritt protokollieren
         this.addProgress(
-          this.pool.getObjectSize( externalObjectId, true ) );
+          this.pool.getObjectSize( poolObjectId, true ) );
 
         return;
       }
@@ -745,12 +631,12 @@ public class ExportHandler
       // Immobilie im Portal löschen,
       // wenn diese bereits im Portal existiert
       // und einer anderen Rubrik zugewiesen ist
-      if (oldIs24Object!=null && !oldIs24Object.getClass().getName().equals( newIs24Object.getClass().getName() ))
+      if (oldIs24Object!=null && !oldIs24Object.getClass().getName().equals( object.getClass().getName() ))
       {
         //LOGGER.debug( "RUBRIK GEÄNDERT" );
         //LOGGER.debug( "> für Immobilie #" + oldIs24Object.getId() );
         //LOGGER.debug( "> alte Rubrik " + oldIs24Object.getClass().getName() );
-        //LOGGER.debug( "> neue Rubrik " + newIs24Object.getClass().getName() );
+        //LOGGER.debug( "> neue Rubrik " + object.getClass().getName() );
         try
         {
           ImportExport.RealEstateService.deleteByIs24Id(
@@ -759,20 +645,15 @@ public class ExportHandler
         }
         catch (RequestFailedException ex)
         {
-          LOGGER.error( "Can't delete property '" + externalObjectId + "' (" + oldIs24Object.getId() + ") at the webservice!" );
+          LOGGER.error( "Can't delete property '" + externalObjectId + "' (" + oldIs24Object.getId() + ") at the Webservice!" );
           logMessagesAsError( ex.responseMessages );
           LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
-          //transport.addMessagesToExportContext(
-          //  ResponseCode.IS24_TRANSPORT_CANT_DELETE_PROPERTY,
-          //  externalObjectId,
-          //  ex.responseMessages,
-          //  context );
           this.putObjectMessage(
-            externalObjectId, ExportMessage.Code.OBJECT_NOT_REMOVED, ex.responseMessages );
+            externalObjectId, ExportMessage.Code.OBJECT_NOT_SAVED, ex.responseMessages );
 
           // Fortschritt protokollieren
           this.addProgress(
-            this.pool.getObjectSize( externalObjectId, true ) );
+            this.pool.getObjectSize( poolObjectId, true ) );
 
           return;
         }
@@ -783,68 +664,20 @@ public class ExportHandler
       {
         try
         {
-          ImportExport.RealEstateService.post(
-            this.client, newIs24Object, this.isUseNewEnergySourceEnev2014Values() );
+          is24ObjectId = ImportExport.RealEstateService.post(
+            this.client, object, this.isUseNewEnergySourceEnev2014Values() );
         }
         catch (RequestFailedException ex)
         {
-          LOGGER.error( "Can't add property '" + externalObjectId + "' to the webservice!" );
+          LOGGER.error( "Can't add property '" + externalObjectId + "' to the Webservice!" );
           logMessagesAsError( ex.responseMessages );
           LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
-          //transport.addMessagesToExportContext(
-          //  ResponseCode.IS24_TRANSPORT_CANT_SAVE_PROPERTY,
-          //  externalObjectId,
-          //  ex.responseMessages,
-          //  context );
           this.putObjectMessage(
             externalObjectId, ExportMessage.Code.OBJECT_NOT_SAVED, ex.responseMessages );
 
           // Fortschritt protokollieren
           this.addProgress(
-            this.pool.getObjectSize( externalObjectId, true ) );
-
-          return;
-        }
-
-        try
-        {
-          newIs24Object = ImportExport.RealEstateService.getByExternalId(
-            this.client, externalObjectId );
-          if (newIs24Object==null)
-          {
-            //transport.addMessageToExportContext(
-            //  ResponseCode.IS24_TRANSPORT_CANT_LOOKUP_PROPERTY,
-            //  externalObjectId,
-            //  "Can't get the saved property '" + externalObjectId + "' from the webservice!",
-            //  context );
-            this.putObjectMessage(
-              externalObjectId, ExportMessage.Code.OBJECT_NOT_FOUND,
-              "Can't get the saved property '" + externalObjectId + "' from the webservice!" );
-
-            // Fortschritt protokollieren
-            this.addProgress(
-              this.pool.getObjectSize( externalObjectId, true ) );
-
-            return;
-          }
-          is24ObjectId = newIs24Object.getId();
-        }
-        catch (RequestFailedException ex)
-        {
-          LOGGER.error( "Can't get the saved property '" + externalObjectId + "' from the webservice!" );
-          logMessagesAsError( ex.responseMessages );
-          LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
-          //transport.addMessagesToExportContext(
-          //  ResponseCode.IS24_TRANSPORT_CANT_LOOKUP_PROPERTY,
-          //  externalObjectId,
-          //  ex.responseMessages,
-          //  context );
-          this.putObjectMessage(
-            externalObjectId, ExportMessage.Code.OBJECT_NOT_FOUND, ex.responseMessages );
-
-          // Fortschritt protokollieren
-          this.addProgress(
-            this.pool.getObjectSize( externalObjectId, true ) );
+            this.pool.getObjectSize( poolObjectId, true ) );
 
           return;
         }
@@ -854,29 +687,24 @@ public class ExportHandler
       else
       {
         is24ObjectId = oldIs24Object.getId();
-        newIs24Object.setId( is24ObjectId );
+        object.setId( is24ObjectId );
 
         try
         {
           ImportExport.RealEstateService.putByIs24Id(
-            this.client, newIs24Object, is24ObjectId, this.isUseNewEnergySourceEnev2014Values() );
+            this.client, object, is24ObjectId, this.isUseNewEnergySourceEnev2014Values() );
         }
         catch (RequestFailedException ex)
         {
-          LOGGER.error( "Can't update property '" + externalObjectId + "' (" + is24ObjectId + ") at the webservice!" );
+          LOGGER.error( "Can't update property '" + externalObjectId + "' (" + is24ObjectId + ") at the Webservice!" );
           logMessagesAsError( ex.responseMessages );
           LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
-          //transport.addMessagesToExportContext(
-          //  ResponseCode.IS24_TRANSPORT_CANT_SAVE_PROPERTY,
-          //  externalObjectId,
-          //  ex.responseMessages,
-          //  context );
           this.putObjectMessage(
             externalObjectId, ExportMessage.Code.OBJECT_NOT_SAVED, ex.responseMessages );
 
           // Fortschritt protokollieren
           this.addProgress(
-            this.pool.getObjectSize( externalObjectId, true ) );
+            this.pool.getObjectSize( poolObjectId, true ) );
 
           return;
         }
@@ -884,7 +712,7 @@ public class ExportHandler
 
       // Fortschritt protokollieren
       this.addProgress(
-        this.pool.getObjectSize( externalObjectId, false ) );
+        this.pool.getObjectSize( poolObjectId, false ) );
 
       // bestehende Anhänge / Web-Links ermitteln
       boolean ignoreAttachments = false;
@@ -896,14 +724,9 @@ public class ExportHandler
       }
       catch (RequestFailedException ex)
       {
-        LOGGER.error( "Can't get attachments of property '" + externalObjectId + "' (" + is24ObjectId + ") from the webservice!" );
+        LOGGER.error( "Can't get attachments of property '" + externalObjectId + "' (" + is24ObjectId + ") from the Webservice!" );
         logMessagesAsError( ex.responseMessages );
         LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
-        //transport.addMessagesToExportContext(
-        //  ResponseCode.IS24_TRANSPORT_PROPERTY_SENT_WITHOUT_ATTACHMENTS,
-        //  externalObjectId,
-        //  ex.responseMessages,
-        //  context );
         this.putObjectMessage(
           externalObjectId, ExportMessage.Code.OBJECT_WITHOUT_ATTACHMENTS, ex.responseMessages );
         ignoreAttachments = true;
@@ -912,8 +735,8 @@ public class ExportHandler
       if (ignoreAttachments)
       {
         // Fortschritt protokollieren
-        long totalAttachmentSize = this.pool.getObjectSize( externalObjectId, true )
-          - this.pool.getObjectSize( externalObjectId, false );
+        long totalAttachmentSize = this.pool.getObjectSize( poolObjectId, true )
+          - this.pool.getObjectSize( poolObjectId, false );
         this.addProgress( totalAttachmentSize );
       }
 
@@ -933,14 +756,9 @@ public class ExportHandler
             catch (RequestFailedException ex)
             {
               LOGGER.error( "Can't remove attachment (" + is24AttachmentId + ") "
-                + "of property '" + externalObjectId + "' (" + is24ObjectId + ") from the webservice!" );
+                + "of property '" + externalObjectId + "' (" + is24ObjectId + ") from the Webservice!" );
               logMessagesAsError( ex.responseMessages );
               LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
-              //transport.addMessagesToExportContext(
-              //  ResponseCode.IS24_TRANSPORT_CANT_REMOVE_OLD_PROPERTY_ATTACHMENT,
-              //  externalObjectId,
-              //  ex.responseMessages,
-              //  context );
               this.putObjectMessage(
                 externalObjectId, ExportMessage.Code.OBJECT_OLD_ATTACHMENT_NOT_REMOVED, ex.responseMessages );
             }
@@ -949,8 +767,9 @@ public class ExportHandler
 
         // Anhänge aus dem Exportverzeichnis der Immobilie ermitteln
         Map<Integer,Long> picturesOrder = new TreeMap<Integer,Long>();
-        for (String attachmentId : this.pool.getObjectAttachmentIds( externalObjectId ))
+        for (String attachmentId : this.pool.getObjectAttachmentIds( poolObjectId ))
         {
+          //LOGGER.debug( "process attachment '" + attachmentId + "' for object '" + poolObjectId + "'" );
           int pos;
           try
           {
@@ -963,33 +782,52 @@ public class ExportHandler
             pos = 999;
           }
 
-          Attachment is24Attachment = this.pool.getObjectAttachment( externalObjectId, attachmentId );
+          Attachment is24Attachment = this.pool.getObjectAttachment( poolObjectId, attachmentId );
           if (is24Attachment==null)
           {
             LOGGER.error( "Can't read the XML file for attachment!" );
-            //transport.addMessageToExportContext(
-            //  ResponseCode.IS24_TRANSPORT_CANT_SAVE_PROPERTY_ATTACHMENT,
-            //  externalObjectId,
-            //  "Can't read the XML file for attachment!",
-            //  context );
             this.putObjectMessage(
               externalObjectId, ExportMessage.Code.OBJECT_ATTACHMENT_NOT_SAVED,
               "Can't read the XML file for attachment!" );
 
             // Fortschritt protokollieren
             this.addProgress(
-              this.pool.getObjectAttachmentSize( externalObjectId, attachmentId ) );
+              this.pool.getObjectAttachmentSize( poolObjectId, attachmentId ) );
+
+            continue;
+          }
+
+          // Anhang als Web-Link verarbeiten
+          if (is24Attachment instanceof Link)
+          {
+            try
+            {
+              ImportExport.AttachmentService.post(
+                this.client, externalObjectId, is24Attachment, null, null, null );
+            }
+            catch (RequestFailedException ex)
+            {
+              LOGGER.error( "Can't add attachment of property '" + externalObjectId + "' (" + is24ObjectId + ") to the Webservice!" );
+              logMessagesAsError( ex.responseMessages );
+              LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
+              this.putObjectMessage(
+                externalObjectId, ExportMessage.Code.OBJECT_ATTACHMENT_NOT_SAVED, ex.responseMessages );
+            }
+
+            // Fortschritt protokollieren
+            this.addProgress(
+              this.pool.getObjectAttachmentSize( poolObjectId, attachmentId ) );
 
             continue;
           }
 
           // Datei ermitteln
-          File attachFile = this.pool.getObjectAttachmentFile( externalObjectId, is24Attachment );
+          File attachFile = this.pool.getObjectAttachmentFile( poolObjectId, is24Attachment );
 
           // ggf. Datei herunterladen, wenn noch nicht im Pool hinterlegt
           if (attachFile==null)
           {
-            URL attachUrl = this.pool.getObjectAttachmentURL( externalObjectId, attachmentId );
+            URL attachUrl = this.pool.getObjectAttachmentURL( poolObjectId, attachmentId );
             if (attachUrl!=null)
             {
               try
@@ -1007,18 +845,13 @@ public class ExportHandler
           if (attachFile==null || !attachFile.isFile())
           {
             LOGGER.error( "Can't find file for attachment!" );
-            //transport.addMessageToExportContext(
-            //  ResponseCode.IS24_TRANSPORT_CANT_SAVE_PROPERTY_ATTACHMENT,
-            //  externalObjectId,
-            //  "Can't find file for attachment!",
-            //  context );
             this.putObjectMessage(
               externalObjectId, ExportMessage.Code.OBJECT_ATTACHMENT_NOT_SAVED,
               "Can't find file for attachment!" );
 
             // Fortschritt protokollieren
             this.addProgress(
-              this.pool.getObjectAttachmentSize( externalObjectId, attachmentId ) );
+              this.pool.getObjectAttachmentSize( poolObjectId, attachmentId ) );
 
             continue;
           }
@@ -1074,36 +907,20 @@ public class ExportHandler
             // Anhang direkt übertragen
             else
             {
-              Messages responseMessages = ImportExport.AttachmentService.post(
+              long is24AttachmentId = ImportExport.AttachmentService.post(
                 this.client, externalObjectId, is24Attachment, attachFileInput, attachFileName, attachFileMimeType );
-
-              // ID des gespeicherten Bildes aus Antwort-Meldung ermitteln
               if (is24Attachment instanceof Picture)
               {
-                Resource resource = Resource.getCreatedResource( responseMessages );
-                if (resource==null)
-                {
-                  LOGGER.warn( "Can't determine ID of stored attachment for "
-                    + "property '" + externalObjectId + "' (" + is24ObjectId + ")!" );
-                }
-                else
-                {
-                  while (picturesOrder.containsKey( pos )) pos++;
-                  picturesOrder.put( pos, resource.id );
-                }
+                while (picturesOrder.containsKey( pos )) pos++;
+                picturesOrder.put( pos, is24AttachmentId );
               }
             }
           }
           catch (RequestFailedException ex)
           {
-            LOGGER.error( "Can't add attachment of property '" + externalObjectId + "' (" + is24ObjectId + ") to the webservice!" );
+            LOGGER.error( "Can't add attachment of property '" + externalObjectId + "' (" + is24ObjectId + ") to the Webservice!" );
             logMessagesAsError( ex.responseMessages );
             LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
-            //transport.addMessagesToExportContext(
-            //  ResponseCode.IS24_TRANSPORT_CANT_SAVE_PROPERTY_ATTACHMENT,
-            //  externalObjectId,
-            //  ex.responseMessages,
-            //  context );
             this.putObjectMessage(
               externalObjectId, ExportMessage.Code.OBJECT_ATTACHMENT_NOT_SAVED, ex.responseMessages );
           }
@@ -1113,7 +930,7 @@ public class ExportHandler
 
             // Fortschritt protokollieren
             this.addProgress(
-              this.pool.getObjectAttachmentSize( externalObjectId, attachmentId ) + attachFileSize );
+              this.pool.getObjectAttachmentSize( poolObjectId, attachmentId ) + attachFileSize );
           }
         }
 
@@ -1136,11 +953,6 @@ public class ExportHandler
             LOGGER.error( "Can't order attachments of property '" + externalObjectId + "' (" + is24ObjectId + ")!" );
             logMessagesAsError( ex.responseMessages );
             LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
-            //transport.addMessagesToExportContext(
-            //  ResponseCode.IS24_TRANSPORT_CANT_ORDER_PROPERTY_ATTACHMENTS,
-            //  externalObjectId,
-            //  ex.responseMessages,
-            //  context );
             this.putObjectMessage(
               externalObjectId, ExportMessage.Code.OBJECT_UNORDERED_ATTACHMENTS, ex.responseMessages );
           }
@@ -1162,45 +974,15 @@ public class ExportHandler
       }
       catch (RequestFailedException ex)
       {
-        LOGGER.error( "Can't get publishings of property '" + externalObjectId + "' (" + is24ObjectId + ") from the webservice!" );
+        LOGGER.error( "Can't get publishings of property '" + externalObjectId + "' (" + is24ObjectId + ") from the Webservice!" );
         logMessagesAsError( ex.responseMessages );
         LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
-        //transport.addMessagesToExportContext(
-        //  ResponseCode.IS24_TRANSPORT_CANT_LOOKUP_PROPERTY_PUBLISHINGS,
-        //  externalObjectId,
-        //  ex.responseMessages,
-        //  context );
         this.putObjectMessage(
           externalObjectId, ExportMessage.Code.OBJECT_PUBLISHINGS_NOT_FOUND, ex.responseMessages );
       }
 
-      // Veröffentlichungs-Kanäle ermitteln
-      PublishChannels is24Channels = null;
-      try
+      if (is24PublishChannels==null)
       {
-        is24Channels = ImportExport.PublishChannelService.get( this.client );
-      }
-      catch (RequestFailedException ex)
-      {
-        LOGGER.error( "Can't get publish channels from the webservice!" );
-        logMessagesAsError( ex.responseMessages );
-        LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
-        //transport.addMessagesToExportContext(
-        //  ResponseCode.IS24_TRANSPORT_CANT_LOOKUP_PUBLISHING_CHANNELS,
-        //  externalObjectId,
-        //  ex.responseMessages,
-        //  context );
-        this.putObjectMessage(
-          externalObjectId, ExportMessage.Code.PUBLISH_CHANNELS_NOT_FOUND, ex.responseMessages );
-      }
-
-      if (is24Channels==null)
-      {
-        //transport.addMessageToExportContext(
-        //  ResponseCode.IS24_TRANSPORT_PROPERTY_SENT_WITHOUT_PUBLISHING,
-        //  externalObjectId,
-        //  "No channels for publishing found!",
-        //  context );
         this.putObjectMessage(
           externalObjectId, ExportMessage.Code.OBJECT_NOT_PUBLISHED,
           "No channels for publishing found!" );
@@ -1209,7 +991,7 @@ public class ExportHandler
       {
         // Veröffentlichungen zur Immobilie aktualisieren,
         // wenn diese zu einem Kanal noch nicht gesetzt wurde
-        for (PublishChannel is24Channel : is24Channels.getPublishChannel())
+        for (PublishChannel is24Channel : is24PublishChannels.getPublishChannel())
         {
           Long is24ChannelId = is24Channel.getId();
           if (is24PublishedChannels.contains( is24ChannelId ))
@@ -1230,11 +1012,6 @@ public class ExportHandler
               + "in channel '" + is24Channel.getTitle() + "' (" + is24ChannelId +  ")!" );
             logMessagesAsError( ex.responseMessages );
             LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
-            //transport.addMessagesToExportContext(
-            //  ResponseCode.IS24_TRANSPORT_PROPERTY_SENT_WITHOUT_PUBLISHING,
-            //  externalObjectId,
-            //  ex.responseMessages,
-            //  context );
             this.putObjectMessage(
               externalObjectId, ExportMessage.Code.OBJECT_NOT_PUBLISHED, ex.responseMessages );
           }
@@ -1243,21 +1020,21 @@ public class ExportHandler
     }
     catch (JAXBException ex)
     {
-      //LOGGER.error( "Can't read / write XML while communicating with the webservice!" );
+      //LOGGER.error( "Can't read / write XML while communicating with the Webservice!" );
       //LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
       throw new IOExceptionWithCause(
-        "Can't read / write XML while communicating with the webservice!", ex );
+        "Can't read / write XML while communicating with the Webservice!", ex );
     }
     catch (OAuthException ex)
     {
-      //LOGGER.error( "Can't authorize at the webservice!" );
+      //LOGGER.error( "Can't authorize at the Webservice!" );
       //LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
       throw new IOExceptionWithCause(
         "Authorization failed!", ex );
     }
     catch (IOException ex)
     {
-      //LOGGER.error( "Can't communicate with the webservice!" );
+      //LOGGER.error( "Can't communicate with the Webservice!" );
       //LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
       throw new IOExceptionWithCause(
         "Communication failed!", ex );
@@ -1297,16 +1074,45 @@ public class ExportHandler
     // init progress
     this.totalProgress = this.pool.getTotalSize();
 
+    // load available publish channels
+    final PublishChannels publishChannels = doLoadPublishChannels();
+
     // updating contacts
     for (String contactId : this.pool.getContactIds())
     {
-      this.doUpdateContact( contactId );
+      // Ansprechpartner ermitteln
+      final RealtorContactDetails contact = this.pool.getContact( contactId );
+      if (contact==null)
+      {
+        // Fortschritt protokollieren
+        this.addProgress(
+          this.pool.getContactSize( contactId, true ) );
+
+        this.putGeneralMessage(
+          ExportMessage.Code.XML_NOT_READABLE,
+          "Can't read XML file for contact '" + contactId + "'!" );
+        continue;
+      }
+      this.doUpdateContact( contact, contactId );
     }
 
     // updating objects
     for (String objectId : this.pool.getObjectIds())
     {
-      this.doUpdateObject( objectId );
+      // Immobilie  aus ExportPool ermitteln
+      RealEstate object = this.pool.getObject( objectId );
+      if (object==null)
+      {
+        // Fortschritt protokollieren
+        this.addProgress(
+          this.pool.getObjectSize( objectId, true ) );
+
+        this.putGeneralMessage(
+          ExportMessage.Code.XML_NOT_READABLE,
+          "Can't read XML file for property '" + objectId + "'!" );
+        continue;
+      }
+      this.doUpdateObject( object, publishChannels, objectId );
     }
 
     // removing objects

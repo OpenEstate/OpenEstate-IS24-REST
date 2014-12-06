@@ -211,10 +211,12 @@ public class ExportMessage
     // error codes for objects
     OBJECTS_NOT_FOUND( Level.ERROR ),
     OBJECT_NOT_FOUND( Level.ERROR ),
+    OBJECT_NOT_FOUND_FOR_ARCHIVING( Level.WARNING ),
+    OBJECT_NOT_FOUND_FOR_REMOVING( Level.WARNING ),
     OBJECT_NOT_SAVED( Level.ERROR ),
     OBJECT_NOT_REMOVED( Level.ERROR ),
     OBJECT_NOT_PUBLISHED( Level.WARNING ),
-    OBJECT_NOT_UNPUBLISHED( Level.WARNING ),
+    OBJECT_NOT_UNPUBLISHED( Level.ERROR ),
     OBJECT_NOT_DISABLED( Level.WARNING ),
     OBJECT_PUBLISHINGS_NOT_FOUND( Level.WARNING ),
     OBJECT_WITHOUT_ATTACHMENTS( Level.WARNING ),
@@ -225,7 +227,7 @@ public class ExportMessage
 
     // further error codes
     PUBLISH_CHANNELS_NOT_FOUND( Level.WARNING ),
-
+    XML_NOT_READABLE( Level.ERROR ),
     ;
 
     private final Level level;
@@ -244,6 +246,39 @@ public class ExportMessage
     public Level getLevel()
     {
       return this.level;
+    }
+
+    /**
+     * Checks, if the current code is an error.
+     *
+     * @return
+     * true, if the current code is an error
+     */
+    public boolean isError()
+    {
+      return Level.ERROR.equals( this.level );
+    }
+
+    /**
+     * Checks, if the current code is a notice.
+     *
+     * @return
+     * true, if the current code is a notice
+     */
+    public boolean isNotice()
+    {
+      return Level.NOTICE.equals( this.level );
+    }
+
+    /**
+     * Checks, if the current code is a warning.
+     *
+     * @return
+     * true, if the current code is a warning
+     */
+    public boolean isWarning()
+    {
+      return Level.WARNING.equals( this.level );
     }
   }
 
