@@ -1073,6 +1073,7 @@ public class ExportHandler
 
     // init progress
     this.totalProgress = this.pool.getTotalSize();
+    this.setProgress( 0 );
 
     // load available publish channels
     final PublishChannels publishChannels = doLoadPublishChannels();
