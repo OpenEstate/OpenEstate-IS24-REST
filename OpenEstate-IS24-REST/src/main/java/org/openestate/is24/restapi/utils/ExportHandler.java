@@ -766,7 +766,7 @@ public class ExportHandler
         }
 
         // Anhänge aus dem Exportverzeichnis der Immobilie ermitteln
-        Map<Integer,Long> picturesOrder = new TreeMap<Integer,Long>();
+        Map<Integer,Long> attachmentsOrder = new TreeMap<Integer,Long>();
         for (String attachmentId : this.pool.getObjectAttachmentIds( poolObjectId ))
         {
           //LOGGER.debug( "process attachment '" + attachmentId + "' for object '" + poolObjectId + "'" );
@@ -909,11 +909,8 @@ public class ExportHandler
             {
               long is24AttachmentId = ImportExport.AttachmentService.post(
                 this.client, externalObjectId, is24Attachment, attachFileInput, attachFileName, attachFileMimeType );
-              if (is24Attachment instanceof Picture)
-              {
-                while (picturesOrder.containsKey( pos )) pos++;
-                picturesOrder.put( pos, is24AttachmentId );
-              }
+              while (attachmentsOrder.containsKey( pos )) pos++;
+              attachmentsOrder.put( pos, is24AttachmentId );
             }
           }
           catch (RequestFailedException ex)
@@ -935,11 +932,11 @@ public class ExportHandler
         }
 
         // Reihenfolge der Bild-Anhänge explizit setzen
-        if (!picturesOrder.isEmpty())
+        if (!attachmentsOrder.isEmpty())
         {
           org.openestate.is24.restapi.xml.attachmentsorder.List list =
             attachmentsorderFactory.createList();
-          for (Long is24AttachmentId : picturesOrder.values())
+          for (Long is24AttachmentId : attachmentsOrder.values())
           {
             list.getAttachmentId().add( is24AttachmentId );
           }
