@@ -10565,13 +10565,13 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
           <xs:documentation xml:lang="de-DE">Verweis auf einen Veröffentlichungskanal.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="messageCode" type="xs:string" minOccurs="0" maxOccurs="0">
+      <xs:element name="messageCode" type="xs:string" minOccurs="0" maxOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">result of the operation code</xs:documentation>
           <xs:documentation xml:lang="de-DE">Publizierung-Ergebnis status</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="message" type="xs:string" minOccurs="0" maxOccurs="0">
+      <xs:element name="message" type="xs:string" minOccurs="0" maxOccurs="1">
         <xs:annotation>
           <xs:documentation xml:lang="en">result of the operation message</xs:documentation>
           <xs:documentation xml:lang="de-DE">Publizierung-Ergebnis Meldung</xs:documentation>
