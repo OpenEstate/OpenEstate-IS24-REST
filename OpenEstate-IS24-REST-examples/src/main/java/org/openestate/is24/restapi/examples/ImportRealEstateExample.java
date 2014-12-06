@@ -23,7 +23,6 @@ import org.openestate.is24.restapi.AbstractClient;
 import org.openestate.is24.restapi.DefaultClient;
 import org.openestate.is24.restapi.ImportExport;
 import org.openestate.is24.restapi.utils.RequestFailedException;
-import org.openestate.is24.restapi.utils.Resource;
 import org.openestate.is24.restapi.xml.common.BuildingEnergyRatingType;
 import org.openestate.is24.restapi.xml.common.BuildingType;
 import org.openestate.is24.restapi.xml.common.ConstructionPhaseType;
@@ -31,7 +30,6 @@ import org.openestate.is24.restapi.xml.common.Currency;
 import org.openestate.is24.restapi.xml.common.HeatingTypeEnev2014;
 import org.openestate.is24.restapi.xml.common.InteriorQuality;
 import org.openestate.is24.restapi.xml.common.MarketingType;
-import org.openestate.is24.restapi.xml.common.Messages;
 import org.openestate.is24.restapi.xml.common.PriceIntervalType;
 import org.openestate.is24.restapi.xml.common.RealEstateCondition;
 import org.openestate.is24.restapi.xml.common.YesNoNotApplicableType;
@@ -143,9 +141,7 @@ public class ImportRealEstateExample
     {
       // send as new object to IS24
       System.out.println( "Send as new object to IS24" );
-      Messages messages = ImportExport.RealEstateService.post( client, object );
-      Resource createdResource = Resource.getCreatedResource( messages );
-      long is24ObjectId = createdResource.id;
+      long is24ObjectId = ImportExport.RealEstateService.post( client, object );
       System.out.println( "Object was created with IS24-ID #" + is24ObjectId );
 
       // update object at IS24

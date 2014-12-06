@@ -25,6 +25,9 @@ Changelog for OpenEstate-IS24-REST
     real estates with request paramater `usenewenergysourceenev2014values=true`
     (see [notes by IS24](http://api.immobilienscout24.de/useful/energy-certificate-2014.html))
 -   properly escape external ID's in request URL's
+-   any `post()` methods in
+    [ImportExport.java](OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/ImportExport.java)
+    return the ID of created resources instead of HTTP response messages
 -   migrated `commons-lang` from version 2 to version 3
 -   API documentation completed
 -   refactorings
