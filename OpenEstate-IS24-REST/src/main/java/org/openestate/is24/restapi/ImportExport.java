@@ -1139,6 +1139,237 @@ public final class ImportExport
     }
 
     /**
+     * Calls the DELETEbyID method of the Contact Webservice.
+     * <p>
+     * This method removes a contact person.
+     *
+     * @param client
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
+     * @param externalContactId
+     * user defined ID of the contact, for which the contact is removed
+     *
+     * @return
+     * response of the Webservice after a successful request
+     *
+     * @throws IOException
+     * if communication with the Webservice failed
+     *
+     * @throws OAuthException
+     * if authorization failed
+     *
+     * @throws JAXBException
+     * if XML reading / writing failed
+     *
+     * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/contact/delete.html">DELETE method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/contact.html">Contact Webservice</a>
+     * @since 0.2
+     */
+    public static Messages deleteByExternalId( AbstractClient client, String externalContactId ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    {
+      return deleteByExternalId( client, externalContactId, null );
+    }
+
+    /**
+     * Calls the DELETEbyID method of the Contact Webservice.
+     * <p>
+     * This method removes a contact person.
+     *
+     * @param client
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
+     * @param externalContactId
+     * user defined ID of the contact, for which the contact is removed
+     *
+     * @param assignToExternalContactId
+     * user defined ID of another contact, where real estates of the removed
+     * contact are assigned to
+     *
+     * @return
+     * response of the Webservice after a successful request
+     *
+     * @throws IOException
+     * if communication with the Webservice failed
+     *
+     * @throws OAuthException
+     * if authorization failed
+     *
+     * @throws JAXBException
+     * if XML reading / writing failed
+     *
+     * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/contact/delete.html">DELETE method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/contact.html">Contact Webservice</a>
+     * @since 0.2
+     */
+    public static Messages deleteByExternalId( AbstractClient client, String externalContactId, String assignToExternalContactId ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    {
+      // build request URL
+      String url = client.getApiBaseUrl()
+        + "/api/offer/v1.0/user/me/contact"
+        + "/ext-" + AbstractClient.getUrlEncodedValue( externalContactId );
+
+      // init URL parameters
+      List<String> params = new ArrayList<String>();
+
+      assignToExternalContactId = StringUtils.trimToNull( assignToExternalContactId );
+      if (assignToExternalContactId!=null) params.add( "assigntocontactid=" + AbstractClient.getUrlEncodedValue( assignToExternalContactId ) );
+
+      // append URL parameters
+      if (!params.isEmpty()) url += "?" + StringUtils.join( params, "&" );
+
+      // send request
+      Response response = client.sendXmlRequest( new URL( url ), RequestMethod.DELETE, null );
+
+      // parse result from response body after successfull execution
+      if (response.statusCode==Response.OK)
+      {
+        //LOGGER.debug( "------------------------------------" );
+        //LOGGER.debug( "ContactAddressService.deleteByExternalId / " + externalRealEstateId );
+        //LOGGER.debug( response.body );
+        //LOGGER.debug( "------------------------------------" );
+        return (Messages) XmlUtils.unmarshal( response.body );
+      }
+
+      // return null, if the requested object was not found
+      else if (response.statusCode==Response.NOT_FOUND)
+      {
+        return null;
+      }
+
+      // throw an error for any other status codes
+      else
+      {
+        String msg = StringUtils.trimToNull( response.statusMessage );
+        if (msg==null) msg = "Request failed!";
+        msg += " (" + response.statusCode + ")";
+        throw new RequestFailedException( response, msg );
+      }
+    }
+
+    /**
+     * Calls the DELETEbyID method of the Contact Webservice.
+     * <p>
+     * This method removes a contact person.
+     *
+     * @param client
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
+     * @param is24ContactId
+     * ID of the contact object, that was returned by
+     * {@link ContactAddressService#post(org.openestate.is24.restapi.AbstractClient, org.openestate.is24.restapi.xml.common.RealtorContactDetails)},
+     * for which the contact is removed
+     *
+     * @return
+     * response of the Webservice after a successful request
+     *
+     * @throws IOException
+     * if communication with the Webservice failed
+     *
+     * @throws OAuthException
+     * if authorization failed
+     *
+     * @throws JAXBException
+     * if XML reading / writing failed
+     *
+     * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/contact/delete.html">DELETE method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/contact.html">Contact Webservice</a>
+     * @since 0.2
+     */
+    public static Messages deleteByIs24Id( AbstractClient client, long is24ContactId ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    {
+      return deleteByIs24Id( client, is24ContactId, 0 );
+    }
+
+    /**
+     * Calls the DELETEbyID method of the Contact Webservice.
+     * <p>
+     * This method removes a contact person.
+     *
+     * @param client
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
+     * @param is24ContactId
+     * ID of the contact object, that was returned by
+     * {@link ContactAddressService#post(org.openestate.is24.restapi.AbstractClient, org.openestate.is24.restapi.xml.common.RealtorContactDetails)},
+     * for which the contact is removed
+     *
+     * @param assignToIs24ContactId
+     * ID of the contact object, that was returned by
+     * {@link ContactAddressService#post(org.openestate.is24.restapi.AbstractClient, org.openestate.is24.restapi.xml.common.RealtorContactDetails)},
+     * where real estates of the removed contact are assigned to
+     *
+     * @return
+     * response of the Webservice after a successful request
+     *
+     * @throws IOException
+     * if communication with the Webservice failed
+     *
+     * @throws OAuthException
+     * if authorization failed
+     *
+     * @throws JAXBException
+     * if XML reading / writing failed
+     *
+     * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/contact/delete.html">DELETE method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/contact.html">Contact Webservice</a>
+     * @since 0.2
+     */
+    public static Messages deleteByIs24Id( AbstractClient client, long is24ContactId, long assignToIs24ContactId ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    {
+      // build request URL
+      String url = client.getApiBaseUrl()
+        + "/api/offer/v1.0/user/me/contact/" + is24ContactId;
+
+      // init URL parameters
+      List<String> params = new ArrayList<String>();
+
+      if (assignToIs24ContactId>0) params.add( "assigntocontactid=" + assignToIs24ContactId );
+
+      // append URL parameters
+      if (!params.isEmpty()) url += "?" + StringUtils.join( params, "&" );
+
+      // send request
+      Response response = client.sendXmlRequest( new URL( url ), RequestMethod.DELETE, null );
+
+      // parse result from response body after successfull execution
+      if (response.statusCode==Response.OK)
+      {
+        //LOGGER.debug( "------------------------------------" );
+        //LOGGER.debug( "ContactAddressService.deleteByIs24Id / " + is24RealEstateId );
+        //LOGGER.debug( response.body );
+        //LOGGER.debug( "------------------------------------" );
+        return (Messages) XmlUtils.unmarshal( response.body );
+      }
+
+      // return null, if the requested object was not found
+      else if (response.statusCode==Response.NOT_FOUND)
+      {
+        return null;
+      }
+
+      // throw an error for any other status codes
+      else
+      {
+        String msg = StringUtils.trimToNull( response.statusMessage );
+        if (msg==null) msg = "Request failed!";
+        msg += " (" + response.statusCode + ")";
+        throw new RequestFailedException( response, msg );
+      }
+    }
+
+    /**
      * Calls the GETall method of the Contact Webservice.
      * <p>
      * This method returns the list of contacts for the agency.
@@ -1198,8 +1429,7 @@ public final class ImportExport
      * {@link AbstractClient}, that is used to communicate with the Webservice
      *
      * @param externalContactId
-     * user defined ID of the real estate object, for which the contact is
-     * retrieved
+     * user defined ID of the contact, for which the contact is retrieved
      *
      * @return
      * requested contact

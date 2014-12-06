@@ -28,6 +28,9 @@ Changelog for OpenEstate-IS24-REST
 -   any `post()` methods in
     [ImportExport.java](OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/ImportExport.java)
     return the ID of created resources instead of HTTP response messages
+-   added low level method for
+    [Contact/DELETE](http://api.immobilienscout24.de/our-apis/import-export/contact/delete.html)
+    on the Import/Export API
 -   migrated `commons-lang` from version 2 to version 3
 -   API documentation completed
 -   refactorings
