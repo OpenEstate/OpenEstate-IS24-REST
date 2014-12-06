@@ -40,6 +40,7 @@ import org.openestate.is24.restapi.xml.common.PublishObject;
 import org.openestate.is24.restapi.xml.common.PublishObjects;
 import org.openestate.is24.restapi.xml.common.RealtorContactDetails;
 import org.openestate.is24.restapi.xml.common.RealtorContactDetailsList;
+import org.openestate.is24.restapi.xml.realestatecounts.RealEstateCounts;
 import org.openestate.is24.restapi.xml.realestates.RealEstate;
 import org.openestate.is24.restapi.xml.realestates.RealEstates;
 import org.openestate.is24.restapi.xml.videoupload.VideoUploadTicket;
@@ -2816,6 +2817,76 @@ public final class ImportExport
         //LOGGER.debug( response.body );
         //LOGGER.debug( "------------------------------------" );
         return (Messages) XmlUtils.unmarshal( response.body );
+      }
+
+      // throw an error for any other status codes
+      else
+      {
+        String msg = StringUtils.trimToNull( response.statusMessage );
+        if (msg==null) msg = "Request failed!";
+        msg += " (" + response.statusCode + ")";
+        throw new RequestFailedException( response, msg );
+      }
+    }
+  }
+
+  /**
+   * Low level methods for the RealEstatesCounts Webservice.
+   * <p>
+   * The RealEstatesCounts Webservice is used in the Import-/Export-API to get
+   * the number of currently exported real estates.
+   *
+   * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/realestate/realestates-counts.html">RealEstatesCounts Webservice</a>
+   * @see <a href="http://api.immobilienscout24.de/our-apis/import-export.html">Import-/Export-API</a>
+   * @since 0.2
+   * @author Andreas Rudolph <andy@openindex.de>
+   */
+  public final static class RealEstatesCountsService
+  {
+    /**
+     * Calls the GET method of the RealEstatesCounts Webservice.
+     * <p>
+     * This method returns the number of currently exported real estates.
+     *
+     * @param client
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
+     * @return
+     * summary of exported real estates
+     *
+     * @throws IOException
+     * if communication with the Webservice failed
+     *
+     * @throws OAuthException
+     * if authorization failed
+     *
+     * @throws JAXBException
+     * if XML reading / writing failed
+     *
+     * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/realestate/realestates-counts.html">RealEstatesCounts Webservice</a>
+     */
+    public static RealEstateCounts get( AbstractClient client ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    {
+      // build request URL
+      String url = client.getApiBaseUrl()
+        + "/api/offer/v1.0/user/me/realestatecounts";
+
+      // send request
+      Response response = client.sendXmlRequest( new URL( url ), RequestMethod.GET, null );
+
+      // parse result from response body after successful execution
+      if (response.statusCode==Response.OK)
+      {
+        return (RealEstateCounts) XmlUtils.unmarshal( response.body );
+      }
+
+      // return null, if the requested object was not found
+      else if (response.statusCode==Response.NOT_FOUND)
+      {
+        return null;
       }
 
       // throw an error for any other status codes

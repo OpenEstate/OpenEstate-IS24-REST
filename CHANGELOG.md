@@ -37,6 +37,8 @@ Changelog for OpenEstate-IS24-REST
 -   added low level method
     [Publish/DELETEbyList](http://api.immobilienscout24.de/our-apis/import-export/publish/delete-by-list.html)
     on the Import/Export API for removing multiple publishings at once
+-   added low level methods for
+    [RealestatesCounts Webservice](http://api.immobilienscout24.de/our-apis/import-export/realestate/realestates-counts.html)
 -   migrated `commons-lang` from version 2 to version 3
 -   API documentation completed
 -   refactorings
