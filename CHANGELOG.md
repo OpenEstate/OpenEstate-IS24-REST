@@ -45,6 +45,7 @@ Changelog for OpenEstate-IS24-REST
     -   moved class `XmlUtils` from `org.openestate.is24.restapi.xml` into `org.openestate.is24.restapi.utils`
     -   renamed class `SSLUtils` to `SslUtils` in `org.openestate.is24.restapi.utils`
     -   renamed method `getEncodedParameterValue` to `getUrlEncodedValue` in `org.openestate.is24.restapi.AbstractClient`
+    -   renamed method `deleteById` to `delete` in `org.openestate.is24.restapi.ImportExport.PublishService`
     -   moved [Java Signpost Example](http://api.immobilienscout24.de/useful/tutorials-sdks-plugins/tutorial-java-signpost.html)
         into the `examples` component
         (see [`IS24OauthExample.java`](OpenEstate-IS24-REST-examples/src/main/java/org/openestate/is24/restapi/examples/IS24OauthExample.java))
