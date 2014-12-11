@@ -115,7 +115,6 @@ public class ExportHandler
    */
   protected void doArchiveObject( String externalObjectId ) throws IOException
   {
-    LOGGER.info( "archiving object '" + externalObjectId + "'" );
     try
     {
       // Immobilie ermitteln
@@ -255,7 +254,6 @@ public class ExportHandler
    */
   protected void doRemoveObject( String externalObjectId ) throws IOException
   {
-    LOGGER.info( "removing object '" + externalObjectId + "'" );
     try
     {
       // Löschung durchführen
@@ -391,7 +389,6 @@ public class ExportHandler
    */
   protected PublishChannels doLoadPublishChannels() throws IOException
   {
-    LOGGER.info( "load available publish channels" );
     try
     {
       return ImportExport.PublishChannelService.get( this.client );
@@ -443,7 +440,6 @@ public class ExportHandler
   protected void doUpdateContact( RealtorContactDetails contact, String poolContactId ) throws IOException
   {
     final String externalContactId = contact.getExternalId();
-    LOGGER.info( "updating contact '" + externalContactId + "'" );
     try
     {
       // prüfen, ob ein Ansprechpartner mit der externen ID bereits im Webservice existiert
@@ -568,8 +564,6 @@ public class ExportHandler
   protected void doUpdateObject( RealEstate object, PublishChannels is24PublishChannels, String poolObjectId ) throws IOException
   {
     final String externalObjectId = object.getExternalId();
-    LOGGER.info( "updating object '" + externalObjectId + "'" );
-
     final org.openestate.is24.restapi.xml.common.ObjectFactory commonFactory =
       new org.openestate.is24.restapi.xml.common.ObjectFactory();
     final org.openestate.is24.restapi.xml.realestates.ObjectFactory realEstatesFactory =
@@ -1073,72 +1067,86 @@ public class ExportHandler
     this.setProgress( 0 );
 
     // load available publish channels
+    LOGGER.info( "loading available publish channels" );
     final PublishChannels publishChannels = doLoadPublishChannels();
 
     // updating contacts
-    for (String contactId : this.pool.getContactIds())
+    String[] poolIds = this.pool.getContactIds();
+    int counter = 0;
+    for (String poolContactId : poolIds)
     {
+      counter++;
+
       // Ansprechpartner ermitteln
-      final RealtorContactDetails contact = this.pool.getContact( contactId );
+      final RealtorContactDetails contact = this.pool.getContact( poolContactId );
       if (contact==null)
       {
         // Fortschritt protokollieren
         this.addProgress(
-          this.pool.getContactSize( contactId, true ) );
+          this.pool.getContactSize( poolContactId, true ) );
 
         this.putGeneralMessage(
           ExportMessage.Code.XML_NOT_READABLE,
-          "Can't read XML file for contact '" + contactId + "'!" );
+          "Can't read XML file for contact '" + poolContactId + "'!" );
         continue;
       }
-      this.doUpdateContact( contact, contactId );
+      LOGGER.info( "updating contact '" + contact.getExternalId() + "' [" + counter + " / " + poolIds.length +"]" );
+      this.doUpdateContact( contact, poolContactId );
     }
 
     // updating objects
-    for (String objectId : this.pool.getObjectIds())
+    poolIds = this.pool.getObjectIds();
+    counter = 0;
+    for (String poolObjectId : poolIds)
     {
+      counter++;
+
       // Immobilie  aus ExportPool ermitteln
-      RealEstate object = this.pool.getObject( objectId );
+      RealEstate object = this.pool.getObject( poolObjectId );
       if (object==null)
       {
         // Fortschritt protokollieren
         this.addProgress(
-          this.pool.getObjectSize( objectId, true ) );
+          this.pool.getObjectSize( poolObjectId, true ) );
 
         this.putGeneralMessage(
           ExportMessage.Code.XML_NOT_READABLE,
-          "Can't read XML file for property '" + objectId + "'!" );
+          "Can't read XML file for property '" + poolObjectId + "'!" );
         continue;
       }
-      this.doUpdateObject( object, publishChannels, objectId );
+      LOGGER.info( "updating object '" + object.getExternalId() + "' [" + counter + " / " + poolIds.length +"]" );
+      this.doUpdateObject( object, publishChannels, poolObjectId );
     }
 
     // removing objects
-    for (String objectId : this.pool.getObjectIdsForRemoval())
+    for (String externalObjectId : this.pool.getObjectIdsForRemoval())
     {
       if (archivateUnpublishedObjects)
       {
-        this.doArchiveObject( objectId );
+        LOGGER.info( "archiving object '" + externalObjectId + "'" );
+        this.doArchiveObject( externalObjectId );
       }
       else
       {
-        this.doRemoveObject( objectId );
+        LOGGER.info( "removing object '" + externalObjectId + "'" );
+        this.doRemoveObject( externalObjectId );
       }
     }
 
     // removing untouched objects
     if (unpublishUntouchedObjects)
     {
-      for (String objectId : this.doListUntouchedObjects())
+      for (String externalObjectId : this.doListUntouchedObjects())
       {
-        LOGGER.info( "object '" + objectId + "' is untouched" );
         if (archivateUnpublishedObjects)
         {
-          this.doArchiveObject( objectId );
+          LOGGER.info( "archiving untouched object '" + externalObjectId + "'" );
+          this.doArchiveObject( externalObjectId );
         }
         else
         {
-          this.doRemoveObject( objectId );
+          LOGGER.info( "removing untouched object '" + externalObjectId + "'" );
+          this.doRemoveObject( externalObjectId );
         }
       }
     }
