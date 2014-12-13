@@ -105,6 +105,40 @@ public class ExportHandler
   }
 
   /**
+   * Callback method to check, if a contact should be updated in the export process.
+   *
+   * @param contact
+   * contact person to update
+   *
+   * @param poolContactId
+   * id of the contact person within export pool
+   *
+   * @return
+   * true, if the contact person can be ignored in the export process
+   */
+  protected boolean canIgnoreContact( RealtorContactDetails contact, String poolContactId )
+  {
+    return false;
+  }
+
+  /**
+   * Callback method to check, if a real estate should be updated in the export process.
+   *
+   * @param object
+   * real estate to update
+   *
+   * @param poolObjectId
+   * id of the real estate within export pool
+   *
+   * @return
+   * true, if the real estate can be ignored in the export process
+   */
+  protected boolean canIgnoreObject( RealEstate object, String poolObjectId )
+  {
+    return false;
+  }
+
+  /**
    * Archivates a real estate object at the Webservice.
    *
    * @param externalObjectId
@@ -1071,9 +1105,10 @@ public class ExportHandler
     final PublishChannels publishChannels = doLoadPublishChannels();
 
     // updating contacts
-    String[] poolIds = this.pool.getContactIds();
+    LOGGER.info( "updating contacts" );
+    String[] ids = this.pool.getContactIds();
     int counter = 0;
-    for (String poolContactId : poolIds)
+    for (String poolContactId : ids)
     {
       counter++;
 
@@ -1088,16 +1123,29 @@ public class ExportHandler
         this.putGeneralMessage(
           ExportMessage.Code.XML_NOT_READABLE,
           "Can't read XML file for contact '" + poolContactId + "'!" );
-        continue;
       }
-      LOGGER.info( "updating contact '" + contact.getExternalId() + "' [" + counter + " / " + poolIds.length +"]" );
-      this.doUpdateContact( contact, poolContactId );
+      else if (this.canIgnoreContact( contact, poolContactId ))
+      {
+        LOGGER.info( "[" + counter + " / " + ids.length +"] "
+          + "ignoring contact '" + contact.getExternalId() + "'" );
+
+        // Fortschritt protokollieren
+        this.addProgress(
+          this.pool.getContactSize( poolContactId, true ) );
+      }
+      else
+      {
+        LOGGER.info( "[" + counter + " / " + ids.length +"] "
+          + "updating contact '" + contact.getExternalId() + "'" );
+        this.doUpdateContact( contact, poolContactId );
+      }
     }
 
     // updating objects
-    poolIds = this.pool.getObjectIds();
+    LOGGER.info( "updating objects" );
+    ids = this.pool.getObjectIds();
     counter = 0;
-    for (String poolObjectId : poolIds)
+    for (String poolObjectId : ids)
     {
       counter++;
 
@@ -1112,23 +1160,41 @@ public class ExportHandler
         this.putGeneralMessage(
           ExportMessage.Code.XML_NOT_READABLE,
           "Can't read XML file for property '" + poolObjectId + "'!" );
-        continue;
       }
-      LOGGER.info( "updating object '" + object.getExternalId() + "' [" + counter + " / " + poolIds.length +"]" );
-      this.doUpdateObject( object, publishChannels, poolObjectId );
+      else if (this.canIgnoreObject( object, poolObjectId ))
+      {
+        LOGGER.info( "[" + counter + " / " + ids.length +"] "
+          + "ignoring object '" + object.getExternalId() + "'" );
+
+        // Fortschritt protokollieren
+        this.addProgress(
+          this.pool.getObjectSize( poolObjectId, true ) );
+      }
+      else
+      {
+        LOGGER.info( "[" + counter + " / " + ids.length +"] "
+          + "updating object '" + object.getExternalId() + "'" );
+        this.doUpdateObject( object, publishChannels, poolObjectId );
+      }
     }
 
     // removing objects
-    for (String externalObjectId : this.pool.getObjectIdsForRemoval())
+    LOGGER.info( "removing objects" );
+    ids = this.pool.getObjectIds();
+    counter = 0;
+    for (String externalObjectId : ids)
     {
+      counter++;
       if (archivateUnpublishedObjects)
       {
-        LOGGER.info( "archiving object '" + externalObjectId + "'" );
+        LOGGER.info( "[" + counter + " / " + ids.length +"] "
+          + "archiving object '" + externalObjectId + "'" );
         this.doArchiveObject( externalObjectId );
       }
       else
       {
-        LOGGER.info( "removing object '" + externalObjectId + "'" );
+        LOGGER.info( "[" + counter + " / " + ids.length +"] "
+          + "removing object '" + externalObjectId + "'" );
         this.doRemoveObject( externalObjectId );
       }
     }
@@ -1136,16 +1202,22 @@ public class ExportHandler
     // removing untouched objects
     if (unpublishUntouchedObjects)
     {
-      for (String externalObjectId : this.doListUntouchedObjects())
+      LOGGER.info( "removing untouched objects" );
+      ids = this.doListUntouchedObjects();
+      counter = 0;
+      for (String externalObjectId : ids)
       {
+        counter++;
         if (archivateUnpublishedObjects)
         {
-          LOGGER.info( "archiving untouched object '" + externalObjectId + "'" );
+          LOGGER.info( "[" + counter + " / " + ids.length +"] "
+            + "archiving untouched object '" + externalObjectId + "'" );
           this.doArchiveObject( externalObjectId );
         }
         else
         {
-          LOGGER.info( "removing untouched object '" + externalObjectId + "'" );
+          LOGGER.info( "[" + counter + " / " + ids.length +"] "
+            + "removing untouched object '" + externalObjectId + "'" );
           this.doRemoveObject( externalObjectId );
         }
       }
