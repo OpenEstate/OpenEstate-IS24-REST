@@ -1152,6 +1152,7 @@ public class ExportHandler
       {
         LOGGER.info( "[" + counter + " / " + ids.length +"] "
           + "ignoring contact '" + contact.getExternalId() + "'" );
+        this.savedContactIds.contains( contact.getExternalId() );
 
         // Fortschritt protokollieren
         this.addProgress(
