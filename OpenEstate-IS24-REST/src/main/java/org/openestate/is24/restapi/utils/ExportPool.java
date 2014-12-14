@@ -433,7 +433,6 @@ public class ExportPool
   {
     final File objectDir = new File( this.objectsDir, pooledObjectId );
     if (!objectDir.isDirectory()) return new String[]{};
-
     List<String> ids = new ArrayList<String>();
     for (File f : objectDir.listFiles())
     {
