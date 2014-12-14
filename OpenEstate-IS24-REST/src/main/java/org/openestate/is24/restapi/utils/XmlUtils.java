@@ -26,8 +26,13 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
+import java.text.DateFormat;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
+import javax.xml.bind.DatatypeConverter;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
@@ -37,6 +42,7 @@ import javax.xml.bind.ValidationEvent;
 import javax.xml.bind.ValidationEventHandler;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.time.DateUtils;
 import org.openestate.is24.restapi.utils.validator.EmailValidator;
 import org.openestate.is24.restapi.xml.common.Attachment;
 import org.openestate.is24.restapi.xml.common.PublishObject;
@@ -298,6 +304,42 @@ public final class XmlUtils
     if (val.startsWith( "#" )) val = val.substring( 1 );
     if (!val.startsWith( "0x" )) val = "0x" + val;
     return Color.decode( val );
+  }
+
+  /**
+   * Reads a {@link Calendar} value from XML.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value
+   */
+  public static Calendar parseDate( String value )
+  {
+    value = StringUtils.trimToNull( value );
+    if (value==null) return null;
+    try
+    {
+      return DatatypeConverter.parseDate( value );
+    }
+    catch (Exception ex)
+    {
+      //LOGGER.debug( "Invalid xsd:date value '" + value + "'!" );
+      try
+      {
+        Date date = DateUtils.parseDateStrictly( value,
+          new String[]{ "dd.MM.yyyy", "dd.MM.yy", "dd/MM/yyyy", "dd/MM/yy", "dd-MM-yyyy", "dd-MMM-yyyy", "yyyy-MM-dd", "yyyy/MM/dd", "yyyy-D", "MM/yyyy", "MMM yyyy", "MMMMM yyyy", "yyyy" }
+        );
+        Calendar cal = Calendar.getInstance();
+        cal.setTime( date );
+        return cal;
+      }
+      catch (Exception ex2)
+      {
+        throw new IllegalArgumentException( "Can't parse xsd:date value '"+value+"'!", ex2 );
+      }
+    }
   }
 
   /**
@@ -978,6 +1020,26 @@ public final class XmlUtils
     String b = Integer.toHexString( value.getBlue() ).trim();
     if (b.length() == 1) b = "0" + b;
     return "#" + r + g + b;
+  }
+
+  /**
+   * Writes a {@link Calendar} value into XML output.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
+  public static String printDate( Calendar value )
+  {
+    //return (value!=null)? DatatypeConverter.printDate( value ): null;
+    if (value==null) return null;
+    DateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd" );
+    return formatter.format( value.getTime() );
   }
 
   /**
