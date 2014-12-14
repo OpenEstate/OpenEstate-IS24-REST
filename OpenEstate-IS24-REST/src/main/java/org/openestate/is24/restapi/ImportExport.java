@@ -377,6 +377,52 @@ public final class ImportExport
      * @param client
      * {@link AbstractClient}, that is used to communicate with the Webservice
      *
+     * @param externalRealEstateId
+     * user defined ID of the real estate object, for which the attachment is
+     * retrieved
+     *
+     * @param externalAttachmentId
+     * user defined ID of the attachment to retrieve
+     *
+     * @return
+     * requested attachment
+     *
+     * @throws IOException
+     * if communication with the Webservice failed
+     *
+     * @throws OAuthException
+     * if authorization failed
+     *
+     * @throws JAXBException
+     * if XML reading / writing failed
+     *
+     * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments/get-by-id.html">GETbyID method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments.html">Attachment Webservice</a>
+     * @since 0.2
+     */
+    public static Attachment getById( AbstractClient client, String externalRealEstateId, String externalAttachmentId ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    {
+      // build request URL
+      String url = client.getApiBaseUrl()
+        + "/api/offer/v1.0/user/me/realestate"
+        + "/ext-" + AbstractClient.getUrlEncodedValue( externalRealEstateId )
+        + "/attachment?externalId=" + AbstractClient.getUrlEncodedValue( externalAttachmentId );
+
+      // execute request
+      return _getById( client, url );
+    }
+
+    /**
+     * Calls the GETbyID method of the Attachment Webservice.
+     * <p>
+     * This method returns a specific attachment for a real estate object.
+     *
+     * @param client
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
      * @param is24RealEstateIdId
      * ID of the real estate object, that was returned by
      * {@link RealEstateService#post(org.openestate.is24.restapi.AbstractClient, org.openestate.is24.restapi.xml.realestates.RealEstate)},
@@ -410,6 +456,52 @@ public final class ImportExport
       String url = client.getApiBaseUrl()
         + "/api/offer/v1.0/user/me/realestate/" + is24RealEstateIdId
         + "/attachment/" + is24AttachmentId;
+
+      // execute request
+      return _getById( client, url );
+    }
+
+    /**
+     * Calls the GETbyID method of the Attachment Webservice.
+     * <p>
+     * This method returns a specific attachment for a real estate object.
+     *
+     * @param client
+     * {@link AbstractClient}, that is used to communicate with the Webservice
+     *
+     * @param is24RealEstateIdId
+     * ID of the real estate object, that was returned by
+     * {@link RealEstateService#post(org.openestate.is24.restapi.AbstractClient, org.openestate.is24.restapi.xml.realestates.RealEstate)},
+     * for which the attachment is retrieved
+     *
+     * @param externalAttachmentId
+     * user defined ID of the attachment to retrieve
+     *
+     * @return
+     * requested attachment
+     *
+     * @throws IOException
+     * if communication with the Webservice failed
+     *
+     * @throws OAuthException
+     * if authorization failed
+     *
+     * @throws JAXBException
+     * if XML reading / writing failed
+     *
+     * @throws RequestFailedException
+     * if the Webservice did not respond with a success message
+     *
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments/get-by-id.html">GETbyID method</a>
+     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments.html">Attachment Webservice</a>
+     * @since 0.2
+     */
+    public static Attachment getById( AbstractClient client, long is24RealEstateIdId, String externalAttachmentId ) throws IOException, OAuthException, JAXBException, RequestFailedException
+    {
+      // build request URL
+      String url = client.getApiBaseUrl()
+        + "/api/offer/v1.0/user/me/realestate/" + is24RealEstateIdId
+        + "/attachment?externalId=" + AbstractClient.getUrlEncodedValue( externalAttachmentId );
 
       // execute request
       return _getById( client, url );
