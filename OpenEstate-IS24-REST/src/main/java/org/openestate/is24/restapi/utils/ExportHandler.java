@@ -468,10 +468,14 @@ public class ExportHandler
    * @param poolContactId
    * contact ID within export pool
    *
+   * @return
+   * ID of the processed contact person in the Webservice or null, if the object
+   * was not updated
+   *
    * @throws IOException
    * if the operation failed
    */
-  protected void doUpdateContact( RealtorContactDetails contact, String poolContactId ) throws IOException
+  protected Long doUpdateContact( RealtorContactDetails contact, String poolContactId ) throws IOException
   {
     final String externalContactId = contact.getExternalId();
     try
@@ -490,15 +494,17 @@ public class ExportHandler
         LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
         this.putContactMessage(
           externalContactId, ExportMessage.Code.CONTACT_NOT_FOUND, ex.responseMessages );
-        return;
+        return null;
       }
+
+      Long is24ContactId;
 
       // neuen Ansprechpartner erstellen
       if (oldIs24Contact==null)
       {
         try
         {
-          ImportExport.ContactAddressService.post(
+          is24ContactId = ImportExport.ContactAddressService.post(
             this.client, contact );
         }
         catch (RequestFailedException ex)
@@ -509,6 +515,7 @@ public class ExportHandler
             LOGGER.info( "contact '" + externalContactId + "' is already "
               + "available at the Webservice with ID " + resource.id + "." );
             this.duplicatedContactIds.put( externalContactId, resource.id );
+            is24ContactId = resource.id;
           }
           else
           {
@@ -517,7 +524,7 @@ public class ExportHandler
             LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
             this.putContactMessage(
               externalContactId, ExportMessage.Code.CONTACT_NOT_SAVED, ex.responseMessages );
-            return;
+            return null;
           }
         }
       }
@@ -525,7 +532,7 @@ public class ExportHandler
       // bestehenden Ansprechpartner aktualisieren
       else
       {
-        Long is24ContactId = oldIs24Contact.getId();
+        is24ContactId = oldIs24Contact.getId();
         contact.setId( is24ContactId );
 
         try
@@ -541,6 +548,7 @@ public class ExportHandler
             LOGGER.info( "contact '" + externalContactId + "' is already "
               + "available at the Webservice with ID " + resource.id + "." );
             this.duplicatedContactIds.put( externalContactId, resource.id );
+            return resource.id;
           }
           else
           {
@@ -549,13 +557,16 @@ public class ExportHandler
             LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
             this.putContactMessage(
               externalContactId, ExportMessage.Code.CONTACT_NOT_SAVED, ex.responseMessages );
+            return null;
           }
-          return;
         }
       }
 
       // ID des Ansprechpartners als erfolgreich exportiert vormerken
       this.savedContactIds.add( externalContactId );
+
+      // ID des verarbeiteten Ansprechpartners bei IS24 zurückliefern
+      return is24ContactId;
     }
     catch (JAXBException ex)
     {
@@ -592,10 +603,14 @@ public class ExportHandler
    * @param poolObjectId
    * real estate ID within export pool
    *
+   * @return
+   * ID of the processed real estate in the Webservice or null, if the object
+   * was not updated
+   *
    * @throws IOException
    * if the operation failed
    */
-  protected void doUpdateObject( RealEstate object, PublishChannels is24PublishChannels, String poolObjectId ) throws IOException
+  protected Long doUpdateObject( RealEstate object, PublishChannels is24PublishChannels, String poolObjectId ) throws IOException
   {
     final String externalObjectId = object.getExternalId();
     final org.openestate.is24.restapi.xml.common.ObjectFactory commonFactory =
@@ -607,26 +622,33 @@ public class ExportHandler
 
     object.setRealEstateState( RealEstateState.ACTIVE );
 
-    String externalContactId = (object.getContact()!=null)?
-      StringUtils.trimToNull( object.getContact().getExternalId() ): null;
-
-    // Duplikat des Ansprechpartners verwenden
-    if (externalContactId!=null && this.duplicatedContactIds.containsKey( externalContactId ))
+    // Ansprechpartner zuweisen, wenn nicht bereits explizit eine intene
+    // Ansprechpartner-ID hinterlegt wurde
+    Long is24ContactId = (object.getContact()!=null)?
+      object.getContact().getId(): null;
+    if (is24ContactId==null || is24ContactId.longValue()<1)
     {
-      long is24ContactId = this.duplicatedContactIds.get( externalContactId );
-      if (object.getContact()==null)
-        object.setContact( realEstatesFactory.createRealEstateContact() );
-      object.getContact().setId( is24ContactId );
-      object.getContact().setExternalId( null );
-    }
+      String externalContactId = (object.getContact()!=null)?
+        StringUtils.trimToNull( object.getContact().getExternalId() ): null;
 
-    // sicherstellen, dass der Ansprechpartner vorher erfolgreich während des Transports exportiert wurde
-    else if (externalContactId!=null && !this.savedContactIds.contains( externalContactId ))
-    {
-      this.putObjectMessage(
-        externalObjectId, ExportMessage.Code.OBJECT_WITHOUT_CONTACT,
-        "The contact '" + externalContactId + "' was not saved during the export process." );
-      object.setContact( null );
+      // Duplikat des Ansprechpartners verwenden
+      if (externalContactId!=null && this.duplicatedContactIds.containsKey( externalContactId ))
+      {
+        is24ContactId = this.duplicatedContactIds.get( externalContactId );
+        if (object.getContact()==null)
+          object.setContact( realEstatesFactory.createRealEstateContact() );
+        object.getContact().setId( is24ContactId );
+        object.getContact().setExternalId( null );
+      }
+
+      // sicherstellen, dass der Ansprechpartner vorher erfolgreich während des Transports exportiert wurde
+      else if (externalContactId!=null && !this.savedContactIds.contains( externalContactId ))
+      {
+        this.putObjectMessage(
+          externalObjectId, ExportMessage.Code.OBJECT_WITHOUT_CONTACT,
+          "The contact '" + externalContactId + "' was not saved during the export process." );
+        object.setContact( null );
+      }
     }
 
     try
@@ -650,7 +672,7 @@ public class ExportHandler
         this.addProgress(
           this.pool.getObjectSize( poolObjectId, true ) );
 
-        return;
+        return null;
       }
 
       //Messages responseMessages;
@@ -683,7 +705,7 @@ public class ExportHandler
           this.addProgress(
             this.pool.getObjectSize( poolObjectId, true ) );
 
-          return;
+          return null;
         }
       }
 
@@ -707,7 +729,7 @@ public class ExportHandler
           this.addProgress(
             this.pool.getObjectSize( poolObjectId, true ) );
 
-          return;
+          return null;
         }
       }
 
@@ -734,7 +756,7 @@ public class ExportHandler
           this.addProgress(
             this.pool.getObjectSize( poolObjectId, true ) );
 
-          return;
+          return null;
         }
       }
 
@@ -1042,6 +1064,8 @@ public class ExportHandler
           }
         }
       }
+
+      return is24ObjectId;
     }
     catch (JAXBException ex)
     {
