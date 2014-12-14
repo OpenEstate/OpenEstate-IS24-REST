@@ -1101,7 +1101,7 @@ public class ExportHandler
     this.setProgress( 0 );
 
     // load available publish channels
-    LOGGER.info( "loading available publish channels" );
+    LOGGER.info( "loading publish channels" );
     final PublishChannels publishChannels = doLoadPublishChannels();
 
     // updating contacts
@@ -1180,7 +1180,7 @@ public class ExportHandler
 
     // removing objects
     LOGGER.info( "removing objects" );
-    ids = this.pool.getObjectIds();
+    ids = this.pool.getObjectIdsForRemoval();
     counter = 0;
     for (String externalObjectId : ids)
     {
