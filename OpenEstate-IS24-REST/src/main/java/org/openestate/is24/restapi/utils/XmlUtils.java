@@ -32,6 +32,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.xml.bind.DatatypeConverter;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
@@ -41,7 +43,9 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.ValidationEvent;
 import javax.xml.bind.ValidationEventHandler;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.SystemUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.openestate.is24.restapi.utils.validator.EmailValidator;
 import org.openestate.is24.restapi.xml.common.Attachment;
@@ -100,6 +104,10 @@ public final class XmlUtils
     + ":org.openestate.is24.restapi.xml.topplacement"
     + ":org.openestate.is24.restapi.xml.videoupload"
     + ":org.openestate.is24.restapi.xml.zipandlocationtoregion";
+  private final static Pattern ANY_TAG_PATTERN = Pattern.compile(
+    "<[^<>\\n]*>", Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE );
+  private final static Pattern BR_TAG_PATTERN = Pattern.compile(
+    "<\\s*br[^<>\\n]*>", Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE );
 
   private XmlUtils()
   {
@@ -1660,6 +1668,18 @@ public final class XmlUtils
       throw new IllegalArgumentException(
         "The provided text " + value + " is too short (minimum is " + minLength + ")!" );
     }
+    val = StringEscapeUtils.unescapeHtml4( value );
+
+    // replace <br> with line breaks
+    Matcher m = BR_TAG_PATTERN.matcher( val );
+    val = StringUtils.trimToEmpty( m.replaceAll( SystemUtils.LINE_SEPARATOR ) );
+
+    // strip any other html code
+    m = ANY_TAG_PATTERN.matcher( val );
+    val = StringUtils.trimToEmpty( m.replaceAll( "" ) );
+    val = StringUtils.replace( val, "<", "«" );
+    val = StringUtils.replace( val, ">", "»" );
+
     return (maxLength!=null)?
       StringUtils.abbreviate( val, maxLength.intValue() ): val;
   }
