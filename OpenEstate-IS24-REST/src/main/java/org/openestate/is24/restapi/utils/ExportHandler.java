@@ -778,7 +778,7 @@ public class ExportHandler
           {
             Long is24AttachmentId = attachment.getId();
             String externalAttachmentId = StringUtils.trimToNull( attachment.getExternalId() );
-            if (externalAttachmentId!=null)
+            if (externalAttachmentId!=null && !oldIs24Attachments.containsKey( externalAttachmentId ))
             {
               //LOGGER.debug( "> found old attachment #" + is24AttachmentId + " / " + externalAttachmentId + " / " + externalAttachmentId.length() );
               oldIs24Attachments.put( externalAttachmentId, attachment );
@@ -825,6 +825,7 @@ public class ExportHandler
       else
       {
         // Anhänge aus dem Exportverzeichnis der Immobilie ermitteln
+        List<String> attachmentHashes = new ArrayList<String>();
         Map<Integer,Long> attachmentsOrder = new TreeMap<Integer,Long>();
         for (String attachmentPos : this.pool.getObjectAttachmentIds( poolObjectId ))
         {
@@ -864,6 +865,11 @@ public class ExportHandler
             String externalAttachmentId = (url!=null)?
               DigestUtils.sha1Hex( is24ObjectId + "-" + url.toString() ):
               DigestUtils.sha1Hex( is24ObjectId + "-" + attachmentPos );
+
+            // Sicherstellen, dass der gleiche Anhang nicht mehrfach hochgeladen wird
+            if (attachmentHashes.contains( externalAttachmentId )) continue;
+            attachmentHashes.add( externalAttachmentId );
+
             link.setExternalId( externalAttachmentId );
             try
             {
@@ -950,6 +956,11 @@ public class ExportHandler
             input = new FileInputStream( attachFile );
             String attachFileHash = DigestUtils.sha1Hex( input );
             externalAttachmentId = DigestUtils.sha1Hex( is24ObjectId + "-" + attachFileHash );
+
+            // Sicherstellen, dass der gleiche Anhang nicht mehrfach hochgeladen wird
+            if (attachmentHashes.contains( externalAttachmentId )) continue;
+            attachmentHashes.add( externalAttachmentId );
+
             is24Attachment.setExternalId( externalAttachmentId );
           }
           finally
