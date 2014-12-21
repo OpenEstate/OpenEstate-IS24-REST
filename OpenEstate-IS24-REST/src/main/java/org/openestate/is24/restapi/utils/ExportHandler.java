@@ -279,51 +279,6 @@ public class ExportHandler
   }
 
   /**
-   * Removes a real estate object from the Webservice.
-   *
-   * @param externalObjectId
-   * external real estate ID
-   *
-   * @throws IOException
-   * if the operation failed
-   */
-  protected void doRemoveObject( String externalObjectId ) throws IOException
-  {
-    try
-    {
-      // Löschung durchführen
-      try
-      {
-        ImportExport.RealEstateService.deleteByExternalId(
-          this.client, externalObjectId );
-      }
-      catch (RequestFailedException ex)
-      {
-        LOGGER.error( "Can't delete property '" + externalObjectId + "' at the Webservice!" );
-        logMessagesAsError( ex.responseMessages );
-        LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
-        this.putObjectMessage(
-          externalObjectId, ExportMessage.Code.OBJECT_NOT_REMOVED, ex.responseMessages );
-      }
-    }
-    catch (JAXBException ex)
-    {
-      throw new IOExceptionWithCause(
-        "Can't read / write XML while communicating with the Webservice!", ex );
-    }
-    catch (OAuthException ex)
-    {
-      throw new IOExceptionWithCause(
-        "Authorization failed!", ex );
-    }
-    catch (IOException ex)
-    {
-      throw new IOExceptionWithCause(
-        "Communication failed!", ex );
-    }
-  }
-
-  /**
    * Returns external ID's of real estates from the Webservice, that were not
    * changed during the current export process.
    *
@@ -455,6 +410,51 @@ public class ExportHandler
     {
       //LOGGER.error( "Can't communicate with the Webservice!" );
       //LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
+      throw new IOExceptionWithCause(
+        "Communication failed!", ex );
+    }
+  }
+
+  /**
+   * Removes a real estate object from the Webservice.
+   *
+   * @param externalObjectId
+   * external real estate ID
+   *
+   * @throws IOException
+   * if the operation failed
+   */
+  protected void doRemoveObject( String externalObjectId ) throws IOException
+  {
+    try
+    {
+      // Löschung durchführen
+      try
+      {
+        ImportExport.RealEstateService.deleteByExternalId(
+          this.client, externalObjectId );
+      }
+      catch (RequestFailedException ex)
+      {
+        LOGGER.error( "Can't delete property '" + externalObjectId + "' at the Webservice!" );
+        logMessagesAsError( ex.responseMessages );
+        LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
+        this.putObjectMessage(
+          externalObjectId, ExportMessage.Code.OBJECT_NOT_REMOVED, ex.responseMessages );
+      }
+    }
+    catch (JAXBException ex)
+    {
+      throw new IOExceptionWithCause(
+        "Can't read / write XML while communicating with the Webservice!", ex );
+    }
+    catch (OAuthException ex)
+    {
+      throw new IOExceptionWithCause(
+        "Authorization failed!", ex );
+    }
+    catch (IOException ex)
+    {
       throw new IOExceptionWithCause(
         "Communication failed!", ex );
     }
