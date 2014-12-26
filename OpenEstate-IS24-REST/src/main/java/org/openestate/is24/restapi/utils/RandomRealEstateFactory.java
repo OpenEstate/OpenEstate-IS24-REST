@@ -17,6 +17,8 @@
 package org.openestate.is24.restapi.utils;
 
 import com.thedeanda.lorem.Lorem;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -36,6 +38,7 @@ import org.openestate.is24.restapi.xml.common.CareType;
 import org.openestate.is24.restapi.xml.common.CommercializationType;
 import org.openestate.is24.restapi.xml.common.CompulsoryAuctionType;
 import org.openestate.is24.restapi.xml.common.ConstructionPhaseType;
+import org.openestate.is24.restapi.xml.common.CountryCode;
 import org.openestate.is24.restapi.xml.common.Currency;
 import org.openestate.is24.restapi.xml.common.EnergyCertificateCreationDate;
 import org.openestate.is24.restapi.xml.common.EnergyEfficiencyClass;
@@ -67,7 +70,9 @@ import org.openestate.is24.restapi.xml.common.Price;
 import org.openestate.is24.restapi.xml.common.PriceIntervalType;
 import org.openestate.is24.restapi.xml.common.RealEstateCondition;
 import org.openestate.is24.restapi.xml.common.RealEstateState;
+import org.openestate.is24.restapi.xml.common.RealtorContactDetails;
 import org.openestate.is24.restapi.xml.common.RoomType;
+import org.openestate.is24.restapi.xml.common.SalutationType;
 import org.openestate.is24.restapi.xml.common.ShortTermAccommodationType;
 import org.openestate.is24.restapi.xml.common.SiteConstructibleType;
 import org.openestate.is24.restapi.xml.common.SiteDevelopmentType;
@@ -128,6 +133,19 @@ public class RandomRealEstateFactory
     new org.openestate.is24.restapi.xml.realestates.ObjectFactory();
 
   /**
+   * Creates a random {@link Address}.
+   *
+   * @return
+   * randomly filled {@link Wgs84Address} object
+   */
+  public Address createRandomAddress()
+  {
+    Address address = commonFactory.createAddress();
+    initAddress( address );
+    return address;
+  }
+
+  /**
    * Creates a {@link EnergySourcesEnev2014}, that contains random
    * {@link EnergySourceEnev2014} values.
    *
@@ -153,6 +171,54 @@ public class RandomRealEstateFactory
       pool.trimToSize();
     }
     return output;
+  }
+
+  public RealtorContactDetails createRandomContact()
+  {
+    RealtorContactDetails contact = commonFactory.createRealtorContactDetails();
+    contact.setAdditionName( StringUtils.abbreviate( Lorem.getWords( 1, 5 ), 30 ) );
+    contact.setAddress( createRandomAddress() );
+    contact.setBusinessCardContact( false );
+    contact.setCellPhoneNumber( "+49 160 123456" );
+    contact.setCellPhoneNumberAreaCode( "0160" );
+    contact.setCellPhoneNumberCountryCode( "+49" );
+    contact.setCellPhoneNumberSubscriber( "123456" );
+    contact.setCompany( StringUtils.abbreviate( Lorem.getWords( 1, 15 ), 100 ) );
+    contact.setCountryCode( getRandomCountryCode() );
+    contact.setDefaultContact( false );
+    contact.setEmail( "test@test.org" );
+    //contact.setExternalId( null );
+    contact.setFaxNumber( "+49 30 123457" );
+    contact.setFaxNumberAreaCode( "030" );
+    contact.setFaxNumberCountryCode( "+49" );
+    contact.setFaxNumberSubscriber( "123457" );
+    contact.setFirstname( Lorem.getFirstName() );
+    //contact.setId( null );
+    contact.setLastname( Lorem.getLastName() );
+    contact.setLocalPartnerContact( false );
+    contact.setOfficeHours( StringUtils.abbreviate( Lorem.getWords( 1, 50 ), 1000 ) );
+    contact.setPhoneNumber( "+49 30 123456" );
+    contact.setPhoneNumberAreaCode( "030" );
+    contact.setPhoneNumberCountryCode( "+49" );
+    contact.setPhoneNumberSubscriber( "123456" );
+    contact.setPosition( StringUtils.abbreviate( Lorem.getWords( 1, 15 ), 100 ) );
+    //contact.setRealEstateReferenceCount( null );
+    contact.setSalutation( getRandomSalutationType() );
+    contact.setShowOnProfilePage( false );
+    contact.setTitle( StringUtils.abbreviate( Lorem.getWords( 1, 3 ), 15 ) );
+
+    try
+    {
+      contact.setHomepageUrl( new URL( "http://test.org" ) );
+      contact.setPortraitUrl( new URL( "http://test.org/portrait.jpg" ) );
+    }
+    catch (MalformedURLException ex)
+    {
+      LOGGER.warn( "Can't write URL!" );
+      LOGGER.warn( "> " + ex.getLocalizedMessage(), ex );
+    }
+
+    return contact;
   }
 
   /**
@@ -386,6 +452,17 @@ public class RandomRealEstateFactory
   public static ConstructionPhaseType getRandomConstructionPhaseType()
   {
     return (ConstructionPhaseType) getRandomValue( ConstructionPhaseType.values() );
+  }
+
+  /**
+   * Creates a random {@link CountryCode} value.
+   *
+   * @return
+   * random {@link CountryCode} value
+   */
+  public static CountryCode getRandomCountryCode()
+  {
+    return (CountryCode) getRandomValue( CountryCode.values() );
   }
 
   /**
@@ -747,6 +824,17 @@ public class RandomRealEstateFactory
   public static RealEstateCondition getRandomRealEstateCondition()
   {
     return (RealEstateCondition) getRandomValue( RealEstateCondition.values() );
+  }
+
+  /**
+   * Creates a random {@link SalutationType} value.
+   *
+   * @return
+   * random {@link SalutationType} value
+   */
+  public static SalutationType getRandomSalutationType()
+  {
+    return (SalutationType) getRandomValue( SalutationType.values() );
   }
 
   /**
