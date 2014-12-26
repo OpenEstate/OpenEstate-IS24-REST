@@ -60,7 +60,28 @@
           <reportOutputDirectory>${basedir}/target</reportOutputDirectory>
           <destDir>javadoc</destDir>
           <quiet>true</quiet>
-          <excludePackageNames>org.openestate.is24.restapi.examples:org.openestate.is24.restapi.examples.*</excludePackageNames>
+          <groups>
+            <group>
+              <title>core library</title>
+              <packages>org.openestate.is24.restapi:org.openestate.is24.restapi.utils:org.openestate.is24.restapi.utils.*:org.openestate.is24.restapi.xml:org.openestate.is24.restapi.xml.*</packages>
+            </group>
+            <group>
+              <title>addon for Apache HttpComponents 4.2</title>
+              <packages>org.openestate.is24.restapi.hc42:org.openestate.is24.restapi.hc42.*</packages>
+            </group>
+            <group>
+              <title>addon for Apache HttpComponents 4.3</title>
+              <packages>org.openestate.is24.restapi.hc43:org.openestate.is24.restapi.hc43.*</packages>
+            </group>
+            <group>
+              <title>example classes</title>
+              <packages>org.openestate.is24.restapi.examples:org.openestate.is24.restapi.examples.*</packages>
+            </group>
+            <group>
+              <title>example web application</title>
+              <packages>org.openestate.is24.restapi.webapp:org.openestate.is24.restapi.webapp.*</packages>
+            </group>
+          </groups>
         </configuration>
       </plugin>
 
