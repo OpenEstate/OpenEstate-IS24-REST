@@ -52,6 +52,13 @@
       <filtered>false</filtered>
     </fileSet>
     <fileSet>
+      <directory>${basedir}/OpenEstate-IS24-REST-examples/release</directory>
+      <outputDirectory>OpenEstate-IS24-REST-examples</outputDirectory>
+      <directoryMode>0755</directoryMode>
+      <fileMode>0644</fileMode>
+      <filtered>false</filtered>
+    </fileSet>
+    <fileSet>
       <directory>${basedir}/OpenEstate-IS24-REST-hc42/release</directory>
       <outputDirectory>OpenEstate-IS24-REST-hc42</outputDirectory>
       <directoryMode>0755</directoryMode>
