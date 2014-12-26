@@ -15,7 +15,9 @@
  */
 
 /**
- * JAXB classes for reading / writing XML.
+ * Some classes from the "commons-validator" library of the Apache Foundation.
+ *
+ * @see <a href="http://commons.apache.org/proper/commons-validator/">commons-validator</a>
  */
 
 package org.openestate.is24.restapi.utils.validator;
