@@ -11,7 +11,8 @@ Changelog for OpenEstate-IS24-REST
     (see [`ExportPool.java`](OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/utils/ExportPool.java)
     and [`ExportHandler.java`](OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/utils/ExportHandler.java))
 -   implemented a class for creation of random real estates
-    (see [`RandomRealEstateFactory.java`](OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/utils/RandomRealEstateFactory.java))
+    (see [`RandomRealEstateExample.java`](OpenEstate-IS24-REST-examples/src/main/java/org/openestate/is24/restapi/examples/RandomRealEstateExample.java)
+    and [`RandomRealEstateFactory.java`](OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/utils/RandomRealEstateFactory.java))
 -   implemented a basic web application [`OpenEstate-IS24-REST-webapp`](OpenEstate-IS24-REST-webapp)
     to illustrate the [OAuth](http://api.immobilienscout24.de/useful/authentication.html)
     verification process
