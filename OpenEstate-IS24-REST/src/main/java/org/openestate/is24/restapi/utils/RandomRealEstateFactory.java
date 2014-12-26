@@ -173,6 +173,12 @@ public class RandomRealEstateFactory
     return output;
   }
 
+  /**
+   * Creates a random {@link RealtorContactDetails}.
+   *
+   * @return
+   * randomly filled {@link RealtorContactDetails} object
+   */
   public RealtorContactDetails createRandomContact()
   {
     RealtorContactDetails contact = commonFactory.createRealtorContactDetails();
