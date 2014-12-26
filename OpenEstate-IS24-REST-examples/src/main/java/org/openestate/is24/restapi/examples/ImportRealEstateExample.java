@@ -21,7 +21,7 @@ import javax.xml.bind.JAXBException;
 import oauth.signpost.exception.OAuthException;
 import org.openestate.is24.restapi.AbstractClient;
 import org.openestate.is24.restapi.DefaultClient;
-import org.openestate.is24.restapi.ImportExport;
+import org.openestate.is24.restapi.ImportExport.RealEstateService;
 import org.openestate.is24.restapi.utils.RequestFailedException;
 import org.openestate.is24.restapi.xml.common.BuildingEnergyRatingType;
 import org.openestate.is24.restapi.xml.common.BuildingType;
@@ -37,6 +37,8 @@ import org.openestate.is24.restapi.xml.common.YesNotApplicableType;
 import org.openestate.is24.restapi.xml.realestates.HouseBuy;
 
 /**
+ * This example illustrates the upload of a single real estate to the
+ * Webservice through the low level methods of {@link RealEstateService}.
  *
  * @author Andreas Rudolph <andy@openindex.de>
  */
@@ -48,6 +50,12 @@ public class ImportRealEstateExample
   final static String ACCESS_KEY = "user's access key";
   final static String ACCESS_SECRET = "user's access secret";
 
+  /**
+   * Main function.
+   *
+   * @param args
+   * command line arguments
+   */
   public static void main( String[] args )
   {
     AbstractClient client = new DefaultClient(
@@ -141,16 +149,16 @@ public class ImportRealEstateExample
     {
       // send as new object to IS24
       System.out.println( "Send as new object to IS24" );
-      long is24ObjectId = ImportExport.RealEstateService.post( client, object );
+      long is24ObjectId = RealEstateService.post( client, object );
       System.out.println( "Object was created with IS24-ID #" + is24ObjectId );
 
       // update object at IS24
       System.out.println( "Send again as update to IS24" );
-      ImportExport.RealEstateService.putByIs24Id( client, object, is24ObjectId );
+      RealEstateService.putByIs24Id( client, object, is24ObjectId );
 
       // remove object from IS24
       System.out.println( "Remove object from IS24" );
-      ImportExport.RealEstateService.deleteByIs24Id( client, is24ObjectId );
+      RealEstateService.deleteByIs24Id( client, is24ObjectId );
     }
     catch (RequestFailedException ex)
     {

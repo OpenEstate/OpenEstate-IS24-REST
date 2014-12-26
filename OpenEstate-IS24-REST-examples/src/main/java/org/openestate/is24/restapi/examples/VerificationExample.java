@@ -26,6 +26,7 @@ import org.openestate.is24.restapi.utils.Authorization;
 import org.openestate.is24.restapi.utils.Verification;
 
 /**
+ * This example illustrates the verification process at the Webservice.
  *
  * @author Andreas Rudolph <andy@openindex.de>
  */
@@ -36,6 +37,12 @@ public class VerificationExample
   final static String CONSUMER_SECRET = "my consumer secret";
   final static String CALLBACK_URL = "http://mywebsite.com/is24-callback.php";
 
+  /**
+   * Main function.
+   *
+   * @param args
+   * command line arguments
+   */
   public static void main( String[] args )
   {
     AbstractClient client = new DefaultClient(

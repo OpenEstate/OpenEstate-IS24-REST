@@ -28,6 +28,8 @@ import org.openestate.is24.restapi.xml.offerlistelement.OfferRealEstateForList;
 import org.openestate.is24.restapi.xml.realestates.RealEstates;
 
 /**
+ * This example illustrates the export of all real estates, that are available
+ * through the Webservice.
  *
  * @author Andreas Rudolph <andy@openindex.de>
  */
@@ -39,6 +41,12 @@ public class ExportRealEstatesExample
   final static String ACCESS_KEY = "user's access key";
   final static String ACCESS_SECRET = "user's access secret";
 
+  /**
+   * Main function.
+   *
+   * @param args
+   * command line arguments
+   */
   public static void main( String[] args )
   {
     AbstractClient client = new DefaultClient(

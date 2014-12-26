@@ -26,11 +26,18 @@ import org.openestate.is24.restapi.utils.XmlUtils;
 import org.openestate.is24.restapi.xml.realestates.RealEstate;
 
 /**
+ * This example illustrates the creation of random real estate data.
  *
  * @author Andreas Rudolph <andy@openindex.de>
  */
 public class RandomRealEstateExample
 {
+  /**
+   * Main function.
+   *
+   * @param args
+   * command line arguments
+   */
   public static void main( String[] args )
   {
     try

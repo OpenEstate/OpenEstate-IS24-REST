@@ -52,6 +52,12 @@ public class IS24OauthExample
 {
   private final static Logger LOGGER = LoggerFactory.getLogger( IS24OauthExample.class );
 
+  /**
+   * Main function.
+   *
+   * @param args
+   * command line arguments
+   */
   public static void main( String[] args ) throws Exception
   {
 

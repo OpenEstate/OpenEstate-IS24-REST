@@ -20,6 +20,8 @@ import org.openestate.is24.restapi.AbstractClient;
 import org.openestate.is24.restapi.hc43.HttpComponents43Client;
 
 /**
+ * This example illustrates the creation of a {@link HttpComponents43Client} for
+ * HTTP transfers via Apache HttpComponents 4.3.
  *
  * @author Andreas Rudolph <andy@openindex.de>
  */
@@ -29,6 +31,12 @@ public class HttpComponents43ClientExample
   final static String CONSUMER_KEY = "my consumer key";
   final static String CONSUMER_SECRET = "my consumer secret";
 
+  /**
+   * Main function.
+   *
+   * @param args
+   * command line arguments
+   */
   public static void main( String[] args )
   {
     AbstractClient client = new HttpComponents43Client(

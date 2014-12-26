@@ -27,6 +27,8 @@ import org.openestate.is24.restapi.utils.XmlUtils;
 import org.openestate.is24.restapi.xml.realestates.RealEstate;
 
 /**
+ * This example illustrates the export of a single real estate from the
+ * Webservice.
  *
  * @author Andreas Rudolph <andy@openindex.de>
  */
@@ -40,6 +42,12 @@ public class ExportRealEstateExample
   final static long is24ObjectId = 123;
   final static String externalObjectId = "123";
 
+  /**
+   * Main function.
+   *
+   * @param args
+   * command line arguments
+   */
   public static void main( String[] args )
   {
     AbstractClient client = new DefaultClient(
