@@ -25,6 +25,13 @@
       </includes>
     </fileSet>
     <fileSet>
+      <directory>${basedir}/misc/licenses</directory>
+      <outputDirectory>3rdparty</outputDirectory>
+      <directoryMode>0755</directoryMode>
+      <fileMode>0644</fileMode>
+      <filtered>false</filtered>
+    </fileSet>
+    <fileSet>
       <directory>${basedir}/docs</directory>
       <outputDirectory>docs</outputDirectory>
       <directoryMode>0755</directoryMode>
@@ -35,7 +42,15 @@
       </includes>
       <excludes>
         <exclude>**/_*.md</exclude>
+        <exclude>**/Home.md</exclude>
       </excludes>
+    </fileSet>
+    <fileSet>
+      <directory>${basedir}/misc/licenses</directory>
+      <outputDirectory>3rdparty</outputDirectory>
+      <directoryMode>0755</directoryMode>
+      <fileMode>0644</fileMode>
+      <filtered>false</filtered>
     </fileSet>
     <fileSet>
       <directory>${basedir}/OpenEstate-IS24-REST/src/main/xsd</directory>
@@ -47,6 +62,13 @@
     <fileSet>
       <directory>${basedir}/OpenEstate-IS24-REST/release</directory>
       <outputDirectory>OpenEstate-IS24-REST</outputDirectory>
+      <directoryMode>0755</directoryMode>
+      <fileMode>0644</fileMode>
+      <filtered>false</filtered>
+    </fileSet>
+    <fileSet>
+      <directory>${basedir}/OpenEstate-IS24-REST/target/3rdparty</directory>
+      <outputDirectory>3rdparty</outputDirectory>
       <directoryMode>0755</directoryMode>
       <fileMode>0644</fileMode>
       <filtered>false</filtered>
@@ -66,8 +88,22 @@
       <filtered>false</filtered>
     </fileSet>
     <fileSet>
+      <directory>${basedir}/OpenEstate-IS24-REST-hc42/target/3rdparty</directory>
+      <outputDirectory>3rdparty</outputDirectory>
+      <directoryMode>0755</directoryMode>
+      <fileMode>0644</fileMode>
+      <filtered>false</filtered>
+    </fileSet>
+    <fileSet>
       <directory>${basedir}/OpenEstate-IS24-REST-hc43/release</directory>
       <outputDirectory>OpenEstate-IS24-REST-hc43</outputDirectory>
+      <directoryMode>0755</directoryMode>
+      <fileMode>0644</fileMode>
+      <filtered>false</filtered>
+    </fileSet>
+    <fileSet>
+      <directory>${basedir}/OpenEstate-IS24-REST-hc43/target/3rdparty</directory>
+      <outputDirectory>3rdparty</outputDirectory>
       <directoryMode>0755</directoryMode>
       <fileMode>0644</fileMode>
       <filtered>false</filtered>
