@@ -21,7 +21,7 @@ import javax.xml.bind.JAXBException;
 import oauth.signpost.exception.OAuthException;
 import org.openestate.is24.restapi.AbstractClient;
 import org.openestate.is24.restapi.DefaultClient;
-import org.openestate.is24.restapi.ImportExport;
+import org.openestate.is24.restapi.ImportExport.RealEstateService;
 import org.openestate.is24.restapi.utils.RequestFailedException;
 import org.openestate.is24.restapi.utils.XmlUtils;
 import org.openestate.is24.restapi.xml.offerlistelement.OfferRealEstateForList;
@@ -33,7 +33,7 @@ import org.openestate.is24.restapi.xml.realestates.RealEstates;
  *
  * @author Andreas Rudolph <andy@openindex.de>
  */
-public class ExportRealEstatesExample
+public class DownloadRealEstateListExample
 {
   final static String WEBSERVICE_URL = AbstractClient.LIVE_API;
   final static String CONSUMER_KEY = "my consumer key";
@@ -70,7 +70,7 @@ public class ExportRealEstatesExample
       page++;
       try
       {
-        result = ImportExport.RealEstateService.getAll( client, null, null, 10, 0, true );
+        result = RealEstateService.getAll( client, null, null, 10, 0, true );
         for (OfferRealEstateForList object : result.getRealEstateList().getRealEstateElement())
         {
           String xml = XmlUtils.marshal( object, "UTF-8", true );

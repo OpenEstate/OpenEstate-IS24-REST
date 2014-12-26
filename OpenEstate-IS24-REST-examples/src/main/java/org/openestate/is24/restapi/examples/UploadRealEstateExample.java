@@ -42,7 +42,7 @@ import org.openestate.is24.restapi.xml.realestates.HouseBuy;
  *
  * @author Andreas Rudolph <andy@openindex.de>
  */
-public class ImportRealEstateExample
+public class UploadRealEstateExample
 {
   final static String WEBSERVICE_URL = AbstractClient.LIVE_API;
   final static String CONSUMER_KEY = "my consumer key";
