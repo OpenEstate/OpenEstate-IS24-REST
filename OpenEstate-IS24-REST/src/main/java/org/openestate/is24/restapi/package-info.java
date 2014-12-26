@@ -14,4 +14,8 @@
  * limitations under the License.
  */
 
+/**
+ * Core classes.
+ */
+
 package org.openestate.is24.restapi;

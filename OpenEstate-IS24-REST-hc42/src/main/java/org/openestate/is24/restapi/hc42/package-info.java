@@ -14,4 +14,8 @@
  * limitations under the License.
  */
 
+/**
+ * Additional classes for Apache HttpComponents 4.2.
+ */
+
 package org.openestate.is24.restapi.hc42;
