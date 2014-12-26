@@ -120,11 +120,12 @@ public class BulkUploadExample
         // process messages, that occured during the export process
         if (ArrayUtils.isEmpty( messages ))
         {
-          System.out.println( "no messages received" );
+          System.out.println( "No messages were received." );
         }
         else
         {
           // print messages to console
+          System.out.println( messages.length + " messages received." );
           for (ExportMessage message : messages)
           {
             String level = message.getLevel().name();
