@@ -14,4 +14,8 @@
  * limitations under the License.
  */
 
+/**
+ * JAXB classes for XML reading / writing.
+ */
+
 package org.openestate.is24.restapi.xml;

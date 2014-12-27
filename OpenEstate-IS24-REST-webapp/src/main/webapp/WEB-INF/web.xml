@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+  <display-name>OpenEstate-IS24-REST-WebApp</display-name>
+  <description>
+    a web application, that implements some example features for the
+    REST-Webservice of ImmobilienScout24.de
+  </description>
+
+  <context-param>
+    <param-name>WebserviceUrl</param-name>
+    <!--<param-value>https://rest.immobilienscout24.de/restapi</param-value>-->
+    <param-value>https://rest.sandbox-immobilienscout24.de/restapi</param-value>
+    <description>
+      Enter the URL that points to the IS24-Webservice.
+      You can either create access credentials for the live or sandbox
+      environment. Please consider, that the generated credentials are bound
+      to a specific Webservice-URL. You can't use the same credentials for the
+      live and sandbox environment.
+    </description>
+  </context-param>
+
+  <context-param>
+    <param-name>ConsumerKey</param-name>
+    <param-value>ENTER_YOUR_CONSUMER_KEY_HERE</param-value>
+    <description>
+      Enter the consumer key to access the IS24-Webservice.
+      You will receive the consumer key after your registration at
+      http://rest.immobilienscout24.de/restapi/security/registration or
+      http://rest.sandbox-immobilienscout24.de/restapi/security/registration
+    </description>
+  </context-param>
+
+  <context-param>
+    <param-name>ConsumerSecret</param-name>
+    <param-value>ENTER_YOUR_CONSUMER_SECRET_HERE</param-value>
+    <description>
+      Enter the consumer secret to access the IS24-Webservice.
+      You will receive the consumer secret after your registration at
+      http://rest.immobilienscout24.de/restapi/security/registration or
+      http://rest.sandbox-immobilienscout24.de/restapi/security/registration
+    </description>
+  </context-param>
+
+  <context-param>
+    <param-name>TrustAllCertificates</param-name>
+    <param-value>true</param-value>
+    <description>
+      Trust all SSL certificates / Disable host name verification
+      This option disables certificate checks and hostname verification for
+      HTTPS traffic. You should disable this option on productive systems and
+      use a TrustStore instead.
+      See: http://docs.oracle.com/cd/E21454_01/html/821-2544/cnfg_ssl-overview_c.html
+    </description>
+  </context-param>
+
+  <servlet>
+    <description>a servlet for the verification process</description>
+    <servlet-name>Verification</servlet-name>
+    <servlet-class>org.openestate.is24.restapi.webapp.VerificationServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>Verification</servlet-name>
+    <url-pattern>/verify/</url-pattern>
+  </servlet-mapping>
+
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+
+</web-app>

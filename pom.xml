@@ -5,7 +5,7 @@
 
   <groupId>org.openestate.is24</groupId>
   <artifactId>ALL</artifactId>
-  <version>0.1.2</version>
+  <version>0.2</version>
   <packaging>pom</packaging>
 
   <name>ALL-OpenEstate-IS24-REST</name>
@@ -16,13 +16,14 @@
     <project.baseName>OpenEstate-IS24-REST</project.baseName>
     <project.releaseDir>${basedir}/release</project.releaseDir>
   </properties>
+
   <build>
     <plugins>
 
       <!-- clean -->
       <plugin>
         <artifactId>maven-clean-plugin</artifactId>
-        <version>2.5</version>
+        <version>2.6.1</version>
         <configuration>
           <failOnError>false</failOnError>
           <filesets>
@@ -38,7 +39,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.1</version>
+        <version>3.2</version>
         <configuration>
           <source>1.6</source>
           <target>1.6</target>
@@ -51,7 +52,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>2.9.1</version>
+        <version>2.10.1</version>
         <inherited>false</inherited>
         <configuration>
           <finalName>${project.baseName}-v${project.version}</finalName>
@@ -59,7 +60,28 @@
           <reportOutputDirectory>${basedir}/target</reportOutputDirectory>
           <destDir>javadoc</destDir>
           <quiet>true</quiet>
-          <excludePackageNames>org.openestate.is24.restapi.examples:org.openestate.is24.restapi.examples.*</excludePackageNames>
+          <groups>
+            <group>
+              <title>core library</title>
+              <packages>org.openestate.is24.restapi:org.openestate.is24.restapi.utils:org.openestate.is24.restapi.utils.*:org.openestate.is24.restapi.xml:org.openestate.is24.restapi.xml.*</packages>
+            </group>
+            <group>
+              <title>addon for Apache HttpComponents 4.2</title>
+              <packages>org.openestate.is24.restapi.hc42:org.openestate.is24.restapi.hc42.*</packages>
+            </group>
+            <group>
+              <title>addon for Apache HttpComponents 4.3</title>
+              <packages>org.openestate.is24.restapi.hc43:org.openestate.is24.restapi.hc43.*</packages>
+            </group>
+            <group>
+              <title>example classes</title>
+              <packages>org.openestate.is24.restapi.examples:org.openestate.is24.restapi.examples.*</packages>
+            </group>
+            <group>
+              <title>example web application</title>
+              <packages>org.openestate.is24.restapi.webapp:org.openestate.is24.restapi.webapp.*</packages>
+            </group>
+          </groups>
         </configuration>
       </plugin>
 
@@ -67,7 +89,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-assembly-plugin</artifactId>
-        <version>2.4</version>
+        <version>2.5.2</version>
         <inherited>false</inherited>
         <configuration>
           <finalName>${project.baseName}-${project.version}-release</finalName>
@@ -83,28 +105,31 @@
 
     </plugins>
   </build>
+
   <modules>
     <module>OpenEstate-IS24-REST</module>
     <module>OpenEstate-IS24-REST-hc42</module>
     <module>OpenEstate-IS24-REST-hc43</module>
     <module>OpenEstate-IS24-REST-examples</module>
+    <module>OpenEstate-IS24-REST-webapp</module>
   </modules>
+
   <dependencyManagement>
     <dependencies>
       <dependency>
         <groupId>org.openestate.is24</groupId>
         <artifactId>OpenEstate-IS24-REST</artifactId>
-        <version>0.1.2</version>
+        <version>0.2</version>
       </dependency>
       <dependency>
         <groupId>org.openestate.is24</groupId>
         <artifactId>OpenEstate-IS24-REST-hc42</artifactId>
-        <version>0.1.2</version>
+        <version>0.2</version>
       </dependency>
       <dependency>
         <groupId>org.openestate.is24</groupId>
         <artifactId>OpenEstate-IS24-REST-hc43</artifactId>
-        <version>0.1.2</version>
+        <version>0.2</version>
       </dependency>
       <dependency>
         <groupId>com.google.code.findbugs</groupId>
@@ -112,19 +137,34 @@
         <version>3.0.0</version>
       </dependency>
       <dependency>
+        <groupId>commons-codec</groupId>
+        <artifactId>commons-codec</artifactId>
+        <version>1.10</version>
+      </dependency>
+      <dependency>
         <groupId>commons-io</groupId>
         <artifactId>commons-io</artifactId>
         <version>2.4</version>
       </dependency>
       <dependency>
-        <groupId>commons-lang</groupId>
-        <artifactId>commons-lang</artifactId>
-        <version>2.6</version>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-lang3</artifactId>
+        <version>3.3.2</version>
       </dependency>
       <dependency>
         <groupId>commons-validator</groupId>
         <artifactId>commons-validator</artifactId>
         <version>1.4.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jvnet.jaxb2_commons</groupId>
+        <artifactId>jaxb2-basics-runtime</artifactId>
+        <version>0.9.1</version>
+      </dependency>
+      <dependency>
+        <groupId>javax.servlet.jsp</groupId>
+        <artifactId>jsp-api</artifactId>
+        <version>2.2</version>
       </dependency>
       <dependency>
         <groupId>junit</groupId>
@@ -135,6 +175,16 @@
         <groupId>log4j</groupId>
         <artifactId>log4j</artifactId>
         <version>1.2.17</version>
+      </dependency>
+      <dependency>
+        <groupId>com.thedeanda</groupId>
+        <artifactId>lorem</artifactId>
+        <version>1.2</version>
+      </dependency>
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>servlet-api</artifactId>
+        <version>2.5</version>
       </dependency>
       <dependency>
         <groupId>oauth.signpost</groupId>
@@ -158,10 +208,12 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
+
   <organization>
     <name>OpenEstate</name>
     <url>http://openestate.org/</url>
   </organization>
+
   <developers>
     <developer>
       <id>andy</id>
@@ -178,6 +230,7 @@
       <organizationUrl>http://www.openindex.de/</organizationUrl>
     </developer>
   </developers>
+
   <licenses>
     <license>
       <name>The Apache Software License, Version 2.0</name>

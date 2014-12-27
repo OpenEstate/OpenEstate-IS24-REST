@@ -18,52 +18,36 @@ package org.openestate.is24.restapi.utils;
 
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
-import java.security.cert.X509Certificate;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
 
 /**
+ * SSL helper methods.
  *
- * @author andy
+ * @since 0.1
+ * @deprecated use {@link SslUtils} instead
+ * @author Andreas Rudolph <andy@openindex.de>
  */
+@Deprecated
 public final class SSLUtils
 {
-  //private final static Logger LOGGER = LoggerFactory.getLogger( SSLUtils.class );
-
   private SSLUtils()
   {
   }
 
+  /**
+   * @deprecated use {@link SslUtils#disableCertificateChecks()} instead
+   */
+  @Deprecated
   public static void disableCertificateChecks() throws NoSuchAlgorithmException, KeyManagementException
   {
-    // Create a trust manager that does not validate certificate chains
-    TrustManager[] trustAllCerts = new TrustManager[]
-    {
-      new X509TrustManager()
-      {
-        @Override
-        public X509Certificate[] getAcceptedIssuers()
-        {
-          return null;
-        }
+    SslUtils.disableCertificateChecks();
+  }
 
-        @Override
-        public void checkClientTrusted( X509Certificate[] certs, String authType )
-        {
-        }
-
-        @Override
-        public void checkServerTrusted( X509Certificate[] certs, String authType )
-        {
-        }
-      }
-    };
-
-    // Install the all-trusting trust manager
-    SSLContext sc = SSLContext.getInstance( "SSL" );
-    sc.init( null, trustAllCerts, new java.security.SecureRandom() );
-    HttpsURLConnection.setDefaultSSLSocketFactory( sc.getSocketFactory() );
+  /**
+   * @deprecated use {@link SslUtils#disableHostnameVerification()} instead
+   */
+  @Deprecated
+  public static void disableHostnameVerification()
+  {
+    SslUtils.disableHostnameVerification();
   }
 }

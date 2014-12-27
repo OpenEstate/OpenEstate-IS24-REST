@@ -16,10 +16,12 @@
 
 package org.openestate.is24.restapi.utils;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 /**
+ * Informations about a Webservice response.
  *
+ * @since 0.1
  * @author Andreas Rudolph <andy@openindex.de>
  */
 public final class Response
@@ -39,8 +41,19 @@ public final class Response
   public final static int NOT_IMPLEMENTED = 501;
   public final static int TEMPORARILY_NOT_AVAILABLE = 503;
 
+  /**
+   * Status code of the HTTP response.
+   */
   public final int statusCode;
+
+  /**
+   * Status message of the HTTP response.
+   */
   public final String statusMessage;
+
+  /**
+   * Body text of the HTTP response.
+   */
   public final String body;
 
   public Response( int statusCode, String statusMessage, String body )

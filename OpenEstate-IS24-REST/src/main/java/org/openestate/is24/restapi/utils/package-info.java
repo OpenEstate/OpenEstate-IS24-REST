@@ -14,4 +14,8 @@
  * limitations under the License.
  */
 
+/**
+ * Utility classes.
+ */
+
 package org.openestate.is24.restapi.utils;

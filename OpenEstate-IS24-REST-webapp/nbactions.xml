@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+  <action>
+            <actionName>CUSTOM-Run Jetty</actionName>
+            <displayName>Run Jetty</displayName>
+            <goals>
+                <goal>jetty:run</goal>
+            </goals>
+            <properties>
+                <skipTests>true</skipTests>
+            </properties>
+        </action>
+  <action>
+            <actionName>CUSTOM-Find bugs</actionName>
+            <displayName>Find bugs</displayName>
+            <goals>
+                <goal>findbugs:check</goal>
+                <goal>findbugs:gui</goal>
+            </goals>
+            <properties>
+                <skipTests>true</skipTests>
+            </properties>
+        </action>
+</actions>

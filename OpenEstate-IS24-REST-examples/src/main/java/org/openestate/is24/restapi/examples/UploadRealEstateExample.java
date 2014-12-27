@@ -21,9 +21,8 @@ import javax.xml.bind.JAXBException;
 import oauth.signpost.exception.OAuthException;
 import org.openestate.is24.restapi.AbstractClient;
 import org.openestate.is24.restapi.DefaultClient;
-import org.openestate.is24.restapi.ImportExport;
+import org.openestate.is24.restapi.ImportExport.RealEstateService;
 import org.openestate.is24.restapi.utils.RequestFailedException;
-import org.openestate.is24.restapi.utils.Resource;
 import org.openestate.is24.restapi.xml.common.BuildingEnergyRatingType;
 import org.openestate.is24.restapi.xml.common.BuildingType;
 import org.openestate.is24.restapi.xml.common.ConstructionPhaseType;
@@ -31,14 +30,19 @@ import org.openestate.is24.restapi.xml.common.Currency;
 import org.openestate.is24.restapi.xml.common.HeatingTypeEnev2014;
 import org.openestate.is24.restapi.xml.common.InteriorQuality;
 import org.openestate.is24.restapi.xml.common.MarketingType;
-import org.openestate.is24.restapi.xml.common.Messages;
 import org.openestate.is24.restapi.xml.common.PriceIntervalType;
 import org.openestate.is24.restapi.xml.common.RealEstateCondition;
 import org.openestate.is24.restapi.xml.common.YesNoNotApplicableType;
 import org.openestate.is24.restapi.xml.common.YesNotApplicableType;
 import org.openestate.is24.restapi.xml.realestates.HouseBuy;
 
-public class ImportRealEstateExample
+/**
+ * This example illustrates the upload of a single real estate to the
+ * Webservice through the low level methods of {@link RealEstateService}.
+ *
+ * @author Andreas Rudolph <andy@openindex.de>
+ */
+public class UploadRealEstateExample
 {
   final static String WEBSERVICE_URL = AbstractClient.LIVE_API;
   final static String CONSUMER_KEY = "my consumer key";
@@ -46,6 +50,12 @@ public class ImportRealEstateExample
   final static String ACCESS_KEY = "user's access key";
   final static String ACCESS_SECRET = "user's access secret";
 
+  /**
+   * Main function.
+   *
+   * @param args
+   * command line arguments
+   */
   public static void main( String[] args )
   {
     AbstractClient client = new DefaultClient(
@@ -139,18 +149,16 @@ public class ImportRealEstateExample
     {
       // send as new object to IS24
       System.out.println( "Send as new object to IS24" );
-      Messages messages = ImportExport.RealEstateService.post( client, object );
-      Resource createdResource = Resource.getCreatedResource( messages );
-      long is24ObjectId = createdResource.id;
+      long is24ObjectId = RealEstateService.post( client, object );
       System.out.println( "Object was created with IS24-ID #" + is24ObjectId );
 
       // update object at IS24
       System.out.println( "Send again as update to IS24" );
-      ImportExport.RealEstateService.putByIs24Id( client, object, is24ObjectId );
+      RealEstateService.putByIs24Id( client, object, is24ObjectId );
 
       // remove object from IS24
       System.out.println( "Remove object from IS24" );
-      ImportExport.RealEstateService.deleteByIs24Id( client, is24ObjectId );
+      RealEstateService.deleteByIs24Id( client, is24ObjectId );
     }
     catch (RequestFailedException ex)
     {

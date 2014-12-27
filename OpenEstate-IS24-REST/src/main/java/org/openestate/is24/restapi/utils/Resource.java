@@ -18,20 +18,31 @@ package org.openestate.is24.restapi.utils;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.openestate.is24.restapi.xml.common.Message;
 import org.openestate.is24.restapi.xml.common.MessageCode;
 import org.openestate.is24.restapi.xml.common.Messages;
 
 /**
+ * Informations about a modified resource.
  *
+ * @since 0.1
  * @author Andreas Rudolph <andy@openindex.de>
  */
 public class Resource
 {
   //private final static Logger LOGGER = LoggerFactory.getLogger( Resource.class );
   private static Pattern CREATED_PATTERN = null;
+  private static Pattern MESSAGE_PATTERN = null;
+
+  /**
+   * resource type
+   */
   public final String type;
+
+  /**
+   * resource ID
+   */
   public final long id;
 
   public Resource( String type, long id )
@@ -40,13 +51,32 @@ public class Resource
     this.id = id;
   }
 
+  /**
+   * Loads resource informations from the response {@link Messages} of a created
+   * object.
+   *
+   * @param messages
+   * messages from the body of the HTTP response
+   *
+   * @return
+   * resource informations
+   */
   public static Resource getCreatedResource( Messages messages )
   {
     return (messages!=null && !messages.getMessage().isEmpty())?
       getCreatedResource( messages.getMessage().get( 0 ) ): null;
-
   }
 
+  /**
+   * Loads resource informations from the response {@link Message} of a created
+   * object.
+   *
+   * @param message
+   * message from the body of the HTTP response
+   *
+   * @return
+   * resource informations
+   */
   public static Resource getCreatedResource( Message message )
   {
     if (message==null)
@@ -69,7 +99,58 @@ public class Resource
     if (!m.find()) return null;
     return new Resource(
       StringUtils.trimToNull( m.group( 1 ) ),
-      Long.valueOf( StringUtils.defaultIfBlank( StringUtils.trimToNull( m.group( 2 ) ), "0" ) )
+      Long.parseLong( StringUtils.defaultIfBlank( StringUtils.trimToNull( m.group( 2 ) ), "0" ) )
+    );
+  }
+
+  /**
+   * Loads resource informations from the response {@link Messages}.
+   *
+   * @param messages
+   * messages from the body of the HTTP response
+   *
+   * @return
+   * resource informations
+   */
+  public static Resource getMessageResource( Messages messages )
+  {
+    return (messages!=null && !messages.getMessage().isEmpty())?
+      getMessageResource( messages.getMessage().get( 0 ) ): null;
+
+  }
+
+  /**
+   * Loads resource informations from the response {@link Message}.
+   *
+   * @param message
+   * message from the body of the HTTP response
+   *
+   * @return
+   * resource informations
+   */
+  public static Resource getMessageResource( Message message )
+  {
+    if (message==null)
+      return null;
+    //if (!MessageCode.MESSAGE_RESOURCE_CREATED.equals( message.getMessageCode() ))
+    //  return null;
+
+    String txt = StringUtils.trimToNull( message.getMessage() );
+    if (txt==null)
+      return null;
+
+    //LOGGER.debug( "Parse response message after creation." );
+    //LOGGER.debug( "> " + txt );
+
+    // parse resource type and ID from a text like:
+    // The operation for your request causes a conflict. [MESSAGE: duplicated contactDetails:59476923]
+    if (MESSAGE_PATTERN==null)
+      MESSAGE_PATTERN = Pattern.compile( "^.*\\[MESSAGE:([^\\]]*):([\\d]+)\\].*" );
+    Matcher m = MESSAGE_PATTERN.matcher( txt );
+    if (!m.find()) return null;
+    return new Resource(
+      StringUtils.trimToNull( m.group( 1 ) ),
+      Long.parseLong( StringUtils.defaultIfBlank( StringUtils.trimToNull( m.group( 2 ) ), "0" ) )
     );
   }
 }

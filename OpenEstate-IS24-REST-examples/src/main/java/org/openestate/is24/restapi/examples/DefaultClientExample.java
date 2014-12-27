@@ -19,12 +19,24 @@ package org.openestate.is24.restapi.examples;
 import org.openestate.is24.restapi.AbstractClient;
 import org.openestate.is24.restapi.DefaultClient;
 
+/**
+ * This example illustrates the creation of a {@link DefaultClient} for
+ * HTTP transfers via {@link java.net.HttpURLConnection}.
+ *
+ * @author Andreas Rudolph <andy@openindex.de>
+ */
 public class DefaultClientExample
 {
   final static String WEBSERVICE_URL = AbstractClient.LIVE_API;
   final static String CONSUMER_KEY = "my consumer key";
   final static String CONSUMER_SECRET = "my consumer secret";
 
+  /**
+   * Main function.
+   *
+   * @param args
+   * command line arguments
+   */
   public static void main( String[] args )
   {
     AbstractClient client = new DefaultClient(

@@ -20,6 +20,11 @@ import oauth.signpost.exception.OAuthException;
 import org.openestate.is24.restapi.AbstractClient;
 import org.openestate.is24.restapi.DefaultClient;
 
+/**
+ * This example illustrates the authorization of the client at the Webservice.
+ *
+ * @author Andreas Rudolph <andy@openindex.de>
+ */
 public class AuthorizationExample
 {
   final static String WEBSERVICE_URL = AbstractClient.LIVE_API;
@@ -28,6 +33,12 @@ public class AuthorizationExample
   final static String ACCESS_KEY = "user's access key";
   final static String ACCESS_SECRET = "user's access secret";
 
+  /**
+   * Main function.
+   *
+   * @param args
+   * command line arguments
+   */
   public static void main( String[] args )
   {
     AbstractClient client = new DefaultClient(

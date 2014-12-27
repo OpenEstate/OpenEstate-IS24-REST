@@ -21,12 +21,18 @@ import javax.xml.bind.JAXBException;
 import oauth.signpost.exception.OAuthException;
 import org.openestate.is24.restapi.AbstractClient;
 import org.openestate.is24.restapi.DefaultClient;
-import org.openestate.is24.restapi.ImportExport;
+import org.openestate.is24.restapi.ImportExport.RealEstateService;
 import org.openestate.is24.restapi.utils.RequestFailedException;
-import org.openestate.is24.restapi.xml.XmlUtils;
+import org.openestate.is24.restapi.utils.XmlUtils;
 import org.openestate.is24.restapi.xml.realestates.RealEstate;
 
-public class ExportRealEstateExample
+/**
+ * This example illustrates the export of a single real estate from the
+ * Webservice.
+ *
+ * @author Andreas Rudolph <andy@openindex.de>
+ */
+public class DownloadRealEstateExample
 {
   final static String WEBSERVICE_URL = AbstractClient.LIVE_API;
   final static String CONSUMER_KEY = "my consumer key";
@@ -36,6 +42,12 @@ public class ExportRealEstateExample
   final static long is24ObjectId = 123;
   final static String externalObjectId = "123";
 
+  /**
+   * Main function.
+   *
+   * @param args
+   * command line arguments
+   */
   public static void main( String[] args )
   {
     AbstractClient client = new DefaultClient(
@@ -56,7 +68,7 @@ public class ExportRealEstateExample
     {
       System.out.println( "------------------" );
       System.out.println( "Get object with IS24-ID " + is24ObjectId );
-      RealEstate object = ImportExport.RealEstateService.getByIs24Id( client, is24ObjectId );
+      RealEstate object = RealEstateService.getByIs24Id( client, is24ObjectId );
       if (object==null)
       {
         System.out.println( "Can't find object for IS24-ID " + is24ObjectId + "!" );
@@ -83,7 +95,7 @@ public class ExportRealEstateExample
     }
     catch (IOException ex)
     {
-      throw new RuntimeException( "Can't get object list!", ex );
+      throw new RuntimeException( "Communication failed!", ex );
     }
 
     // get a single real estate object, by the external ID of the user / software
@@ -91,7 +103,7 @@ public class ExportRealEstateExample
     {
       System.out.println( "------------------" );
       System.out.println( "Get object with external ID " + externalObjectId );
-      RealEstate object = ImportExport.RealEstateService.getByExternalId( client, externalObjectId );
+      RealEstate object = RealEstateService.getByExternalId( client, externalObjectId );
       if (object==null)
       {
         System.out.println( "Can't find object for external ID " + externalObjectId + "!" );

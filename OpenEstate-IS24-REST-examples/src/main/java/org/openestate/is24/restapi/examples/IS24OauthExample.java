@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.openestate.is24.restapi.utils;
+package org.openestate.is24.restapi.examples;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.io.BufferedReader;
@@ -35,16 +35,29 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * The oAuth example from <a href="http://developerwiki.immobilienscout24.de/wiki/Java-Signpost_Tutorial#Complete_Example_Code">Java-Signpost Tutorial</a>.
+ * An oAuth example from the Java-Signpost Tutorial by ImmobilienScout24.
+ * <p>
+ * Some small adjustments were made to the tutorial in order to integrate better
+ * into this library.
+ *
+ * @see <a href="http://api.immobilienscout24.de/useful/tutorials-sdks-plugins/tutorial-java-signpost.html">Java-Signpost Tutorial</a>
+ * @since 0.1
  * @author ImmobilienScout24
+ * @author Andreas Rudolph <andy@openindex.de>
  */
 @SuppressFBWarnings(
   value = {"NP_DEREFERENCE_OF_READLINE_VALUE", "DM_DEFAULT_ENCODING"},
   justification = "Keep example code untouched." )
-public class OauthTesterIS24
+public class IS24OauthExample
 {
-  private final static Logger LOGGER = LoggerFactory.getLogger( OauthTesterIS24.class );
+  private final static Logger LOGGER = LoggerFactory.getLogger( IS24OauthExample.class );
 
+  /**
+   * Main function.
+   *
+   * @param args
+   * command line arguments
+   */
   public static void main( String[] args ) throws Exception
   {
 

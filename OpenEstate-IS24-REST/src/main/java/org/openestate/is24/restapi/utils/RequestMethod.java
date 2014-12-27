@@ -17,7 +17,11 @@
 package org.openestate.is24.restapi.utils;
 
 /**
+ * HTTP request methods.
+ * <p>
+ * These methods are used by the client to communicate with the Webservice.
  *
+ * @since 0.1
  * @author Andreas Rudolph <andy@openindex.de>
  */
 public enum RequestMethod
