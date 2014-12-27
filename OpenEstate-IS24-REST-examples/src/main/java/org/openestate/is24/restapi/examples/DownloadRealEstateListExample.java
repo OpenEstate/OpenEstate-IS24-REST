@@ -70,7 +70,7 @@ public class DownloadRealEstateListExample
       page++;
       try
       {
-        result = RealEstateService.getAll( client, null, null, 10, 0, true );
+        result = RealEstateService.getAll( client, null, null, 10, page, true );
         for (OfferRealEstateForList object : result.getRealEstateList().getRealEstateElement())
         {
           String xml = XmlUtils.marshal( object, "UTF-8", true );
