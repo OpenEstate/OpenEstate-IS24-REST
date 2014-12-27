@@ -2,32 +2,35 @@ Changelog for OpenEstate-IS24-REST
 ==================================
 
 
-0.2 (not released yet)
+0.2 (27 Dec 2014)
 ----------------------
 
 ### new features
 
--   implemented a high level API for the export process
-    (see [`ExportPool.java`](OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/utils/ExportPool.java)
-    and [`ExportHandler.java`](OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/utils/ExportHandler.java))
--   implemented a class for creation of random real estates
-    (see [`RandomRealEstateExample.java`](OpenEstate-IS24-REST-examples/src/main/java/org/openestate/is24/restapi/examples/RandomRealEstateExample.java)
-    and [`RandomRealEstateFactory.java`](OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/utils/RandomRealEstateFactory.java))
--   implemented a basic web application [`OpenEstate-IS24-REST-webapp`](OpenEstate-IS24-REST-webapp)
-    to illustrate the [OAuth](http://api.immobilienscout24.de/useful/authentication.html)
-    verification process
+-   implemented a high level API for the export process (see
+    [`BulkUploadExample.java`](https://github.com/OpenEstate/OpenEstate-IS24-REST/blob/v0.2/OpenEstate-IS24-REST-examples/src/main/java/org/openestate/is24/restapi/examples/BulkUploadExample.java),
+    [`ExportPool.java`](https://github.com/OpenEstate/OpenEstate-IS24-REST/blob/v0.2/OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/utils/ExportPool.java) and
+    [`ExportHandler.java`](https://github.com/OpenEstate/OpenEstate-IS24-REST/blob/v0.2/OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/utils/ExportHandler.java))
+-   implemented a class for creation of random real estates (see
+    [`RandomRealEstateExample.java`](https://github.com/OpenEstate/OpenEstate-IS24-REST/blob/v0.2/OpenEstate-IS24-REST-examples/src/main/java/org/openestate/is24/restapi/examples/RandomRealEstateExample.java) and
+    [`RandomRealEstateFactory.java`](https://github.com/OpenEstate/OpenEstate-IS24-REST/blob/v0.2/OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/utils/RandomRealEstateFactory.java))
+-   implemented a basic web application
+    [`OpenEstate-IS24-REST-webapp`](https://github.com/OpenEstate/OpenEstate-IS24-REST/blob/v0.2/OpenEstate-IS24-REST-webapp)
+    to illustrate the
+    [OAuth verification process](http://api.immobilienscout24.de/useful/authentication.html)
 
 ### updates
 
 -   updated JAXB classes for XML reading / writing to the latest XML schemas
-    from *17th November 2014*
-    (see [IS24-Changelog](http://api.immobilienscout24.de/useful/changelog.html))
+    from *17th November 2014* (see
+    [IS24-Changelog](http://api.immobilienscout24.de/useful/changelog.html))
 -   support new values for `EnergySourceEnev2014` for `POST` and `UPDATE` of
     real estates with request paramater `usenewenergysourceenev2014values=true`
-    (see [notes by IS24](http://api.immobilienscout24.de/useful/energy-certificate-2014.html))
+    (see
+    [notes by IS24](http://api.immobilienscout24.de/useful/energy-certificate-2014.html))
 -   properly escape external ID's in request URL's
 -   any `post()` methods in
-    [ImportExport.java](OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/ImportExport.java)
+    [ImportExport.java](https://github.com/OpenEstate/OpenEstate-IS24-REST/blob/v0.2/OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/ImportExport.java)
     return the ID of created resources instead of HTTP response messages
 -   added low level method
     [Contact/DELETE](http://api.immobilienscout24.de/our-apis/import-export/contact/delete.html)
@@ -51,8 +54,8 @@ Changelog for OpenEstate-IS24-REST
     -   renamed method `getEncodedParameterValue` to `getUrlEncodedValue` in `org.openestate.is24.restapi.AbstractClient`
     -   renamed method `deleteById` to `delete` in `org.openestate.is24.restapi.ImportExport.PublishService`
     -   moved [Java Signpost Example](http://api.immobilienscout24.de/useful/tutorials-sdks-plugins/tutorial-java-signpost.html)
-        into the `examples` component
-        (see [`IS24OauthExample.java`](OpenEstate-IS24-REST-examples/src/main/java/org/openestate/is24/restapi/examples/IS24OauthExample.java))
+        into the `examples` component (see
+        [`IS24OauthExample.java`](https://github.com/OpenEstate/OpenEstate-IS24-REST/blob/v0.2/OpenEstate-IS24-REST-examples/src/main/java/org/openestate/is24/restapi/examples/IS24OauthExample.java))
 
 ### deprecations
 
@@ -79,8 +82,9 @@ Changelog for OpenEstate-IS24-REST
 0.1.1 (24 Aug 2014)
 -------------------
 
--   updated JAXB generated classes for XML reading / writing to the latest XML schemas from *20th August 2014*
-    (see [IS24-Changelog](http://api.immobilienscout24.de/useful/changelog.html))
+-   updated JAXB generated classes for XML reading / writing to the latest XML
+    schemas from *20th August 2014* (see
+    [IS24-Changelog](http://api.immobilienscout24.de/useful/changelog.html))
 
 
 0.1 (27 Jul 2014)
