@@ -1,5 +1,5 @@
 /*
- * Copyright 2014 OpenEstate.
+ * Copyright 2014-2015 OpenEstate.org.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package org.openestate.is24.restapi.utils;
 
 import java.io.File;
@@ -967,6 +966,9 @@ public class ExportHandler
           {
             Long is24AttachmentId = attachment.getId();
             String externalAttachmentId = StringUtils.trimToNull( attachment.getExternalId() );
+
+            // Anhang übernehmen, wenn ein Hashwert hinterlegt ist
+            // und dieser noch nicht übernommen wurde
             if (externalAttachmentId!=null && !oldIs24Attachments.containsKey( externalAttachmentId ))
             {
               //LOGGER.debug( "> found old attachment #" + is24AttachmentId + " / " + externalAttachmentId + " / " + externalAttachmentId.length() );
@@ -974,7 +976,7 @@ public class ExportHandler
               continue;
             }
 
-            // alten Anhang ohne externe ID entfernen
+            // alten Anhang entfernen
             try
             {
               //LOGGER.debug( "> removing old attachment #" + is24AttachmentId + " without external id" );
@@ -1013,24 +1015,13 @@ public class ExportHandler
 
       else
       {
-        // Anhänge aus dem Exportverzeichnis der Immobilie ermitteln
+        // Anhänge zur Übertragung ermitteln und zugehörige Hash-Werte berechnen
         List<String> attachmentHashes = new ArrayList<String>();
-        Map<Integer,Long> attachmentsOrder = new TreeMap<Integer,Long>();
-        for (String attachmentPos : this.pool.getObjectAttachmentIds( poolObjectId ))
+        Map<String,Attachment> attachments = new HashMap<String, Attachment>();
+        Map<String,File> attachmentFiles = new HashMap<String, File>();
+        for (String attachmentKey : this.pool.getObjectAttachmentIds( poolObjectId ))
         {
-          int pos;
-          try
-          {
-            pos = Math.abs( Integer.parseInt( attachmentPos ) );
-          }
-          catch (NumberFormatException ex)
-          {
-            LOGGER.warn( "Can't read attachment position!" );
-            LOGGER.warn( "> " + ex.getLocalizedMessage(), ex );
-            pos = 999;
-          }
-
-          Attachment is24Attachment = this.pool.getObjectAttachment( poolObjectId, attachmentPos );
+          Attachment is24Attachment = this.pool.getObjectAttachment( poolObjectId, attachmentKey );
           if (is24Attachment==null)
           {
             LOGGER.error( "Can't read the XML file for attachment!" );
@@ -1040,7 +1031,7 @@ public class ExportHandler
 
             // Fortschritt protokollieren
             this.addProgress(
-              this.pool.getObjectAttachmentSize( poolObjectId, attachmentPos ) );
+              this.pool.getObjectAttachmentSize( poolObjectId, attachmentKey ) );
             continue;
           }
 
@@ -1053,13 +1044,128 @@ public class ExportHandler
             URL url = link.getUrl();
             String externalAttachmentId = (url!=null)?
               DigestUtils.sha1Hex( is24ObjectId + "-" + url.toString() ):
-              DigestUtils.sha1Hex( is24ObjectId + "-" + attachmentPos );
+              DigestUtils.sha1Hex( is24ObjectId + "-" + attachmentKey );
 
             // Sicherstellen, dass der gleiche Anhang nicht mehrfach hochgeladen wird
             if (attachmentHashes.contains( externalAttachmentId )) continue;
             attachmentHashes.add( externalAttachmentId );
 
             link.setExternalId( externalAttachmentId );
+          }
+
+          // Anhang als Datei verarbeiten
+          else
+          {
+            // Datei ermitteln
+            File attachFile = this.pool.getObjectAttachmentFile( poolObjectId, is24Attachment );
+
+            // ggf. Datei herunterladen, wenn noch nicht im Pool hinterlegt
+            if (attachFile==null)
+            {
+              URL attachUrl = this.pool.getObjectAttachmentURL( poolObjectId, attachmentKey );
+              if (attachUrl!=null)
+              {
+                try
+                {
+                  attachFile = doDownloadFile( attachUrl );
+                }
+                catch (Exception ex)
+                {
+                  LOGGER.warn( "Can't download file from URL: " + attachUrl );
+                  LOGGER.warn( "> " + ex.getLocalizedMessage(), ex );
+                }
+              }
+            }
+
+            if (attachFile==null || !attachFile.isFile())
+            {
+              LOGGER.error( "Can't find file for attachment!" );
+              this.putObjectMessage(
+                externalObjectId, ExportMessage.Code.OBJECT_ATTACHMENT_NOT_SAVED,
+                "Can't find file for attachment!" );
+
+              // Fortschritt protokollieren
+              this.addProgress(
+                this.pool.getObjectAttachmentSize( poolObjectId, attachmentKey ) );
+
+              continue;
+            }
+
+            // Datei des Anhangs vormerken
+            attachmentFiles.put( attachmentKey, attachFile.getAbsoluteFile() );
+
+            // Hashwert zur Identifizierung des Anhangs errechnen
+            final String externalAttachmentId;
+            InputStream input = null;
+            try
+            {
+              input = new FileInputStream( attachFile );
+              String attachFileHash = DigestUtils.sha1Hex( input );
+              externalAttachmentId = DigestUtils.sha1Hex( is24ObjectId + "-" + attachFileHash );
+
+              // Sicherstellen, dass der gleiche Anhang nicht mehrfach hochgeladen wird
+              if (attachmentHashes.contains( externalAttachmentId )) continue;
+              attachmentHashes.add( externalAttachmentId );
+
+              is24Attachment.setExternalId( externalAttachmentId );
+            }
+            finally
+            {
+              IOUtils.closeQuietly( input );
+            }
+          }
+
+          attachments.put( attachmentKey, is24Attachment );
+        }
+
+        // alte Anhänge entfernen
+        String[] oldIs24AttachmentIds = oldIs24Attachments.keySet().toArray( new String[oldIs24Attachments.size()] );
+        for (String oldIs24AttachmentId : oldIs24AttachmentIds)
+        {
+          if (attachmentHashes.contains( oldIs24AttachmentId )) continue;
+          Attachment is24Attachment = oldIs24Attachments.remove( oldIs24AttachmentId );
+          Long is24AttachmentId = is24Attachment.getId();
+          try
+          {
+            //LOGGER.debug( "> removing old attachment #" + is24AttachmentId );
+            ImportExport.AttachmentService.deleteById(
+              this.client, externalObjectId, is24AttachmentId );
+          }
+          catch (RequestFailedException ex)
+          {
+            LOGGER.error( "Can't remove old attachment (" + is24AttachmentId + ") "
+              + "of property '" + externalObjectId + "' (" + is24ObjectId + ") from the Webservice!" );
+            logMessagesAsError( ex.responseMessages );
+            LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
+            this.putObjectMessage(
+              externalObjectId, ExportMessage.Code.OBJECT_OLD_ATTACHMENT_NOT_REMOVED, ex.responseMessages );
+          }
+        }
+
+        // Anhänge aus dem Exportverzeichnis der Immobilie ermitteln
+        Map<Integer,Long> attachmentsOrder = new TreeMap<Integer,Long>();
+        for (Map.Entry<String,Attachment> entry : attachments.entrySet())
+        {
+          final String attachmentKey = entry.getKey();
+          final Attachment is24Attachment = entry.getValue();
+          final String externalAttachmentId = is24Attachment.getExternalId();
+
+          int pos;
+          try
+          {
+            pos = Math.abs( Integer.parseInt( attachmentKey ) );
+          }
+          catch (NumberFormatException ex)
+          {
+            LOGGER.warn( "Can't read attachment position!" );
+            LOGGER.warn( "> " + ex.getLocalizedMessage(), ex );
+            pos = 999;
+          }
+
+          // Anhang als Web-Link verarbeiten
+          if (is24Attachment instanceof Link)
+          {
+            Link link = (Link) is24Attachment;
             try
             {
               // zuvor gespeicherten Web-Link mit gleichem Hashwert aktualisieren
@@ -1070,7 +1176,7 @@ public class ExportHandler
                 //LOGGER.debug( "> updating attached link #" + is24AttachmentId );
                 //LOGGER.debug( ">> " + externalAttachmentId + " / " + externalAttachmentId.length() );
                 ImportExport.AttachmentService.putById( client,
-                  is24ObjectId, is24AttachmentId, is24Attachment );
+                  is24ObjectId, is24AttachmentId, link );
                 oldIs24Attachments.remove( externalAttachmentId );
               }
               // neuen Web-Link erzeugen
@@ -1093,32 +1199,13 @@ public class ExportHandler
 
             // Fortschritt protokollieren
             this.addProgress(
-              this.pool.getObjectAttachmentSize( poolObjectId, attachmentPos ) );
+              this.pool.getObjectAttachmentSize( poolObjectId, attachmentKey ) );
 
             continue;
           }
 
           // Datei ermitteln
-          File attachFile = this.pool.getObjectAttachmentFile( poolObjectId, is24Attachment );
-
-          // ggf. Datei herunterladen, wenn noch nicht im Pool hinterlegt
-          if (attachFile==null)
-          {
-            URL attachUrl = this.pool.getObjectAttachmentURL( poolObjectId, attachmentPos );
-            if (attachUrl!=null)
-            {
-              try
-              {
-                attachFile = doDownloadFile( attachUrl );
-              }
-              catch (Exception ex)
-              {
-                LOGGER.warn( "Can't download file from URL: " + attachUrl );
-                LOGGER.warn( "> " + ex.getLocalizedMessage(), ex );
-              }
-            }
-          }
-
+          File attachFile = attachmentFiles.get( attachmentKey );
           if (attachFile==null || !attachFile.isFile())
           {
             LOGGER.error( "Can't find file for attachment!" );
@@ -1128,7 +1215,7 @@ public class ExportHandler
 
             // Fortschritt protokollieren
             this.addProgress(
-              this.pool.getObjectAttachmentSize( poolObjectId, attachmentPos ) );
+              this.pool.getObjectAttachmentSize( poolObjectId, attachmentKey ) );
 
             continue;
           }
@@ -1136,26 +1223,6 @@ public class ExportHandler
           // Name und Größe des Dateianhangs ermitteln
           final String attachFileName = attachFile.getName();
           final long attachFileSize = attachFile.length();
-
-          // Hashwert zur Identifizierung des Anhangs errechnen
-          final String externalAttachmentId;
-          InputStream input = null;
-          try
-          {
-            input = new FileInputStream( attachFile );
-            String attachFileHash = DigestUtils.sha1Hex( input );
-            externalAttachmentId = DigestUtils.sha1Hex( is24ObjectId + "-" + attachFileHash );
-
-            // Sicherstellen, dass der gleiche Anhang nicht mehrfach hochgeladen wird
-            if (attachmentHashes.contains( externalAttachmentId )) continue;
-            attachmentHashes.add( externalAttachmentId );
-
-            is24Attachment.setExternalId( externalAttachmentId );
-          }
-          finally
-          {
-            IOUtils.closeQuietly( input );
-          }
 
           InputStream attachFileInput = null;
           try
@@ -1253,23 +1320,23 @@ public class ExportHandler
 
             // Fortschritt protokollieren
             this.addProgress(
-              this.pool.getObjectAttachmentSize( poolObjectId, attachmentPos ) + attachFileSize );
+              this.pool.getObjectAttachmentSize( poolObjectId, attachmentKey ) + attachFileSize );
           }
         }
 
-        // alte / nicht aktualisierte Anhänge entfernen
+        // nicht aktualisierte Anhänge entfernen
         for (Attachment is24Attachment : oldIs24Attachments.values())
         {
           Long is24AttachmentId = is24Attachment.getId();
           try
           {
-            //LOGGER.debug( "> removing old attachment #" + is24AttachmentId );
+            //LOGGER.debug( "> removing untouched attachment #" + is24AttachmentId );
             ImportExport.AttachmentService.deleteById(
               this.client, externalObjectId, is24AttachmentId );
           }
           catch (RequestFailedException ex)
           {
-            LOGGER.error( "Can't remove old attachment (" + is24AttachmentId + ") "
+            LOGGER.error( "Can't remove untouched attachment (" + is24AttachmentId + ") "
               + "of property '" + externalObjectId + "' (" + is24ObjectId + ") from the Webservice!" );
             logMessagesAsError( ex.responseMessages );
             LOGGER.error( "> " + ex.getLocalizedMessage(), ex );

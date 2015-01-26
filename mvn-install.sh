@@ -6,4 +6,4 @@ export LANG=en
 set -e
 
 cd $PROJECT_DIR
-$MVN clean install
+$MVN -DcreateChecksum=true clean install
