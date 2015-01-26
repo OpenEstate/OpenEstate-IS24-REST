@@ -5,7 +5,7 @@
 
   <groupId>org.openestate.is24</groupId>
   <artifactId>OpenEstate-IS24-REST-hc42</artifactId>
-  <version>0.3-SNAPSHOT</version>
+  <version>0.2.1</version>
   <packaging>jar</packaging>
 
   <name>OpenEstate-IS24-REST-hc42</name>
@@ -19,7 +19,7 @@
   <parent>
     <groupId>org.openestate.is24</groupId>
     <artifactId>ALL</artifactId>
-    <version>0.3-SNAPSHOT</version>
+    <version>0.2.1</version>
   </parent>
 
   <dependencies>

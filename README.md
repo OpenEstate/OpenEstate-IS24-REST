@@ -1,5 +1,5 @@
-OpenEstate-IS24-REST 0.3-SNAPSHOT
-=================================
+OpenEstate-IS24-REST 0.2.1
+==========================
 
 OpenEstate-IS24-REST is a client library for the REST-Webservice of
 [ImmobilienScout24.de](http://www.immobilienscout24.de/) written in Java. This
