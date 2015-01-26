@@ -6,6 +6,17 @@ Changelog for OpenEstate-IS24-REST
 -------------------------------
 
 
+0.2.1 (not released yet)
+------------------------
+
+### bugfixes
+
+-   During the transfer of a property the maximum number of allowed attachments
+    can exceed temporarily. We should make sure, that old attachments are
+    removed from the Webservice **before** any new attachments are uploaded to
+    the Webservice.
+
+
 0.2 (27 Dec 2014)
 -----------------
 
