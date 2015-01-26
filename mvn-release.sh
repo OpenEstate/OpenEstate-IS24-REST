@@ -11,5 +11,5 @@ export LANG=en
 set -e
 
 cd $PROJECT_DIR
-$MVN clean install javadoc:aggregate
+$MVN -DcreateChecksum=true clean install javadoc:aggregate
 $MVN --non-recursive assembly:single
