@@ -5,6 +5,14 @@ Changelog for OpenEstate-IS24-REST
 0.3-SNAPSHOT (not released yet)
 -------------------------------
 
+### bugfixes
+
+-   If a transferred property provides more attachments than allowed by the
+    webservice, an incorrect ordering of attachments may occur. We should make
+    sure, that attachments are always send to the webservice in the correct
+    order. This guarantees, that the title image is always properly transferred
+    and only attachments from the end of the list are rejected / ignored.
+
 
 0.2.1 (26 Jan 2015)
 ------------------------

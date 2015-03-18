@@ -1017,7 +1017,7 @@ public class ExportHandler
       {
         // Anhänge zur Übertragung ermitteln und zugehörige Hash-Werte berechnen
         List<String> attachmentHashes = new ArrayList<String>();
-        Map<String,Attachment> attachments = new HashMap<String, Attachment>();
+        Map<String,Attachment> attachments = new TreeMap<String, Attachment>( new AlphanumComparator() );
         Map<String,File> attachmentFiles = new HashMap<String, File>();
         for (String attachmentKey : this.pool.getObjectAttachmentIds( poolObjectId ))
         {
@@ -1243,6 +1243,7 @@ public class ExportHandler
               {
                 while (attachmentsOrder.containsKey( pos )) pos++;
                 attachmentsOrder.put( pos, is24AttachmentId );
+                //LOGGER.debug( "untouched attachment #" + is24AttachmentId + " (" + StringUtils.trimToEmpty( is24Attachment.getTitle() ) + ") at " + pos );
               }
             }
             // neuen Anhang erzeugen
@@ -1303,6 +1304,7 @@ public class ExportHandler
                 // Sortierung des Anhangs vormerken
                 while (attachmentsOrder.containsKey( pos )) pos++;
                 attachmentsOrder.put( pos, is24AttachmentId );
+                //LOGGER.debug( "new attachment #" + is24AttachmentId + " (" + StringUtils.trimToEmpty( is24Attachment.getTitle() ) + ") at " + pos );
               }
             }
           }
@@ -1348,6 +1350,8 @@ public class ExportHandler
         // Reihenfolge der Bild-Anhänge setzen
         if (!attachmentsOrder.isEmpty())
         {
+          //LOGGER.debug( "update attachment order for property '" + externalObjectId + "' (" + is24ObjectId + ")" );
+          //LOGGER.debug( "> " + StringUtils.join( attachmentsOrder.values(), ", " ) );
           org.openestate.is24.restapi.xml.attachmentsorder.List list =
             attachmentsorderFactory.createList();
           for (Long is24AttachmentId : attachmentsOrder.values())
