@@ -905,6 +905,7 @@ public class ExportHandler
         {
           is24ObjectId = ImportExport.RealEstateService.post(
             this.client, object, this.isUseNewEnergySourceEnev2014Values() );
+          //LOGGER.debug( "created object with IS24-ID #" + is24ObjectId );
         }
         catch (RequestFailedException ex)
         {
@@ -932,6 +933,7 @@ public class ExportHandler
         {
           ImportExport.RealEstateService.putByIs24Id(
             this.client, object, is24ObjectId, this.isUseNewEnergySourceEnev2014Values() );
+          //LOGGER.debug( "updated object with IS24-ID #" + is24ObjectId );
         }
         catch (RequestFailedException ex)
         {
