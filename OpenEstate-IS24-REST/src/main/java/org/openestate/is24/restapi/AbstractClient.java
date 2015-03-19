@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright 2014-2015 OpenEstate.org.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -47,8 +47,48 @@ import org.slf4j.LoggerFactory;
 public abstract class AbstractClient
 {
   private final static Logger LOGGER = LoggerFactory.getLogger( AbstractClient.class );
+
+  /**
+   * URL, that points to the webservice in live environment.
+   */
   public final static String LIVE_API = "https://rest.immobilienscout24.de/restapi";
+
+  /**
+   * URL, that points to the webservice in sandbox environment.
+   */
   public final static String SANDBOX_API = "https://rest.sandbox-immobilienscout24.de/restapi";
+
+  /**
+   * Name of the custom response header by IS24,
+   * that contains the Consumer Key of the client.
+   *
+   * @since 0.2.2
+   */
+  public final static String RESPONSE_HEADER_API_CLIENT = "L-IS24-ApiClient";
+
+  /**
+   * Name of the custom response header by IS24,
+   * that contains the IS24 agent ID.
+   *
+   * @since 0.2.2
+   */
+  public final static String RESPONSE_HEADER_CAUSER_ID = "L-IS24-CauserId";
+
+  /**
+   * Name of the custom response header by IS24,
+   * that contains a unique ID of the request, that refers to this response.
+   *
+   * @since 0.2.2
+   */
+  public final static String RESPONSE_HEADER_REQUEST_REFNUM = "L-IS24-RequestRefnum";
+
+  /**
+   * Name of the custom response header by IS24,
+   * that contains the ID of the requested resource.
+   *
+   * @since 0.2.2
+   */
+  public final static String RESPONSE_HEADER_RESOURCE_ID = "L-IS24-ResourceId";
 
   private final String apiBaseUrl;
   private final String consumerToken;

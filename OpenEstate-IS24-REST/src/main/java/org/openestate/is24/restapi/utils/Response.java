@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright 2014-2015 OpenEstate.org.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -51,14 +51,115 @@ public final class Response
   public final String statusMessage;
 
   /**
+   * Unique identifier of the request, that the response is referred to.
+   *
+   * @since 0.2.2
+   */
+  public final String requestRefNumber;
+
+  /**
    * Body text of the HTTP response.
    */
   public final String body;
 
+  /**
+   * Create a response.
+   *
+   * @param statusCode
+   * HTTP status code
+   *
+   * @param statusMessage
+   * HTTP status message
+   *
+   * @param body
+   * response body
+   *
+   * @deprecated
+   * use {@link Response#Response(int, java.lang.String, java.lang.String, java.lang.String)} intead
+   */
+  @Deprecated
   public Response( int statusCode, String statusMessage, String body )
+  {
+    this( statusCode, statusMessage, null, body );
+  }
+
+  /**
+   * Create a response.
+   *
+   * @param statusCode
+   * HTTP status code
+   *
+   * @param statusMessage
+   * HTTP status message
+   *
+   * @param requestRefNumber
+   * value of the <em>L-IS24-RequestRefnum</em> response header
+   *
+   * @param body
+   * response body
+   *
+   * @since 0.2.2
+   */
+  public Response( int statusCode, String statusMessage, String requestRefNumber, String body )
   {
     this.statusCode = statusCode;
     this.statusMessage = StringUtils.trimToNull( statusMessage );
+    this.requestRefNumber = StringUtils.trimToNull( requestRefNumber );
     this.body = StringUtils.trimToNull( body );
+  }
+
+  /**
+   * Returns the body of the HTTP response.
+   *
+   * @return
+   * body
+   *
+   * @since 0.2.2
+   */
+  public String getBody()
+  {
+    return body;
+  }
+
+  /**
+   * Returns the unique identifier of the referring HTTP request.
+   * <p>
+   * This values was passed through the <em>L-IS24-RequestRefnum</em> header
+   * of the HTTP response.
+   *
+   * @return
+   * unique identifier
+   *
+   * @since 0.2.2
+   */
+  public String getRequestRefNumber()
+  {
+    return requestRefNumber;
+  }
+
+  /**
+   * Returns the status code of the HTTP response.
+   *
+   * @return
+   * status code
+   *
+   * @since 0.2.2
+   */
+  public int getStatusCode()
+  {
+    return statusCode;
+  }
+
+  /**
+   * Returns the status message of the HTTP response.
+   *
+   * @return
+   * status message
+   *
+   * @since 0.2.2
+   */
+  public String getStatusMessage()
+  {
+    return statusMessage;
   }
 }

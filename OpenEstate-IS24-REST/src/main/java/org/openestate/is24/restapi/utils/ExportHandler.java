@@ -177,10 +177,11 @@ public class ExportHandler
     catch (RequestFailedException ex)
     {
       LOGGER.error( "Can't get property '" + externalObjectId + "' from the Webservice!" );
+      if (ex.requestRefNumber!=null) LOGGER.error( "> referring request: " + ex.requestRefNumber );
       logMessagesAsError( ex.responseMessages );
       LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
       this.putObjectMessage(
-        externalObjectId, ExportMessage.Code.OBJECT_NOT_FOUND_FOR_ARCHIVING, ex.responseMessages );
+        externalObjectId, ExportMessage.Code.OBJECT_NOT_FOUND_FOR_ARCHIVING, ex );
       return;
     }
     this.doArchiveObject( is24Object );
@@ -238,18 +239,20 @@ public class ExportHandler
       if (!StringUtils.isBlank( externalObjectId ))
       {
         LOGGER.error( "Can't get property '" + externalObjectId + "' (" + is24ObjectId + ") from the Webservice!" );
+        if (ex.requestRefNumber!=null) LOGGER.error( "> referring request: " + ex.requestRefNumber );
         logMessagesAsError( ex.responseMessages );
         LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
         this.putObjectMessage(
-          externalObjectId, ExportMessage.Code.OBJECT_NOT_FOUND_FOR_ARCHIVING, ex.responseMessages );
+          externalObjectId, ExportMessage.Code.OBJECT_NOT_FOUND_FOR_ARCHIVING, ex );
       }
       else
       {
         LOGGER.error( "Can't get property (" + is24ObjectId + ") from the Webservice!" );
+        if (ex.requestRefNumber!=null) LOGGER.error( "> referring request: " + ex.requestRefNumber );
         logMessagesAsError( ex.responseMessages );
         LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
         this.putGeneralMessage(
-          ExportMessage.Code.OBJECT_NOT_FOUND_FOR_ARCHIVING, ex.responseMessages );
+          ExportMessage.Code.OBJECT_NOT_FOUND_FOR_ARCHIVING, ex );
       }
       return;
     }
@@ -284,18 +287,20 @@ public class ExportHandler
         if (!StringUtils.isBlank( externalObjectId ))
         {
           LOGGER.error( "Can't get publishings of property '" + externalObjectId + "' (" + is24ObjectId + ") from the Webservice!" );
+          if (ex.requestRefNumber!=null) LOGGER.error( "> referring request: " + ex.requestRefNumber );
           logMessagesAsError( ex.responseMessages );
           LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
           this.putObjectMessage(
-            externalObjectId, ExportMessage.Code.OBJECT_PUBLISHINGS_NOT_FOUND, ex.responseMessages );
+            externalObjectId, ExportMessage.Code.OBJECT_PUBLISHINGS_NOT_FOUND, ex );
         }
         else
         {
           LOGGER.error( "Can't get publishings of property (" + is24ObjectId + ") from the Webservice!" );
+          if (ex.requestRefNumber!=null) LOGGER.error( "> referring request: " + ex.requestRefNumber );
           logMessagesAsError( ex.responseMessages );
           LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
           this.putGeneralMessage(
-            ExportMessage.Code.OBJECT_PUBLISHINGS_NOT_FOUND, ex.responseMessages );
+            ExportMessage.Code.OBJECT_PUBLISHINGS_NOT_FOUND, ex );
         }
       }
 
@@ -334,10 +339,11 @@ public class ExportHandler
             {
               LOGGER.error( "Can't unpublish property '" + externalObjectId + "' (" + is24ObjectId + ") "
                 + "in channel '" + publishing.getPublishChannel().getTitle() + "' (" + is24ChannelId +  ") at the Webservice!" );
+              if (ex.requestRefNumber!=null) LOGGER.error( "> referring request: " + ex.requestRefNumber );
               logMessagesAsError( ex.responseMessages );
               LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
               this.putObjectMessage(
-                externalObjectId, ExportMessage.Code.OBJECT_NOT_UNPUBLISHED, ex.responseMessages );
+                externalObjectId, ExportMessage.Code.OBJECT_NOT_UNPUBLISHED, ex );
             }
             else
             {
@@ -346,7 +352,7 @@ public class ExportHandler
               logMessagesAsError( ex.responseMessages );
               LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
               this.putGeneralMessage(
-                ExportMessage.Code.OBJECT_NOT_UNPUBLISHED, ex.responseMessages );
+                ExportMessage.Code.OBJECT_NOT_UNPUBLISHED, ex );
             }
           }
         }
@@ -440,10 +446,11 @@ public class ExportHandler
         catch (RequestFailedException ex)
         {
           LOGGER.error( "Can't get available properties from the Webservice!" );
+          if (ex.requestRefNumber!=null) LOGGER.error( "> referring request: " + ex.requestRefNumber );
           logMessagesAsError( ex.responseMessages );
           LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
           this.putGeneralMessage(
-            ExportMessage.Code.OBJECTS_NOT_FOUND, ex.responseMessages );
+            ExportMessage.Code.OBJECTS_NOT_FOUND, ex );
           return new HashMap<Long,String>();
         }
 
@@ -515,10 +522,11 @@ public class ExportHandler
     catch (RequestFailedException ex)
     {
       LOGGER.error( "Can't get publish channels from the Webservice!" );
+      if (ex.requestRefNumber!=null) LOGGER.error( "> referring request: " + ex.requestRefNumber );
       logMessagesAsError( ex.responseMessages );
       LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
       this.putGeneralMessage(
-        ExportMessage.Code.PUBLISH_CHANNELS_NOT_FOUND, ex.responseMessages );
+        ExportMessage.Code.PUBLISH_CHANNELS_NOT_FOUND, ex );
       return null;
     }
     catch (JAXBException ex)
@@ -566,10 +574,11 @@ public class ExportHandler
       catch (RequestFailedException ex)
       {
         LOGGER.error( "Can't delete property '" + externalObjectId + "' at the Webservice!" );
+        if (ex.requestRefNumber!=null) LOGGER.error( "> referring request: " + ex.requestRefNumber );
         logMessagesAsError( ex.responseMessages );
         LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
         this.putObjectMessage(
-          externalObjectId, ExportMessage.Code.OBJECT_NOT_REMOVED, ex.responseMessages );
+          externalObjectId, ExportMessage.Code.OBJECT_NOT_REMOVED, ex );
       }
     }
     catch (JAXBException ex)
@@ -616,18 +625,20 @@ public class ExportHandler
         if (!StringUtils.isBlank( externalObjectId ))
         {
           LOGGER.error( "Can't delete property '" + externalObjectId + "' (" + is24ObjectId + ") at the Webservice!" );
+          if (ex.requestRefNumber!=null) LOGGER.error( "> referring request: " + ex.requestRefNumber );
           logMessagesAsError( ex.responseMessages );
           LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
           this.putObjectMessage(
-            externalObjectId, ExportMessage.Code.OBJECT_NOT_REMOVED, ex.responseMessages );
+            externalObjectId, ExportMessage.Code.OBJECT_NOT_REMOVED, ex );
         }
         else
         {
           LOGGER.error( "Can't delete property (" + is24ObjectId + ") at the Webservice!" );
+          if (ex.requestRefNumber!=null) LOGGER.error( "> referring request: " + ex.requestRefNumber );
           logMessagesAsError( ex.responseMessages );
           LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
           this.putGeneralMessage(
-            ExportMessage.Code.OBJECT_NOT_REMOVED, ex.responseMessages );
+            ExportMessage.Code.OBJECT_NOT_REMOVED, ex );
         }
       }
     }
@@ -679,10 +690,11 @@ public class ExportHandler
       catch (RequestFailedException ex)
       {
         LOGGER.error( "Can't get contact person '" + externalContactId + "' from the Webservice!" );
+        if (ex.requestRefNumber!=null) LOGGER.error( "> referring request: " + ex.requestRefNumber );
         logMessagesAsError( ex.responseMessages );
         LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
         this.putContactMessage(
-          externalContactId, ExportMessage.Code.CONTACT_NOT_FOUND, ex.responseMessages );
+          externalContactId, ExportMessage.Code.CONTACT_NOT_FOUND, ex );
         return null;
       }
 
@@ -709,10 +721,11 @@ public class ExportHandler
           else
           {
             LOGGER.error( "Can't add contact person '" + externalContactId + "' to the Webservice!" );
+            if (ex.requestRefNumber!=null) LOGGER.error( "> referring request: " + ex.requestRefNumber );
             logMessagesAsError( ex.responseMessages );
             LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
             this.putContactMessage(
-              externalContactId, ExportMessage.Code.CONTACT_NOT_SAVED, ex.responseMessages );
+              externalContactId, ExportMessage.Code.CONTACT_NOT_SAVED, ex );
             return null;
           }
         }
@@ -742,10 +755,11 @@ public class ExportHandler
           else
           {
             LOGGER.error( "Can't update contact person '" + externalContactId + "' at the Webservice!" );
+            if (ex.requestRefNumber!=null) LOGGER.error( "> referring request: " + ex.requestRefNumber );
             logMessagesAsError( ex.responseMessages );
             LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
             this.putContactMessage(
-              externalContactId, ExportMessage.Code.CONTACT_NOT_SAVED, ex.responseMessages );
+              externalContactId, ExportMessage.Code.CONTACT_NOT_SAVED, ex );
             return null;
           }
         }
@@ -852,10 +866,11 @@ public class ExportHandler
       catch (RequestFailedException ex)
       {
         LOGGER.error( "Can't get property '" + externalObjectId + "' from the Webservice!" );
+        if (ex.requestRefNumber!=null) LOGGER.error( "> referring request: " + ex.requestRefNumber );
         logMessagesAsError( ex.responseMessages );
         LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
         this.putObjectMessage(
-          externalObjectId, ExportMessage.Code.OBJECT_NOT_FOUND, ex.responseMessages );
+          externalObjectId, ExportMessage.Code.OBJECT_NOT_FOUND, ex );
 
         // Fortschritt protokollieren
         this.addProgress(
@@ -885,10 +900,11 @@ public class ExportHandler
         catch (RequestFailedException ex)
         {
           LOGGER.error( "Can't delete property '" + externalObjectId + "' (" + oldIs24Object.getId() + ") at the Webservice!" );
+          if (ex.requestRefNumber!=null) LOGGER.error( "> referring request: " + ex.requestRefNumber );
           logMessagesAsError( ex.responseMessages );
           LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
           this.putObjectMessage(
-            externalObjectId, ExportMessage.Code.OBJECT_NOT_SAVED, ex.responseMessages );
+            externalObjectId, ExportMessage.Code.OBJECT_NOT_SAVED, ex );
 
           // Fortschritt protokollieren
           this.addProgress(
@@ -910,10 +926,11 @@ public class ExportHandler
         catch (RequestFailedException ex)
         {
           LOGGER.error( "Can't add property '" + externalObjectId + "' to the Webservice!" );
+          if (ex.requestRefNumber!=null) LOGGER.error( "> referring request: " + ex.requestRefNumber );
           logMessagesAsError( ex.responseMessages );
           LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
           this.putObjectMessage(
-            externalObjectId, ExportMessage.Code.OBJECT_NOT_SAVED, ex.responseMessages );
+            externalObjectId, ExportMessage.Code.OBJECT_NOT_SAVED, ex );
 
           // Fortschritt protokollieren
           this.addProgress(
@@ -938,10 +955,11 @@ public class ExportHandler
         catch (RequestFailedException ex)
         {
           LOGGER.error( "Can't update property '" + externalObjectId + "' (" + is24ObjectId + ") at the Webservice!" );
+          if (ex.requestRefNumber!=null) LOGGER.error( "> referring request: " + ex.requestRefNumber );
           logMessagesAsError( ex.responseMessages );
           LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
           this.putObjectMessage(
-            externalObjectId, ExportMessage.Code.OBJECT_NOT_SAVED, ex.responseMessages );
+            externalObjectId, ExportMessage.Code.OBJECT_NOT_SAVED, ex );
 
           // Fortschritt protokollieren
           this.addProgress(
@@ -989,10 +1007,11 @@ public class ExportHandler
             {
               LOGGER.error( "Can't remove old attachment (" + is24AttachmentId + ") "
                 + "of property '" + externalObjectId + "' (" + is24ObjectId + ") from the Webservice!" );
+              if (ex.requestRefNumber!=null) LOGGER.error( "> referring request: " + ex.requestRefNumber );
               logMessagesAsError( ex.responseMessages );
               LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
               this.putObjectMessage(
-                externalObjectId, ExportMessage.Code.OBJECT_OLD_ATTACHMENT_NOT_REMOVED, ex.responseMessages );
+                externalObjectId, ExportMessage.Code.OBJECT_OLD_ATTACHMENT_NOT_REMOVED, ex );
             }
           }
         }
@@ -1000,10 +1019,11 @@ public class ExportHandler
       catch (RequestFailedException ex)
       {
         LOGGER.error( "Can't get attachments of property '" + externalObjectId + "' (" + is24ObjectId + ") from the Webservice!" );
+        if (ex.requestRefNumber!=null) LOGGER.error( "> referring request: " + ex.requestRefNumber );
         logMessagesAsError( ex.responseMessages );
         LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
         this.putObjectMessage(
-          externalObjectId, ExportMessage.Code.OBJECT_WITHOUT_ATTACHMENTS, ex.responseMessages );
+          externalObjectId, ExportMessage.Code.OBJECT_WITHOUT_ATTACHMENTS, ex );
         ignoreAttachments = true;
       }
 
@@ -1137,10 +1157,11 @@ public class ExportHandler
           {
             LOGGER.error( "Can't remove old attachment (" + is24AttachmentId + ") "
               + "of property '" + externalObjectId + "' (" + is24ObjectId + ") from the Webservice!" );
+            if (ex.requestRefNumber!=null) LOGGER.error( "> referring request: " + ex.requestRefNumber );
             logMessagesAsError( ex.responseMessages );
             LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
             this.putObjectMessage(
-              externalObjectId, ExportMessage.Code.OBJECT_OLD_ATTACHMENT_NOT_REMOVED, ex.responseMessages );
+              externalObjectId, ExportMessage.Code.OBJECT_OLD_ATTACHMENT_NOT_REMOVED, ex );
           }
         }
 
@@ -1193,10 +1214,11 @@ public class ExportHandler
             catch (RequestFailedException ex)
             {
               LOGGER.error( "Can't save attachment of property '" + externalObjectId + "' (" + is24ObjectId + ") to the Webservice!" );
+              if (ex.requestRefNumber!=null) LOGGER.error( "> referring request: " + ex.requestRefNumber );
               logMessagesAsError( ex.responseMessages );
               LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
               this.putObjectMessage(
-                externalObjectId, ExportMessage.Code.OBJECT_ATTACHMENT_NOT_SAVED, ex.responseMessages );
+                externalObjectId, ExportMessage.Code.OBJECT_ATTACHMENT_NOT_SAVED, ex );
             }
 
             // Fortschritt protokollieren
@@ -1313,10 +1335,11 @@ public class ExportHandler
           catch (RequestFailedException ex)
           {
             LOGGER.error( "Can't save attachment of property '" + externalObjectId + "' (" + is24ObjectId + ") to the Webservice!" );
+            if (ex.requestRefNumber!=null) LOGGER.error( "> referring request: " + ex.requestRefNumber );
             logMessagesAsError( ex.responseMessages );
             LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
             this.putObjectMessage(
-              externalObjectId, ExportMessage.Code.OBJECT_ATTACHMENT_NOT_SAVED, ex.responseMessages );
+              externalObjectId, ExportMessage.Code.OBJECT_ATTACHMENT_NOT_SAVED, ex );
           }
           finally
           {
@@ -1342,10 +1365,11 @@ public class ExportHandler
           {
             LOGGER.error( "Can't remove untouched attachment (" + is24AttachmentId + ") "
               + "of property '" + externalObjectId + "' (" + is24ObjectId + ") from the Webservice!" );
+            if (ex.requestRefNumber!=null) LOGGER.error( "> referring request: " + ex.requestRefNumber );
             logMessagesAsError( ex.responseMessages );
             LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
             this.putObjectMessage(
-              externalObjectId, ExportMessage.Code.OBJECT_OLD_ATTACHMENT_NOT_REMOVED, ex.responseMessages );
+              externalObjectId, ExportMessage.Code.OBJECT_OLD_ATTACHMENT_NOT_REMOVED, ex );
           }
         }
 
@@ -1368,10 +1392,11 @@ public class ExportHandler
           catch (RequestFailedException ex)
           {
             LOGGER.error( "Can't order attachments of property '" + externalObjectId + "' (" + is24ObjectId + ")!" );
+            if (ex.requestRefNumber!=null) LOGGER.error( "> referring request: " + ex.requestRefNumber );
             logMessagesAsError( ex.responseMessages );
             LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
             this.putObjectMessage(
-              externalObjectId, ExportMessage.Code.OBJECT_UNORDERED_ATTACHMENTS, ex.responseMessages );
+              externalObjectId, ExportMessage.Code.OBJECT_UNORDERED_ATTACHMENTS, ex );
           }
         }
       }
@@ -1392,10 +1417,11 @@ public class ExportHandler
       catch (RequestFailedException ex)
       {
         LOGGER.error( "Can't get publishings of property '" + externalObjectId + "' (" + is24ObjectId + ") from the Webservice!" );
+        if (ex.requestRefNumber!=null) LOGGER.error( "> referring request: " + ex.requestRefNumber );
         logMessagesAsError( ex.responseMessages );
         LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
         this.putObjectMessage(
-          externalObjectId, ExportMessage.Code.OBJECT_PUBLISHINGS_NOT_FOUND, ex.responseMessages );
+          externalObjectId, ExportMessage.Code.OBJECT_PUBLISHINGS_NOT_FOUND, ex );
       }
 
       if (is24PublishChannels==null)
@@ -1427,10 +1453,11 @@ public class ExportHandler
           {
             LOGGER.error( "Can't publish property '" + externalObjectId + "' (" + is24ObjectId + ") "
               + "in channel '" + is24Channel.getTitle() + "' (" + is24ChannelId +  ")!" );
+            if (ex.requestRefNumber!=null) LOGGER.error( "> referring request: " + ex.requestRefNumber );
             logMessagesAsError( ex.responseMessages );
             LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
             this.putObjectMessage(
-              externalObjectId, ExportMessage.Code.OBJECT_NOT_PUBLISHED, ex.responseMessages );
+              externalObjectId, ExportMessage.Code.OBJECT_NOT_PUBLISHED, ex );
           }
         }
       }
@@ -1804,13 +1831,13 @@ public class ExportHandler
    * @param msg
    * message text
    */
-  protected void putContactMessage( String externalContactId, ExportMessage.Code code, String msg )
+  protected final void putContactMessage( String externalContactId, ExportMessage.Code code, String msg )
   {
-    this.messages.add( ExportMessage.newContactMessage( externalContactId, code, msg ) );
+    this.putContactMessage( externalContactId, code, msg, null );
   }
 
   /**
-   * Registers messages for a contact person.
+   * Registers a message for a contact person.
    *
    * @param externalContactId
    * external contact ID
@@ -1818,13 +1845,33 @@ public class ExportHandler
    * @param code
    * message code
    *
-   * @param msgs
-   * messages, that were received from the Webservice
+   * @param msg
+   * message text
+   *
+   * @param errorRequestRefNumber
+   * unique identifier of the failed HTTP request
    */
-  protected void putContactMessage( String externalContactId, ExportMessage.Code code, Messages msgs )
+  protected void putContactMessage( String externalContactId, ExportMessage.Code code, String msg, String errorRequestRefNumber )
   {
-    if (msgs==null) return;
-    for (Message message : msgs.getMessage())
+    this.messages.add( ExportMessage.newContactMessage( externalContactId, code, msg, errorRequestRefNumber ) );
+  }
+
+  /**
+   * Registers error messages for a contact person.
+   *
+   * @param externalContactId
+   * external contact ID
+   *
+   * @param code
+   * message code
+   *
+   * @param ex
+   * exception of the failed request
+   */
+  protected final void putContactMessage( String externalContactId, ExportMessage.Code code, RequestFailedException ex )
+  {
+    if (ex==null || ex.responseMessages==null) return;
+    for (Message message : ex.responseMessages.getMessage())
     {
       MessageCode is24Code = message.getMessageCode();
       String is24Msg = StringUtils.trimToNull( message.getMessage() );
@@ -1837,7 +1884,7 @@ public class ExportHandler
         txt += is24Msg;
       }
 
-      this.putContactMessage( externalContactId, code, txt );
+      this.putContactMessage( externalContactId, code, txt, ex.requestRefNumber );
     }
   }
 
@@ -1850,24 +1897,41 @@ public class ExportHandler
    * @param msg
    * message text
    */
-  protected void putGeneralMessage( ExportMessage.Code code, String msg )
+  protected final void putGeneralMessage( ExportMessage.Code code, String msg )
   {
-    this.messages.add( ExportMessage.newGeneralMessage( msg, code ) );
+    this.putGeneralMessage( code, msg, null );
   }
 
   /**
-   * Registers general messages.
+   * Registers a general message.
    *
    * @param code
    * message code
    *
-   * @param msgs
-   * messages, that were received from the Webservice
+   * @param msg
+   * message text
+   *
+   * @param errorRequestRefNumber
+   * unique identifier of the failed HTTP request
    */
-  protected void putGeneralMessage( ExportMessage.Code code, Messages msgs )
+  protected void putGeneralMessage( ExportMessage.Code code, String msg, String errorRequestRefNumber )
   {
-    if (msgs==null) return;
-    for (Message message : msgs.getMessage())
+    this.messages.add( ExportMessage.newGeneralMessage( msg, code, errorRequestRefNumber ) );
+  }
+
+  /**
+   * Registers general error messages.
+   *
+   * @param code
+   * message code
+   *
+   * @param ex
+   * exception of the failed request
+   */
+  protected final void putGeneralMessage( ExportMessage.Code code, RequestFailedException ex )
+  {
+    if (ex==null || ex.responseMessages==null) return;
+    for (Message message : ex.responseMessages.getMessage())
     {
       MessageCode is24Code = message.getMessageCode();
       String is24Msg = StringUtils.trimToNull( message.getMessage() );
@@ -1880,7 +1944,7 @@ public class ExportHandler
         txt += is24Msg;
       }
 
-      this.putGeneralMessage( code, txt );
+      this.putGeneralMessage( code, txt, ex.requestRefNumber );
     }
   }
 
@@ -1896,13 +1960,13 @@ public class ExportHandler
    * @param msg
    * message text
    */
-  protected void putObjectMessage( String externalObjectId, ExportMessage.Code code, String msg )
+  protected final void putObjectMessage( String externalObjectId, ExportMessage.Code code, String msg )
   {
-    this.messages.add( ExportMessage.newObjectMessage( externalObjectId, code, msg ) );
+    this.putObjectMessage( externalObjectId, code, msg, null );
   }
 
   /**
-   * Registers messages for a real estate.
+   * Registers a message for a real estate.
    *
    * @param externalObjectId
    * external real estate ID
@@ -1910,13 +1974,33 @@ public class ExportHandler
    * @param code
    * message code
    *
-   * @param msgs
-   * messages, that were received from the Webservice
+   * @param msg
+   * message text
+   *
+   * @param errorRequestRefNumber
+   * unique identifier of the failed HTTP request
    */
-  protected void putObjectMessage( String externalObjectId, ExportMessage.Code code, Messages msgs )
+  protected void putObjectMessage( String externalObjectId, ExportMessage.Code code, String msg, String errorRequestRefNumber )
   {
-    if (msgs==null) return;
-    for (Message message : msgs.getMessage())
+    this.messages.add( ExportMessage.newObjectMessage( externalObjectId, code, msg, errorRequestRefNumber ) );
+  }
+
+  /**
+   * Registers error messages for a real estate.
+   *
+   * @param externalObjectId
+   * external real estate ID
+   *
+   * @param code
+   * message code
+   *
+   * @param ex
+   * exception of the failed request
+   */
+  protected final void putObjectMessage( String externalObjectId, ExportMessage.Code code, RequestFailedException ex )
+  {
+    if (ex==null || ex.responseMessages==null) return;
+    for (Message message : ex.responseMessages.getMessage())
     {
       MessageCode is24Code = message.getMessageCode();
       String is24Msg = StringUtils.trimToNull( message.getMessage() );
@@ -1929,7 +2013,7 @@ public class ExportHandler
         txt += is24Msg;
       }
 
-      this.putObjectMessage( externalObjectId, code, txt );
+      this.putObjectMessage( externalObjectId, code, txt, ex.requestRefNumber );
     }
   }
 

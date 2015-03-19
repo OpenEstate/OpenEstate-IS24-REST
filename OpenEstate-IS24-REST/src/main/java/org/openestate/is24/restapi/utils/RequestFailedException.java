@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright 2014-2015 OpenEstate.org.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -45,6 +45,13 @@ public class RequestFailedException extends Exception
   public final String statusMessage;
 
   /**
+   * Unique identifier of the failed HTTP request.
+   *
+   * @since 0.2.2
+   */
+  public final String requestRefNumber;
+
+  /**
    * {@link Messages}, that were received in the body of the HTTP response.
    */
   public final Messages responseMessages;
@@ -54,6 +61,7 @@ public class RequestFailedException extends Exception
     super( message );
     this.statusCode = response.statusCode;
     this.statusMessage = StringUtils.trimToNull( response.statusMessage );
+    this.requestRefNumber = StringUtils.trimToNull( response.requestRefNumber );
 
     Messages messages = null;
     String body = StringUtils.trimToNull( response.body );
@@ -96,6 +104,7 @@ public class RequestFailedException extends Exception
     super( message, cause );
     this.statusCode = response.statusCode;
     this.statusMessage = StringUtils.trimToNull( response.statusMessage );
+    this.requestRefNumber = StringUtils.trimToNull( response.requestRefNumber );
 
     // parse messages from response body
     Messages messages = null;
@@ -109,5 +118,61 @@ public class RequestFailedException extends Exception
       LOGGER.error( "Can't parse response messages!", ex );
     }
     this.responseMessages = messages;
+  }
+
+  /**
+   * Returns the unique identifier of the failed HTTP request.
+   * <p>
+   * This values was passed through the <em>L-IS24-RequestRefnum</em> header
+   * of the HTTP response.
+   *
+   * @return
+   * unique identifier
+   *
+   * @since 0.2.2
+   */
+  public String getRequestRefNumber()
+  {
+    return requestRefNumber;
+  }
+
+  /**
+   * Returns the {@link Messages}, that were received in the body of the HTTP
+   * response.
+   *
+   * @return
+   * messages
+   *
+   * @since 0.2.2
+   */
+  public Messages getResponseMessages()
+  {
+    return responseMessages;
+  }
+
+  /**
+   * Returns the status code of the HTTP response.
+   *
+   * @return
+   * status code
+   *
+   * @since 0.2.2
+   */
+  public int getStatusCode()
+  {
+    return statusCode;
+  }
+
+  /**
+   * Returns the status message of the HTTP response.
+   *
+   * @return
+   * status message
+   *
+   * @since 0.2.2
+   */
+  public String getStatusMessage()
+  {
+    return statusMessage;
   }
 }

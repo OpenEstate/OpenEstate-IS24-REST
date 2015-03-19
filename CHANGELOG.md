@@ -5,6 +5,16 @@ Changelog for OpenEstate-IS24-REST
 0.3-SNAPSHOT (not released yet)
 -------------------------------
 
+### enhancements
+
+-   Store the value of `L-IS24-RequestRefnum` header for failing requests into
+    the `RequestFailedException` (for low level exports) and `ExportMessage`
+    (for bulk exports). In case of problems with a certain request, one can
+    provide the corresponding number to IS24 together with a support request.
+    This allows IS24 to track the error / problem much easier and to provide
+    better support for their users.
+-   Made some API improvements & documentations.
+
 ### bugfixes
 
 -   If a transferred property provides more attachments than allowed by the
@@ -13,6 +23,15 @@ Changelog for OpenEstate-IS24-REST
     order. This guarantees, that the title image is always properly transferred
     and only attachments from the end of the list are rejected / ignored.
 
+### updates
+
+-   Changed signature of some protected logging functions in
+    `org.openestate.is24.restapi.utils.ExportHandler`.
+
+### deprecations
+
+-   Changed signature of the constructor in
+    `org.openestate.is24.restapi.utils.Response`.
 
 0.2.1 (26 Jan 2015)
 ------------------------
