@@ -5,7 +5,7 @@ Changelog for OpenEstate-IS24-REST
 0.3-SNAPSHOT (not released yet)
 -------------------------------
 
-### enhancements
+### new features
 
 -   Store the value of `L-IS24-RequestRefnum` header for failing requests into
     the `RequestFailedException` (for low level exports) and `ExportMessage`
@@ -34,7 +34,7 @@ Changelog for OpenEstate-IS24-REST
     `org.openestate.is24.restapi.utils.Response`.
 
 0.2.1 (26 Jan 2015)
-------------------------
+-------------------
 
 ### bugfixes
 
