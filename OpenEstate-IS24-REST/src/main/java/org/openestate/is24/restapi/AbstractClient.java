@@ -20,13 +20,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
-import java.net.URLEncoder;
 import oauth.signpost.OAuthConsumer;
 import oauth.signpost.OAuthProvider;
 import oauth.signpost.basic.DefaultOAuthConsumer;
 import oauth.signpost.basic.DefaultOAuthProvider;
 import oauth.signpost.exception.OAuthException;
 import oauth.signpost.exception.OAuthNotAuthorizedException;
+import org.apache.commons.codec.net.URLCodec;
 import org.apache.commons.lang3.StringUtils;
 import org.openestate.is24.restapi.utils.Authorization;
 import org.openestate.is24.restapi.utils.RequestMethod;
@@ -362,7 +362,8 @@ public abstract class AbstractClient
   }
 
   /**
-   * Encodes a string value for use in an URL.
+   * Encodes a string value for use in an URL according to
+   * <a href="http://www.ietf.org/rfc/rfc3986.txt">RFC 3986</a>.
    *
    * @param value
    * the value to encode
@@ -374,8 +375,9 @@ public abstract class AbstractClient
   {
     try
     {
-      value = StringUtils.trimToNull( value );
-      return (value!=null)? URLEncoder.encode( value, getEncoding() ): null;
+      return StringUtils.replace(
+        new URLCodec().encode( StringUtils.trimToNull( value ), getEncoding() ),
+        "+", "%20" );
     }
     catch (UnsupportedEncodingException ex)
     {
