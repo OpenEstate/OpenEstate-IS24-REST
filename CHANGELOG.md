@@ -2,12 +2,8 @@ Changelog for OpenEstate-IS24-REST
 ==================================
 
 
-0.3-SNAPSHOT (not released yet)
--------------------------------
-
-
-0.2.2 (not released yet)
-------------------------
+0.2.2 (19 Mar 2015)
+-------------------
 
 ### new features
 
