@@ -13,7 +13,6 @@ Changelog for OpenEstate-IS24-REST
     provide the corresponding number to IS24 together with a support request.
     This allows IS24 to track the error / problem much easier and to provide
     better support for their users.
--   Made some API improvements & documentations.
 
 ### bugfixes
 
@@ -25,6 +24,7 @@ Changelog for OpenEstate-IS24-REST
 
 ### updates
 
+-   Made some API improvements & documentations.
 -   Changed signature of some protected logging functions in
     `org.openestate.is24.restapi.utils.ExportHandler`.
 
