@@ -5,6 +5,10 @@ Changelog for OpenEstate-IS24-REST
 0.3-SNAPSHOT (not released yet)
 -------------------------------
 
+
+0.2.2 (not released yet)
+------------------------
+
 ### new features
 
 -   Store the value of `L-IS24-RequestRefnum` header for failing requests into
@@ -25,6 +29,7 @@ Changelog for OpenEstate-IS24-REST
 ### updates
 
 -   Made some API improvements & documentations.
+-   Updated dependencies jaxb2-basics-runtime 0.9.3, slf4j 1.7.10 & junit 4.12.
 -   Changed signature of some protected logging functions in
     `org.openestate.is24.restapi.utils.ExportHandler`.
 
@@ -32,6 +37,7 @@ Changelog for OpenEstate-IS24-REST
 
 -   Changed signature of the constructor in
     `org.openestate.is24.restapi.utils.Response`.
+
 
 0.2.1 (26 Jan 2015)
 -------------------
