@@ -119,17 +119,17 @@
       <dependency>
         <groupId>org.openestate.is24</groupId>
         <artifactId>OpenEstate-IS24-REST</artifactId>
-        <version>0.3-SNAPSHOT</version>
+        <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>org.openestate.is24</groupId>
         <artifactId>OpenEstate-IS24-REST-hc42</artifactId>
-        <version>0.3-SNAPSHOT</version>
+        <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>org.openestate.is24</groupId>
         <artifactId>OpenEstate-IS24-REST-hc43</artifactId>
-        <version>0.3-SNAPSHOT</version>
+        <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>com.google.code.findbugs</groupId>
