@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright 2014-2015 OpenEstate.org.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,13 +20,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
-import java.net.URLEncoder;
 import oauth.signpost.OAuthConsumer;
 import oauth.signpost.OAuthProvider;
 import oauth.signpost.basic.DefaultOAuthConsumer;
 import oauth.signpost.basic.DefaultOAuthProvider;
 import oauth.signpost.exception.OAuthException;
 import oauth.signpost.exception.OAuthNotAuthorizedException;
+import org.apache.commons.codec.net.URLCodec;
 import org.apache.commons.lang3.StringUtils;
 import org.openestate.is24.restapi.utils.Authorization;
 import org.openestate.is24.restapi.utils.RequestMethod;
@@ -47,8 +47,48 @@ import org.slf4j.LoggerFactory;
 public abstract class AbstractClient
 {
   private final static Logger LOGGER = LoggerFactory.getLogger( AbstractClient.class );
+
+  /**
+   * URL, that points to the webservice in live environment.
+   */
   public final static String LIVE_API = "https://rest.immobilienscout24.de/restapi";
+
+  /**
+   * URL, that points to the webservice in sandbox environment.
+   */
   public final static String SANDBOX_API = "https://rest.sandbox-immobilienscout24.de/restapi";
+
+  /**
+   * Name of the custom response header by IS24,
+   * that contains the Consumer Key of the client.
+   *
+   * @since 0.2.2
+   */
+  public final static String RESPONSE_HEADER_API_CLIENT = "L-IS24-ApiClient";
+
+  /**
+   * Name of the custom response header by IS24,
+   * that contains the IS24 agent ID.
+   *
+   * @since 0.2.2
+   */
+  public final static String RESPONSE_HEADER_CAUSER_ID = "L-IS24-CauserId";
+
+  /**
+   * Name of the custom response header by IS24,
+   * that contains a unique ID of the request, that refers to this response.
+   *
+   * @since 0.2.2
+   */
+  public final static String RESPONSE_HEADER_REQUEST_REFNUM = "L-IS24-RequestRefnum";
+
+  /**
+   * Name of the custom response header by IS24,
+   * that contains the ID of the requested resource.
+   *
+   * @since 0.2.2
+   */
+  public final static String RESPONSE_HEADER_RESOURCE_ID = "L-IS24-ResourceId";
 
   private final String apiBaseUrl;
   private final String consumerToken;
@@ -322,7 +362,8 @@ public abstract class AbstractClient
   }
 
   /**
-   * Encodes a string value for use in an URL.
+   * Encodes a string value for use in an URL according to
+   * <a href="http://www.ietf.org/rfc/rfc3986.txt">RFC 3986</a>.
    *
    * @param value
    * the value to encode
@@ -334,8 +375,9 @@ public abstract class AbstractClient
   {
     try
     {
-      value = StringUtils.trimToNull( value );
-      return (value!=null)? URLEncoder.encode( value, getEncoding() ): null;
+      return StringUtils.replace(
+        new URLCodec().encode( StringUtils.trimToNull( value ), getEncoding() ),
+        "+", "%20" );
     }
     catch (UnsupportedEncodingException ex)
     {

@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright 2014-2015 OpenEstate.org.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,13 +32,15 @@ public class ExportMessage
   private final String message;
   private final String objectId;
   private final String contactId;
+  private final String errorRequestRefNumber;
 
-  private ExportMessage( Code code, String message, String objectId, String contactId )
+  private ExportMessage( Code code, String message, String objectId, String contactId, String errorRequestRefNumber )
   {
     this.code = code;
     this.message = StringUtils.trimToNull( message );
     this.objectId = StringUtils.trimToNull( objectId );
     this.contactId = StringUtils.trimToNull( contactId );
+    this.errorRequestRefNumber = StringUtils.trimToNull( errorRequestRefNumber );
   }
 
   /**
@@ -61,6 +63,22 @@ public class ExportMessage
   public String getContactId()
   {
     return this.contactId;
+  }
+
+  /**
+   * Returns the unique identifier of the failed HTTP request.
+   * <p>
+   * This values was passed through the <em>L-IS24-RequestRefnum</em> header
+   * of the HTTP response.
+   *
+   * @return
+   * unique identifier
+   *
+   * @since 0.2.2
+   */
+  public String getErrorRequestRefNumber()
+  {
+    return this.errorRequestRefNumber;
   }
 
   /**
@@ -158,7 +176,32 @@ public class ExportMessage
    */
   public static ExportMessage newContactMessage( String contactId, Code code, String message )
   {
-    return new ExportMessage( code, message, null, contactId );
+    return newContactMessage( contactId, code, message, null );
+  }
+
+  /**
+   * Creates a message for a contact person.
+   *
+   * @param contactId
+   * contact ID
+   *
+   * @param code
+   * message code
+   *
+   * @param message
+   * message text
+   *
+   * @param errorRequestRefNumber
+   * unique identifier of the failed HTTP request
+   *
+   * @return
+   * message
+   *
+   * @since 0.2.2
+   */
+  public static ExportMessage newContactMessage( String contactId, Code code, String message, String errorRequestRefNumber )
+  {
+    return new ExportMessage( code, message, null, contactId, errorRequestRefNumber );
   }
 
   /**
@@ -175,7 +218,29 @@ public class ExportMessage
    */
   public static ExportMessage newGeneralMessage( String message, Code code )
   {
-    return new ExportMessage( code, message, null, null );
+    return newGeneralMessage( message, code, null );
+  }
+
+  /**
+   * Creates a general message.
+   *
+   * @param code
+   * message code
+   *
+   * @param message
+   * message text
+   *
+   * @param errorRequestRefNumber
+   * unique identifier of the failed HTTP request
+   *
+   * @return
+   * message
+   *
+   * @since 0.2.2
+   */
+  public static ExportMessage newGeneralMessage( String message, Code code, String errorRequestRefNumber )
+  {
+    return new ExportMessage( code, message, null, null, errorRequestRefNumber );
   }
 
   /**
@@ -195,7 +260,32 @@ public class ExportMessage
    */
   public static ExportMessage newObjectMessage( String objectId, Code code, String message )
   {
-    return new ExportMessage( code, message, objectId, null );
+    return newObjectMessage( objectId, code, message, null );
+  }
+
+  /**
+   * Creates a message for a real estate.
+   *
+   * @param objectId
+   * real estate ID
+   *
+   * @param code
+   * message code
+   *
+   * @param message
+   * message text
+   *
+   * @param errorRequestRefNumber
+   * unique identifier of the failed HTTP request
+   *
+   * @return
+   * message
+   *
+   * @since 0.2.2
+   */
+  public static ExportMessage newObjectMessage( String objectId, Code code, String message, String errorRequestRefNumber )
+  {
+    return new ExportMessage( code, message, objectId, null, errorRequestRefNumber );
   }
 
   /**

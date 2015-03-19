@@ -5,7 +5,7 @@
 
   <groupId>org.openestate.is24</groupId>
   <artifactId>ALL</artifactId>
-  <version>0.2.1</version>
+  <version>0.2.2</version>
   <packaging>pom</packaging>
 
   <name>ALL-OpenEstate-IS24-REST</name>
@@ -119,17 +119,17 @@
       <dependency>
         <groupId>org.openestate.is24</groupId>
         <artifactId>OpenEstate-IS24-REST</artifactId>
-        <version>0.2.1</version>
+        <version>0.2.2</version>
       </dependency>
       <dependency>
         <groupId>org.openestate.is24</groupId>
         <artifactId>OpenEstate-IS24-REST-hc42</artifactId>
-        <version>0.2.1</version>
+        <version>0.2.2</version>
       </dependency>
       <dependency>
         <groupId>org.openestate.is24</groupId>
         <artifactId>OpenEstate-IS24-REST-hc43</artifactId>
-        <version>0.2.1</version>
+        <version>0.2.2</version>
       </dependency>
       <dependency>
         <groupId>com.google.code.findbugs</groupId>
@@ -152,14 +152,9 @@
         <version>3.3.2</version>
       </dependency>
       <dependency>
-        <groupId>commons-validator</groupId>
-        <artifactId>commons-validator</artifactId>
-        <version>1.4.0</version>
-      </dependency>
-      <dependency>
         <groupId>org.jvnet.jaxb2_commons</groupId>
         <artifactId>jaxb2-basics-runtime</artifactId>
-        <version>0.9.1</version>
+        <version>0.9.3</version>
       </dependency>
       <dependency>
         <groupId>javax.servlet.jsp</groupId>
@@ -169,7 +164,7 @@
       <dependency>
         <groupId>junit</groupId>
         <artifactId>junit</artifactId>
-        <version>4.11</version>
+        <version>4.12</version>
       </dependency>
       <dependency>
         <groupId>log4j</groupId>
@@ -199,12 +194,12 @@
       <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-api</artifactId>
-        <version>1.7.7</version>
+        <version>1.7.10</version>
       </dependency>
       <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-log4j12</artifactId>
-        <version>1.7.7</version>
+        <version>1.7.10</version>
       </dependency>
     </dependencies>
   </dependencyManagement>

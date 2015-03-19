@@ -1482,9 +1482,6 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
             <annox:annotate target="getter">
               <jl:Deprecated/>
             </annox:annotate>
-            <annox:annotate target="setter">
-              <jl:Deprecated/>
-            </annox:annotate>
           </xs:appinfo>
 
         </xs:annotation>

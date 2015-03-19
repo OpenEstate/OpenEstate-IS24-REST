@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright 2014-2015 OpenEstate.org.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -75,16 +75,23 @@ public class DefaultClient extends AbstractClient
     InputStream responseInput = null;
     try
     {
-      // read response into string
       //String encoding = StringUtils.trimToNull( connection.getContentEncoding() );
       //if (encoding==null) encoding = getEncoding();
       String encoding = getEncoding();
+
+      // read response body
       responseInput = new BufferedInputStream( connection.getInputStream() );
+
+      // possibly decompress response body from gzip
       if ("gzip".equalsIgnoreCase( connection.getContentEncoding() ))
         responseInput = new GZIPInputStream( responseInput );
 
-      String responseBody = IOUtils.toString( responseInput, encoding );
-      return new Response( connection.getResponseCode(), connection.getResponseMessage(), responseBody );
+      // create response
+      return new Response(
+        connection.getResponseCode(),
+        connection.getResponseMessage(),
+        connection.getHeaderField( RESPONSE_HEADER_REQUEST_REFNUM ),
+        IOUtils.toString( responseInput, encoding ) );
     }
     finally
     {

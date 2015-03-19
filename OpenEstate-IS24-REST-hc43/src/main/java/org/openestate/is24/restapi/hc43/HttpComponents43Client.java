@@ -28,6 +28,7 @@ import oauth.signpost.exception.OAuthException;
 import oauth.signpost.exception.OAuthNotAuthorizedException;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpEntityEnclosingRequest;
 import org.apache.http.HttpResponse;
@@ -150,17 +151,24 @@ public class HttpComponents43Client extends AbstractClient
         contentType.getCharset().name(): null;
       if (charset==null) charset = getEncoding();
 
-      // read response into string
+      // read response body
       responseInput = new BufferedInputStream( responseEntity.getContent() );
 
-      // possibly decompress string from gzip
+      // possibly decompress response body from gzip
       String encoding = (responseEntity.getContentEncoding()!=null)?
         responseEntity.getContentEncoding().getValue(): null;
       if ("gzip".equalsIgnoreCase( encoding ))
         responseInput = new GZIPInputStream( responseInput );
 
-      String responseBody = IOUtils.toString( responseInput, charset );
-      return new Response( responseStatus.getStatusCode(), responseStatus.getReasonPhrase(), responseBody );
+      // get L-IS24-RequestRefnum header of the response
+      Header requestRefNum = response.getFirstHeader( RESPONSE_HEADER_REQUEST_REFNUM );
+
+      // create response
+      return new Response(
+        responseStatus.getStatusCode(),
+        responseStatus.getReasonPhrase(),
+        (requestRefNum!=null)? requestRefNum.getValue(): null,
+        IOUtils.toString( responseInput, charset ) );
     }
     finally
     {

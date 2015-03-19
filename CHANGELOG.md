@@ -2,8 +2,41 @@ Changelog for OpenEstate-IS24-REST
 ==================================
 
 
+0.2.2 (19 Mar 2015)
+-------------------
+
+### new features
+
+-   Store the value of `L-IS24-RequestRefnum` header for failing requests into
+    the `RequestFailedException` (for low level exports) and `ExportMessage`
+    (for bulk exports). In case of problems with a certain request, one can
+    provide the corresponding number to IS24 together with a support request.
+    This allows IS24 to track the error / problem much easier and to provide
+    better support for their users.
+
+### bugfixes
+
+-   If a transferred property provides more attachments than allowed by the
+    webservice, an incorrect ordering of attachments may occur. We should make
+    sure, that attachments are always send to the webservice in the correct
+    order. This guarantees, that the title image is always properly transferred
+    and only attachments from the end of the list are rejected / ignored.
+
+### updates
+
+-   Made some API improvements & documentations.
+-   Updated dependencies jaxb2-basics-runtime 0.9.3, slf4j 1.7.10 & junit 4.12.
+-   Changed signature of some protected logging functions in
+    `org.openestate.is24.restapi.utils.ExportHandler`.
+
+### deprecations
+
+-   Changed signature of the constructor in
+    `org.openestate.is24.restapi.utils.Response`.
+
+
 0.2.1 (26 Jan 2015)
-------------------------
+-------------------
 
 ### bugfixes
 
