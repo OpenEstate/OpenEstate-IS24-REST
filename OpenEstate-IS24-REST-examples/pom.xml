@@ -171,6 +171,7 @@
         <artifactId>findbugs-maven-plugin</artifactId>
         <configuration>
           <failOnError>false</failOnError>
+          <excludeFilterFile>${basedir}/findbugs-exclude.xml</excludeFilterFile>
         </configuration>
       </plugin>
 
