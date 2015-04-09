@@ -1496,8 +1496,8 @@ public class ExportHandler
    * @param pool
    * pool with exportable data
    *
-   * @param archivateUnpublishedObjects
-   * archivate old real estates instead of removal
+   * @param disableUnpublishedObjects
+   * disable old real estates instead of removal
    *
    * @param unpublishUntouchedObjects
    * archivate or remove untouched real estates (means full transfer instead of
@@ -1509,7 +1509,7 @@ public class ExportHandler
    * @throws IOException
    * if the operation failed
    */
-  public ExportMessage[] export( AbstractClient client, ExportPool pool, boolean archivateUnpublishedObjects, boolean unpublishUntouchedObjects ) throws IOException
+  public ExportMessage[] export( AbstractClient client, ExportPool pool, boolean disableUnpublishedObjects, boolean unpublishUntouchedObjects ) throws IOException
   {
     this.client = client;
     this.pool = pool;
@@ -1615,7 +1615,7 @@ public class ExportHandler
       for (String externalObjectId : ids)
       {
         counter++;
-        if (archivateUnpublishedObjects)
+        if (disableUnpublishedObjects)
         {
           LOGGER.info( "[" + counter + " / " + ids.length +"] "
             + "archiving object '" + externalObjectId + "'" );
@@ -1642,7 +1642,7 @@ public class ExportHandler
         counter++;
         long is24ObjectId = entry.getKey();
         String externalObjectId = entry.getValue();
-        if (archivateUnpublishedObjects)
+        if (disableUnpublishedObjects)
         {
           LOGGER.info( "[" + counter + " / " + untouchedObjectCount +"] "
             + "archiving untouched object '" + externalObjectId + "' (" + is24ObjectId + ")" );

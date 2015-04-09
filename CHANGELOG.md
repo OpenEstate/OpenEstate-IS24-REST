@@ -2,6 +2,21 @@ Changelog for OpenEstate-IS24-REST
 ==================================
 
 
+0.2.3 (09 Apr 2015)
+-------------------
+
+### bugfixes
+
+-   Automatic removal / deactivation of untouched objects during a bulk export
+    may fail under certain conditions. Instead of processing untouched objects
+    only all currently published objects are removed / deactivated at the
+    webservice.
+
+### updates
+
+-   Updated slf4j to version 1.7.12.
+
+
 0.2.2 (19 Mar 2015)
 -------------------
 

@@ -1,4 +1,4 @@
-OpenEstate-IS24-REST 0.2.2
+OpenEstate-IS24-REST 0.2.3
 ==========================
 
 OpenEstate-IS24-REST is a client library for the REST-Webservice of
@@ -84,7 +84,7 @@ Dependencies
 -   [commons-lang 3.3.2](http://commons.apache.org/proper/commons-lang/)
 -   [jaxb2-basics-runtime 0.9.3](https://github.com/highsource/jaxb2-basics)
 -   [oauth-signpost 1.2.1.2](https://code.google.com/p/oauth-signpost/)
--   [SLF4J 1.7.10](http://www.slf4j.org/)
+-   [SLF4J 1.7.12](http://www.slf4j.org/)
 -   [Lorem 1.2](https://github.com/mdeanda/lorem) (only required by
     [`RandomRealEstateFactory.java`](OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/utils/RandomRealEstateFactory.java))
 -   [Apache HttpComponents 4.2](http://hc.apache.org/httpcomponents-client-4.2.x/) or
@@ -132,7 +132,7 @@ Further informations
 
 -   [OpenEstate-IS24-REST at GitHub](https://github.com/OpenEstate/OpenEstate-IS24-REST)
 -   [Releases of OpenEstate-IS24-REST](https://github.com/OpenEstate/OpenEstate-IS24-REST/releases)
--   [Changelog of OpenEstate-IS24-REST](https://github.com/OpenEstate/OpenEstate-IS24-REST/blob/v0.2.2/CHANGELOG.md)
+-   [Changelog of OpenEstate-IS24-REST](https://github.com/OpenEstate/OpenEstate-IS24-REST/blob/v0.2.3/CHANGELOG.md)
 -   [Javadocs of OpenEstate-IS24-REST](http://manual.openestate.org/OpenEstate-IS24-REST/)
 -   [ImmobilienScout24 Developer Center](http://api.immobilienscout24.de/)
 -   [ImmobilienScout24-REST-API Forum](https://groups.google.com/forum/#!forum/immobilienscout24-development)
