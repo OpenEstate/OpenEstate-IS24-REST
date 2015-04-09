@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright 2014-2015 OpenEstate.org.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -581,17 +581,16 @@ public class ExportPool
   /**
    * Checks, if a real estate was pooled for export.
    *
-   * @param pooledObjectId
-   * ID of the real estate within the pool
+   * @param externalObjectId
+   * real estate ID
    *
    * @return
    * true, if the object with the provided ID is already pooled
    */
-  public boolean hasObjectForExport( String pooledObjectId )
+  public boolean hasObjectForExport( String externalObjectId )
   {
-    if (StringUtils.isBlank( pooledObjectId )) return false;
-    final File xmlFile = new File( new File( this.objectsDir, pooledObjectId ), "object.xml" );
-    return xmlFile.isFile();
+    if (StringUtils.isBlank( externalObjectId )) return false;
+    return UPDATE.equalsIgnoreCase( this.getSetting( "object."+externalObjectId ) );
   }
 
   /**
