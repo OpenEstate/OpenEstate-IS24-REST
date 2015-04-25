@@ -553,6 +553,112 @@ public class ExportHandler
   }
 
   /**
+   * Publishes a real estate at the Webservice.
+   *
+   * @param is24ObjectId
+   * real estate ID by IS24
+   *
+   * @param externalObjectId
+   * external real estate ID
+   *
+   * @param is24PublishChannels
+   * channels, where the real estate should be published
+   *
+   * @throws IOException
+   * if the operation failed
+   */
+  protected void doPublishObject( long is24ObjectId, String externalObjectId, PublishChannels is24PublishChannels ) throws IOException
+  {
+    final org.openestate.is24.restapi.xml.common.ObjectFactory commonFactory =
+      new org.openestate.is24.restapi.xml.common.ObjectFactory();
+
+    try
+    {
+      // derzeitige Veröffentlichungen zur Immobilie ermitteln
+      final List<Long> is24PublishedChannels = new ArrayList<Long>();
+      try
+      {
+        PublishObjects is24Publishings = ImportExport.PublishService.get( this.client, is24ObjectId, 0 );
+        if (is24Publishings!=null)
+        {
+          for (PublishObject is24Publishing : is24Publishings.getPublishObject())
+          {
+            is24PublishedChannels.add( is24Publishing.getPublishChannel().getId() );
+          }
+        }
+      }
+      catch (RequestFailedException ex)
+      {
+        LOGGER.error( "Can't get publishings of property '" + externalObjectId + "' (" + is24ObjectId + ") from the Webservice!" );
+        if (ex.requestRefNumber!=null) LOGGER.error( "> referring request: " + ex.requestRefNumber );
+        logMessagesAsError( ex.responseMessages );
+        LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
+        this.putObjectMessage(
+          externalObjectId, ExportMessage.Code.OBJECT_PUBLISHINGS_NOT_FOUND, ex );
+      }
+
+      if (is24PublishChannels==null)
+      {
+        this.putObjectMessage(
+          externalObjectId, ExportMessage.Code.OBJECT_NOT_PUBLISHED,
+          "No channels for publishing found!" );
+      }
+      else
+      {
+        // Veröffentlichungen zur Immobilie aktualisieren,
+        // wenn diese zu einem Kanal noch nicht gesetzt wurde
+        for (PublishChannel is24Channel : is24PublishChannels.getPublishChannel())
+        {
+          Long is24ChannelId = is24Channel.getId();
+          if (is24PublishedChannels.contains( is24ChannelId ))
+            continue;
+
+          PublishObject is24Publishing = commonFactory.createPublishObject();
+          is24Publishing.setPublishChannel( is24Channel );
+          is24Publishing.setRealEstate( commonFactory.createPublishObjectRealEstate() );
+          is24Publishing.getRealEstate().setId( is24ObjectId );
+
+          try
+          {
+            ImportExport.PublishService.post( this.client, is24Publishing );
+          }
+          catch (RequestFailedException ex)
+          {
+            LOGGER.error( "Can't publish property '" + externalObjectId + "' (" + is24ObjectId + ") "
+              + "in channel '" + is24Channel.getTitle() + "' (" + is24ChannelId +  ")!" );
+            if (ex.requestRefNumber!=null) LOGGER.error( "> referring request: " + ex.requestRefNumber );
+            logMessagesAsError( ex.responseMessages );
+            LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
+            this.putObjectMessage(
+              externalObjectId, ExportMessage.Code.OBJECT_NOT_PUBLISHED, ex );
+          }
+        }
+      }
+    }
+    catch (JAXBException ex)
+    {
+      //LOGGER.error( "Can't read / write XML while communicating with the Webservice!" );
+      //LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
+      throw new IOExceptionWithCause(
+        "Can't read / write XML while communicating with the Webservice!", ex );
+    }
+    catch (OAuthException ex)
+    {
+      //LOGGER.error( "Can't authorize at the Webservice!" );
+      //LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
+      throw new IOExceptionWithCause(
+        "Authorization failed!", ex );
+    }
+    catch (IOException ex)
+    {
+      //LOGGER.error( "Can't communicate with the Webservice!" );
+      //LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
+      throw new IOExceptionWithCause(
+        "Communication failed!", ex );
+    }
+  }
+
+  /**
    * Removes a real estate object from the Webservice.
    *
    * @param externalObjectId
@@ -800,9 +906,6 @@ public class ExportHandler
    * @param object
    * real estate to save
    *
-   * @param is24PublishChannels
-   * channels, where the real estate should be published
-   *
    * @param poolObjectId
    * real estate ID within export pool
    *
@@ -813,11 +916,9 @@ public class ExportHandler
    * @throws IOException
    * if the operation failed
    */
-  protected Long doUpdateObject( RealEstate object, PublishChannels is24PublishChannels, String poolObjectId ) throws IOException
+  protected Long doUpdateObject( RealEstate object, String poolObjectId ) throws IOException
   {
     final String externalObjectId = object.getExternalId();
-    final org.openestate.is24.restapi.xml.common.ObjectFactory commonFactory =
-      new org.openestate.is24.restapi.xml.common.ObjectFactory();
     final org.openestate.is24.restapi.xml.realestates.ObjectFactory realEstatesFactory =
       new org.openestate.is24.restapi.xml.realestates.ObjectFactory();
     final org.openestate.is24.restapi.xml.attachmentsorder.ObjectFactory attachmentsorderFactory =
@@ -1401,67 +1502,6 @@ public class ExportHandler
         }
       }
 
-      // derzeitige Veröffentlichungen zur Immobilie ermitteln
-      final List<Long> is24PublishedChannels = new ArrayList<Long>();
-      try
-      {
-        PublishObjects is24Publishings = ImportExport.PublishService.get( this.client, is24ObjectId, 0 );
-        if (is24Publishings!=null)
-        {
-          for (PublishObject is24Publishing : is24Publishings.getPublishObject())
-          {
-            is24PublishedChannels.add( is24Publishing.getPublishChannel().getId() );
-          }
-        }
-      }
-      catch (RequestFailedException ex)
-      {
-        LOGGER.error( "Can't get publishings of property '" + externalObjectId + "' (" + is24ObjectId + ") from the Webservice!" );
-        if (ex.requestRefNumber!=null) LOGGER.error( "> referring request: " + ex.requestRefNumber );
-        logMessagesAsError( ex.responseMessages );
-        LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
-        this.putObjectMessage(
-          externalObjectId, ExportMessage.Code.OBJECT_PUBLISHINGS_NOT_FOUND, ex );
-      }
-
-      if (is24PublishChannels==null)
-      {
-        this.putObjectMessage(
-          externalObjectId, ExportMessage.Code.OBJECT_NOT_PUBLISHED,
-          "No channels for publishing found!" );
-      }
-      else
-      {
-        // Veröffentlichungen zur Immobilie aktualisieren,
-        // wenn diese zu einem Kanal noch nicht gesetzt wurde
-        for (PublishChannel is24Channel : is24PublishChannels.getPublishChannel())
-        {
-          Long is24ChannelId = is24Channel.getId();
-          if (is24PublishedChannels.contains( is24ChannelId ))
-            continue;
-
-          PublishObject is24Publishing = commonFactory.createPublishObject();
-          is24Publishing.setPublishChannel( is24Channel );
-          is24Publishing.setRealEstate( commonFactory.createPublishObjectRealEstate() );
-          is24Publishing.getRealEstate().setId( is24ObjectId );
-
-          try
-          {
-            ImportExport.PublishService.post( this.client, is24Publishing );
-          }
-          catch (RequestFailedException ex)
-          {
-            LOGGER.error( "Can't publish property '" + externalObjectId + "' (" + is24ObjectId + ") "
-              + "in channel '" + is24Channel.getTitle() + "' (" + is24ChannelId +  ")!" );
-            if (ex.requestRefNumber!=null) LOGGER.error( "> referring request: " + ex.requestRefNumber );
-            logMessagesAsError( ex.responseMessages );
-            LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
-            this.putObjectMessage(
-              externalObjectId, ExportMessage.Code.OBJECT_NOT_PUBLISHED, ex );
-          }
-        }
-      }
-
       return is24ObjectId;
     }
     catch (JAXBException ex)
@@ -1485,6 +1525,36 @@ public class ExportHandler
       throw new IOExceptionWithCause(
         "Communication failed!", ex );
     }
+  }
+
+  /**
+   * Saves a real estate to the Webservice.
+   *
+   * @param object
+   * real estate to save
+   *
+   * @param is24PublishChannels
+   * channels, where the real estate should be published
+   *
+   * @param poolObjectId
+   * real estate ID within export pool
+   *
+   * @return
+   * ID of the processed real estate in the Webservice or null, if the object
+   * was not updated
+   *
+   * @throws IOException
+   * if the operation failed
+   *
+   * @deprecated
+   * This method was splitted into {@link #doUpdateObject(org.openestate.is24.restapi.xml.realestates.RealEstate, java.lang.String)}
+   * and {@link #doPublishObject(long, java.lang.String, org.openestate.is24.restapi.xml.common.PublishChannels)}.
+   * It will be removed with the next major update.
+   */
+  @Deprecated
+  protected Long doUpdateObject( RealEstate object, PublishChannels is24PublishChannels, String poolObjectId ) throws IOException
+  {
+    return doUpdateObject( object, poolObjectId );
   }
 
   /**
@@ -1521,11 +1591,8 @@ public class ExportHandler
     this.totalProgress = this.pool.getTotalSize();
     this.setProgress( 0 );
 
-    // load available publish channels
-    LOGGER.info( "loading publish channels" );
-    final PublishChannels publishChannels = doLoadPublishChannels();
-
     // updating contacts
+    Map<Long,String> is24ObjectIds = new HashMap<Long,String>();
     String[] ids = this.pool.getContactIds();
     if (!ArrayUtils.isEmpty( ids ))
     {
@@ -1601,7 +1668,11 @@ public class ExportHandler
         {
           LOGGER.info( "[" + counter + " / " + ids.length +"] "
             + "updating object '" + object.getExternalId() + "'" );
-          this.doUpdateObject( object, publishChannels, poolObjectId );
+          Long is24ObjectId = this.doUpdateObject( object, poolObjectId );
+          if (is24ObjectId!=null)
+          {
+            is24ObjectIds.put( is24ObjectId, StringUtils.trimToNull( object.getExternalId() ) );
+          }
         }
       }
     }
@@ -1654,6 +1725,27 @@ public class ExportHandler
             + "removing untouched object '" + externalObjectId + "' (" + is24ObjectId + ")" );
           this.doRemoveObject( is24ObjectId, externalObjectId );
         }
+      }
+    }
+
+    if (!is24ObjectIds.isEmpty())
+    {
+      // load available publish channels
+      LOGGER.info( "loading publish channels" );
+      final PublishChannels publishChannels = doLoadPublishChannels();
+
+      // publishing objects
+      LOGGER.info( "publishing objects" );
+      int counter = 0;
+      for (Map.Entry<Long,String> entry : is24ObjectIds.entrySet())
+      {
+        counter++;
+        Long is24ObjectId = entry.getKey();
+        String externalObjectId = entry.getValue();
+
+        LOGGER.info( "[" + counter + " / " + is24ObjectIds.size() +"] "
+          + "publishing object '" + externalObjectId + "' (" + is24ObjectId + ")" );
+        doPublishObject( is24ObjectId, externalObjectId, publishChannels );
       }
     }
 
