@@ -66,7 +66,7 @@ public class ExportPool
   private final Properties settings;
 
   /**
-   * Creates an empty {@link ExportPool}.
+   * Create an empty {@link ExportPool}.
    * <p>
    * Files are stored into the default temporary directory of the Java runtime
    * environment.
@@ -77,7 +77,7 @@ public class ExportPool
   }
 
   /**
-   * Creates an empty {@link ExportPool}.
+   * Create an empty {@link ExportPool}.
    *
    * @param baseDir
    * directory, where pooled files are stored
@@ -100,7 +100,7 @@ public class ExportPool
   }
 
   /**
-   * Returns directory, where local files are stored.
+   * Return directory, where local files are stored.
    *
    * @return
    * directory
@@ -111,7 +111,7 @@ public class ExportPool
   }
 
   /**
-   * Returns a pooled contact.
+   * Return a pooled contact.
    *
    * @param pooledContactId
    * ID of the contact within the pool
@@ -165,7 +165,7 @@ public class ExportPool
   }
 
   /**
-   * Returns ID's of pooled contacts.
+   * Return ID's of pooled contacts.
    *
    * @return
    * contact ID's within the pool
@@ -182,7 +182,7 @@ public class ExportPool
   }
 
   /**
-   * Returns size of a pooled contact.
+   * Return size of a pooled contact.
    *
    * @param pooledContactId
    * ID of the contact within the pool
@@ -202,7 +202,7 @@ public class ExportPool
   }
 
   /**
-   * Returns directory, where pooled contacts are stored.
+   * Return directory, where pooled contacts are stored.
    *
    * @return
    * directory
@@ -213,7 +213,7 @@ public class ExportPool
   }
 
   /**
-   * Returns a pooled real estate.
+   * Return a pooled real estate.
    *
    * @param pooledObjectId
    * ID of the real estate within the pool
@@ -267,7 +267,7 @@ public class ExportPool
   }
 
   /**
-   * Returns a pooled attachment for a real estate.
+   * Return a pooled attachment for a real estate.
    *
    * @param pooledObjectId
    * ID of the real estate within the pool
@@ -325,7 +325,7 @@ public class ExportPool
   }
 
   /**
-   * Returns the file of a pooled attachment for a real estate.
+   * Return the file of a pooled attachment for a real estate.
    *
    * @param pooledObjectId
    * ID of the real estate within the pool
@@ -343,7 +343,7 @@ public class ExportPool
   }
 
   /**
-   * Returns the file of a pooled attachment for a real estate.
+   * Return the file of a pooled attachment for a real estate.
    *
    * @param pooledObjectId
    * ID of the real estate within the pool
@@ -361,7 +361,7 @@ public class ExportPool
   }
 
   /**
-   * Returns the file of a pooled attachment for a real estate.
+   * Return the file of a pooled attachment for a real estate.
    *
    * @param pooledObjectId
    * ID of the real estate within the pool
@@ -380,7 +380,7 @@ public class ExportPool
   }
 
   /**
-   * Returns size of a pooled attachment for a real estate.
+   * Return size of a pooled attachment for a real estate.
    *
    * @param pooledObjectId
    * ID of the real estate within the pool
@@ -399,7 +399,7 @@ public class ExportPool
   }
 
   /**
-   * Returns the URL of a pooled attachment for a real estate.
+   * Return the URL of a pooled attachment for a real estate.
    *
    * @param pooledObjectId
    * ID of the real estate within the pool
@@ -420,7 +420,7 @@ public class ExportPool
   }
 
   /**
-   * Returns attachment ID's of a pooled real estate.
+   * Return attachment ID's of a pooled real estate.
    *
    * @param pooledObjectId
    * ID of the real estate within the pool
@@ -451,7 +451,7 @@ public class ExportPool
   }
 
   /**
-   * Returns ID's of pooled real estates.
+   * Return ID's of pooled real estates.
    *
    * @return
    * real estate ID's within the pool
@@ -468,7 +468,7 @@ public class ExportPool
   }
 
   /**
-   * Returns ID's of real estates, that were pooled for removal.
+   * Return ID's of real estates, that were pooled for removal.
    *
    * @return
    * real estate ID's
@@ -489,7 +489,7 @@ public class ExportPool
   }
 
   /**
-   * Returns size of a pooled real estate.
+   * Return size of a pooled real estate.
    *
    * @param pooledObjectId
    * ID of the real estate within the pool
@@ -509,7 +509,7 @@ public class ExportPool
   }
 
   /**
-   * Returns directory, where pooled real estates are stored.
+   * Return directory, where pooled real estates are stored.
    *
    * @return
    * directory
@@ -520,7 +520,7 @@ public class ExportPool
   }
 
   /**
-   * Returns a settings from the export pool.
+   * Return a settings from the export pool.
    *
    * @param key
    * setting key
@@ -534,7 +534,7 @@ public class ExportPool
   }
 
   /**
-   * Returns a settings from the export pool.
+   * Return a settings from the export pool.
    *
    * @param key
    * setting key
@@ -551,7 +551,7 @@ public class ExportPool
   }
 
   /**
-   * Returns the total size of the local pool directory.
+   * Return the total size of the local pool directory.
    *
    * @return
    * size in bytes
@@ -563,7 +563,7 @@ public class ExportPool
   }
 
   /**
-   * Checks, if a contact was pooled for export.
+   * Check, if a contact was pooled for export.
    *
    * @param pooledContactId
    * ID of the contact within the pool
@@ -579,7 +579,7 @@ public class ExportPool
   }
 
   /**
-   * Checks, if a real estate was pooled for export.
+   * Check, if a real estate was pooled for export.
    *
    * @param externalObjectId
    * real estate ID
@@ -594,7 +594,7 @@ public class ExportPool
   }
 
   /**
-   * Checks, if a real estate was pooled for removal.
+   * Check, if a real estate was pooled for removal.
    *
    * @param externalObjectId
    * real estate ID
@@ -609,7 +609,7 @@ public class ExportPool
   }
 
   /**
-   * Adds a contact to export pool.
+   * Add a contact to export pool.
    *
    * @param contact
    * contact
@@ -624,7 +624,7 @@ public class ExportPool
   }
 
   /**
-   * Adds a contact to export pool.
+   * Add a contact to export pool.
    *
    * @param contact
    * contact
@@ -667,7 +667,7 @@ public class ExportPool
   }
 
   /**
-   * Adds a real estate to export pool.
+   * Add a real estate to export pool.
    *
    * @param object
    * real estate
@@ -682,7 +682,7 @@ public class ExportPool
   }
 
   /**
-   * Adds a real estate to export pool.
+   * Add a real estate to export pool.
    *
    * @param object
    * real estate
@@ -726,7 +726,7 @@ public class ExportPool
   }
 
   /**
-   * Adds an attachment for a real estate to export pool.
+   * Add an attachment for a real estate to export pool.
    *
    * @param pooledObjectId
    * ID of the real estate within the pool
@@ -777,7 +777,7 @@ public class ExportPool
   }
 
   /**
-   * Adds an attachment for a real estate to export pool.
+   * Add an attachment for a real estate to export pool.
    *
    * @param pooledObjectId
    * ID of the real estate within the pool
@@ -825,7 +825,7 @@ public class ExportPool
   }
 
   /**
-   * Adds an web link for a real estate to export pool.
+   * Add an web link for a real estate to export pool.
    *
    * @param pooledObjectId
    * ID of the real estate within the pool
@@ -869,7 +869,7 @@ public class ExportPool
   }
 
   /**
-   * Registers an real estate object for removal.
+   * Register an real estate object for removal.
    *
    * @param externalObjectId
    * real estate ID
@@ -882,7 +882,7 @@ public class ExportPool
   }
 
   /**
-   * Puts a settings to the export pool.
+   * Put a settings to the export pool.
    *
    * @param key
    * setting key
@@ -927,7 +927,7 @@ public class ExportPool
   }
 
   /**
-   * Writes export pool settings to local directory.
+   * Write export pool settings to local directory.
    *
    * @throws IOException
    * if settings are not wriable

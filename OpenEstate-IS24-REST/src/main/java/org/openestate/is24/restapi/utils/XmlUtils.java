@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright 2014-2015 OpenEstate.org.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -113,7 +113,7 @@ public final class XmlUtils
   }
 
   /**
-   * Creates a marshaller for XML generation.
+   * Create a marshaller for XML generation.
    *
    * @return
    * marshaller
@@ -127,7 +127,7 @@ public final class XmlUtils
   }
 
   /**
-   * Creates a marshaller for XML generation.
+   * Create a marshaller for XML generation.
    *
    * @param encoding
    * encoding of generated XML output
@@ -150,7 +150,7 @@ public final class XmlUtils
   }
 
   /**
-   * Creates an unmarshaller for XML parsing.
+   * Create an unmarshaller for XML parsing.
    *
    * @return
    * unmarshaller
@@ -193,7 +193,7 @@ public final class XmlUtils
   }
 
   /**
-   * Creates a XML string for a JAXB object.
+   * Create a XML string for a JAXB object.
    *
    * @param object
    * JAXB object, that is converted into XML output
@@ -213,7 +213,7 @@ public final class XmlUtils
   }
 
   /**
-   * Creates a XML string for a JAXB object.
+   * Create a XML string for a JAXB object.
    *
    * @param object
    * JAXB object, that is converted into XML output
@@ -236,7 +236,7 @@ public final class XmlUtils
   }
 
   /**
-   * Creates a XML string for a JAXB object.
+   * Create a XML string for a JAXB object.
    *
    * @param object
    * JAXB object, that is converted into XML output
@@ -296,7 +296,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link Color} value from XML.
+   * Read a {@link Color} value from XML.
    *
    * @param value
    * XML string
@@ -314,7 +314,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link Calendar} value from XML.
+   * Read a {@link Calendar} value from XML.
    *
    * @param value
    * XML string
@@ -350,7 +350,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link Double} value from XML.
+   * Read a {@link Double} value from XML.
    *
    * @param value
    * XML string
@@ -381,7 +381,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link Double} value from XML
+   * Read a {@link Double} value from XML
    * with maximal 8 digits and 2 decimal places.
    *
    * @param value
@@ -396,7 +396,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link Double} value from XML
+   * Read a {@link Double} value from XML
    * with maximal 13 digits and 2 decimal places.
    *
    * @param value
@@ -411,7 +411,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a positive {@link Double} value from XML
+   * Read a positive {@link Double} value from XML
    * with maximal 3 decimal places.
    *
    * @param value
@@ -426,7 +426,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads an e-mail address from XML.
+   * Read an e-mail address from XML.
    *
    * @param value
    * XML string
@@ -442,7 +442,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads an {@link Integer} value from XML,
+   * Read an {@link Integer} value from XML,
    * that matches the 'FlatShareSearchSize' simple type.
    *
    * @param value
@@ -457,7 +457,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads an {@link Integer} value from XML,
+   * Read an {@link Integer} value from XML,
    * that matches the type of the 'numberOfFloors' element.
    *
    * @param value
@@ -472,7 +472,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads an {@link Integer} value from XML,
+   * Read an {@link Integer} value from XML,
    * that matches the type of the 'groupNumber' element.
    *
    * @param value
@@ -487,7 +487,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads an {@link Integer} value from XML.
+   * Read an {@link Integer} value from XML.
    *
    * @param value
    * XML string
@@ -509,7 +509,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a positive {@link Integer} value from XML
+   * Read a positive {@link Integer} value from XML
    * with maximal 9 digits.
    *
    * @param value
@@ -524,7 +524,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads an {@link Integer} value from XML
+   * Read an {@link Integer} value from XML
    * from 0 to 99.
    *
    * @param value
@@ -539,7 +539,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads an {@link Integer} value from XML
+   * Read an {@link Integer} value from XML
    * from 0 to 999.
    *
    * @param value
@@ -554,7 +554,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads an {@link Integer} value from XML
+   * Read an {@link Integer} value from XML
    * from 0 to 9999.
    *
    * @param value
@@ -569,7 +569,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a positive {@link Integer} value from XML
+   * Read a positive {@link Integer} value from XML
    * up to 9999.
    *
    * @param value
@@ -584,7 +584,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads an {@link Integer} value from XML
+   * Read an {@link Integer} value from XML
    * from 0 to 99999.
    *
    * @param value
@@ -599,7 +599,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link Double} value from XML
+   * Read a {@link Double} value from XML
    * with a valid latitude range.
    *
    * @param value
@@ -614,7 +614,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link Double} value from XML
+   * Read a {@link Double} value from XML
    * with a valid longitude range.
    *
    * @param value
@@ -629,7 +629,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link String} value from XML
+   * Read a {@link String} value from XML
    * with a at least 1 character.
    *
    * @param value
@@ -644,7 +644,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link String} value from XML,
+   * Read a {@link String} value from XML,
    * that matches the 'Password' simple type.
    *
    * @param value
@@ -659,7 +659,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link String} value from XML
+   * Read a {@link String} value from XML
    * with a valid phone number.
    *
    * @param value
@@ -674,7 +674,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link String} value from XML
+   * Read a {@link String} value from XML
    * with a valid phone number area code.
    *
    * @param value
@@ -689,7 +689,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link String} value from XML
+   * Read a {@link String} value from XML
    * with a valid phone number country code.
    *
    * @param value
@@ -704,7 +704,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link String} value from XML
+   * Read a {@link String} value from XML
    * with a valid phone number subscriber part.
    *
    * @param value
@@ -719,7 +719,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link Double} value from XML,
+   * Read a {@link Double} value from XML,
    * that matches the 'PriceMultiplierType' simple type.
    *
    * @param value
@@ -734,7 +734,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link Double} value from XML,
+   * Read a {@link Double} value from XML,
    * that matches the 'NumberOfRoomsType' simple type.
    *
    * @param value
@@ -749,7 +749,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link Double} value from XML,
+   * Read a {@link Double} value from XML,
    * that matches the type of the 'numberOfRooms' element in "BaseHouse".
    *
    * @param value
@@ -764,7 +764,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link String} value from XML.
+   * Read a {@link String} value from XML.
    *
    * @param value
    * XML string
@@ -784,7 +784,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link String} value from XML
+   * Read a {@link String} value from XML
    * with maximal 15 characters.
    *
    * @param value
@@ -799,7 +799,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link String} value from XML
+   * Read a {@link String} value from XML
    * with maximal 16 characters.
    *
    * @param value
@@ -814,7 +814,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link String} value from XML
+   * Read a {@link String} value from XML
    * with maximal 18 characters.
    *
    * @param value
@@ -829,7 +829,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link String} value from XML
+   * Read a {@link String} value from XML
    * with maximal 20 characters.
    *
    * @param value
@@ -844,7 +844,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link String} value from XML
+   * Read a {@link String} value from XML
    * with maximal 30 characters.
    *
    * @param value
@@ -859,7 +859,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link String} value from XML
+   * Read a {@link String} value from XML
    * with maximal 40 characters.
    *
    * @param value
@@ -874,7 +874,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link String} value from XML
+   * Read a {@link String} value from XML
    * with maximal 50 characters.
    *
    * @param value
@@ -889,7 +889,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link String} value from XML
+   * Read a {@link String} value from XML
    * with maximal 80 characters.
    *
    * @param value
@@ -904,7 +904,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link String} value from XML
+   * Read a {@link String} value from XML
    * with maximal 100 characters.
    *
    * @param value
@@ -919,7 +919,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link String} value from XML
+   * Read a {@link String} value from XML
    * with maximal 1000 characters.
    *
    * @param value
@@ -934,7 +934,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link String} value from XML
+   * Read a {@link String} value from XML
    * with maximal 1800 characters.
    *
    * @param value
@@ -949,7 +949,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link String} value from XML
+   * Read a {@link String} value from XML
    * with maximal 2000 characters.
    *
    * @param value
@@ -964,7 +964,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link Double} value from XML,
+   * Read a {@link Double} value from XML,
    * that matches the type of the "thermalCharacteristic" element.
    *
    * @param value
@@ -979,7 +979,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads an {@link URL} value from XML.
+   * Read an {@link URL} value from XML.
    *
    * @param value
    * XML string
@@ -1001,7 +1001,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link Color} value into XML output.
+   * Write a {@link Color} value into XML output.
    *
    * @param value
    * value to write
@@ -1030,7 +1030,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link Calendar} value into XML output.
+   * Write a {@link Calendar} value into XML output.
    *
    * @param value
    * value to write
@@ -1050,7 +1050,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link Double} value into XML output.
+   * Write a {@link Double} value into XML output.
    *
    * @param value
    * value to write
@@ -1096,7 +1096,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link Double} value into XML output
+   * Write a {@link Double} value into XML output
    * with maximal 8 digits and 2 decimal places.
    *
    * @param value
@@ -1114,7 +1114,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link Double} value into XML output
+   * Write a {@link Double} value into XML output
    * with maximal 13 digits and 2 decimal places.
    *
    * @param value
@@ -1132,7 +1132,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a positive {@link Double} value into XML output
+   * Write a positive {@link Double} value into XML output
    * with maximal 3 decimal places.
    *
    * @param value
@@ -1150,7 +1150,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes an e-mail address into XML output.
+   * Write an e-mail address into XML output.
    *
    * @param value
    * value to write
@@ -1173,7 +1173,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes an {@link Integer} value into XML output,
+   * Write an {@link Integer} value into XML output,
    * that matches the 'FlatShareSearchSize' simple type.
    *
    * @param value
@@ -1191,7 +1191,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes an {@link Integer} value into XML output,
+   * Write an {@link Integer} value into XML output,
    * that matches the type of the 'numberOfFloors' element.
    *
    * @param value
@@ -1209,7 +1209,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes an {@link Integer} value into XML output,
+   * Write an {@link Integer} value into XML output,
    * that matches the type of the 'groupNumber' element.
    *
    * @param value
@@ -1227,7 +1227,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes an {@link Integer} value into XML output.
+   * Write an {@link Integer} value into XML output.
    *
    * @param value
    * value to write
@@ -1265,7 +1265,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a positive {@link Integer} value into XML output
+   * Write a positive {@link Integer} value into XML output
    * with maximal 9 digits.
    *
    * @param value
@@ -1283,7 +1283,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes an {@link Integer} value into XML output
+   * Write an {@link Integer} value into XML output
    * from 0 to 99.
    *
    * @param value
@@ -1301,7 +1301,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes an {@link Integer} value into XML output
+   * Write an {@link Integer} value into XML output
    * from 0 to 999.
    *
    * @param value
@@ -1319,7 +1319,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes an {@link Integer} value into XML output
+   * Write an {@link Integer} value into XML output
    * from 0 to 9999.
    *
    * @param value
@@ -1337,7 +1337,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a positive {@link Integer} value into XML output
+   * Write a positive {@link Integer} value into XML output
    * up to 9999.
    *
    * @param value
@@ -1355,7 +1355,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes an {@link Integer} value into XML output
+   * Write an {@link Integer} value into XML output
    * from 0 to 99999.
    *
    * @param value
@@ -1373,7 +1373,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link Double} value into XML output
+   * Write a {@link Double} value into XML output
    * with a valid latitude range.
    *
    * @param value
@@ -1391,7 +1391,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link Double} value into XML output
+   * Write a {@link Double} value into XML output
    * with a valid longitude range.
    *
    * @param value
@@ -1409,7 +1409,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link String} value into XML output
+   * Write a {@link String} value into XML output
    * with a at least 1 character.
    *
    * @param value
@@ -1427,7 +1427,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link String} value into XML output,
+   * Write a {@link String} value into XML output,
    * that matches the 'Password' simple type.
    *
    * @param value
@@ -1445,7 +1445,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link String} value into XML output
+   * Write a {@link String} value into XML output
    * with a valid phone number.
    *
    * @param value
@@ -1471,7 +1471,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link String} value into XML output
+   * Write a {@link String} value into XML output
    * with a valid phone number area code.
    *
    * @param value
@@ -1503,7 +1503,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link String} value into XML output
+   * Write a {@link String} value into XML output
    * with a valid phone number country code.
    *
    * @param value
@@ -1538,7 +1538,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link String} value into XML output
+   * Write a {@link String} value into XML output
    * with a valid phone number subscriber part.
    *
    * @param value
@@ -1583,7 +1583,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link Double} value into XML output,
+   * Write a {@link Double} value into XML output,
    * that matches the 'PriceMultiplierType' simple type.
    *
    * @param value
@@ -1601,7 +1601,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link Double} value into XML output,
+   * Write a {@link Double} value into XML output,
    * that matches the 'NumberOfRoomsType' simple type.
    *
    * @param value
@@ -1619,7 +1619,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link Double} value into XML output,
+   * Write a {@link Double} value into XML output,
    * that matches the type of the 'numberOfRooms' element in "BaseHouse".
    *
    * @param value
@@ -1637,7 +1637,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link String} value into XML output.
+   * Write a {@link String} value into XML output.
    *
    * @param value
    * XML string
@@ -1684,7 +1684,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link String} value into XML output
+   * Write a {@link String} value into XML output
    * with maximal 15 characters.
    *
    * @param value
@@ -1702,7 +1702,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link String} value into XML output
+   * Write a {@link String} value into XML output
    * with maximal 16 characters.
    *
    * @param value
@@ -1720,7 +1720,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link String} value into XML output
+   * Write a {@link String} value into XML output
    * with maximal 18 characters.
    *
    * @param value
@@ -1738,7 +1738,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link String} value into XML output
+   * Write a {@link String} value into XML output
    * with maximal 20 characters.
    *
    * @param value
@@ -1756,7 +1756,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link String} value into XML output
+   * Write a {@link String} value into XML output
    * with maximal 30 characters.
    *
    * @param value
@@ -1774,7 +1774,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link String} value into XML output
+   * Write a {@link String} value into XML output
    * with maximal 40 characters.
    *
    * @param value
@@ -1792,7 +1792,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link String} value into XML output
+   * Write a {@link String} value into XML output
    * with maximal 50 characters.
    *
    * @param value
@@ -1810,7 +1810,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link String} value into XML output
+   * Write a {@link String} value into XML output
    * with maximal 80 characters.
    *
    * @param value
@@ -1828,7 +1828,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link String} value into XML output
+   * Write a {@link String} value into XML output
    * with maximal 100 characters.
    *
    * @param value
@@ -1846,7 +1846,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link String} value into XML output
+   * Write a {@link String} value into XML output
    * with maximal 1000 characters.
    *
    * @param value
@@ -1864,7 +1864,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link String} value into XML output
+   * Write a {@link String} value into XML output
    * with maximal 1800 characters.
    *
    * @param value
@@ -1882,7 +1882,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link String} value into XML output
+   * Write a {@link String} value into XML output
    * with maximal 2000 characters.
    *
    * @param value
@@ -1900,7 +1900,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link Double} value into XML output,
+   * Write a {@link Double} value into XML output,
    * that matches the type of the "thermalCharacteristic" element.
    *
    * @param value
@@ -1918,7 +1918,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes an {@link URL} value into XML output.
+   * Write an {@link URL} value into XML output.
    *
    * @param value
    * value to write
@@ -1940,7 +1940,7 @@ public final class XmlUtils
   }
 
   /**
-   * Creates a JAXB object from a XML string.
+   * Create a JAXB object from a XML string.
    *
    * @param xml
    * XML string
@@ -1967,7 +1967,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes an {@link Attachment} as XML into an {@link OutputStream}.
+   * Write an {@link Attachment} as XML into an {@link OutputStream}.
    * <p>
    * The provided object is wrapped into a {@link JAXBElement} before XML
    * creation in order to match the requirements of the schema.
@@ -1990,7 +1990,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes an {@link Attachment} as XML into an {@link OutputStream}.
+   * Write an {@link Attachment} as XML into an {@link OutputStream}.
    * <p>
    * The provided object is wrapped into a {@link JAXBElement} before XML
    * creation in order to match the requirements of the schema.
@@ -2016,7 +2016,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes an {@link Attachment} as XML into an {@link OutputStream}.
+   * Write an {@link Attachment} as XML into an {@link OutputStream}.
    * <p>
    * The provided object is wrapped into a {@link JAXBElement} before XML
    * creation in order to match the requirements of the schema.
@@ -2045,7 +2045,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes an {@link Attachment} as XML into an {@link OutputStream}.
+   * Write an {@link Attachment} as XML into an {@link OutputStream}.
    * <p>
    * The provided object is wrapped into a {@link JAXBElement} before XML
    * creation in order to match the requirements of the schema.
@@ -2084,7 +2084,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link PublishObject} as XML into an {@link OutputStream}.
+   * Write a {@link PublishObject} as XML into an {@link OutputStream}.
    * <p>
    * The provided object is wrapped into a {@link JAXBElement} before XML
    * creation in order to match the requirements of the schema.
@@ -2107,7 +2107,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link PublishObject} as XML into an {@link OutputStream}.
+   * Write a {@link PublishObject} as XML into an {@link OutputStream}.
    * <p>
    * The provided object is wrapped into a {@link JAXBElement} before XML
    * creation in order to match the requirements of the schema.
@@ -2133,7 +2133,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link PublishObject} as XML into an {@link OutputStream}.
+   * Write a {@link PublishObject} as XML into an {@link OutputStream}.
    * <p>
    * The provided object is wrapped into a {@link JAXBElement} before XML
    * creation in order to match the requirements of the schema.
@@ -2162,7 +2162,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link PublishObject} as XML into an {@link OutputStream}.
+   * Write a {@link PublishObject} as XML into an {@link OutputStream}.
    * <p>
    * The provided object is wrapped into a {@link JAXBElement} before XML
    * creation in order to match the requirements of the schema.
@@ -2201,7 +2201,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link RealtorContactDetails} as XML into an {@link OutputStream}.
+   * Write a {@link RealtorContactDetails} as XML into an {@link OutputStream}.
    * <p>
    * The provided object is wrapped into a {@link JAXBElement} before XML
    * creation in order to match the requirements of the schema.
@@ -2224,7 +2224,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link RealtorContactDetails} as XML into an {@link OutputStream}.
+   * Write a {@link RealtorContactDetails} as XML into an {@link OutputStream}.
    * <p>
    * The provided object is wrapped into a {@link JAXBElement} before XML
    * creation in order to match the requirements of the schema.
@@ -2250,7 +2250,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link RealtorContactDetails} as XML into an {@link OutputStream}.
+   * Write a {@link RealtorContactDetails} as XML into an {@link OutputStream}.
    * <p>
    * The provided object is wrapped into a {@link JAXBElement} before XML
    * creation in order to match the requirements of the schema.
@@ -2279,7 +2279,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link RealtorContactDetails} as XML into an {@link OutputStream}.
+   * Write a {@link RealtorContactDetails} as XML into an {@link OutputStream}.
    * <p>
    * The provided object is wrapped into a {@link JAXBElement} before XML
    * creation in order to match the requirements of the schema.
@@ -2318,7 +2318,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link RealEstate} as XML into an {@link OutputStream}.
+   * Write a {@link RealEstate} as XML into an {@link OutputStream}.
    * <p>
    * The provided object is wrapped into a {@link JAXBElement} before XML
    * creation in order to match the requirements of the schema.
@@ -2341,7 +2341,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link RealEstate} as XML into an {@link OutputStream}.
+   * Write a {@link RealEstate} as XML into an {@link OutputStream}.
    * <p>
    * The provided object is wrapped into a {@link JAXBElement} before XML
    * creation in order to match the requirements of the schema.
@@ -2367,7 +2367,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link RealEstate} as XML into an {@link OutputStream}.
+   * Write a {@link RealEstate} as XML into an {@link OutputStream}.
    * <p>
    * The provided object is wrapped into a {@link JAXBElement} before XML
    * creation in order to match the requirements of the schema.
@@ -2396,7 +2396,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link RealEstate} as XML into an {@link OutputStream}.
+   * Write a {@link RealEstate} as XML into an {@link OutputStream}.
    * <p>
    * The provided object is wrapped into a {@link JAXBElement} before XML
    * creation in order to match the requirements of the schema.

@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright 2014-2015 OpenEstate.org.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -117,7 +117,7 @@ import org.slf4j.LoggerFactory;
 /**
  * Factory for random real estate objects.
  * <p>
- * Creates random real estate objects according, that match with the
+ * This class creates random real estate objects according, that match with the
  * specifications of the Webservice.
  *
  * @since 0.2
@@ -132,7 +132,7 @@ public class RandomRealEstateFactory
     new org.openestate.is24.restapi.xml.realestates.ObjectFactory();
 
   /**
-   * Creates a random {@link Address}.
+   * Create a random {@link Address}.
    *
    * @return
    * randomly filled {@link Wgs84Address} object
@@ -145,7 +145,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a {@link EnergySourcesEnev2014}, that contains random
+   * Create a {@link EnergySourcesEnev2014}, that contains random
    * {@link EnergySourceEnev2014} values.
    *
    * @return
@@ -173,7 +173,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link RealtorContactDetails}.
+   * Create a random {@link RealtorContactDetails}.
    *
    * @return
    * randomly filled {@link RealtorContactDetails} object
@@ -227,7 +227,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link RealEstate} of a random {@link Type}.
+   * Create a random {@link RealEstate} of a random {@link Type}.
    *
    * @return
    * randomly filled {@link RealEstate} object
@@ -238,7 +238,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link RealEstate} of a specific {@link Type}.
+   * Create a random {@link RealEstate} of a specific {@link Type}.
    *
    * @param type
    * type of the real estate object to create
@@ -255,7 +255,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link Wgs84Address}.
+   * Create a random {@link Wgs84Address}.
    *
    * @return
    * randomly filled {@link Wgs84Address} object
@@ -268,7 +268,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a {@link SiteRecommendedUseForTradeTypes}, that contains random
+   * Create a {@link SiteRecommendedUseForTradeTypes}, that contains random
    * {@link SiteRecommendedUseForTradeType} values.
    *
    * @return
@@ -296,7 +296,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a {@link SiteRecommendedUseTypes}, that contains random
+   * Create a {@link SiteRecommendedUseTypes}, that contains random
    * {@link SiteRecommendedUseType} values.
    *
    * @return
@@ -324,7 +324,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates the default {@link Price} for randomly created data.
+   * Create the default {@link Price} for randomly created data.
    *
    * @return
    * default{@link Price} object
@@ -337,7 +337,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link AirConditioningType} value.
+   * Create a random {@link AirConditioningType} value.
    *
    * @return
    * random {@link AirConditioningType} value
@@ -348,7 +348,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link ApartmentType} value.
+   * Create a random {@link ApartmentType} value.
    *
    * @return
    * random {@link ApartmentType} value
@@ -359,7 +359,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link BalconyAvailableType} value.
+   * Create a random {@link BalconyAvailableType} value.
    *
    * @return
    * random {@link BalconyAvailableType} value
@@ -370,7 +370,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link Boolean} value.
+   * Create a random {@link Boolean} value.
    *
    * @return
    * random {@link Boolean} value
@@ -381,7 +381,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link BuildingType} value.
+   * Create a random {@link BuildingType} value.
    *
    * @return
    * random {@link BuildingType} value
@@ -392,7 +392,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link Calendar} value between 1990 and 2015.
+   * Create a random {@link Calendar} value between 1990 and 2015.
    *
    * @return
    * random {@link Calendar} value
@@ -403,7 +403,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link Calendar} value in a specific timeframe.
+   * Create a random {@link Calendar} value in a specific timeframe.
    *
    * @param minYear
    * minimal calendar year
@@ -427,7 +427,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link CareLevelExpose} value.
+   * Create a random {@link CareLevelExpose} value.
    *
    * @return
    * random {@link CareLevelExpose} value
@@ -438,7 +438,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link CompulsoryAuctionType} value.
+   * Create a random {@link CompulsoryAuctionType} value.
    *
    * @return
    * random {@link CompulsoryAuctionType} value
@@ -449,7 +449,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link ConstructionPhaseType} value.
+   * Create a random {@link ConstructionPhaseType} value.
    *
    * @return
    * random {@link ConstructionPhaseType} value
@@ -460,7 +460,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link CountryCode} value.
+   * Create a random {@link CountryCode} value.
    *
    * @return
    * random {@link CountryCode} value
@@ -471,7 +471,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link Date} value between 1990 and 2015.
+   * Create a random {@link Date} value between 1990 and 2015.
    *
    * @return
    * random {@link Date} value
@@ -482,7 +482,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link Date} value in a specific timeframe.
+   * Create a random {@link Date} value in a specific timeframe.
    *
    * @param minYear
    * minimal calendar year
@@ -499,7 +499,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link Double} value with a specific maximum.
+   * Create a random {@link Double} value with a specific maximum.
    *
    * @param max
    * maximum value
@@ -513,7 +513,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link Double} value within a specific interval.
+   * Create a random {@link Double} value within a specific interval.
    *
    * @param min
    * minimum value
@@ -539,7 +539,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link EnergyEfficiencyClass} value.
+   * Create a random {@link EnergyEfficiencyClass} value.
    *
    * @return
    * random {@link EnergyEfficiencyClass} value
@@ -550,7 +550,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link FacilityType} value.
+   * Create a random {@link FacilityType} value.
    *
    * @return
    * random {@link FacilityType} value
@@ -561,7 +561,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link FlatMateGenderType} value.
+   * Create a random {@link FlatMateGenderType} value.
    *
    * @return
    * random {@link FlatMateGenderType} value
@@ -572,7 +572,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link FlooringType} value.
+   * Create a random {@link FlooringType} value.
    *
    * @return
    * random {@link FlooringType} value
@@ -583,7 +583,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link GarageType} value.
+   * Create a random {@link GarageType} value.
    *
    * @return
    * random {@link GarageType} value
@@ -594,7 +594,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link GastronomyType} value.
+   * Create a random {@link GastronomyType} value.
    *
    * @return
    * random {@link GastronomyType} value
@@ -605,7 +605,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link HeatingTypeEnev2014} value.
+   * Create a random {@link HeatingTypeEnev2014} value.
    *
    * @return
    * random {@link HeatingTypeEnev2014} value
@@ -616,7 +616,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link HouseTypeBuildingType} value.
+   * Create a random {@link HouseTypeBuildingType} value.
    *
    * @return
    * random {@link HouseTypeBuildingType} value
@@ -627,7 +627,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link HouseTypeConstructionMethodType} value.
+   * Create a random {@link HouseTypeConstructionMethodType} value.
    *
    * @return
    * random {@link HouseTypeConstructionMethodType} value
@@ -638,7 +638,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link HouseTypeEnergyStandardType} value.
+   * Create a random {@link HouseTypeEnergyStandardType} value.
    *
    * @return
    * random {@link HouseTypeEnergyStandardType} value
@@ -649,7 +649,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link HouseTypeStageOfCompletionType} value.
+   * Create a random {@link HouseTypeStageOfCompletionType} value.
    *
    * @return
    * random {@link HouseTypeStageOfCompletionType} value
@@ -660,7 +660,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link IndustryType} value.
+   * Create a random {@link IndustryType} value.
    *
    * @return
    * random {@link IndustryType} value
@@ -671,7 +671,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link Integer} value with a specific maximum.
+   * Create a random {@link Integer} value with a specific maximum.
    *
    * @param max
    * maximum value
@@ -685,7 +685,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link Integer} value within a specific interval.
+   * Create a random {@link Integer} value within a specific interval.
    *
    * @param min
    * minimum value
@@ -711,7 +711,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link InteriorQuality} value.
+   * Create a random {@link InteriorQuality} value.
    *
    * @return
    * random {@link InteriorQuality} value
@@ -722,7 +722,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link InternetConnectionType} value.
+   * Create a random {@link InternetConnectionType} value.
    *
    * @return
    * random {@link InternetConnectionType} value
@@ -733,7 +733,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link InvestmentType} value.
+   * Create a random {@link InvestmentType} value.
    *
    * @return
    * random {@link InvestmentType} value
@@ -744,7 +744,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link ItInfrastructureType} value.
+   * Create a random {@link ItInfrastructureType} value.
    *
    * @return
    * random {@link ItInfrastructureType} value
@@ -755,7 +755,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link LocationClassificationType} value.
+   * Create a random {@link LocationClassificationType} value.
    *
    * @return
    * random {@link LocationClassificationType} value
@@ -766,7 +766,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link Type} value.
+   * Create a random {@link Type} value.
    *
    * @return
    * random {@link Type} value
@@ -777,7 +777,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link OfficeType} value.
+   * Create a random {@link OfficeType} value.
    *
    * @return
    * random {@link OfficeType} value
@@ -788,7 +788,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link ParkingSituationType} value.
+   * Create a random {@link ParkingSituationType} value.
    *
    * @return
    * random {@link ParkingSituationType} value
@@ -799,7 +799,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link ParkingSpaceType} value.
+   * Create a random {@link ParkingSpaceType} value.
    *
    * @return
    * random {@link ParkingSpaceType} value
@@ -810,7 +810,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link PetsAllowedType} value.
+   * Create a random {@link PetsAllowedType} value.
    *
    * @return
    * random {@link PetsAllowedType} value
@@ -821,7 +821,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link RealEstateCondition} value.
+   * Create a random {@link RealEstateCondition} value.
    *
    * @return
    * random {@link RealEstateCondition} value
@@ -832,7 +832,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link SalutationType} value.
+   * Create a random {@link SalutationType} value.
    *
    * @return
    * random {@link SalutationType} value
@@ -843,7 +843,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link RoomType} value.
+   * Create a random {@link RoomType} value.
    *
    * @return
    * random {@link RoomType} value
@@ -854,7 +854,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link ShortTermAccommodationType} value.
+   * Create a random {@link ShortTermAccommodationType} value.
    *
    * @return
    * random {@link ShortTermAccommodationType} value
@@ -865,7 +865,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link SiteConstructibleType} value.
+   * Create a random {@link SiteConstructibleType} value.
    *
    * @return
    * random {@link SiteConstructibleType} value
@@ -876,7 +876,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link SiteDevelopmentType} value.
+   * Create a random {@link SiteDevelopmentType} value.
    *
    * @return
    * random {@link SiteDevelopmentType} value
@@ -887,7 +887,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link SmokingAllowedType} value.
+   * Create a random {@link SmokingAllowedType} value.
    *
    * @return
    * random {@link SmokingAllowedType} value
@@ -898,7 +898,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link SpecialPurposeType} value.
+   * Create a random {@link SpecialPurposeType} value.
    *
    * @return
    * random {@link SpecialPurposeType} value
@@ -909,7 +909,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link StoreType} value.
+   * Create a random {@link StoreType} value.
    *
    * @return
    * random {@link StoreType} value
@@ -920,7 +920,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link SupplyType} value.
+   * Create a random {@link SupplyType} value.
    *
    * @return
    * random {@link SupplyType} value
@@ -931,7 +931,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link TelephoneConnectionType} value.
+   * Create a random {@link TelephoneConnectionType} value.
    *
    * @return
    * random {@link TelephoneConnectionType} value
@@ -942,7 +942,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link TvConnectionType} value.
+   * Create a random {@link TvConnectionType} value.
    *
    * @return
    * random {@link TvConnectionType} value
@@ -953,7 +953,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link UtilizationTradeSite} value.
+   * Create a random {@link UtilizationTradeSite} value.
    *
    * @return
    * random {@link UtilizationTradeSite} value
@@ -964,7 +964,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link YesNoNotApplicableType} value without
+   * Create a random {@link YesNoNotApplicableType} value without
    * {@link YesNoNotApplicableType#NOT_APPLICABLE}.
    *
    * @return
@@ -977,7 +977,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link YesNoNotApplicableType} value.
+   * Create a random {@link YesNoNotApplicableType} value.
    *
    * @return
    * random {@link YesNoNotApplicableType} value
@@ -988,7 +988,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Creates a random {@link YesNotApplicableType} value.
+   * Create a random {@link YesNotApplicableType} value.
    *
    * @return
    * random {@link YesNotApplicableType} value
@@ -999,7 +999,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Retrieves a random value from an array of values.
+   * Return a random value from an array of values.
    *
    * @param values
    * array of values to lookup
@@ -3034,7 +3034,7 @@ public class RandomRealEstateFactory
     }
 
     /**
-     * Creates an empty {@link RealEstate} object of this type.
+     * Create an empty {@link RealEstate} object of this type.
      *
      * @return
      * empty {@link RealEstate} object
@@ -3054,7 +3054,7 @@ public class RandomRealEstateFactory
     }
 
     /**
-     * Returns the corresponding JAXB class to create a real estate object of
+     * Return the corresponding JAXB class to create a real estate object of
      * this type.
      *
      * @return

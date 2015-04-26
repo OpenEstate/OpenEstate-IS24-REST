@@ -109,7 +109,7 @@ public final class Response
   }
 
   /**
-   * Returns the body of the HTTP response.
+   * Return the body of the HTTP response.
    *
    * @return
    * body
@@ -122,7 +122,7 @@ public final class Response
   }
 
   /**
-   * Returns the unique identifier of the referring HTTP request.
+   * Return the unique identifier of the referring HTTP request.
    * <p>
    * This values was passed through the <em>L-IS24-RequestRefnum</em> header
    * of the HTTP response.
@@ -138,7 +138,7 @@ public final class Response
   }
 
   /**
-   * Returns the status code of the HTTP response.
+   * Return the status code of the HTTP response.
    *
    * @return
    * status code
@@ -151,7 +151,7 @@ public final class Response
   }
 
   /**
-   * Returns the status message of the HTTP response.
+   * Return the status message of the HTTP response.
    *
    * @return
    * status message

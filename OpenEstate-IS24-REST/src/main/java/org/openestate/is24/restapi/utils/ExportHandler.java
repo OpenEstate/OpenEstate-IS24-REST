@@ -85,7 +85,7 @@ public class ExportHandler
   private boolean useNewEnergySourceEnev2014Values = true;
 
   /**
-   * Creates a new {@link ExportHandler}.
+   * Create a new {@link ExportHandler}.
    */
   public ExportHandler()
   {
@@ -140,7 +140,7 @@ public class ExportHandler
   }
 
   /**
-   * Archivates a real estate object at the Webservice.
+   * Archivate a real estate object at the Webservice.
    *
    * @param externalObjectId
    * external real estate ID
@@ -188,7 +188,7 @@ public class ExportHandler
   }
 
   /**
-   * Archivates a real estate object at the Webservice.
+   * Archivate a real estate object at the Webservice.
    *
    * @param is24ObjectId
    * real estate ID by IS24
@@ -260,7 +260,7 @@ public class ExportHandler
   }
 
   /**
-   * Archivates a real estate object at the Webservice.
+   * Archivate a real estate object at the Webservice.
    *
    * @param is24Object
    * real estate to archivate
@@ -376,7 +376,7 @@ public class ExportHandler
   }
 
   /**
-   * Downloads an {@link URL} into a {@link File}.
+   * Download an {@link URL} into a {@link File}.
    *
    * @param url
    * URL to download
@@ -411,8 +411,8 @@ public class ExportHandler
   }
 
   /**
-   * Returns internal and external ID's of real estates from the Webservice,
-   * that were not changed during the current export process.
+   * Return internal and external ID's of published real estates from the
+   * Webservice, that were not changed during the current export process.
    *
    * @return
    * mapping of internal and external ID's of untouched real estates
@@ -505,7 +505,7 @@ public class ExportHandler
   }
 
   /**
-   * Returns publish channels for the authorized agency.
+   * Return publish channels for the authorized agency.
    *
    * @return
    * publish channels
@@ -553,7 +553,7 @@ public class ExportHandler
   }
 
   /**
-   * Publishes a real estate at the Webservice.
+   * Publish a real estate at the Webservice.
    *
    * @param is24ObjectId
    * real estate ID by IS24
@@ -659,7 +659,7 @@ public class ExportHandler
   }
 
   /**
-   * Removes a real estate object from the Webservice.
+   * Remove a real estate object from the Webservice.
    *
    * @param externalObjectId
    * external real estate ID
@@ -705,7 +705,7 @@ public class ExportHandler
   }
 
   /**
-   * Removes a real estate object from the Webservice.
+   * Remove a real estate object from the Webservice.
    *
    * @param is24ObjectId
    * real estate ID by IS24
@@ -766,7 +766,7 @@ public class ExportHandler
   }
 
   /**
-   * Saves a contact person to the Webservice.
+   * Save a contact person to the Webservice.
    *
    * @param contact
    * contact to save
@@ -901,7 +901,7 @@ public class ExportHandler
   }
 
   /**
-   * Saves a real estate to the Webservice.
+   * Save a real estate to the Webservice.
    *
    * @param object
    * real estate to save
@@ -1528,7 +1528,7 @@ public class ExportHandler
   }
 
   /**
-   * Saves a real estate to the Webservice.
+   * Save a real estate to the Webservice.
    *
    * @param object
    * real estate to save
@@ -1558,7 +1558,7 @@ public class ExportHandler
   }
 
   /**
-   * Starts the export of an {@link ExportPool}.
+   * Start the bulk export of an {@link ExportPool}.
    *
    * @param client
    * client, that is used for transfers
@@ -1753,7 +1753,7 @@ public class ExportHandler
   }
 
   /**
-   * Returns the client of the current export process.
+   * Return the client of the current export process.
    *
    * @return
    * client
@@ -1764,7 +1764,7 @@ public class ExportHandler
   }
 
   /**
-   * Returns messages, that occured during the last export process.
+   * Return messages, that occured during the last export process.
    *
    * @return
    * messages
@@ -1775,7 +1775,7 @@ public class ExportHandler
   }
 
   /**
-   * Returns messages for a certain contact person, that occured during the last
+   * Return messages for a certain contact person, that occured during the last
    * export process.
    *
    * @param externalContactId
@@ -1797,7 +1797,7 @@ public class ExportHandler
   }
 
   /**
-   * Returns messages for a certain real estate, that occured during the last
+   * Return messages for a certain real estate, that occured during the last
    * export process.
    *
    * @param externalObjectId
@@ -1819,7 +1819,7 @@ public class ExportHandler
   }
 
   /**
-   * Returns general messages, that occured during the last export process.
+   * Return general messages, that occured during the last export process.
    *
    * @return
    * messages
@@ -1835,7 +1835,7 @@ public class ExportHandler
   }
 
   /**
-   * Returns the pool of the current export process.
+   * Return the {@link ExportPool} of the current export process.
    *
    * @return
    * pool
@@ -1846,7 +1846,7 @@ public class ExportHandler
   }
 
   /**
-   * Returns the progress of the current export process.
+   * Return the progress of the current export process.
    *
    * @return
    * current progress value
@@ -1857,7 +1857,7 @@ public class ExportHandler
   }
 
   /**
-   * Returns the total progress of the current export process.
+   * Return the total progress of the current export process.
    *
    * @return
    * total progress value
@@ -1868,7 +1868,7 @@ public class ExportHandler
   }
 
   /**
-   * Checks, if all values for "energySourceEnev2014" are enabled.
+   * Check, if all values for "energySourceEnev2014" are enabled.
    *
    * @return
    * true, if all values for "energySourceEnev2014" are enabled
@@ -1881,7 +1881,7 @@ public class ExportHandler
   }
 
   /**
-   * Sends {@link Messages} from a Webservice response to the local logger.
+   * Send {@link Messages} from a Webservice response to the local logger.
    *
    * @param messages
    * messages
@@ -1912,7 +1912,7 @@ public class ExportHandler
   }
 
   /**
-   * Registers a message for a contact person.
+   * Register a message for a contact person.
    *
    * @param externalContactId
    * external contact ID
@@ -1929,7 +1929,7 @@ public class ExportHandler
   }
 
   /**
-   * Registers a message for a contact person.
+   * Register a message for a contact person.
    *
    * @param externalContactId
    * external contact ID
@@ -1949,7 +1949,7 @@ public class ExportHandler
   }
 
   /**
-   * Registers error messages for a contact person.
+   * Register error messages for a contact person.
    *
    * @param externalContactId
    * external contact ID
@@ -1981,7 +1981,7 @@ public class ExportHandler
   }
 
   /**
-   * Registers a general message.
+   * Register a general message.
    *
    * @param code
    * message code
@@ -1995,7 +1995,7 @@ public class ExportHandler
   }
 
   /**
-   * Registers a general message.
+   * Register a general message.
    *
    * @param code
    * message code
@@ -2012,7 +2012,7 @@ public class ExportHandler
   }
 
   /**
-   * Registers general error messages.
+   * Register general error messages.
    *
    * @param code
    * message code
@@ -2041,7 +2041,7 @@ public class ExportHandler
   }
 
   /**
-   * Registers a message for a real estate.
+   * Register a message for a real estate.
    *
    * @param externalObjectId
    * external real estate ID
@@ -2058,7 +2058,7 @@ public class ExportHandler
   }
 
   /**
-   * Registers a message for a real estate.
+   * Register a message for a real estate.
    *
    * @param externalObjectId
    * external real estate ID
@@ -2078,7 +2078,7 @@ public class ExportHandler
   }
 
   /**
-   * Registers error messages for a real estate.
+   * Register error messages for a real estate.
    *
    * @param externalObjectId
    * external real estate ID
@@ -2110,7 +2110,7 @@ public class ExportHandler
   }
 
   /**
-   * Sets the progress of the current export process.
+   * Set the progress of the current export process.
    *
    * @param progress
    * current progress value
@@ -2126,7 +2126,7 @@ public class ExportHandler
   }
 
   /**
-   * Enables / disables all values for "energySourceEnev2014".
+   * Enable / disable all values for "energySourceEnev2014".
    *
    * @param useNewEnergySourceEnev2014Values
    * enabled / disabled
