@@ -11,31 +11,31 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="RealEstateType">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="APARTMENT_RENT"/>
- *     &lt;enumeration value="APARTMENT_BUY"/>
- *     &lt;enumeration value="HOUSE_RENT"/>
- *     &lt;enumeration value="HOUSE_BUY"/>
- *     &lt;enumeration value="GARAGE_RENT"/>
- *     &lt;enumeration value="GARAGE_BUY"/>
- *     &lt;enumeration value="LIVING_RENT_SITE"/>
- *     &lt;enumeration value="LIVING_BUY_SITE"/>
- *     &lt;enumeration value="TRADE_SITE"/>
- *     &lt;enumeration value="HOUSE_TYPE"/>
- *     &lt;enumeration value="FLAT_SHARE_ROOM"/>
- *     &lt;enumeration value="SENIOR_CARE"/>
- *     &lt;enumeration value="ASSISTED_LIVING"/>
- *     &lt;enumeration value="OFFICE"/>
- *     &lt;enumeration value="INDUSTRY"/>
- *     &lt;enumeration value="STORE"/>
- *     &lt;enumeration value="GASTRONOMY"/>
- *     &lt;enumeration value="SPECIAL_PURPOSE"/>
- *     &lt;enumeration value="INVESTMENT"/>
- *     &lt;enumeration value="COMPULSORY_AUCTION"/>
- *     &lt;enumeration value="SHORT_TERM_ACCOMMODATION"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="RealEstateType"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="APARTMENT_RENT"/&gt;
+ *     &lt;enumeration value="APARTMENT_BUY"/&gt;
+ *     &lt;enumeration value="HOUSE_RENT"/&gt;
+ *     &lt;enumeration value="HOUSE_BUY"/&gt;
+ *     &lt;enumeration value="GARAGE_RENT"/&gt;
+ *     &lt;enumeration value="GARAGE_BUY"/&gt;
+ *     &lt;enumeration value="LIVING_RENT_SITE"/&gt;
+ *     &lt;enumeration value="LIVING_BUY_SITE"/&gt;
+ *     &lt;enumeration value="TRADE_SITE"/&gt;
+ *     &lt;enumeration value="HOUSE_TYPE"/&gt;
+ *     &lt;enumeration value="FLAT_SHARE_ROOM"/&gt;
+ *     &lt;enumeration value="SENIOR_CARE"/&gt;
+ *     &lt;enumeration value="ASSISTED_LIVING"/&gt;
+ *     &lt;enumeration value="OFFICE"/&gt;
+ *     &lt;enumeration value="INDUSTRY"/&gt;
+ *     &lt;enumeration value="STORE"/&gt;
+ *     &lt;enumeration value="GASTRONOMY"/&gt;
+ *     &lt;enumeration value="SPECIAL_PURPOSE"/&gt;
+ *     &lt;enumeration value="INVESTMENT"/&gt;
+ *     &lt;enumeration value="COMPULSORY_AUCTION"/&gt;
+ *     &lt;enumeration value="SHORT_TERM_ACCOMMODATION"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  * 
  */

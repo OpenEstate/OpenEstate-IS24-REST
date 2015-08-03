@@ -19,7 +19,7 @@ import org.jvnet.jaxb2_commons.lang.ToString;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
-import org.openestate.is24.restapi.xml.Adapter3;
+import org.openestate.is24.restapi.xml.Adapter2;
 import org.openestate.is24.restapi.xml.common.BuildingEnergyRatingType;
 import org.openestate.is24.restapi.xml.common.CompulsoryAuctionType;
 import org.openestate.is24.restapi.xml.common.CountyCourt;
@@ -38,15 +38,15 @@ import org.openestate.is24.restapi.xml.common.YesNotApplicableType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="CompulsoryAuction">
- *   &lt;complexContent>
- *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/realestates/1.0}RealEstate">
- *       &lt;sequence>
- *         &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}ExtendedCompulsoryAuctionGroup"/>
- *       &lt;/sequence>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="CompulsoryAuction"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/realestates/1.0}RealEstate"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}ExtendedCompulsoryAuctionGroup"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/extension&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -87,43 +87,47 @@ public class CompulsoryAuction
     @XmlElement(defaultValue = "false")
     protected Boolean recurrenceAppointment;
     @XmlElement(required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlJavaTypeAdapter(Adapter2 .class)
     @XmlSchemaType(name = "date")
     protected Calendar dateOfAuction;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlJavaTypeAdapter(Adapter2 .class)
     @XmlSchemaType(name = "date")
     protected Calendar lastChangeDate;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlJavaTypeAdapter(Adapter2 .class)
     @XmlSchemaType(name = "date")
     protected Calendar cancellationDate;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlJavaTypeAdapter(Adapter2 .class)
     @XmlSchemaType(name = "date")
     protected Calendar recordationDate;
     protected double area;
     @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
     protected CompulsoryAuctionType auctionObjectType;
     protected CountyCourt countyCourt;
-    @XmlJavaTypeAdapter(Adapter10 .class)
+    @XmlJavaTypeAdapter(Adapter4 .class)
     protected String fileReferenceAtCountyCourt;
-    @XmlJavaTypeAdapter(Adapter11 .class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
     protected String numberOfFolio;
     @XmlElement(defaultValue = "false")
     protected Boolean splittingAuction;
-    @XmlJavaTypeAdapter(Adapter12 .class)
+    @XmlJavaTypeAdapter(Adapter6 .class)
     protected String owner;
     protected EnergyPerformanceCertificate energyCertificate;
+    @XmlSchemaType(name = "string")
     protected HeatingTypeEnev2014 heatingTypeEnev2014;
     protected EnergySourcesEnev2014 energySourcesEnev2014;
+    @XmlSchemaType(name = "string")
     protected BuildingEnergyRatingType buildingEnergyRatingType;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter13 .class)
+    @XmlJavaTypeAdapter(Adapter7 .class)
     protected Double thermalCharacteristic;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType energyConsumptionContainsWarmWater;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter14 .class)
+    @XmlJavaTypeAdapter(Adapter8 .class)
     protected Integer constructionYear;
     protected Boolean constructionYearUnknown;
 

@@ -11,13 +11,13 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="EnergyCertificateAvailability">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="AVAILABLE"/>
- *     &lt;enumeration value="NOT_AVAILABLE_YET"/>
- *     &lt;enumeration value="NOT_REQUIRED"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="EnergyCertificateAvailability"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="AVAILABLE"/&gt;
+ *     &lt;enumeration value="NOT_AVAILABLE_YET"/&gt;
+ *     &lt;enumeration value="NOT_REQUIRED"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  * 
  */

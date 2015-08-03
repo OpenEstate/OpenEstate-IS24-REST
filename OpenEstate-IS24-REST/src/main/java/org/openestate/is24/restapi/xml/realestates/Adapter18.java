@@ -4,16 +4,16 @@ package org.openestate.is24.restapi.xml.realestates;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 public class Adapter18
-    extends XmlAdapter<String, Integer>
+    extends XmlAdapter<String, Double>
 {
 
 
-    public Integer unmarshal(String value) {
-        return (org.openestate.is24.restapi.utils.XmlUtils.parseFloorNr(value));
+    public Double unmarshal(String value) {
+        return (org.openestate.is24.restapi.utils.XmlUtils.parseThermalCharacteristic(value));
     }
 
-    public String marshal(Integer value) {
-        return (org.openestate.is24.restapi.utils.XmlUtils.printFloorNr(value));
+    public String marshal(Double value) {
+        return (org.openestate.is24.restapi.utils.XmlUtils.printThermalCharacteristic(value));
     }
 
 }

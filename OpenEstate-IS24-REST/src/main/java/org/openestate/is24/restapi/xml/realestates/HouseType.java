@@ -4,6 +4,7 @@ package org.openestate.is24.restapi.xml.realestates;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import org.jvnet.jaxb2_commons.lang.CopyStrategy;
 import org.jvnet.jaxb2_commons.lang.CopyTo;
@@ -32,15 +33,15 @@ import org.openestate.is24.restapi.xml.common.Price;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="HouseType">
- *   &lt;complexContent>
- *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/realestates/1.0}RealEstate">
- *       &lt;sequence>
- *         &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}ExtendedHouseTypeGroup"/>
- *       &lt;/sequence>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="HouseType"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/realestates/1.0}RealEstate"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}ExtendedHouseTypeGroup"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/extension&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -76,10 +77,14 @@ public class HouseType
     protected Double baseArea;
     protected Double numberOfRooms;
     protected CourtageInfo courtage;
+    @XmlSchemaType(name = "string")
     protected HouseTypeConstructionMethodType constructionMethod;
     @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
     protected HouseTypeBuildingType buildingType;
+    @XmlSchemaType(name = "string")
     protected HouseTypeStageOfCompletionType stageOfCompletionType;
+    @XmlSchemaType(name = "string")
     protected HouseTypeEnergyStandardType energyStandardType;
     protected Double uValue;
     protected String typeInformationNote;

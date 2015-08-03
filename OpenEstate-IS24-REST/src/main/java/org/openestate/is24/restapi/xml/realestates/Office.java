@@ -6,6 +6,7 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.jvnet.jaxb2_commons.lang.CopyStrategy;
@@ -19,7 +20,7 @@ import org.jvnet.jaxb2_commons.lang.ToString;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
-import org.openestate.is24.restapi.xml.common.Adapter5;
+import org.openestate.is24.restapi.xml.common.Adapter2;
 import org.openestate.is24.restapi.xml.common.AirConditioningType;
 import org.openestate.is24.restapi.xml.common.BuildingEnergyRatingType;
 import org.openestate.is24.restapi.xml.common.CommercializationType;
@@ -47,15 +48,15 @@ import org.openestate.is24.restapi.xml.common.YesNotApplicableType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="Office">
- *   &lt;complexContent>
- *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/realestates/1.0}RealEstate">
- *       &lt;sequence>
- *         &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}ExtendedOfficeGroup"/>
- *       &lt;/sequence>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="Office"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/realestates/1.0}RealEstate"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}ExtendedOfficeGroup"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/extension&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -112,19 +113,30 @@ public class Office
 {
 
     @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
     protected OfficeType officeType;
     @XmlElement(defaultValue = "NOT_APPLICABLE")
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType lift;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType cellar;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType handicappedAccessible;
+    @XmlSchemaType(name = "string")
     protected FlooringType flooringType;
-    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlJavaTypeAdapter(Adapter2 .class)
     protected String deposit;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType hasCanteen;
+    @XmlSchemaType(name = "string")
     protected ItInfrastructureType lanCables;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType highVoltage;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType kitchenComplete;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType listed;
+    @XmlSchemaType(name = "string")
     protected AirConditioningType airConditioning;
     protected Office.OfficeRentDurations officeRentDurations;
     protected EnergyPerformanceCertificate energyCertificate;
@@ -132,27 +144,34 @@ public class Office
     protected Integer distanceToFM;
     protected Integer distanceToPT;
     protected Integer distanceToAirport;
+    @XmlSchemaType(name = "string")
     protected RealEstateCondition condition;
     protected Integer numberOfParkingSpaces;
     protected Double parkingSpacePrice;
     protected Integer lastRefurbishment;
+    @XmlSchemaType(name = "string")
     protected InteriorQuality interiorQuality;
     protected Integer constructionYear;
     protected Boolean constructionYearUnknown;
     protected String freeFrom;
+    @XmlSchemaType(name = "string")
     @Deprecated
     protected HeatingType heatingType;
+    @XmlSchemaType(name = "string")
     protected HeatingTypeEnev2014 heatingTypeEnev2014;
     @Deprecated
     protected FiringTypes firingTypes;
     protected EnergySourcesEnev2014 energySourcesEnev2014;
     protected Double thermalCharacteristic;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType energyConsumptionContainsWarmWater;
+    @XmlSchemaType(name = "string")
     protected BuildingEnergyRatingType buildingEnergyRatingType;
     protected Double additionalArea;
     protected String numberOfFloors;
     protected Price additionalCosts;
     @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
     protected CommercializationType commercializationType;
     @XmlElement(required = true)
     protected Price price;
@@ -2212,15 +2231,15 @@ public class Office
      * <p>The following schema fragment specifies the expected content contained within this class.
      * 
      * <pre>
-     * &lt;complexType>
-     *   &lt;complexContent>
-     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-     *       &lt;sequence>
-     *         &lt;element name="officeRentDuration" type="{http://rest.immobilienscout24.de/schema/common/1.0}OfficeRentDuration" maxOccurs="4" minOccurs="0"/>
-     *       &lt;/sequence>
-     *     &lt;/restriction>
-     *   &lt;/complexContent>
-     * &lt;/complexType>
+     * &lt;complexType&gt;
+     *   &lt;complexContent&gt;
+     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+     *       &lt;sequence&gt;
+     *         &lt;element name="officeRentDuration" type="{http://rest.immobilienscout24.de/schema/common/1.0}OfficeRentDuration" maxOccurs="4" minOccurs="0"/&gt;
+     *       &lt;/sequence&gt;
+     *     &lt;/restriction&gt;
+     *   &lt;/complexContent&gt;
+     * &lt;/complexType&gt;
      * </pre>
      * 
      * 
@@ -2233,6 +2252,7 @@ public class Office
         implements Cloneable, CopyTo, Equals, ToString
     {
 
+        @XmlSchemaType(name = "string")
         protected List<OfficeRentDuration> officeRentDuration;
 
         /**

@@ -19,7 +19,7 @@ import org.jvnet.jaxb2_commons.lang.ToString;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
-import org.openestate.is24.restapi.xml.Adapter3;
+import org.openestate.is24.restapi.xml.Adapter2;
 import org.openestate.is24.restapi.xml.common.BalconyAvailableType;
 import org.openestate.is24.restapi.xml.common.CareLevelExpose;
 import org.openestate.is24.restapi.xml.common.CareTypes;
@@ -37,15 +37,15 @@ import org.openestate.is24.restapi.xml.common.YesNotApplicableType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="SeniorCare">
- *   &lt;complexContent>
- *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/realestates/1.0}RealEstate">
- *       &lt;sequence>
- *         &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}ExtendedSeniorCareGroup"/>
- *       &lt;/sequence>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="SeniorCare"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/realestates/1.0}RealEstate"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}ExtendedSeniorCareGroup"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/extension&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -96,45 +96,71 @@ public class SeniorCare
 
     protected String shortDescription;
     @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
     protected PetsAllowedType petsAllowed;
     @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType trialLivingPossible;
     @XmlElement(required = true)
     protected CareTypes careTypes;
     @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
     protected CareLevelExpose careLevel;
     protected Price price;
     protected Integer numberOfBeds;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlJavaTypeAdapter(Adapter2 .class)
     @XmlSchemaType(name = "date")
     protected Calendar opening;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType careOfDementia;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType careOfArtificialRespiration;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType careOfComaVigil;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType careOfStroke;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType careOfParkinson;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType careOfAlzheimer;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType careOfMultipleSclerosis;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType kitchenAvailable;
+    @XmlSchemaType(name = "string")
     protected RoomType roomType;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType therapyOfferingsAvailable;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType barrierFree;
     protected Integer numberOfLookedAfterApartments;
     protected Integer numberOfNursingPlaces;
     protected Double livingSpaceFrom;
     protected Double livingSpaceTo;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType handicappedAccessible;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType guestApartmentsAvailable;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType restaurantAvailable;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType cookingFacilitiesAvailable;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType ownFurniturePossible;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType cleaningServiceAvailable;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType shoppingFacilitiesAvailable;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType security24Hours;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType culturalProgramAvailable;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType leisureActivitiesAvailable;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType religiousOfferingsAvailable;
+    @XmlSchemaType(name = "string")
     protected BalconyAvailableType balconyAvailable;
     @XmlElement(defaultValue = "false")
     protected Boolean branchEntry;

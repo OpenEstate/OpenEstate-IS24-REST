@@ -12,24 +12,24 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="PictureScaleType">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="SCALE_60x40"/>
- *     &lt;enumeration value="SCALE_60x60"/>
- *     &lt;enumeration value="SCALE_73x73"/>
- *     &lt;enumeration value="SCALE_118x118"/>
- *     &lt;enumeration value="SCALE_155x40"/>
- *     &lt;enumeration value="SCALE_200x200"/>
- *     &lt;enumeration value="SCALE_210x210"/>
- *     &lt;enumeration value="SCALE_300x300"/>
- *     &lt;enumeration value="SCALE_400x300"/>
- *     &lt;enumeration value="SCALE_540x540"/>
- *     &lt;enumeration value="SCALE_1000x1000"/>
- *     &lt;enumeration value="SCALE_AND_CROP"/>
- *     &lt;enumeration value="SCALE"/>
- *     &lt;enumeration value="WHITE_FILLING"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="PictureScaleType"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="SCALE_60x40"/&gt;
+ *     &lt;enumeration value="SCALE_60x60"/&gt;
+ *     &lt;enumeration value="SCALE_73x73"/&gt;
+ *     &lt;enumeration value="SCALE_118x118"/&gt;
+ *     &lt;enumeration value="SCALE_155x40"/&gt;
+ *     &lt;enumeration value="SCALE_200x200"/&gt;
+ *     &lt;enumeration value="SCALE_210x210"/&gt;
+ *     &lt;enumeration value="SCALE_300x300"/&gt;
+ *     &lt;enumeration value="SCALE_400x300"/&gt;
+ *     &lt;enumeration value="SCALE_540x540"/&gt;
+ *     &lt;enumeration value="SCALE_1000x1000"/&gt;
+ *     &lt;enumeration value="SCALE_AND_CROP"/&gt;
+ *     &lt;enumeration value="SCALE"/&gt;
+ *     &lt;enumeration value="WHITE_FILLING"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  * 
  */

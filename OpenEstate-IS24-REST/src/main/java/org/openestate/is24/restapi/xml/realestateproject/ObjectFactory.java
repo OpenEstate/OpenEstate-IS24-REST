@@ -24,10 +24,10 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _RealEstateProjectEntry_QNAME = new QName("http://rest.immobilienscout24.de/schema/offer/realestateproject/1.0", "realEstateProjectEntry");
-    private final static QName _RealEstateProjectEntries_QNAME = new QName("http://rest.immobilienscout24.de/schema/offer/realestateproject/1.0", "realEstateProjectEntries");
     private final static QName _RealEstateProjects_QNAME = new QName("http://rest.immobilienscout24.de/schema/offer/realestateproject/1.0", "realEstateProjects");
     private final static QName _RealEstateProject_QNAME = new QName("http://rest.immobilienscout24.de/schema/offer/realestateproject/1.0", "realEstateProject");
+    private final static QName _RealEstateProjectEntries_QNAME = new QName("http://rest.immobilienscout24.de/schema/offer/realestateproject/1.0", "realEstateProjectEntries");
+    private final static QName _RealEstateProjectEntry_QNAME = new QName("http://rest.immobilienscout24.de/schema/offer/realestateproject/1.0", "realEstateProjectEntry");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: org.openestate.is24.restapi.xml.realestateproject
@@ -45,11 +45,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link RealEstateProjectEntry }
+     * Create an instance of {@link RealEstateProject }
      * 
      */
-    public RealEstateProjectEntry createRealEstateProjectEntry() {
-        return new RealEstateProjectEntry();
+    public RealEstateProject createRealEstateProject() {
+        return new RealEstateProject();
     }
 
     /**
@@ -61,29 +61,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link RealEstateProject }
+     * Create an instance of {@link RealEstateProjectEntry }
      * 
      */
-    public RealEstateProject createRealEstateProject() {
-        return new RealEstateProject();
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RealEstateProjectEntry }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://rest.immobilienscout24.de/schema/offer/realestateproject/1.0", name = "realEstateProjectEntry")
-    public JAXBElement<RealEstateProjectEntry> createRealEstateProjectEntry(RealEstateProjectEntry value) {
-        return new JAXBElement<RealEstateProjectEntry>(_RealEstateProjectEntry_QNAME, RealEstateProjectEntry.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RealEstateProjectEntries }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://rest.immobilienscout24.de/schema/offer/realestateproject/1.0", name = "realEstateProjectEntries")
-    public JAXBElement<RealEstateProjectEntries> createRealEstateProjectEntries(RealEstateProjectEntries value) {
-        return new JAXBElement<RealEstateProjectEntries>(_RealEstateProjectEntries_QNAME, RealEstateProjectEntries.class, null, value);
+    public RealEstateProjectEntry createRealEstateProjectEntry() {
+        return new RealEstateProjectEntry();
     }
 
     /**
@@ -102,6 +84,24 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://rest.immobilienscout24.de/schema/offer/realestateproject/1.0", name = "realEstateProject")
     public JAXBElement<RealEstateProject> createRealEstateProject(RealEstateProject value) {
         return new JAXBElement<RealEstateProject>(_RealEstateProject_QNAME, RealEstateProject.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link RealEstateProjectEntries }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://rest.immobilienscout24.de/schema/offer/realestateproject/1.0", name = "realEstateProjectEntries")
+    public JAXBElement<RealEstateProjectEntries> createRealEstateProjectEntries(RealEstateProjectEntries value) {
+        return new JAXBElement<RealEstateProjectEntries>(_RealEstateProjectEntries_QNAME, RealEstateProjectEntries.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link RealEstateProjectEntry }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://rest.immobilienscout24.de/schema/offer/realestateproject/1.0", name = "realEstateProjectEntry")
+    public JAXBElement<RealEstateProjectEntry> createRealEstateProjectEntry(RealEstateProjectEntry value) {
+        return new JAXBElement<RealEstateProjectEntry>(_RealEstateProjectEntry_QNAME, RealEstateProjectEntry.class, null, value);
     }
 
 }

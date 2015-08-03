@@ -11,14 +11,14 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="LocationClassificationType">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="NO_INFORMATION"/>
- *     &lt;enumeration value="CLASSIFICATION_A"/>
- *     &lt;enumeration value="CLASSIFICATION_B"/>
- *     &lt;enumeration value="SHOPPING_CENTRE"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="LocationClassificationType"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="NO_INFORMATION"/&gt;
+ *     &lt;enumeration value="CLASSIFICATION_A"/&gt;
+ *     &lt;enumeration value="CLASSIFICATION_B"/&gt;
+ *     &lt;enumeration value="SHOPPING_CENTRE"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  * 
  */

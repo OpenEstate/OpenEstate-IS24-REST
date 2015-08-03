@@ -29,24 +29,24 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="RadiusCriteria">
- *   &lt;complexContent>
- *     &lt;extension base="{http://rest.immobilienscout24.de/schema/common/1.0}AbstractGeoCriteria">
- *       &lt;all>
- *         &lt;element name="wgs84" type="{http://rest.immobilienscout24.de/schema/common/1.0}Wgs84Coordinate"/>
- *         &lt;element name="radiusKm">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}double">
- *               &lt;minExclusive value="0"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
- *         &lt;element name="label" type="{http://rest.immobilienscout24.de/schema/common/1.0}TextField" minOccurs="0"/>
- *         &lt;element name="address" type="{http://rest.immobilienscout24.de/schema/common/1.0}Address" minOccurs="0"/>
- *       &lt;/all>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="RadiusCriteria"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;extension base="{http://rest.immobilienscout24.de/schema/common/1.0}AbstractGeoCriteria"&gt;
+ *       &lt;all&gt;
+ *         &lt;element name="wgs84" type="{http://rest.immobilienscout24.de/schema/common/1.0}Wgs84Coordinate"/&gt;
+ *         &lt;element name="radiusKm"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}double"&gt;
+ *               &lt;minExclusive value="0"/&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="label" type="{http://rest.immobilienscout24.de/schema/common/1.0}TextField" minOccurs="0"/&gt;
+ *         &lt;element name="address" type="{http://rest.immobilienscout24.de/schema/common/1.0}Address" minOccurs="0"/&gt;
+ *       &lt;/all&gt;
+ *     &lt;/extension&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -66,7 +66,7 @@ public class RadiusCriteria
     @XmlElement(required = true)
     protected Wgs84Coordinate wgs84;
     @XmlElement(required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter49 .class)
+    @XmlJavaTypeAdapter(Adapter26 .class)
     protected Double radiusKm;
     protected String label;
     protected Address address;

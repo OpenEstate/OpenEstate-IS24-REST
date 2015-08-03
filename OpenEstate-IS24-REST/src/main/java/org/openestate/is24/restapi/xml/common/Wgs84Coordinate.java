@@ -27,30 +27,30 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="Wgs84Coordinate">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="latitude">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}double">
- *               &lt;minInclusive value="-90.0"/>
- *               &lt;maxInclusive value="90.0"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
- *         &lt;element name="longitude">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}double">
- *               &lt;minInclusive value="-180.0"/>
- *               &lt;maxInclusive value="180.0"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="Wgs84Coordinate"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="latitude"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}double"&gt;
+ *               &lt;minInclusive value="-90.0"/&gt;
+ *               &lt;maxInclusive value="90.0"/&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="longitude"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}double"&gt;
+ *               &lt;minInclusive value="-180.0"/&gt;
+ *               &lt;maxInclusive value="180.0"/&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -65,10 +65,10 @@ public class Wgs84Coordinate
 {
 
     @XmlElement(required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter52 .class)
+    @XmlJavaTypeAdapter(Adapter59 .class)
     protected Double latitude;
     @XmlElement(required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter53 .class)
+    @XmlJavaTypeAdapter(Adapter60 .class)
     protected Double longitude;
 
     /**

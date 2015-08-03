@@ -11,19 +11,19 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="StoreType">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="SHOWROOM_SPACE"/>
- *     &lt;enumeration value="SHOPPING_CENTRE"/>
- *     &lt;enumeration value="FACTORY_OUTLET"/>
- *     &lt;enumeration value="DEPARTMENT_STORE"/>
- *     &lt;enumeration value="KIOSK"/>
- *     &lt;enumeration value="STORE"/>
- *     &lt;enumeration value="SELF_SERVICE_MARKET"/>
- *     &lt;enumeration value="SALES_AREA"/>
- *     &lt;enumeration value="SALES_HALL"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="StoreType"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="SHOWROOM_SPACE"/&gt;
+ *     &lt;enumeration value="SHOPPING_CENTRE"/&gt;
+ *     &lt;enumeration value="FACTORY_OUTLET"/&gt;
+ *     &lt;enumeration value="DEPARTMENT_STORE"/&gt;
+ *     &lt;enumeration value="KIOSK"/&gt;
+ *     &lt;enumeration value="STORE"/&gt;
+ *     &lt;enumeration value="SELF_SERVICE_MARKET"/&gt;
+ *     &lt;enumeration value="SALES_AREA"/&gt;
+ *     &lt;enumeration value="SALES_HALL"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  * 
  */

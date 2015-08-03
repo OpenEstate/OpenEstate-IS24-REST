@@ -24,28 +24,28 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="CountyCourt">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;all>
- *         &lt;element name="courtNumber" minOccurs="0">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://rest.immobilienscout24.de/schema/common/1.0}TextField">
- *               &lt;maxLength value="16"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
- *         &lt;element name="name" minOccurs="0">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://rest.immobilienscout24.de/schema/common/1.0}TextField">
- *               &lt;maxLength value="40"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
- *       &lt;/all>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="CountyCourt"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;all&gt;
+ *         &lt;element name="courtNumber" minOccurs="0"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://rest.immobilienscout24.de/schema/common/1.0}TextField"&gt;
+ *               &lt;maxLength value="16"/&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="name" minOccurs="0"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://rest.immobilienscout24.de/schema/common/1.0}TextField"&gt;
+ *               &lt;maxLength value="40"/&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *       &lt;/all&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -58,9 +58,9 @@ public class CountyCourt
     implements Cloneable, CopyTo, Equals, ToString
 {
 
-    @XmlJavaTypeAdapter(Adapter15 .class)
+    @XmlJavaTypeAdapter(Adapter29 .class)
     protected String courtNumber;
-    @XmlJavaTypeAdapter(Adapter16 .class)
+    @XmlJavaTypeAdapter(Adapter30 .class)
     protected String name;
 
     /**

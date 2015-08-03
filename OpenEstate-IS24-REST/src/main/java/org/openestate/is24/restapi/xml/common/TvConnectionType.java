@@ -11,14 +11,14 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="TvConnectionType">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="NO_INFORMATION"/>
- *     &lt;enumeration value="CABLE"/>
- *     &lt;enumeration value="SATELLITE"/>
- *     &lt;enumeration value="CABLE_AND_SATELLITE"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="TvConnectionType"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="NO_INFORMATION"/&gt;
+ *     &lt;enumeration value="CABLE"/&gt;
+ *     &lt;enumeration value="SATELLITE"/&gt;
+ *     &lt;enumeration value="CABLE_AND_SATELLITE"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  * 
  */

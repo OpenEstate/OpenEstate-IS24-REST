@@ -29,13 +29,13 @@ import org.openestate.is24.restapi.xml.common.Price;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="OfferLivingBuySite">
- *   &lt;complexContent>
- *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/listelement/1.0}OfferRealEstateForList">
- *       &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}BaseLivingBuySiteGroup"/>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="OfferLivingBuySite"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/listelement/1.0}OfferRealEstateForList"&gt;
+ *       &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}BaseLivingBuySiteGroup"/&gt;
+ *     &lt;/extension&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 

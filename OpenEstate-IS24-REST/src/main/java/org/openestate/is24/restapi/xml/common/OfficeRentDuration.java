@@ -11,14 +11,14 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="OfficeRentDuration">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="WEEKLY"/>
- *     &lt;enumeration value="MONTHLY"/>
- *     &lt;enumeration value="YEARLY"/>
- *     &lt;enumeration value="LONG_TERM"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="OfficeRentDuration"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="WEEKLY"/&gt;
+ *     &lt;enumeration value="MONTHLY"/&gt;
+ *     &lt;enumeration value="YEARLY"/&gt;
+ *     &lt;enumeration value="LONG_TERM"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  * 
  */

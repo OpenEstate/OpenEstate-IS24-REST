@@ -11,14 +11,14 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="CareType">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="STATIONARY_CARE"/>
- *     &lt;enumeration value="DAY_CARE"/>
- *     &lt;enumeration value="SHORT_TERM_CARE"/>
- *     &lt;enumeration value="RESPITE_CARE"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="CareType"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="STATIONARY_CARE"/&gt;
+ *     &lt;enumeration value="DAY_CARE"/&gt;
+ *     &lt;enumeration value="SHORT_TERM_CARE"/&gt;
+ *     &lt;enumeration value="RESPITE_CARE"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  * 
  */

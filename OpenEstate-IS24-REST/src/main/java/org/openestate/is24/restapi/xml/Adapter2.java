@@ -10,14 +10,11 @@ public class Adapter2
 
 
     public Calendar unmarshal(String value) {
-        return (javax.xml.bind.DatatypeConverter.parseDateTime(value));
+        return (org.openestate.is24.restapi.utils.XmlUtils.parseDate(value));
     }
 
     public String marshal(Calendar value) {
-        if (value == null) {
-            return null;
-        }
-        return (javax.xml.bind.DatatypeConverter.printDateTime(value));
+        return (org.openestate.is24.restapi.utils.XmlUtils.printDate(value));
     }
 
 }

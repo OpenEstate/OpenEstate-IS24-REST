@@ -4,16 +4,16 @@ package org.openestate.is24.restapi.xml.common;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 public class Adapter59
-    extends XmlAdapter<String, String>
+    extends XmlAdapter<String, Double>
 {
 
 
-    public String unmarshal(String value) {
-        return (org.openestate.is24.restapi.utils.XmlUtils.parseText2000(value));
+    public Double unmarshal(String value) {
+        return (org.openestate.is24.restapi.utils.XmlUtils.parseLatitude(value));
     }
 
-    public String marshal(String value) {
-        return (org.openestate.is24.restapi.utils.XmlUtils.printText2000(value));
+    public String marshal(Double value) {
+        return (org.openestate.is24.restapi.utils.XmlUtils.printLatitude(value));
     }
 
 }

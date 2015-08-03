@@ -26,16 +26,16 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="productRecommendation">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="product" type="{http://rest.immobilienscout24.de/schema/offer/productrecommondation/1.0}product" maxOccurs="unbounded"/>
- *         &lt;element name="recommendedProduct" type="{http://rest.immobilienscout24.de/schema/offer/productrecommondation/1.0}product"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="productRecommendation"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="product" type="{http://rest.immobilienscout24.de/schema/offer/productrecommondation/1.0}product" maxOccurs="unbounded"/&gt;
+ *         &lt;element name="recommendedProduct" type="{http://rest.immobilienscout24.de/schema/offer/productrecommondation/1.0}product"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 

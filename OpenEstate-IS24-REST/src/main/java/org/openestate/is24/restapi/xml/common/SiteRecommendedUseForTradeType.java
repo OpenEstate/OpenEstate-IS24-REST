@@ -11,32 +11,32 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="SiteRecommendedUseForTradeType">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="NO_INFORMATION"/>
- *     &lt;enumeration value="FARMLAND"/>
- *     &lt;enumeration value="FUTURE_DEVELOPMENT_LAND"/>
- *     &lt;enumeration value="MOORAGE"/>
- *     &lt;enumeration value="OFFICE"/>
- *     &lt;enumeration value="CAMPING"/>
- *     &lt;enumeration value="BIG_STORE"/>
- *     &lt;enumeration value="LITTLE_STORE"/>
- *     &lt;enumeration value="GARAGE"/>
- *     &lt;enumeration value="GARDEN"/>
- *     &lt;enumeration value="GASTRONOMY"/>
- *     &lt;enumeration value="BUSINESS"/>
- *     &lt;enumeration value="HOTEL"/>
- *     &lt;enumeration value="INDUSTRY"/>
- *     &lt;enumeration value="NO_DEVELOPMENT"/>
- *     &lt;enumeration value="SMALL_BUSINESS"/>
- *     &lt;enumeration value="STOCK"/>
- *     &lt;enumeration value="ORCHARD"/>
- *     &lt;enumeration value="CAR_PARK"/>
- *     &lt;enumeration value="PRODUCTION"/>
- *     &lt;enumeration value="PARKING_SPACE"/>
- *     &lt;enumeration value="FORREST"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="SiteRecommendedUseForTradeType"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="NO_INFORMATION"/&gt;
+ *     &lt;enumeration value="FARMLAND"/&gt;
+ *     &lt;enumeration value="FUTURE_DEVELOPMENT_LAND"/&gt;
+ *     &lt;enumeration value="MOORAGE"/&gt;
+ *     &lt;enumeration value="OFFICE"/&gt;
+ *     &lt;enumeration value="CAMPING"/&gt;
+ *     &lt;enumeration value="BIG_STORE"/&gt;
+ *     &lt;enumeration value="LITTLE_STORE"/&gt;
+ *     &lt;enumeration value="GARAGE"/&gt;
+ *     &lt;enumeration value="GARDEN"/&gt;
+ *     &lt;enumeration value="GASTRONOMY"/&gt;
+ *     &lt;enumeration value="BUSINESS"/&gt;
+ *     &lt;enumeration value="HOTEL"/&gt;
+ *     &lt;enumeration value="INDUSTRY"/&gt;
+ *     &lt;enumeration value="NO_DEVELOPMENT"/&gt;
+ *     &lt;enumeration value="SMALL_BUSINESS"/&gt;
+ *     &lt;enumeration value="STOCK"/&gt;
+ *     &lt;enumeration value="ORCHARD"/&gt;
+ *     &lt;enumeration value="CAR_PARK"/&gt;
+ *     &lt;enumeration value="PRODUCTION"/&gt;
+ *     &lt;enumeration value="PARKING_SPACE"/&gt;
+ *     &lt;enumeration value="FORREST"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  * 
  */

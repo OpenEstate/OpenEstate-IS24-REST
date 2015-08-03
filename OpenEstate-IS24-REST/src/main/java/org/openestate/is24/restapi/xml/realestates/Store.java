@@ -4,6 +4,7 @@ package org.openestate.is24.restapi.xml.realestates;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import org.jvnet.jaxb2_commons.lang.CopyStrategy;
 import org.jvnet.jaxb2_commons.lang.CopyTo;
@@ -42,15 +43,15 @@ import org.openestate.is24.restapi.xml.common.YesNotApplicableType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="Store">
- *   &lt;complexContent>
- *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/realestates/1.0}RealEstate">
- *       &lt;sequence>
- *         &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}ExtendedStoreGroup"/>
- *       &lt;/sequence>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="Store"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/realestates/1.0}RealEstate"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}ExtendedStoreGroup"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/extension&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -107,23 +108,33 @@ public class Store
     implements Cloneable, CopyTo, Equals, ToString
 {
 
+    @XmlSchemaType(name = "string")
     protected StoreType storeType;
+    @XmlSchemaType(name = "string")
     protected LocationClassificationType locationClassificationType;
     @Deprecated
     protected Double areaDivisibleFrom;
     protected Double shopWindowLength;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType listed;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType lift;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType goodsLift;
     protected Double goodsLiftLoad;
     protected Double floorLoad;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType ramp;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType cellar;
+    @XmlSchemaType(name = "string")
     protected SupplyType supplyType;
+    @XmlSchemaType(name = "string")
     protected FlooringType flooringType;
     protected String deposit;
     protected EnergyPerformanceCertificate energyCertificate;
     @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
     protected CommercializationType commercializationType;
     @XmlElement(required = true)
     protected Price price;
@@ -137,22 +148,28 @@ public class Store
     protected Integer distanceToFM;
     protected Integer distanceToPT;
     protected Integer distanceToAirport;
+    @XmlSchemaType(name = "string")
     protected RealEstateCondition condition;
     protected Integer numberOfParkingSpaces;
     protected Double parkingSpacePrice;
     protected Integer lastRefurbishment;
+    @XmlSchemaType(name = "string")
     protected InteriorQuality interiorQuality;
     protected Integer constructionYear;
     protected Boolean constructionYearUnknown;
     protected String freeFrom;
+    @XmlSchemaType(name = "string")
     @Deprecated
     protected HeatingType heatingType;
+    @XmlSchemaType(name = "string")
     protected HeatingTypeEnev2014 heatingTypeEnev2014;
     @Deprecated
     protected FiringTypes firingTypes;
     protected EnergySourcesEnev2014 energySourcesEnev2014;
     protected Double thermalCharacteristic;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType energyConsumptionContainsWarmWater;
+    @XmlSchemaType(name = "string")
     protected BuildingEnergyRatingType buildingEnergyRatingType;
     protected Double additionalArea;
     protected String numberOfFloors;

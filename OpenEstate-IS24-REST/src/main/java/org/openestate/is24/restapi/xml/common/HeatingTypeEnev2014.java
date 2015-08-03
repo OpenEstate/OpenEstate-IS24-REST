@@ -11,24 +11,24 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="HeatingTypeEnev2014">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="NO_INFORMATION"/>
- *     &lt;enumeration value="SELF_CONTAINED_CENTRAL_HEATING"/>
- *     &lt;enumeration value="STOVE_HEATING"/>
- *     &lt;enumeration value="CENTRAL_HEATING"/>
- *     &lt;enumeration value="COMBINED_HEAT_AND_POWER_PLANT"/>
- *     &lt;enumeration value="ELECTRIC_HEATING"/>
- *     &lt;enumeration value="DISTRICT_HEATING"/>
- *     &lt;enumeration value="FLOOR_HEATING"/>
- *     &lt;enumeration value="GAS_HEATING"/>
- *     &lt;enumeration value="WOOD_PELLET_HEATING"/>
- *     &lt;enumeration value="NIGHT_STORAGE_HEATER"/>
- *     &lt;enumeration value="OIL_HEATING"/>
- *     &lt;enumeration value="SOLAR_HEATING"/>
- *     &lt;enumeration value="HEAT_PUMP"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="HeatingTypeEnev2014"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="NO_INFORMATION"/&gt;
+ *     &lt;enumeration value="SELF_CONTAINED_CENTRAL_HEATING"/&gt;
+ *     &lt;enumeration value="STOVE_HEATING"/&gt;
+ *     &lt;enumeration value="CENTRAL_HEATING"/&gt;
+ *     &lt;enumeration value="COMBINED_HEAT_AND_POWER_PLANT"/&gt;
+ *     &lt;enumeration value="ELECTRIC_HEATING"/&gt;
+ *     &lt;enumeration value="DISTRICT_HEATING"/&gt;
+ *     &lt;enumeration value="FLOOR_HEATING"/&gt;
+ *     &lt;enumeration value="GAS_HEATING"/&gt;
+ *     &lt;enumeration value="WOOD_PELLET_HEATING"/&gt;
+ *     &lt;enumeration value="NIGHT_STORAGE_HEATER"/&gt;
+ *     &lt;enumeration value="OIL_HEATING"/&gt;
+ *     &lt;enumeration value="SOLAR_HEATING"/&gt;
+ *     &lt;enumeration value="HEAT_PUMP"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  * 
  */

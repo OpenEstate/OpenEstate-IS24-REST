@@ -20,6 +20,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 import org.openestate.is24.restapi.xml.common.BudgetPrice;
 import org.openestate.is24.restapi.xml.common.CourtageInfo;
 import org.openestate.is24.restapi.xml.common.Price;
+import org.openestate.is24.restapi.xml.realestates.Adapter20;
 
 
 /**
@@ -30,15 +31,15 @@ import org.openestate.is24.restapi.xml.common.Price;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="OfferHouseRent">
- *   &lt;complexContent>
- *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/listelement/1.0}OfferRealEstateForList">
- *       &lt;sequence>
- *         &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}BaseHouseRentGroup"/>
- *       &lt;/sequence>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="OfferHouseRent"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/listelement/1.0}OfferRealEstateForList"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}BaseHouseRentGroup"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/extension&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -63,7 +64,7 @@ public class OfferHouseRent
     protected double livingSpace;
     protected double plotArea;
     @XmlElement(required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlJavaTypeAdapter(Adapter20 .class)
     protected Double numberOfRooms;
     protected Boolean energyPerformanceCertificate;
     @XmlElement(required = true)

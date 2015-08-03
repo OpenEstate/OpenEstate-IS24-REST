@@ -246,12 +246,19 @@
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>jaxb2-maven-plugin</artifactId>
         <configuration>
-          <outputDirectory>${basedir}/src/main/java</outputDirectory>
           <bindingFiles>binding.xjb</bindingFiles>
+          <outputDirectory>${basedir}/src/main/java</outputDirectory>
           <clearOutputDir>false</clearOutputDir>
           <target>2.1</target>
           <extension>true</extension>
-          <arguments>-Xannotate -XtoString -Xcopyable -Xequals -no-header</arguments>
+          <generateEpisode>false</generateEpisode>
+          <noGeneratedHeaderComments>true</noGeneratedHeaderComments>
+          <arguments>
+            <argument>-Xannotate</argument>
+            <argument>-XtoString</argument>
+            <argument>-Xcopyable</argument>
+            <argument>-Xequals</argument>
+          </arguments>
         </configuration>
         <dependencies>
           <dependency>

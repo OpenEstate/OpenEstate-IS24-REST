@@ -11,14 +11,14 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="HeatingType">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="NO_INFORMATION"/>
- *     &lt;enumeration value="SELF_CONTAINED_CENTRAL_HEATING"/>
- *     &lt;enumeration value="STOVE_HEATING"/>
- *     &lt;enumeration value="CENTRAL_HEATING"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="HeatingType"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="NO_INFORMATION"/&gt;
+ *     &lt;enumeration value="SELF_CONTAINED_CENTRAL_HEATING"/&gt;
+ *     &lt;enumeration value="STOVE_HEATING"/&gt;
+ *     &lt;enumeration value="CENTRAL_HEATING"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  * 
  */

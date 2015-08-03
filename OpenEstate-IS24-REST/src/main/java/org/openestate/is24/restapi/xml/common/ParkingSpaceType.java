@@ -11,17 +11,17 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="ParkingSpaceType">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="NO_INFORMATION"/>
- *     &lt;enumeration value="GARAGE"/>
- *     &lt;enumeration value="OUTSIDE"/>
- *     &lt;enumeration value="CARPORT"/>
- *     &lt;enumeration value="DUPLEX"/>
- *     &lt;enumeration value="CAR_PARK"/>
- *     &lt;enumeration value="UNDERGROUND_GARAGE"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="ParkingSpaceType"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="NO_INFORMATION"/&gt;
+ *     &lt;enumeration value="GARAGE"/&gt;
+ *     &lt;enumeration value="OUTSIDE"/&gt;
+ *     &lt;enumeration value="CARPORT"/&gt;
+ *     &lt;enumeration value="DUPLEX"/&gt;
+ *     &lt;enumeration value="CAR_PARK"/&gt;
+ *     &lt;enumeration value="UNDERGROUND_GARAGE"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  * 
  */

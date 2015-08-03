@@ -19,7 +19,7 @@ import org.jvnet.jaxb2_commons.lang.ToString;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
-import org.openestate.is24.restapi.xml.Adapter3;
+import org.openestate.is24.restapi.xml.Adapter2;
 import org.openestate.is24.restapi.xml.common.BuildingEnergyRatingType;
 import org.openestate.is24.restapi.xml.common.CourtageInfo;
 import org.openestate.is24.restapi.xml.common.EnergyPerformanceCertificate;
@@ -45,15 +45,15 @@ import org.openestate.is24.restapi.xml.common.YesNotApplicableType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="ShortTermAccommodation">
- *   &lt;complexContent>
- *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/realestates/1.0}RealEstate">
- *       &lt;sequence>
- *         &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}ExtendedShortTermAccommodationGroup"/>
- *       &lt;/sequence>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="ShortTermAccommodation"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/realestates/1.0}RealEstate"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}ExtendedShortTermAccommodationGroup"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/extension&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -107,25 +107,32 @@ public class ShortTermAccommodation
 {
 
     protected Double baseRent;
+    @XmlSchemaType(name = "string")
     protected BuildingEnergyRatingType buildingEnergyRatingType;
     protected Boolean cellar;
+    @XmlSchemaType(name = "string")
     protected RealEstateCondition condition;
     protected String deposit;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlJavaTypeAdapter(Adapter2 .class)
     @XmlSchemaType(name = "date")
     protected Calendar endRentalDate;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType energyConsumptionContainsWarmWater;
     @Deprecated
     protected FiringTypes firingTypes;
     protected EnergySourcesEnev2014 energySourcesEnev2014;
     protected String floor;
+    @XmlSchemaType(name = "string")
     protected FlatMateGenderType gender;
     protected Boolean guestToilet;
     protected Boolean handicappedAccessible;
+    @XmlSchemaType(name = "string")
     protected YesNoNotApplicableType hasFurniture;
+    @XmlSchemaType(name = "string")
     @Deprecated
     protected HeatingType heatingType;
+    @XmlSchemaType(name = "string")
     protected HeatingTypeEnev2014 heatingTypeEnev2014;
     protected Boolean lift;
     protected Integer maxNumberOfPersons;
@@ -134,7 +141,9 @@ public class ShortTermAccommodation
     protected Integer numberOfFloors;
     protected Integer numberOfParkingSpaces;
     protected Double parkingSpacePrice;
+    @XmlSchemaType(name = "string")
     protected ParkingSpaceType parkingSpaceType;
+    @XmlSchemaType(name = "string")
     protected PetsAllowedType petsAllowed;
     protected Double serviceCharge;
     protected Double thermalCharacteristic;
@@ -148,13 +157,14 @@ public class ShortTermAccommodation
     protected Double livingSpace;
     protected Double numberOfRooms;
     @XmlElement(required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlJavaTypeAdapter(Adapter2 .class)
     @XmlSchemaType(name = "date")
     protected Calendar startRentalDate;
     protected Boolean balcony;
     protected Boolean garden;
     protected Boolean nonSmoker;
     @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
     protected ShortTermAccommodationType shortTermAccomodationType;
     @XmlElement(required = true)
     protected CourtageInfo courtage;

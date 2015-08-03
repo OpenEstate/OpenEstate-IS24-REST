@@ -11,15 +11,15 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="CompulsoryAuctionType">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="FREEHOLD_FLAT"/>
- *     &lt;enumeration value="FAMILY_HOUSE"/>
- *     &lt;enumeration value="BUSINESS_AND_YIELD"/>
- *     &lt;enumeration value="LOT"/>
- *     &lt;enumeration value="GARAGE_AND_OTHER"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="CompulsoryAuctionType"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="FREEHOLD_FLAT"/&gt;
+ *     &lt;enumeration value="FAMILY_HOUSE"/&gt;
+ *     &lt;enumeration value="BUSINESS_AND_YIELD"/&gt;
+ *     &lt;enumeration value="LOT"/&gt;
+ *     &lt;enumeration value="GARAGE_AND_OTHER"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  * 
  */

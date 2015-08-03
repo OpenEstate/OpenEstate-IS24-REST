@@ -20,7 +20,7 @@ import org.jvnet.jaxb2_commons.lang.ToString;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
-import org.openestate.is24.restapi.xml.Adapter1;
+import org.openestate.is24.restapi.xml.Adapter3;
 
 
 /**
@@ -31,15 +31,15 @@ import org.openestate.is24.restapi.xml.Adapter1;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="ExtendedAttachment">
- *   &lt;complexContent>
- *     &lt;extension base="{http://rest.immobilienscout24.de/schema/common/1.0}Attachment">
- *       &lt;sequence>
- *         &lt;element name="url" type="{http://www.w3.org/2001/XMLSchema}anyURI" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="ExtendedAttachment"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;extension base="{http://rest.immobilienscout24.de/schema/common/1.0}Attachment"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="url" type="{http://www.w3.org/2001/XMLSchema}anyURI" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/extension&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -49,8 +49,8 @@ import org.openestate.is24.restapi.xml.Adapter1;
     "url"
 })
 @XmlSeeAlso({
-    VideoFile.class,
-    PDFDocument.class
+    PDFDocument.class,
+    VideoFile.class
 })
 public abstract class ExtendedAttachment
     extends Attachment
@@ -58,7 +58,7 @@ public abstract class ExtendedAttachment
 {
 
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlJavaTypeAdapter(Adapter3 .class)
     @XmlSchemaType(name = "anyURI")
     protected URL url;
 

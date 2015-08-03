@@ -19,9 +19,7 @@ import org.jvnet.jaxb2_commons.lang.ToString;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
-import org.openestate.is24.restapi.xml.Adapter3;
-import org.openestate.is24.restapi.xml.common.Adapter12;
-import org.openestate.is24.restapi.xml.common.Adapter5;
+import org.openestate.is24.restapi.xml.common.Adapter6;
 import org.openestate.is24.restapi.xml.common.ApartmentType;
 import org.openestate.is24.restapi.xml.common.BuildingEnergyRatingType;
 import org.openestate.is24.restapi.xml.common.CourtageInfo;
@@ -49,15 +47,15 @@ import org.openestate.is24.restapi.xml.common.YesNotApplicableType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="FlatShareRoom">
- *   &lt;complexContent>
- *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/realestates/1.0}RealEstate">
- *       &lt;sequence>
- *         &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}ExtendedFlatShareRoomGroup"/>
- *       &lt;/sequence>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="FlatShareRoom"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/realestates/1.0}RealEstate"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}ExtendedFlatShareRoomGroup"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/extension&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -128,40 +126,49 @@ public class FlatShareRoom
 {
 
     protected double roomSize;
+    @XmlSchemaType(name = "string")
     protected FlooringType flooringType;
     protected Double numberOfRooms;
+    @XmlSchemaType(name = "string")
     protected ApartmentType apartmentType;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType cellar;
+    @XmlSchemaType(name = "string")
     @Deprecated
     protected HeatingType heatingType;
+    @XmlSchemaType(name = "string")
     protected HeatingTypeEnev2014 heatingTypeEnev2014;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType barrierFree;
     @XmlElement(required = true)
     protected CourtageInfo courtage;
     protected EnergyPerformanceCertificate energyCertificate;
     protected EnergySourcesEnev2014 energySourcesEnev2014;
+    @XmlSchemaType(name = "string")
     protected BuildingEnergyRatingType buildingEnergyRatingType;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter16 .class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
     protected Double thermalCharacteristic;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType energyConsumptionContainsWarmWater;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter17 .class)
+    @XmlJavaTypeAdapter(org.openestate.is24.restapi.xml.realestates.Adapter2 .class)
     protected Integer constructionYear;
     protected Boolean constructionYearUnknown;
     protected double baseRent;
     protected Double totalRent;
     protected Double serviceCharge;
-    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlJavaTypeAdapter(org.openestate.is24.restapi.xml.common.Adapter2 .class)
     protected String deposit;
     protected Double heatingCosts;
+    @XmlSchemaType(name = "string")
     protected YesNoNotApplicableType heatingCostsInServiceCharge;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlJavaTypeAdapter(org.openestate.is24.restapi.xml.Adapter2 .class)
     @XmlSchemaType(name = "date")
     protected Calendar freeFrom;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlJavaTypeAdapter(org.openestate.is24.restapi.xml.Adapter2 .class)
     @XmlSchemaType(name = "date")
     protected Calendar freeUntil;
     protected Integer minimumTermOfLease;
@@ -174,40 +181,61 @@ public class FlatShareRoom
     protected Integer ageOfRequestedTo;
     protected Integer numberOfRequestedFlatMates;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter18 .class)
+    @XmlJavaTypeAdapter(Adapter3 .class)
     protected Integer floor;
     protected Integer numberOfFloors;
     protected Integer numberOfBathRooms;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType balcony;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType garden;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType lift;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType oven;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType refrigerator;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType stove;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType dishwasher;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType washingMachine;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType bathHasWc;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType bathHasShower;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType bathHasTub;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType guestToilet;
     @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
     protected PetsAllowedType petsAllowed;
     @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
     protected InternetConnectionType internetConnection;
     @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
     protected SmokingAllowedType smokingAllowed;
     @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
     protected FlatMateGenderType requestedGender;
     @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
     protected YesNoNotApplicableType furnishing;
     @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
     protected TvConnectionType tvConnection;
     @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
     protected TelephoneConnectionType telephoneConnection;
     @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
     protected ParkingSituationType parkingSituation;
     @XmlElement(required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter12 .class)
+    @XmlJavaTypeAdapter(Adapter6 .class)
+    @XmlSchemaType(name = "int")
     protected Integer flatShareSize;
 
     /**

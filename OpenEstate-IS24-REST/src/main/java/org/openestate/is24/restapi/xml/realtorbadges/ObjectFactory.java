@@ -24,8 +24,8 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _RealtorBadges_QNAME = new QName("http://rest.immobilienscout24.de/schema/offer/realtorbadges/1.0", "realtorBadges");
     private final static QName _Badge_QNAME = new QName("http://rest.immobilienscout24.de/schema/offer/realtorbadges/1.0", "badge");
+    private final static QName _RealtorBadges_QNAME = new QName("http://rest.immobilienscout24.de/schema/offer/realtorbadges/1.0", "realtorBadges");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: org.openestate.is24.restapi.xml.realtorbadges
@@ -59,21 +59,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RealtorBadges }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://rest.immobilienscout24.de/schema/offer/realtorbadges/1.0", name = "realtorBadges")
-    public JAXBElement<RealtorBadges> createRealtorBadges(RealtorBadges value) {
-        return new JAXBElement<RealtorBadges>(_RealtorBadges_QNAME, RealtorBadges.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Badge }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://rest.immobilienscout24.de/schema/offer/realtorbadges/1.0", name = "badge")
     public JAXBElement<Badge> createBadge(Badge value) {
         return new JAXBElement<Badge>(_Badge_QNAME, Badge.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link RealtorBadges }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://rest.immobilienscout24.de/schema/offer/realtorbadges/1.0", name = "realtorBadges")
+    public JAXBElement<RealtorBadges> createRealtorBadges(RealtorBadges value) {
+        return new JAXBElement<RealtorBadges>(_RealtorBadges_QNAME, RealtorBadges.class, null, value);
     }
 
 }

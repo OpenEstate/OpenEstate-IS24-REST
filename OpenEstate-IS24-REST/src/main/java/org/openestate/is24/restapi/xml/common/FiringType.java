@@ -11,19 +11,19 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="FiringType">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="NO_INFORMATION"/>
- *     &lt;enumeration value="GEOTHERMAL"/>
- *     &lt;enumeration value="SOLAR_HEATING"/>
- *     &lt;enumeration value="PELLET_HEATING"/>
- *     &lt;enumeration value="GAS"/>
- *     &lt;enumeration value="OIL"/>
- *     &lt;enumeration value="DISTRICT_HEATING"/>
- *     &lt;enumeration value="ELECTRICITY"/>
- *     &lt;enumeration value="COAL"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="FiringType"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="NO_INFORMATION"/&gt;
+ *     &lt;enumeration value="GEOTHERMAL"/&gt;
+ *     &lt;enumeration value="SOLAR_HEATING"/&gt;
+ *     &lt;enumeration value="PELLET_HEATING"/&gt;
+ *     &lt;enumeration value="GAS"/&gt;
+ *     &lt;enumeration value="OIL"/&gt;
+ *     &lt;enumeration value="DISTRICT_HEATING"/&gt;
+ *     &lt;enumeration value="ELECTRICITY"/&gt;
+ *     &lt;enumeration value="COAL"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  * 
  */

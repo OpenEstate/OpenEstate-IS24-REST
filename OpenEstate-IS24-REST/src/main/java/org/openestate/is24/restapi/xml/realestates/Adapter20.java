@@ -1,9 +1,9 @@
 
-package org.openestate.is24.restapi.xml.offerlistelement;
+package org.openestate.is24.restapi.xml.realestates;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
-public class Adapter1
+public class Adapter20
     extends XmlAdapter<String, Double>
 {
 

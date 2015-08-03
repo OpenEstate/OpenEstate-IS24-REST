@@ -4,16 +4,16 @@ package org.openestate.is24.restapi.xml.common;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 public class Adapter12
-    extends XmlAdapter<String, Integer>
+    extends XmlAdapter<String, Double>
 {
 
 
-    public Integer unmarshal(String value) {
-        return (org.openestate.is24.restapi.utils.XmlUtils.parseFlatShareSearchSize(value));
+    public Double unmarshal(String value) {
+        return (org.openestate.is24.restapi.utils.XmlUtils.parseDouble13_2(value));
     }
 
-    public String marshal(Integer value) {
-        return (org.openestate.is24.restapi.utils.XmlUtils.printFlatShareSearchSize(value));
+    public String marshal(Double value) {
+        return (org.openestate.is24.restapi.utils.XmlUtils.printDouble13_2(value));
     }
 
 }

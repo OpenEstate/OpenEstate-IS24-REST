@@ -11,14 +11,14 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="SiteConstructibleType">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="CONSTRUCTIONPLAN"/>
- *     &lt;enumeration value="NEIGHBOURCONSTRUCTION"/>
- *     &lt;enumeration value="EXTERNALAREA"/>
- *     &lt;enumeration value="NO_INFORMATION"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="SiteConstructibleType"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="CONSTRUCTIONPLAN"/&gt;
+ *     &lt;enumeration value="NEIGHBOURCONSTRUCTION"/&gt;
+ *     &lt;enumeration value="EXTERNALAREA"/&gt;
+ *     &lt;enumeration value="NO_INFORMATION"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  * 
  */

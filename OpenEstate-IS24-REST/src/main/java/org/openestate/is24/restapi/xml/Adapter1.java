@@ -1,20 +1,23 @@
 
 package org.openestate.is24.restapi.xml;
 
-import java.net.URL;
+import java.util.Calendar;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 public class Adapter1
-    extends XmlAdapter<String, URL>
+    extends XmlAdapter<String, Calendar>
 {
 
 
-    public URL unmarshal(String value) {
-        return (org.openestate.is24.restapi.utils.XmlUtils.parseUrl(value));
+    public Calendar unmarshal(String value) {
+        return (javax.xml.bind.DatatypeConverter.parseDateTime(value));
     }
 
-    public String marshal(URL value) {
-        return (org.openestate.is24.restapi.utils.XmlUtils.printUrl(value));
+    public String marshal(Calendar value) {
+        if (value == null) {
+            return null;
+        }
+        return (javax.xml.bind.DatatypeConverter.printDateTime(value));
     }
 
 }

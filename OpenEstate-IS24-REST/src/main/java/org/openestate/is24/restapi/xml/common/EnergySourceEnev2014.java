@@ -11,36 +11,36 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="EnergySourceEnev2014">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="NO_INFORMATION"/>
- *     &lt;enumeration value="GEOTHERMAL"/>
- *     &lt;enumeration value="SOLAR_HEATING"/>
- *     &lt;enumeration value="PELLET_HEATING"/>
- *     &lt;enumeration value="GAS"/>
- *     &lt;enumeration value="OIL"/>
- *     &lt;enumeration value="DISTRICT_HEATING"/>
- *     &lt;enumeration value="ELECTRICITY"/>
- *     &lt;enumeration value="COAL"/>
- *     &lt;enumeration value="ACID_GAS"/>
- *     &lt;enumeration value="SOUR_GAS"/>
- *     &lt;enumeration value="LIQUID_GAS"/>
- *     &lt;enumeration value="STEAM_DISTRICT_HEATING"/>
- *     &lt;enumeration value="WOOD"/>
- *     &lt;enumeration value="WOOD_CHIPS"/>
- *     &lt;enumeration value="COAL_COKE"/>
- *     &lt;enumeration value="LOCAL_HEATING"/>
- *     &lt;enumeration value="HEAT_SUPPLY"/>
- *     &lt;enumeration value="BIO_ENERGY"/>
- *     &lt;enumeration value="WIND_ENERGY"/>
- *     &lt;enumeration value="HYDRO_ENERGY"/>
- *     &lt;enumeration value="ENVIRONMENTAL_THERMAL_ENERGY"/>
- *     &lt;enumeration value="COMBINED_HEAT_AND_POWER_FOSSIL_FUELS"/>
- *     &lt;enumeration value="COMBINED_HEAT_AND_POWER_RENEWABLE_ENERGY"/>
- *     &lt;enumeration value="COMBINED_HEAT_AND_POWER_REGENERATIVE_ENERGY"/>
- *     &lt;enumeration value="COMBINED_HEAT_AND_POWER_BIO_ENERGY"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="EnergySourceEnev2014"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="NO_INFORMATION"/&gt;
+ *     &lt;enumeration value="GEOTHERMAL"/&gt;
+ *     &lt;enumeration value="SOLAR_HEATING"/&gt;
+ *     &lt;enumeration value="PELLET_HEATING"/&gt;
+ *     &lt;enumeration value="GAS"/&gt;
+ *     &lt;enumeration value="OIL"/&gt;
+ *     &lt;enumeration value="DISTRICT_HEATING"/&gt;
+ *     &lt;enumeration value="ELECTRICITY"/&gt;
+ *     &lt;enumeration value="COAL"/&gt;
+ *     &lt;enumeration value="ACID_GAS"/&gt;
+ *     &lt;enumeration value="SOUR_GAS"/&gt;
+ *     &lt;enumeration value="LIQUID_GAS"/&gt;
+ *     &lt;enumeration value="STEAM_DISTRICT_HEATING"/&gt;
+ *     &lt;enumeration value="WOOD"/&gt;
+ *     &lt;enumeration value="WOOD_CHIPS"/&gt;
+ *     &lt;enumeration value="COAL_COKE"/&gt;
+ *     &lt;enumeration value="LOCAL_HEATING"/&gt;
+ *     &lt;enumeration value="HEAT_SUPPLY"/&gt;
+ *     &lt;enumeration value="BIO_ENERGY"/&gt;
+ *     &lt;enumeration value="WIND_ENERGY"/&gt;
+ *     &lt;enumeration value="HYDRO_ENERGY"/&gt;
+ *     &lt;enumeration value="ENVIRONMENTAL_THERMAL_ENERGY"/&gt;
+ *     &lt;enumeration value="COMBINED_HEAT_AND_POWER_FOSSIL_FUELS"/&gt;
+ *     &lt;enumeration value="COMBINED_HEAT_AND_POWER_RENEWABLE_ENERGY"/&gt;
+ *     &lt;enumeration value="COMBINED_HEAT_AND_POWER_REGENERATIVE_ENERGY"/&gt;
+ *     &lt;enumeration value="COMBINED_HEAT_AND_POWER_BIO_ENERGY"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  * 
  */

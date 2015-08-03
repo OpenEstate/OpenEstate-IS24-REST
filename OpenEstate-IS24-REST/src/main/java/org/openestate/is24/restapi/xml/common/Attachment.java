@@ -22,7 +22,7 @@ import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 import org.openestate.is24.restapi.xml.Adapter1;
-import org.openestate.is24.restapi.xml.Adapter2;
+import org.openestate.is24.restapi.xml.Adapter3;
 
 
 /**
@@ -33,30 +33,30 @@ import org.openestate.is24.restapi.xml.Adapter2;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="Attachment">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="title" minOccurs="0">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://rest.immobilienscout24.de/schema/common/1.0}TextField">
- *               &lt;maxLength value="30"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
- *         &lt;element name="checkSum" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="externalId" minOccurs="0">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://rest.immobilienscout24.de/schema/common/1.0}TextField">
- *               &lt;maxLength value="50"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
- *       &lt;/sequence>
- *       &lt;attGroup ref="{http://rest.immobilienscout24.de/schema/common/1.0}Reference"/>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="Attachment"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="title" minOccurs="0"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://rest.immobilienscout24.de/schema/common/1.0}TextField"&gt;
+ *               &lt;maxLength value="30"/&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="checkSum" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="externalId" minOccurs="0"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://rest.immobilienscout24.de/schema/common/1.0}TextField"&gt;
+ *               &lt;maxLength value="50"/&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *       &lt;/sequence&gt;
+ *       &lt;attGroup ref="{http://rest.immobilienscout24.de/schema/common/1.0}Reference"/&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -68,22 +68,22 @@ import org.openestate.is24.restapi.xml.Adapter2;
     "externalId"
 })
 @XmlSeeAlso({
-    StreamingVideo.class,
     Picture.class,
-    Link.class,
-    ExtendedAttachment.class
+    StreamingVideo.class,
+    ExtendedAttachment.class,
+    Link.class
 })
 public abstract class Attachment
     implements Cloneable, CopyTo, Equals, ToString
 {
 
-    @XmlJavaTypeAdapter(Adapter42 .class)
+    @XmlJavaTypeAdapter(Adapter33 .class)
     protected String title;
     protected String checkSum;
-    @XmlJavaTypeAdapter(Adapter43 .class)
+    @XmlJavaTypeAdapter(Adapter34 .class)
     protected String externalId;
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")
-    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlJavaTypeAdapter(Adapter3 .class)
     @XmlSchemaType(name = "anyURI")
     protected URL href;
     @XmlAttribute(name = "id")
@@ -91,15 +91,15 @@ public abstract class Attachment
     @XmlAttribute(name = "label")
     protected String label;
     @XmlAttribute(name = "modification")
-    @XmlJavaTypeAdapter(Adapter2 .class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "dateTime")
     protected Calendar modification;
     @XmlAttribute(name = "creation")
-    @XmlJavaTypeAdapter(Adapter2 .class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "dateTime")
     protected Calendar creation;
     @XmlAttribute(name = "publishDate")
-    @XmlJavaTypeAdapter(Adapter2 .class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "dateTime")
     protected Calendar publishDate;
 

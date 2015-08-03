@@ -5,6 +5,7 @@ import java.net.URL;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
@@ -19,7 +20,7 @@ import org.jvnet.jaxb2_commons.lang.ToString;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
-import org.openestate.is24.restapi.xml.Adapter1;
+import org.openestate.is24.restapi.xml.Adapter3;
 import org.openestate.is24.restapi.xml.realestates.RealEstate;
 
 
@@ -32,54 +33,54 @@ import org.openestate.is24.restapi.xml.realestates.RealEstate;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="AbstractRealEstate">
- *   &lt;complexContent>
- *     &lt;extension base="{http://rest.immobilienscout24.de/schema/common/1.0}AbstractRealEstateForList">
- *       &lt;sequence>
- *         &lt;element name="groupNumber" minOccurs="0">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}int">
- *               &lt;minInclusive value="0"/>
- *               &lt;maxInclusive value="2147483647"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
- *         &lt;element name="descriptionNote" minOccurs="0">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://rest.immobilienscout24.de/schema/common/1.0}TextField">
- *               &lt;maxLength value="2000"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
- *         &lt;element name="furnishingNote" minOccurs="0">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://rest.immobilienscout24.de/schema/common/1.0}TextField">
- *               &lt;maxLength value="2000"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
- *         &lt;element name="locationNote" minOccurs="0">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://rest.immobilienscout24.de/schema/common/1.0}TextField">
- *               &lt;maxLength value="2000"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
- *         &lt;element name="otherNote" minOccurs="0">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://rest.immobilienscout24.de/schema/common/1.0}TextField">
- *               &lt;maxLength value="2000"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
- *         &lt;element name="attachments" type="{http://rest.immobilienscout24.de/schema/common/1.0}Attachments" minOccurs="0"/>
- *         &lt;element name="referencePriceServiceCall" type="{http://rest.immobilienscout24.de/schema/common/1.0}uri" minOccurs="0"/>
- *         &lt;element name="referencePriceApiCall" type="{http://rest.immobilienscout24.de/schema/common/1.0}uri" minOccurs="0"/>
- *         &lt;element name="realEstateProjectId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="AbstractRealEstate"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;extension base="{http://rest.immobilienscout24.de/schema/common/1.0}AbstractRealEstateForList"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="groupNumber" minOccurs="0"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}int"&gt;
+ *               &lt;minInclusive value="0"/&gt;
+ *               &lt;maxInclusive value="2147483647"/&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="descriptionNote" minOccurs="0"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://rest.immobilienscout24.de/schema/common/1.0}TextField"&gt;
+ *               &lt;maxLength value="2000"/&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="furnishingNote" minOccurs="0"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://rest.immobilienscout24.de/schema/common/1.0}TextField"&gt;
+ *               &lt;maxLength value="2000"/&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="locationNote" minOccurs="0"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://rest.immobilienscout24.de/schema/common/1.0}TextField"&gt;
+ *               &lt;maxLength value="2000"/&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="otherNote" minOccurs="0"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://rest.immobilienscout24.de/schema/common/1.0}TextField"&gt;
+ *               &lt;maxLength value="2000"/&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="attachments" type="{http://rest.immobilienscout24.de/schema/common/1.0}Attachments" minOccurs="0"/&gt;
+ *         &lt;element name="referencePriceServiceCall" type="{http://rest.immobilienscout24.de/schema/common/1.0}uri" minOccurs="0"/&gt;
+ *         &lt;element name="referencePriceApiCall" type="{http://rest.immobilienscout24.de/schema/common/1.0}uri" minOccurs="0"/&gt;
+ *         &lt;element name="realEstateProjectId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/extension&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -105,22 +106,24 @@ public abstract class AbstractRealEstate
 {
 
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter56 .class)
+    @XmlJavaTypeAdapter(Adapter15 .class)
     protected Integer groupNumber;
-    @XmlJavaTypeAdapter(Adapter57 .class)
+    @XmlJavaTypeAdapter(Adapter16 .class)
     protected String descriptionNote;
-    @XmlJavaTypeAdapter(Adapter58 .class)
+    @XmlJavaTypeAdapter(Adapter17 .class)
     protected String furnishingNote;
-    @XmlJavaTypeAdapter(Adapter59 .class)
+    @XmlJavaTypeAdapter(Adapter18 .class)
     protected String locationNote;
-    @XmlJavaTypeAdapter(Adapter60 .class)
+    @XmlJavaTypeAdapter(Adapter19 .class)
     protected String otherNote;
     protected Attachments attachments;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlSchemaType(name = "anyURI")
     protected URL referencePriceServiceCall;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlSchemaType(name = "anyURI")
     protected URL referencePriceApiCall;
     protected Long realEstateProjectId;
 

@@ -11,18 +11,18 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="MarketingType">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="PURCHASE"/>
- *     &lt;enumeration value="PURCHASE_PER_SQM"/>
- *     &lt;enumeration value="RENT"/>
- *     &lt;enumeration value="RENT_PER_SQM"/>
- *     &lt;enumeration value="LEASE"/>
- *     &lt;enumeration value="LEASEHOLD"/>
- *     &lt;enumeration value="BUDGET_RENT"/>
- *     &lt;enumeration value="RENT_AND_BUY"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="MarketingType"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="PURCHASE"/&gt;
+ *     &lt;enumeration value="PURCHASE_PER_SQM"/&gt;
+ *     &lt;enumeration value="RENT"/&gt;
+ *     &lt;enumeration value="RENT_PER_SQM"/&gt;
+ *     &lt;enumeration value="LEASE"/&gt;
+ *     &lt;enumeration value="LEASEHOLD"/&gt;
+ *     &lt;enumeration value="BUDGET_RENT"/&gt;
+ *     &lt;enumeration value="RENT_AND_BUY"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  * 
  */

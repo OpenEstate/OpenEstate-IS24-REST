@@ -25,16 +25,16 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="StreamingVideo">
- *   &lt;complexContent>
- *     &lt;extension base="{http://rest.immobilienscout24.de/schema/common/1.0}Attachment">
- *       &lt;sequence>
- *         &lt;element name="videoId" type="{http://rest.immobilienscout24.de/schema/common/1.0}TextField" minOccurs="0"/>
- *         &lt;element name="videoInfo" type="{http://rest.immobilienscout24.de/schema/common/1.0}VideoInfo" maxOccurs="0" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="StreamingVideo"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;extension base="{http://rest.immobilienscout24.de/schema/common/1.0}Attachment"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="videoId" type="{http://rest.immobilienscout24.de/schema/common/1.0}TextField" minOccurs="0"/&gt;
+ *         &lt;element name="videoInfo" type="{http://rest.immobilienscout24.de/schema/common/1.0}VideoInfo" maxOccurs="0" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/extension&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 

@@ -27,43 +27,43 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="Address">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="street" minOccurs="0">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://rest.immobilienscout24.de/schema/common/1.0}TextField">
- *               &lt;maxLength value="100"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
- *         &lt;element name="houseNumber" minOccurs="0">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://rest.immobilienscout24.de/schema/common/1.0}TextField">
- *               &lt;maxLength value="30"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
- *         &lt;element name="postcode" minOccurs="0">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://rest.immobilienscout24.de/schema/common/1.0}TextField">
- *               &lt;maxLength value="20"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
- *         &lt;element name="city" minOccurs="0">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://rest.immobilienscout24.de/schema/common/1.0}TextField">
- *               &lt;maxLength value="50"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
- *         &lt;element name="internationalCountryRegion" type="{http://rest.immobilienscout24.de/schema/common/1.0}CountryRegion" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="Address"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="street" minOccurs="0"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://rest.immobilienscout24.de/schema/common/1.0}TextField"&gt;
+ *               &lt;maxLength value="100"/&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="houseNumber" minOccurs="0"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://rest.immobilienscout24.de/schema/common/1.0}TextField"&gt;
+ *               &lt;maxLength value="30"/&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="postcode" minOccurs="0"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://rest.immobilienscout24.de/schema/common/1.0}TextField"&gt;
+ *               &lt;maxLength value="20"/&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="city" minOccurs="0"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://rest.immobilienscout24.de/schema/common/1.0}TextField"&gt;
+ *               &lt;maxLength value="50"/&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="internationalCountryRegion" type="{http://rest.immobilienscout24.de/schema/common/1.0}CountryRegion" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -83,13 +83,13 @@ public class Address
     implements Cloneable, CopyTo, Equals, ToString
 {
 
-    @XmlJavaTypeAdapter(Adapter45 .class)
+    @XmlJavaTypeAdapter(Adapter35 .class)
     protected String street;
-    @XmlJavaTypeAdapter(Adapter46 .class)
+    @XmlJavaTypeAdapter(Adapter36 .class)
     protected String houseNumber;
-    @XmlJavaTypeAdapter(Adapter47 .class)
+    @XmlJavaTypeAdapter(Adapter37 .class)
     protected String postcode;
-    @XmlJavaTypeAdapter(Adapter48 .class)
+    @XmlJavaTypeAdapter(Adapter38 .class)
     protected String city;
     protected CountryRegion internationalCountryRegion;
 

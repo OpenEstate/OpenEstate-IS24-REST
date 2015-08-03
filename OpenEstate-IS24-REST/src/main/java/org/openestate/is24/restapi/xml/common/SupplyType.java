@@ -11,18 +11,18 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="SupplyType">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="NO_INFORMATION"/>
- *     &lt;enumeration value="DIRECT_APPROACH"/>
- *     &lt;enumeration value="NO_DIRECT_APPROACH"/>
- *     &lt;enumeration value="CAR_APPROACH"/>
- *     &lt;enumeration value="APPROACH_TO_THE_FRONT"/>
- *     &lt;enumeration value="APPROACH_TO_THE_BACK"/>
- *     &lt;enumeration value="FULL_TIME"/>
- *     &lt;enumeration value="FORENOON"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="SupplyType"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="NO_INFORMATION"/&gt;
+ *     &lt;enumeration value="DIRECT_APPROACH"/&gt;
+ *     &lt;enumeration value="NO_DIRECT_APPROACH"/&gt;
+ *     &lt;enumeration value="CAR_APPROACH"/&gt;
+ *     &lt;enumeration value="APPROACH_TO_THE_FRONT"/&gt;
+ *     &lt;enumeration value="APPROACH_TO_THE_BACK"/&gt;
+ *     &lt;enumeration value="FULL_TIME"/&gt;
+ *     &lt;enumeration value="FORENOON"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  * 
  */

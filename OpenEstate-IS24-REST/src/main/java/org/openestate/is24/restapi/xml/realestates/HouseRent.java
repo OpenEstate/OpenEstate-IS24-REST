@@ -4,6 +4,7 @@ package org.openestate.is24.restapi.xml.realestates;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.jvnet.jaxb2_commons.lang.CopyStrategy;
@@ -17,6 +18,7 @@ import org.jvnet.jaxb2_commons.lang.ToString;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
+import org.openestate.is24.restapi.xml.common.Adapter2;
 import org.openestate.is24.restapi.xml.common.BuildingEnergyRatingType;
 import org.openestate.is24.restapi.xml.common.BuildingType;
 import org.openestate.is24.restapi.xml.common.CourtageInfo;
@@ -43,16 +45,16 @@ import org.openestate.is24.restapi.xml.common.YesNotApplicableType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="HouseRent">
- *   &lt;complexContent>
- *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/realestates/1.0}RealEstate">
- *       &lt;sequence>
- *         &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}ExtendedHouseRentGroup"/>
- *         &lt;element name="builtInKitchen" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="HouseRent"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/realestates/1.0}RealEstate"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}ExtendedHouseRentGroup"/&gt;
+ *         &lt;element name="builtInKitchen" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/extension&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -109,62 +111,76 @@ public class HouseRent
     protected double livingSpace;
     protected double plotArea;
     @XmlElement(required = true, type = String.class)
-    @XmlJavaTypeAdapter(org.openestate.is24.restapi.xml.offerlistelement.Adapter1 .class)
+    @XmlJavaTypeAdapter(Adapter20 .class)
     protected Double numberOfRooms;
     protected Boolean energyPerformanceCertificate;
     @XmlElement(required = true)
     protected CourtageInfo courtage;
     @XmlElement(required = true, defaultValue = "NO_INFORMATION")
+    @XmlSchemaType(name = "string")
     protected BuildingType buildingType;
     protected EnergyPerformanceCertificate energyCertificate;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType cellar;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType handicappedAccessible;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(org.openestate.is24.restapi.xml.realestates.Adapter1 .class)
+    @XmlJavaTypeAdapter(Adapter10 .class)
     protected Integer numberOfParkingSpaces;
+    @XmlSchemaType(name = "string")
     protected RealEstateCondition condition;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter2 .class)
+    @XmlJavaTypeAdapter(Adapter11 .class)
     protected Integer lastRefurbishment;
+    @XmlSchemaType(name = "string")
     protected InteriorQuality interiorQuality;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlJavaTypeAdapter(Adapter12 .class)
     protected Integer constructionYear;
     protected Boolean constructionYearUnknown;
-    @XmlJavaTypeAdapter(Adapter4 .class)
+    @XmlJavaTypeAdapter(Adapter13 .class)
     protected String freeFrom;
+    @XmlSchemaType(name = "string")
     @Deprecated
     protected HeatingType heatingType;
+    @XmlSchemaType(name = "string")
     protected HeatingTypeEnev2014 heatingTypeEnev2014;
     @Deprecated
     protected FiringTypes firingTypes;
     protected EnergySourcesEnev2014 energySourcesEnev2014;
+    @XmlSchemaType(name = "string")
     protected BuildingEnergyRatingType buildingEnergyRatingType;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(org.openestate.is24.restapi.xml.realestates.Adapter5 .class)
+    @XmlJavaTypeAdapter(Adapter14 .class)
     protected Double thermalCharacteristic;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType energyConsumptionContainsWarmWater;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter6 .class)
+    @XmlJavaTypeAdapter(Adapter15 .class)
     protected Integer numberOfFloors;
     protected Double usableFloorSpace;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter7 .class)
+    @XmlJavaTypeAdapter(Adapter16 .class)
     protected Integer numberOfBedRooms;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter8 .class)
+    @XmlJavaTypeAdapter(Adapter17 .class)
     protected Integer numberOfBathRooms;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType guestToilet;
+    @XmlSchemaType(name = "string")
     protected ParkingSpaceType parkingSpaceType;
     protected double baseRent;
     protected Double totalRent;
     protected Double serviceCharge;
-    @XmlJavaTypeAdapter(org.openestate.is24.restapi.xml.common.Adapter5 .class)
+    @XmlJavaTypeAdapter(Adapter2 .class)
     protected String deposit;
     protected Double heatingCosts;
+    @XmlSchemaType(name = "string")
     protected YesNoNotApplicableType heatingCostsInServiceCharge;
+    @XmlSchemaType(name = "string")
     protected PetsAllowedType petsAllowed;
     protected Double parkingSpacePrice;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType useAsFlatshareRoom;
     protected Boolean builtInKitchen;
 

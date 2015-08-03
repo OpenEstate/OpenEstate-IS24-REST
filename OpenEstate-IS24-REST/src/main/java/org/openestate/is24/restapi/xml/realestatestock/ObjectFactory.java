@@ -34,19 +34,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link PriceRegionRealEstateStock }
-     * 
-     */
-    public PriceRegionRealEstateStock createPriceRegionRealEstateStock() {
-        return new PriceRegionRealEstateStock();
-    }
-
-    /**
      * Create an instance of {@link RealEstateStock }
      * 
      */
     public RealEstateStock createRealEstateStock() {
         return new RealEstateStock();
+    }
+
+    /**
+     * Create an instance of {@link PriceRegionRealEstateStock }
+     * 
+     */
+    public PriceRegionRealEstateStock createPriceRegionRealEstateStock() {
+        return new PriceRegionRealEstateStock();
     }
 
     /**

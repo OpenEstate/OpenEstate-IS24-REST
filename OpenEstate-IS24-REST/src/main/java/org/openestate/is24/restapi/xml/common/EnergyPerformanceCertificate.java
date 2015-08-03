@@ -4,6 +4,7 @@ package org.openestate.is24.restapi.xml.common;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.jvnet.jaxb2_commons.lang.CopyStrategy;
@@ -27,65 +28,65 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="EnergyPerformanceCertificate">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;all>
- *         &lt;element name="energyCertificateAvailability" type="{http://rest.immobilienscout24.de/schema/common/1.0}EnergyCertificateAvailability" minOccurs="0"/>
- *         &lt;element name="energyCertificateCreationDate" type="{http://rest.immobilienscout24.de/schema/common/1.0}EnergyCertificateCreationDate" minOccurs="0"/>
- *         &lt;element name="energyEfficiencyClass" type="{http://rest.immobilienscout24.de/schema/common/1.0}EnergyEfficiencyClass" minOccurs="0"/>
- *         &lt;element name="electricityConsumption" minOccurs="0">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}double">
- *               &lt;minInclusive value="0"/>
- *               &lt;maxInclusive value="1999.99"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
- *         &lt;element name="heatingConsumption" minOccurs="0">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}double">
- *               &lt;minInclusive value="0"/>
- *               &lt;maxInclusive value="1999.99"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
- *         &lt;element name="energyConsumptionElectricity" minOccurs="0">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}double">
- *               &lt;minInclusive value="0"/>
- *               &lt;maxInclusive value="1999.99"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
- *         &lt;element name="energyConsumptionHeating" minOccurs="0">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}double">
- *               &lt;minInclusive value="0"/>
- *               &lt;maxInclusive value="1999.99"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
- *         &lt;element name="thermalCharacteristicElectricity" minOccurs="0">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}double">
- *               &lt;minInclusive value="0"/>
- *               &lt;maxInclusive value="1999.99"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
- *         &lt;element name="thermalCharacteristicHeating" minOccurs="0">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}double">
- *               &lt;minInclusive value="0"/>
- *               &lt;maxInclusive value="1999.99"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
- *       &lt;/all>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="EnergyPerformanceCertificate"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;all&gt;
+ *         &lt;element name="energyCertificateAvailability" type="{http://rest.immobilienscout24.de/schema/common/1.0}EnergyCertificateAvailability" minOccurs="0"/&gt;
+ *         &lt;element name="energyCertificateCreationDate" type="{http://rest.immobilienscout24.de/schema/common/1.0}EnergyCertificateCreationDate" minOccurs="0"/&gt;
+ *         &lt;element name="energyEfficiencyClass" type="{http://rest.immobilienscout24.de/schema/common/1.0}EnergyEfficiencyClass" minOccurs="0"/&gt;
+ *         &lt;element name="electricityConsumption" minOccurs="0"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}double"&gt;
+ *               &lt;minInclusive value="0"/&gt;
+ *               &lt;maxInclusive value="1999.99"/&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="heatingConsumption" minOccurs="0"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}double"&gt;
+ *               &lt;minInclusive value="0"/&gt;
+ *               &lt;maxInclusive value="1999.99"/&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="energyConsumptionElectricity" minOccurs="0"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}double"&gt;
+ *               &lt;minInclusive value="0"/&gt;
+ *               &lt;maxInclusive value="1999.99"/&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="energyConsumptionHeating" minOccurs="0"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}double"&gt;
+ *               &lt;minInclusive value="0"/&gt;
+ *               &lt;maxInclusive value="1999.99"/&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="thermalCharacteristicElectricity" minOccurs="0"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}double"&gt;
+ *               &lt;minInclusive value="0"/&gt;
+ *               &lt;maxInclusive value="1999.99"/&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="thermalCharacteristicHeating" minOccurs="0"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}double"&gt;
+ *               &lt;minInclusive value="0"/&gt;
+ *               &lt;maxInclusive value="1999.99"/&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *       &lt;/all&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -98,26 +99,29 @@ public class EnergyPerformanceCertificate
     implements Cloneable, CopyTo, Equals, ToString
 {
 
+    @XmlSchemaType(name = "string")
     protected EnergyCertificateAvailability energyCertificateAvailability;
+    @XmlSchemaType(name = "string")
     protected EnergyCertificateCreationDate energyCertificateCreationDate;
+    @XmlSchemaType(name = "string")
     protected EnergyEfficiencyClass energyEfficiencyClass;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter36 .class)
+    @XmlJavaTypeAdapter(Adapter20 .class)
     protected Double electricityConsumption;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter37 .class)
+    @XmlJavaTypeAdapter(Adapter21 .class)
     protected Double heatingConsumption;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter38 .class)
+    @XmlJavaTypeAdapter(Adapter22 .class)
     protected Double energyConsumptionElectricity;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter39 .class)
+    @XmlJavaTypeAdapter(Adapter23 .class)
     protected Double energyConsumptionHeating;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter40 .class)
+    @XmlJavaTypeAdapter(Adapter24 .class)
     protected Double thermalCharacteristicElectricity;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter41 .class)
+    @XmlJavaTypeAdapter(Adapter25 .class)
     protected Double thermalCharacteristicHeating;
 
     /**

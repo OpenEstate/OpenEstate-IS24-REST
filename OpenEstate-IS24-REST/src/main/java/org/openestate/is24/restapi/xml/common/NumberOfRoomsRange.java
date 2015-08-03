@@ -4,6 +4,7 @@ package org.openestate.is24.restapi.xml.common;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.jvnet.jaxb2_commons.lang.CopyStrategy;
@@ -27,16 +28,16 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="NumberOfRoomsRange">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;all>
- *         &lt;element name="minimal" type="{http://rest.immobilienscout24.de/schema/common/1.0}NumberOfRoomsType" minOccurs="0"/>
- *         &lt;element name="maximal" type="{http://rest.immobilienscout24.de/schema/common/1.0}NumberOfRoomsType" minOccurs="0"/>
- *       &lt;/all>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="NumberOfRoomsRange"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;all&gt;
+ *         &lt;element name="minimal" type="{http://rest.immobilienscout24.de/schema/common/1.0}NumberOfRoomsType" minOccurs="0"/&gt;
+ *         &lt;element name="maximal" type="{http://rest.immobilienscout24.de/schema/common/1.0}NumberOfRoomsType" minOccurs="0"/&gt;
+ *       &lt;/all&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -50,10 +51,12 @@ public class NumberOfRoomsRange
 {
 
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlJavaTypeAdapter(Adapter9 .class)
+    @XmlSchemaType(name = "decimal")
     protected Double minimal;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlJavaTypeAdapter(Adapter9 .class)
+    @XmlSchemaType(name = "decimal")
     protected Double maximal;
 
     /**

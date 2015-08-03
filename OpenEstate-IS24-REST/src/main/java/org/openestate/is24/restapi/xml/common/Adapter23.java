@@ -4,16 +4,16 @@ package org.openestate.is24.restapi.xml.common;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 public class Adapter23
-    extends XmlAdapter<String, String>
+    extends XmlAdapter<String, Double>
 {
 
 
-    public String unmarshal(String value) {
-        return (org.openestate.is24.restapi.utils.XmlUtils.parsePhoneNumberCountryCode(value));
+    public Double unmarshal(String value) {
+        return (org.openestate.is24.restapi.utils.XmlUtils.parseThermalCharacteristic(value));
     }
 
-    public String marshal(String value) {
-        return (org.openestate.is24.restapi.utils.XmlUtils.printPhoneNumberCountryCode(value));
+    public String marshal(Double value) {
+        return (org.openestate.is24.restapi.utils.XmlUtils.printThermalCharacteristic(value));
     }
 
 }

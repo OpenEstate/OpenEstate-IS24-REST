@@ -11,21 +11,21 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="ApartmentType">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="ROOF_STOREY"/>
- *     &lt;enumeration value="LOFT"/>
- *     &lt;enumeration value="MAISONETTE"/>
- *     &lt;enumeration value="PENTHOUSE"/>
- *     &lt;enumeration value="TERRACED_FLAT"/>
- *     &lt;enumeration value="GROUND_FLOOR"/>
- *     &lt;enumeration value="APARTMENT"/>
- *     &lt;enumeration value="RAISED_GROUND_FLOOR"/>
- *     &lt;enumeration value="HALF_BASEMENT"/>
- *     &lt;enumeration value="OTHER"/>
- *     &lt;enumeration value="NO_INFORMATION"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="ApartmentType"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="ROOF_STOREY"/&gt;
+ *     &lt;enumeration value="LOFT"/&gt;
+ *     &lt;enumeration value="MAISONETTE"/&gt;
+ *     &lt;enumeration value="PENTHOUSE"/&gt;
+ *     &lt;enumeration value="TERRACED_FLAT"/&gt;
+ *     &lt;enumeration value="GROUND_FLOOR"/&gt;
+ *     &lt;enumeration value="APARTMENT"/&gt;
+ *     &lt;enumeration value="RAISED_GROUND_FLOOR"/&gt;
+ *     &lt;enumeration value="HALF_BASEMENT"/&gt;
+ *     &lt;enumeration value="OTHER"/&gt;
+ *     &lt;enumeration value="NO_INFORMATION"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  * 
  */

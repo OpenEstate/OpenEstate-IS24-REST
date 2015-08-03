@@ -4,6 +4,7 @@ package org.openestate.is24.restapi.xml.common;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.jvnet.jaxb2_commons.lang.CopyStrategy;
@@ -25,16 +26,16 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="Money13.2">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="amount" type="{http://rest.immobilienscout24.de/schema/common/1.0}Number13.2Type"/>
- *         &lt;element name="currency" type="{http://rest.immobilienscout24.de/schema/common/1.0}Currency"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="Money13.2"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="amount" type="{http://rest.immobilienscout24.de/schema/common/1.0}Number13.2Type"/&gt;
+ *         &lt;element name="currency" type="{http://rest.immobilienscout24.de/schema/common/1.0}Currency"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -49,9 +50,11 @@ public class Money132
 {
 
     @XmlElement(required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter13 .class)
+    @XmlJavaTypeAdapter(Adapter12 .class)
+    @XmlSchemaType(name = "decimal")
     protected Double amount;
     @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
     protected Currency currency;
 
     /**

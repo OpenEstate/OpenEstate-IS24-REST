@@ -31,26 +31,26 @@ import org.openestate.is24.restapi.xml.common.PublishChannels;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="RealEstate">
- *   &lt;complexContent>
- *     &lt;extension base="{http://rest.immobilienscout24.de/schema/common/1.0}AbstractRealEstate">
- *       &lt;sequence>
- *         &lt;element name="showAddress" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
- *         &lt;element name="contact" minOccurs="0">
- *           &lt;complexType>
- *             &lt;complexContent>
- *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                 &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}long" />
- *                 &lt;attribute name="externalId" type="{http://rest.immobilienscout24.de/schema/common/1.0}TextField" />
- *               &lt;/restriction>
- *             &lt;/complexContent>
- *           &lt;/complexType>
- *         &lt;/element>
- *         &lt;element ref="{http://rest.immobilienscout24.de/schema/common/1.0}publishChannels" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="RealEstate"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;extension base="{http://rest.immobilienscout24.de/schema/common/1.0}AbstractRealEstate"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="showAddress" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
+ *         &lt;element name="contact" minOccurs="0"&gt;
+ *           &lt;complexType&gt;
+ *             &lt;complexContent&gt;
+ *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *                 &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}long" /&gt;
+ *                 &lt;attribute name="externalId" type="{http://rest.immobilienscout24.de/schema/common/1.0}TextField" /&gt;
+ *               &lt;/restriction&gt;
+ *             &lt;/complexContent&gt;
+ *           &lt;/complexType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element ref="{http://rest.immobilienscout24.de/schema/common/1.0}publishChannels" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/extension&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -62,27 +62,27 @@ import org.openestate.is24.restapi.xml.common.PublishChannels;
     "publishChannels"
 })
 @XmlSeeAlso({
-    Office.class,
-    SpecialPurpose.class,
-    LivingRentSite.class,
-    Store.class,
-    GarageRent.class,
-    Gastronomy.class,
-    ApartmentBuy.class,
     HouseBuy.class,
+    HouseRent.class,
+    GarageRent.class,
     GarageBuy.class,
-    Investment.class,
-    FlatShareRoom.class,
-    ApartmentRent.class,
-    CompulsoryAuction.class,
-    LivingBuySite.class,
     SeniorCare.class,
-    HouseType.class,
-    ShortTermAccommodation.class,
-    Industry.class,
     AssistedLiving.class,
+    ApartmentRent.class,
+    ApartmentBuy.class,
+    CompulsoryAuction.class,
+    ShortTermAccommodation.class,
+    Investment.class,
+    Office.class,
+    Store.class,
+    Gastronomy.class,
+    Industry.class,
+    SpecialPurpose.class,
+    LivingBuySite.class,
+    LivingRentSite.class,
     TradeSite.class,
-    HouseRent.class
+    HouseType.class,
+    FlatShareRoom.class
 })
 public abstract class RealEstate
     extends AbstractRealEstate
@@ -290,14 +290,14 @@ public abstract class RealEstate
      * <p>The following schema fragment specifies the expected content contained within this class.
      * 
      * <pre>
-     * &lt;complexType>
-     *   &lt;complexContent>
-     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-     *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}long" />
-     *       &lt;attribute name="externalId" type="{http://rest.immobilienscout24.de/schema/common/1.0}TextField" />
-     *     &lt;/restriction>
-     *   &lt;/complexContent>
-     * &lt;/complexType>
+     * &lt;complexType&gt;
+     *   &lt;complexContent&gt;
+     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+     *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}long" /&gt;
+     *       &lt;attribute name="externalId" type="{http://rest.immobilienscout24.de/schema/common/1.0}TextField" /&gt;
+     *     &lt;/restriction&gt;
+     *   &lt;/complexContent&gt;
+     * &lt;/complexType&gt;
      * </pre>
      * 
      * 

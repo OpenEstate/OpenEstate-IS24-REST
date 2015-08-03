@@ -4,6 +4,7 @@ package org.openestate.is24.restapi.xml.realestates;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import org.jvnet.jaxb2_commons.lang.CopyStrategy;
 import org.jvnet.jaxb2_commons.lang.CopyTo;
@@ -34,15 +35,15 @@ import org.openestate.is24.restapi.xml.common.UtilizationTradeSite;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="TradeSite">
- *   &lt;complexContent>
- *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/realestates/1.0}RealEstate">
- *       &lt;sequence>
- *         &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}ExtendedTradeSiteGroup"/>
- *       &lt;/sequence>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="TradeSite"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/realestates/1.0}RealEstate"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}ExtendedTradeSiteGroup"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/extension&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -73,9 +74,11 @@ public class TradeSite
 {
 
     @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
     protected CommercializationType commercializationType;
     protected SiteRecommendedUseForTradeTypes recommendedUseTypes;
     @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
     protected UtilizationTradeSite utilizationTradeSite;
     protected Integer tenancy;
     @XmlElement(required = true)
@@ -88,10 +91,13 @@ public class TradeSite
     protected Boolean shortTermConstructible;
     protected Boolean buildingPermission;
     protected Boolean demolition;
+    @XmlSchemaType(name = "string")
     protected SiteDevelopmentType siteDevelopmentType;
+    @XmlSchemaType(name = "string")
     protected SiteConstructibleType siteConstructibleType;
     protected Double grz;
     protected Double gfz;
+    @XmlSchemaType(name = "string")
     protected LeaseIntervalType leaseInterval;
 
     /**

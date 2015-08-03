@@ -27,19 +27,19 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="Wgs84Address">
- *   &lt;complexContent>
- *     &lt;extension base="{http://rest.immobilienscout24.de/schema/common/1.0}Address">
- *       &lt;sequence>
- *         &lt;element name="quarter" type="{http://rest.immobilienscout24.de/schema/common/1.0}TextField" minOccurs="0"/>
- *         &lt;element name="wgs84Coordinate" type="{http://rest.immobilienscout24.de/schema/common/1.0}Wgs84Coordinate" minOccurs="0"/>
- *         &lt;element name="preciseHouseNumber" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
- *         &lt;element name="geoHierarchy" type="{http://rest.immobilienscout24.de/schema/common/1.0}GeoHierarchy" minOccurs="0"/>
- *         &lt;element name="description" type="{http://rest.immobilienscout24.de/schema/common/1.0}Wgs84AddressDescription" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="Wgs84Address"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;extension base="{http://rest.immobilienscout24.de/schema/common/1.0}Address"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="quarter" type="{http://rest.immobilienscout24.de/schema/common/1.0}TextField" minOccurs="0"/&gt;
+ *         &lt;element name="wgs84Coordinate" type="{http://rest.immobilienscout24.de/schema/common/1.0}Wgs84Coordinate" minOccurs="0"/&gt;
+ *         &lt;element name="preciseHouseNumber" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/&gt;
+ *         &lt;element name="geoHierarchy" type="{http://rest.immobilienscout24.de/schema/common/1.0}GeoHierarchy" minOccurs="0"/&gt;
+ *         &lt;element name="description" type="{http://rest.immobilienscout24.de/schema/common/1.0}Wgs84AddressDescription" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/extension&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 

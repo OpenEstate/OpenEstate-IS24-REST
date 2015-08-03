@@ -19,7 +19,7 @@ import org.jvnet.jaxb2_commons.lang.ToString;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
-import org.openestate.is24.restapi.xml.Adapter3;
+import org.openestate.is24.restapi.xml.Adapter2;
 import org.openestate.is24.restapi.xml.common.CourtageInfo;
 import org.openestate.is24.restapi.xml.common.Price;
 
@@ -32,13 +32,13 @@ import org.openestate.is24.restapi.xml.common.Price;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="OfferFlatShareRoom">
- *   &lt;complexContent>
- *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/listelement/1.0}OfferRealEstateForList">
- *       &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}BaseFlatShareRoomGroup"/>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="OfferFlatShareRoom"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/listelement/1.0}OfferRealEstateForList"&gt;
+ *       &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}BaseFlatShareRoomGroup"/&gt;
+ *     &lt;/extension&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -59,7 +59,7 @@ public class OfferFlatShareRoom
     protected Price price;
     protected double roomSize;
     @XmlElement(required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlJavaTypeAdapter(Adapter2 .class)
     @XmlSchemaType(name = "date")
     protected Calendar startRentalDate;
     @XmlElement(required = true)

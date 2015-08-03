@@ -20,7 +20,7 @@ import org.jvnet.jaxb2_commons.lang.ToString;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
-import org.openestate.is24.restapi.xml.Adapter2;
+import org.openestate.is24.restapi.xml.Adapter1;
 
 
 /**
@@ -33,29 +33,29 @@ import org.openestate.is24.restapi.xml.Adapter2;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="PublishObject">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="realEstate">
- *           &lt;complexType>
- *             &lt;complexContent>
- *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                 &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}long" />
- *                 &lt;attribute name="title" type="{http://rest.immobilienscout24.de/schema/common/1.0}TextField" />
- *                 &lt;attribute name="firstActivationDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" />
- *               &lt;/restriction>
- *             &lt;/complexContent>
- *           &lt;/complexType>
- *         &lt;/element>
- *         &lt;element name="publishChannel" type="{http://rest.immobilienscout24.de/schema/common/1.0}PublishChannel"/>
- *         &lt;element name="messageCode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="message" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *       &lt;/sequence>
- *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}string" />
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="PublishObject"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="realEstate"&gt;
+ *           &lt;complexType&gt;
+ *             &lt;complexContent&gt;
+ *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *                 &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}long" /&gt;
+ *                 &lt;attribute name="title" type="{http://rest.immobilienscout24.de/schema/common/1.0}TextField" /&gt;
+ *                 &lt;attribute name="firstActivationDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" /&gt;
+ *               &lt;/restriction&gt;
+ *             &lt;/complexContent&gt;
+ *           &lt;/complexType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="publishChannel" type="{http://rest.immobilienscout24.de/schema/common/1.0}PublishChannel"/&gt;
+ *         &lt;element name="messageCode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="message" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -374,15 +374,15 @@ public class PublishObject
      * <p>The following schema fragment specifies the expected content contained within this class.
      * 
      * <pre>
-     * &lt;complexType>
-     *   &lt;complexContent>
-     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-     *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}long" />
-     *       &lt;attribute name="title" type="{http://rest.immobilienscout24.de/schema/common/1.0}TextField" />
-     *       &lt;attribute name="firstActivationDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" />
-     *     &lt;/restriction>
-     *   &lt;/complexContent>
-     * &lt;/complexType>
+     * &lt;complexType&gt;
+     *   &lt;complexContent&gt;
+     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+     *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}long" /&gt;
+     *       &lt;attribute name="title" type="{http://rest.immobilienscout24.de/schema/common/1.0}TextField" /&gt;
+     *       &lt;attribute name="firstActivationDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" /&gt;
+     *     &lt;/restriction&gt;
+     *   &lt;/complexContent&gt;
+     * &lt;/complexType&gt;
      * </pre>
      * 
      * 
@@ -398,7 +398,7 @@ public class PublishObject
         @XmlAttribute(name = "title")
         protected String title;
         @XmlAttribute(name = "firstActivationDate")
-        @XmlJavaTypeAdapter(Adapter2 .class)
+        @XmlJavaTypeAdapter(Adapter1 .class)
         @XmlSchemaType(name = "dateTime")
         protected Calendar firstActivationDate;
 

@@ -4,6 +4,7 @@ package org.openestate.is24.restapi.xml.common;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 import org.jvnet.jaxb2_commons.lang.CopyStrategy;
@@ -27,18 +28,18 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="Price">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="value" type="{http://www.w3.org/2001/XMLSchema}double"/>
- *         &lt;element name="currency" type="{http://rest.immobilienscout24.de/schema/common/1.0}Currency"/>
- *         &lt;element name="marketingType" type="{http://rest.immobilienscout24.de/schema/common/1.0}MarketingType" minOccurs="0"/>
- *         &lt;element name="priceIntervalType" type="{http://rest.immobilienscout24.de/schema/common/1.0}PriceIntervalType" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="Price"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="value" type="{http://www.w3.org/2001/XMLSchema}double"/&gt;
+ *         &lt;element name="currency" type="{http://rest.immobilienscout24.de/schema/common/1.0}Currency"/&gt;
+ *         &lt;element name="marketingType" type="{http://rest.immobilienscout24.de/schema/common/1.0}MarketingType" minOccurs="0"/&gt;
+ *         &lt;element name="priceIntervalType" type="{http://rest.immobilienscout24.de/schema/common/1.0}PriceIntervalType" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -59,8 +60,11 @@ public class Price
 
     protected double value;
     @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
     protected Currency currency;
+    @XmlSchemaType(name = "string")
     protected MarketingType marketingType;
+    @XmlSchemaType(name = "string")
     protected PriceIntervalType priceIntervalType;
 
     /**

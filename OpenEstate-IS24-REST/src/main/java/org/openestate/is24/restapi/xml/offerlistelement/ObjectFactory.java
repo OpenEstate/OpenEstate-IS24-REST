@@ -38,131 +38,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link OfferTradeSite }
-     * 
-     */
-    public OfferTradeSite createOfferTradeSite() {
-        return new OfferTradeSite();
-    }
-
-    /**
-     * Create an instance of {@link OfferHouseBuy }
-     * 
-     */
-    public OfferHouseBuy createOfferHouseBuy() {
-        return new OfferHouseBuy();
-    }
-
-    /**
-     * Create an instance of {@link OfferGarageRent }
-     * 
-     */
-    public OfferGarageRent createOfferGarageRent() {
-        return new OfferGarageRent();
-    }
-
-    /**
-     * Create an instance of {@link OfferSpecialPurpose }
-     * 
-     */
-    public OfferSpecialPurpose createOfferSpecialPurpose() {
-        return new OfferSpecialPurpose();
-    }
-
-    /**
-     * Create an instance of {@link OfferLivingRentSite }
-     * 
-     */
-    public OfferLivingRentSite createOfferLivingRentSite() {
-        return new OfferLivingRentSite();
-    }
-
-    /**
-     * Create an instance of {@link OfferGarageBuy }
-     * 
-     */
-    public OfferGarageBuy createOfferGarageBuy() {
-        return new OfferGarageBuy();
-    }
-
-    /**
-     * Create an instance of {@link OfferApartmentBuy }
-     * 
-     */
-    public OfferApartmentBuy createOfferApartmentBuy() {
-        return new OfferApartmentBuy();
-    }
-
-    /**
-     * Create an instance of {@link OfferStore }
-     * 
-     */
-    public OfferStore createOfferStore() {
-        return new OfferStore();
-    }
-
-    /**
      * Create an instance of {@link OfferApartmentRent }
      * 
      */
     public OfferApartmentRent createOfferApartmentRent() {
         return new OfferApartmentRent();
-    }
-
-    /**
-     * Create an instance of {@link OfferFlatShareRoom }
-     * 
-     */
-    public OfferFlatShareRoom createOfferFlatShareRoom() {
-        return new OfferFlatShareRoom();
-    }
-
-    /**
-     * Create an instance of {@link OfferIndustry }
-     * 
-     */
-    public OfferIndustry createOfferIndustry() {
-        return new OfferIndustry();
-    }
-
-    /**
-     * Create an instance of {@link OfferCompulsoryAuction }
-     * 
-     */
-    public OfferCompulsoryAuction createOfferCompulsoryAuction() {
-        return new OfferCompulsoryAuction();
-    }
-
-    /**
-     * Create an instance of {@link OfferSeniorCare }
-     * 
-     */
-    public OfferSeniorCare createOfferSeniorCare() {
-        return new OfferSeniorCare();
-    }
-
-    /**
-     * Create an instance of {@link OfferAssistedLiving }
-     * 
-     */
-    public OfferAssistedLiving createOfferAssistedLiving() {
-        return new OfferAssistedLiving();
-    }
-
-    /**
-     * Create an instance of {@link OfferHouseType }
-     * 
-     */
-    public OfferHouseType createOfferHouseType() {
-        return new OfferHouseType();
-    }
-
-    /**
-     * Create an instance of {@link OfferInvestment }
-     * 
-     */
-    public OfferInvestment createOfferInvestment() {
-        return new OfferInvestment();
     }
 
     /**
@@ -174,11 +54,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link OfferGastronomy }
+     * Create an instance of {@link OfferApartmentBuy }
      * 
      */
-    public OfferGastronomy createOfferGastronomy() {
-        return new OfferGastronomy();
+    public OfferApartmentBuy createOfferApartmentBuy() {
+        return new OfferApartmentBuy();
+    }
+
+    /**
+     * Create an instance of {@link OfferHouseBuy }
+     * 
+     */
+    public OfferHouseBuy createOfferHouseBuy() {
+        return new OfferHouseBuy();
     }
 
     /**
@@ -190,6 +78,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link OfferHouseType }
+     * 
+     */
+    public OfferHouseType createOfferHouseType() {
+        return new OfferHouseType();
+    }
+
+    /**
      * Create an instance of {@link OfferOffice }
      * 
      */
@@ -198,11 +94,115 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link OfferStore }
+     * 
+     */
+    public OfferStore createOfferStore() {
+        return new OfferStore();
+    }
+
+    /**
+     * Create an instance of {@link OfferGastronomy }
+     * 
+     */
+    public OfferGastronomy createOfferGastronomy() {
+        return new OfferGastronomy();
+    }
+
+    /**
+     * Create an instance of {@link OfferIndustry }
+     * 
+     */
+    public OfferIndustry createOfferIndustry() {
+        return new OfferIndustry();
+    }
+
+    /**
+     * Create an instance of {@link OfferSpecialPurpose }
+     * 
+     */
+    public OfferSpecialPurpose createOfferSpecialPurpose() {
+        return new OfferSpecialPurpose();
+    }
+
+    /**
+     * Create an instance of {@link OfferInvestment }
+     * 
+     */
+    public OfferInvestment createOfferInvestment() {
+        return new OfferInvestment();
+    }
+
+    /**
+     * Create an instance of {@link OfferCompulsoryAuction }
+     * 
+     */
+    public OfferCompulsoryAuction createOfferCompulsoryAuction() {
+        return new OfferCompulsoryAuction();
+    }
+
+    /**
      * Create an instance of {@link OfferLivingBuySite }
      * 
      */
     public OfferLivingBuySite createOfferLivingBuySite() {
         return new OfferLivingBuySite();
+    }
+
+    /**
+     * Create an instance of {@link OfferLivingRentSite }
+     * 
+     */
+    public OfferLivingRentSite createOfferLivingRentSite() {
+        return new OfferLivingRentSite();
+    }
+
+    /**
+     * Create an instance of {@link OfferTradeSite }
+     * 
+     */
+    public OfferTradeSite createOfferTradeSite() {
+        return new OfferTradeSite();
+    }
+
+    /**
+     * Create an instance of {@link OfferGarageBuy }
+     * 
+     */
+    public OfferGarageBuy createOfferGarageBuy() {
+        return new OfferGarageBuy();
+    }
+
+    /**
+     * Create an instance of {@link OfferGarageRent }
+     * 
+     */
+    public OfferGarageRent createOfferGarageRent() {
+        return new OfferGarageRent();
+    }
+
+    /**
+     * Create an instance of {@link OfferFlatShareRoom }
+     * 
+     */
+    public OfferFlatShareRoom createOfferFlatShareRoom() {
+        return new OfferFlatShareRoom();
+    }
+
+    /**
+     * Create an instance of {@link OfferAssistedLiving }
+     * 
+     */
+    public OfferAssistedLiving createOfferAssistedLiving() {
+        return new OfferAssistedLiving();
+    }
+
+    /**
+     * Create an instance of {@link OfferSeniorCare }
+     * 
+     */
+    public OfferSeniorCare createOfferSeniorCare() {
+        return new OfferSeniorCare();
     }
 
 }

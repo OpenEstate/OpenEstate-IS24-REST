@@ -11,12 +11,12 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="GarageQueryType">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="GARAGE"/>
- *     &lt;enumeration value="STREET_PARKING"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="GarageQueryType"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="GARAGE"/&gt;
+ *     &lt;enumeration value="STREET_PARKING"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  * 
  */

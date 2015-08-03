@@ -11,23 +11,23 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="IndustryType">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="SHOWROOM_SPACE"/>
- *     &lt;enumeration value="HALL"/>
- *     &lt;enumeration value="HIGH_LACK_STORAGE"/>
- *     &lt;enumeration value="INDUSTRY_HALL"/>
- *     &lt;enumeration value="INDUSTRY_HALL_WITH_OPEN_AREA"/>
- *     &lt;enumeration value="COLD_STORAGE"/>
- *     &lt;enumeration value="MULTIDECK_CABINET_STORAGE"/>
- *     &lt;enumeration value="STORAGE_WITH_OPEN_AREA"/>
- *     &lt;enumeration value="STORAGE_AREA"/>
- *     &lt;enumeration value="STORAGE_HALL"/>
- *     &lt;enumeration value="SERVICE_AREA"/>
- *     &lt;enumeration value="SHIPPING_STORAGE"/>
- *     &lt;enumeration value="REPAIR_SHOP"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="IndustryType"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="SHOWROOM_SPACE"/&gt;
+ *     &lt;enumeration value="HALL"/&gt;
+ *     &lt;enumeration value="HIGH_LACK_STORAGE"/&gt;
+ *     &lt;enumeration value="INDUSTRY_HALL"/&gt;
+ *     &lt;enumeration value="INDUSTRY_HALL_WITH_OPEN_AREA"/&gt;
+ *     &lt;enumeration value="COLD_STORAGE"/&gt;
+ *     &lt;enumeration value="MULTIDECK_CABINET_STORAGE"/&gt;
+ *     &lt;enumeration value="STORAGE_WITH_OPEN_AREA"/&gt;
+ *     &lt;enumeration value="STORAGE_AREA"/&gt;
+ *     &lt;enumeration value="STORAGE_HALL"/&gt;
+ *     &lt;enumeration value="SERVICE_AREA"/&gt;
+ *     &lt;enumeration value="SHIPPING_STORAGE"/&gt;
+ *     &lt;enumeration value="REPAIR_SHOP"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  * 
  */

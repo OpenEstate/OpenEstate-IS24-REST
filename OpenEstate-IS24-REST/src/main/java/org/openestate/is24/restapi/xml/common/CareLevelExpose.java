@@ -11,16 +11,16 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="CareLevelExpose">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="CARE_LEVEL_1"/>
- *     &lt;enumeration value="CARE_LEVEL_2"/>
- *     &lt;enumeration value="CARE_LEVEL_3"/>
- *     &lt;enumeration value="CARE_LEVEL_1_AND_2"/>
- *     &lt;enumeration value="CARE_LEVEL_2_AND_3"/>
- *     &lt;enumeration value="ALL"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="CareLevelExpose"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="CARE_LEVEL_1"/&gt;
+ *     &lt;enumeration value="CARE_LEVEL_2"/&gt;
+ *     &lt;enumeration value="CARE_LEVEL_3"/&gt;
+ *     &lt;enumeration value="CARE_LEVEL_1_AND_2"/&gt;
+ *     &lt;enumeration value="CARE_LEVEL_2_AND_3"/&gt;
+ *     &lt;enumeration value="ALL"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  * 
  */

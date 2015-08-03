@@ -11,13 +11,13 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="YesNoBothType">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="YES"/>
- *     &lt;enumeration value="NO"/>
- *     &lt;enumeration value="BOTH"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="YesNoBothType"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="YES"/&gt;
+ *     &lt;enumeration value="NO"/&gt;
+ *     &lt;enumeration value="BOTH"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  * 
  */
