@@ -876,7 +876,7 @@ public class ExportPool
    */
   public synchronized void putObjectForRemoval( String externalObjectId )
   {
-    externalObjectId = StringUtils.trimToNull( externalObjectId) ;
+    externalObjectId = StringUtils.trimToNull( externalObjectId );
     if (externalObjectId!=null)
       this.putSetting( "object."+externalObjectId, REMOVE );
   }
