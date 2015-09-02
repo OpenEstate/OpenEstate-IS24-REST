@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright 2014-2015 OpenEstate.org.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,6 +15,7 @@
  */
 package org.openestate.is24.restapi.examples;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.openestate.is24.restapi.AbstractClient;
 import org.openestate.is24.restapi.hc43.HttpComponents43Client;
 
@@ -24,6 +25,7 @@ import org.openestate.is24.restapi.hc43.HttpComponents43Client;
  *
  * @author Andreas Rudolph <andy@openindex.de>
  */
+@SuppressFBWarnings
 public class HttpComponents43ClientExample
 {
   final static String WEBSERVICE_URL = AbstractClient.LIVE_API;

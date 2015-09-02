@@ -32,6 +32,7 @@ import javax.xml.bind.Unmarshaller;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOExceptionWithCause;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.SystemUtils;
 import org.openestate.is24.restapi.xml.common.Attachment;
@@ -174,9 +175,13 @@ public class ExportPool
   {
     if (!this.contactsDir.isDirectory()) return new String[]{};
     List<String> ids = new ArrayList<String>();
-    for (File f : this.contactsDir.listFiles())
+    File[] files = this.contactsDir.listFiles();
+    if (ArrayUtils.isNotEmpty( files ))
     {
-      if (f.isDirectory()) ids.add( f.getName() );
+      for (File f : files)
+      {
+        if (f.isDirectory()) ids.add( f.getName() );
+      }
     }
     return ids.toArray( new String[ids.size()] );
   }
@@ -433,18 +438,22 @@ public class ExportPool
     final File objectDir = new File( this.objectsDir, pooledObjectId );
     if (!objectDir.isDirectory()) return new String[]{};
     List<String> ids = new ArrayList<String>();
-    for (File f : objectDir.listFiles())
+    File[] files = objectDir.listFiles();
+    if (ArrayUtils.isNotEmpty( files ))
     {
-      String n = f.getName();
-      if (!n.startsWith( "attachment." ) || !n.endsWith(".xml" )) continue;
-      String[] parts = StringUtils.split( n, "." );
-      if (parts.length==3)
+      for (File f : files)
       {
-        ids.add( parts[1] );
-      }
-      else
-      {
-        LOGGER.warn( "Invalid attachment.xml at '" + f.getAbsolutePath() + "'!" );
+        String n = f.getName();
+        if (!n.startsWith( "attachment." ) || !n.endsWith(".xml" )) continue;
+        String[] parts = StringUtils.split( n, "." );
+        if (parts.length==3)
+        {
+          ids.add( parts[1] );
+        }
+        else
+        {
+          LOGGER.warn( "Invalid attachment.xml at '" + f.getAbsolutePath() + "'!" );
+        }
       }
     }
     return ids.toArray( new String[ids.size()] );
@@ -460,9 +469,13 @@ public class ExportPool
   {
     if (!this.objectsDir.isDirectory()) return new String[]{};
     List<String> ids = new ArrayList<String>();
-    for (File f : this.objectsDir.listFiles())
+    File[] files = this.objectsDir.listFiles();
+    if (ArrayUtils.isNotEmpty( files ))
     {
-      if (f.isDirectory()) ids.add( f.getName() );
+      for (File f : files)
+      {
+        if (f.isDirectory()) ids.add( f.getName() );
+      }
     }
     return ids.toArray( new String[ids.size()] );
   }
@@ -749,11 +762,15 @@ public class ExportPool
       throw new IOException( "Can't create folder at '" + objectDir.getAbsolutePath() + "'!" );
 
     int attachmentCount = 0;
-    for (File f : objectDir.listFiles())
+    File[] files = objectDir.listFiles();
+    if (ArrayUtils.isNotEmpty( files ))
     {
-      String n = f.getName();
-      if (n.startsWith( "attachment." ) && n.endsWith( ".xml" ))
-        attachmentCount++;
+      for (File f : files)
+      {
+        String n = f.getName();
+        if (n.startsWith( "attachment." ) && n.endsWith( ".xml" ))
+          attachmentCount++;
+      }
     }
 
     final File destFile = new File( objectDir, file.getName() );
@@ -800,11 +817,15 @@ public class ExportPool
       throw new IOException( "Can't create folder at '" + objectDir.getAbsolutePath() + "'!" );
 
     int attachmentCount = 0;
-    for (File f : objectDir.listFiles())
+    File[] files = objectDir.listFiles();
+    if (ArrayUtils.isNotEmpty( files ))
     {
-      String n = f.getName();
-      if (n.startsWith( "attachment." ) && n.endsWith( ".xml" ))
-        attachmentCount++;
+      for (File f : files)
+      {
+        String n = f.getName();
+        if (n.startsWith( "attachment." ) && n.endsWith( ".xml" ))
+          attachmentCount++;
+      }
     }
     attachment.setHref( file );
 
@@ -845,11 +866,15 @@ public class ExportPool
       throw new IOException( "Can't create folder at '" + objectDir.getAbsolutePath() + "'!" );
 
     int attachmentCount = 0;
-    for (File f : objectDir.listFiles())
+    File[] files = objectDir.listFiles();
+    if (ArrayUtils.isNotEmpty( files ))
     {
-      String n = f.getName();
-      if (n.startsWith( "attachment." ) && n.endsWith( ".xml" ))
-        attachmentCount++;
+      for (File f : files)
+      {
+        String n = f.getName();
+        if (n.startsWith( "attachment." ) && n.endsWith( ".xml" ))
+          attachmentCount++;
+      }
     }
 
     OutputStream output = null;
