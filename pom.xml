@@ -48,6 +48,12 @@
     <module>OpenEstate-IS24-REST-webapp</module>
   </modules>
 
+  <scm>
+    <connection>scm:git:https://github.com/OpenEstate/OpenEstate-IS24-REST.git</connection>
+    <developerConnection>scm:git:[fetch=]https://github.com/OpenEstate/OpenEstate-IS24-REST.git[push=]ssh://git@github.com:OpenEstate/OpenEstate-IS24-REST.git</developerConnection>
+    <url>https://github.com/OpenEstate/OpenEstate-IS24-REST</url>
+  </scm>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.baseName>OpenEstate-IS24-REST</project.baseName>
