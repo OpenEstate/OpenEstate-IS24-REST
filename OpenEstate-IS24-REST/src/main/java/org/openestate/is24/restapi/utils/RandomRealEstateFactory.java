@@ -15,7 +15,7 @@
  */
 package org.openestate.is24.restapi.utils;
 
-import com.thedeanda.lorem.Lorem;
+import com.thedeanda.lorem.LoremIpsum;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -126,6 +126,7 @@ import org.slf4j.LoggerFactory;
 public class RandomRealEstateFactory
 {
   private final static Logger LOGGER = LoggerFactory.getLogger( RandomRealEstateFactory.class );
+  private final static LoremIpsum LOREM = LoremIpsum.getInstance();
   private final org.openestate.is24.restapi.xml.common.ObjectFactory commonFactory =
     new org.openestate.is24.restapi.xml.common.ObjectFactory();
   private final org.openestate.is24.restapi.xml.realestates.ObjectFactory realEstatesFactory =
@@ -181,14 +182,14 @@ public class RandomRealEstateFactory
   public RealtorContactDetails createRandomContact()
   {
     RealtorContactDetails contact = commonFactory.createRealtorContactDetails();
-    contact.setAdditionName( StringUtils.abbreviate( Lorem.getWords( 1, 5 ), 30 ) );
+    contact.setAdditionName( StringUtils.abbreviate( LOREM.getWords( 1, 5 ), 30 ) );
     contact.setAddress( createRandomAddress() );
     contact.setBusinessCardContact( false );
     contact.setCellPhoneNumber( "+49 160 123456" );
     contact.setCellPhoneNumberAreaCode( "0160" );
     contact.setCellPhoneNumberCountryCode( "+49" );
     contact.setCellPhoneNumberSubscriber( "123456" );
-    contact.setCompany( StringUtils.abbreviate( Lorem.getWords( 1, 15 ), 100 ) );
+    contact.setCompany( StringUtils.abbreviate( LOREM.getWords( 1, 15 ), 100 ) );
     contact.setCountryCode( getRandomCountryCode() );
     contact.setDefaultContact( false );
     contact.setEmail( "test@test.org" );
@@ -197,20 +198,20 @@ public class RandomRealEstateFactory
     contact.setFaxNumberAreaCode( "030" );
     contact.setFaxNumberCountryCode( "+49" );
     contact.setFaxNumberSubscriber( "123457" );
-    contact.setFirstname( Lorem.getFirstName() );
+    contact.setFirstname( LOREM.getFirstName() );
     //contact.setId( null );
-    contact.setLastname( Lorem.getLastName() );
+    contact.setLastname( LOREM.getLastName() );
     contact.setLocalPartnerContact( false );
-    contact.setOfficeHours( StringUtils.abbreviate( Lorem.getWords( 1, 50 ), 1000 ) );
+    contact.setOfficeHours( StringUtils.abbreviate( LOREM.getWords( 1, 50 ), 1000 ) );
     contact.setPhoneNumber( "+49 30 123456" );
     contact.setPhoneNumberAreaCode( "030" );
     contact.setPhoneNumberCountryCode( "+49" );
     contact.setPhoneNumberSubscriber( "123456" );
-    contact.setPosition( StringUtils.abbreviate( Lorem.getWords( 1, 15 ), 100 ) );
+    contact.setPosition( StringUtils.abbreviate( LOREM.getWords( 1, 15 ), 100 ) );
     //contact.setRealEstateReferenceCount( null );
     contact.setSalutation( getRandomSalutationType() );
     contact.setShowOnProfilePage( false );
-    contact.setTitle( StringUtils.abbreviate( Lorem.getWords( 1, 3 ), 15 ) );
+    contact.setTitle( StringUtils.abbreviate( LOREM.getWords( 1, 3 ), 15 ) );
 
     try
     {
@@ -1025,21 +1026,21 @@ public class RandomRealEstateFactory
     //realEstate.setApiSearchData( value );
     //realEstate.setAttachments( value );
     //realEstate.setCreationDate( value );
-    realEstate.setDescriptionNote( StringUtils.abbreviate( Lorem.getParagraphs( 2, 10 ), 2000 ) );
+    realEstate.setDescriptionNote( StringUtils.abbreviate( LOREM.getParagraphs( 2, 10 ), 2000 ) );
     realEstate.setExternalId( String.valueOf( getRandomInt( 1000 ) ) );
-    realEstate.setFurnishingNote( StringUtils.abbreviate( Lorem.getParagraphs( 2, 10 ), 2000 ) );
+    realEstate.setFurnishingNote( StringUtils.abbreviate( LOREM.getParagraphs( 2, 10 ), 2000 ) );
     realEstate.setGroupNumber( getRandomInt( 100 ) );
     //realEstate.setId( value );
     realEstate.setLastModificationDate( Calendar.getInstance() );
-    realEstate.setLocationNote( StringUtils.abbreviate( Lorem.getParagraphs( 2, 10 ), 2000 ) );
-    realEstate.setOtherNote( StringUtils.abbreviate( Lorem.getParagraphs( 2, 10 ), 2000 ) );
+    realEstate.setLocationNote( StringUtils.abbreviate( LOREM.getParagraphs( 2, 10 ), 2000 ) );
+    realEstate.setOtherNote( StringUtils.abbreviate( LOREM.getParagraphs( 2, 10 ), 2000 ) );
     //realEstate.setPublishChannels( value );
     //realEstate.setRealEstateProjectId( value );
     realEstate.setRealEstateState( RealEstateState.ACTIVE );
     //realEstate.setReferencePriceApiCall( value );
     //realEstate.setReferencePriceServiceCall( value );
     realEstate.setShowAddress( getRandomBoolean() );
-    realEstate.setTitle( StringUtils.abbreviate( Lorem.getTitle( 3, 15 ), 100 ) );
+    realEstate.setTitle( StringUtils.abbreviate( LOREM.getTitle( 3, 15 ), 100 ) );
 
     realEstate.setContact( realEstatesFactory.createRealEstateContact() );
     realEstate.getContact().setExternalId( String.valueOf( getRandomInt( 1000 ) ) );
@@ -1114,10 +1115,10 @@ public class RandomRealEstateFactory
     initAddress( (Address) address );
 
     address.setPreciseHouseNumber( getRandomBoolean() );
-    address.setQuarter( Lorem.getWords( 1, 3 ) );
+    address.setQuarter( LOREM.getWords( 1, 3 ) );
 
     address.setDescription( commonFactory.createWgs84AddressDescription() );
-    address.getDescription().setText( StringUtils.abbreviate( Lorem.getWords( 1, 15 ), 1000 ) );
+    address.getDescription().setText( StringUtils.abbreviate( LOREM.getWords( 1, 15 ), 1000 ) );
 
     //address.setGeoHierarchy( commonFactory.createGeoHierarchy() );
     //address.getGeoHierarchy().setCity( value );
@@ -1148,7 +1149,7 @@ public class RandomRealEstateFactory
     realEstate.setCondition( getRandomRealEstateCondition() );
     realEstate.setEnergySourcesEnev2014( createRandomEnergySourcesEnev2014() );
     realEstate.setFloor( getRandomInt( 5 ) );
-    realEstate.setFreeFrom( StringUtils.abbreviate( Lorem.getWords( 1, 10 ), 50 ) );
+    realEstate.setFreeFrom( StringUtils.abbreviate( LOREM.getWords( 1, 10 ), 50 ) );
     realEstate.setGarden( getRandomBoolean() );
     realEstate.setGuestToilet( getRandomYesNotApplicableType() );
     realEstate.setHandicappedAccessible( getRandomYesNotApplicableType() );
@@ -1184,8 +1185,8 @@ public class RandomRealEstateFactory
 
     // courtage
     realEstate.setCourtage( commonFactory.createCourtageInfo() );
-    realEstate.getCourtage().setCourtage( StringUtils.abbreviate( Lorem.getWords( 1, 5 ), 100 ) );
-    realEstate.getCourtage().setCourtageNote( StringUtils.abbreviate( Lorem.getParagraphs( 2, 10 ), 1000 ) );
+    realEstate.getCourtage().setCourtage( StringUtils.abbreviate( LOREM.getWords( 1, 5 ), 100 ) );
+    realEstate.getCourtage().setCourtageNote( StringUtils.abbreviate( LOREM.getParagraphs( 2, 10 ), 1000 ) );
     realEstate.getCourtage().setHasCourtage( YesNoNotApplicableType.YES );
 
     // energy certificate for habitation
@@ -1249,10 +1250,10 @@ public class RandomRealEstateFactory
     realEstate.setCellar( getRandomYesNotApplicableType() );
     realEstate.setCertificateOfEligibilityNeeded( getRandomBoolean() );
     realEstate.setCondition( getRandomRealEstateCondition() );
-    realEstate.setDeposit( StringUtils.abbreviate( Lorem.getWords( 1, 10 ), 50 ) );
+    realEstate.setDeposit( StringUtils.abbreviate( LOREM.getWords( 1, 10 ), 50 ) );
     realEstate.setEnergySourcesEnev2014( createRandomEnergySourcesEnev2014() );
     realEstate.setFloor( getRandomInt( 5 ) );
-    realEstate.setFreeFrom( StringUtils.abbreviate( Lorem.getWords( 1, 10 ), 50 ) );
+    realEstate.setFreeFrom( StringUtils.abbreviate( LOREM.getWords( 1, 10 ), 50 ) );
     realEstate.setGarden( getRandomBoolean() );
     realEstate.setGuestToilet( getRandomYesNotApplicableType() );
     realEstate.setHandicappedAccessible( getRandomYesNotApplicableType() );
@@ -1289,8 +1290,8 @@ public class RandomRealEstateFactory
 
     // courtage
     realEstate.setCourtage( commonFactory.createCourtageInfo() );
-    realEstate.getCourtage().setCourtage( StringUtils.abbreviate( Lorem.getWords( 1, 5 ), 100 ) );
-    realEstate.getCourtage().setCourtageNote( StringUtils.abbreviate( Lorem.getParagraphs( 2, 10 ), 1000 ) );
+    realEstate.getCourtage().setCourtage( StringUtils.abbreviate( LOREM.getWords( 1, 5 ), 100 ) );
+    realEstate.getCourtage().setCourtageNote( StringUtils.abbreviate( LOREM.getParagraphs( 2, 10 ), 1000 ) );
     realEstate.getCourtage().setHasCourtage( YesNoNotApplicableType.YES );
 
     // energy certificate for habitation
@@ -1384,7 +1385,7 @@ public class RandomRealEstateFactory
     realEstate.setRestaurantAvailable( getRandomYesNotApplicableType() );
     realEstate.setSecurity24Hours( getRandomYesNotApplicableType() );
     realEstate.setShoppingFacilitiesAvailable( getRandomYesNotApplicableType() );
-    realEstate.setShortDescription( StringUtils.abbreviate( Lorem.getWords( 3, 15 ), 200 ) );
+    realEstate.setShortDescription( StringUtils.abbreviate( LOREM.getWords( 3, 15 ), 200 ) );
     realEstate.setTrialLivingPossible( getRandomYesNotApplicableType() );
 
     // construction year
@@ -1474,7 +1475,7 @@ public class RandomRealEstateFactory
     realEstate.setHeatingTypeEnev2014( getRandomHeatingTypeEnev2014() );
     realEstate.setLastChangeDate( getRandomCalendar() );
     realEstate.setNumberOfFolio( String.valueOf( getRandomInt( 1, 10 ) ) );
-    realEstate.setOwner( Lorem.getName() );
+    realEstate.setOwner( LOREM.getName() );
     realEstate.setRecordationDate( getRandomCalendar() );
     realEstate.setRecurrenceAppointment( getRandomBoolean() );
     realEstate.setSplittingAuction( getRandomBoolean() );
@@ -1493,7 +1494,7 @@ public class RandomRealEstateFactory
     // country court
     realEstate.setCountyCourt( commonFactory.createCountyCourt() );
     realEstate.getCountyCourt().setCourtNumber( RandomStringUtils.randomNumeric( 5 ) );
-    realEstate.getCountyCourt().setName( Lorem.getWords( 3 ) );
+    realEstate.getCountyCourt().setName( LOREM.getWords( 3 ) );
 
     // energy certificate for habitation and business
     realEstate.setEnergyCertificate( commonFactory.createEnergyPerformanceCertificate() );
@@ -1572,7 +1573,7 @@ public class RandomRealEstateFactory
     realEstate.setBathHasTub( getRandomYesNotApplicableType() );
     realEstate.setBathHasWc( getRandomYesNotApplicableType() );
     realEstate.setCellar( getRandomYesNotApplicableType() );
-    realEstate.setDeposit( StringUtils.abbreviate( Lorem.getWords( 1, 10 ), 50 ) );
+    realEstate.setDeposit( StringUtils.abbreviate( LOREM.getWords( 1, 10 ), 50 ) );
     realEstate.setDishwasher( getRandomYesNotApplicableType() );
     realEstate.setEnergySourcesEnev2014( createRandomEnergySourcesEnev2014() );
     realEstate.setFlatShareSize( getRandomInt( 2, 8 ) );
@@ -1623,8 +1624,8 @@ public class RandomRealEstateFactory
 
     // courtage
     realEstate.setCourtage( commonFactory.createCourtageInfo() );
-    realEstate.getCourtage().setCourtage( StringUtils.abbreviate( Lorem.getWords( 1, 5 ), 100 ) );
-    realEstate.getCourtage().setCourtageNote( StringUtils.abbreviate( Lorem.getParagraphs( 2, 10 ), 1000 ) );
+    realEstate.getCourtage().setCourtage( StringUtils.abbreviate( LOREM.getWords( 1, 5 ), 100 ) );
+    realEstate.getCourtage().setCourtageNote( StringUtils.abbreviate( LOREM.getParagraphs( 2, 10 ), 1000 ) );
     realEstate.getCourtage().setHasCourtage( YesNoNotApplicableType.YES );
 
     // energy certificate for habitation
@@ -1685,8 +1686,8 @@ public class RandomRealEstateFactory
 
     // courtage
     realEstate.setCourtage( commonFactory.createCourtageInfo() );
-    realEstate.getCourtage().setCourtage( StringUtils.abbreviate( Lorem.getWords( 1, 5 ), 100 ) );
-    realEstate.getCourtage().setCourtageNote( StringUtils.abbreviate( Lorem.getParagraphs( 2, 10 ), 1000 ) );
+    realEstate.getCourtage().setCourtage( StringUtils.abbreviate( LOREM.getWords( 1, 5 ), 100 ) );
+    realEstate.getCourtage().setCourtageNote( StringUtils.abbreviate( LOREM.getParagraphs( 2, 10 ), 1000 ) );
     realEstate.getCourtage().setHasCourtage( YesNoNotApplicableType.YES );
 
     // pricing
@@ -1717,8 +1718,8 @@ public class RandomRealEstateFactory
 
     // courtage
     realEstate.setCourtage( commonFactory.createCourtageInfo() );
-    realEstate.getCourtage().setCourtage( StringUtils.abbreviate( Lorem.getWords( 1, 5 ), 100 ) );
-    realEstate.getCourtage().setCourtageNote( StringUtils.abbreviate( Lorem.getParagraphs( 2, 10 ), 1000 ) );
+    realEstate.getCourtage().setCourtage( StringUtils.abbreviate( LOREM.getWords( 1, 5 ), 100 ) );
+    realEstate.getCourtage().setCourtageNote( StringUtils.abbreviate( LOREM.getParagraphs( 2, 10 ), 1000 ) );
     realEstate.getCourtage().setHasCourtage( YesNoNotApplicableType.YES );
 
     // pricing
@@ -1739,13 +1740,13 @@ public class RandomRealEstateFactory
     realEstate.setAdditionalArea( getRandomDouble( 10, 500 ) );
     realEstate.setCellar( getRandomYesNotApplicableType() );
     realEstate.setCondition( getRandomRealEstateCondition() );
-    realEstate.setDeposit( StringUtils.abbreviate( Lorem.getWords( 1, 10 ), 50 ) );
+    realEstate.setDeposit( StringUtils.abbreviate( LOREM.getWords( 1, 10 ), 50 ) );
     realEstate.setDistanceToAirport( getRandomInt( 5, 50 ) );
     realEstate.setDistanceToFM( getRandomInt( 5, 50 ) );
     realEstate.setDistanceToMRS( getRandomInt( 5, 50 ) );
     realEstate.setDistanceToPT( getRandomInt( 5, 50 ) );
     realEstate.setEnergySourcesEnev2014( createRandomEnergySourcesEnev2014() );
-    realEstate.setFreeFrom( StringUtils.abbreviate( Lorem.getWords( 1, 10 ), 50 ) );
+    realEstate.setFreeFrom( StringUtils.abbreviate( LOREM.getWords( 1, 10 ), 50 ) );
     realEstate.setGastronomyType( getRandomGastronomyType() );
     realEstate.setHeatingTypeEnev2014( getRandomHeatingTypeEnev2014() );
     realEstate.setInteriorQuality( getRandomInteriorQuality() );
@@ -1775,8 +1776,8 @@ public class RandomRealEstateFactory
 
     // courtage
     realEstate.setCourtage( commonFactory.createCourtageInfo() );
-    realEstate.getCourtage().setCourtage( StringUtils.abbreviate( Lorem.getWords( 1, 5 ), 100 ) );
-    realEstate.getCourtage().setCourtageNote( StringUtils.abbreviate( Lorem.getParagraphs( 2, 10 ), 1000 ) );
+    realEstate.getCourtage().setCourtage( StringUtils.abbreviate( LOREM.getWords( 1, 5 ), 100 ) );
+    realEstate.getCourtage().setCourtageNote( StringUtils.abbreviate( LOREM.getParagraphs( 2, 10 ), 1000 ) );
     realEstate.getCourtage().setHasCourtage( YesNoNotApplicableType.YES );
 
     // energy certificate for business
@@ -1866,7 +1867,7 @@ public class RandomRealEstateFactory
     realEstate.setCondition( getRandomRealEstateCondition() );
     realEstate.setConstructionPhase( getRandomConstructionPhaseType() );
     realEstate.setEnergySourcesEnev2014( createRandomEnergySourcesEnev2014() );
-    realEstate.setFreeFrom( StringUtils.abbreviate( Lorem.getWords( 1, 10 ), 50 ) );
+    realEstate.setFreeFrom( StringUtils.abbreviate( LOREM.getWords( 1, 10 ), 50 ) );
     realEstate.setGuestToilet( getRandomYesNotApplicableType() );
     realEstate.setHandicappedAccessible( getRandomYesNotApplicableType() );
     realEstate.setHeatingTypeEnev2014( getRandomHeatingTypeEnev2014() );
@@ -1901,8 +1902,8 @@ public class RandomRealEstateFactory
 
     // courtage
     realEstate.setCourtage( commonFactory.createCourtageInfo() );
-    realEstate.getCourtage().setCourtage( StringUtils.abbreviate( Lorem.getWords( 1, 5 ), 100 ) );
-    realEstate.getCourtage().setCourtageNote( StringUtils.abbreviate( Lorem.getParagraphs( 2, 10 ), 1000 ) );
+    realEstate.getCourtage().setCourtage( StringUtils.abbreviate( LOREM.getWords( 1, 5 ), 100 ) );
+    realEstate.getCourtage().setCourtageNote( StringUtils.abbreviate( LOREM.getParagraphs( 2, 10 ), 1000 ) );
     realEstate.getCourtage().setHasCourtage( YesNoNotApplicableType.YES );
 
     // energy certificate for habitation
@@ -1964,9 +1965,9 @@ public class RandomRealEstateFactory
     realEstate.setBuiltInKitchen( getRandomBoolean() );
     realEstate.setCellar( getRandomYesNotApplicableType() );
     realEstate.setCondition( getRandomRealEstateCondition() );
-    realEstate.setDeposit( StringUtils.abbreviate( Lorem.getWords( 1, 10 ), 50 ) );
+    realEstate.setDeposit( StringUtils.abbreviate( LOREM.getWords( 1, 10 ), 50 ) );
     realEstate.setEnergySourcesEnev2014( createRandomEnergySourcesEnev2014() );
-    realEstate.setFreeFrom( StringUtils.abbreviate( Lorem.getWords( 1, 10 ), 50 ) );
+    realEstate.setFreeFrom( StringUtils.abbreviate( LOREM.getWords( 1, 10 ), 50 ) );
     realEstate.setGuestToilet( getRandomYesNotApplicableType() );
     realEstate.setHandicappedAccessible( getRandomYesNotApplicableType() );
     realEstate.setHeatingCosts( getRandomDouble( 100, 500 ) );
@@ -2002,8 +2003,8 @@ public class RandomRealEstateFactory
 
     // courtage
     realEstate.setCourtage( commonFactory.createCourtageInfo() );
-    realEstate.getCourtage().setCourtage( StringUtils.abbreviate( Lorem.getWords( 1, 5 ), 100 ) );
-    realEstate.getCourtage().setCourtageNote( StringUtils.abbreviate( Lorem.getParagraphs( 2, 10 ), 1000 ) );
+    realEstate.getCourtage().setCourtage( StringUtils.abbreviate( LOREM.getWords( 1, 5 ), 100 ) );
+    realEstate.getCourtage().setCourtageNote( StringUtils.abbreviate( LOREM.getParagraphs( 2, 10 ), 1000 ) );
     realEstate.getCourtage().setHasCourtage( YesNoNotApplicableType.YES );
 
     // energy certificate for habitation
@@ -2068,22 +2069,22 @@ public class RandomRealEstateFactory
     realEstate.setBaseArea( getRandomDouble( 100, 1000 ) );
     realEstate.setBuildingType( getRandomHouseTypeBuildingType() );
     realEstate.setConstructionMethod( getRandomHouseTypeConstructionMethodType() );
-    realEstate.setContructionPriceInformationNote( StringUtils.abbreviate( Lorem.getParagraphs( 2, 10 ), 1000 ) );
+    realEstate.setContructionPriceInformationNote( StringUtils.abbreviate( LOREM.getParagraphs( 2, 10 ), 1000 ) );
     realEstate.setEnergyStandardType( getRandomHouseTypeEnergyStandardType() );
-    realEstate.setFloorInformationNote( StringUtils.abbreviate( Lorem.getParagraphs( 2, 10 ), 1000 ) );
+    realEstate.setFloorInformationNote( StringUtils.abbreviate( LOREM.getParagraphs( 2, 10 ), 1000 ) );
     realEstate.setLivingSpace( getRandomDouble( 20, 300 ) );
-    realEstate.setModelInformationNote( StringUtils.abbreviate( Lorem.getParagraphs( 2, 10 ), 1000 ) );
+    realEstate.setModelInformationNote( StringUtils.abbreviate( LOREM.getParagraphs( 2, 10 ), 1000 ) );
     realEstate.setNumberOfRooms( (double) getRandomInt( 1, 10 ) );
-    realEstate.setRoofInformationNote( StringUtils.abbreviate( Lorem.getParagraphs( 2, 10 ), 1000 ) );
+    realEstate.setRoofInformationNote( StringUtils.abbreviate( LOREM.getParagraphs( 2, 10 ), 1000 ) );
     realEstate.setStageOfCompletionType( getRandomHouseTypeStageOfCompletionType() );
     realEstate.setTotalArea( getRandomDouble( 250, 2500 ) );
-    realEstate.setTypeInformationNote( StringUtils.abbreviate( Lorem.getParagraphs( 2, 10 ), 1000 ) );
+    realEstate.setTypeInformationNote( StringUtils.abbreviate( LOREM.getParagraphs( 2, 10 ), 1000 ) );
     realEstate.setUValue( getRandomDouble( 10 ) );
 
     // courtage
     realEstate.setCourtage( commonFactory.createCourtageInfo() );
-    realEstate.getCourtage().setCourtage( StringUtils.abbreviate( Lorem.getWords( 1, 5 ), 100 ) );
-    realEstate.getCourtage().setCourtageNote( StringUtils.abbreviate( Lorem.getParagraphs( 2, 10 ), 1000 ) );
+    realEstate.getCourtage().setCourtage( StringUtils.abbreviate( LOREM.getWords( 1, 5 ), 100 ) );
+    realEstate.getCourtage().setCourtageNote( StringUtils.abbreviate( LOREM.getParagraphs( 2, 10 ), 1000 ) );
     realEstate.getCourtage().setHasCourtage( YesNoNotApplicableType.YES );
 
     // pricing
@@ -2107,7 +2108,7 @@ public class RandomRealEstateFactory
     realEstate.setConnectedLoad( getRandomInt( 1, 500 ) );
     realEstate.setCraneRunway( getRandomYesNotApplicableType() );
     realEstate.setCraneRunwayLoad( getRandomDouble( 500, 50000 ) );
-    realEstate.setDeposit( StringUtils.abbreviate( Lorem.getWords( 1, 10 ), 50 ) );
+    realEstate.setDeposit( StringUtils.abbreviate( LOREM.getWords( 1, 10 ), 50 ) );
     realEstate.setDistanceToAirport( getRandomInt( 5, 50 ) );
     realEstate.setDistanceToFM( getRandomInt( 5, 50 ) );
     realEstate.setDistanceToMRS( getRandomInt( 5, 50 ) );
@@ -2115,7 +2116,7 @@ public class RandomRealEstateFactory
     realEstate.setEnergySourcesEnev2014( createRandomEnergySourcesEnev2014() );
     realEstate.setFloorLoad( getRandomDouble( 500, 50000 ) );
     realEstate.setFlooringType( getRandomFlooringType() );
-    realEstate.setFreeFrom( StringUtils.abbreviate( Lorem.getWords( 1, 10 ), 50 ) );
+    realEstate.setFreeFrom( StringUtils.abbreviate( LOREM.getWords( 1, 10 ), 50 ) );
     realEstate.setGoodsLift( getRandomYesNotApplicableType() );
     realEstate.setGoodsLiftLoad( getRandomDouble( 500, 50000 ) );
     realEstate.setHallHeight( getRandomDouble( 3, 15 ) );
@@ -2146,8 +2147,8 @@ public class RandomRealEstateFactory
 
     // courtage
     realEstate.setCourtage( commonFactory.createCourtageInfo() );
-    realEstate.getCourtage().setCourtage( StringUtils.abbreviate( Lorem.getWords( 1, 5 ), 100 ) );
-    realEstate.getCourtage().setCourtageNote( StringUtils.abbreviate( Lorem.getParagraphs( 2, 10 ), 1000 ) );
+    realEstate.getCourtage().setCourtage( StringUtils.abbreviate( LOREM.getWords( 1, 5 ), 100 ) );
+    realEstate.getCourtage().setCourtageNote( StringUtils.abbreviate( LOREM.getParagraphs( 2, 10 ), 1000 ) );
     realEstate.getCourtage().setHasCourtage( YesNoNotApplicableType.YES );
 
     // energy certificate for business
@@ -2240,7 +2241,7 @@ public class RandomRealEstateFactory
     realEstate.setDistanceToMRS( getRandomInt( 5, 50 ) );
     realEstate.setDistanceToPT( getRandomInt( 5, 50 ) );
     realEstate.setEnergySourcesEnev2014( createRandomEnergySourcesEnev2014() );
-    realEstate.setFreeFrom( StringUtils.abbreviate( Lorem.getWords( 1, 10 ), 50 ) );
+    realEstate.setFreeFrom( StringUtils.abbreviate( LOREM.getWords( 1, 10 ), 50 ) );
     realEstate.setHeatingTypeEnev2014( getRandomHeatingTypeEnev2014() );
     realEstate.setIndustrialArea( getRandomDouble( 500, 50000 ) );
     realEstate.setInteriorQuality( getRandomInteriorQuality() );
@@ -2259,8 +2260,8 @@ public class RandomRealEstateFactory
 
     // courtage
     realEstate.setCourtage( commonFactory.createCourtageInfo() );
-    realEstate.getCourtage().setCourtage( StringUtils.abbreviate( Lorem.getWords( 1, 5 ), 100 ) );
-    realEstate.getCourtage().setCourtageNote( StringUtils.abbreviate( Lorem.getParagraphs( 2, 10 ), 1000 ) );
+    realEstate.getCourtage().setCourtage( StringUtils.abbreviate( LOREM.getWords( 1, 5 ), 100 ) );
+    realEstate.getCourtage().setCourtageNote( StringUtils.abbreviate( LOREM.getParagraphs( 2, 10 ), 1000 ) );
     realEstate.getCourtage().setHasCourtage( YesNoNotApplicableType.YES );
 
     // energy certificate for habitation and business
@@ -2347,7 +2348,7 @@ public class RandomRealEstateFactory
   {
     realEstate.setBuildingPermission( getRandomBoolean() );
     realEstate.setDemolition( getRandomBoolean() );
-    realEstate.setFreeFrom( StringUtils.abbreviate( Lorem.getWords( 1, 10 ), 50 ) );
+    realEstate.setFreeFrom( StringUtils.abbreviate( LOREM.getWords( 1, 10 ), 50 ) );
     realEstate.setGfz( getRandomDouble( 1, 10 ) );
     realEstate.setGrz( getRandomDouble( 1, 10 ) );
     realEstate.setMinDivisible( getRandomDouble( 500, 2500 ) );
@@ -2360,8 +2361,8 @@ public class RandomRealEstateFactory
 
     // courtage
     realEstate.setCourtage( commonFactory.createCourtageInfo() );
-    realEstate.getCourtage().setCourtage( StringUtils.abbreviate( Lorem.getWords( 1, 5 ), 100 ) );
-    realEstate.getCourtage().setCourtageNote( StringUtils.abbreviate( Lorem.getParagraphs( 2, 10 ), 1000 ) );
+    realEstate.getCourtage().setCourtage( StringUtils.abbreviate( LOREM.getWords( 1, 5 ), 100 ) );
+    realEstate.getCourtage().setCourtageNote( StringUtils.abbreviate( LOREM.getParagraphs( 2, 10 ), 1000 ) );
     realEstate.getCourtage().setHasCourtage( YesNoNotApplicableType.YES );
 
     // pricing for purchase
@@ -2382,7 +2383,7 @@ public class RandomRealEstateFactory
   {
     realEstate.setBuildingPermission( getRandomBoolean() );
     realEstate.setDemolition( getRandomBoolean() );
-    realEstate.setFreeFrom( StringUtils.abbreviate( Lorem.getWords( 1, 10 ), 50 ) );
+    realEstate.setFreeFrom( StringUtils.abbreviate( LOREM.getWords( 1, 10 ), 50 ) );
     realEstate.setGfz( getRandomDouble( 1, 10 ) );
     realEstate.setGrz( getRandomDouble( 1, 10 ) );
     realEstate.setMinDivisible( getRandomDouble( 500, 2500 ) );
@@ -2395,8 +2396,8 @@ public class RandomRealEstateFactory
 
     // courtage
     realEstate.setCourtage( commonFactory.createCourtageInfo() );
-    realEstate.getCourtage().setCourtage( StringUtils.abbreviate( Lorem.getWords( 1, 5 ), 100 ) );
-    realEstate.getCourtage().setCourtageNote( StringUtils.abbreviate( Lorem.getParagraphs( 2, 10 ), 1000 ) );
+    realEstate.getCourtage().setCourtage( StringUtils.abbreviate( LOREM.getWords( 1, 5 ), 100 ) );
+    realEstate.getCourtage().setCourtageNote( StringUtils.abbreviate( LOREM.getParagraphs( 2, 10 ), 1000 ) );
     realEstate.getCourtage().setHasCourtage( YesNoNotApplicableType.YES );
 
     // pricing for leasing
@@ -2419,14 +2420,14 @@ public class RandomRealEstateFactory
     realEstate.setAirConditioning( getRandomAirConditioningType() );
     realEstate.setCellar( getRandomYesNotApplicableType() );
     realEstate.setCondition( getRandomRealEstateCondition() );
-    realEstate.setDeposit( StringUtils.abbreviate( Lorem.getWords( 1, 10 ), 50 ) );
+    realEstate.setDeposit( StringUtils.abbreviate( LOREM.getWords( 1, 10 ), 50 ) );
     realEstate.setDistanceToAirport( getRandomInt( 5, 50 ) );
     realEstate.setDistanceToFM( getRandomInt( 5, 50 ) );
     realEstate.setDistanceToMRS( getRandomInt( 5, 50 ) );
     realEstate.setDistanceToPT( getRandomInt( 5, 50 ) );
     realEstate.setEnergySourcesEnev2014( createRandomEnergySourcesEnev2014() );
     realEstate.setFlooringType( getRandomFlooringType() );
-    realEstate.setFreeFrom( StringUtils.abbreviate( Lorem.getWords( 1, 10 ), 50 ) );
+    realEstate.setFreeFrom( StringUtils.abbreviate( LOREM.getWords( 1, 10 ), 50 ) );
     realEstate.setHandicappedAccessible( getRandomYesNotApplicableType() );
     realEstate.setHasCanteen( getRandomYesNotApplicableType() );
     realEstate.setHeatingTypeEnev2014( getRandomHeatingTypeEnev2014() );
@@ -2458,8 +2459,8 @@ public class RandomRealEstateFactory
 
     // courtage
     realEstate.setCourtage( commonFactory.createCourtageInfo() );
-    realEstate.getCourtage().setCourtage( StringUtils.abbreviate( Lorem.getWords( 1, 5 ), 100 ) );
-    realEstate.getCourtage().setCourtageNote( StringUtils.abbreviate( Lorem.getParagraphs( 2, 10 ), 1000 ) );
+    realEstate.getCourtage().setCourtage( StringUtils.abbreviate( LOREM.getWords( 1, 5 ), 100 ) );
+    realEstate.getCourtage().setCourtageNote( StringUtils.abbreviate( LOREM.getParagraphs( 2, 10 ), 1000 ) );
     realEstate.getCourtage().setHasCourtage( YesNoNotApplicableType.YES );
 
     // energy certificate for business
@@ -2579,7 +2580,7 @@ public class RandomRealEstateFactory
     realEstate.setRoomType( getRandomRoomType() );
     realEstate.setSecurity24Hours( getRandomYesNotApplicableType() );
     realEstate.setShoppingFacilitiesAvailable( getRandomYesNotApplicableType() );
-    realEstate.setShortDescription( StringUtils.abbreviate( Lorem.getWords( 3, 15 ), 200 ) );
+    realEstate.setShortDescription( StringUtils.abbreviate( LOREM.getWords( 3, 15 ), 200 ) );
     realEstate.setTherapyOfferingsAvailable( getRandomYesNotApplicableType() );
     realEstate.setTrialLivingPossible( getRandomYesNotApplicableType() );
 
@@ -2606,7 +2607,7 @@ public class RandomRealEstateFactory
     realEstate.setBaseRent( getRandomDouble( 200, 1500 ) );
     realEstate.setCellar( getRandomBoolean() );
     realEstate.setCondition( getRandomRealEstateCondition() );
-    realEstate.setDeposit( StringUtils.abbreviate( Lorem.getWords( 1, 10 ), 50 ) );
+    realEstate.setDeposit( StringUtils.abbreviate( LOREM.getWords( 1, 10 ), 50 ) );
     realEstate.setEndRentalDate( getRandomCalendar() );
     realEstate.setEnergySourcesEnev2014( createRandomEnergySourcesEnev2014() );
     realEstate.setFloor( String.valueOf( getRandomInt( 5 ) ) );
@@ -2645,8 +2646,8 @@ public class RandomRealEstateFactory
 
     // courtage
     realEstate.setCourtage( commonFactory.createCourtageInfo() );
-    realEstate.getCourtage().setCourtage( StringUtils.abbreviate( Lorem.getWords( 1, 5 ), 100 ) );
-    realEstate.getCourtage().setCourtageNote( StringUtils.abbreviate( Lorem.getParagraphs( 2, 10 ), 1000 ) );
+    realEstate.getCourtage().setCourtage( StringUtils.abbreviate( LOREM.getWords( 1, 5 ), 100 ) );
+    realEstate.getCourtage().setCourtageNote( StringUtils.abbreviate( LOREM.getParagraphs( 2, 10 ), 1000 ) );
     realEstate.getCourtage().setHasCourtage( YesNoNotApplicableType.YES );
 
     // energy certificate for habitation
@@ -2705,14 +2706,14 @@ public class RandomRealEstateFactory
     realEstate.setAdditionalArea( getRandomDouble( 250, 5000 ) );
     realEstate.setBasement( getRandomYesNotApplicableType() );
     realEstate.setCondition( getRandomRealEstateCondition() );
-    realEstate.setDeposit( StringUtils.abbreviate( Lorem.getWords( 1, 10 ), 50 ) );
+    realEstate.setDeposit( StringUtils.abbreviate( LOREM.getWords( 1, 10 ), 50 ) );
     realEstate.setDistanceToAirport( getRandomInt( 5, 50 ) );
     realEstate.setDistanceToFM( getRandomInt( 5, 50 ) );
     realEstate.setDistanceToMRS( getRandomInt( 5, 50 ) );
     realEstate.setDistanceToPT( getRandomInt( 5, 50 ) );
     realEstate.setEnergySourcesEnev2014( createRandomEnergySourcesEnev2014() );
     realEstate.setFlooringType( getRandomFlooringType() );
-    realEstate.setFreeFrom( StringUtils.abbreviate( Lorem.getWords( 1, 10 ), 50 ) );
+    realEstate.setFreeFrom( StringUtils.abbreviate( LOREM.getWords( 1, 10 ), 50 ) );
     realEstate.setHeatingTypeEnev2014( getRandomHeatingTypeEnev2014() );
     realEstate.setInteriorQuality( getRandomInteriorQuality() );
     realEstate.setLastRefurbishment( getRandomInt( 1990, 2014 ) );
@@ -2740,8 +2741,8 @@ public class RandomRealEstateFactory
 
     // courtage
     realEstate.setCourtage( commonFactory.createCourtageInfo() );
-    realEstate.getCourtage().setCourtage( StringUtils.abbreviate( Lorem.getWords( 1, 5 ), 100 ) );
-    realEstate.getCourtage().setCourtageNote( StringUtils.abbreviate( Lorem.getParagraphs( 2, 10 ), 1000 ) );
+    realEstate.getCourtage().setCourtage( StringUtils.abbreviate( LOREM.getWords( 1, 5 ), 100 ) );
+    realEstate.getCourtage().setCourtageNote( StringUtils.abbreviate( LOREM.getParagraphs( 2, 10 ), 1000 ) );
     realEstate.getCourtage().setHasCourtage( YesNoNotApplicableType.YES );
 
     // energy certificate for business
@@ -2829,7 +2830,7 @@ public class RandomRealEstateFactory
     realEstate.setAdditionalArea( getRandomDouble( 250, 5000 ) );
     realEstate.setCellar( getRandomYesNotApplicableType() );
     realEstate.setCondition( getRandomRealEstateCondition() );
-    realEstate.setDeposit( StringUtils.abbreviate( Lorem.getWords( 1, 10 ), 50 ) );
+    realEstate.setDeposit( StringUtils.abbreviate( LOREM.getWords( 1, 10 ), 50 ) );
     realEstate.setDistanceToAirport( getRandomInt( 5, 50 ) );
     realEstate.setDistanceToFM( getRandomInt( 5, 50 ) );
     realEstate.setDistanceToMRS( getRandomInt( 5, 50 ) );
@@ -2837,7 +2838,7 @@ public class RandomRealEstateFactory
     realEstate.setEnergySourcesEnev2014( createRandomEnergySourcesEnev2014() );
     realEstate.setFloorLoad( getRandomDouble( 500, 50000 ) );
     realEstate.setFlooringType( getRandomFlooringType() );
-    realEstate.setFreeFrom( StringUtils.abbreviate( Lorem.getWords( 1, 10 ), 50 ) );
+    realEstate.setFreeFrom( StringUtils.abbreviate( LOREM.getWords( 1, 10 ), 50 ) );
     realEstate.setGoodsLift( getRandomYesNotApplicableType() );
     realEstate.setGoodsLiftLoad( getRandomDouble( 500, 50000 ) );
     realEstate.setHeatingTypeEnev2014( getRandomHeatingTypeEnev2014() );
@@ -2870,8 +2871,8 @@ public class RandomRealEstateFactory
 
     // courtage
     realEstate.setCourtage( commonFactory.createCourtageInfo() );
-    realEstate.getCourtage().setCourtage( StringUtils.abbreviate( Lorem.getWords( 1, 5 ), 100 ) );
-    realEstate.getCourtage().setCourtageNote( StringUtils.abbreviate( Lorem.getParagraphs( 2, 10 ), 1000 ) );
+    realEstate.getCourtage().setCourtage( StringUtils.abbreviate( LOREM.getWords( 1, 5 ), 100 ) );
+    realEstate.getCourtage().setCourtageNote( StringUtils.abbreviate( LOREM.getParagraphs( 2, 10 ), 1000 ) );
     realEstate.getCourtage().setHasCourtage( YesNoNotApplicableType.YES );
 
     // energy certificate for business
@@ -2958,7 +2959,7 @@ public class RandomRealEstateFactory
   {
     realEstate.setBuildingPermission( getRandomBoolean() );
     realEstate.setDemolition( getRandomBoolean() );
-    realEstate.setFreeFrom( StringUtils.abbreviate( Lorem.getWords( 1, 10 ), 50 ) );
+    realEstate.setFreeFrom( StringUtils.abbreviate( LOREM.getWords( 1, 10 ), 50 ) );
     realEstate.setGfz( getRandomDouble( 1, 10 ) );
     realEstate.setGrz( getRandomDouble( 1, 10 ) );
     realEstate.setMinDivisible( getRandomDouble( 500, 2500 ) );
@@ -2972,8 +2973,8 @@ public class RandomRealEstateFactory
 
     // courtage
     realEstate.setCourtage( commonFactory.createCourtageInfo() );
-    realEstate.getCourtage().setCourtage( StringUtils.abbreviate( Lorem.getWords( 1, 5 ), 100 ) );
-    realEstate.getCourtage().setCourtageNote( StringUtils.abbreviate( Lorem.getParagraphs( 2, 10 ), 1000 ) );
+    realEstate.getCourtage().setCourtage( StringUtils.abbreviate( LOREM.getWords( 1, 5 ), 100 ) );
+    realEstate.getCourtage().setCourtageNote( StringUtils.abbreviate( LOREM.getParagraphs( 2, 10 ), 1000 ) );
     realEstate.getCourtage().setHasCourtage( YesNoNotApplicableType.YES );
 
     // pricing for leasing
