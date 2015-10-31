@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.common;
 
+import java.math.BigDecimal;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -52,7 +53,7 @@ public class Money132
     @XmlElement(required = true, type = String.class)
     @XmlJavaTypeAdapter(Adapter12 .class)
     @XmlSchemaType(name = "decimal")
-    protected Double amount;
+    protected BigDecimal amount;
     @XmlElement(required = true)
     @XmlSchemaType(name = "string")
     protected Currency currency;
@@ -65,7 +66,7 @@ public class Money132
      *     {@link String }
      *     
      */
-    public Double getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
@@ -77,7 +78,7 @@ public class Money132
      *     {@link String }
      *     
      */
-    public void setAmount(Double value) {
+    public void setAmount(BigDecimal value) {
         this.amount = value;
     }
 
@@ -121,7 +122,7 @@ public class Money132
 
     public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
         {
-            Double theAmount;
+            BigDecimal theAmount;
             theAmount = this.getAmount();
             strategy.appendField(locator, this, "amount", buffer, theAmount);
         }
@@ -147,9 +148,9 @@ public class Money132
         if (draftCopy instanceof Money132) {
             final Money132 copy = ((Money132) draftCopy);
             if (this.amount!= null) {
-                Double sourceAmount;
+                BigDecimal sourceAmount;
                 sourceAmount = this.getAmount();
-                Double copyAmount = ((Double) strategy.copy(LocatorUtils.property(locator, "amount", sourceAmount), sourceAmount));
+                BigDecimal copyAmount = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "amount", sourceAmount), sourceAmount));
                 copy.setAmount(copyAmount);
             } else {
                 copy.amount = null;
@@ -179,9 +180,9 @@ public class Money132
         }
         final Money132 that = ((Money132) object);
         {
-            Double lhsAmount;
+            BigDecimal lhsAmount;
             lhsAmount = this.getAmount();
-            Double rhsAmount;
+            BigDecimal rhsAmount;
             rhsAmount = that.getAmount();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "amount", lhsAmount), LocatorUtils.property(thatLocator, "amount", rhsAmount), lhsAmount, rhsAmount)) {
                 return false;

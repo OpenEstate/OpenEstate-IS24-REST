@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.realestates;
 
+import java.math.BigDecimal;
 import java.util.Calendar;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -19,7 +20,9 @@ import org.jvnet.jaxb2_commons.lang.ToString;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
-import org.openestate.is24.restapi.xml.Adapter2;
+import org.openestate.is24.restapi.xml.Adapter1;
+import org.openestate.is24.restapi.xml.Adapter3;
+import org.openestate.is24.restapi.xml.Adapter5;
 import org.openestate.is24.restapi.xml.common.BalconyAvailableType;
 import org.openestate.is24.restapi.xml.common.CareLevelExpose;
 import org.openestate.is24.restapi.xml.common.CareTypes;
@@ -107,9 +110,12 @@ public class SeniorCare
     @XmlSchemaType(name = "string")
     protected CareLevelExpose careLevel;
     protected Price price;
-    protected Integer numberOfBeds;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter2 .class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlSchemaType(name = "int")
+    protected Long numberOfBeds;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter3 .class)
     @XmlSchemaType(name = "date")
     protected Calendar opening;
     @XmlSchemaType(name = "string")
@@ -134,10 +140,22 @@ public class SeniorCare
     protected YesNotApplicableType therapyOfferingsAvailable;
     @XmlSchemaType(name = "string")
     protected YesNotApplicableType barrierFree;
-    protected Integer numberOfLookedAfterApartments;
-    protected Integer numberOfNursingPlaces;
-    protected Double livingSpaceFrom;
-    protected Double livingSpaceTo;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlSchemaType(name = "int")
+    protected Long numberOfLookedAfterApartments;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlSchemaType(name = "int")
+    protected Long numberOfNursingPlaces;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal livingSpaceFrom;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal livingSpaceTo;
     @XmlSchemaType(name = "string")
     protected YesNotApplicableType handicappedAccessible;
     @XmlSchemaType(name = "string")
@@ -314,10 +332,10 @@ public class SeniorCare
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public Integer getNumberOfBeds() {
+    public Long getNumberOfBeds() {
         return numberOfBeds;
     }
 
@@ -326,10 +344,10 @@ public class SeniorCare
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public void setNumberOfBeds(Integer value) {
+    public void setNumberOfBeds(Long value) {
         this.numberOfBeds = value;
     }
 
@@ -626,10 +644,10 @@ public class SeniorCare
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public Integer getNumberOfLookedAfterApartments() {
+    public Long getNumberOfLookedAfterApartments() {
         return numberOfLookedAfterApartments;
     }
 
@@ -638,10 +656,10 @@ public class SeniorCare
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public void setNumberOfLookedAfterApartments(Integer value) {
+    public void setNumberOfLookedAfterApartments(Long value) {
         this.numberOfLookedAfterApartments = value;
     }
 
@@ -650,10 +668,10 @@ public class SeniorCare
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public Integer getNumberOfNursingPlaces() {
+    public Long getNumberOfNursingPlaces() {
         return numberOfNursingPlaces;
     }
 
@@ -662,10 +680,10 @@ public class SeniorCare
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public void setNumberOfNursingPlaces(Integer value) {
+    public void setNumberOfNursingPlaces(Long value) {
         this.numberOfNursingPlaces = value;
     }
 
@@ -674,10 +692,10 @@ public class SeniorCare
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getLivingSpaceFrom() {
+    public BigDecimal getLivingSpaceFrom() {
         return livingSpaceFrom;
     }
 
@@ -686,10 +704,10 @@ public class SeniorCare
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setLivingSpaceFrom(Double value) {
+    public void setLivingSpaceFrom(BigDecimal value) {
         this.livingSpaceFrom = value;
     }
 
@@ -698,10 +716,10 @@ public class SeniorCare
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getLivingSpaceTo() {
+    public BigDecimal getLivingSpaceTo() {
         return livingSpaceTo;
     }
 
@@ -710,10 +728,10 @@ public class SeniorCare
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setLivingSpaceTo(Double value) {
+    public void setLivingSpaceTo(BigDecimal value) {
         this.livingSpaceTo = value;
     }
 
@@ -1076,7 +1094,7 @@ public class SeniorCare
             strategy.appendField(locator, this, "price", buffer, thePrice);
         }
         {
-            Integer theNumberOfBeds;
+            Long theNumberOfBeds;
             theNumberOfBeds = this.getNumberOfBeds();
             strategy.appendField(locator, this, "numberOfBeds", buffer, theNumberOfBeds);
         }
@@ -1141,22 +1159,22 @@ public class SeniorCare
             strategy.appendField(locator, this, "barrierFree", buffer, theBarrierFree);
         }
         {
-            Integer theNumberOfLookedAfterApartments;
+            Long theNumberOfLookedAfterApartments;
             theNumberOfLookedAfterApartments = this.getNumberOfLookedAfterApartments();
             strategy.appendField(locator, this, "numberOfLookedAfterApartments", buffer, theNumberOfLookedAfterApartments);
         }
         {
-            Integer theNumberOfNursingPlaces;
+            Long theNumberOfNursingPlaces;
             theNumberOfNursingPlaces = this.getNumberOfNursingPlaces();
             strategy.appendField(locator, this, "numberOfNursingPlaces", buffer, theNumberOfNursingPlaces);
         }
         {
-            Double theLivingSpaceFrom;
+            BigDecimal theLivingSpaceFrom;
             theLivingSpaceFrom = this.getLivingSpaceFrom();
             strategy.appendField(locator, this, "livingSpaceFrom", buffer, theLivingSpaceFrom);
         }
         {
-            Double theLivingSpaceTo;
+            BigDecimal theLivingSpaceTo;
             theLivingSpaceTo = this.getLivingSpaceTo();
             strategy.appendField(locator, this, "livingSpaceTo", buffer, theLivingSpaceTo);
         }
@@ -1291,9 +1309,9 @@ public class SeniorCare
                 copy.price = null;
             }
             if (this.numberOfBeds!= null) {
-                Integer sourceNumberOfBeds;
+                Long sourceNumberOfBeds;
                 sourceNumberOfBeds = this.getNumberOfBeds();
-                Integer copyNumberOfBeds = ((Integer) strategy.copy(LocatorUtils.property(locator, "numberOfBeds", sourceNumberOfBeds), sourceNumberOfBeds));
+                Long copyNumberOfBeds = ((Long) strategy.copy(LocatorUtils.property(locator, "numberOfBeds", sourceNumberOfBeds), sourceNumberOfBeds));
                 copy.setNumberOfBeds(copyNumberOfBeds);
             } else {
                 copy.numberOfBeds = null;
@@ -1395,33 +1413,33 @@ public class SeniorCare
                 copy.barrierFree = null;
             }
             if (this.numberOfLookedAfterApartments!= null) {
-                Integer sourceNumberOfLookedAfterApartments;
+                Long sourceNumberOfLookedAfterApartments;
                 sourceNumberOfLookedAfterApartments = this.getNumberOfLookedAfterApartments();
-                Integer copyNumberOfLookedAfterApartments = ((Integer) strategy.copy(LocatorUtils.property(locator, "numberOfLookedAfterApartments", sourceNumberOfLookedAfterApartments), sourceNumberOfLookedAfterApartments));
+                Long copyNumberOfLookedAfterApartments = ((Long) strategy.copy(LocatorUtils.property(locator, "numberOfLookedAfterApartments", sourceNumberOfLookedAfterApartments), sourceNumberOfLookedAfterApartments));
                 copy.setNumberOfLookedAfterApartments(copyNumberOfLookedAfterApartments);
             } else {
                 copy.numberOfLookedAfterApartments = null;
             }
             if (this.numberOfNursingPlaces!= null) {
-                Integer sourceNumberOfNursingPlaces;
+                Long sourceNumberOfNursingPlaces;
                 sourceNumberOfNursingPlaces = this.getNumberOfNursingPlaces();
-                Integer copyNumberOfNursingPlaces = ((Integer) strategy.copy(LocatorUtils.property(locator, "numberOfNursingPlaces", sourceNumberOfNursingPlaces), sourceNumberOfNursingPlaces));
+                Long copyNumberOfNursingPlaces = ((Long) strategy.copy(LocatorUtils.property(locator, "numberOfNursingPlaces", sourceNumberOfNursingPlaces), sourceNumberOfNursingPlaces));
                 copy.setNumberOfNursingPlaces(copyNumberOfNursingPlaces);
             } else {
                 copy.numberOfNursingPlaces = null;
             }
             if (this.livingSpaceFrom!= null) {
-                Double sourceLivingSpaceFrom;
+                BigDecimal sourceLivingSpaceFrom;
                 sourceLivingSpaceFrom = this.getLivingSpaceFrom();
-                Double copyLivingSpaceFrom = ((Double) strategy.copy(LocatorUtils.property(locator, "livingSpaceFrom", sourceLivingSpaceFrom), sourceLivingSpaceFrom));
+                BigDecimal copyLivingSpaceFrom = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "livingSpaceFrom", sourceLivingSpaceFrom), sourceLivingSpaceFrom));
                 copy.setLivingSpaceFrom(copyLivingSpaceFrom);
             } else {
                 copy.livingSpaceFrom = null;
             }
             if (this.livingSpaceTo!= null) {
-                Double sourceLivingSpaceTo;
+                BigDecimal sourceLivingSpaceTo;
                 sourceLivingSpaceTo = this.getLivingSpaceTo();
-                Double copyLivingSpaceTo = ((Double) strategy.copy(LocatorUtils.property(locator, "livingSpaceTo", sourceLivingSpaceTo), sourceLivingSpaceTo));
+                BigDecimal copyLivingSpaceTo = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "livingSpaceTo", sourceLivingSpaceTo), sourceLivingSpaceTo));
                 copy.setLivingSpaceTo(copyLivingSpaceTo);
             } else {
                 copy.livingSpaceTo = null;
@@ -1604,9 +1622,9 @@ public class SeniorCare
             }
         }
         {
-            Integer lhsNumberOfBeds;
+            Long lhsNumberOfBeds;
             lhsNumberOfBeds = this.getNumberOfBeds();
-            Integer rhsNumberOfBeds;
+            Long rhsNumberOfBeds;
             rhsNumberOfBeds = that.getNumberOfBeds();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "numberOfBeds", lhsNumberOfBeds), LocatorUtils.property(thatLocator, "numberOfBeds", rhsNumberOfBeds), lhsNumberOfBeds, rhsNumberOfBeds)) {
                 return false;
@@ -1721,36 +1739,36 @@ public class SeniorCare
             }
         }
         {
-            Integer lhsNumberOfLookedAfterApartments;
+            Long lhsNumberOfLookedAfterApartments;
             lhsNumberOfLookedAfterApartments = this.getNumberOfLookedAfterApartments();
-            Integer rhsNumberOfLookedAfterApartments;
+            Long rhsNumberOfLookedAfterApartments;
             rhsNumberOfLookedAfterApartments = that.getNumberOfLookedAfterApartments();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "numberOfLookedAfterApartments", lhsNumberOfLookedAfterApartments), LocatorUtils.property(thatLocator, "numberOfLookedAfterApartments", rhsNumberOfLookedAfterApartments), lhsNumberOfLookedAfterApartments, rhsNumberOfLookedAfterApartments)) {
                 return false;
             }
         }
         {
-            Integer lhsNumberOfNursingPlaces;
+            Long lhsNumberOfNursingPlaces;
             lhsNumberOfNursingPlaces = this.getNumberOfNursingPlaces();
-            Integer rhsNumberOfNursingPlaces;
+            Long rhsNumberOfNursingPlaces;
             rhsNumberOfNursingPlaces = that.getNumberOfNursingPlaces();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "numberOfNursingPlaces", lhsNumberOfNursingPlaces), LocatorUtils.property(thatLocator, "numberOfNursingPlaces", rhsNumberOfNursingPlaces), lhsNumberOfNursingPlaces, rhsNumberOfNursingPlaces)) {
                 return false;
             }
         }
         {
-            Double lhsLivingSpaceFrom;
+            BigDecimal lhsLivingSpaceFrom;
             lhsLivingSpaceFrom = this.getLivingSpaceFrom();
-            Double rhsLivingSpaceFrom;
+            BigDecimal rhsLivingSpaceFrom;
             rhsLivingSpaceFrom = that.getLivingSpaceFrom();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "livingSpaceFrom", lhsLivingSpaceFrom), LocatorUtils.property(thatLocator, "livingSpaceFrom", rhsLivingSpaceFrom), lhsLivingSpaceFrom, rhsLivingSpaceFrom)) {
                 return false;
             }
         }
         {
-            Double lhsLivingSpaceTo;
+            BigDecimal lhsLivingSpaceTo;
             lhsLivingSpaceTo = this.getLivingSpaceTo();
-            Double rhsLivingSpaceTo;
+            BigDecimal rhsLivingSpaceTo;
             rhsLivingSpaceTo = that.getLivingSpaceTo();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "livingSpaceTo", lhsLivingSpaceTo), LocatorUtils.property(thatLocator, "livingSpaceTo", rhsLivingSpaceTo), lhsLivingSpaceTo, rhsLivingSpaceTo)) {
                 return false;

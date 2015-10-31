@@ -4,7 +4,9 @@ package org.openestate.is24.restapi.xml.common;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.jvnet.jaxb2_commons.lang.CopyStrategy;
 import org.jvnet.jaxb2_commons.lang.CopyTo;
 import org.jvnet.jaxb2_commons.lang.Equals;
@@ -16,6 +18,7 @@ import org.jvnet.jaxb2_commons.lang.ToString;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
+import org.openestate.is24.restapi.xml.Adapter5;
 
 
 /**
@@ -50,7 +53,9 @@ public class MatchCount
     @XmlAttribute(name = "value")
     protected String value;
     @XmlAttribute(name = "count")
-    protected Integer count;
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlSchemaType(name = "int")
+    protected Long count;
 
     /**
      * Gets the value of the name property.
@@ -105,10 +110,10 @@ public class MatchCount
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public Integer getCount() {
+    public Long getCount() {
         return count;
     }
 
@@ -117,10 +122,10 @@ public class MatchCount
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public void setCount(Integer value) {
+    public void setCount(Long value) {
         this.count = value;
     }
 
@@ -150,7 +155,7 @@ public class MatchCount
             strategy.appendField(locator, this, "value", buffer, theValue);
         }
         {
-            Integer theCount;
+            Long theCount;
             theCount = this.getCount();
             strategy.appendField(locator, this, "count", buffer, theCount);
         }
@@ -187,9 +192,9 @@ public class MatchCount
                 copy.value = null;
             }
             if (this.count!= null) {
-                Integer sourceCount;
+                Long sourceCount;
                 sourceCount = this.getCount();
-                Integer copyCount = ((Integer) strategy.copy(LocatorUtils.property(locator, "count", sourceCount), sourceCount));
+                Long copyCount = ((Long) strategy.copy(LocatorUtils.property(locator, "count", sourceCount), sourceCount));
                 copy.setCount(copyCount);
             } else {
                 copy.count = null;
@@ -229,9 +234,9 @@ public class MatchCount
             }
         }
         {
-            Integer lhsCount;
+            Long lhsCount;
             lhsCount = this.getCount();
-            Integer rhsCount;
+            Long rhsCount;
             rhsCount = that.getCount();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "count", lhsCount), LocatorUtils.property(thatLocator, "count", rhsCount), lhsCount, rhsCount)) {
                 return false;

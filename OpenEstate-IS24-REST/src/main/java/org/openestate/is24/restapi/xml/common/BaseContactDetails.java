@@ -20,7 +20,6 @@ import org.jvnet.jaxb2_commons.lang.ToString;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
-import org.openestate.is24.restapi.xml.Adapter3;
 
 
 /**
@@ -220,7 +219,7 @@ public class BaseContactDetails
     implements Cloneable, CopyTo, Equals, ToString
 {
 
-    @XmlJavaTypeAdapter(Adapter4 .class)
+    @XmlJavaTypeAdapter(org.openestate.is24.restapi.xml.common.Adapter4 .class)
     protected String email;
     @XmlSchemaType(name = "string")
     protected SalutationType salutation;
@@ -262,10 +261,10 @@ public class BaseContactDetails
     @XmlJavaTypeAdapter(Adapter55 .class)
     protected String company;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlJavaTypeAdapter(org.openestate.is24.restapi.xml.Adapter4 .class)
     protected URL homepageUrl;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlJavaTypeAdapter(org.openestate.is24.restapi.xml.Adapter4 .class)
     protected URL portraitUrl;
     @XmlJavaTypeAdapter(Adapter56 .class)
     protected String position;

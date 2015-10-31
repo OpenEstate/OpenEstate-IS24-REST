@@ -1,10 +1,13 @@
 
 package org.openestate.is24.restapi.xml.offerlistelement;
 
+import java.math.BigDecimal;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.jvnet.jaxb2_commons.lang.CopyStrategy;
 import org.jvnet.jaxb2_commons.lang.CopyTo;
 import org.jvnet.jaxb2_commons.lang.Equals;
@@ -16,6 +19,7 @@ import org.jvnet.jaxb2_commons.lang.ToString;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
+import org.openestate.is24.restapi.xml.Adapter1;
 import org.openestate.is24.restapi.xml.common.CourtageInfo;
 import org.openestate.is24.restapi.xml.common.Price;
 
@@ -54,8 +58,14 @@ public class OfferLivingBuySite
 
     @XmlElement(required = true)
     protected Price price;
-    protected double plotArea;
-    protected Double minDivisible;
+    @XmlElement(required = true, type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal plotArea;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal minDivisible;
     @XmlElement(required = true)
     protected CourtageInfo courtage;
 
@@ -86,16 +96,24 @@ public class OfferLivingBuySite
     /**
      * Gets the value of the plotArea property.
      * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public double getPlotArea() {
+    public BigDecimal getPlotArea() {
         return plotArea;
     }
 
     /**
      * Sets the value of the plotArea property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setPlotArea(double value) {
+    public void setPlotArea(BigDecimal value) {
         this.plotArea = value;
     }
 
@@ -104,10 +122,10 @@ public class OfferLivingBuySite
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getMinDivisible() {
+    public BigDecimal getMinDivisible() {
         return minDivisible;
     }
 
@@ -116,10 +134,10 @@ public class OfferLivingBuySite
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setMinDivisible(Double value) {
+    public void setMinDivisible(BigDecimal value) {
         this.minDivisible = value;
     }
 
@@ -169,12 +187,12 @@ public class OfferLivingBuySite
             strategy.appendField(locator, this, "price", buffer, thePrice);
         }
         {
-            double thePlotArea;
+            BigDecimal thePlotArea;
             thePlotArea = this.getPlotArea();
             strategy.appendField(locator, this, "plotArea", buffer, thePlotArea);
         }
         {
-            Double theMinDivisible;
+            BigDecimal theMinDivisible;
             theMinDivisible = this.getMinDivisible();
             strategy.appendField(locator, this, "minDivisible", buffer, theMinDivisible);
         }
@@ -208,16 +226,18 @@ public class OfferLivingBuySite
             } else {
                 copy.price = null;
             }
-            {
-                double sourcePlotArea;
+            if (this.plotArea!= null) {
+                BigDecimal sourcePlotArea;
                 sourcePlotArea = this.getPlotArea();
-                double copyPlotArea = strategy.copy(LocatorUtils.property(locator, "plotArea", sourcePlotArea), sourcePlotArea);
+                BigDecimal copyPlotArea = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "plotArea", sourcePlotArea), sourcePlotArea));
                 copy.setPlotArea(copyPlotArea);
+            } else {
+                copy.plotArea = null;
             }
             if (this.minDivisible!= null) {
-                Double sourceMinDivisible;
+                BigDecimal sourceMinDivisible;
                 sourceMinDivisible = this.getMinDivisible();
-                Double copyMinDivisible = ((Double) strategy.copy(LocatorUtils.property(locator, "minDivisible", sourceMinDivisible), sourceMinDivisible));
+                BigDecimal copyMinDivisible = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "minDivisible", sourceMinDivisible), sourceMinDivisible));
                 copy.setMinDivisible(copyMinDivisible);
             } else {
                 copy.minDivisible = null;
@@ -259,18 +279,18 @@ public class OfferLivingBuySite
             }
         }
         {
-            double lhsPlotArea;
+            BigDecimal lhsPlotArea;
             lhsPlotArea = this.getPlotArea();
-            double rhsPlotArea;
+            BigDecimal rhsPlotArea;
             rhsPlotArea = that.getPlotArea();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "plotArea", lhsPlotArea), LocatorUtils.property(thatLocator, "plotArea", rhsPlotArea), lhsPlotArea, rhsPlotArea)) {
                 return false;
             }
         }
         {
-            Double lhsMinDivisible;
+            BigDecimal lhsMinDivisible;
             lhsMinDivisible = this.getMinDivisible();
-            Double rhsMinDivisible;
+            BigDecimal rhsMinDivisible;
             rhsMinDivisible = that.getMinDivisible();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "minDivisible", lhsMinDivisible), LocatorUtils.property(thatLocator, "minDivisible", rhsMinDivisible), lhsMinDivisible, rhsMinDivisible)) {
                 return false;

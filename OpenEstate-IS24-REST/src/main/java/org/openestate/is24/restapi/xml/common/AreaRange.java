@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.common;
 
+import java.math.BigDecimal;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -53,11 +54,11 @@ public class AreaRange
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter11 .class)
     @XmlSchemaType(name = "decimal")
-    protected Double minimal;
+    protected BigDecimal minimal;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter11 .class)
     @XmlSchemaType(name = "decimal")
-    protected Double maximal;
+    protected BigDecimal maximal;
 
     /**
      * Gets the value of the minimal property.
@@ -67,7 +68,7 @@ public class AreaRange
      *     {@link String }
      *     
      */
-    public Double getMinimal() {
+    public BigDecimal getMinimal() {
         return minimal;
     }
 
@@ -79,7 +80,7 @@ public class AreaRange
      *     {@link String }
      *     
      */
-    public void setMinimal(Double value) {
+    public void setMinimal(BigDecimal value) {
         this.minimal = value;
     }
 
@@ -91,7 +92,7 @@ public class AreaRange
      *     {@link String }
      *     
      */
-    public Double getMaximal() {
+    public BigDecimal getMaximal() {
         return maximal;
     }
 
@@ -103,7 +104,7 @@ public class AreaRange
      *     {@link String }
      *     
      */
-    public void setMaximal(Double value) {
+    public void setMaximal(BigDecimal value) {
         this.maximal = value;
     }
 
@@ -123,12 +124,12 @@ public class AreaRange
 
     public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
         {
-            Double theMinimal;
+            BigDecimal theMinimal;
             theMinimal = this.getMinimal();
             strategy.appendField(locator, this, "minimal", buffer, theMinimal);
         }
         {
-            Double theMaximal;
+            BigDecimal theMaximal;
             theMaximal = this.getMaximal();
             strategy.appendField(locator, this, "maximal", buffer, theMaximal);
         }
@@ -149,17 +150,17 @@ public class AreaRange
         if (draftCopy instanceof AreaRange) {
             final AreaRange copy = ((AreaRange) draftCopy);
             if (this.minimal!= null) {
-                Double sourceMinimal;
+                BigDecimal sourceMinimal;
                 sourceMinimal = this.getMinimal();
-                Double copyMinimal = ((Double) strategy.copy(LocatorUtils.property(locator, "minimal", sourceMinimal), sourceMinimal));
+                BigDecimal copyMinimal = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "minimal", sourceMinimal), sourceMinimal));
                 copy.setMinimal(copyMinimal);
             } else {
                 copy.minimal = null;
             }
             if (this.maximal!= null) {
-                Double sourceMaximal;
+                BigDecimal sourceMaximal;
                 sourceMaximal = this.getMaximal();
-                Double copyMaximal = ((Double) strategy.copy(LocatorUtils.property(locator, "maximal", sourceMaximal), sourceMaximal));
+                BigDecimal copyMaximal = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "maximal", sourceMaximal), sourceMaximal));
                 copy.setMaximal(copyMaximal);
             } else {
                 copy.maximal = null;
@@ -181,18 +182,18 @@ public class AreaRange
         }
         final AreaRange that = ((AreaRange) object);
         {
-            Double lhsMinimal;
+            BigDecimal lhsMinimal;
             lhsMinimal = this.getMinimal();
-            Double rhsMinimal;
+            BigDecimal rhsMinimal;
             rhsMinimal = that.getMinimal();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "minimal", lhsMinimal), LocatorUtils.property(thatLocator, "minimal", rhsMinimal), lhsMinimal, rhsMinimal)) {
                 return false;
             }
         }
         {
-            Double lhsMaximal;
+            BigDecimal lhsMaximal;
             lhsMaximal = this.getMaximal();
-            Double rhsMaximal;
+            BigDecimal rhsMaximal;
             rhsMaximal = that.getMaximal();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "maximal", lhsMaximal), LocatorUtils.property(thatLocator, "maximal", rhsMaximal), lhsMaximal, rhsMaximal)) {
                 return false;

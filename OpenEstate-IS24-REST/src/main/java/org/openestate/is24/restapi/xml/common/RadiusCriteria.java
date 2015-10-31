@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.common;
 
+import java.math.BigDecimal;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -67,7 +68,7 @@ public class RadiusCriteria
     protected Wgs84Coordinate wgs84;
     @XmlElement(required = true, type = String.class)
     @XmlJavaTypeAdapter(Adapter26 .class)
-    protected Double radiusKm;
+    protected BigDecimal radiusKm;
     protected String label;
     protected Address address;
 
@@ -103,7 +104,7 @@ public class RadiusCriteria
      *     {@link String }
      *     
      */
-    public Double getRadiusKm() {
+    public BigDecimal getRadiusKm() {
         return radiusKm;
     }
 
@@ -115,7 +116,7 @@ public class RadiusCriteria
      *     {@link String }
      *     
      */
-    public void setRadiusKm(Double value) {
+    public void setRadiusKm(BigDecimal value) {
         this.radiusKm = value;
     }
 
@@ -189,7 +190,7 @@ public class RadiusCriteria
             strategy.appendField(locator, this, "wgs84", buffer, theWgs84);
         }
         {
-            Double theRadiusKm;
+            BigDecimal theRadiusKm;
             theRadiusKm = this.getRadiusKm();
             strategy.appendField(locator, this, "radiusKm", buffer, theRadiusKm);
         }
@@ -229,9 +230,9 @@ public class RadiusCriteria
                 copy.wgs84 = null;
             }
             if (this.radiusKm!= null) {
-                Double sourceRadiusKm;
+                BigDecimal sourceRadiusKm;
                 sourceRadiusKm = this.getRadiusKm();
-                Double copyRadiusKm = ((Double) strategy.copy(LocatorUtils.property(locator, "radiusKm", sourceRadiusKm), sourceRadiusKm));
+                BigDecimal copyRadiusKm = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "radiusKm", sourceRadiusKm), sourceRadiusKm));
                 copy.setRadiusKm(copyRadiusKm);
             } else {
                 copy.radiusKm = null;
@@ -281,9 +282,9 @@ public class RadiusCriteria
             }
         }
         {
-            Double lhsRadiusKm;
+            BigDecimal lhsRadiusKm;
             lhsRadiusKm = this.getRadiusKm();
-            Double rhsRadiusKm;
+            BigDecimal rhsRadiusKm;
             rhsRadiusKm = that.getRadiusKm();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "radiusKm", lhsRadiusKm), LocatorUtils.property(thatLocator, "radiusKm", rhsRadiusKm), lhsRadiusKm, rhsRadiusKm)) {
                 return false;

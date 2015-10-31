@@ -22,8 +22,8 @@ import org.jvnet.jaxb2_commons.lang.ToString;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
-import org.openestate.is24.restapi.xml.Adapter1;
-import org.openestate.is24.restapi.xml.Adapter3;
+import org.openestate.is24.restapi.xml.Adapter2;
+import org.openestate.is24.restapi.xml.Adapter4;
 import org.openestate.is24.restapi.xml.common.AbstractRealEstateForList;
 import org.openestate.is24.restapi.xml.common.Picture;
 import org.openestate.is24.restapi.xml.common.PublishChannels;
@@ -101,19 +101,19 @@ public abstract class OfferRealEstateForList
     @XmlElement(namespace = "http://rest.immobilienscout24.de/schema/common/1.0")
     protected PublishChannels publishChannels;
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")
-    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlJavaTypeAdapter(Adapter4 .class)
     @XmlSchemaType(name = "anyURI")
     protected URL href;
     @XmlAttribute(name = "modification")
-    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlJavaTypeAdapter(Adapter2 .class)
     @XmlSchemaType(name = "dateTime")
     protected Calendar modification;
     @XmlAttribute(name = "creation")
-    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlJavaTypeAdapter(Adapter2 .class)
     @XmlSchemaType(name = "dateTime")
     protected Calendar creation;
     @XmlAttribute(name = "publishDate")
-    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlJavaTypeAdapter(Adapter2 .class)
     @XmlSchemaType(name = "dateTime")
     protected Calendar publishDate;
 

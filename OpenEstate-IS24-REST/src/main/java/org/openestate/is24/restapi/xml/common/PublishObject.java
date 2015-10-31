@@ -20,7 +20,7 @@ import org.jvnet.jaxb2_commons.lang.ToString;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
-import org.openestate.is24.restapi.xml.Adapter1;
+import org.openestate.is24.restapi.xml.Adapter2;
 
 
 /**
@@ -398,7 +398,7 @@ public class PublishObject
         @XmlAttribute(name = "title")
         protected String title;
         @XmlAttribute(name = "firstActivationDate")
-        @XmlJavaTypeAdapter(Adapter1 .class)
+        @XmlJavaTypeAdapter(Adapter2 .class)
         @XmlSchemaType(name = "dateTime")
         protected Calendar firstActivationDate;
 

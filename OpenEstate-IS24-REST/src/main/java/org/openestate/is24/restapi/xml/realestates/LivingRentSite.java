@@ -1,11 +1,13 @@
 
 package org.openestate.is24.restapi.xml.realestates;
 
+import java.math.BigDecimal;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.jvnet.jaxb2_commons.lang.CopyStrategy;
 import org.jvnet.jaxb2_commons.lang.CopyTo;
 import org.jvnet.jaxb2_commons.lang.Equals;
@@ -17,6 +19,8 @@ import org.jvnet.jaxb2_commons.lang.ToString;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
+import org.openestate.is24.restapi.xml.Adapter1;
+import org.openestate.is24.restapi.xml.Adapter5;
 import org.openestate.is24.restapi.xml.common.CommercializationType;
 import org.openestate.is24.restapi.xml.common.CourtageInfo;
 import org.openestate.is24.restapi.xml.common.LeaseIntervalType;
@@ -75,11 +79,20 @@ public class LivingRentSite
     @XmlSchemaType(name = "string")
     protected CommercializationType commercializationType;
     protected SiteRecommendedUseTypes recommendedUseTypes;
-    protected Integer tenancy;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlSchemaType(name = "int")
+    protected Long tenancy;
     @XmlElement(required = true)
     protected Price price;
-    protected double plotArea;
-    protected Double minDivisible;
+    @XmlElement(required = true, type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal plotArea;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal minDivisible;
     @XmlElement(required = true)
     protected CourtageInfo courtage;
     protected String freeFrom;
@@ -90,8 +103,14 @@ public class LivingRentSite
     protected SiteDevelopmentType siteDevelopmentType;
     @XmlSchemaType(name = "string")
     protected SiteConstructibleType siteConstructibleType;
-    protected Double grz;
-    protected Double gfz;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal grz;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal gfz;
     @XmlSchemaType(name = "string")
     protected LeaseIntervalType leaseInterval;
 
@@ -148,10 +167,10 @@ public class LivingRentSite
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public Integer getTenancy() {
+    public Long getTenancy() {
         return tenancy;
     }
 
@@ -160,10 +179,10 @@ public class LivingRentSite
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public void setTenancy(Integer value) {
+    public void setTenancy(Long value) {
         this.tenancy = value;
     }
 
@@ -194,16 +213,24 @@ public class LivingRentSite
     /**
      * Gets the value of the plotArea property.
      * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public double getPlotArea() {
+    public BigDecimal getPlotArea() {
         return plotArea;
     }
 
     /**
      * Sets the value of the plotArea property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setPlotArea(double value) {
+    public void setPlotArea(BigDecimal value) {
         this.plotArea = value;
     }
 
@@ -212,10 +239,10 @@ public class LivingRentSite
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getMinDivisible() {
+    public BigDecimal getMinDivisible() {
         return minDivisible;
     }
 
@@ -224,10 +251,10 @@ public class LivingRentSite
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setMinDivisible(Double value) {
+    public void setMinDivisible(BigDecimal value) {
         this.minDivisible = value;
     }
 
@@ -404,10 +431,10 @@ public class LivingRentSite
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getGrz() {
+    public BigDecimal getGrz() {
         return grz;
     }
 
@@ -416,10 +443,10 @@ public class LivingRentSite
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setGrz(Double value) {
+    public void setGrz(BigDecimal value) {
         this.grz = value;
     }
 
@@ -428,10 +455,10 @@ public class LivingRentSite
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getGfz() {
+    public BigDecimal getGfz() {
         return gfz;
     }
 
@@ -440,10 +467,10 @@ public class LivingRentSite
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setGfz(Double value) {
+    public void setGfz(BigDecimal value) {
         this.gfz = value;
     }
 
@@ -498,7 +525,7 @@ public class LivingRentSite
             strategy.appendField(locator, this, "recommendedUseTypes", buffer, theRecommendedUseTypes);
         }
         {
-            Integer theTenancy;
+            Long theTenancy;
             theTenancy = this.getTenancy();
             strategy.appendField(locator, this, "tenancy", buffer, theTenancy);
         }
@@ -508,12 +535,12 @@ public class LivingRentSite
             strategy.appendField(locator, this, "price", buffer, thePrice);
         }
         {
-            double thePlotArea;
+            BigDecimal thePlotArea;
             thePlotArea = this.getPlotArea();
             strategy.appendField(locator, this, "plotArea", buffer, thePlotArea);
         }
         {
-            Double theMinDivisible;
+            BigDecimal theMinDivisible;
             theMinDivisible = this.getMinDivisible();
             strategy.appendField(locator, this, "minDivisible", buffer, theMinDivisible);
         }
@@ -553,12 +580,12 @@ public class LivingRentSite
             strategy.appendField(locator, this, "siteConstructibleType", buffer, theSiteConstructibleType);
         }
         {
-            Double theGrz;
+            BigDecimal theGrz;
             theGrz = this.getGrz();
             strategy.appendField(locator, this, "grz", buffer, theGrz);
         }
         {
-            Double theGfz;
+            BigDecimal theGfz;
             theGfz = this.getGfz();
             strategy.appendField(locator, this, "gfz", buffer, theGfz);
         }
@@ -601,9 +628,9 @@ public class LivingRentSite
                 copy.recommendedUseTypes = null;
             }
             if (this.tenancy!= null) {
-                Integer sourceTenancy;
+                Long sourceTenancy;
                 sourceTenancy = this.getTenancy();
-                Integer copyTenancy = ((Integer) strategy.copy(LocatorUtils.property(locator, "tenancy", sourceTenancy), sourceTenancy));
+                Long copyTenancy = ((Long) strategy.copy(LocatorUtils.property(locator, "tenancy", sourceTenancy), sourceTenancy));
                 copy.setTenancy(copyTenancy);
             } else {
                 copy.tenancy = null;
@@ -616,16 +643,18 @@ public class LivingRentSite
             } else {
                 copy.price = null;
             }
-            {
-                double sourcePlotArea;
+            if (this.plotArea!= null) {
+                BigDecimal sourcePlotArea;
                 sourcePlotArea = this.getPlotArea();
-                double copyPlotArea = strategy.copy(LocatorUtils.property(locator, "plotArea", sourcePlotArea), sourcePlotArea);
+                BigDecimal copyPlotArea = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "plotArea", sourcePlotArea), sourcePlotArea));
                 copy.setPlotArea(copyPlotArea);
+            } else {
+                copy.plotArea = null;
             }
             if (this.minDivisible!= null) {
-                Double sourceMinDivisible;
+                BigDecimal sourceMinDivisible;
                 sourceMinDivisible = this.getMinDivisible();
-                Double copyMinDivisible = ((Double) strategy.copy(LocatorUtils.property(locator, "minDivisible", sourceMinDivisible), sourceMinDivisible));
+                BigDecimal copyMinDivisible = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "minDivisible", sourceMinDivisible), sourceMinDivisible));
                 copy.setMinDivisible(copyMinDivisible);
             } else {
                 copy.minDivisible = null;
@@ -687,17 +716,17 @@ public class LivingRentSite
                 copy.siteConstructibleType = null;
             }
             if (this.grz!= null) {
-                Double sourceGrz;
+                BigDecimal sourceGrz;
                 sourceGrz = this.getGrz();
-                Double copyGrz = ((Double) strategy.copy(LocatorUtils.property(locator, "grz", sourceGrz), sourceGrz));
+                BigDecimal copyGrz = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "grz", sourceGrz), sourceGrz));
                 copy.setGrz(copyGrz);
             } else {
                 copy.grz = null;
             }
             if (this.gfz!= null) {
-                Double sourceGfz;
+                BigDecimal sourceGfz;
                 sourceGfz = this.getGfz();
-                Double copyGfz = ((Double) strategy.copy(LocatorUtils.property(locator, "gfz", sourceGfz), sourceGfz));
+                BigDecimal copyGfz = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "gfz", sourceGfz), sourceGfz));
                 copy.setGfz(copyGfz);
             } else {
                 copy.gfz = null;
@@ -748,9 +777,9 @@ public class LivingRentSite
             }
         }
         {
-            Integer lhsTenancy;
+            Long lhsTenancy;
             lhsTenancy = this.getTenancy();
-            Integer rhsTenancy;
+            Long rhsTenancy;
             rhsTenancy = that.getTenancy();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "tenancy", lhsTenancy), LocatorUtils.property(thatLocator, "tenancy", rhsTenancy), lhsTenancy, rhsTenancy)) {
                 return false;
@@ -766,18 +795,18 @@ public class LivingRentSite
             }
         }
         {
-            double lhsPlotArea;
+            BigDecimal lhsPlotArea;
             lhsPlotArea = this.getPlotArea();
-            double rhsPlotArea;
+            BigDecimal rhsPlotArea;
             rhsPlotArea = that.getPlotArea();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "plotArea", lhsPlotArea), LocatorUtils.property(thatLocator, "plotArea", rhsPlotArea), lhsPlotArea, rhsPlotArea)) {
                 return false;
             }
         }
         {
-            Double lhsMinDivisible;
+            BigDecimal lhsMinDivisible;
             lhsMinDivisible = this.getMinDivisible();
-            Double rhsMinDivisible;
+            BigDecimal rhsMinDivisible;
             rhsMinDivisible = that.getMinDivisible();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "minDivisible", lhsMinDivisible), LocatorUtils.property(thatLocator, "minDivisible", rhsMinDivisible), lhsMinDivisible, rhsMinDivisible)) {
                 return false;
@@ -847,18 +876,18 @@ public class LivingRentSite
             }
         }
         {
-            Double lhsGrz;
+            BigDecimal lhsGrz;
             lhsGrz = this.getGrz();
-            Double rhsGrz;
+            BigDecimal rhsGrz;
             rhsGrz = that.getGrz();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "grz", lhsGrz), LocatorUtils.property(thatLocator, "grz", rhsGrz), lhsGrz, rhsGrz)) {
                 return false;
             }
         }
         {
-            Double lhsGfz;
+            BigDecimal lhsGfz;
             lhsGfz = this.getGfz();
-            Double rhsGfz;
+            BigDecimal rhsGfz;
             rhsGfz = that.getGfz();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "gfz", lhsGfz), LocatorUtils.property(thatLocator, "gfz", rhsGfz), lhsGfz, rhsGfz)) {
                 return false;

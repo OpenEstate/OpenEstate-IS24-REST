@@ -21,16 +21,15 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.Reader;
 import java.io.StringReader;
+import java.math.BigDecimal;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 import java.text.DateFormat;
-import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.xml.bind.DatatypeConverter;
@@ -350,38 +349,7 @@ public final class XmlUtils
   }
 
   /**
-   * Read a {@link Double} value from XML.
-   *
-   * @param value
-   * XML string
-   *
-   * @param min
-   * minimal value
-   *
-   * @param max
-   * maximal value
-   *
-   * @param precision
-   * number of decimal places
-   *
-   * @return
-   * parsed value or null, if the value is invalid
-   */
-  private static Double parseDouble( String value, Double min, Double max, int precision )
-  {
-    if (StringUtils.isBlank( value )) return null;
-    try
-    {
-      return Double.valueOf( value );
-    }
-    catch (NumberFormatException ex)
-    {
-      return null;
-    }
-  }
-
-  /**
-   * Read a {@link Double} value from XML
+   * Read a {@link BigDecimal} value from XML
    * with maximal 8 digits and 2 decimal places.
    *
    * @param value
@@ -390,13 +358,14 @@ public final class XmlUtils
    * @return
    * parsed value or null, if the value is invalid
    */
-  public static Double parseDouble8_2( String value )
+  public static BigDecimal parseDecimal8_2( String value )
   {
-    return parseDouble( value, 0d, 99999999d, 2 );
+    value = StringUtils.trimToNull( value );
+    return (value!=null)? DatatypeConverter.parseDecimal( value ): null;
   }
 
   /**
-   * Read a {@link Double} value from XML
+   * Read a {@link BigDecimal} value from XML
    * with maximal 13 digits and 2 decimal places.
    *
    * @param value
@@ -405,13 +374,14 @@ public final class XmlUtils
    * @return
    * parsed value or null, if the value is invalid
    */
-  public static Double parseDouble13_2( String value )
+  public static BigDecimal parseDecimal13_2( String value )
   {
-    return parseDouble( value, 0d, 9999999999999d, 2 );
+    value = StringUtils.trimToNull( value );
+    return (value!=null)? DatatypeConverter.parseDecimal( value ): null;
   }
 
   /**
-   * Read a positive {@link Double} value from XML
+   * Read a positive {@link BigDecimal} value from XML
    * with maximal 3 decimal places.
    *
    * @param value
@@ -420,9 +390,10 @@ public final class XmlUtils
    * @return
    * parsed value or null, if the value is invalid
    */
-  public static Double parseDoublePositive( String value )
+  public static BigDecimal parseDecimalPositive( String value )
   {
-    return parseDouble( value, 0.001d, null, 3 );
+    value = StringUtils.trimToNull( value );
+    return (value!=null)? DatatypeConverter.parseDecimal( value ): null;
   }
 
   /**
@@ -599,7 +570,7 @@ public final class XmlUtils
   }
 
   /**
-   * Read a {@link Double} value from XML
+   * Read a {@link BigDecimal} value from XML
    * with a valid latitude range.
    *
    * @param value
@@ -608,13 +579,14 @@ public final class XmlUtils
    * @return
    * parsed value or null, if the value is invalid
    */
-  public static Double parseLatitude( String value )
+  public static BigDecimal parseLatitude( String value )
   {
-    return parseDouble( value, -90d, 90d, 10 );
+    value = StringUtils.trimToNull( value );
+    return (value!=null)? DatatypeConverter.parseDecimal( value ): null;
   }
 
   /**
-   * Read a {@link Double} value from XML
+   * Read a {@link BigDecimal} value from XML
    * with a valid longitude range.
    *
    * @param value
@@ -623,9 +595,10 @@ public final class XmlUtils
    * @return
    * parsed value or null, if the value is invalid
    */
-  public static Double parseLongitude( String value )
+  public static BigDecimal parseLongitude( String value )
   {
-    return parseDouble( value, -180d, 180d, 10 );
+    value = StringUtils.trimToNull( value );
+    return (value!=null)? DatatypeConverter.parseDecimal( value ): null;
   }
 
   /**
@@ -719,7 +692,7 @@ public final class XmlUtils
   }
 
   /**
-   * Read a {@link Double} value from XML,
+   * Read a {@link BigDecimal} value from XML,
    * that matches the 'PriceMultiplierType' simple type.
    *
    * @param value
@@ -728,13 +701,14 @@ public final class XmlUtils
    * @return
    * parsed value or null, if the value is invalid
    */
-  public static Double parsePriceMultiplier( String value )
+  public static BigDecimal parsePriceMultiplier( String value )
   {
-    return parseDouble( value, 0d, 99d, 1 );
+    value = StringUtils.trimToNull( value );
+    return (value!=null)? DatatypeConverter.parseDecimal( value ): null;
   }
 
   /**
-   * Read a {@link Double} value from XML,
+   * Read a {@link BigDecimal} value from XML,
    * that matches the 'NumberOfRoomsType' simple type.
    *
    * @param value
@@ -743,13 +717,14 @@ public final class XmlUtils
    * @return
    * parsed value or null, if the value is invalid
    */
-  public static Double parseRoomNr( String value )
+  public static BigDecimal parseRoomNr( String value )
   {
-    return parseDouble( value, 0.5d, 9999d, 2 );
+    value = StringUtils.trimToNull( value );
+    return (value!=null)? DatatypeConverter.parseDecimal( value ): null;
   }
 
   /**
-   * Read a {@link Double} value from XML,
+   * Read a {@link BigDecimal} value from XML,
    * that matches the type of the 'numberOfRooms' element in "BaseHouse".
    *
    * @param value
@@ -758,9 +733,10 @@ public final class XmlUtils
    * @return
    * parsed value or null, if the value is invalid
    */
-  public static Double parseRoomNrForBaseHouse( String value )
+  public static BigDecimal parseRoomNrForBaseHouse( String value )
   {
-    return parseDouble( value, 0d, 999d, 2 );
+    value = StringUtils.trimToNull( value );
+    return (value!=null)? DatatypeConverter.parseDecimal( value ): null;
   }
 
   /**
@@ -964,7 +940,7 @@ public final class XmlUtils
   }
 
   /**
-   * Read a {@link Double} value from XML,
+   * Read a {@link BigDecimal} value from XML,
    * that matches the type of the "thermalCharacteristic" element.
    *
    * @param value
@@ -973,9 +949,10 @@ public final class XmlUtils
    * @return
    * parsed value or null, if the value is invalid
    */
-  public static Double parseThermalCharacteristic( String value )
+  public static BigDecimal parseThermalCharacteristic( String value )
   {
-    return parseDouble( value, 0d, 1999d, 2 );
+    value = StringUtils.trimToNull( value );
+    return (value!=null)? DatatypeConverter.parseDecimal( value ): null;
   }
 
   /**
@@ -1050,7 +1027,7 @@ public final class XmlUtils
   }
 
   /**
-   * Write a {@link Double} value into XML output.
+   * Write a {@link BigDecimal} value into XML output.
    *
    * @param value
    * value to write
@@ -1070,33 +1047,34 @@ public final class XmlUtils
    * @throws IllegalArgumentException
    * if a validation error occured
    */
-  private static String printDouble( Double value, Double min, Double max, int precision )
+  private static String printDecimal( BigDecimal value, BigDecimal min, BigDecimal max, int precision, boolean zeroIncluded )
   {
     if (value==null)
     {
       throw new IllegalArgumentException(
         "The provided double value NULL is invalid!" );
     }
-    if (min!=null && value.doubleValue()<min.doubleValue())
+    value = value.setScale( precision, BigDecimal.ROUND_HALF_UP );
+
+    if (min!=null && value.compareTo( min )<=0)
     {
-      throw new IllegalArgumentException(
-        "The provided double value " + value + " is too small (minimum is " + min + ")!" );
+      if (!zeroIncluded || !BigDecimal.ZERO.equals( value ))
+      {
+        throw new IllegalArgumentException(
+          "The provided double value " + value + " is too small (minimum is " + min + ")!" );
+      }
     }
-    if (max!=null && value.doubleValue()>max.doubleValue())
+    if (max!=null && value.compareTo( max )>=0)
     {
       throw new IllegalArgumentException(
         "The provided double value " + value + " is too high (maximum is " + max + ")!" );
     }
 
-    NumberFormat format = NumberFormat.getInstance( Locale.ENGLISH );
-    format.setMaximumFractionDigits( precision );
-    format.setMinimumFractionDigits( 0 );
-    format.setGroupingUsed( false );
-    return format.format( value );
+    return DatatypeConverter.printDecimal( value );
   }
 
   /**
-   * Write a {@link Double} value into XML output
+   * Write a {@link BigDecimal} value into XML output
    * with maximal 8 digits and 2 decimal places.
    *
    * @param value
@@ -1108,13 +1086,13 @@ public final class XmlUtils
    * @throws IllegalArgumentException
    * if a validation error occured
    */
-  public static String printDouble8_2( Double value )
+  public static String printDecimal8_2( BigDecimal value )
   {
-    return printDouble( value, 0d, 99999999d, 2 );
+    return printDecimal( value, BigDecimal.ZERO, BigDecimal.TEN.pow( 8 ), 2, false );
   }
 
   /**
-   * Write a {@link Double} value into XML output
+   * Write a {@link BigDecimal} value into XML output
    * with maximal 13 digits and 2 decimal places.
    *
    * @param value
@@ -1126,13 +1104,13 @@ public final class XmlUtils
    * @throws IllegalArgumentException
    * if a validation error occured
    */
-  public static String printDouble13_2( Double value )
+  public static String printDecimal13_2( BigDecimal value )
   {
-    return printDouble( value, 0d, 9999999999999d, 2 );
+    return printDecimal( value, BigDecimal.ZERO, BigDecimal.TEN.pow( 13 ), 2, false );
   }
 
   /**
-   * Write a positive {@link Double} value into XML output
+   * Write a positive {@link BigDecimal} value into XML output
    * with maximal 3 decimal places.
    *
    * @param value
@@ -1144,9 +1122,9 @@ public final class XmlUtils
    * @throws IllegalArgumentException
    * if a validation error occured
    */
-  public static String printDoublePositive( Double value )
+  public static String printDecimalPositive( BigDecimal value )
   {
-    return printDouble( value, 0.001d, null, 3 );
+    return printDecimal( value, BigDecimal.ZERO, null, 3, false );
   }
 
   /**
@@ -1251,12 +1229,12 @@ public final class XmlUtils
       throw new IllegalArgumentException(
         "The provided integer value NULL is invalid!" );
     }
-    if (min!=null && value.intValue()<min.intValue())
+    if (min!=null && value<min)
     {
       throw new IllegalArgumentException(
         "The provided integer value " + value + " is too small (minimum is " + min + ")!" );
     }
-    if (max!=null && value.intValue()>max.intValue())
+    if (max!=null && value>max)
     {
       throw new IllegalArgumentException(
         "The provided integer value " + value + " is too high (maximum is " + max + ")!" );
@@ -1373,7 +1351,7 @@ public final class XmlUtils
   }
 
   /**
-   * Write a {@link Double} value into XML output
+   * Write a {@link BigDecimal} value into XML output
    * with a valid latitude range.
    *
    * @param value
@@ -1385,13 +1363,13 @@ public final class XmlUtils
    * @throws IllegalArgumentException
    * if a validation error occured
    */
-  public static String printLatitude( Double value )
+  public static String printLatitude( BigDecimal value )
   {
-    return printDouble( value, -90d, 90d, 10 );
+    return printDecimal( value, new BigDecimal( "-90" ), new BigDecimal( "90" ), 10, false );
   }
 
   /**
-   * Write a {@link Double} value into XML output
+   * Write a {@link BigDecimal} value into XML output
    * with a valid longitude range.
    *
    * @param value
@@ -1403,9 +1381,9 @@ public final class XmlUtils
    * @throws IllegalArgumentException
    * if a validation error occured
    */
-  public static String printLongitude( Double value )
+  public static String printLongitude( BigDecimal value )
   {
-    return printDouble( value, -180d, 180d, 10 );
+    return printDecimal( value, new BigDecimal( "-180" ), new BigDecimal( "180" ), 10, false );
   }
 
   /**
@@ -1583,7 +1561,7 @@ public final class XmlUtils
   }
 
   /**
-   * Write a {@link Double} value into XML output,
+   * Write a {@link BigDecimal} value into XML output,
    * that matches the 'PriceMultiplierType' simple type.
    *
    * @param value
@@ -1595,13 +1573,13 @@ public final class XmlUtils
    * @throws IllegalArgumentException
    * if a validation error occured
    */
-  public static String printPriceMultiplier( Double value )
+  public static String printPriceMultiplier( BigDecimal value )
   {
-    return printDouble( value, 0d, 99d, 1 );
+    return printDecimal( value, BigDecimal.ZERO, BigDecimal.TEN.pow( 2 ), 1, true );
   }
 
   /**
-   * Write a {@link Double} value into XML output,
+   * Write a {@link BigDecimal} value into XML output,
    * that matches the 'NumberOfRoomsType' simple type.
    *
    * @param value
@@ -1613,13 +1591,13 @@ public final class XmlUtils
    * @throws IllegalArgumentException
    * if a validation error occured
    */
-  public static String printRoomNr( Double value )
+  public static String printRoomNr( BigDecimal value )
   {
-    return printDouble( value, 0.5d, 9999d, 2 );
+    return printDecimal( value, new BigDecimal( "0.49" ), BigDecimal.TEN.pow( 4 ), 2, false );
   }
 
   /**
-   * Write a {@link Double} value into XML output,
+   * Write a {@link BigDecimal} value into XML output,
    * that matches the type of the 'numberOfRooms' element in "BaseHouse".
    *
    * @param value
@@ -1631,9 +1609,9 @@ public final class XmlUtils
    * @throws IllegalArgumentException
    * if a validation error occured
    */
-  public static String printRoomNrForBaseHouse( Double value )
+  public static String printRoomNrForBaseHouse( BigDecimal value )
   {
-    return printDouble( value, 0d, 999d, 2 );
+    return printDecimal( value, BigDecimal.ZERO, BigDecimal.TEN.pow( 3 ), 1, true );
   }
 
   /**
@@ -1662,7 +1640,7 @@ public final class XmlUtils
       throw new IllegalArgumentException(
         "The provided text '" + value + "' is invalid!" );
     }
-    if (minLength!=null && val.length()<minLength.intValue())
+    if (minLength!=null && val.length()<minLength)
     {
       throw new IllegalArgumentException(
         "The provided text " + value + " is too short (minimum is " + minLength + ")!" );
@@ -1680,7 +1658,7 @@ public final class XmlUtils
     val = StringUtils.replace( val, ">", "»" );
 
     return (maxLength!=null)?
-      StringUtils.abbreviate( val, maxLength.intValue() ): val;
+      StringUtils.abbreviate( val, maxLength ): val;
   }
 
   /**
@@ -1900,7 +1878,7 @@ public final class XmlUtils
   }
 
   /**
-   * Write a {@link Double} value into XML output,
+   * Write a {@link BigDecimal} value into XML output,
    * that matches the type of the "thermalCharacteristic" element.
    *
    * @param value
@@ -1912,9 +1890,9 @@ public final class XmlUtils
    * @throws IllegalArgumentException
    * if a validation error occured
    */
-  public static String printThermalCharacteristic( Double value )
+  public static String printThermalCharacteristic( BigDecimal value )
   {
-    return printDouble( value, 0d, 1999d, 2 );
+    return printDecimal( value, BigDecimal.ZERO, new BigDecimal( "2000" ), 3, false );
   }
 
   /**

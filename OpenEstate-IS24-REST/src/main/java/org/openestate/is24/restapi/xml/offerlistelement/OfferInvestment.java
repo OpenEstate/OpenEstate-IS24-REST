@@ -1,11 +1,13 @@
 
 package org.openestate.is24.restapi.xml.offerlistelement;
 
+import java.math.BigDecimal;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.jvnet.jaxb2_commons.lang.CopyStrategy;
 import org.jvnet.jaxb2_commons.lang.CopyTo;
 import org.jvnet.jaxb2_commons.lang.Equals;
@@ -17,6 +19,7 @@ import org.jvnet.jaxb2_commons.lang.ToString;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
+import org.openestate.is24.restapi.xml.Adapter1;
 import org.openestate.is24.restapi.xml.common.CourtageInfo;
 import org.openestate.is24.restapi.xml.common.InvestmentType;
 import org.openestate.is24.restapi.xml.common.Price;
@@ -59,9 +62,18 @@ public class OfferInvestment
 
     @XmlElement(required = true)
     protected Price price;
-    protected Double industrialArea;
-    protected Double plotArea;
-    protected Double netFloorSpace;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal industrialArea;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal plotArea;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal netFloorSpace;
     @XmlElement(required = true)
     @XmlSchemaType(name = "string")
     protected InvestmentType investmentType;
@@ -98,10 +110,10 @@ public class OfferInvestment
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getIndustrialArea() {
+    public BigDecimal getIndustrialArea() {
         return industrialArea;
     }
 
@@ -110,10 +122,10 @@ public class OfferInvestment
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setIndustrialArea(Double value) {
+    public void setIndustrialArea(BigDecimal value) {
         this.industrialArea = value;
     }
 
@@ -122,10 +134,10 @@ public class OfferInvestment
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getPlotArea() {
+    public BigDecimal getPlotArea() {
         return plotArea;
     }
 
@@ -134,10 +146,10 @@ public class OfferInvestment
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setPlotArea(Double value) {
+    public void setPlotArea(BigDecimal value) {
         this.plotArea = value;
     }
 
@@ -146,10 +158,10 @@ public class OfferInvestment
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getNetFloorSpace() {
+    public BigDecimal getNetFloorSpace() {
         return netFloorSpace;
     }
 
@@ -158,10 +170,10 @@ public class OfferInvestment
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setNetFloorSpace(Double value) {
+    public void setNetFloorSpace(BigDecimal value) {
         this.netFloorSpace = value;
     }
 
@@ -259,17 +271,17 @@ public class OfferInvestment
             strategy.appendField(locator, this, "price", buffer, thePrice);
         }
         {
-            Double theIndustrialArea;
+            BigDecimal theIndustrialArea;
             theIndustrialArea = this.getIndustrialArea();
             strategy.appendField(locator, this, "industrialArea", buffer, theIndustrialArea);
         }
         {
-            Double thePlotArea;
+            BigDecimal thePlotArea;
             thePlotArea = this.getPlotArea();
             strategy.appendField(locator, this, "plotArea", buffer, thePlotArea);
         }
         {
-            Double theNetFloorSpace;
+            BigDecimal theNetFloorSpace;
             theNetFloorSpace = this.getNetFloorSpace();
             strategy.appendField(locator, this, "netFloorSpace", buffer, theNetFloorSpace);
         }
@@ -314,25 +326,25 @@ public class OfferInvestment
                 copy.price = null;
             }
             if (this.industrialArea!= null) {
-                Double sourceIndustrialArea;
+                BigDecimal sourceIndustrialArea;
                 sourceIndustrialArea = this.getIndustrialArea();
-                Double copyIndustrialArea = ((Double) strategy.copy(LocatorUtils.property(locator, "industrialArea", sourceIndustrialArea), sourceIndustrialArea));
+                BigDecimal copyIndustrialArea = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "industrialArea", sourceIndustrialArea), sourceIndustrialArea));
                 copy.setIndustrialArea(copyIndustrialArea);
             } else {
                 copy.industrialArea = null;
             }
             if (this.plotArea!= null) {
-                Double sourcePlotArea;
+                BigDecimal sourcePlotArea;
                 sourcePlotArea = this.getPlotArea();
-                Double copyPlotArea = ((Double) strategy.copy(LocatorUtils.property(locator, "plotArea", sourcePlotArea), sourcePlotArea));
+                BigDecimal copyPlotArea = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "plotArea", sourcePlotArea), sourcePlotArea));
                 copy.setPlotArea(copyPlotArea);
             } else {
                 copy.plotArea = null;
             }
             if (this.netFloorSpace!= null) {
-                Double sourceNetFloorSpace;
+                BigDecimal sourceNetFloorSpace;
                 sourceNetFloorSpace = this.getNetFloorSpace();
-                Double copyNetFloorSpace = ((Double) strategy.copy(LocatorUtils.property(locator, "netFloorSpace", sourceNetFloorSpace), sourceNetFloorSpace));
+                BigDecimal copyNetFloorSpace = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "netFloorSpace", sourceNetFloorSpace), sourceNetFloorSpace));
                 copy.setNetFloorSpace(copyNetFloorSpace);
             } else {
                 copy.netFloorSpace = null;
@@ -390,27 +402,27 @@ public class OfferInvestment
             }
         }
         {
-            Double lhsIndustrialArea;
+            BigDecimal lhsIndustrialArea;
             lhsIndustrialArea = this.getIndustrialArea();
-            Double rhsIndustrialArea;
+            BigDecimal rhsIndustrialArea;
             rhsIndustrialArea = that.getIndustrialArea();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "industrialArea", lhsIndustrialArea), LocatorUtils.property(thatLocator, "industrialArea", rhsIndustrialArea), lhsIndustrialArea, rhsIndustrialArea)) {
                 return false;
             }
         }
         {
-            Double lhsPlotArea;
+            BigDecimal lhsPlotArea;
             lhsPlotArea = this.getPlotArea();
-            Double rhsPlotArea;
+            BigDecimal rhsPlotArea;
             rhsPlotArea = that.getPlotArea();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "plotArea", lhsPlotArea), LocatorUtils.property(thatLocator, "plotArea", rhsPlotArea), lhsPlotArea, rhsPlotArea)) {
                 return false;
             }
         }
         {
-            Double lhsNetFloorSpace;
+            BigDecimal lhsNetFloorSpace;
             lhsNetFloorSpace = this.getNetFloorSpace();
-            Double rhsNetFloorSpace;
+            BigDecimal rhsNetFloorSpace;
             rhsNetFloorSpace = that.getNetFloorSpace();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "netFloorSpace", lhsNetFloorSpace), LocatorUtils.property(thatLocator, "netFloorSpace", rhsNetFloorSpace), lhsNetFloorSpace, rhsNetFloorSpace)) {
                 return false;

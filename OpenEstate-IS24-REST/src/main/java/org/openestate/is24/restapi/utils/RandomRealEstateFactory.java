@@ -16,6 +16,7 @@
 package org.openestate.is24.restapi.utils;
 
 import com.thedeanda.lorem.LoremIpsum;
+import java.math.BigDecimal;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -500,7 +501,7 @@ public class RandomRealEstateFactory
   }
 
   /**
-   * Create a random {@link Double} value with a specific maximum.
+   * Create a random {@link BigDecimal} value with a specific maximum.
    *
    * @param max
    * maximum value
@@ -508,13 +509,27 @@ public class RandomRealEstateFactory
    * @return
    * random {@link Double} value
    */
-  public static double getRandomDouble( int max )
+  public static BigDecimal getRandomDecimal( long max )
   {
-    return getRandomDouble( 0, max );
+    return getRandomDecimal( BigDecimal.ZERO, BigDecimal.valueOf( max ) );
   }
 
   /**
-   * Create a random {@link Double} value within a specific interval.
+   * Create a random {@link BigDecimal} value with a specific maximum.
+   *
+   * @param max
+   * maximum value
+   *
+   * @return
+   * random {@link Double} value
+   */
+  public static BigDecimal getRandomDecimal( BigDecimal max )
+  {
+    return getRandomDecimal( BigDecimal.ZERO, max );
+  }
+
+  /**
+   * Create a random {@link BigDecimal} value within a specific interval.
    *
    * @param min
    * minimum value
@@ -525,18 +540,35 @@ public class RandomRealEstateFactory
    * @return
    * random {@link Double} value
    */
-  public static double getRandomDouble( double min, double max )
+  public static BigDecimal getRandomDecimal( long min, long max )
   {
-    if (min>max)
+    return getRandomDecimal( BigDecimal.valueOf( min ), BigDecimal.valueOf( max ) );
+  }
+
+  /**
+   * Create a random {@link BigDecimal} value within a specific interval.
+   *
+   * @param min
+   * minimum value
+   *
+   * @param max
+   * maximum value
+   *
+   * @return
+   * random {@link Double} value
+   */
+  public static BigDecimal getRandomDecimal( BigDecimal min, BigDecimal max )
+  {
+    if (min.compareTo( max )==1)
     {
       throw new IllegalArgumentException(
         "Minimum value is bigger than maximum value!" );
     }
-    if (min==max)
+    if (min.compareTo( max )==0)
     {
-      return (double) min;
+      return min;
     }
-    return RandomUtils.nextDouble( min, max );
+    return BigDecimal.valueOf( RandomUtils.nextDouble( min.doubleValue(), max.doubleValue() ) );
   }
 
   /**
@@ -709,6 +741,46 @@ public class RandomRealEstateFactory
       return min;
     }
     return RandomUtils.nextInt( min, max );
+  }
+
+  /**
+   * Create a random {@link Long} value with a specific maximum.
+   *
+   * @param max
+   * maximum value
+   *
+   * @return
+   * random {@link Integer} value
+   */
+  public static long getRandomLong( long max )
+  {
+    return getRandomLong( 0, max );
+  }
+
+  /**
+   * Create a random {@link Long} value within a specific interval.
+   *
+   * @param min
+   * minimum value
+   *
+   * @param max
+   * maximum value
+   *
+   * @return
+   * random {@link Double} value
+   */
+  public static long getRandomLong( long min, long max )
+  {
+    if (min>max)
+    {
+      throw new IllegalArgumentException(
+        "Minimum value is bigger than maximum value!" );
+    }
+    if (min==max)
+    {
+      return min;
+    }
+    return RandomUtils.nextLong( min, max );
   }
 
   /**
@@ -1158,19 +1230,19 @@ public class RandomRealEstateFactory
     realEstate.setLastRefurbishment( getRandomInt( 1990, 2014 ) );
     realEstate.setLift( getRandomBoolean() );
     realEstate.setListed( getRandomYesNotApplicableType() );
-    realEstate.setLivingSpace( getRandomDouble( 20, 300 ) );
+    realEstate.setLivingSpace( getRandomDecimal( 20, 300 ) );
     realEstate.setNumberOfBathRooms( getRandomInt( 1, 10 ) );
     realEstate.setNumberOfBedRooms( getRandomInt( 1, 10 ) );
     realEstate.setNumberOfFloors( getRandomInt( 1, 10 ) );
     realEstate.setNumberOfParkingSpaces( getRandomInt( 1, 10 ) );
-    realEstate.setNumberOfRooms( getRandomInt( 1, 10 ) );
-    realEstate.setParkingSpacePrice( getRandomDouble( 30, 300 ) );
+    realEstate.setNumberOfRooms( getRandomDecimal( 1, 10 ) );
+    realEstate.setParkingSpacePrice( getRandomDecimal( 30, 300 ) );
     realEstate.setParkingSpaceType( getRandomParkingSpaceType() );
-    realEstate.setRentalIncome( getRandomDouble( 9999, 9999999 ) );
+    realEstate.setRentalIncome( getRandomDecimal( 9999, 9999999 ) );
     realEstate.setRented( getRandomYesNotApplicableType() );
-    realEstate.setServiceCharge( getRandomDouble( 50, 500 ) );
+    realEstate.setServiceCharge( getRandomDecimal( 50, 500 ) );
     realEstate.setSummerResidencePractical( getRandomYesNotApplicableType() );
-    realEstate.setUsableFloorSpace( getRandomDouble( 20, 300 ) );
+    realEstate.setUsableFloorSpace( getRandomDecimal( 20, 300 ) );
 
     // construction year
     if (getRandomBoolean())
@@ -1201,13 +1273,13 @@ public class RandomRealEstateFactory
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.BEFORE_01_MAY_2014 );
         realEstate.setEnergyConsumptionContainsWarmWater( getRandomYesNotApplicableType() );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
       else
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.FROM_01_MAY_2014 );
         realEstate.getEnergyCertificate().setEnergyEfficiencyClass( getRandomEnergyEfficiencyClass() );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
     }
 
@@ -1218,13 +1290,13 @@ public class RandomRealEstateFactory
       if (getRandomBoolean())
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.BEFORE_01_MAY_2014 );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
       else
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.FROM_01_MAY_2014 );
         realEstate.getEnergyCertificate().setEnergyEfficiencyClass( getRandomEnergyEfficiencyClass() );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
     }
 
@@ -1232,7 +1304,7 @@ public class RandomRealEstateFactory
     realEstate.setPrice( getDefaultPrice() );
     realEstate.getPrice().setMarketingType( MarketingType.PURCHASE );
     realEstate.getPrice().setPriceIntervalType( PriceIntervalType.ONE_TIME_CHARGE );
-    realEstate.getPrice().setValue( getRandomDouble( 10000, 9999999 ) );
+    realEstate.getPrice().setValue( getRandomDecimal( 10000, 9999999 ) );
   }
 
   /**
@@ -1245,7 +1317,7 @@ public class RandomRealEstateFactory
   {
     realEstate.setApartmentType( getRandomApartmentType() );
     realEstate.setBalcony( getRandomBoolean() );
-    realEstate.setBaseRent( getRandomDouble( 200, 2500 ) );
+    realEstate.setBaseRent( getRandomDecimal( 200, 2500 ) );
     realEstate.setBuiltInKitchen( getRandomBoolean() );
     realEstate.setCellar( getRandomYesNotApplicableType() );
     realEstate.setCertificateOfEligibilityNeeded( getRandomBoolean() );
@@ -1257,24 +1329,24 @@ public class RandomRealEstateFactory
     realEstate.setGarden( getRandomBoolean() );
     realEstate.setGuestToilet( getRandomYesNotApplicableType() );
     realEstate.setHandicappedAccessible( getRandomYesNotApplicableType() );
-    realEstate.setHeatingCosts( getRandomDouble( 100, 500 ) );
+    realEstate.setHeatingCosts( getRandomDecimal( 100, 500 ) );
     realEstate.setHeatingCostsInServiceCharge( getRandomYesNo() );
     realEstate.setHeatingTypeEnev2014( getRandomHeatingTypeEnev2014() );
     realEstate.setInteriorQuality( getRandomInteriorQuality() );
     realEstate.setLastRefurbishment( getRandomInt( 1990, 2014 ) );
     realEstate.setLift( getRandomBoolean() );
-    realEstate.setLivingSpace( getRandomDouble( 20, 300 ) );
+    realEstate.setLivingSpace( getRandomDecimal( 20, 300 ) );
     realEstate.setNumberOfBathRooms( getRandomInt( 1, 10 ) );
     realEstate.setNumberOfBedRooms( getRandomInt( 1, 10 ) );
     realEstate.setNumberOfFloors( getRandomInt( 1, 10 ) );
     realEstate.setNumberOfParkingSpaces( getRandomInt( 1, 10 ) );
-    realEstate.setNumberOfRooms( getRandomInt( 1, 10 ) );
-    realEstate.setParkingSpacePrice( getRandomDouble( 30, 300 ) );
+    realEstate.setNumberOfRooms( getRandomDecimal( 1, 10 ) );
+    realEstate.setParkingSpacePrice( getRandomDecimal( 30, 300 ) );
     realEstate.setParkingSpaceType( getRandomParkingSpaceType() );
     realEstate.setPetsAllowed( getRandomPetsAllowedType() );
-    realEstate.setServiceCharge( getRandomDouble( 50, 500 ) );
-    realEstate.setTotalRent( getRandomDouble( 500, 3000 ) );
-    realEstate.setUsableFloorSpace( getRandomDouble( 20, 300 ) );
+    realEstate.setServiceCharge( getRandomDecimal( 50, 500 ) );
+    realEstate.setTotalRent( getRandomDecimal( 500, 3000 ) );
+    realEstate.setUsableFloorSpace( getRandomDecimal( 20, 300 ) );
     realEstate.setUseAsFlatshareRoom( getRandomYesNotApplicableType() );
 
     // construction year
@@ -1306,13 +1378,13 @@ public class RandomRealEstateFactory
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.BEFORE_01_MAY_2014 );
         realEstate.setEnergyConsumptionContainsWarmWater( getRandomYesNotApplicableType() );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
       else
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.FROM_01_MAY_2014 );
         realEstate.getEnergyCertificate().setEnergyEfficiencyClass( getRandomEnergyEfficiencyClass() );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
     }
 
@@ -1323,13 +1395,13 @@ public class RandomRealEstateFactory
       if (getRandomBoolean())
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.BEFORE_01_MAY_2014 );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
       else
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.FROM_01_MAY_2014 );
         realEstate.getEnergyCertificate().setEnergyEfficiencyClass( getRandomEnergyEfficiencyClass() );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
     }
 
@@ -1337,7 +1409,7 @@ public class RandomRealEstateFactory
     realEstate.setPrice( getDefaultPrice() );
     realEstate.getPrice().setMarketingType( MarketingType.RENT );
     realEstate.getPrice().setPriceIntervalType( PriceIntervalType.MONTH );
-    realEstate.getPrice().setValue( getRandomDouble( 200, 9999 ) );
+    realEstate.getPrice().setValue( getRandomDecimal( 200, 9999 ) );
   }
 
   /**
@@ -1367,14 +1439,14 @@ public class RandomRealEstateFactory
     realEstate.setHeatingTypeEnev2014( getRandomHeatingTypeEnev2014() );
     realEstate.setHomeHelpAvailable( getRandomYesNotApplicableType() );
     realEstate.setLeisureActivitiesAvailable( getRandomYesNotApplicableType() );
-    realEstate.setLivingSpaceFrom( getRandomDouble( 20, 50 ) );
-    realEstate.setLivingSpaceTo( getRandomDouble( 50, 150 ) );
+    realEstate.setLivingSpaceFrom( getRandomDecimal( 20, 50 ) );
+    realEstate.setLivingSpaceTo( getRandomDecimal( 50, 150 ) );
     realEstate.setLoansAvailable( getRandomYesNotApplicableType() );
     realEstate.setMedicalAssistanceAvailable( getRandomYesNotApplicableType() );
-    realEstate.setNumberOfLookedAfterApartments( getRandomInt( 1, 10 ) );
-    realEstate.setNumberOfNursingPlaces( getRandomInt( 1, 10 ) );
-    realEstate.setNumberOfRoomsFrom( (double) getRandomInt( 1, 2 ) );
-    realEstate.setNumberOfRoomsTo( (double) getRandomInt( 3, 5 ) );
+    realEstate.setNumberOfLookedAfterApartments( getRandomLong( 1, 10 ) );
+    realEstate.setNumberOfNursingPlaces( getRandomLong( 1, 10 ) );
+    realEstate.setNumberOfRoomsFrom( getRandomDecimal( 1, 2 ) );
+    realEstate.setNumberOfRoomsTo( getRandomDecimal( 3, 5 ) );
     realEstate.setOwnFurniturePossible( getRandomYesNotApplicableType() );
     realEstate.setParkingAvailable( getRandomYesNotApplicableType() );
     realEstate.setPetsAllowed( getRandomPetsAllowedType() );
@@ -1396,7 +1468,7 @@ public class RandomRealEstateFactory
     }
     else
     {
-      realEstate.setConstructionYear( getRandomInt( 1900, 1980 ) );
+      realEstate.setConstructionYear( getRandomLong( 1900, 1980 ) );
     }
 
     // energy certificate for habitation
@@ -1410,13 +1482,13 @@ public class RandomRealEstateFactory
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.BEFORE_01_MAY_2014 );
         realEstate.setEnergyConsumptionContainsWarmWater( getRandomYesNotApplicableType() );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
       else
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.FROM_01_MAY_2014 );
         realEstate.getEnergyCertificate().setEnergyEfficiencyClass( getRandomEnergyEfficiencyClass() );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
     }
 
@@ -1427,13 +1499,13 @@ public class RandomRealEstateFactory
       if (getRandomBoolean())
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.BEFORE_01_MAY_2014 );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
       else
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.FROM_01_MAY_2014 );
         realEstate.getEnergyCertificate().setEnergyEfficiencyClass( getRandomEnergyEfficiencyClass() );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
     }
 
@@ -1444,7 +1516,7 @@ public class RandomRealEstateFactory
       realEstate.setMinBaseRent( getDefaultPrice() );
       realEstate.getMinBaseRent().setMarketingType( MarketingType.RENT );
       realEstate.getMinBaseRent().setPriceIntervalType( PriceIntervalType.MONTH );
-      realEstate.getMinBaseRent().setValue( getRandomDouble( 500, 5000 ) );
+      realEstate.getMinBaseRent().setValue( getRandomDecimal( 500, 5000 ) );
     }
 
     // pricing for purchase
@@ -1454,7 +1526,7 @@ public class RandomRealEstateFactory
       realEstate.setMinPurchasePrice( getDefaultPrice() );
       realEstate.getMinPurchasePrice().setMarketingType( MarketingType.PURCHASE );
       realEstate.getMinPurchasePrice().setPriceIntervalType( PriceIntervalType.ONE_TIME_CHARGE );
-      realEstate.getMinPurchasePrice().setValue( getRandomDouble( 50000, 999999 ) );
+      realEstate.getMinPurchasePrice().setValue( getRandomDecimal( 50000, 999999 ) );
     }
   }
 
@@ -1466,7 +1538,7 @@ public class RandomRealEstateFactory
    */
   protected void initRealEstate( CompulsoryAuction realEstate )
   {
-    realEstate.setArea( getRandomDouble( 50, 500 ) );
+    realEstate.setArea( getRandomDecimal( 50, 500 ) );
     realEstate.setAuctionObjectType( getRandomCompulsoryAuctionType() );
     realEstate.setCancellationDate( getRandomCalendar() );
     realEstate.setDateOfAuction( getRandomCalendar() );
@@ -1506,18 +1578,18 @@ public class RandomRealEstateFactory
       if (getRandomBoolean())
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.BEFORE_01_MAY_2014 );
-        realEstate.getEnergyCertificate().setElectricityConsumption( getRandomDouble( 10, 250 ) );
-        realEstate.getEnergyCertificate().setHeatingConsumption( getRandomDouble( 10, 250 ) );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.getEnergyCertificate().setElectricityConsumption( getRandomDecimal( 10, 250 ) );
+        realEstate.getEnergyCertificate().setHeatingConsumption( getRandomDecimal( 10, 250 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
         realEstate.setEnergyConsumptionContainsWarmWater( getRandomYesNotApplicableType() );
       }
       else
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.FROM_01_MAY_2014 );
-        realEstate.getEnergyCertificate().setEnergyConsumptionElectricity( getRandomDouble( 10, 250 ) );
-        realEstate.getEnergyCertificate().setEnergyConsumptionHeating( getRandomDouble( 10, 250 ) );
+        realEstate.getEnergyCertificate().setEnergyConsumptionElectricity( getRandomDecimal( 10, 250 ) );
+        realEstate.getEnergyCertificate().setEnergyConsumptionHeating( getRandomDecimal( 10, 250 ) );
         realEstate.getEnergyCertificate().setEnergyEfficiencyClass( getRandomEnergyEfficiencyClass() );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
     }
 
@@ -1528,15 +1600,15 @@ public class RandomRealEstateFactory
       if (getRandomBoolean())
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.BEFORE_01_MAY_2014 );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
       else
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.FROM_01_MAY_2014 );
-        realEstate.getEnergyCertificate().setThermalCharacteristicElectricity( getRandomDouble( 10, 250 ) );
-        realEstate.getEnergyCertificate().setThermalCharacteristicHeating( getRandomDouble( 10, 250 ) );
+        realEstate.getEnergyCertificate().setThermalCharacteristicElectricity( getRandomDecimal( 10, 250 ) );
+        realEstate.getEnergyCertificate().setThermalCharacteristicHeating( getRandomDecimal( 10, 250 ) );
         realEstate.getEnergyCertificate().setEnergyEfficiencyClass( getRandomEnergyEfficiencyClass() );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
     }
 
@@ -1544,13 +1616,13 @@ public class RandomRealEstateFactory
     realEstate.setLowestBid( getDefaultPrice() );
     realEstate.getLowestBid().setMarketingType( MarketingType.PURCHASE );
     realEstate.getLowestBid().setPriceIntervalType( PriceIntervalType.ONE_TIME_CHARGE );
-    realEstate.getLowestBid().setValue( getRandomDouble( 10000, 250000 ) );
+    realEstate.getLowestBid().setValue( getRandomDecimal( 10000, 250000 ) );
 
     // pricing / market value
     realEstate.setMarketValue( getDefaultPrice() );
     realEstate.getMarketValue().setMarketingType( MarketingType.PURCHASE );
     realEstate.getMarketValue().setPriceIntervalType( PriceIntervalType.ONE_TIME_CHARGE );
-    realEstate.getMarketValue().setValue( getRandomDouble( 50000, 500000 ) );
+    realEstate.getMarketValue().setValue( getRandomDecimal( 50000, 500000 ) );
   }
 
   /**
@@ -1561,14 +1633,14 @@ public class RandomRealEstateFactory
    */
   protected void initRealEstate( FlatShareRoom realEstate )
   {
-    realEstate.setAgeOfFlatMatesFrom( getRandomInt( 16, 30 ) );
-    realEstate.setAgeOfFlatMatesTo( getRandomInt( 30, 50 ) );
-    realEstate.setAgeOfRequestedFrom( getRandomInt( 16, 30 ) );
-    realEstate.setAgeOfRequestedTo( getRandomInt( 30, 50 ) );
+    realEstate.setAgeOfFlatMatesFrom( getRandomLong( 16, 30 ) );
+    realEstate.setAgeOfFlatMatesTo( getRandomLong( 30, 50 ) );
+    realEstate.setAgeOfRequestedFrom( getRandomLong( 16, 30 ) );
+    realEstate.setAgeOfRequestedTo( getRandomLong( 30, 50 ) );
     realEstate.setApartmentType( getRandomApartmentType() );
     realEstate.setBalcony( getRandomYesNotApplicableType() );
     realEstate.setBarrierFree( getRandomYesNotApplicableType() );
-    realEstate.setBaseRent( getRandomDouble( 200, 1000 ) );
+    realEstate.setBaseRent( getRandomDecimal( 200, 1000 ) );
     realEstate.setBathHasShower( getRandomYesNotApplicableType() );
     realEstate.setBathHasTub( getRandomYesNotApplicableType() );
     realEstate.setBathHasWc( getRandomYesNotApplicableType() );
@@ -1584,30 +1656,30 @@ public class RandomRealEstateFactory
     realEstate.setFurnishing( getRandomYesNoNotApplicableType() );
     realEstate.setGarden( getRandomYesNotApplicableType() );
     realEstate.setGuestToilet( getRandomYesNotApplicableType() );
-    realEstate.setHeatingCosts( getRandomDouble( 100, 500 ) );
+    realEstate.setHeatingCosts( getRandomDecimal( 100, 500 ) );
     realEstate.setHeatingCostsInServiceCharge( getRandomYesNo() );
     realEstate.setHeatingTypeEnev2014( getRandomHeatingTypeEnev2014() );
     realEstate.setInternetConnection( getRandomInternetConnectionType() );
     realEstate.setLift( getRandomYesNotApplicableType() );
-    realEstate.setMinimumTermOfLease( getRandomInt( 1, 12 ) );
-    realEstate.setNumberOfBathRooms( getRandomInt( 1, 10 ) );
-    realEstate.setNumberOfFemaleFlatMates( getRandomInt( 1, 10 ) );
-    realEstate.setNumberOfFloors( getRandomInt( 1, 10 ) );
-    realEstate.setNumberOfMaleFlatMates( getRandomInt( 1, 10 ) );
-    realEstate.setNumberOfRequestedFlatMates( getRandomInt( 1, 10 )  );
-    realEstate.setNumberOfRooms( (double) getRandomInt( 1, 10 ) );
+    realEstate.setMinimumTermOfLease( getRandomLong( 1, 12 ) );
+    realEstate.setNumberOfBathRooms( getRandomLong( 1, 10 ) );
+    realEstate.setNumberOfFemaleFlatMates( getRandomLong( 1, 10 ) );
+    realEstate.setNumberOfFloors( getRandomLong( 1, 10 ) );
+    realEstate.setNumberOfMaleFlatMates( getRandomLong( 1, 10 ) );
+    realEstate.setNumberOfRequestedFlatMates( getRandomLong( 1, 10 )  );
+    realEstate.setNumberOfRooms( getRandomDecimal( 1, 10 ) );
     realEstate.setOven( getRandomYesNotApplicableType() );
     realEstate.setParkingSituation( getRandomParkingSituationType() );
     realEstate.setPetsAllowed( getRandomPetsAllowedType() );
     realEstate.setRefrigerator( getRandomYesNotApplicableType() );
     realEstate.setRequestedGender( getRandomFlatMateGenderType() );
-    realEstate.setRoomSize( getRandomDouble( 4, 20 ) );
-    realEstate.setServiceCharge( getRandomDouble( 50, 500 ) );
+    realEstate.setRoomSize( getRandomDecimal( 4, 20 ) );
+    realEstate.setServiceCharge( getRandomDecimal( 50, 500 ) );
     realEstate.setSmokingAllowed( getRandomSmokingAllowedType() );
     realEstate.setStove( getRandomYesNotApplicableType() );
     realEstate.setTelephoneConnection( getRandomTelephoneConnectionType() );
-    realEstate.setTotalRent( getRandomDouble( 500, 3000 ) );
-    realEstate.setTotalSpace( getRandomDouble( 40, 250 ) );
+    realEstate.setTotalRent( getRandomDecimal( 500, 3000 ) );
+    realEstate.setTotalSpace( getRandomDecimal( 40, 250 ) );
     realEstate.setTvConnection( getRandomTvConnectionType() );
     realEstate.setWashingMachine( getRandomYesNotApplicableType() );
 
@@ -1639,13 +1711,13 @@ public class RandomRealEstateFactory
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.BEFORE_01_MAY_2014 );
         realEstate.setEnergyConsumptionContainsWarmWater( getRandomYesNotApplicableType() );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
       else
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.FROM_01_MAY_2014 );
         realEstate.getEnergyCertificate().setEnergyEfficiencyClass( getRandomEnergyEfficiencyClass() );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
     }
 
@@ -1656,13 +1728,13 @@ public class RandomRealEstateFactory
       if (getRandomBoolean())
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.BEFORE_01_MAY_2014 );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
       else
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.FROM_01_MAY_2014 );
         realEstate.getEnergyCertificate().setEnergyEfficiencyClass( getRandomEnergyEfficiencyClass() );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
     }
   }
@@ -1678,11 +1750,11 @@ public class RandomRealEstateFactory
     realEstate.setCondition( getRandomRealEstateCondition() );
     realEstate.setConstructionYear( getRandomInt( 1900, 1980 ) );
     realEstate.setGarageType( getRandomGarageType() );
-    realEstate.setHeightGarage( getRandomDouble( 1, 3 ) );
-    realEstate.setLastRefurbishment( getRandomInt( 1990, 2014 ) );
-    realEstate.setLengthGarage( getRandomDouble( 3, 6 ) );
-    realEstate.setUsableFloorSpace( getRandomDouble( 5, 50 ) );
-    realEstate.setWidthGarage( getRandomDouble( 3, 6 ) );
+    realEstate.setHeightGarage( getRandomDecimal( 1, 3 ) );
+    realEstate.setLastRefurbishment( getRandomLong( 1990, 2014 ) );
+    realEstate.setLengthGarage( getRandomDecimal( 3, 6 ) );
+    realEstate.setUsableFloorSpace( getRandomDecimal( 5, 50 ) );
+    realEstate.setWidthGarage( getRandomDecimal( 3, 6 ) );
 
     // courtage
     realEstate.setCourtage( commonFactory.createCourtageInfo() );
@@ -1694,7 +1766,7 @@ public class RandomRealEstateFactory
     realEstate.setPrice( getDefaultPrice() );
     realEstate.getPrice().setMarketingType( MarketingType.PURCHASE );
     realEstate.getPrice().setPriceIntervalType( PriceIntervalType.ONE_TIME_CHARGE );
-    realEstate.getPrice().setValue( getRandomDouble( 1000, 9999 ) );
+    realEstate.getPrice().setValue( getRandomDecimal( 1000, 9999 ) );
   }
 
   /**
@@ -1710,11 +1782,11 @@ public class RandomRealEstateFactory
     realEstate.setFreeFrom( getRandomCalendar() );
     realEstate.setFreeUntil( getRandomCalendar() );
     realEstate.setGarageType( getRandomGarageType() );
-    realEstate.setHeightGarage( getRandomDouble( 1, 3 ) );
-    realEstate.setLastRefurbishment( getRandomInt( 1990, 2014 ) );
-    realEstate.setLengthGarage( getRandomDouble( 3, 6 ) );
-    realEstate.setUsableFloorSpace( getRandomDouble( 5, 50 ) );
-    realEstate.setWidthGarage( getRandomDouble( 3, 6 ) );
+    realEstate.setHeightGarage( getRandomDecimal( 1, 3 ) );
+    realEstate.setLastRefurbishment( getRandomLong( 1990, 2014 ) );
+    realEstate.setLengthGarage( getRandomDecimal( 3, 6 ) );
+    realEstate.setUsableFloorSpace( getRandomDecimal( 5, 50 ) );
+    realEstate.setWidthGarage( getRandomDecimal( 3, 6 ) );
 
     // courtage
     realEstate.setCourtage( commonFactory.createCourtageInfo() );
@@ -1726,7 +1798,7 @@ public class RandomRealEstateFactory
     realEstate.setPrice( getDefaultPrice() );
     realEstate.getPrice().setMarketingType( MarketingType.RENT );
     realEstate.getPrice().setPriceIntervalType( PriceIntervalType.MONTH );
-    realEstate.getPrice().setValue( getRandomDouble( 50, 999 ) );
+    realEstate.getPrice().setValue( getRandomDecimal( 50, 999 ) );
   }
 
   /**
@@ -1737,31 +1809,31 @@ public class RandomRealEstateFactory
    */
   protected void initRealEstate( Gastronomy realEstate )
   {
-    realEstate.setAdditionalArea( getRandomDouble( 10, 500 ) );
+    realEstate.setAdditionalArea( getRandomDecimal( 10, 500 ) );
     realEstate.setCellar( getRandomYesNotApplicableType() );
     realEstate.setCondition( getRandomRealEstateCondition() );
     realEstate.setDeposit( StringUtils.abbreviate( LOREM.getWords( 1, 10 ), 50 ) );
-    realEstate.setDistanceToAirport( getRandomInt( 5, 50 ) );
-    realEstate.setDistanceToFM( getRandomInt( 5, 50 ) );
-    realEstate.setDistanceToMRS( getRandomInt( 5, 50 ) );
-    realEstate.setDistanceToPT( getRandomInt( 5, 50 ) );
+    realEstate.setDistanceToAirport( getRandomLong( 5, 50 ) );
+    realEstate.setDistanceToFM( getRandomLong( 5, 50 ) );
+    realEstate.setDistanceToMRS( getRandomLong( 5, 50 ) );
+    realEstate.setDistanceToPT( getRandomLong( 5, 50 ) );
     realEstate.setEnergySourcesEnev2014( createRandomEnergySourcesEnev2014() );
     realEstate.setFreeFrom( StringUtils.abbreviate( LOREM.getWords( 1, 10 ), 50 ) );
     realEstate.setGastronomyType( getRandomGastronomyType() );
     realEstate.setHeatingTypeEnev2014( getRandomHeatingTypeEnev2014() );
     realEstate.setInteriorQuality( getRandomInteriorQuality() );
-    realEstate.setLastRefurbishment( getRandomInt( 1990, 2014 ) );
+    realEstate.setLastRefurbishment( getRandomLong( 1990, 2014 ) );
     realEstate.setLift( getRandomYesNotApplicableType() );
     realEstate.setListed( getRandomYesNotApplicableType() );
-    realEstate.setMinDivisible( getRandomDouble( 100, 250 ) );
-    realEstate.setNetFloorSpace( getRandomDouble( 50, 5000 ) );
-    realEstate.setNumberBeds( getRandomInt( 10, 500 ) );
+    realEstate.setMinDivisible( getRandomDecimal( 100, 250 ) );
+    realEstate.setNetFloorSpace( getRandomDecimal( 50, 5000 ) );
+    realEstate.setNumberBeds( getRandomLong( 10, 500 ) );
     realEstate.setNumberOfFloors( String.valueOf( getRandomInt( 1, 10 ) ) );
-    realEstate.setNumberOfParkingSpaces( getRandomInt( 1, 10 ) );
-    realEstate.setNumberSeats( getRandomInt( 50, 500 ) );
-    realEstate.setParkingSpacePrice( getRandomDouble( 30, 300 ) );
+    realEstate.setNumberOfParkingSpaces( getRandomLong( 1, 10 ) );
+    realEstate.setNumberSeats( getRandomLong( 50, 500 ) );
+    realEstate.setParkingSpacePrice( getRandomDecimal( 30, 300 ) );
     realEstate.setTerrace( getRandomYesNotApplicableType() );
-    realEstate.setTotalFloorSpace( getRandomDouble( 50, 500 ) );
+    realEstate.setTotalFloorSpace( getRandomDecimal( 50, 500 ) );
 
     // construction year
     if (getRandomBoolean())
@@ -1771,7 +1843,7 @@ public class RandomRealEstateFactory
     }
     else
     {
-      realEstate.setConstructionYear( getRandomInt( 1900, 1980 ) );
+      realEstate.setConstructionYear( getRandomLong( 1900, 1980 ) );
     }
 
     // courtage
@@ -1790,18 +1862,18 @@ public class RandomRealEstateFactory
       if (getRandomBoolean())
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.BEFORE_01_MAY_2014 );
-        realEstate.getEnergyCertificate().setElectricityConsumption( getRandomDouble( 10, 250 ) );
-        realEstate.getEnergyCertificate().setHeatingConsumption( getRandomDouble( 10, 250 ) );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.getEnergyCertificate().setElectricityConsumption( getRandomDecimal( 10, 250 ) );
+        realEstate.getEnergyCertificate().setHeatingConsumption( getRandomDecimal( 10, 250 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
         realEstate.setEnergyConsumptionContainsWarmWater( getRandomYesNotApplicableType() );
       }
       else
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.FROM_01_MAY_2014 );
-        realEstate.getEnergyCertificate().setEnergyConsumptionElectricity( getRandomDouble( 10, 250 ) );
-        realEstate.getEnergyCertificate().setEnergyConsumptionHeating( getRandomDouble( 10, 250 ) );
+        realEstate.getEnergyCertificate().setEnergyConsumptionElectricity( getRandomDecimal( 10, 250 ) );
+        realEstate.getEnergyCertificate().setEnergyConsumptionHeating( getRandomDecimal( 10, 250 ) );
         realEstate.getEnergyCertificate().setEnergyEfficiencyClass( getRandomEnergyEfficiencyClass() );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
     }
 
@@ -1812,15 +1884,15 @@ public class RandomRealEstateFactory
       if (getRandomBoolean())
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.BEFORE_01_MAY_2014 );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
       else
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.FROM_01_MAY_2014 );
-        realEstate.getEnergyCertificate().setThermalCharacteristicElectricity( getRandomDouble( 500, 2500 ) );
-        realEstate.getEnergyCertificate().setThermalCharacteristicHeating( getRandomDouble( 500, 2500 ) );
+        realEstate.getEnergyCertificate().setThermalCharacteristicElectricity( getRandomDecimal( 500, 2500 ) );
+        realEstate.getEnergyCertificate().setThermalCharacteristicHeating( getRandomDecimal( 500, 2500 ) );
         realEstate.getEnergyCertificate().setEnergyEfficiencyClass( getRandomEnergyEfficiencyClass() );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
     }
 
@@ -1831,7 +1903,7 @@ public class RandomRealEstateFactory
       realEstate.setPrice( getDefaultPrice() );
       realEstate.getPrice().setMarketingType( MarketingType.RENT );
       realEstate.getPrice().setPriceIntervalType( PriceIntervalType.MONTH );
-      realEstate.getPrice().setValue( getRandomDouble( 1000, 50000 ) );
+      realEstate.getPrice().setValue( getRandomDecimal( 1000, 50000 ) );
     }
 
     // pricing for purchase
@@ -1841,13 +1913,13 @@ public class RandomRealEstateFactory
       realEstate.setPrice( getDefaultPrice() );
       realEstate.getPrice().setMarketingType( MarketingType.PURCHASE );
       realEstate.getPrice().setPriceIntervalType( PriceIntervalType.ONE_TIME_CHARGE );
-      realEstate.getPrice().setValue( getRandomDouble( 50000, 9999999 ) );
+      realEstate.getPrice().setValue( getRandomDecimal( 50000, 9999999 ) );
     }
 
     // pricing / additional costs
     realEstate.setAdditionalCosts( getDefaultPrice() );
     realEstate.getAdditionalCosts().setPriceIntervalType( PriceIntervalType.MONTH );
-    realEstate.getAdditionalCosts().setValue( getRandomDouble( 500, 5000 ) );
+    realEstate.getAdditionalCosts().setValue( getRandomDecimal( 500, 5000 ) );
 
     // pricing / calculated price
     //realEstate.setCalculatedPrice( getDefaultPrice() );
@@ -1874,20 +1946,20 @@ public class RandomRealEstateFactory
     realEstate.setInteriorQuality( getRandomInteriorQuality() );
     realEstate.setLastRefurbishment( getRandomInt( 1990, 2014 ) );
     realEstate.setListed( getRandomYesNotApplicableType() );
-    realEstate.setLivingSpace( getRandomDouble( 20, 300 ) );
+    realEstate.setLivingSpace( getRandomDecimal( 20, 300 ) );
     realEstate.setLodgerFlat( getRandomYesNotApplicableType() );
     realEstate.setNumberOfBathRooms( getRandomInt( 1, 10 ) );
     realEstate.setNumberOfBedRooms( getRandomInt( 1, 10 ) );
     realEstate.setNumberOfFloors( getRandomInt( 1, 10 ) );
     realEstate.setNumberOfParkingSpaces( getRandomInt( 1, 10 ) );
-    realEstate.setNumberOfRooms( (double) getRandomInt( 1, 10 ) );
-    realEstate.setParkingSpacePrice( getRandomDouble( 30, 300 ) );
+    realEstate.setNumberOfRooms( getRandomDecimal( 1, 10 ) );
+    realEstate.setParkingSpacePrice( getRandomDecimal( 30, 300 ) );
     realEstate.setParkingSpaceType( getRandomParkingSpaceType() );
-    realEstate.setPlotArea( getRandomDouble( 100, 5000 ) );
-    realEstate.setRentalIncome( getRandomDouble( 9999, 9999999 ) );
+    realEstate.setPlotArea( getRandomDecimal( 100, 5000 ) );
+    realEstate.setRentalIncome( getRandomDecimal( 9999, 9999999 ) );
     realEstate.setRented( getRandomYesNotApplicableType() );
     realEstate.setSummerResidencePractical( getRandomYesNotApplicableType() );
-    realEstate.setUsableFloorSpace( getRandomDouble( 20, 300 ) );
+    realEstate.setUsableFloorSpace( getRandomDecimal( 20, 300 ) );
 
     // construction year
     if (getRandomBoolean())
@@ -1918,13 +1990,13 @@ public class RandomRealEstateFactory
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.BEFORE_01_MAY_2014 );
         realEstate.setEnergyConsumptionContainsWarmWater( getRandomYesNotApplicableType() );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
       else
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.FROM_01_MAY_2014 );
         realEstate.getEnergyCertificate().setEnergyEfficiencyClass( getRandomEnergyEfficiencyClass() );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
     }
 
@@ -1935,13 +2007,13 @@ public class RandomRealEstateFactory
       if (getRandomBoolean())
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.BEFORE_01_MAY_2014 );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
       else
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.FROM_01_MAY_2014 );
         realEstate.getEnergyCertificate().setEnergyEfficiencyClass( getRandomEnergyEfficiencyClass() );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
     }
 
@@ -1949,7 +2021,7 @@ public class RandomRealEstateFactory
     realEstate.setPrice( getDefaultPrice() );
     realEstate.getPrice().setMarketingType( MarketingType.PURCHASE );
     realEstate.getPrice().setPriceIntervalType( PriceIntervalType.ONE_TIME_CHARGE );
-    realEstate.getPrice().setValue( getRandomDouble( 10000, 9999999 ) );
+    realEstate.getPrice().setValue( getRandomDecimal( 10000, 9999999 ) );
   }
 
   /**
@@ -1960,7 +2032,7 @@ public class RandomRealEstateFactory
    */
   protected void initRealEstate( HouseRent realEstate )
   {
-    realEstate.setBaseRent( getRandomDouble( 500, 5000 ) );
+    realEstate.setBaseRent( getRandomDecimal( 500, 5000 ) );
     realEstate.setBuildingType( getRandomBuildingType() );
     realEstate.setBuiltInKitchen( getRandomBoolean() );
     realEstate.setCellar( getRandomYesNotApplicableType() );
@@ -1970,24 +2042,24 @@ public class RandomRealEstateFactory
     realEstate.setFreeFrom( StringUtils.abbreviate( LOREM.getWords( 1, 10 ), 50 ) );
     realEstate.setGuestToilet( getRandomYesNotApplicableType() );
     realEstate.setHandicappedAccessible( getRandomYesNotApplicableType() );
-    realEstate.setHeatingCosts( getRandomDouble( 100, 500 ) );
+    realEstate.setHeatingCosts( getRandomDecimal( 100, 500 ) );
     realEstate.setHeatingCostsInServiceCharge( getRandomYesNo() );
     realEstate.setHeatingTypeEnev2014( getRandomHeatingTypeEnev2014() );
     realEstate.setInteriorQuality( getRandomInteriorQuality() );
     realEstate.setLastRefurbishment( getRandomInt( 1990, 2014 ) );
-    realEstate.setLivingSpace( getRandomDouble( 20, 300 ) );
+    realEstate.setLivingSpace( getRandomDecimal( 20, 300 ) );
     realEstate.setNumberOfBathRooms( getRandomInt( 1, 10 ) );
     realEstate.setNumberOfBedRooms( getRandomInt( 1, 10 ) );
     realEstate.setNumberOfFloors( getRandomInt( 1, 10 ) );
     realEstate.setNumberOfParkingSpaces( getRandomInt( 1, 10 ) );
-    realEstate.setNumberOfRooms( (double) getRandomInt( 1, 10 ) );
-    realEstate.setParkingSpacePrice( getRandomDouble( 30, 300 ) );
+    realEstate.setNumberOfRooms( getRandomDecimal( 1, 10 ) );
+    realEstate.setParkingSpacePrice( getRandomDecimal( 30, 300 ) );
     realEstate.setParkingSpaceType( getRandomParkingSpaceType() );
     realEstate.setPetsAllowed( getRandomPetsAllowedType() );
-    realEstate.setPlotArea( getRandomDouble( 100, 5000 ) );
-    realEstate.setServiceCharge( getRandomDouble( 50, 500 ) );
-    realEstate.setTotalRent( getRandomDouble( 1000, 5000 ) );
-    realEstate.setUsableFloorSpace( getRandomDouble( 20, 300 ) );
+    realEstate.setPlotArea( getRandomDecimal( 100, 5000 ) );
+    realEstate.setServiceCharge( getRandomDecimal( 50, 500 ) );
+    realEstate.setTotalRent( getRandomDecimal( 1000, 5000 ) );
+    realEstate.setUsableFloorSpace( getRandomDecimal( 20, 300 ) );
     realEstate.setUseAsFlatshareRoom( getRandomYesNotApplicableType() );
 
     // construction year
@@ -2019,13 +2091,13 @@ public class RandomRealEstateFactory
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.BEFORE_01_MAY_2014 );
         realEstate.setEnergyConsumptionContainsWarmWater( getRandomYesNotApplicableType() );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
       else
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.FROM_01_MAY_2014 );
         realEstate.getEnergyCertificate().setEnergyEfficiencyClass( getRandomEnergyEfficiencyClass() );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
     }
 
@@ -2036,13 +2108,13 @@ public class RandomRealEstateFactory
       if (getRandomBoolean())
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.BEFORE_01_MAY_2014 );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
       else
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.FROM_01_MAY_2014 );
         realEstate.getEnergyCertificate().setEnergyEfficiencyClass( getRandomEnergyEfficiencyClass() );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
     }
 
@@ -2050,7 +2122,7 @@ public class RandomRealEstateFactory
     realEstate.setPrice( getDefaultPrice() );
     realEstate.getPrice().setMarketingType( MarketingType.RENT );
     realEstate.getPrice().setPriceIntervalType( PriceIntervalType.MONTH );
-    realEstate.getPrice().setValue( getRandomDouble( 250, 9999 ) );
+    realEstate.getPrice().setValue( getRandomDecimal( 250, 9999 ) );
   }
 
   /**
@@ -2066,20 +2138,20 @@ public class RandomRealEstateFactory
     // a <geoHierarchy>, an empty <address> element is created.
     realEstate.setAddress( commonFactory.createWgs84Address() );
 
-    realEstate.setBaseArea( getRandomDouble( 100, 1000 ) );
+    realEstate.setBaseArea( getRandomDecimal( 100, 1000 ) );
     realEstate.setBuildingType( getRandomHouseTypeBuildingType() );
     realEstate.setConstructionMethod( getRandomHouseTypeConstructionMethodType() );
     realEstate.setContructionPriceInformationNote( StringUtils.abbreviate( LOREM.getParagraphs( 2, 10 ), 1000 ) );
     realEstate.setEnergyStandardType( getRandomHouseTypeEnergyStandardType() );
     realEstate.setFloorInformationNote( StringUtils.abbreviate( LOREM.getParagraphs( 2, 10 ), 1000 ) );
-    realEstate.setLivingSpace( getRandomDouble( 20, 300 ) );
+    realEstate.setLivingSpace( getRandomDecimal( 20, 300 ) );
     realEstate.setModelInformationNote( StringUtils.abbreviate( LOREM.getParagraphs( 2, 10 ), 1000 ) );
-    realEstate.setNumberOfRooms( (double) getRandomInt( 1, 10 ) );
+    realEstate.setNumberOfRooms( getRandomDecimal( 1, 10 ) );
     realEstate.setRoofInformationNote( StringUtils.abbreviate( LOREM.getParagraphs( 2, 10 ), 1000 ) );
     realEstate.setStageOfCompletionType( getRandomHouseTypeStageOfCompletionType() );
-    realEstate.setTotalArea( getRandomDouble( 250, 2500 ) );
+    realEstate.setTotalArea( getRandomDecimal( 250, 2500 ) );
     realEstate.setTypeInformationNote( StringUtils.abbreviate( LOREM.getParagraphs( 2, 10 ), 1000 ) );
-    realEstate.setUValue( getRandomDouble( 10 ) );
+    realEstate.setUValue( getRandomDecimal( 10 ) );
 
     // courtage
     realEstate.setCourtage( commonFactory.createCourtageInfo() );
@@ -2091,7 +2163,7 @@ public class RandomRealEstateFactory
     realEstate.setPrice( getDefaultPrice() );
     realEstate.getPrice().setMarketingType( MarketingType.PURCHASE );
     realEstate.getPrice().setPriceIntervalType( PriceIntervalType.ONE_TIME_CHARGE );
-    realEstate.getPrice().setValue( getRandomDouble( 10000, 9999999 ) );
+    realEstate.getPrice().setValue( getRandomDecimal( 10000, 9999999 ) );
   }
 
   /**
@@ -2102,37 +2174,37 @@ public class RandomRealEstateFactory
    */
   protected void initRealEstate( Industry realEstate )
   {
-    realEstate.setAdditionalArea( getRandomDouble( 250, 5000 ) );
+    realEstate.setAdditionalArea( getRandomDecimal( 250, 5000 ) );
     realEstate.setAutoLift( getRandomYesNotApplicableType() );
     realEstate.setCondition( getRandomRealEstateCondition() );
-    realEstate.setConnectedLoad( getRandomInt( 1, 500 ) );
+    realEstate.setConnectedLoad( getRandomLong( 1, 500 ) );
     realEstate.setCraneRunway( getRandomYesNotApplicableType() );
-    realEstate.setCraneRunwayLoad( getRandomDouble( 500, 50000 ) );
+    realEstate.setCraneRunwayLoad( getRandomDecimal( 500, 50000 ) );
     realEstate.setDeposit( StringUtils.abbreviate( LOREM.getWords( 1, 10 ), 50 ) );
-    realEstate.setDistanceToAirport( getRandomInt( 5, 50 ) );
-    realEstate.setDistanceToFM( getRandomInt( 5, 50 ) );
-    realEstate.setDistanceToMRS( getRandomInt( 5, 50 ) );
-    realEstate.setDistanceToPT( getRandomInt( 5, 50 ) );
+    realEstate.setDistanceToAirport( getRandomLong( 5, 50 ) );
+    realEstate.setDistanceToFM( getRandomLong( 5, 50 ) );
+    realEstate.setDistanceToMRS( getRandomLong( 5, 50 ) );
+    realEstate.setDistanceToPT( getRandomLong( 5, 50 ) );
     realEstate.setEnergySourcesEnev2014( createRandomEnergySourcesEnev2014() );
-    realEstate.setFloorLoad( getRandomDouble( 500, 50000 ) );
+    realEstate.setFloorLoad( getRandomDecimal( 500, 50000 ) );
     realEstate.setFlooringType( getRandomFlooringType() );
     realEstate.setFreeFrom( StringUtils.abbreviate( LOREM.getWords( 1, 10 ), 50 ) );
     realEstate.setGoodsLift( getRandomYesNotApplicableType() );
-    realEstate.setGoodsLiftLoad( getRandomDouble( 500, 50000 ) );
-    realEstate.setHallHeight( getRandomDouble( 3, 15 ) );
+    realEstate.setGoodsLiftLoad( getRandomDecimal( 500, 50000 ) );
+    realEstate.setHallHeight( getRandomDecimal( 3, 15 ) );
     realEstate.setHeatingTypeEnev2014( getRandomHeatingTypeEnev2014() );
     realEstate.setIndustryType( getRandomIndustryType() );
     realEstate.setInteriorQuality( getRandomInteriorQuality() );
-    realEstate.setLastRefurbishment( getRandomInt( 1990, 2014 ) );
+    realEstate.setLastRefurbishment( getRandomLong( 1990, 2014 ) );
     realEstate.setLift( getRandomYesNotApplicableType() );
-    realEstate.setMinDivisible( getRandomDouble( 500, 2500 ) );
-    realEstate.setNetFloorSpace( getRandomDouble( 100, 10000 ) );
+    realEstate.setMinDivisible( getRandomDecimal( 500, 2500 ) );
+    realEstate.setNetFloorSpace( getRandomDecimal( 100, 10000 ) );
     realEstate.setNumberOfFloors( String.valueOf( getRandomInt( 1, 10 ) ) );
-    realEstate.setNumberOfParkingSpaces( getRandomInt( 1, 10 ) );
-    realEstate.setParkingSpacePrice( getRandomDouble( 30, 300 ) );
-    realEstate.setPlotArea( getRandomDouble( 100, 5000 ) );
+    realEstate.setNumberOfParkingSpaces( getRandomLong( 1, 10 ) );
+    realEstate.setParkingSpacePrice( getRandomDecimal( 30, 300 ) );
+    realEstate.setPlotArea( getRandomDecimal( 100, 5000 ) );
     realEstate.setRamp( getRandomYesNotApplicableType() );
-    realEstate.setTotalFloorSpace( getRandomDouble( 50, 500 ) );
+    realEstate.setTotalFloorSpace( getRandomDecimal( 50, 500 ) );
 
     // construction year
     if (getRandomBoolean())
@@ -2142,7 +2214,7 @@ public class RandomRealEstateFactory
     }
     else
     {
-      realEstate.setConstructionYear( getRandomInt( 1900, 1980 ) );
+      realEstate.setConstructionYear( getRandomLong( 1900, 1980 ) );
     }
 
     // courtage
@@ -2161,18 +2233,18 @@ public class RandomRealEstateFactory
       if (getRandomBoolean())
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.BEFORE_01_MAY_2014 );
-        realEstate.getEnergyCertificate().setElectricityConsumption( getRandomDouble( 10, 250 ) );
-        realEstate.getEnergyCertificate().setHeatingConsumption( getRandomDouble( 10, 250 ) );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.getEnergyCertificate().setElectricityConsumption( getRandomDecimal( 10, 250 ) );
+        realEstate.getEnergyCertificate().setHeatingConsumption( getRandomDecimal( 10, 250 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
         realEstate.setEnergyConsumptionContainsWarmWater( getRandomYesNotApplicableType() );
       }
       else
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.FROM_01_MAY_2014 );
-        realEstate.getEnergyCertificate().setEnergyConsumptionElectricity( getRandomDouble( 10, 250 ) );
-        realEstate.getEnergyCertificate().setEnergyConsumptionHeating( getRandomDouble( 10, 250 ) );
+        realEstate.getEnergyCertificate().setEnergyConsumptionElectricity( getRandomDecimal( 10, 250 ) );
+        realEstate.getEnergyCertificate().setEnergyConsumptionHeating( getRandomDecimal( 10, 250 ) );
         realEstate.getEnergyCertificate().setEnergyEfficiencyClass( getRandomEnergyEfficiencyClass() );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
     }
 
@@ -2183,15 +2255,15 @@ public class RandomRealEstateFactory
       if (getRandomBoolean())
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.BEFORE_01_MAY_2014 );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
       else
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.FROM_01_MAY_2014 );
-        realEstate.getEnergyCertificate().setThermalCharacteristicElectricity( getRandomDouble( 500, 2500 ) );
-        realEstate.getEnergyCertificate().setThermalCharacteristicHeating( getRandomDouble( 500, 2500 ) );
+        realEstate.getEnergyCertificate().setThermalCharacteristicElectricity( getRandomDecimal( 500, 2500 ) );
+        realEstate.getEnergyCertificate().setThermalCharacteristicHeating( getRandomDecimal( 500, 2500 ) );
         realEstate.getEnergyCertificate().setEnergyEfficiencyClass( getRandomEnergyEfficiencyClass() );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
     }
 
@@ -2202,7 +2274,7 @@ public class RandomRealEstateFactory
       realEstate.setPrice( getDefaultPrice() );
       realEstate.getPrice().setMarketingType( MarketingType.RENT );
       realEstate.getPrice().setPriceIntervalType( PriceIntervalType.MONTH );
-      realEstate.getPrice().setValue( getRandomDouble( 500, 5000 ) );
+      realEstate.getPrice().setValue( getRandomDecimal( 500, 5000 ) );
     }
 
     // pricing for purchase
@@ -2212,13 +2284,13 @@ public class RandomRealEstateFactory
       realEstate.setPrice( getDefaultPrice() );
       realEstate.getPrice().setMarketingType( MarketingType.PURCHASE );
       realEstate.getPrice().setPriceIntervalType( PriceIntervalType.ONE_TIME_CHARGE );
-      realEstate.getPrice().setValue( getRandomDouble( 50000, 999999 ) );
+      realEstate.getPrice().setValue( getRandomDecimal( 50000, 999999 ) );
     }
 
     // pricing / additional costs
     realEstate.setAdditionalCosts( getDefaultPrice() );
     realEstate.getAdditionalCosts().setPriceIntervalType( PriceIntervalType.MONTH );
-    realEstate.getAdditionalCosts().setValue( getRandomDouble( 500, 5000 ) );
+    realEstate.getAdditionalCosts().setValue( getRandomDecimal( 500, 5000 ) );
 
     // pricing / calculated price
     //realEstate.setCalculatedPrice( getDefaultPrice() );
@@ -2233,30 +2305,30 @@ public class RandomRealEstateFactory
    */
   protected void initRealEstate( Investment realEstate )
   {
-    realEstate.setAdditionalArea( getRandomDouble( 250, 5000 ) );
+    realEstate.setAdditionalArea( getRandomDecimal( 250, 5000 ) );
     realEstate.setCondition( getRandomRealEstateCondition() );
-    realEstate.setConstructionYear( getRandomInt( 1900, 1980 ) );
-    realEstate.setDistanceToAirport( getRandomInt( 5, 50 ) );
-    realEstate.setDistanceToFM( getRandomInt( 5, 50 ) );
-    realEstate.setDistanceToMRS( getRandomInt( 5, 50 ) );
-    realEstate.setDistanceToPT( getRandomInt( 5, 50 ) );
+    realEstate.setConstructionYear( getRandomLong( 1900, 1980 ) );
+    realEstate.setDistanceToAirport( getRandomLong( 5, 50 ) );
+    realEstate.setDistanceToFM( getRandomLong( 5, 50 ) );
+    realEstate.setDistanceToMRS( getRandomLong( 5, 50 ) );
+    realEstate.setDistanceToPT( getRandomLong( 5, 50 ) );
     realEstate.setEnergySourcesEnev2014( createRandomEnergySourcesEnev2014() );
     realEstate.setFreeFrom( StringUtils.abbreviate( LOREM.getWords( 1, 10 ), 50 ) );
     realEstate.setHeatingTypeEnev2014( getRandomHeatingTypeEnev2014() );
-    realEstate.setIndustrialArea( getRandomDouble( 500, 50000 ) );
+    realEstate.setIndustrialArea( getRandomDecimal( 500, 50000 ) );
     realEstate.setInteriorQuality( getRandomInteriorQuality() );
     realEstate.setInvestmentType( getRandomInvestmentType() );
-    realEstate.setLastRefurbishment( getRandomInt( 1990, 2014 ) );
+    realEstate.setLastRefurbishment( getRandomLong( 1990, 2014 ) );
     realEstate.setLift( getRandomYesNotApplicableType() );
     realEstate.setListed( getRandomYesNotApplicableType() );
-    realEstate.setLivingSpace( getRandomDouble( 20, 300 ) );
-    realEstate.setNetFloorSpace( getRandomDouble( 50, 5000 ) );
+    realEstate.setLivingSpace( getRandomDecimal( 20, 300 ) );
+    realEstate.setNetFloorSpace( getRandomDecimal( 50, 5000 ) );
     realEstate.setNumberOfFloors( String.valueOf( getRandomInt( 1, 10 ) ) );
-    realEstate.setNumberOfParkingSpaces( getRandomInt( 1, 10 ) );
-    realEstate.setParkingSpacePrice( getRandomDouble( 30, 300 ) );
-    realEstate.setPlotArea( getRandomDouble( 100, 5000 ) );
-    realEstate.setPriceMultiplier( getRandomDouble( 1, 50 ) );
-    realEstate.setTotalFloorSpace( getRandomDouble( 50, 500 ) );
+    realEstate.setNumberOfParkingSpaces( getRandomLong( 1, 10 ) );
+    realEstate.setParkingSpacePrice( getRandomDecimal( 30, 300 ) );
+    realEstate.setPlotArea( getRandomDecimal( 100, 5000 ) );
+    realEstate.setPriceMultiplier( getRandomDecimal( 1, 50 ) );
+    realEstate.setTotalFloorSpace( getRandomDecimal( 50, 500 ) );
 
     // courtage
     realEstate.setCourtage( commonFactory.createCourtageInfo() );
@@ -2274,18 +2346,18 @@ public class RandomRealEstateFactory
       if (getRandomBoolean())
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.BEFORE_01_MAY_2014 );
-        realEstate.getEnergyCertificate().setElectricityConsumption( getRandomDouble( 10, 250 ) );
-        realEstate.getEnergyCertificate().setHeatingConsumption( getRandomDouble( 10, 250 ) );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.getEnergyCertificate().setElectricityConsumption( getRandomDecimal( 10, 250 ) );
+        realEstate.getEnergyCertificate().setHeatingConsumption( getRandomDecimal( 10, 250 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
         realEstate.setEnergyConsumptionContainsWarmWater( getRandomYesNotApplicableType() );
       }
       else
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.FROM_01_MAY_2014 );
-        realEstate.getEnergyCertificate().setEnergyConsumptionElectricity( getRandomDouble( 10, 250 ) );
-        realEstate.getEnergyCertificate().setEnergyConsumptionHeating( getRandomDouble( 10, 250 ) );
+        realEstate.getEnergyCertificate().setEnergyConsumptionElectricity( getRandomDecimal( 10, 250 ) );
+        realEstate.getEnergyCertificate().setEnergyConsumptionHeating( getRandomDecimal( 10, 250 ) );
         realEstate.getEnergyCertificate().setEnergyEfficiencyClass( getRandomEnergyEfficiencyClass() );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
     }
 
@@ -2296,15 +2368,15 @@ public class RandomRealEstateFactory
       if (getRandomBoolean())
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.BEFORE_01_MAY_2014 );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
       else
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.FROM_01_MAY_2014 );
-        realEstate.getEnergyCertificate().setThermalCharacteristicElectricity( getRandomDouble( 500, 2500 ) );
-        realEstate.getEnergyCertificate().setThermalCharacteristicHeating( getRandomDouble( 500, 2500 ) );
+        realEstate.getEnergyCertificate().setThermalCharacteristicElectricity( getRandomDecimal( 500, 2500 ) );
+        realEstate.getEnergyCertificate().setThermalCharacteristicHeating( getRandomDecimal( 500, 2500 ) );
         realEstate.getEnergyCertificate().setEnergyEfficiencyClass( getRandomEnergyEfficiencyClass() );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
     }
 
@@ -2312,30 +2384,30 @@ public class RandomRealEstateFactory
     realEstate.setPrice( getDefaultPrice() );
     realEstate.getPrice().setMarketingType( MarketingType.PURCHASE );
     realEstate.getPrice().setPriceIntervalType( PriceIntervalType.ONE_TIME_CHARGE );
-    realEstate.getPrice().setValue( getRandomDouble( 10000, 9999999 ) );
+    realEstate.getPrice().setValue( getRandomDecimal( 10000, 9999999 ) );
 
     // pricing / additional costs
     realEstate.setAdditionalCosts( getDefaultPrice() );
     realEstate.getAdditionalCosts().setPriceIntervalType( PriceIntervalType.MONTH );
-    realEstate.getAdditionalCosts().setValue( getRandomDouble( 500, 5000 ) );
+    realEstate.getAdditionalCosts().setValue( getRandomDecimal( 500, 5000 ) );
 
     // pricing / other costs
     realEstate.setOtherCosts( getDefaultPrice() );
-    realEstate.getOtherCosts().setValue( getRandomDouble( 500, 10000 ) );
+    realEstate.getOtherCosts().setValue( getRandomDecimal( 500, 10000 ) );
 
     // pricing / price per sqm
     realEstate.setPricePerSQM( getDefaultPrice() );
-    realEstate.getPricePerSQM().setValue( getRandomDouble( 1, 500 ) );
+    realEstate.getPricePerSQM().setValue( getRandomDecimal( 1, 500 ) );
 
     // pricing / actual rental income
     realEstate.setRentalIncomeActual( getDefaultPrice() );
     realEstate.getRentalIncomeActual().setPriceIntervalType( PriceIntervalType.YEAR );
-    realEstate.getRentalIncomeActual().setValue( getRandomDouble( 50000, 9999999 ) );
+    realEstate.getRentalIncomeActual().setValue( getRandomDecimal( 50000, 9999999 ) );
 
     // pricing / target rental income
     realEstate.setRentalIncomeTarget( getDefaultPrice() );
     realEstate.getRentalIncomeTarget().setPriceIntervalType( PriceIntervalType.YEAR );
-    realEstate.getRentalIncomeTarget().setValue( getRandomDouble( 50000, 9999999 ) );
+    realEstate.getRentalIncomeTarget().setValue( getRandomDecimal( 50000, 9999999 ) );
   }
 
   /**
@@ -2349,15 +2421,15 @@ public class RandomRealEstateFactory
     realEstate.setBuildingPermission( getRandomBoolean() );
     realEstate.setDemolition( getRandomBoolean() );
     realEstate.setFreeFrom( StringUtils.abbreviate( LOREM.getWords( 1, 10 ), 50 ) );
-    realEstate.setGfz( getRandomDouble( 1, 10 ) );
-    realEstate.setGrz( getRandomDouble( 1, 10 ) );
-    realEstate.setMinDivisible( getRandomDouble( 500, 2500 ) );
-    realEstate.setPlotArea( getRandomDouble( 100, 5000 ) );
+    realEstate.setGfz( getRandomDecimal( 1, 10 ) );
+    realEstate.setGrz( getRandomDecimal( 1, 10 ) );
+    realEstate.setMinDivisible( getRandomDecimal( 500, 2500 ) );
+    realEstate.setPlotArea( getRandomDecimal( 100, 5000 ) );
     realEstate.setRecommendedUseTypes( createRandomSiteRecommendedUseTypes() );
     realEstate.setShortTermConstructible( getRandomBoolean() );
     realEstate.setSiteConstructibleType( getRandomSiteConstructibleType() );
     realEstate.setSiteDevelopmentType( getRandomSiteDevelopmentType() );
-    realEstate.setTenancy( getRandomInt( 100 ) );
+    realEstate.setTenancy( getRandomLong( 100 ) );
 
     // courtage
     realEstate.setCourtage( commonFactory.createCourtageInfo() );
@@ -2370,7 +2442,7 @@ public class RandomRealEstateFactory
     realEstate.setPrice( getDefaultPrice() );
     realEstate.getPrice().setMarketingType( MarketingType.PURCHASE );
     realEstate.getPrice().setPriceIntervalType( PriceIntervalType.ONE_TIME_CHARGE );
-    realEstate.getPrice().setValue( getRandomDouble( 50000, 999999 ) );
+    realEstate.getPrice().setValue( getRandomDecimal( 50000, 999999 ) );
   }
 
   /**
@@ -2384,15 +2456,15 @@ public class RandomRealEstateFactory
     realEstate.setBuildingPermission( getRandomBoolean() );
     realEstate.setDemolition( getRandomBoolean() );
     realEstate.setFreeFrom( StringUtils.abbreviate( LOREM.getWords( 1, 10 ), 50 ) );
-    realEstate.setGfz( getRandomDouble( 1, 10 ) );
-    realEstate.setGrz( getRandomDouble( 1, 10 ) );
-    realEstate.setMinDivisible( getRandomDouble( 500, 2500 ) );
-    realEstate.setPlotArea( getRandomDouble( 100, 5000 ) );
+    realEstate.setGfz( getRandomDecimal( 1, 10 ) );
+    realEstate.setGrz( getRandomDecimal( 1, 10 ) );
+    realEstate.setMinDivisible( getRandomDecimal( 500, 2500 ) );
+    realEstate.setPlotArea( getRandomDecimal( 100, 5000 ) );
     realEstate.setRecommendedUseTypes( createRandomSiteRecommendedUseTypes() );
     realEstate.setShortTermConstructible( getRandomBoolean() );
     realEstate.setSiteConstructibleType( getRandomSiteConstructibleType() );
     realEstate.setSiteDevelopmentType( getRandomSiteDevelopmentType() );
-    realEstate.setTenancy( getRandomInt( 100 ) );
+    realEstate.setTenancy( getRandomLong( 100 ) );
 
     // courtage
     realEstate.setCourtage( commonFactory.createCourtageInfo() );
@@ -2405,7 +2477,7 @@ public class RandomRealEstateFactory
     realEstate.setPrice( getDefaultPrice() );
     realEstate.getPrice().setMarketingType( MarketingType.LEASE );
     realEstate.getPrice().setPriceIntervalType( PriceIntervalType.YEAR );
-    realEstate.getPrice().setValue( getRandomDouble( 500, 999999 ) );
+    realEstate.getPrice().setValue( getRandomDecimal( 500, 999999 ) );
   }
 
   /**
@@ -2416,15 +2488,15 @@ public class RandomRealEstateFactory
    */
   protected void initRealEstate( Office realEstate )
   {
-    realEstate.setAdditionalArea( getRandomDouble( 250, 5000 ) );
+    realEstate.setAdditionalArea( getRandomDecimal( 250, 5000 ) );
     realEstate.setAirConditioning( getRandomAirConditioningType() );
     realEstate.setCellar( getRandomYesNotApplicableType() );
     realEstate.setCondition( getRandomRealEstateCondition() );
     realEstate.setDeposit( StringUtils.abbreviate( LOREM.getWords( 1, 10 ), 50 ) );
-    realEstate.setDistanceToAirport( getRandomInt( 5, 50 ) );
-    realEstate.setDistanceToFM( getRandomInt( 5, 50 ) );
-    realEstate.setDistanceToMRS( getRandomInt( 5, 50 ) );
-    realEstate.setDistanceToPT( getRandomInt( 5, 50 ) );
+    realEstate.setDistanceToAirport( getRandomLong( 5, 50 ) );
+    realEstate.setDistanceToFM( getRandomLong( 5, 50 ) );
+    realEstate.setDistanceToMRS( getRandomLong( 5, 50 ) );
+    realEstate.setDistanceToPT( getRandomLong( 5, 50 ) );
     realEstate.setEnergySourcesEnev2014( createRandomEnergySourcesEnev2014() );
     realEstate.setFlooringType( getRandomFlooringType() );
     realEstate.setFreeFrom( StringUtils.abbreviate( LOREM.getWords( 1, 10 ), 50 ) );
@@ -2435,16 +2507,16 @@ public class RandomRealEstateFactory
     realEstate.setInteriorQuality( getRandomInteriorQuality() );
     realEstate.setKitchenComplete( getRandomYesNotApplicableType() );
     realEstate.setLanCables( getRandomItInfrastructureType() );
-    realEstate.setLastRefurbishment( getRandomInt( 1990, 2014 ) );
+    realEstate.setLastRefurbishment( getRandomLong( 1990, 2014 ) );
     realEstate.setLift( getRandomYesNotApplicableType() );
     realEstate.setListed( getRandomYesNotApplicableType() );
-    realEstate.setMinDivisible( getRandomDouble( 500, 2500 ) );
-    realEstate.setNetFloorSpace( getRandomDouble( 50, 5000 ) );
+    realEstate.setMinDivisible( getRandomDecimal( 500, 2500 ) );
+    realEstate.setNetFloorSpace( getRandomDecimal( 50, 5000 ) );
     realEstate.setNumberOfFloors( String.valueOf( getRandomInt( 1, 10 ) ) );
-    realEstate.setNumberOfParkingSpaces( getRandomInt( 1, 10 ) );
+    realEstate.setNumberOfParkingSpaces( getRandomLong( 1, 10 ) );
     realEstate.setOfficeType( getRandomOfficeType() );
-    realEstate.setParkingSpacePrice( getRandomDouble( 30, 300 ) );
-    realEstate.setTotalFloorSpace( getRandomDouble( 50, 500 ) );
+    realEstate.setParkingSpacePrice( getRandomDecimal( 30, 300 ) );
+    realEstate.setTotalFloorSpace( getRandomDecimal( 50, 500 ) );
 
     // construction year
     if (getRandomBoolean())
@@ -2454,7 +2526,7 @@ public class RandomRealEstateFactory
     }
     else
     {
-      realEstate.setConstructionYear( getRandomInt( 1900, 1980 ) );
+      realEstate.setConstructionYear( getRandomLong( 1900, 1980 ) );
     }
 
     // courtage
@@ -2473,18 +2545,18 @@ public class RandomRealEstateFactory
       if (getRandomBoolean())
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.BEFORE_01_MAY_2014 );
-        realEstate.getEnergyCertificate().setElectricityConsumption( getRandomDouble( 10, 250 ) );
-        realEstate.getEnergyCertificate().setHeatingConsumption( getRandomDouble( 10, 250 ) );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.getEnergyCertificate().setElectricityConsumption( getRandomDecimal( 10, 250 ) );
+        realEstate.getEnergyCertificate().setHeatingConsumption( getRandomDecimal( 10, 250 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
         realEstate.setEnergyConsumptionContainsWarmWater( getRandomYesNotApplicableType() );
       }
       else
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.FROM_01_MAY_2014 );
-        realEstate.getEnergyCertificate().setEnergyConsumptionElectricity( getRandomDouble( 10, 250 ) );
-        realEstate.getEnergyCertificate().setEnergyConsumptionHeating( getRandomDouble( 10, 250 ) );
+        realEstate.getEnergyCertificate().setEnergyConsumptionElectricity( getRandomDecimal( 10, 250 ) );
+        realEstate.getEnergyCertificate().setEnergyConsumptionHeating( getRandomDecimal( 10, 250 ) );
         realEstate.getEnergyCertificate().setEnergyEfficiencyClass( getRandomEnergyEfficiencyClass() );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
     }
 
@@ -2495,15 +2567,15 @@ public class RandomRealEstateFactory
       if (getRandomBoolean())
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.BEFORE_01_MAY_2014 );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
       else
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.FROM_01_MAY_2014 );
-        realEstate.getEnergyCertificate().setThermalCharacteristicElectricity( getRandomDouble( 500, 2500 ) );
-        realEstate.getEnergyCertificate().setThermalCharacteristicHeating( getRandomDouble( 500, 2500 ) );
+        realEstate.getEnergyCertificate().setThermalCharacteristicElectricity( getRandomDecimal( 500, 2500 ) );
+        realEstate.getEnergyCertificate().setThermalCharacteristicHeating( getRandomDecimal( 500, 2500 ) );
         realEstate.getEnergyCertificate().setEnergyEfficiencyClass( getRandomEnergyEfficiencyClass() );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
     }
 
@@ -2518,7 +2590,7 @@ public class RandomRealEstateFactory
       realEstate.setPrice( getDefaultPrice() );
       realEstate.getPrice().setMarketingType( MarketingType.RENT );
       realEstate.getPrice().setPriceIntervalType( PriceIntervalType.MONTH );
-      realEstate.getPrice().setValue( getRandomDouble( 500, 5000 ) );
+      realEstate.getPrice().setValue( getRandomDecimal( 500, 5000 ) );
     }
 
     // pricing for purchase
@@ -2528,13 +2600,13 @@ public class RandomRealEstateFactory
       realEstate.setPrice( getDefaultPrice() );
       realEstate.getPrice().setMarketingType( MarketingType.PURCHASE );
       realEstate.getPrice().setPriceIntervalType( PriceIntervalType.ONE_TIME_CHARGE );
-      realEstate.getPrice().setValue( getRandomDouble( 50000, 999999 ) );
+      realEstate.getPrice().setValue( getRandomDecimal( 50000, 999999 ) );
     }
 
     // pricing / additional costs
     realEstate.setAdditionalCosts( getDefaultPrice() );
     realEstate.getAdditionalCosts().setPriceIntervalType( PriceIntervalType.MONTH );
-    realEstate.getAdditionalCosts().setValue( getRandomDouble( 500, 5000 ) );
+    realEstate.getAdditionalCosts().setValue( getRandomDecimal( 500, 5000 ) );
 
     // pricing / calculated price
     //realEstate.setCalculatedPrice( getDefaultPrice() );
@@ -2567,11 +2639,11 @@ public class RandomRealEstateFactory
     realEstate.setHandicappedAccessible( getRandomYesNotApplicableType() );
     realEstate.setKitchenAvailable( getRandomYesNotApplicableType() );
     realEstate.setLeisureActivitiesAvailable( getRandomYesNotApplicableType() );
-    realEstate.setLivingSpaceFrom( getRandomDouble( 20, 50 ) );
-    realEstate.setLivingSpaceTo( getRandomDouble( 50, 150 ) );
-    realEstate.setNumberOfBeds( getRandomInt( 1, 10 ) );
-    realEstate.setNumberOfLookedAfterApartments( getRandomInt( 1, 10 ) );
-    realEstate.setNumberOfNursingPlaces( getRandomInt( 1, 10 ) );
+    realEstate.setLivingSpaceFrom( getRandomDecimal( 20, 50 ) );
+    realEstate.setLivingSpaceTo( getRandomDecimal( 50, 150 ) );
+    realEstate.setNumberOfBeds( getRandomLong( 1, 10 ) );
+    realEstate.setNumberOfLookedAfterApartments( getRandomLong( 1, 10 ) );
+    realEstate.setNumberOfNursingPlaces( getRandomLong( 1, 10 ) );
     realEstate.setOpening( getRandomCalendar() );
     realEstate.setOwnFurniturePossible( getRandomYesNotApplicableType() );
     realEstate.setPetsAllowed( getRandomPetsAllowedType() );
@@ -2592,7 +2664,7 @@ public class RandomRealEstateFactory
     realEstate.setPrice( getDefaultPrice() );
     realEstate.getPrice().setMarketingType( MarketingType.RENT );
     realEstate.getPrice().setPriceIntervalType( PriceIntervalType.MONTH );
-    realEstate.getPrice().setValue( getRandomDouble( 500, 9999 ) );
+    realEstate.getPrice().setValue( getRandomDecimal( 500, 9999 ) );
   }
 
   /**
@@ -2604,13 +2676,13 @@ public class RandomRealEstateFactory
   protected void initRealEstate( ShortTermAccommodation realEstate )
   {
     realEstate.setBalcony( getRandomBoolean() );
-    realEstate.setBaseRent( getRandomDouble( 200, 1500 ) );
+    realEstate.setBaseRent( getRandomDecimal( 200, 1500 ) );
     realEstate.setCellar( getRandomBoolean() );
     realEstate.setCondition( getRandomRealEstateCondition() );
     realEstate.setDeposit( StringUtils.abbreviate( LOREM.getWords( 1, 10 ), 50 ) );
     realEstate.setEndRentalDate( getRandomCalendar() );
     realEstate.setEnergySourcesEnev2014( createRandomEnergySourcesEnev2014() );
-    realEstate.setFloor( String.valueOf( getRandomInt( 5 ) ) );
+    realEstate.setFloor( String.valueOf( getRandomLong( 5 ) ) );
     realEstate.setGarden( getRandomBoolean() );
     realEstate.setGender( getRandomFlatMateGenderType() );
     realEstate.setGuestToilet( getRandomBoolean() );
@@ -2618,18 +2690,18 @@ public class RandomRealEstateFactory
     realEstate.setHasFurniture( getRandomYesNoNotApplicableType() );
     realEstate.setHeatingTypeEnev2014( getRandomHeatingTypeEnev2014() );
     realEstate.setLift( getRandomBoolean() );
-    realEstate.setLivingSpace( getRandomDouble( 20, 300 ) );
-    realEstate.setMaxNumberOfPersons( getRandomInt( 4, 10 ) );
-    realEstate.setMaxRentalTime( getRandomDouble( 12, 24 ) );
-    realEstate.setMinRentalTime( getRandomDouble( 3, 12 ) );
+    realEstate.setLivingSpace( getRandomDecimal( 20, 300 ) );
+    realEstate.setMaxNumberOfPersons( getRandomLong( 4, 10 ) );
+    realEstate.setMaxRentalTime( getRandomDecimal( 12, 24 ) );
+    realEstate.setMinRentalTime( getRandomDecimal( 3, 12 ) );
     realEstate.setNonSmoker( getRandomBoolean() );
-    realEstate.setNumberOfFloors( getRandomInt( 1, 10 ) );
-    realEstate.setNumberOfParkingSpaces( getRandomInt( 1, 10 ) );
-    realEstate.setNumberOfRooms( (double) getRandomInt( 1, 10 ) );
-    realEstate.setParkingSpacePrice( getRandomDouble( 30, 300 ) );
+    realEstate.setNumberOfFloors( getRandomLong( 1, 10 ) );
+    realEstate.setNumberOfParkingSpaces( getRandomLong( 1, 10 ) );
+    realEstate.setNumberOfRooms( getRandomDecimal( 1, 10 ) );
+    realEstate.setParkingSpacePrice( getRandomDecimal( 30, 300 ) );
     realEstate.setParkingSpaceType( getRandomParkingSpaceType() );
     realEstate.setPetsAllowed( getRandomPetsAllowedType() );
-    realEstate.setServiceCharge( getRandomDouble( 50, 500 ) );
+    realEstate.setServiceCharge( getRandomDecimal( 50, 500 ) );
     realEstate.setShortTermAccomodationType( getRandomShortTermAccommodationType() );
     realEstate.setStartRentalDate( getRandomCalendar() );
 
@@ -2641,7 +2713,7 @@ public class RandomRealEstateFactory
     }
     else
     {
-      realEstate.setConstructionYear( getRandomInt( 1900, 1980 ) );
+      realEstate.setConstructionYear( getRandomLong( 1900, 1980 ) );
     }
 
     // courtage
@@ -2661,13 +2733,13 @@ public class RandomRealEstateFactory
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.BEFORE_01_MAY_2014 );
         realEstate.setEnergyConsumptionContainsWarmWater( getRandomYesNotApplicableType() );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
       else
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.FROM_01_MAY_2014 );
         realEstate.getEnergyCertificate().setEnergyEfficiencyClass( getRandomEnergyEfficiencyClass() );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
     }
 
@@ -2678,13 +2750,13 @@ public class RandomRealEstateFactory
       if (getRandomBoolean())
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.BEFORE_01_MAY_2014 );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
       else
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.FROM_01_MAY_2014 );
         realEstate.getEnergyCertificate().setEnergyEfficiencyClass( getRandomEnergyEfficiencyClass() );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
     }
 
@@ -2692,7 +2764,7 @@ public class RandomRealEstateFactory
     realEstate.setPrice( getDefaultPrice() );
     realEstate.getPrice().setMarketingType( MarketingType.RENT );
     realEstate.getPrice().setPriceIntervalType( PriceIntervalType.MONTH );
-    realEstate.getPrice().setValue( getRandomDouble( 200, 9999 ) );
+    realEstate.getPrice().setValue( getRandomDecimal( 200, 9999 ) );
   }
 
   /**
@@ -2703,30 +2775,30 @@ public class RandomRealEstateFactory
    */
   protected void initRealEstate( SpecialPurpose realEstate )
   {
-    realEstate.setAdditionalArea( getRandomDouble( 250, 5000 ) );
+    realEstate.setAdditionalArea( getRandomDecimal( 250, 5000 ) );
     realEstate.setBasement( getRandomYesNotApplicableType() );
     realEstate.setCondition( getRandomRealEstateCondition() );
     realEstate.setDeposit( StringUtils.abbreviate( LOREM.getWords( 1, 10 ), 50 ) );
-    realEstate.setDistanceToAirport( getRandomInt( 5, 50 ) );
-    realEstate.setDistanceToFM( getRandomInt( 5, 50 ) );
-    realEstate.setDistanceToMRS( getRandomInt( 5, 50 ) );
-    realEstate.setDistanceToPT( getRandomInt( 5, 50 ) );
+    realEstate.setDistanceToAirport( getRandomLong( 5, 50 ) );
+    realEstate.setDistanceToFM( getRandomLong( 5, 50 ) );
+    realEstate.setDistanceToMRS( getRandomLong( 5, 50 ) );
+    realEstate.setDistanceToPT( getRandomLong( 5, 50 ) );
     realEstate.setEnergySourcesEnev2014( createRandomEnergySourcesEnev2014() );
     realEstate.setFlooringType( getRandomFlooringType() );
     realEstate.setFreeFrom( StringUtils.abbreviate( LOREM.getWords( 1, 10 ), 50 ) );
     realEstate.setHeatingTypeEnev2014( getRandomHeatingTypeEnev2014() );
     realEstate.setInteriorQuality( getRandomInteriorQuality() );
-    realEstate.setLastRefurbishment( getRandomInt( 1990, 2014 ) );
+    realEstate.setLastRefurbishment( getRandomLong( 1990, 2014 ) );
     realEstate.setLift( getRandomYesNotApplicableType() );
     realEstate.setListed( getRandomYesNotApplicableType() );
-    realEstate.setMinDivisible( getRandomDouble( 500, 2500 ) );
-    realEstate.setNetFloorSpace( getRandomDouble( 50, 5000 ) );
+    realEstate.setMinDivisible( getRandomDecimal( 500, 2500 ) );
+    realEstate.setNetFloorSpace( getRandomDecimal( 50, 5000 ) );
     realEstate.setNumberOfFloors( String.valueOf( getRandomInt( 1, 10 ) ) );
-    realEstate.setNumberOfParkingSpaces( getRandomInt( 1, 10 ) );
-    realEstate.setParkingSpacePrice( getRandomDouble( 30, 300 ) );
-    realEstate.setPlotArea( getRandomDouble( 100, 5000 ) );
+    realEstate.setNumberOfParkingSpaces( getRandomLong( 1, 10 ) );
+    realEstate.setParkingSpacePrice( getRandomDecimal( 30, 300 ) );
+    realEstate.setPlotArea( getRandomDecimal( 100, 5000 ) );
     realEstate.setSpecialPurposePropertyType( getRandomSpecialPurposeType() );
-    realEstate.setTotalFloorSpace( getRandomDouble( 50, 500 ) );
+    realEstate.setTotalFloorSpace( getRandomDecimal( 50, 500 ) );
 
     // construction year
     if (getRandomBoolean())
@@ -2736,7 +2808,7 @@ public class RandomRealEstateFactory
     }
     else
     {
-      realEstate.setConstructionYear( getRandomInt( 1900, 1980 ) );
+      realEstate.setConstructionYear( getRandomLong( 1900, 1980 ) );
     }
 
     // courtage
@@ -2755,18 +2827,18 @@ public class RandomRealEstateFactory
       if (getRandomBoolean())
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.BEFORE_01_MAY_2014 );
-        realEstate.getEnergyCertificate().setElectricityConsumption( getRandomDouble( 10, 250 ) );
-        realEstate.getEnergyCertificate().setHeatingConsumption( getRandomDouble( 10, 250 ) );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.getEnergyCertificate().setElectricityConsumption( getRandomDecimal( 10, 250 ) );
+        realEstate.getEnergyCertificate().setHeatingConsumption( getRandomDecimal( 10, 250 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
         realEstate.setEnergyConsumptionContainsWarmWater( getRandomYesNotApplicableType() );
       }
       else
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.FROM_01_MAY_2014 );
-        realEstate.getEnergyCertificate().setEnergyConsumptionElectricity( getRandomDouble( 10, 250 ) );
-        realEstate.getEnergyCertificate().setEnergyConsumptionHeating( getRandomDouble( 10, 250 ) );
+        realEstate.getEnergyCertificate().setEnergyConsumptionElectricity( getRandomDecimal( 10, 250 ) );
+        realEstate.getEnergyCertificate().setEnergyConsumptionHeating( getRandomDecimal( 10, 250 ) );
         realEstate.getEnergyCertificate().setEnergyEfficiencyClass( getRandomEnergyEfficiencyClass() );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
     }
 
@@ -2777,15 +2849,15 @@ public class RandomRealEstateFactory
       if (getRandomBoolean())
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.BEFORE_01_MAY_2014 );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
       else
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.FROM_01_MAY_2014 );
-        realEstate.getEnergyCertificate().setThermalCharacteristicElectricity( getRandomDouble( 500, 2500 ) );
-        realEstate.getEnergyCertificate().setThermalCharacteristicHeating( getRandomDouble( 500, 2500 ) );
+        realEstate.getEnergyCertificate().setThermalCharacteristicElectricity( getRandomDecimal( 500, 2500 ) );
+        realEstate.getEnergyCertificate().setThermalCharacteristicHeating( getRandomDecimal( 500, 2500 ) );
         realEstate.getEnergyCertificate().setEnergyEfficiencyClass( getRandomEnergyEfficiencyClass() );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
     }
 
@@ -2796,7 +2868,7 @@ public class RandomRealEstateFactory
       realEstate.setPrice( getDefaultPrice() );
       realEstate.getPrice().setMarketingType( MarketingType.RENT );
       realEstate.getPrice().setPriceIntervalType( PriceIntervalType.MONTH );
-      realEstate.getPrice().setValue( getRandomDouble( 500, 5000 ) );
+      realEstate.getPrice().setValue( getRandomDecimal( 500, 5000 ) );
     }
 
     // pricing for purchase
@@ -2806,13 +2878,13 @@ public class RandomRealEstateFactory
       realEstate.setPrice( getDefaultPrice() );
       realEstate.getPrice().setMarketingType( MarketingType.PURCHASE );
       realEstate.getPrice().setPriceIntervalType( PriceIntervalType.ONE_TIME_CHARGE );
-      realEstate.getPrice().setValue( getRandomDouble( 50000, 999999 ) );
+      realEstate.getPrice().setValue( getRandomDecimal( 50000, 999999 ) );
     }
 
     // pricing / additional costs
     realEstate.setAdditionalCosts( getDefaultPrice() );
     realEstate.getAdditionalCosts().setPriceIntervalType( PriceIntervalType.MONTH );
-    realEstate.getAdditionalCosts().setValue( getRandomDouble( 500, 5000 ) );
+    realEstate.getAdditionalCosts().setValue( getRandomDecimal( 500, 5000 ) );
 
     // pricing / calculated price
     //realEstate.setCalculatedPrice( getDefaultPrice() );
@@ -2827,36 +2899,36 @@ public class RandomRealEstateFactory
    */
   protected void initRealEstate( Store realEstate )
   {
-    realEstate.setAdditionalArea( getRandomDouble( 250, 5000 ) );
+    realEstate.setAdditionalArea( getRandomDecimal( 250, 5000 ) );
     realEstate.setCellar( getRandomYesNotApplicableType() );
     realEstate.setCondition( getRandomRealEstateCondition() );
     realEstate.setDeposit( StringUtils.abbreviate( LOREM.getWords( 1, 10 ), 50 ) );
-    realEstate.setDistanceToAirport( getRandomInt( 5, 50 ) );
-    realEstate.setDistanceToFM( getRandomInt( 5, 50 ) );
-    realEstate.setDistanceToMRS( getRandomInt( 5, 50 ) );
-    realEstate.setDistanceToPT( getRandomInt( 5, 50 ) );
+    realEstate.setDistanceToAirport( getRandomLong( 5, 50 ) );
+    realEstate.setDistanceToFM( getRandomLong( 5, 50 ) );
+    realEstate.setDistanceToMRS( getRandomLong( 5, 50 ) );
+    realEstate.setDistanceToPT( getRandomLong( 5, 50 ) );
     realEstate.setEnergySourcesEnev2014( createRandomEnergySourcesEnev2014() );
-    realEstate.setFloorLoad( getRandomDouble( 500, 50000 ) );
+    realEstate.setFloorLoad( getRandomDecimal( 500, 50000 ) );
     realEstate.setFlooringType( getRandomFlooringType() );
     realEstate.setFreeFrom( StringUtils.abbreviate( LOREM.getWords( 1, 10 ), 50 ) );
     realEstate.setGoodsLift( getRandomYesNotApplicableType() );
-    realEstate.setGoodsLiftLoad( getRandomDouble( 500, 50000 ) );
+    realEstate.setGoodsLiftLoad( getRandomDecimal( 500, 50000 ) );
     realEstate.setHeatingTypeEnev2014( getRandomHeatingTypeEnev2014() );
     realEstate.setInteriorQuality( getRandomInteriorQuality() );
-    realEstate.setLastRefurbishment( getRandomInt( 1990, 2014 ) );
+    realEstate.setLastRefurbishment( getRandomLong( 1990, 2014 ) );
     realEstate.setLift( getRandomYesNotApplicableType() );
     realEstate.setListed( getRandomYesNotApplicableType() );
     realEstate.setLocationClassificationType( getRandomLocationClassificationType() );
-    realEstate.setMinDivisible( getRandomDouble( 500, 2500 ) );
-    realEstate.setNetFloorSpace( getRandomDouble( 50, 5000 ) );
+    realEstate.setMinDivisible( getRandomDecimal( 500, 2500 ) );
+    realEstate.setNetFloorSpace( getRandomDecimal( 50, 5000 ) );
     realEstate.setNumberOfFloors( String.valueOf( getRandomInt( 1, 10 ) ) );
-    realEstate.setNumberOfParkingSpaces( getRandomInt( 1, 10 ) );
-    realEstate.setParkingSpacePrice( getRandomDouble( 30, 300 ) );
+    realEstate.setNumberOfParkingSpaces( getRandomLong( 1, 10 ) );
+    realEstate.setParkingSpacePrice( getRandomDecimal( 30, 300 ) );
     realEstate.setRamp( getRandomYesNotApplicableType() );
-    realEstate.setShopWindowLength( getRandomDouble( 2, 15 ) );
+    realEstate.setShopWindowLength( getRandomDecimal( 2, 15 ) );
     realEstate.setStoreType( getRandomStoreType() );
     realEstate.setSupplyType( getRandomSupplyType() );
-    realEstate.setTotalFloorSpace( getRandomDouble( 50, 500 ) );
+    realEstate.setTotalFloorSpace( getRandomDecimal( 50, 500 ) );
 
     // construction year
     if (getRandomBoolean())
@@ -2866,7 +2938,7 @@ public class RandomRealEstateFactory
     }
     else
     {
-      realEstate.setConstructionYear( getRandomInt( 1900, 1980 ) );
+      realEstate.setConstructionYear( getRandomLong( 1900, 1980 ) );
     }
 
     // courtage
@@ -2885,18 +2957,18 @@ public class RandomRealEstateFactory
       if (getRandomBoolean())
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.BEFORE_01_MAY_2014 );
-        realEstate.getEnergyCertificate().setElectricityConsumption( getRandomDouble( 10, 250 ) );
-        realEstate.getEnergyCertificate().setHeatingConsumption( getRandomDouble( 10, 250 ) );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.getEnergyCertificate().setElectricityConsumption( getRandomDecimal( 10, 250 ) );
+        realEstate.getEnergyCertificate().setHeatingConsumption( getRandomDecimal( 10, 250 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
         realEstate.setEnergyConsumptionContainsWarmWater( getRandomYesNotApplicableType() );
       }
       else
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.FROM_01_MAY_2014 );
-        realEstate.getEnergyCertificate().setEnergyConsumptionElectricity( getRandomDouble( 10, 250 ) );
-        realEstate.getEnergyCertificate().setEnergyConsumptionHeating( getRandomDouble( 10, 250 ) );
+        realEstate.getEnergyCertificate().setEnergyConsumptionElectricity( getRandomDecimal( 10, 250 ) );
+        realEstate.getEnergyCertificate().setEnergyConsumptionHeating( getRandomDecimal( 10, 250 ) );
         realEstate.getEnergyCertificate().setEnergyEfficiencyClass( getRandomEnergyEfficiencyClass() );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
     }
 
@@ -2907,15 +2979,15 @@ public class RandomRealEstateFactory
       if (getRandomBoolean())
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.BEFORE_01_MAY_2014 );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
       else
       {
         realEstate.getEnergyCertificate().setEnergyCertificateCreationDate( EnergyCertificateCreationDate.FROM_01_MAY_2014 );
-        realEstate.getEnergyCertificate().setThermalCharacteristicElectricity( getRandomDouble( 500, 2500 ) );
-        realEstate.getEnergyCertificate().setThermalCharacteristicHeating( getRandomDouble( 500, 2500 ) );
+        realEstate.getEnergyCertificate().setThermalCharacteristicElectricity( getRandomDecimal( 500, 2500 ) );
+        realEstate.getEnergyCertificate().setThermalCharacteristicHeating( getRandomDecimal( 500, 2500 ) );
         realEstate.getEnergyCertificate().setEnergyEfficiencyClass( getRandomEnergyEfficiencyClass() );
-        realEstate.setThermalCharacteristic( getRandomDouble( 20, 500 ) );
+        realEstate.setThermalCharacteristic( getRandomDecimal( 20, 500 ) );
       }
     }
 
@@ -2926,7 +2998,7 @@ public class RandomRealEstateFactory
       realEstate.setPrice( getDefaultPrice() );
       realEstate.getPrice().setMarketingType( MarketingType.RENT );
       realEstate.getPrice().setPriceIntervalType( PriceIntervalType.MONTH );
-      realEstate.getPrice().setValue( getRandomDouble( 500, 5000 ) );
+      realEstate.getPrice().setValue( getRandomDecimal( 500, 5000 ) );
     }
 
     // pricing for purchase
@@ -2936,13 +3008,13 @@ public class RandomRealEstateFactory
       realEstate.setPrice( getDefaultPrice() );
       realEstate.getPrice().setMarketingType( MarketingType.PURCHASE );
       realEstate.getPrice().setPriceIntervalType( PriceIntervalType.ONE_TIME_CHARGE );
-      realEstate.getPrice().setValue( getRandomDouble( 50000, 999999 ) );
+      realEstate.getPrice().setValue( getRandomDecimal( 50000, 999999 ) );
     }
 
     // pricing / additional costs
     realEstate.setAdditionalCosts( getDefaultPrice() );
     realEstate.getAdditionalCosts().setPriceIntervalType( PriceIntervalType.MONTH );
-    realEstate.getAdditionalCosts().setValue( getRandomDouble( 500, 5000 ) );
+    realEstate.getAdditionalCosts().setValue( getRandomDecimal( 500, 5000 ) );
 
     // pricing / calculated price
     //realEstate.setCalculatedPrice( getDefaultPrice() );
@@ -2960,15 +3032,15 @@ public class RandomRealEstateFactory
     realEstate.setBuildingPermission( getRandomBoolean() );
     realEstate.setDemolition( getRandomBoolean() );
     realEstate.setFreeFrom( StringUtils.abbreviate( LOREM.getWords( 1, 10 ), 50 ) );
-    realEstate.setGfz( getRandomDouble( 1, 10 ) );
-    realEstate.setGrz( getRandomDouble( 1, 10 ) );
-    realEstate.setMinDivisible( getRandomDouble( 500, 2500 ) );
-    realEstate.setPlotArea( getRandomDouble( 100, 5000 ) );
+    realEstate.setGfz( getRandomDecimal( 1, 10 ) );
+    realEstate.setGrz( getRandomDecimal( 1, 10 ) );
+    realEstate.setMinDivisible( getRandomDecimal( 500, 2500 ) );
+    realEstate.setPlotArea( getRandomDecimal( 100, 5000 ) );
     realEstate.setRecommendedUseTypes( createRandomSiteRecommendedUseForTradeTypes() );
     realEstate.setShortTermConstructible( getRandomBoolean() );
     realEstate.setSiteConstructibleType( getRandomSiteConstructibleType() );
     realEstate.setSiteDevelopmentType( getRandomSiteDevelopmentType() );
-    realEstate.setTenancy( getRandomInt( 100 ) );
+    realEstate.setTenancy( getRandomLong( 100 ) );
     realEstate.setUtilizationTradeSite( getRandomUtilizationTradeSite() );
 
     // courtage
@@ -2984,7 +3056,7 @@ public class RandomRealEstateFactory
       realEstate.setPrice( getDefaultPrice() );
       realEstate.getPrice().setMarketingType( MarketingType.LEASE );
       realEstate.getPrice().setPriceIntervalType( PriceIntervalType.YEAR );
-      realEstate.getPrice().setValue( getRandomDouble( 50000, 999999 ) );
+      realEstate.getPrice().setValue( getRandomDecimal( 50000, 999999 ) );
     }
 
     // pricing for purchase
@@ -2994,7 +3066,7 @@ public class RandomRealEstateFactory
       realEstate.setPrice( getDefaultPrice() );
       realEstate.getPrice().setMarketingType( MarketingType.PURCHASE );
       realEstate.getPrice().setPriceIntervalType( PriceIntervalType.ONE_TIME_CHARGE );
-      realEstate.getPrice().setValue( getRandomDouble( 50000, 999999 ) );
+      realEstate.getPrice().setValue( getRandomDecimal( 50000, 999999 ) );
     }
   }
 

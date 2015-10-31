@@ -1,11 +1,13 @@
 
 package org.openestate.is24.restapi.xml.offerlistelement;
 
+import java.math.BigDecimal;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.jvnet.jaxb2_commons.lang.CopyStrategy;
 import org.jvnet.jaxb2_commons.lang.CopyTo;
 import org.jvnet.jaxb2_commons.lang.Equals;
@@ -17,6 +19,7 @@ import org.jvnet.jaxb2_commons.lang.ToString;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
+import org.openestate.is24.restapi.xml.Adapter1;
 import org.openestate.is24.restapi.xml.common.CommercializationType;
 import org.openestate.is24.restapi.xml.common.CourtageInfo;
 import org.openestate.is24.restapi.xml.common.Price;
@@ -64,9 +67,18 @@ public class OfferStore
     @XmlElement(required = true)
     protected Price price;
     protected Price calculatedPrice;
-    protected Double totalFloorSpace;
-    protected Double netFloorSpace;
-    protected Double minDivisible;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal totalFloorSpace;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal netFloorSpace;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal minDivisible;
     @XmlElement(required = true)
     protected CourtageInfo courtage;
 
@@ -147,10 +159,10 @@ public class OfferStore
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getTotalFloorSpace() {
+    public BigDecimal getTotalFloorSpace() {
         return totalFloorSpace;
     }
 
@@ -159,10 +171,10 @@ public class OfferStore
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setTotalFloorSpace(Double value) {
+    public void setTotalFloorSpace(BigDecimal value) {
         this.totalFloorSpace = value;
     }
 
@@ -171,10 +183,10 @@ public class OfferStore
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getNetFloorSpace() {
+    public BigDecimal getNetFloorSpace() {
         return netFloorSpace;
     }
 
@@ -183,10 +195,10 @@ public class OfferStore
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setNetFloorSpace(Double value) {
+    public void setNetFloorSpace(BigDecimal value) {
         this.netFloorSpace = value;
     }
 
@@ -195,10 +207,10 @@ public class OfferStore
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getMinDivisible() {
+    public BigDecimal getMinDivisible() {
         return minDivisible;
     }
 
@@ -207,10 +219,10 @@ public class OfferStore
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setMinDivisible(Double value) {
+    public void setMinDivisible(BigDecimal value) {
         this.minDivisible = value;
     }
 
@@ -270,17 +282,17 @@ public class OfferStore
             strategy.appendField(locator, this, "calculatedPrice", buffer, theCalculatedPrice);
         }
         {
-            Double theTotalFloorSpace;
+            BigDecimal theTotalFloorSpace;
             theTotalFloorSpace = this.getTotalFloorSpace();
             strategy.appendField(locator, this, "totalFloorSpace", buffer, theTotalFloorSpace);
         }
         {
-            Double theNetFloorSpace;
+            BigDecimal theNetFloorSpace;
             theNetFloorSpace = this.getNetFloorSpace();
             strategy.appendField(locator, this, "netFloorSpace", buffer, theNetFloorSpace);
         }
         {
-            Double theMinDivisible;
+            BigDecimal theMinDivisible;
             theMinDivisible = this.getMinDivisible();
             strategy.appendField(locator, this, "minDivisible", buffer, theMinDivisible);
         }
@@ -331,25 +343,25 @@ public class OfferStore
                 copy.calculatedPrice = null;
             }
             if (this.totalFloorSpace!= null) {
-                Double sourceTotalFloorSpace;
+                BigDecimal sourceTotalFloorSpace;
                 sourceTotalFloorSpace = this.getTotalFloorSpace();
-                Double copyTotalFloorSpace = ((Double) strategy.copy(LocatorUtils.property(locator, "totalFloorSpace", sourceTotalFloorSpace), sourceTotalFloorSpace));
+                BigDecimal copyTotalFloorSpace = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "totalFloorSpace", sourceTotalFloorSpace), sourceTotalFloorSpace));
                 copy.setTotalFloorSpace(copyTotalFloorSpace);
             } else {
                 copy.totalFloorSpace = null;
             }
             if (this.netFloorSpace!= null) {
-                Double sourceNetFloorSpace;
+                BigDecimal sourceNetFloorSpace;
                 sourceNetFloorSpace = this.getNetFloorSpace();
-                Double copyNetFloorSpace = ((Double) strategy.copy(LocatorUtils.property(locator, "netFloorSpace", sourceNetFloorSpace), sourceNetFloorSpace));
+                BigDecimal copyNetFloorSpace = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "netFloorSpace", sourceNetFloorSpace), sourceNetFloorSpace));
                 copy.setNetFloorSpace(copyNetFloorSpace);
             } else {
                 copy.netFloorSpace = null;
             }
             if (this.minDivisible!= null) {
-                Double sourceMinDivisible;
+                BigDecimal sourceMinDivisible;
                 sourceMinDivisible = this.getMinDivisible();
-                Double copyMinDivisible = ((Double) strategy.copy(LocatorUtils.property(locator, "minDivisible", sourceMinDivisible), sourceMinDivisible));
+                BigDecimal copyMinDivisible = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "minDivisible", sourceMinDivisible), sourceMinDivisible));
                 copy.setMinDivisible(copyMinDivisible);
             } else {
                 copy.minDivisible = null;
@@ -409,27 +421,27 @@ public class OfferStore
             }
         }
         {
-            Double lhsTotalFloorSpace;
+            BigDecimal lhsTotalFloorSpace;
             lhsTotalFloorSpace = this.getTotalFloorSpace();
-            Double rhsTotalFloorSpace;
+            BigDecimal rhsTotalFloorSpace;
             rhsTotalFloorSpace = that.getTotalFloorSpace();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "totalFloorSpace", lhsTotalFloorSpace), LocatorUtils.property(thatLocator, "totalFloorSpace", rhsTotalFloorSpace), lhsTotalFloorSpace, rhsTotalFloorSpace)) {
                 return false;
             }
         }
         {
-            Double lhsNetFloorSpace;
+            BigDecimal lhsNetFloorSpace;
             lhsNetFloorSpace = this.getNetFloorSpace();
-            Double rhsNetFloorSpace;
+            BigDecimal rhsNetFloorSpace;
             rhsNetFloorSpace = that.getNetFloorSpace();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "netFloorSpace", lhsNetFloorSpace), LocatorUtils.property(thatLocator, "netFloorSpace", rhsNetFloorSpace), lhsNetFloorSpace, rhsNetFloorSpace)) {
                 return false;
             }
         }
         {
-            Double lhsMinDivisible;
+            BigDecimal lhsMinDivisible;
             lhsMinDivisible = this.getMinDivisible();
-            Double rhsMinDivisible;
+            BigDecimal rhsMinDivisible;
             rhsMinDivisible = that.getMinDivisible();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "minDivisible", lhsMinDivisible), LocatorUtils.property(thatLocator, "minDivisible", rhsMinDivisible), lhsMinDivisible, rhsMinDivisible)) {
                 return false;

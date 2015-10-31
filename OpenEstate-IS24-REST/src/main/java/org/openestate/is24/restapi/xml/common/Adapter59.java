@@ -1,18 +1,19 @@
 
 package org.openestate.is24.restapi.xml.common;
 
+import java.math.BigDecimal;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 public class Adapter59
-    extends XmlAdapter<String, Double>
+    extends XmlAdapter<String, BigDecimal>
 {
 
 
-    public Double unmarshal(String value) {
+    public BigDecimal unmarshal(String value) {
         return (org.openestate.is24.restapi.utils.XmlUtils.parseLatitude(value));
     }
 
-    public String marshal(Double value) {
+    public String marshal(BigDecimal value) {
         return (org.openestate.is24.restapi.utils.XmlUtils.printLatitude(value));
     }
 

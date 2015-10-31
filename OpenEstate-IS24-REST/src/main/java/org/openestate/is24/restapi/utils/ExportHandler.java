@@ -454,8 +454,8 @@ public class ExportHandler
           return new HashMap<Long,String>();
         }
 
-        Integer totalPages = is24Objects.getPaging().getNumberOfPages();
-        if (totalPages==null) totalPages = 0;
+        Long totalPages = is24Objects.getPaging().getNumberOfPages();
+        if (totalPages==null) totalPages = 0L;
 
         RealEstateList is24ObjectList = is24Objects.getRealEstateList();
         if (is24ObjectList!=null && !is24ObjectList.getRealEstateElement().isEmpty())

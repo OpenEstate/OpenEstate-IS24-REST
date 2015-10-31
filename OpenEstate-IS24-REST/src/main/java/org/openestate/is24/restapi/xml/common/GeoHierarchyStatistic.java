@@ -4,7 +4,9 @@ package org.openestate.is24.restapi.xml.common;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.jvnet.jaxb2_commons.lang.CopyStrategy;
 import org.jvnet.jaxb2_commons.lang.CopyTo;
 import org.jvnet.jaxb2_commons.lang.Equals;
@@ -16,6 +18,7 @@ import org.jvnet.jaxb2_commons.lang.ToString;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
+import org.openestate.is24.restapi.xml.Adapter5;
 
 
 /**
@@ -49,7 +52,9 @@ public class GeoHierarchyStatistic
     @XmlAttribute(name = "realEstateType", required = true)
     protected RealEstateType realEstateType;
     @XmlAttribute(name = "count", required = true)
-    protected int count;
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlSchemaType(name = "int")
+    protected Long count;
 
     /**
      * Gets the value of the realEstateType property.
@@ -78,16 +83,24 @@ public class GeoHierarchyStatistic
     /**
      * Gets the value of the count property.
      * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public int getCount() {
+    public Long getCount() {
         return count;
     }
 
     /**
      * Sets the value of the count property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setCount(int value) {
+    public void setCount(Long value) {
         this.count = value;
     }
 
@@ -112,7 +125,7 @@ public class GeoHierarchyStatistic
             strategy.appendField(locator, this, "realEstateType", buffer, theRealEstateType);
         }
         {
-            int theCount;
+            Long theCount;
             theCount = this.getCount();
             strategy.appendField(locator, this, "count", buffer, theCount);
         }
@@ -140,11 +153,13 @@ public class GeoHierarchyStatistic
             } else {
                 copy.realEstateType = null;
             }
-            {
-                int sourceCount;
+            if (this.count!= null) {
+                Long sourceCount;
                 sourceCount = this.getCount();
-                int copyCount = strategy.copy(LocatorUtils.property(locator, "count", sourceCount), sourceCount);
+                Long copyCount = ((Long) strategy.copy(LocatorUtils.property(locator, "count", sourceCount), sourceCount));
                 copy.setCount(copyCount);
+            } else {
+                copy.count = null;
             }
         }
         return draftCopy;
@@ -172,9 +187,9 @@ public class GeoHierarchyStatistic
             }
         }
         {
-            int lhsCount;
+            Long lhsCount;
             lhsCount = this.getCount();
-            int rhsCount;
+            Long rhsCount;
             rhsCount = that.getCount();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "count", lhsCount), LocatorUtils.property(thatLocator, "count", rhsCount), lhsCount, rhsCount)) {
                 return false;

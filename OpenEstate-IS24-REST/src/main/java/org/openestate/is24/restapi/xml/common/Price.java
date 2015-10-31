@@ -1,12 +1,14 @@
 
 package org.openestate.is24.restapi.xml.common;
 
+import java.math.BigDecimal;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.jvnet.jaxb2_commons.lang.CopyStrategy;
 import org.jvnet.jaxb2_commons.lang.CopyTo;
 import org.jvnet.jaxb2_commons.lang.Equals;
@@ -18,6 +20,7 @@ import org.jvnet.jaxb2_commons.lang.ToString;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
+import org.openestate.is24.restapi.xml.Adapter1;
 
 
 /**
@@ -58,7 +61,10 @@ public class Price
     implements Cloneable, CopyTo, Equals, ToString
 {
 
-    protected double value;
+    @XmlElement(required = true, type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal value;
     @XmlElement(required = true)
     @XmlSchemaType(name = "string")
     protected Currency currency;
@@ -70,16 +76,24 @@ public class Price
     /**
      * Gets the value of the value property.
      * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public double getValue() {
+    public BigDecimal getValue() {
         return value;
     }
 
     /**
      * Sets the value of the value property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setValue(double value) {
+    public void setValue(BigDecimal value) {
         this.value = value;
     }
 
@@ -171,7 +185,7 @@ public class Price
 
     public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
         {
-            double theValue;
+            BigDecimal theValue;
             theValue = this.getValue();
             strategy.appendField(locator, this, "value", buffer, theValue);
         }
@@ -206,11 +220,13 @@ public class Price
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof Price) {
             final Price copy = ((Price) draftCopy);
-            {
-                double sourceValue;
+            if (this.value!= null) {
+                BigDecimal sourceValue;
                 sourceValue = this.getValue();
-                double copyValue = strategy.copy(LocatorUtils.property(locator, "value", sourceValue), sourceValue);
+                BigDecimal copyValue = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "value", sourceValue), sourceValue));
                 copy.setValue(copyValue);
+            } else {
+                copy.value = null;
             }
             if (this.currency!= null) {
                 Currency sourceCurrency;
@@ -253,9 +269,9 @@ public class Price
         }
         final Price that = ((Price) object);
         {
-            double lhsValue;
+            BigDecimal lhsValue;
             lhsValue = this.getValue();
-            double rhsValue;
+            BigDecimal rhsValue;
             rhsValue = that.getValue();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "value", lhsValue), LocatorUtils.property(thatLocator, "value", rhsValue), lhsValue, rhsValue)) {
                 return false;

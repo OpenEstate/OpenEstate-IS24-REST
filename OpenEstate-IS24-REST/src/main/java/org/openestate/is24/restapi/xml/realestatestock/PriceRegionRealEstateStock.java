@@ -6,6 +6,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.jvnet.jaxb2_commons.lang.CopyStrategy;
 import org.jvnet.jaxb2_commons.lang.CopyTo;
 import org.jvnet.jaxb2_commons.lang.Equals;
@@ -17,6 +18,7 @@ import org.jvnet.jaxb2_commons.lang.ToString;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
+import org.openestate.is24.restapi.xml.Adapter5;
 
 
 /**
@@ -51,8 +53,10 @@ public class PriceRegionRealEstateStock
     @XmlElement(required = true)
     @XmlSchemaType(name = "string")
     protected PriceRegion priceRegion;
-    @XmlElement(defaultValue = "0")
-    protected int realestateCount;
+    @XmlElement(required = true, type = String.class, defaultValue = "0")
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlSchemaType(name = "int")
+    protected Long realestateCount;
 
     /**
      * Gets the value of the priceRegion property.
@@ -81,16 +85,24 @@ public class PriceRegionRealEstateStock
     /**
      * Gets the value of the realestateCount property.
      * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public int getRealestateCount() {
+    public Long getRealestateCount() {
         return realestateCount;
     }
 
     /**
      * Sets the value of the realestateCount property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setRealestateCount(int value) {
+    public void setRealestateCount(Long value) {
         this.realestateCount = value;
     }
 
@@ -115,7 +127,7 @@ public class PriceRegionRealEstateStock
             strategy.appendField(locator, this, "priceRegion", buffer, thePriceRegion);
         }
         {
-            int theRealestateCount;
+            Long theRealestateCount;
             theRealestateCount = this.getRealestateCount();
             strategy.appendField(locator, this, "realestateCount", buffer, theRealestateCount);
         }
@@ -143,11 +155,13 @@ public class PriceRegionRealEstateStock
             } else {
                 copy.priceRegion = null;
             }
-            {
-                int sourceRealestateCount;
+            if (this.realestateCount!= null) {
+                Long sourceRealestateCount;
                 sourceRealestateCount = this.getRealestateCount();
-                int copyRealestateCount = strategy.copy(LocatorUtils.property(locator, "realestateCount", sourceRealestateCount), sourceRealestateCount);
+                Long copyRealestateCount = ((Long) strategy.copy(LocatorUtils.property(locator, "realestateCount", sourceRealestateCount), sourceRealestateCount));
                 copy.setRealestateCount(copyRealestateCount);
+            } else {
+                copy.realestateCount = null;
             }
         }
         return draftCopy;
@@ -175,9 +189,9 @@ public class PriceRegionRealEstateStock
             }
         }
         {
-            int lhsRealestateCount;
+            Long lhsRealestateCount;
             lhsRealestateCount = this.getRealestateCount();
-            int rhsRealestateCount;
+            Long rhsRealestateCount;
             rhsRealestateCount = that.getRealestateCount();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "realestateCount", lhsRealestateCount), LocatorUtils.property(thatLocator, "realestateCount", rhsRealestateCount), lhsRealestateCount, rhsRealestateCount)) {
                 return false;

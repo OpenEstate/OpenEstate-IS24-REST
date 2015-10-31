@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.common;
 
+import java.math.BigDecimal;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -107,22 +108,22 @@ public class EnergyPerformanceCertificate
     protected EnergyEfficiencyClass energyEfficiencyClass;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter20 .class)
-    protected Double electricityConsumption;
+    protected BigDecimal electricityConsumption;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter21 .class)
-    protected Double heatingConsumption;
+    protected BigDecimal heatingConsumption;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter22 .class)
-    protected Double energyConsumptionElectricity;
+    protected BigDecimal energyConsumptionElectricity;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter23 .class)
-    protected Double energyConsumptionHeating;
+    protected BigDecimal energyConsumptionHeating;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter24 .class)
-    protected Double thermalCharacteristicElectricity;
+    protected BigDecimal thermalCharacteristicElectricity;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter25 .class)
-    protected Double thermalCharacteristicHeating;
+    protected BigDecimal thermalCharacteristicHeating;
 
     /**
      * Gets the value of the energyCertificateAvailability property.
@@ -204,7 +205,7 @@ public class EnergyPerformanceCertificate
      *     {@link String }
      *     
      */
-    public Double getElectricityConsumption() {
+    public BigDecimal getElectricityConsumption() {
         return electricityConsumption;
     }
 
@@ -216,7 +217,7 @@ public class EnergyPerformanceCertificate
      *     {@link String }
      *     
      */
-    public void setElectricityConsumption(Double value) {
+    public void setElectricityConsumption(BigDecimal value) {
         this.electricityConsumption = value;
     }
 
@@ -228,7 +229,7 @@ public class EnergyPerformanceCertificate
      *     {@link String }
      *     
      */
-    public Double getHeatingConsumption() {
+    public BigDecimal getHeatingConsumption() {
         return heatingConsumption;
     }
 
@@ -240,7 +241,7 @@ public class EnergyPerformanceCertificate
      *     {@link String }
      *     
      */
-    public void setHeatingConsumption(Double value) {
+    public void setHeatingConsumption(BigDecimal value) {
         this.heatingConsumption = value;
     }
 
@@ -252,7 +253,7 @@ public class EnergyPerformanceCertificate
      *     {@link String }
      *     
      */
-    public Double getEnergyConsumptionElectricity() {
+    public BigDecimal getEnergyConsumptionElectricity() {
         return energyConsumptionElectricity;
     }
 
@@ -264,7 +265,7 @@ public class EnergyPerformanceCertificate
      *     {@link String }
      *     
      */
-    public void setEnergyConsumptionElectricity(Double value) {
+    public void setEnergyConsumptionElectricity(BigDecimal value) {
         this.energyConsumptionElectricity = value;
     }
 
@@ -276,7 +277,7 @@ public class EnergyPerformanceCertificate
      *     {@link String }
      *     
      */
-    public Double getEnergyConsumptionHeating() {
+    public BigDecimal getEnergyConsumptionHeating() {
         return energyConsumptionHeating;
     }
 
@@ -288,7 +289,7 @@ public class EnergyPerformanceCertificate
      *     {@link String }
      *     
      */
-    public void setEnergyConsumptionHeating(Double value) {
+    public void setEnergyConsumptionHeating(BigDecimal value) {
         this.energyConsumptionHeating = value;
     }
 
@@ -300,7 +301,7 @@ public class EnergyPerformanceCertificate
      *     {@link String }
      *     
      */
-    public Double getThermalCharacteristicElectricity() {
+    public BigDecimal getThermalCharacteristicElectricity() {
         return thermalCharacteristicElectricity;
     }
 
@@ -312,7 +313,7 @@ public class EnergyPerformanceCertificate
      *     {@link String }
      *     
      */
-    public void setThermalCharacteristicElectricity(Double value) {
+    public void setThermalCharacteristicElectricity(BigDecimal value) {
         this.thermalCharacteristicElectricity = value;
     }
 
@@ -324,7 +325,7 @@ public class EnergyPerformanceCertificate
      *     {@link String }
      *     
      */
-    public Double getThermalCharacteristicHeating() {
+    public BigDecimal getThermalCharacteristicHeating() {
         return thermalCharacteristicHeating;
     }
 
@@ -336,7 +337,7 @@ public class EnergyPerformanceCertificate
      *     {@link String }
      *     
      */
-    public void setThermalCharacteristicHeating(Double value) {
+    public void setThermalCharacteristicHeating(BigDecimal value) {
         this.thermalCharacteristicHeating = value;
     }
 
@@ -371,32 +372,32 @@ public class EnergyPerformanceCertificate
             strategy.appendField(locator, this, "energyEfficiencyClass", buffer, theEnergyEfficiencyClass);
         }
         {
-            Double theElectricityConsumption;
+            BigDecimal theElectricityConsumption;
             theElectricityConsumption = this.getElectricityConsumption();
             strategy.appendField(locator, this, "electricityConsumption", buffer, theElectricityConsumption);
         }
         {
-            Double theHeatingConsumption;
+            BigDecimal theHeatingConsumption;
             theHeatingConsumption = this.getHeatingConsumption();
             strategy.appendField(locator, this, "heatingConsumption", buffer, theHeatingConsumption);
         }
         {
-            Double theEnergyConsumptionElectricity;
+            BigDecimal theEnergyConsumptionElectricity;
             theEnergyConsumptionElectricity = this.getEnergyConsumptionElectricity();
             strategy.appendField(locator, this, "energyConsumptionElectricity", buffer, theEnergyConsumptionElectricity);
         }
         {
-            Double theEnergyConsumptionHeating;
+            BigDecimal theEnergyConsumptionHeating;
             theEnergyConsumptionHeating = this.getEnergyConsumptionHeating();
             strategy.appendField(locator, this, "energyConsumptionHeating", buffer, theEnergyConsumptionHeating);
         }
         {
-            Double theThermalCharacteristicElectricity;
+            BigDecimal theThermalCharacteristicElectricity;
             theThermalCharacteristicElectricity = this.getThermalCharacteristicElectricity();
             strategy.appendField(locator, this, "thermalCharacteristicElectricity", buffer, theThermalCharacteristicElectricity);
         }
         {
-            Double theThermalCharacteristicHeating;
+            BigDecimal theThermalCharacteristicHeating;
             theThermalCharacteristicHeating = this.getThermalCharacteristicHeating();
             strategy.appendField(locator, this, "thermalCharacteristicHeating", buffer, theThermalCharacteristicHeating);
         }
@@ -441,49 +442,49 @@ public class EnergyPerformanceCertificate
                 copy.energyEfficiencyClass = null;
             }
             if (this.electricityConsumption!= null) {
-                Double sourceElectricityConsumption;
+                BigDecimal sourceElectricityConsumption;
                 sourceElectricityConsumption = this.getElectricityConsumption();
-                Double copyElectricityConsumption = ((Double) strategy.copy(LocatorUtils.property(locator, "electricityConsumption", sourceElectricityConsumption), sourceElectricityConsumption));
+                BigDecimal copyElectricityConsumption = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "electricityConsumption", sourceElectricityConsumption), sourceElectricityConsumption));
                 copy.setElectricityConsumption(copyElectricityConsumption);
             } else {
                 copy.electricityConsumption = null;
             }
             if (this.heatingConsumption!= null) {
-                Double sourceHeatingConsumption;
+                BigDecimal sourceHeatingConsumption;
                 sourceHeatingConsumption = this.getHeatingConsumption();
-                Double copyHeatingConsumption = ((Double) strategy.copy(LocatorUtils.property(locator, "heatingConsumption", sourceHeatingConsumption), sourceHeatingConsumption));
+                BigDecimal copyHeatingConsumption = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "heatingConsumption", sourceHeatingConsumption), sourceHeatingConsumption));
                 copy.setHeatingConsumption(copyHeatingConsumption);
             } else {
                 copy.heatingConsumption = null;
             }
             if (this.energyConsumptionElectricity!= null) {
-                Double sourceEnergyConsumptionElectricity;
+                BigDecimal sourceEnergyConsumptionElectricity;
                 sourceEnergyConsumptionElectricity = this.getEnergyConsumptionElectricity();
-                Double copyEnergyConsumptionElectricity = ((Double) strategy.copy(LocatorUtils.property(locator, "energyConsumptionElectricity", sourceEnergyConsumptionElectricity), sourceEnergyConsumptionElectricity));
+                BigDecimal copyEnergyConsumptionElectricity = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "energyConsumptionElectricity", sourceEnergyConsumptionElectricity), sourceEnergyConsumptionElectricity));
                 copy.setEnergyConsumptionElectricity(copyEnergyConsumptionElectricity);
             } else {
                 copy.energyConsumptionElectricity = null;
             }
             if (this.energyConsumptionHeating!= null) {
-                Double sourceEnergyConsumptionHeating;
+                BigDecimal sourceEnergyConsumptionHeating;
                 sourceEnergyConsumptionHeating = this.getEnergyConsumptionHeating();
-                Double copyEnergyConsumptionHeating = ((Double) strategy.copy(LocatorUtils.property(locator, "energyConsumptionHeating", sourceEnergyConsumptionHeating), sourceEnergyConsumptionHeating));
+                BigDecimal copyEnergyConsumptionHeating = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "energyConsumptionHeating", sourceEnergyConsumptionHeating), sourceEnergyConsumptionHeating));
                 copy.setEnergyConsumptionHeating(copyEnergyConsumptionHeating);
             } else {
                 copy.energyConsumptionHeating = null;
             }
             if (this.thermalCharacteristicElectricity!= null) {
-                Double sourceThermalCharacteristicElectricity;
+                BigDecimal sourceThermalCharacteristicElectricity;
                 sourceThermalCharacteristicElectricity = this.getThermalCharacteristicElectricity();
-                Double copyThermalCharacteristicElectricity = ((Double) strategy.copy(LocatorUtils.property(locator, "thermalCharacteristicElectricity", sourceThermalCharacteristicElectricity), sourceThermalCharacteristicElectricity));
+                BigDecimal copyThermalCharacteristicElectricity = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "thermalCharacteristicElectricity", sourceThermalCharacteristicElectricity), sourceThermalCharacteristicElectricity));
                 copy.setThermalCharacteristicElectricity(copyThermalCharacteristicElectricity);
             } else {
                 copy.thermalCharacteristicElectricity = null;
             }
             if (this.thermalCharacteristicHeating!= null) {
-                Double sourceThermalCharacteristicHeating;
+                BigDecimal sourceThermalCharacteristicHeating;
                 sourceThermalCharacteristicHeating = this.getThermalCharacteristicHeating();
-                Double copyThermalCharacteristicHeating = ((Double) strategy.copy(LocatorUtils.property(locator, "thermalCharacteristicHeating", sourceThermalCharacteristicHeating), sourceThermalCharacteristicHeating));
+                BigDecimal copyThermalCharacteristicHeating = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "thermalCharacteristicHeating", sourceThermalCharacteristicHeating), sourceThermalCharacteristicHeating));
                 copy.setThermalCharacteristicHeating(copyThermalCharacteristicHeating);
             } else {
                 copy.thermalCharacteristicHeating = null;
@@ -532,54 +533,54 @@ public class EnergyPerformanceCertificate
             }
         }
         {
-            Double lhsElectricityConsumption;
+            BigDecimal lhsElectricityConsumption;
             lhsElectricityConsumption = this.getElectricityConsumption();
-            Double rhsElectricityConsumption;
+            BigDecimal rhsElectricityConsumption;
             rhsElectricityConsumption = that.getElectricityConsumption();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "electricityConsumption", lhsElectricityConsumption), LocatorUtils.property(thatLocator, "electricityConsumption", rhsElectricityConsumption), lhsElectricityConsumption, rhsElectricityConsumption)) {
                 return false;
             }
         }
         {
-            Double lhsHeatingConsumption;
+            BigDecimal lhsHeatingConsumption;
             lhsHeatingConsumption = this.getHeatingConsumption();
-            Double rhsHeatingConsumption;
+            BigDecimal rhsHeatingConsumption;
             rhsHeatingConsumption = that.getHeatingConsumption();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "heatingConsumption", lhsHeatingConsumption), LocatorUtils.property(thatLocator, "heatingConsumption", rhsHeatingConsumption), lhsHeatingConsumption, rhsHeatingConsumption)) {
                 return false;
             }
         }
         {
-            Double lhsEnergyConsumptionElectricity;
+            BigDecimal lhsEnergyConsumptionElectricity;
             lhsEnergyConsumptionElectricity = this.getEnergyConsumptionElectricity();
-            Double rhsEnergyConsumptionElectricity;
+            BigDecimal rhsEnergyConsumptionElectricity;
             rhsEnergyConsumptionElectricity = that.getEnergyConsumptionElectricity();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "energyConsumptionElectricity", lhsEnergyConsumptionElectricity), LocatorUtils.property(thatLocator, "energyConsumptionElectricity", rhsEnergyConsumptionElectricity), lhsEnergyConsumptionElectricity, rhsEnergyConsumptionElectricity)) {
                 return false;
             }
         }
         {
-            Double lhsEnergyConsumptionHeating;
+            BigDecimal lhsEnergyConsumptionHeating;
             lhsEnergyConsumptionHeating = this.getEnergyConsumptionHeating();
-            Double rhsEnergyConsumptionHeating;
+            BigDecimal rhsEnergyConsumptionHeating;
             rhsEnergyConsumptionHeating = that.getEnergyConsumptionHeating();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "energyConsumptionHeating", lhsEnergyConsumptionHeating), LocatorUtils.property(thatLocator, "energyConsumptionHeating", rhsEnergyConsumptionHeating), lhsEnergyConsumptionHeating, rhsEnergyConsumptionHeating)) {
                 return false;
             }
         }
         {
-            Double lhsThermalCharacteristicElectricity;
+            BigDecimal lhsThermalCharacteristicElectricity;
             lhsThermalCharacteristicElectricity = this.getThermalCharacteristicElectricity();
-            Double rhsThermalCharacteristicElectricity;
+            BigDecimal rhsThermalCharacteristicElectricity;
             rhsThermalCharacteristicElectricity = that.getThermalCharacteristicElectricity();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "thermalCharacteristicElectricity", lhsThermalCharacteristicElectricity), LocatorUtils.property(thatLocator, "thermalCharacteristicElectricity", rhsThermalCharacteristicElectricity), lhsThermalCharacteristicElectricity, rhsThermalCharacteristicElectricity)) {
                 return false;
             }
         }
         {
-            Double lhsThermalCharacteristicHeating;
+            BigDecimal lhsThermalCharacteristicHeating;
             lhsThermalCharacteristicHeating = this.getThermalCharacteristicHeating();
-            Double rhsThermalCharacteristicHeating;
+            BigDecimal rhsThermalCharacteristicHeating;
             rhsThermalCharacteristicHeating = that.getThermalCharacteristicHeating();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "thermalCharacteristicHeating", lhsThermalCharacteristicHeating), LocatorUtils.property(thatLocator, "thermalCharacteristicHeating", rhsThermalCharacteristicHeating), lhsThermalCharacteristicHeating, rhsThermalCharacteristicHeating)) {
                 return false;

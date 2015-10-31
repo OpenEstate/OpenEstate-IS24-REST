@@ -21,7 +21,8 @@ import org.jvnet.jaxb2_commons.lang.ToString;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
-import org.openestate.is24.restapi.xml.Adapter3;
+import org.openestate.is24.restapi.xml.Adapter4;
+import org.openestate.is24.restapi.xml.Adapter5;
 
 
 /**
@@ -61,9 +62,12 @@ public class VideoInfo
 
     @XmlElement(required = true)
     protected List<VideoUrlList> videoUrlList;
-    protected Integer duration;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlSchemaType(name = "int")
+    protected Long duration;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter4 .class)
     @XmlSchemaType(name = "anyURI")
     protected URL teaserUrl;
     protected String title;
@@ -102,10 +106,10 @@ public class VideoInfo
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public Integer getDuration() {
+    public Long getDuration() {
         return duration;
     }
 
@@ -114,10 +118,10 @@ public class VideoInfo
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public void setDuration(Integer value) {
+    public void setDuration(Long value) {
         this.duration = value;
     }
 
@@ -190,7 +194,7 @@ public class VideoInfo
             strategy.appendField(locator, this, "videoUrlList", buffer, theVideoUrlList);
         }
         {
-            Integer theDuration;
+            Long theDuration;
             theDuration = this.getDuration();
             strategy.appendField(locator, this, "duration", buffer, theDuration);
         }
@@ -234,9 +238,9 @@ public class VideoInfo
                 copy.videoUrlList = null;
             }
             if (this.duration!= null) {
-                Integer sourceDuration;
+                Long sourceDuration;
                 sourceDuration = this.getDuration();
-                Integer copyDuration = ((Integer) strategy.copy(LocatorUtils.property(locator, "duration", sourceDuration), sourceDuration));
+                Long copyDuration = ((Long) strategy.copy(LocatorUtils.property(locator, "duration", sourceDuration), sourceDuration));
                 copy.setDuration(copyDuration);
             } else {
                 copy.duration = null;
@@ -283,9 +287,9 @@ public class VideoInfo
             }
         }
         {
-            Integer lhsDuration;
+            Long lhsDuration;
             lhsDuration = this.getDuration();
-            Integer rhsDuration;
+            Long rhsDuration;
             rhsDuration = that.getDuration();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "duration", lhsDuration), LocatorUtils.property(thatLocator, "duration", rhsDuration), lhsDuration, rhsDuration)) {
                 return false;

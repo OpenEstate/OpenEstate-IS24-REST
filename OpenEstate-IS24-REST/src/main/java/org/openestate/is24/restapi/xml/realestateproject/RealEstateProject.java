@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.realestateproject;
 
+import java.math.BigDecimal;
 import java.net.URL;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -20,7 +21,8 @@ import org.jvnet.jaxb2_commons.lang.ToString;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
-import org.openestate.is24.restapi.xml.Adapter3;
+import org.openestate.is24.restapi.xml.Adapter4;
+import org.openestate.is24.restapi.xml.Adapter5;
 import org.openestate.is24.restapi.xml.common.Adapter12;
 import org.openestate.is24.restapi.xml.common.Address;
 import org.openestate.is24.restapi.xml.common.AreaRangeMandatory;
@@ -92,8 +94,10 @@ public class RealEstateProject
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter12 .class)
     @XmlSchemaType(name = "decimal")
-    protected Double minPriceProQm;
-    protected int numberOfHousingUnit;
+    protected BigDecimal minPriceProQm;
+    @XmlElement(required = true, type = String.class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    protected Long numberOfHousingUnit;
     @XmlElement(required = true)
     @XmlSchemaType(name = "string")
     protected InteriorQuality interiorQuality;
@@ -103,7 +107,7 @@ public class RealEstateProject
     protected Address address;
     protected RealEstateProjectEntries relaEstateProjectEntries;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlJavaTypeAdapter(Adapter4 .class)
     @XmlSchemaType(name = "anyURI")
     protected URL homepageUrl;
     @XmlAttribute(name = "id")
@@ -189,7 +193,7 @@ public class RealEstateProject
      *     {@link String }
      *     
      */
-    public Double getMinPriceProQm() {
+    public BigDecimal getMinPriceProQm() {
         return minPriceProQm;
     }
 
@@ -201,23 +205,31 @@ public class RealEstateProject
      *     {@link String }
      *     
      */
-    public void setMinPriceProQm(Double value) {
+    public void setMinPriceProQm(BigDecimal value) {
         this.minPriceProQm = value;
     }
 
     /**
      * Gets the value of the numberOfHousingUnit property.
      * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public int getNumberOfHousingUnit() {
+    public Long getNumberOfHousingUnit() {
         return numberOfHousingUnit;
     }
 
     /**
      * Sets the value of the numberOfHousingUnit property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setNumberOfHousingUnit(int value) {
+    public void setNumberOfHousingUnit(Long value) {
         this.numberOfHousingUnit = value;
     }
 
@@ -396,12 +408,12 @@ public class RealEstateProject
             strategy.appendField(locator, this, "space", buffer, theSpace);
         }
         {
-            Double theMinPriceProQm;
+            BigDecimal theMinPriceProQm;
             theMinPriceProQm = this.getMinPriceProQm();
             strategy.appendField(locator, this, "minPriceProQm", buffer, theMinPriceProQm);
         }
         {
-            int theNumberOfHousingUnit;
+            Long theNumberOfHousingUnit;
             theNumberOfHousingUnit = this.getNumberOfHousingUnit();
             strategy.appendField(locator, this, "numberOfHousingUnit", buffer, theNumberOfHousingUnit);
         }
@@ -476,18 +488,20 @@ public class RealEstateProject
                 copy.space = null;
             }
             if (this.minPriceProQm!= null) {
-                Double sourceMinPriceProQm;
+                BigDecimal sourceMinPriceProQm;
                 sourceMinPriceProQm = this.getMinPriceProQm();
-                Double copyMinPriceProQm = ((Double) strategy.copy(LocatorUtils.property(locator, "minPriceProQm", sourceMinPriceProQm), sourceMinPriceProQm));
+                BigDecimal copyMinPriceProQm = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "minPriceProQm", sourceMinPriceProQm), sourceMinPriceProQm));
                 copy.setMinPriceProQm(copyMinPriceProQm);
             } else {
                 copy.minPriceProQm = null;
             }
-            {
-                int sourceNumberOfHousingUnit;
+            if (this.numberOfHousingUnit!= null) {
+                Long sourceNumberOfHousingUnit;
                 sourceNumberOfHousingUnit = this.getNumberOfHousingUnit();
-                int copyNumberOfHousingUnit = strategy.copy(LocatorUtils.property(locator, "numberOfHousingUnit", sourceNumberOfHousingUnit), sourceNumberOfHousingUnit);
+                Long copyNumberOfHousingUnit = ((Long) strategy.copy(LocatorUtils.property(locator, "numberOfHousingUnit", sourceNumberOfHousingUnit), sourceNumberOfHousingUnit));
                 copy.setNumberOfHousingUnit(copyNumberOfHousingUnit);
+            } else {
+                copy.numberOfHousingUnit = null;
             }
             if (this.interiorQuality!= null) {
                 InteriorQuality sourceInteriorQuality;
@@ -581,18 +595,18 @@ public class RealEstateProject
             }
         }
         {
-            Double lhsMinPriceProQm;
+            BigDecimal lhsMinPriceProQm;
             lhsMinPriceProQm = this.getMinPriceProQm();
-            Double rhsMinPriceProQm;
+            BigDecimal rhsMinPriceProQm;
             rhsMinPriceProQm = that.getMinPriceProQm();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "minPriceProQm", lhsMinPriceProQm), LocatorUtils.property(thatLocator, "minPriceProQm", rhsMinPriceProQm), lhsMinPriceProQm, rhsMinPriceProQm)) {
                 return false;
             }
         }
         {
-            int lhsNumberOfHousingUnit;
+            Long lhsNumberOfHousingUnit;
             lhsNumberOfHousingUnit = this.getNumberOfHousingUnit();
-            int rhsNumberOfHousingUnit;
+            Long rhsNumberOfHousingUnit;
             rhsNumberOfHousingUnit = that.getNumberOfHousingUnit();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "numberOfHousingUnit", lhsNumberOfHousingUnit), LocatorUtils.property(thatLocator, "numberOfHousingUnit", rhsNumberOfHousingUnit), lhsNumberOfHousingUnit, rhsNumberOfHousingUnit)) {
                 return false;
