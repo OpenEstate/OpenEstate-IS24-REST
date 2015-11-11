@@ -212,13 +212,11 @@
           <version>8.1.16.v20140903</version>
         </plugin>
 
-        <!--
         <plugin>
           <groupId>org.sonatype.plugins</groupId>
           <artifactId>nexus-staging-maven-plugin</artifactId>
           <version>1.6.6</version>
         </plugin>
-        -->
       </plugins>
     </pluginManagement>
     <plugins>
@@ -320,7 +318,6 @@
 
       <!-- distribution -->
       <!-- see http://books.sonatype.com/nexus-book/reference/staging-deployment.html -->
-      <!--
       <plugin>
         <groupId>org.sonatype.plugins</groupId>
         <artifactId>nexus-staging-maven-plugin</artifactId>
@@ -328,11 +325,10 @@
         <configuration>
           <serverId>ossrh</serverId>
           <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-          <autoReleaseAfterClose>${staging.autoReleaseAfterClose}</autoReleaseAfterClose>
+          <autoReleaseAfterClose>true</autoReleaseAfterClose>
           <skipStaging>${staging.skip}</skipStaging>
         </configuration>
       </plugin>
-      -->
 
     </plugins>
   </build>
@@ -347,7 +343,6 @@
         <maven.javadoc.skip>true</maven.javadoc.skip>
         <gpg.skip>true</gpg.skip>
         <source.skip>true</source.skip>
-        <staging.autoReleaseAfterClose>false</staging.autoReleaseAfterClose>
         <staging.skip>true</staging.skip>
       </properties>
     </profile>
@@ -360,7 +355,6 @@
         <maven.javadoc.skip>false</maven.javadoc.skip>
         <gpg.skip>false</gpg.skip>
         <source.skip>false</source.skip>
-        <staging.autoReleaseAfterClose>false</staging.autoReleaseAfterClose>
         <staging.skip>false</staging.skip>
       </properties>
     </profile>
