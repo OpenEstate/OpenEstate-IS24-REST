@@ -10,11 +10,11 @@ public class Adapter26
 
 
     public BigDecimal unmarshal(String value) {
-        return (org.openestate.is24.restapi.utils.XmlUtils.parseDecimalPositive(value));
+        return (org.openestate.is24.restapi.utils.XmlUtils.parseThermalCharacteristic(value));
     }
 
     public String marshal(BigDecimal value) {
-        return (org.openestate.is24.restapi.utils.XmlUtils.printDecimalPositive(value));
+        return (org.openestate.is24.restapi.utils.XmlUtils.printThermalCharacteristic(value));
     }
 
 }

@@ -52,6 +52,7 @@ import org.openestate.is24.restapi.xml.Adapter4;
  *             &lt;/restriction&gt;
  *           &lt;/simpleType&gt;
  *         &lt;/element&gt;
+ *         &lt;element name="externalCheckSum" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *       &lt;attGroup ref="{http://rest.immobilienscout24.de/schema/common/1.0}Reference"/&gt;
  *     &lt;/restriction&gt;
@@ -65,7 +66,8 @@ import org.openestate.is24.restapi.xml.Adapter4;
 @XmlType(name = "Attachment", propOrder = {
     "title",
     "checkSum",
-    "externalId"
+    "externalId",
+    "externalCheckSum"
 })
 @XmlSeeAlso({
     Picture.class,
@@ -77,11 +79,12 @@ public abstract class Attachment
     implements Cloneable, CopyTo, Equals, ToString
 {
 
-    @XmlJavaTypeAdapter(Adapter33 .class)
+    @XmlJavaTypeAdapter(Adapter34 .class)
     protected String title;
     protected String checkSum;
-    @XmlJavaTypeAdapter(Adapter34 .class)
+    @XmlJavaTypeAdapter(Adapter35 .class)
     protected String externalId;
+    protected String externalCheckSum;
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")
     @XmlJavaTypeAdapter(Adapter4 .class)
     @XmlSchemaType(name = "anyURI")
@@ -173,6 +176,30 @@ public abstract class Attachment
      */
     public void setExternalId(String value) {
         this.externalId = value;
+    }
+
+    /**
+     * Gets the value of the externalCheckSum property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getExternalCheckSum() {
+        return externalCheckSum;
+    }
+
+    /**
+     * Sets the value of the externalCheckSum property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setExternalCheckSum(String value) {
+        this.externalCheckSum = value;
     }
 
     /**
@@ -350,6 +377,11 @@ public abstract class Attachment
             strategy.appendField(locator, this, "externalId", buffer, theExternalId);
         }
         {
+            String theExternalCheckSum;
+            theExternalCheckSum = this.getExternalCheckSum();
+            strategy.appendField(locator, this, "externalCheckSum", buffer, theExternalCheckSum);
+        }
+        {
             URL theHref;
             theHref = this.getHref();
             strategy.appendField(locator, this, "href", buffer, theHref);
@@ -420,6 +452,14 @@ public abstract class Attachment
                 copy.setExternalId(copyExternalId);
             } else {
                 copy.externalId = null;
+            }
+            if (this.externalCheckSum!= null) {
+                String sourceExternalCheckSum;
+                sourceExternalCheckSum = this.getExternalCheckSum();
+                String copyExternalCheckSum = ((String) strategy.copy(LocatorUtils.property(locator, "externalCheckSum", sourceExternalCheckSum), sourceExternalCheckSum));
+                copy.setExternalCheckSum(copyExternalCheckSum);
+            } else {
+                copy.externalCheckSum = null;
             }
             if (this.href!= null) {
                 URL sourceHref;
@@ -505,6 +545,15 @@ public abstract class Attachment
             String rhsExternalId;
             rhsExternalId = that.getExternalId();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "externalId", lhsExternalId), LocatorUtils.property(thatLocator, "externalId", rhsExternalId), lhsExternalId, rhsExternalId)) {
+                return false;
+            }
+        }
+        {
+            String lhsExternalCheckSum;
+            lhsExternalCheckSum = this.getExternalCheckSum();
+            String rhsExternalCheckSum;
+            rhsExternalCheckSum = that.getExternalCheckSum();
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "externalCheckSum", lhsExternalCheckSum), LocatorUtils.property(thatLocator, "externalCheckSum", rhsExternalCheckSum), lhsExternalCheckSum, rhsExternalCheckSum)) {
                 return false;
             }
         }

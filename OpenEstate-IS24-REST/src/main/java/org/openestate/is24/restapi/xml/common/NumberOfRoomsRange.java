@@ -52,11 +52,11 @@ public class NumberOfRoomsRange
 {
 
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter9 .class)
+    @XmlJavaTypeAdapter(Adapter10 .class)
     @XmlSchemaType(name = "decimal")
     protected BigDecimal minimal;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter9 .class)
+    @XmlJavaTypeAdapter(Adapter10 .class)
     @XmlSchemaType(name = "decimal")
     protected BigDecimal maximal;
 

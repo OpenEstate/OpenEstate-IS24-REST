@@ -67,7 +67,7 @@ public class RadiusCriteria
     @XmlElement(required = true)
     protected Wgs84Coordinate wgs84;
     @XmlElement(required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter26 .class)
+    @XmlJavaTypeAdapter(Adapter27 .class)
     protected BigDecimal radiusKm;
     protected String label;
     protected Address address;

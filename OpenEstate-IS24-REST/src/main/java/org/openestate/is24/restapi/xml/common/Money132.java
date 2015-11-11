@@ -51,7 +51,7 @@ public class Money132
 {
 
     @XmlElement(required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter12 .class)
+    @XmlJavaTypeAdapter(Adapter13 .class)
     @XmlSchemaType(name = "decimal")
     protected BigDecimal amount;
     @XmlElement(required = true)

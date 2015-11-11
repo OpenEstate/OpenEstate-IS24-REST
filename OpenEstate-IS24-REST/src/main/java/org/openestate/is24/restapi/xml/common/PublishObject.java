@@ -49,8 +49,8 @@ import org.openestate.is24.restapi.xml.Adapter2;
  *           &lt;/complexType&gt;
  *         &lt;/element&gt;
  *         &lt;element name="publishChannel" type="{http://rest.immobilienscout24.de/schema/common/1.0}PublishChannel"/&gt;
- *         &lt;element name="messageCode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="message" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="messageCode" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="0" minOccurs="0"/&gt;
+ *         &lt;element name="message" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="0" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *     &lt;/restriction&gt;
@@ -63,9 +63,7 @@ import org.openestate.is24.restapi.xml.Adapter2;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "PublishObject", propOrder = {
     "realEstate",
-    "publishChannel",
-    "messageCode",
-    "message"
+    "publishChannel"
 })
 public class PublishObject
     implements Cloneable, CopyTo, Equals, ToString
@@ -75,8 +73,6 @@ public class PublishObject
     protected PublishObject.RealEstate realEstate;
     @XmlElement(required = true)
     protected PublishChannel publishChannel;
-    protected String messageCode;
-    protected String message;
     @XmlAttribute(name = "id")
     protected String id;
 
@@ -129,54 +125,6 @@ public class PublishObject
     }
 
     /**
-     * Gets the value of the messageCode property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getMessageCode() {
-        return messageCode;
-    }
-
-    /**
-     * Sets the value of the messageCode property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setMessageCode(String value) {
-        this.messageCode = value;
-    }
-
-    /**
-     * Gets the value of the message property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getMessage() {
-        return message;
-    }
-
-    /**
-     * Sets the value of the message property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setMessage(String value) {
-        this.message = value;
-    }
-
-    /**
      * Gets the value of the id property.
      * 
      * @return
@@ -226,16 +174,6 @@ public class PublishObject
             strategy.appendField(locator, this, "publishChannel", buffer, thePublishChannel);
         }
         {
-            String theMessageCode;
-            theMessageCode = this.getMessageCode();
-            strategy.appendField(locator, this, "messageCode", buffer, theMessageCode);
-        }
-        {
-            String theMessage;
-            theMessage = this.getMessage();
-            strategy.appendField(locator, this, "message", buffer, theMessage);
-        }
-        {
             String theId;
             theId = this.getId();
             strategy.appendField(locator, this, "id", buffer, theId);
@@ -271,22 +209,6 @@ public class PublishObject
                 copy.setPublishChannel(copyPublishChannel);
             } else {
                 copy.publishChannel = null;
-            }
-            if (this.messageCode!= null) {
-                String sourceMessageCode;
-                sourceMessageCode = this.getMessageCode();
-                String copyMessageCode = ((String) strategy.copy(LocatorUtils.property(locator, "messageCode", sourceMessageCode), sourceMessageCode));
-                copy.setMessageCode(copyMessageCode);
-            } else {
-                copy.messageCode = null;
-            }
-            if (this.message!= null) {
-                String sourceMessage;
-                sourceMessage = this.getMessage();
-                String copyMessage = ((String) strategy.copy(LocatorUtils.property(locator, "message", sourceMessage), sourceMessage));
-                copy.setMessage(copyMessage);
-            } else {
-                copy.message = null;
             }
             if (this.id!= null) {
                 String sourceId;
@@ -327,24 +249,6 @@ public class PublishObject
             PublishChannel rhsPublishChannel;
             rhsPublishChannel = that.getPublishChannel();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "publishChannel", lhsPublishChannel), LocatorUtils.property(thatLocator, "publishChannel", rhsPublishChannel), lhsPublishChannel, rhsPublishChannel)) {
-                return false;
-            }
-        }
-        {
-            String lhsMessageCode;
-            lhsMessageCode = this.getMessageCode();
-            String rhsMessageCode;
-            rhsMessageCode = that.getMessageCode();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "messageCode", lhsMessageCode), LocatorUtils.property(thatLocator, "messageCode", rhsMessageCode), lhsMessageCode, rhsMessageCode)) {
-                return false;
-            }
-        }
-        {
-            String lhsMessage;
-            lhsMessage = this.getMessage();
-            String rhsMessage;
-            rhsMessage = that.getMessage();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "message", lhsMessage), LocatorUtils.property(thatLocator, "message", rhsMessage), lhsMessage, rhsMessage)) {
                 return false;
             }
         }

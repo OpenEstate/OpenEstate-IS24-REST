@@ -64,9 +64,9 @@ public class CourtageInfo
     @XmlElement(required = true)
     @XmlSchemaType(name = "string")
     protected YesNoNotApplicableType hasCourtage;
-    @XmlJavaTypeAdapter(Adapter31 .class)
-    protected String courtage;
     @XmlJavaTypeAdapter(Adapter32 .class)
+    protected String courtage;
+    @XmlJavaTypeAdapter(Adapter33 .class)
     protected String courtageNote;
 
     /**

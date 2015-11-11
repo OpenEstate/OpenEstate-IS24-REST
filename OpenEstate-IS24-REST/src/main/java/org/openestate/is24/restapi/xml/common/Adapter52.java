@@ -9,11 +9,11 @@ public class Adapter52
 
 
     public String unmarshal(String value) {
-        return (org.openestate.is24.restapi.utils.XmlUtils.parsePhoneNumber(value));
+        return (org.openestate.is24.restapi.utils.XmlUtils.parsePhoneNumberSubscriber(value));
     }
 
     public String marshal(String value) {
-        return (org.openestate.is24.restapi.utils.XmlUtils.printPhoneNumber(value));
+        return (org.openestate.is24.restapi.utils.XmlUtils.printPhoneNumberSubscriber(value));
     }
 
 }

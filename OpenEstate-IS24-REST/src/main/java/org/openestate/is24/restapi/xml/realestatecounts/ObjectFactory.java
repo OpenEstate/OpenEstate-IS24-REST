@@ -37,4 +37,12 @@ public class ObjectFactory {
         return new RealEstateCounts();
     }
 
+    /**
+     * Create an instance of {@link RealEstateCounts.MarketPlacePublishedRealEstatesCount }
+     * 
+     */
+    public RealEstateCounts.MarketPlacePublishedRealEstatesCount createRealEstateCountsMarketPlacePublishedRealEstatesCount() {
+        return new RealEstateCounts.MarketPlacePublishedRealEstatesCount();
+    }
+
 }

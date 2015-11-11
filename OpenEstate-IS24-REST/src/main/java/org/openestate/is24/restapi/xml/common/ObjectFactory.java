@@ -64,6 +64,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link RealtorLogo }
+     * 
+     */
+    public RealtorLogo createRealtorLogo() {
+        return new RealtorLogo();
+    }
+
+    /**
+     * Create an instance of {@link RealtorLogo.Urls }
+     * 
+     */
+    public RealtorLogo.Urls createRealtorLogoUrls() {
+        return new RealtorLogo.Urls();
+    }
+
+    /**
      * Create an instance of {@link Messages }
      * 
      */
@@ -93,14 +109,6 @@ public class ObjectFactory {
      */
     public RealtorContactDetailsList createRealtorContactDetailsList() {
         return new RealtorContactDetailsList();
-    }
-
-    /**
-     * Create an instance of {@link RealtorLogo }
-     * 
-     */
-    public RealtorLogo createRealtorLogo() {
-        return new RealtorLogo();
     }
 
     /**
@@ -661,6 +669,14 @@ public class ObjectFactory {
      */
     public PublishObject.RealEstate createPublishObjectRealEstate() {
         return new PublishObject.RealEstate();
+    }
+
+    /**
+     * Create an instance of {@link RealtorLogo.Urls.Url }
+     * 
+     */
+    public RealtorLogo.Urls.Url createRealtorLogoUrlsUrl() {
+        return new RealtorLogo.Urls.Url();
     }
 
     /**

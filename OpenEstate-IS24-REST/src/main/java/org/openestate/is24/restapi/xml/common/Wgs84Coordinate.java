@@ -66,10 +66,10 @@ public class Wgs84Coordinate
 {
 
     @XmlElement(required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter59 .class)
+    @XmlJavaTypeAdapter(Adapter60 .class)
     protected BigDecimal latitude;
     @XmlElement(required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter60 .class)
+    @XmlJavaTypeAdapter(Adapter61 .class)
     protected BigDecimal longitude;
 
     /**

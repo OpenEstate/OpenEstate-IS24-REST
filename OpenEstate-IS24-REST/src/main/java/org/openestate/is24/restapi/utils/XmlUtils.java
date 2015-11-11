@@ -632,6 +632,21 @@ public final class XmlUtils
   }
 
   /**
+   * Read an {@link Integer} value from XML
+   * from 0 to 99.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
+  public static Integer parsePercent( String value )
+  {
+    return parseInteger( value, 0, 99 );
+  }
+
+  /**
    * Read a {@link String} value from XML
    * with a valid phone number.
    *
@@ -975,6 +990,21 @@ public final class XmlUtils
     {
       throw new IllegalArgumentException( "Can't parse URL '" + value + "'!", ex );
     }
+  }
+
+  /**
+   * Read an {@link Integer} value from XML
+   * from 1000 to 9999.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
+  public static Integer parseYear( String value )
+  {
+    return parseInteger( value, 1000, 9999 );
   }
 
   /**
@@ -1420,6 +1450,24 @@ public final class XmlUtils
   public static String printPassword( String value )
   {
     return printText( value, 5, 40 );
+  }
+
+  /**
+   * Write an {@link Integer} value into XML output
+   * from 0 to 99.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
+  public static String printPercent( Integer value )
+  {
+    return printInteger( value, 0, 99 );
   }
 
   /**
@@ -1915,6 +1963,24 @@ public final class XmlUtils
         "The provided URL NULL is invalid!" );
     }
     return value.toString();
+  }
+
+  /**
+   * Write an {@link Integer} value into XML output
+   * from 1000 to 9999.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
+  public static String printYear( Integer value )
+  {
+    return printInteger( value, 1000, 9999 );
   }
 
   /**

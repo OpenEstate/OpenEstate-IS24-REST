@@ -59,7 +59,7 @@ public class CountryRegion
     @XmlSchemaType(name = "string")
     protected CountryCode country;
     @XmlElement(required = true)
-    @XmlJavaTypeAdapter(Adapter58 .class)
+    @XmlJavaTypeAdapter(Adapter59 .class)
     protected String region;
 
     /**

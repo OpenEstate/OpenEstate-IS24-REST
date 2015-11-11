@@ -52,11 +52,11 @@ public class PriceRange
 {
 
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter12 .class)
+    @XmlJavaTypeAdapter(Adapter13 .class)
     @XmlSchemaType(name = "decimal")
     protected BigDecimal minimal;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter12 .class)
+    @XmlJavaTypeAdapter(Adapter13 .class)
     @XmlSchemaType(name = "decimal")
     protected BigDecimal maximal;
 

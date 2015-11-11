@@ -23,7 +23,7 @@ import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 import org.openestate.is24.restapi.xml.Adapter4;
 import org.openestate.is24.restapi.xml.Adapter5;
-import org.openestate.is24.restapi.xml.common.Adapter12;
+import org.openestate.is24.restapi.xml.common.Adapter13;
 import org.openestate.is24.restapi.xml.common.Address;
 import org.openestate.is24.restapi.xml.common.AreaRangeMandatory;
 import org.openestate.is24.restapi.xml.common.InteriorQuality;
@@ -92,7 +92,7 @@ public class RealEstateProject
     @XmlElement(required = true)
     protected AreaRangeMandatory space;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter12 .class)
+    @XmlJavaTypeAdapter(Adapter13 .class)
     @XmlSchemaType(name = "decimal")
     protected BigDecimal minPriceProQm;
     @XmlElement(required = true, type = String.class)

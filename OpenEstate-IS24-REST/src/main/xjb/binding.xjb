@@ -19,27 +19,16 @@
     <jaxb:javaType name="java.math.BigDecimal" xmlType="is24common:NumberOfRoomsType" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseRoomNr" printMethod="org.openestate.is24.restapi.utils.XmlUtils.printRoomNr" />
     <jaxb:javaType name="java.lang.String" xmlType="is24common:Password" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parsePassword" printMethod="org.openestate.is24.restapi.utils.XmlUtils.printPassword" />
     <jaxb:javaType name="java.math.BigDecimal" xmlType="is24common:PriceMultiplierType" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parsePriceMultiplier" printMethod="org.openestate.is24.restapi.utils.XmlUtils.printPriceMultiplier" />
+    <jaxb:javaType name="java.lang.Integer" xmlType="is24common:percentType" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parsePercent" printMethod="org.openestate.is24.restapi.utils.XmlUtils.printPercent" />
     <jaxb:javaType name="java.lang.Long" xmlType="xsd:int" parseMethod="javax.xml.bind.DatatypeConverter.parseLong" printMethod="javax.xml.bind.DatatypeConverter.printLong" />
     <jaxb:javaType name="java.math.BigDecimal" xmlType="xsd:double" parseMethod="javax.xml.bind.DatatypeConverter.parseDecimal" printMethod="javax.xml.bind.DatatypeConverter.printDecimal" />
 
     <!--<jaxb:javaType name="java.lang.String" xmlType="is24common:OIDType" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseOid" printMethod="org.openestate.is24.restapi.utils.XmlUtils.printOid" />-->
   </jaxb:globalBindings>
 
-  <jaxb:bindings schemaLocation="../xsd/alterationdate-1.0.xsd">
-    <jaxb:schemaBindings>
-      <jaxb:package name="org.openestate.is24.restapi.xml.alterationdate"/>
-    </jaxb:schemaBindings>
-  </jaxb:bindings>
-
   <jaxb:bindings schemaLocation="../xsd/attachmentsorder-1.0.xsd">
     <jaxb:schemaBindings>
       <jaxb:package name="org.openestate.is24.restapi.xml.attachmentsorder"/>
-    </jaxb:schemaBindings>
-  </jaxb:bindings>
-
-  <jaxb:bindings schemaLocation="../xsd/bookingoverview-1.0.xsd">
-    <jaxb:schemaBindings>
-      <jaxb:package name="org.openestate.is24.restapi.xml.bookingoverview"/>
     </jaxb:schemaBindings>
   </jaxb:bindings>
 
@@ -175,7 +164,7 @@
       <jaxb:javaType name="java.lang.Integer" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseInteger99999" printMethod="org.openestate.is24.restapi.utils.XmlUtils.printInteger99999" />
     </jaxb:bindings>
     <jaxb:bindings node="//xsd:group[@name='LivingInformation']//xsd:element[@name='lastRefurbishment']/xsd:simpleType" multiple="false">
-      <jaxb:javaType name="java.lang.Integer" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseInteger9999" printMethod="org.openestate.is24.restapi.utils.XmlUtils.printInteger9999" />
+      <jaxb:javaType name="java.lang.Integer" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseYear" printMethod="org.openestate.is24.restapi.utils.XmlUtils.printYear" />
     </jaxb:bindings>
     <jaxb:bindings node="//xsd:group[@name='LivingInformation']//xsd:element[@name='constructionYear']/xsd:simpleType" multiple="false">
       <jaxb:javaType name="java.lang.Integer" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseInteger9999" printMethod="org.openestate.is24.restapi.utils.XmlUtils.printInteger9999" />
@@ -239,12 +228,6 @@
     </jaxb:schemaBindings>
   </jaxb:bindings>
 
-  <jaxb:bindings schemaLocation="../xsd/productrecommendation-1.0.xsd">
-    <jaxb:schemaBindings>
-      <jaxb:package name="org.openestate.is24.restapi.xml.productrecommendation"/>
-    </jaxb:schemaBindings>
-  </jaxb:bindings>
-
   <jaxb:bindings schemaLocation="../xsd/realEstateCounts-1.0.xsd">
     <jaxb:schemaBindings>
       <jaxb:package name="org.openestate.is24.restapi.xml.realestatecounts"/>
@@ -260,12 +243,6 @@
   <jaxb:bindings schemaLocation="../xsd/realestates-1.0.xsd">
     <jaxb:schemaBindings>
       <jaxb:package name="org.openestate.is24.restapi.xml.realestates"/>
-    </jaxb:schemaBindings>
-  </jaxb:bindings>
-
-  <jaxb:bindings schemaLocation="../xsd/realestatestock-1.0.xsd">
-    <jaxb:schemaBindings>
-      <jaxb:package name="org.openestate.is24.restapi.xml.realestatestock"/>
     </jaxb:schemaBindings>
   </jaxb:bindings>
 
@@ -296,12 +273,6 @@
   <jaxb:bindings schemaLocation="../xsd/videoupload-1.0.xsd">
     <jaxb:schemaBindings>
       <jaxb:package name="org.openestate.is24.restapi.xml.videoupload"/>
-    </jaxb:schemaBindings>
-  </jaxb:bindings>
-
-  <jaxb:bindings schemaLocation="../xsd/zipandlocationtoregion-1.0.xsd">
-    <jaxb:schemaBindings>
-      <jaxb:package name="org.openestate.is24.restapi.xml.zipandlocationtoregion"/>
     </jaxb:schemaBindings>
   </jaxb:bindings>
 

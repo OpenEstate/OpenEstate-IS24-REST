@@ -61,7 +61,7 @@ public class ContactDetails
     implements Cloneable, CopyTo, Equals, ToString
 {
 
-    @XmlJavaTypeAdapter(Adapter57 .class)
+    @XmlJavaTypeAdapter(Adapter58 .class)
     protected String officeHours;
     @XmlAttribute(name = "id")
     protected Long id;

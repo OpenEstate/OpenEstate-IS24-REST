@@ -56,7 +56,7 @@ public class User
     @XmlElement(required = true)
     protected ContactDetails contactDetails;
     @XmlElement(required = true)
-    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlJavaTypeAdapter(Adapter6 .class)
     protected String password;
     protected Long sharedShortlistGroupId;
     @XmlAttribute(name = "id")

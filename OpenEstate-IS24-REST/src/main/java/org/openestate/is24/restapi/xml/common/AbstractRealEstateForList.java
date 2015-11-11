@@ -79,7 +79,7 @@ public abstract class AbstractRealEstateForList
 
     protected String externalId;
     @XmlElement(required = true)
-    @XmlJavaTypeAdapter(Adapter14 .class)
+    @XmlJavaTypeAdapter(Adapter15 .class)
     protected String title;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter2 .class)

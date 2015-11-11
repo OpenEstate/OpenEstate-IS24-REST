@@ -64,10 +64,10 @@ public class FloorRange
 {
 
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter27 .class)
+    @XmlJavaTypeAdapter(Adapter28 .class)
     protected Integer minimal;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter28 .class)
+    @XmlJavaTypeAdapter(Adapter29 .class)
     protected Integer maximal;
 
     /**

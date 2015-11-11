@@ -83,13 +83,13 @@ public class Address
     implements Cloneable, CopyTo, Equals, ToString
 {
 
-    @XmlJavaTypeAdapter(Adapter35 .class)
-    protected String street;
     @XmlJavaTypeAdapter(Adapter36 .class)
-    protected String houseNumber;
+    protected String street;
     @XmlJavaTypeAdapter(Adapter37 .class)
-    protected String postcode;
+    protected String houseNumber;
     @XmlJavaTypeAdapter(Adapter38 .class)
+    protected String postcode;
+    @XmlJavaTypeAdapter(Adapter39 .class)
     protected String city;
     protected CountryRegion internationalCountryRegion;
 

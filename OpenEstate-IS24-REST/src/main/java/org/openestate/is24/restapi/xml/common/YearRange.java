@@ -51,11 +51,11 @@ public class YearRange
 {
 
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter8 .class)
+    @XmlJavaTypeAdapter(Adapter9 .class)
     @XmlSchemaType(name = "positiveInteger")
     protected Integer minimal;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter8 .class)
+    @XmlJavaTypeAdapter(Adapter9 .class)
     @XmlSchemaType(name = "positiveInteger")
     protected Integer maximal;
 

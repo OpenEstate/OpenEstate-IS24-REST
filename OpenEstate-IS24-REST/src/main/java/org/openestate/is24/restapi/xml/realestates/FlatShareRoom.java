@@ -21,7 +21,7 @@ import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 import org.openestate.is24.restapi.xml.Adapter5;
-import org.openestate.is24.restapi.xml.common.Adapter6;
+import org.openestate.is24.restapi.xml.common.Adapter7;
 import org.openestate.is24.restapi.xml.common.ApartmentType;
 import org.openestate.is24.restapi.xml.common.BuildingEnergyRatingType;
 import org.openestate.is24.restapi.xml.common.CourtageInfo;
@@ -287,7 +287,7 @@ public class FlatShareRoom
     @XmlSchemaType(name = "string")
     protected ParkingSituationType parkingSituation;
     @XmlElement(required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter6 .class)
+    @XmlJavaTypeAdapter(Adapter7 .class)
     @XmlSchemaType(name = "int")
     protected Integer flatShareSize;
 

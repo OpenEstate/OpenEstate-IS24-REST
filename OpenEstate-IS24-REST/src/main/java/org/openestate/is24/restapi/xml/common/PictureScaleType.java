@@ -28,6 +28,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="SCALE_AND_CROP"/&gt;
  *     &lt;enumeration value="SCALE"/&gt;
  *     &lt;enumeration value="WHITE_FILLING"/&gt;
+ *     &lt;enumeration value="SCALE_MAX"/&gt;
  *   &lt;/restriction&gt;
  * &lt;/simpleType&gt;
  * </pre>
@@ -131,7 +132,13 @@ public enum PictureScaleType {
      * Template f\u00fcr White filling
      * 
      */
-    WHITE_FILLING("WHITE_FILLING");
+    WHITE_FILLING("WHITE_FILLING"),
+
+    /**
+     * Bild in h\u00f6chster Aufl\u00f6sung
+     * 
+     */
+    SCALE_MAX("SCALE_MAX");
     private final String value;
 
     PictureScaleType(String v) {

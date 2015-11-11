@@ -20,6 +20,7 @@ import org.jvnet.jaxb2_commons.lang.ToString;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
+import org.openestate.is24.restapi.xml.Adapter4;
 
 
 /**
@@ -219,54 +220,54 @@ public class BaseContactDetails
     implements Cloneable, CopyTo, Equals, ToString
 {
 
-    @XmlJavaTypeAdapter(org.openestate.is24.restapi.xml.common.Adapter4 .class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
     protected String email;
     @XmlSchemaType(name = "string")
     protected SalutationType salutation;
-    @XmlJavaTypeAdapter(Adapter39 .class)
-    protected String firstname;
     @XmlJavaTypeAdapter(Adapter40 .class)
-    protected String lastname;
+    protected String firstname;
     @XmlJavaTypeAdapter(Adapter41 .class)
-    protected String faxNumberCountryCode;
+    protected String lastname;
     @XmlJavaTypeAdapter(Adapter42 .class)
-    protected String faxNumberAreaCode;
+    protected String faxNumberCountryCode;
     @XmlJavaTypeAdapter(Adapter43 .class)
-    protected String faxNumberSubscriber;
+    protected String faxNumberAreaCode;
     @XmlJavaTypeAdapter(Adapter44 .class)
-    protected String faxNumber;
+    protected String faxNumberSubscriber;
     @XmlJavaTypeAdapter(Adapter45 .class)
-    protected String phoneNumberCountryCode;
+    protected String faxNumber;
     @XmlJavaTypeAdapter(Adapter46 .class)
-    protected String phoneNumberAreaCode;
+    protected String phoneNumberCountryCode;
     @XmlJavaTypeAdapter(Adapter47 .class)
-    protected String phoneNumberSubscriber;
+    protected String phoneNumberAreaCode;
     @XmlJavaTypeAdapter(Adapter48 .class)
-    protected String phoneNumber;
+    protected String phoneNumberSubscriber;
     @XmlJavaTypeAdapter(Adapter49 .class)
-    protected String cellPhoneNumberCountryCode;
+    protected String phoneNumber;
     @XmlJavaTypeAdapter(Adapter50 .class)
-    protected String cellPhoneNumberAreaCode;
+    protected String cellPhoneNumberCountryCode;
     @XmlJavaTypeAdapter(Adapter51 .class)
-    protected String cellPhoneNumberSubscriber;
+    protected String cellPhoneNumberAreaCode;
     @XmlJavaTypeAdapter(Adapter52 .class)
+    protected String cellPhoneNumberSubscriber;
+    @XmlJavaTypeAdapter(Adapter53 .class)
     protected String cellPhoneNumber;
     protected Address address;
     @XmlSchemaType(name = "string")
     protected CountryCode countryCode;
-    @XmlJavaTypeAdapter(Adapter53 .class)
-    protected String title;
     @XmlJavaTypeAdapter(Adapter54 .class)
-    protected String additionName;
+    protected String title;
     @XmlJavaTypeAdapter(Adapter55 .class)
+    protected String additionName;
+    @XmlJavaTypeAdapter(Adapter56 .class)
     protected String company;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(org.openestate.is24.restapi.xml.Adapter4 .class)
+    @XmlJavaTypeAdapter(Adapter4 .class)
     protected URL homepageUrl;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(org.openestate.is24.restapi.xml.Adapter4 .class)
+    @XmlJavaTypeAdapter(Adapter4 .class)
     protected URL portraitUrl;
-    @XmlJavaTypeAdapter(Adapter56 .class)
+    @XmlJavaTypeAdapter(Adapter57 .class)
     protected String position;
 
     /**

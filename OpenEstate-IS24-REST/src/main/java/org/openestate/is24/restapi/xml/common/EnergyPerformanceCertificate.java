@@ -107,22 +107,22 @@ public class EnergyPerformanceCertificate
     @XmlSchemaType(name = "string")
     protected EnergyEfficiencyClass energyEfficiencyClass;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter20 .class)
+    @XmlJavaTypeAdapter(Adapter21 .class)
     protected BigDecimal electricityConsumption;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter21 .class)
+    @XmlJavaTypeAdapter(Adapter22 .class)
     protected BigDecimal heatingConsumption;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter22 .class)
+    @XmlJavaTypeAdapter(Adapter23 .class)
     protected BigDecimal energyConsumptionElectricity;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter23 .class)
+    @XmlJavaTypeAdapter(Adapter24 .class)
     protected BigDecimal energyConsumptionHeating;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter24 .class)
+    @XmlJavaTypeAdapter(Adapter25 .class)
     protected BigDecimal thermalCharacteristicElectricity;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter25 .class)
+    @XmlJavaTypeAdapter(Adapter26 .class)
     protected BigDecimal thermalCharacteristicHeating;
 
     /**

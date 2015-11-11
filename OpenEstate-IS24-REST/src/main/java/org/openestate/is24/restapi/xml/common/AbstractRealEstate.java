@@ -106,15 +106,15 @@ public abstract class AbstractRealEstate
 {
 
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter15 .class)
-    protected Integer groupNumber;
     @XmlJavaTypeAdapter(Adapter16 .class)
-    protected String descriptionNote;
+    protected Integer groupNumber;
     @XmlJavaTypeAdapter(Adapter17 .class)
-    protected String furnishingNote;
+    protected String descriptionNote;
     @XmlJavaTypeAdapter(Adapter18 .class)
-    protected String locationNote;
+    protected String furnishingNote;
     @XmlJavaTypeAdapter(Adapter19 .class)
+    protected String locationNote;
+    @XmlJavaTypeAdapter(Adapter20 .class)
     protected String otherNote;
     protected Attachments attachments;
     @XmlElement(type = String.class)

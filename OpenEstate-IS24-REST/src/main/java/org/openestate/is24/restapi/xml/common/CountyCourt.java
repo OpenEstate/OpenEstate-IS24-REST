@@ -58,9 +58,9 @@ public class CountyCourt
     implements Cloneable, CopyTo, Equals, ToString
 {
 
-    @XmlJavaTypeAdapter(Adapter29 .class)
-    protected String courtNumber;
     @XmlJavaTypeAdapter(Adapter30 .class)
+    protected String courtNumber;
+    @XmlJavaTypeAdapter(Adapter31 .class)
     protected String name;
 
     /**

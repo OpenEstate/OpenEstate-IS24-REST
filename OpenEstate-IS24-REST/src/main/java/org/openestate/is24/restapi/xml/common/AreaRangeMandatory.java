@@ -52,11 +52,11 @@ public class AreaRangeMandatory
 {
 
     @XmlElement(required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter11 .class)
+    @XmlJavaTypeAdapter(Adapter12 .class)
     @XmlSchemaType(name = "decimal")
     protected BigDecimal minimal;
     @XmlElement(required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter11 .class)
+    @XmlJavaTypeAdapter(Adapter12 .class)
     @XmlSchemaType(name = "decimal")
     protected BigDecimal maximal;
 

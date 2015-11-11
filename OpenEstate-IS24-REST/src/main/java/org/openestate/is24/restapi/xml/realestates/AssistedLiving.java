@@ -21,7 +21,7 @@ import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 import org.openestate.is24.restapi.xml.Adapter1;
 import org.openestate.is24.restapi.xml.Adapter5;
-import org.openestate.is24.restapi.xml.common.Adapter9;
+import org.openestate.is24.restapi.xml.common.Adapter10;
 import org.openestate.is24.restapi.xml.common.BalconyAvailableType;
 import org.openestate.is24.restapi.xml.common.BuildingEnergyRatingType;
 import org.openestate.is24.restapi.xml.common.EnergyPerformanceCertificate;
@@ -174,11 +174,11 @@ public class AssistedLiving
     @XmlSchemaType(name = "string")
     protected YesNotApplicableType loansAvailable;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter9 .class)
+    @XmlJavaTypeAdapter(Adapter10 .class)
     @XmlSchemaType(name = "decimal")
     protected BigDecimal numberOfRoomsFrom;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter9 .class)
+    @XmlJavaTypeAdapter(Adapter10 .class)
     @XmlSchemaType(name = "decimal")
     protected BigDecimal numberOfRoomsTo;
     protected EnergyPerformanceCertificate energyCertificate;
