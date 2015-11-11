@@ -5,6 +5,27 @@ Changelog for OpenEstate-IS24-REST
 0.3-SNAPSHOT (not released yet)
 -------------------------------
 
+### updates
+
+-   Updates and publishings are separately executed during bulk exports.
+-   Always parse / print `decimal`, `double` or `float values in XML as
+    `java.lang.BigDecimal`.
+-   The JAXB classes were regenerated against the latest XSD schemas from IS24.
+-   The following schemas are not provided anymore by IS24. Their corresponding
+    Java classes / packages were removed from this library:
+
+    -   `alterationdate-1.0.xsd`
+    -   `bookingoverview-1.0.xsd`
+    -   `productrecommondation-1.0.xsd`
+    -   `realestatestock-1.0.xsd`
+    -   `zipandlocationtoregion-1.0.xsd`
+
+-   Updated `annotations` library from FindBugs to version 3.0.1u2.
+-   Updated `commons-lang` library to version 3.4.
+-   Updated `jaxb2-basics` libraries to version 0.9.5.
+-   Updated `lorem` library to version 2.0.
+-   Updated HTTP components libraries in the `hc43` module to version 4.3.6.
+
 
 0.2.3 (09 Apr 2015)
 -------------------
