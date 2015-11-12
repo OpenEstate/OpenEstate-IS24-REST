@@ -5,11 +5,14 @@ Changelog for OpenEstate-IS24-REST
 0.3-SNAPSHOT (not released yet)
 -------------------------------
 
-### updates
+### bugfixes
 
 -   Updates and publishings are separately executed during bulk exports.
 -   Always parse / print `xsd:decimal`, `xsd:double` or `xsd:float` values as
     `java.lang.BigDecimal`.
+
+### updates
+
 -   The JAXB classes were regenerated against the latest XSD schemas from IS24.
 -   The following schemas are not provided anymore by IS24. Their corresponding
     Java classes / packages were removed from this library:
