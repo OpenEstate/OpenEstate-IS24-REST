@@ -84,24 +84,19 @@ public final class XmlUtils
   public final static String DEFAULT_ENCODING = "UTF-8";
   private static JAXBContext JAXB = null;
   private final static String JAXB_PACKAGES = ""
-    + "org.openestate.is24.restapi.xml.alterationdate"
-    + ":org.openestate.is24.restapi.xml.attachmentsorder"
-    + ":org.openestate.is24.restapi.xml.bookingoverview"
+    + "org.openestate.is24.restapi.xml.attachmentsorder"
     + ":org.openestate.is24.restapi.xml.common"
     + ":org.openestate.is24.restapi.xml.offerlistelement"
     + ":org.openestate.is24.restapi.xml.offeruser"
     + ":org.openestate.is24.restapi.xml.premiumplacement"
-    + ":org.openestate.is24.restapi.xml.productrecommendation"
     + ":org.openestate.is24.restapi.xml.realestatecounts"
     + ":org.openestate.is24.restapi.xml.realestateproject"
     + ":org.openestate.is24.restapi.xml.realestates"
-    + ":org.openestate.is24.restapi.xml.realestatestock"
     + ":org.openestate.is24.restapi.xml.realtor"
     + ":org.openestate.is24.restapi.xml.realtorbadges"
     + ":org.openestate.is24.restapi.xml.showcaseplacement"
     + ":org.openestate.is24.restapi.xml.topplacement"
-    + ":org.openestate.is24.restapi.xml.videoupload"
-    + ":org.openestate.is24.restapi.xml.zipandlocationtoregion";
+    + ":org.openestate.is24.restapi.xml.videoupload";
   private final static Pattern ANY_TAG_PATTERN = Pattern.compile(
     "<[^<>\\n]*>", Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE );
   private final static Pattern BR_TAG_PATTERN = Pattern.compile(
