@@ -13,13 +13,11 @@ Changelog for OpenEstate-IS24-REST
 -   The JAXB classes were regenerated against the latest XSD schemas from IS24.
 -   The following schemas are not provided anymore by IS24. Their corresponding
     Java classes / packages were removed from this library:
-
     -   `alterationdate-1.0.xsd`
     -   `bookingoverview-1.0.xsd`
     -   `productrecommondation-1.0.xsd`
     -   `realestatestock-1.0.xsd`
     -   `zipandlocationtoregion-1.0.xsd`
-
 -   Updated `annotations` library from FindBugs to version 3.0.1u2.
 -   Updated `commons-lang` library to version 3.4.
 -   Updated `jaxb2-basics` libraries to version 0.9.5.
