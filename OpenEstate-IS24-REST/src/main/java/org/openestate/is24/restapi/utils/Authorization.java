@@ -25,7 +25,7 @@ import java.io.Serializable;
  */
 public class Authorization implements Serializable
 {
-  private final static long serialVersionUID = 1L;
+  private final static long serialVersionUID = -9192150555289246368L;
   //private final static Logger LOGGER = LoggerFactory.getLogger( Authorization.class );
   public final String accessToken;
   public final String accessTokenSecret;

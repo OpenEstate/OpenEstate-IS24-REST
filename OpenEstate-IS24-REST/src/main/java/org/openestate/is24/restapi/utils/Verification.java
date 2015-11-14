@@ -25,7 +25,7 @@ import java.io.Serializable;
  */
 public final class Verification implements Serializable
 {
-  private final static long serialVersionUID = 1L;
+  private final static long serialVersionUID = -4565664511140680767L;
   //private final static Logger LOGGER = LoggerFactory.getLogger( Verification.class );
   public final String verificationUrl;
   public final String requestToken;

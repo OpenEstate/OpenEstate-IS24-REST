@@ -930,7 +930,7 @@ public class ExportHandler
     // Ansprechpartner-ID hinterlegt wurde
     Long is24ContactId = (object.getContact()!=null)?
       object.getContact().getId(): null;
-    if (is24ContactId==null || is24ContactId.longValue()<1)
+    if (is24ContactId==null || is24ContactId<1)
     {
       String externalContactId = (object.getContact()!=null)?
         StringUtils.trimToNull( object.getContact().getExternalId() ): null;
@@ -1366,7 +1366,10 @@ public class ExportHandler
               // Sortierung des Anhangs vormerken
               if (!StreamingVideo.class.isInstance( is24Attachment ))
               {
-                while (attachmentsOrder.containsKey( pos )) pos++;
+                while (attachmentsOrder.containsKey( pos ))
+                {
+                  pos++;
+                }
                 attachmentsOrder.put( pos, is24AttachmentId );
                 //LOGGER.debug( "untouched attachment #" + is24AttachmentId + " (" + StringUtils.trimToEmpty( is24Attachment.getTitle() ) + ") at " + pos );
               }
@@ -1427,7 +1430,10 @@ public class ExportHandler
                   this.client, externalObjectId, is24Attachment, attachFileInput, attachFileName, attachFileMimeType );
 
                 // Sortierung des Anhangs vormerken
-                while (attachmentsOrder.containsKey( pos )) pos++;
+                while (attachmentsOrder.containsKey( pos ))
+                {
+                  pos++;
+                }
                 attachmentsOrder.put( pos, is24AttachmentId );
                 //LOGGER.debug( "new attachment #" + is24AttachmentId + " (" + StringUtils.trimToEmpty( is24Attachment.getTitle() ) + ") at " + pos );
               }

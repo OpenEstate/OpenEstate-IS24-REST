@@ -15,6 +15,7 @@
  */
 package org.openestate.is24.restapi.utils;
 
+import java.io.Serializable;
 import org.apache.commons.lang3.StringUtils;
 
 /**
@@ -26,8 +27,9 @@ import org.apache.commons.lang3.StringUtils;
  * @since 0.2
  * @author Andreas Rudolph <andy@openindex.de>
  */
-public class ExportMessage
+public class ExportMessage implements Serializable
 {
+  private final static long serialVersionUID = -390150486485853025L;
   private final Code code;
   private final String message;
   private final String objectId;

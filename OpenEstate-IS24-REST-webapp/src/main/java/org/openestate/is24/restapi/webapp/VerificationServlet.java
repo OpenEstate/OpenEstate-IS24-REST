@@ -42,6 +42,8 @@ import org.openestate.is24.restapi.utils.Verification;
  */
 public class VerificationServlet extends HttpServlet
 {
+  private final static long serialVersionUID = 4320407955026600846L;
+
   /**
    * A mapping that holds currently started verifications in memory.
    * <p>
@@ -340,7 +342,8 @@ public class VerificationServlet extends HttpServlet
    */
   private final static class VerificationMap extends LinkedHashMap<String, String>
   {
-    private static final int MAX_ENTRIES = 50;
+    private final static long serialVersionUID = -8758568863108598387L;
+    private final static int MAX_ENTRIES = 50;
 
     public void put( Verification verification )
     {

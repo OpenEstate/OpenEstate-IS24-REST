@@ -32,6 +32,7 @@ import org.slf4j.LoggerFactory;
  */
 public class RequestFailedException extends Exception
 {
+  private final static long serialVersionUID = -5913145712963169005L;
   private final static Logger LOGGER = LoggerFactory.getLogger( RequestFailedException.class );
 
   /**
