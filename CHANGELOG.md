@@ -25,6 +25,7 @@ Changelog for OpenEstate-IS24-REST
 -   Updated `commons-lang` library to version 3.4.
 -   Updated `jaxb2-basics` libraries to version 0.9.5.
 -   Updated `lorem` library to version 2.0.
+-   Updated `slf4j` library to version 1.7.13.
 -   Updated HTTP components libraries in the `hc43` module to version 4.3.6.
 
 
