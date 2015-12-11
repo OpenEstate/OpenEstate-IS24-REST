@@ -1534,36 +1534,6 @@ public class ExportHandler
   }
 
   /**
-   * Save a real estate to the Webservice.
-   *
-   * @param object
-   * real estate to save
-   *
-   * @param is24PublishChannels
-   * channels, where the real estate should be published
-   *
-   * @param poolObjectId
-   * real estate ID within export pool
-   *
-   * @return
-   * ID of the processed real estate in the Webservice or null, if the object
-   * was not updated
-   *
-   * @throws IOException
-   * if the operation failed
-   *
-   * @deprecated
-   * This method was splitted into {@link #doUpdateObject(org.openestate.is24.restapi.xml.realestates.RealEstate, java.lang.String)}
-   * and {@link #doPublishObject(long, java.lang.String, org.openestate.is24.restapi.xml.common.PublishChannels)}.
-   * It will be removed with the next major update.
-   */
-  @Deprecated
-  protected Long doUpdateObject( RealEstate object, PublishChannels is24PublishChannels, String poolObjectId ) throws IOException
-  {
-    return doUpdateObject( object, poolObjectId );
-  }
-
-  /**
    * Start the bulk export of an {@link ExportPool}.
    *
    * @param client

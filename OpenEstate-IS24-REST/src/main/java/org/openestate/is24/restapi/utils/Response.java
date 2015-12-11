@@ -71,27 +71,6 @@ public final class Response
    * @param statusMessage
    * HTTP status message
    *
-   * @param body
-   * response body
-   *
-   * @deprecated
-   * use {@link Response#Response(int, java.lang.String, java.lang.String, java.lang.String)} intead
-   */
-  @Deprecated
-  public Response( int statusCode, String statusMessage, String body )
-  {
-    this( statusCode, statusMessage, null, body );
-  }
-
-  /**
-   * Create a response.
-   *
-   * @param statusCode
-   * HTTP status code
-   *
-   * @param statusMessage
-   * HTTP status message
-   *
    * @param requestRefNumber
    * value of the <em>L-IS24-RequestRefnum</em> response header
    *

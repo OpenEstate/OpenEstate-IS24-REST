@@ -1851,45 +1851,6 @@ public final class ImportExport
     }
 
     /**
-     * Call the DELETEbyID method of the Publish Webservice.
-     * <p>
-     * This method removes the attribution of a real estate object to a publish
-     * channel.
-     *
-     * @param client
-     * {@link AbstractClient}, that is used to communicate with the Webservice
-     *
-     * @param is24PublishId
-     * the unique publishing ID, that was returned by
-     * {@link PublishService#post(org.openestate.is24.restapi.AbstractClient, org.openestate.is24.restapi.xml.common.PublishObject)},
-     * for which the publishing is removed
-     *
-     * @return
-     * response of the Webservice after a successful request
-     *
-     * @throws IOException
-     * if communication with the Webservice failed
-     *
-     * @throws OAuthException
-     * if authorization failed
-     *
-     * @throws JAXBException
-     * if XML reading / writing failed
-     *
-     * @throws RequestFailedException
-     * if the Webservice did not respond with a success message
-     *
-     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/publish/delete-by-id.html">DELETEbyID method</a>
-     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/publish.html">Publish Webservice</a>
-     * @deprecated use {@link #delete(org.openestate.is24.restapi.AbstractClient, java.lang.String)} instead
-     */
-    @Deprecated
-    public static Messages deleteById( AbstractClient client, String is24PublishId ) throws IOException, OAuthException, JAXBException, RequestFailedException
-    {
-      return delete( client, is24PublishId );
-    }
-
-    /**
      * Call the GET method of the Publish Webservice.
      * <p>
      * This method returns a list of the publish channels, where a real estate

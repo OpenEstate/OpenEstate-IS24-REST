@@ -332,23 +332,6 @@ public abstract class AbstractClient
   }
 
   /**
-   * Encode a string value for use in an URL.
-   *
-   * @param value
-   * the value to encode
-   *
-   * @return
-   * the encoded value
-   *
-   * @deprecated use {@link #getUrlEncodedValue(java.lang.String)} instead
-   */
-  @Deprecated
-  public static String getEncodedParameterValue( String value )
-  {
-    return getUrlEncodedValue( value );
-  }
-
-  /**
    * Return encoding for transferred data.
    * <p>
    * This function always returns {@link XmlUtils#DEFAULT_ENCODING}.
