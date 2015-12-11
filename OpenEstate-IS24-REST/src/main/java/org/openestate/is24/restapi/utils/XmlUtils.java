@@ -86,6 +86,7 @@ public final class XmlUtils
   private final static String JAXB_PACKAGES = ""
     + "org.openestate.is24.restapi.xml.attachmentsorder"
     + ":org.openestate.is24.restapi.xml.common"
+    + ":org.openestate.is24.restapi.xml.gis"
     + ":org.openestate.is24.restapi.xml.offerlistelement"
     + ":org.openestate.is24.restapi.xml.offeruser"
     + ":org.openestate.is24.restapi.xml.premiumplacement"
