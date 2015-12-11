@@ -13,7 +13,8 @@ Features
 
 -   authentication through [OAuth](http://api.immobilienscout24.de/useful/authentication.html)
 -   read and write XML according to the specifications of the Webservice
--   low level functions to call the [Import/Export-API](http://api.immobilienscout24.de/our-apis/import-export.html)
+-   low level functions to call [Import/Export API](http://api.immobilienscout24.de/our-apis/import-export.html)
+    and [**Geo Information Service API**](http://api.immobilienscout24.de/our-apis/gis.html)
 -   high level functions for the export of multiple real estates (including
     contacts, attachments and streaming videos)
 -   create real estates randomly
@@ -31,7 +32,8 @@ The library is splitted into different components:
     -   Java classes, that represent the [XML schemas](OpenEstate-IS24-REST/src/main/xsd) of the Webservice
     -   XML reading and writing according to the [XML schemas](OpenEstate-IS24-REST/src/main/xsd) of the Webservice
     -   low level methods to access the Webservice
-        (see [`ImportExport.java`](OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/ImportExport.java))
+        (see [`ImportExport.java`](OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/ImportExport.java)
+        and [`GIS.java`](OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/GIS.java))
     -   high level methods for a straightforward export of real estates
         (see [`ExportPool.java`](OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/utils/ExportPool.java)
         and [`ExportHandler.java`](OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/utils/ExportHandler.java))
@@ -130,6 +132,20 @@ operations per day. Contact <service@immobilienscout24.de> if the limit is too
 low for your use case.
 
 
+XML schemas
+-----------
+
+XML specifications for the different webservices are available at:
+
+-   [**Import/Export API**](http://api.immobilienscout24.de/our-apis/import-export.html)
+    -   [XML-Schemas for the *production* system](http://rest.immobilienscout24.de/restapi/api/offer/v1.0/?_wadl&_schema)
+    -   [XML-Schemas for the *sandbox* system](http://rest.sandbox-immobilienscout24.de/restapi/api/offer/v1.0/?_wadl&_schema)
+
+-   [**Geo Information Service API**](http://api.immobilienscout24.de/our-apis/gis.html)
+    -   [XML-Schemas for the *production* system](http://rest.immobilienscout24.de/restapi/api/gis/v1.0/?_wadl&_schema)
+    -   [XML-Schemas for the *sandbox* system](http://rest.sandbox-immobilienscout24.de/restapi/api/gis/v1.0/?_wadl&_schema)
+
+
 Changelog
 ---------
 
@@ -169,6 +185,4 @@ Further informations
 -   [ImmobilienScout24-REST-API Playground](http://playground.immobilienscout24.de/rest/playground)
 -   [API registration for the *production* system](http://rest.immobilienscout24.de/restapi/security/registration)
 -   [API registration for the *sandbox* system](http://rest.sandbox-immobilienscout24.de/restapi/security/registration)
--   [XML-Schemas for the *production* system](http://rest.immobilienscout24.de/restapi/api/offer/v1.0/?_wadl&_schema)
--   [XML-Schemas for the *sandbox* system](http://rest.sandbox-immobilienscout24.de/restapi/api/offer/v1.0/?_wadl&_schema)
 -   [alternative Java SDK by ImmobilienScout24](https://github.com/ImmobilienScout24/restapi-java-sdk)

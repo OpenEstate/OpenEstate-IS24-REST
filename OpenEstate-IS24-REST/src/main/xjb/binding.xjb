@@ -210,6 +210,12 @@
     </jaxb:bindings>
   </jaxb:bindings>
 
+  <jaxb:bindings schemaLocation="../xsd/gis-1.0.xsd">
+    <jaxb:schemaBindings>
+      <jaxb:package name="org.openestate.is24.restapi.xml.gis"/>
+    </jaxb:schemaBindings>
+  </jaxb:bindings>
+
   <jaxb:bindings schemaLocation="../xsd/offerListElement-1.0.xsd">
     <jaxb:schemaBindings>
       <jaxb:package name="org.openestate.is24.restapi.xml.offerlistelement"/>

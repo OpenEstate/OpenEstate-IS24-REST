@@ -5,6 +5,11 @@ Changelog for OpenEstate-IS24-REST
 0.3-SNAPSHOT (not released yet)
 -------------------------------
 
+### new features
+
+-   Low level methods to access [Geo Information Service API](http://api.immobilienscout24.de/our-apis/gis.html)
+    were implemented (see [GIS.java](https://github.com/OpenEstate/OpenEstate-IS24-REST/blob/develop/OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/GIS.java)).
+
 ### bugfixes
 
 -   Updates and publishings are separately executed during bulk exports.

@@ -47,8 +47,13 @@ import org.apache.commons.lang3.SystemUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.openestate.is24.restapi.utils.validator.EmailValidator;
 import org.openestate.is24.restapi.xml.common.Attachment;
+import org.openestate.is24.restapi.xml.common.City;
+import org.openestate.is24.restapi.xml.common.Continent;
+import org.openestate.is24.restapi.xml.common.Country;
 import org.openestate.is24.restapi.xml.common.PublishObject;
+import org.openestate.is24.restapi.xml.common.Quarter;
 import org.openestate.is24.restapi.xml.common.RealtorContactDetails;
+import org.openestate.is24.restapi.xml.common.Region;
 import org.openestate.is24.restapi.xml.realestates.ApartmentBuy;
 import org.openestate.is24.restapi.xml.realestates.ApartmentRent;
 import org.openestate.is24.restapi.xml.realestates.AssistedLiving;
@@ -86,6 +91,7 @@ public final class XmlUtils
   private final static String JAXB_PACKAGES = ""
     + "org.openestate.is24.restapi.xml.attachmentsorder"
     + ":org.openestate.is24.restapi.xml.common"
+    + ":org.openestate.is24.restapi.xml.gis"
     + ":org.openestate.is24.restapi.xml.offerlistelement"
     + ":org.openestate.is24.restapi.xml.offeruser"
     + ":org.openestate.is24.restapi.xml.premiumplacement"
@@ -262,9 +268,25 @@ public final class XmlUtils
       {
         writeXml( (Attachment) object, encoding, prettyPrint, output );
       }
+      else if (object instanceof City)
+      {
+        writeXml( (City) object, encoding, prettyPrint, output );
+      }
+      else if (object instanceof Continent)
+      {
+        writeXml( (Continent) object, encoding, prettyPrint, output );
+      }
+      else if (object instanceof Country)
+      {
+        writeXml( (Country) object, encoding, prettyPrint, output );
+      }
       else if (object instanceof PublishObject)
       {
         writeXml( (PublishObject) object, encoding, prettyPrint, output );
+      }
+      else if (object instanceof Quarter)
+      {
+        writeXml( (Quarter) object, encoding, prettyPrint, output );
       }
       else if (object instanceof RealtorContactDetails)
       {
@@ -273,6 +295,10 @@ public final class XmlUtils
       else if (object instanceof RealEstate)
       {
         writeXml( (RealEstate) object, encoding, prettyPrint, output );
+      }
+      else if (object instanceof Region)
+      {
+        writeXml( (Region) object, encoding, prettyPrint, output );
       }
       else
       {
@@ -2123,6 +2149,357 @@ public final class XmlUtils
   }
 
   /**
+   * Write a {@link City} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param city
+   * object to write
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
+  public static void writeXml( City city, OutputStream output ) throws JAXBException
+  {
+    writeXml( city, DEFAULT_ENCODING, true, output );
+  }
+
+  /**
+   * Write a {@link City} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param city
+   * object to write
+   *
+   * @param encoding
+   * encoding of generated XML output
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
+  public static void writeXml( City city, String encoding, OutputStream output ) throws JAXBException
+  {
+    writeXml( city, encoding, true, output );
+  }
+
+  /**
+   * Write a {@link City} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param city
+   * object to write
+   *
+   * @param encoding
+   * encoding of generated XML output
+   *
+   * @param prettyPrint
+   * enable pretty printing for generated XML output
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
+  public static void writeXml( City city, String encoding, boolean prettyPrint, OutputStream output ) throws JAXBException
+  {
+    writeXml( city, createMarshaller( encoding, prettyPrint ), output );
+  }
+
+  /**
+   * Write a {@link City} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param city
+   * object to write
+   *
+   * @param marshaller
+   * marshaller, that is used for XML generation
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
+  public static void writeXml( City city, Marshaller marshaller, OutputStream output ) throws JAXBException
+  {
+    final org.openestate.is24.restapi.xml.gis.ObjectFactory factory =
+      new org.openestate.is24.restapi.xml.gis.ObjectFactory();
+
+    marshaller.setEventHandler( new ValidationEventHandler()
+    {
+      @Override
+      public boolean handleEvent( ValidationEvent ve )
+      {
+        return true;
+      }
+    });
+
+    marshaller.marshal(
+      factory.createCity( city ), output );
+  }
+
+  /**
+   * Write a {@link Continent} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param continent
+   * object to write
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
+  public static void writeXml( Continent continent, OutputStream output ) throws JAXBException
+  {
+    writeXml( continent, DEFAULT_ENCODING, true, output );
+  }
+
+  /**
+   * Write a {@link Continent} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param continent
+   * object to write
+   *
+   * @param encoding
+   * encoding of generated XML output
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
+  public static void writeXml( Continent continent, String encoding, OutputStream output ) throws JAXBException
+  {
+    writeXml( continent, encoding, true, output );
+  }
+
+  /**
+   * Write a {@link Continent} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param continent
+   * object to write
+   *
+   * @param encoding
+   * encoding of generated XML output
+   *
+   * @param prettyPrint
+   * enable pretty printing for generated XML output
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
+  public static void writeXml( Continent continent, String encoding, boolean prettyPrint, OutputStream output ) throws JAXBException
+  {
+    writeXml( continent, createMarshaller( encoding, prettyPrint ), output );
+  }
+
+  /**
+   * Write a {@link Continent} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param continent
+   * object to write
+   *
+   * @param marshaller
+   * marshaller, that is used for XML generation
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
+  public static void writeXml( Continent continent, Marshaller marshaller, OutputStream output ) throws JAXBException
+  {
+    final org.openestate.is24.restapi.xml.gis.ObjectFactory factory =
+      new org.openestate.is24.restapi.xml.gis.ObjectFactory();
+
+    marshaller.setEventHandler( new ValidationEventHandler()
+    {
+      @Override
+      public boolean handleEvent( ValidationEvent ve )
+      {
+        return true;
+      }
+    });
+
+    marshaller.marshal(
+      factory.createContinent( continent ), output );
+  }
+
+  /**
+   * Write a {@link Country} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param country
+   * object to write
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
+  public static void writeXml( Country country, OutputStream output ) throws JAXBException
+  {
+    writeXml( country, DEFAULT_ENCODING, true, output );
+  }
+
+  /**
+   * Write a {@link Country} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param country
+   * object to write
+   *
+   * @param encoding
+   * encoding of generated XML output
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
+  public static void writeXml( Country country, String encoding, OutputStream output ) throws JAXBException
+  {
+    writeXml( country, encoding, true, output );
+  }
+
+  /**
+   * Write a {@link Country} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param country
+   * object to write
+   *
+   * @param encoding
+   * encoding of generated XML output
+   *
+   * @param prettyPrint
+   * enable pretty printing for generated XML output
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
+  public static void writeXml( Country country, String encoding, boolean prettyPrint, OutputStream output ) throws JAXBException
+  {
+    writeXml( country, createMarshaller( encoding, prettyPrint ), output );
+  }
+
+  /**
+   * Write a {@link Country} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param country
+   * object to write
+   *
+   * @param marshaller
+   * marshaller, that is used for XML generation
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
+  public static void writeXml( Country country, Marshaller marshaller, OutputStream output ) throws JAXBException
+  {
+    final org.openestate.is24.restapi.xml.gis.ObjectFactory factory =
+      new org.openestate.is24.restapi.xml.gis.ObjectFactory();
+
+    marshaller.setEventHandler( new ValidationEventHandler()
+    {
+      @Override
+      public boolean handleEvent( ValidationEvent ve )
+      {
+        return true;
+      }
+    });
+
+    marshaller.marshal(
+      factory.createCountry( country ), output );
+  }
+
+  /**
    * Write a {@link PublishObject} as XML into an {@link OutputStream}.
    * <p>
    * The provided object is wrapped into a {@link JAXBElement} before XML
@@ -2237,6 +2614,123 @@ public final class XmlUtils
 
     marshaller.marshal(
       factory.createPublishObject( publishing ), output );
+  }
+
+  /**
+   * Write a {@link Quarter} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param quarter
+   * object to write
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
+  public static void writeXml( Quarter quarter, OutputStream output ) throws JAXBException
+  {
+    writeXml( quarter, DEFAULT_ENCODING, true, output );
+  }
+
+  /**
+   * Write a {@link Quarter} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param quarter
+   * object to write
+   *
+   * @param encoding
+   * encoding of generated XML output
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
+  public static void writeXml( Quarter quarter, String encoding, OutputStream output ) throws JAXBException
+  {
+    writeXml( quarter, encoding, true, output );
+  }
+
+  /**
+   * Write a {@link Quarter} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param quarter
+   * object to write
+   *
+   * @param encoding
+   * encoding of generated XML output
+   *
+   * @param prettyPrint
+   * enable pretty printing for generated XML output
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
+  public static void writeXml( Quarter quarter, String encoding, boolean prettyPrint, OutputStream output ) throws JAXBException
+  {
+    writeXml( quarter, createMarshaller( encoding, prettyPrint ), output );
+  }
+
+  /**
+   * Write a {@link Quarter} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param quarter
+   * object to write
+   *
+   * @param marshaller
+   * marshaller, that is used for XML generation
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
+  public static void writeXml( Quarter quarter, Marshaller marshaller, OutputStream output ) throws JAXBException
+  {
+    final org.openestate.is24.restapi.xml.gis.ObjectFactory factory =
+      new org.openestate.is24.restapi.xml.gis.ObjectFactory();
+
+    marshaller.setEventHandler( new ValidationEventHandler()
+    {
+      @Override
+      public boolean handleEvent( ValidationEvent ve )
+      {
+        return true;
+      }
+    });
+
+    marshaller.marshal(
+      factory.createQuarter( quarter ), output );
   }
 
   /**
@@ -2579,5 +3073,122 @@ public final class XmlUtils
       marshaller.marshal(
         factory.createRealEstate( realEstate ), output );
     }
+  }
+
+  /**
+   * Write a {@link Region} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param region
+   * object to write
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
+  public static void writeXml( Region region, OutputStream output ) throws JAXBException
+  {
+    writeXml( region, DEFAULT_ENCODING, true, output );
+  }
+
+  /**
+   * Write a {@link Region} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param region
+   * object to write
+   *
+   * @param encoding
+   * encoding of generated XML output
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
+  public static void writeXml( Region region, String encoding, OutputStream output ) throws JAXBException
+  {
+    writeXml( region, encoding, true, output );
+  }
+
+  /**
+   * Write a {@link Region} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param region
+   * object to write
+   *
+   * @param encoding
+   * encoding of generated XML output
+   *
+   * @param prettyPrint
+   * enable pretty printing for generated XML output
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
+  public static void writeXml( Region region, String encoding, boolean prettyPrint, OutputStream output ) throws JAXBException
+  {
+    writeXml( region, createMarshaller( encoding, prettyPrint ), output );
+  }
+
+  /**
+   * Write a {@link Region} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param region
+   * object to write
+   *
+   * @param marshaller
+   * marshaller, that is used for XML generation
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
+  public static void writeXml( Region region, Marshaller marshaller, OutputStream output ) throws JAXBException
+  {
+    final org.openestate.is24.restapi.xml.gis.ObjectFactory factory =
+      new org.openestate.is24.restapi.xml.gis.ObjectFactory();
+
+    marshaller.setEventHandler( new ValidationEventHandler()
+    {
+      @Override
+      public boolean handleEvent( ValidationEvent ve )
+      {
+        return true;
+      }
+    });
+
+    marshaller.marshal(
+      factory.createRegion( region ), output );
   }
 }
