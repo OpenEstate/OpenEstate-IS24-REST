@@ -7,6 +7,8 @@ Changelog for OpenEstate-IS24-REST
 
 ### new features
 
+-   The library is available through [Maven Central Repository](http://search.maven.org/#search|ga|1|org.openestate.is24)
+    from this release on.
 -   Low level methods to access [Geo Information Service API](http://api.immobilienscout24.de/our-apis/gis.html)
     were implemented (see [`GIS.java`](https://github.com/OpenEstate/OpenEstate-IS24-REST/blob/develop/OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/GIS.java)).
 
