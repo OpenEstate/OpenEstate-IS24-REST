@@ -28,9 +28,9 @@ import org.openestate.is24.restapi.hc43.HttpComponents43Client;
 @SuppressFBWarnings
 public class HttpComponents43ClientExample
 {
-  final static String WEBSERVICE_URL = AbstractClient.LIVE_API;
-  final static String CONSUMER_KEY = "my consumer key";
-  final static String CONSUMER_SECRET = "my consumer secret";
+  private final static String WEBSERVICE_URL = AbstractClient.LIVE_API;
+  private final static String CONSUMER_KEY = "my consumer key";
+  private final static String CONSUMER_SECRET = "my consumer secret";
 
   /**
    * Main function.

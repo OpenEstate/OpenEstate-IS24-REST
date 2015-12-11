@@ -33,13 +33,13 @@ import org.openestate.is24.restapi.xml.realestates.RealEstate;
  */
 public class DownloadRealEstateExample
 {
-  final static String WEBSERVICE_URL = AbstractClient.LIVE_API;
-  final static String CONSUMER_KEY = "my consumer key";
-  final static String CONSUMER_SECRET = "my consumer secret";
-  final static String ACCESS_KEY = "user's access key";
-  final static String ACCESS_SECRET = "user's access secret";
-  final static long is24ObjectId = 123;
-  final static String externalObjectId = "123";
+  private final static String WEBSERVICE_URL = AbstractClient.LIVE_API;
+  private final static String CONSUMER_KEY = "my consumer key";
+  private final static String CONSUMER_SECRET = "my consumer secret";
+  private final static String ACCESS_KEY = "user's access key";
+  private final static String ACCESS_SECRET = "user's access secret";
+  private final static long is24ObjectId = 123;
+  private final static String externalObjectId = "123";
 
   /**
    * Main function.
@@ -74,9 +74,9 @@ public class DownloadRealEstateExample
       }
       else
       {
-          String xml = XmlUtils.marshal( object, "UTF-8", true );
-          System.out.println( "title '" + object.getTitle() +  "'" );
-          System.out.println( xml );
+        String xml = XmlUtils.marshal( object, "UTF-8", true );
+        System.out.println( "title '" + object.getTitle() +  "'" );
+        System.out.println( xml );
       }
     }
     catch (RequestFailedException ex)
@@ -109,9 +109,9 @@ public class DownloadRealEstateExample
       }
       else
       {
-          String xml = XmlUtils.marshal( object, "UTF-8", true );
-          System.out.println( "title '" + object.getTitle() +  "'" );
-          System.out.println( xml );
+        String xml = XmlUtils.marshal( object, "UTF-8", true );
+        System.out.println( "title '" + object.getTitle() +  "'" );
+        System.out.println( xml );
       }
     }
     catch (RequestFailedException ex)

@@ -32,10 +32,10 @@ import org.openestate.is24.restapi.utils.Verification;
  */
 public class VerificationExample
 {
-  final static String WEBSERVICE_URL = AbstractClient.LIVE_API;
-  final static String CONSUMER_KEY = "my consumer key";
-  final static String CONSUMER_SECRET = "my consumer secret";
-  final static String CALLBACK_URL = "http://mywebsite.com/is24-callback.php";
+  private final static String WEBSERVICE_URL = AbstractClient.LIVE_API;
+  private final static String CONSUMER_KEY = "my consumer key";
+  private final static String CONSUMER_SECRET = "my consumer secret";
+  private final static String CALLBACK_URL = "http://mywebsite.com/is24-callback.php";
 
   /**
    * Main function.
