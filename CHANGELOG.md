@@ -8,7 +8,7 @@ Changelog for OpenEstate-IS24-REST
 ### new features
 
 -   Low level methods to access [Geo Information Service API](http://api.immobilienscout24.de/our-apis/gis.html)
-    were implemented (see [GIS.java](https://github.com/OpenEstate/OpenEstate-IS24-REST/blob/develop/OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/GIS.java)).
+    were implemented (see [`GIS.java`](https://github.com/OpenEstate/OpenEstate-IS24-REST/blob/develop/OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/GIS.java)).
 
 ### bugfixes
 
@@ -19,6 +19,9 @@ Changelog for OpenEstate-IS24-REST
 ### updates
 
 -   The JAXB classes were regenerated against the latest XSD schemas from IS24.
+-   [`Authorization`](https://github.com/OpenEstate/OpenEstate-IS24-REST/blob/develop/OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/utils/Authorization.java) and
+    [`Verification`](https://github.com/OpenEstate/OpenEstate-IS24-REST/blob/develop/OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/utils/Verification.java)
+    classes are implementing [`java.io.Serializable`](https://docs.oracle.com/javase/7/docs/api/java/io/Serializable.html).
 -   The following schemas are not provided anymore by IS24. Their corresponding
     Java classes / packages were removed from this library:
     -   `alterationdate-1.0.xsd`
@@ -26,6 +29,8 @@ Changelog for OpenEstate-IS24-REST
     -   `productrecommondation-1.0.xsd`
     -   `realestatestock-1.0.xsd`
     -   `zipandlocationtoregion-1.0.xsd`
+-   Classes and methods, that were marked as deprecated in 0.2.x versions
+    have been removed.
 -   Updated `annotations` library from FindBugs to version 3.0.1u2.
 -   Updated `commons-lang` library to version 3.4.
 -   Updated `jaxb2-basics` libraries to version 0.10.0.
