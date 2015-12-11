@@ -164,11 +164,9 @@ Todo
 ----
 
 -   further testing
--   publish at Maven Central Repository
 -   implement other API's - e.g.
     [Expose API](http://api.immobilienscout24.de/our-apis/expose.html),
     [Search API](http://api.immobilienscout24.de/our-apis/search.html),
-    [Geo Information Service API](http://api.immobilienscout24.de/our-apis/gis.html),
     [Product Valuation Services API](http://api.immobilienscout24.de/our-apis/valuation.html),
     [Construction Financing API](http://api.immobilienscout24.de/our-apis/construction-financing.html)
 
