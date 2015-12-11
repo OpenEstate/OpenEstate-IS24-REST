@@ -14,7 +14,7 @@ Features
 -   authentication through [OAuth](http://api.immobilienscout24.de/useful/authentication.html)
 -   read and write XML according to the specifications of the Webservice
 -   low level functions to call [Import/Export API](http://api.immobilienscout24.de/our-apis/import-export.html)
-    and [**Geo Information Service API**](http://api.immobilienscout24.de/our-apis/gis.html)
+    and [Geo Information Service API](http://api.immobilienscout24.de/our-apis/gis.html)
 -   high level functions for the export of multiple real estates (including
     contacts, attachments and streaming videos)
 -   create real estates randomly
