@@ -2,8 +2,8 @@ Changelog for OpenEstate-IS24-REST
 ==================================
 
 
-0.3-SNAPSHOT (not released yet)
--------------------------------
+0.3 (12 Dec 2015)
+-----------------
 
 ### new features
 
@@ -11,7 +11,7 @@ Changelog for OpenEstate-IS24-REST
     from this release on. See [documentation page about Maven](https://github.com/OpenEstate/OpenEstate-IS24-REST/wiki/Integration-with-Maven)
     for more informations.
 -   Low level methods to access [Geo Information Service API](http://api.immobilienscout24.de/our-apis/gis.html)
-    were implemented (see [`GIS.java`](https://github.com/OpenEstate/OpenEstate-IS24-REST/blob/develop/OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/GIS.java)).
+    were implemented (see [`GIS.java`](https://github.com/OpenEstate/OpenEstate-IS24-REST/blob/v0.3/OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/GIS.java)).
 
 ### bugfixes
 
@@ -22,8 +22,8 @@ Changelog for OpenEstate-IS24-REST
 ### updates
 
 -   The JAXB classes were regenerated against the latest XSD schemas from IS24.
--   [`Authorization`](https://github.com/OpenEstate/OpenEstate-IS24-REST/blob/develop/OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/utils/Authorization.java) and
-    [`Verification`](https://github.com/OpenEstate/OpenEstate-IS24-REST/blob/develop/OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/utils/Verification.java)
+-   [`Authorization`](https://github.com/OpenEstate/OpenEstate-IS24-REST/blob/v0.3/OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/utils/Authorization.java) and
+    [`Verification`](https://github.com/OpenEstate/OpenEstate-IS24-REST/blob/v0.3/OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/utils/Verification.java)
     classes are implementing [`java.io.Serializable`](https://docs.oracle.com/javase/7/docs/api/java/io/Serializable.html).
 -   The following schemas are not provided anymore by IS24. Their corresponding
     Java classes / packages were removed from this library:
