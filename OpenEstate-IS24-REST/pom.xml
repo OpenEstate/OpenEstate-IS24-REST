@@ -15,6 +15,7 @@
   <packaging>jar</packaging>
 
   <name>OpenEstate-IS24-REST</name>
+  <description>OpenEstate-IS24-REST is a client library for the REST-Webservice of ImmobilienScout24.de written in Java.</description>
   <url>http://openestate.org</url>
   <organization>
     <name>OpenEstate</name>
