@@ -11,14 +11,14 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="SalutationType">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="FEMALE"/>
- *     &lt;enumeration value="MALE"/>
- *     &lt;enumeration value="COMPANY"/>
- *     &lt;enumeration value="NO_SALUTATION"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="SalutationType"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="FEMALE"/&gt;
+ *     &lt;enumeration value="MALE"/&gt;
+ *     &lt;enumeration value="COMPANY"/&gt;
+ *     &lt;enumeration value="NO_SALUTATION"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  * 
  */

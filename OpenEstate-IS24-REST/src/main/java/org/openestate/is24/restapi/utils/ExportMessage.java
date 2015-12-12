@@ -15,6 +15,7 @@
  */
 package org.openestate.is24.restapi.utils;
 
+import java.io.Serializable;
 import org.apache.commons.lang3.StringUtils;
 
 /**
@@ -26,8 +27,9 @@ import org.apache.commons.lang3.StringUtils;
  * @since 0.2
  * @author Andreas Rudolph <andy@openindex.de>
  */
-public class ExportMessage
+public class ExportMessage implements Serializable
 {
+  private final static long serialVersionUID = -390150486485853025L;
   private final Code code;
   private final String message;
   private final String objectId;
@@ -44,7 +46,7 @@ public class ExportMessage
   }
 
   /**
-   * Returns message code.
+   * Return message code.
    *
    * @return
    * message code
@@ -55,7 +57,7 @@ public class ExportMessage
   }
 
   /**
-   * Returns the contact ID, that this message is assigned to.
+   * Return the contact ID, that this message is assigned to.
    *
    * @return
    * contact ID or null, if no contact is assigned to the message
@@ -66,7 +68,7 @@ public class ExportMessage
   }
 
   /**
-   * Returns the unique identifier of the failed HTTP request.
+   * Return the unique identifier of the failed HTTP request.
    * <p>
    * This values was passed through the <em>L-IS24-RequestRefnum</em> header
    * of the HTTP response.
@@ -82,7 +84,7 @@ public class ExportMessage
   }
 
   /**
-   * Returns message level.
+   * Return message level.
    *
    * @return
    * message level
@@ -93,7 +95,7 @@ public class ExportMessage
   }
 
   /**
-   * Returns message text.
+   * Return message text.
    *
    * @return
    * message text
@@ -104,7 +106,7 @@ public class ExportMessage
   }
 
   /**
-   * Returns the real estate ID, that this message is assigned to.
+   * Return the real estate ID, that this message is assigned to.
    *
    * @return
    * real estate ID or null, if no real estate is assigned to the message
@@ -115,7 +117,7 @@ public class ExportMessage
   }
 
   /**
-   * Checks, if the message is an error.
+   * Check, if the message is an error.
    *
    * @return
    * true, if the message is an error
@@ -126,7 +128,7 @@ public class ExportMessage
   }
 
   /**
-   * Checks, if the message is assigned to a certain object.
+   * Check, if the message is assigned to a certain object.
    *
    * @return
    * true, if the message is assigned to a contact or real estate
@@ -138,7 +140,7 @@ public class ExportMessage
   }
 
   /**
-   * Checks, if the message is a notice.
+   * Check, if the message is a notice.
    *
    * @return
    * true, if the message is a notice
@@ -149,7 +151,7 @@ public class ExportMessage
   }
 
   /**
-   * Checks, if the message is a warning.
+   * Check, if the message is a warning.
    *
    * @return
    * true, if the message is a warning
@@ -160,7 +162,7 @@ public class ExportMessage
   }
 
   /**
-   * Creates a message for a contact person.
+   * Create a message for a contact person.
    *
    * @param contactId
    * contact ID
@@ -180,7 +182,7 @@ public class ExportMessage
   }
 
   /**
-   * Creates a message for a contact person.
+   * Create a message for a contact person.
    *
    * @param contactId
    * contact ID
@@ -205,7 +207,7 @@ public class ExportMessage
   }
 
   /**
-   * Creates a general message.
+   * Create a general message.
    *
    * @param code
    * message code
@@ -222,7 +224,7 @@ public class ExportMessage
   }
 
   /**
-   * Creates a general message.
+   * Create a general message.
    *
    * @param code
    * message code
@@ -244,7 +246,7 @@ public class ExportMessage
   }
 
   /**
-   * Creates a message for a real estate.
+   * Create a message for a real estate.
    *
    * @param objectId
    * real estate ID
@@ -264,7 +266,7 @@ public class ExportMessage
   }
 
   /**
-   * Creates a message for a real estate.
+   * Create a message for a real estate.
    *
    * @param objectId
    * real estate ID
@@ -327,7 +329,7 @@ public class ExportMessage
     }
 
     /**
-     * Returns the corresponding severity level of the message code.
+     * Return the corresponding severity level of the message code.
      *
      * @return
      * severity level of the message code
@@ -338,7 +340,7 @@ public class ExportMessage
     }
 
     /**
-     * Checks, if the current code is an error.
+     * Check, if the current code is an error.
      *
      * @return
      * true, if the current code is an error
@@ -349,7 +351,7 @@ public class ExportMessage
     }
 
     /**
-     * Checks, if the current code is a notice.
+     * Check, if the current code is a notice.
      *
      * @return
      * true, if the current code is a notice
@@ -360,7 +362,7 @@ public class ExportMessage
     }
 
     /**
-     * Checks, if the current code is a warning.
+     * Check, if the current code is a warning.
      *
      * @return
      * true, if the current code is a warning

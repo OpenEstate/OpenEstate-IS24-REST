@@ -11,14 +11,14 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="RentScopeType">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="NET_RENT"/>
- *     &lt;enumeration value="GROSS_RENT"/>
- *     &lt;enumeration value="INCONSISTENT_WARM_RENT"/>
- *     &lt;enumeration value="WARM_RENT"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="RentScopeType"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="NET_RENT"/&gt;
+ *     &lt;enumeration value="GROSS_RENT"/&gt;
+ *     &lt;enumeration value="INCONSISTENT_WARM_RENT"/&gt;
+ *     &lt;enumeration value="WARM_RENT"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  * 
  */

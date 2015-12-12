@@ -24,8 +24,8 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _Topplacement_QNAME = new QName("http://rest.immobilienscout24.de/schema/offer/topplacement/1.0", "topplacement");
     private final static QName _Topplacements_QNAME = new QName("http://rest.immobilienscout24.de/schema/offer/topplacement/1.0", "topplacements");
+    private final static QName _Topplacement_QNAME = new QName("http://rest.immobilienscout24.de/schema/offer/topplacement/1.0", "topplacement");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: org.openestate.is24.restapi.xml.topplacement
@@ -51,21 +51,21 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Topplacement }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://rest.immobilienscout24.de/schema/offer/topplacement/1.0", name = "topplacement")
-    public JAXBElement<Topplacement> createTopplacement(Topplacement value) {
-        return new JAXBElement<Topplacement>(_Topplacement_QNAME, Topplacement.class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link Topplacements }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://rest.immobilienscout24.de/schema/offer/topplacement/1.0", name = "topplacements")
     public JAXBElement<Topplacements> createTopplacements(Topplacements value) {
         return new JAXBElement<Topplacements>(_Topplacements_QNAME, Topplacements.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Topplacement }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://rest.immobilienscout24.de/schema/offer/topplacement/1.0", name = "topplacement")
+    public JAXBElement<Topplacement> createTopplacement(Topplacement value) {
+        return new JAXBElement<Topplacement>(_Topplacement_QNAME, Topplacement.class, null, value);
     }
 
 }

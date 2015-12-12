@@ -11,21 +11,21 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="RealEstateCondition">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="NO_INFORMATION"/>
- *     &lt;enumeration value="FIRST_TIME_USE"/>
- *     &lt;enumeration value="FIRST_TIME_USE_AFTER_REFURBISHMENT"/>
- *     &lt;enumeration value="MINT_CONDITION"/>
- *     &lt;enumeration value="REFURBISHED"/>
- *     &lt;enumeration value="MODERNIZED"/>
- *     &lt;enumeration value="FULLY_RENOVATED"/>
- *     &lt;enumeration value="WELL_KEPT"/>
- *     &lt;enumeration value="NEED_OF_RENOVATION"/>
- *     &lt;enumeration value="NEGOTIABLE"/>
- *     &lt;enumeration value="RIPE_FOR_DEMOLITION"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="RealEstateCondition"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="NO_INFORMATION"/&gt;
+ *     &lt;enumeration value="FIRST_TIME_USE"/&gt;
+ *     &lt;enumeration value="FIRST_TIME_USE_AFTER_REFURBISHMENT"/&gt;
+ *     &lt;enumeration value="MINT_CONDITION"/&gt;
+ *     &lt;enumeration value="REFURBISHED"/&gt;
+ *     &lt;enumeration value="MODERNIZED"/&gt;
+ *     &lt;enumeration value="FULLY_RENOVATED"/&gt;
+ *     &lt;enumeration value="WELL_KEPT"/&gt;
+ *     &lt;enumeration value="NEED_OF_RENOVATION"/&gt;
+ *     &lt;enumeration value="NEGOTIABLE"/&gt;
+ *     &lt;enumeration value="RIPE_FOR_DEMOLITION"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  * 
  */

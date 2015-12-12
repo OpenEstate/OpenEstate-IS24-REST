@@ -1,9 +1,11 @@
 
 package org.openestate.is24.restapi.xml.realestates;
 
+import java.math.BigDecimal;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.jvnet.jaxb2_commons.lang.CopyStrategy;
@@ -17,6 +19,7 @@ import org.jvnet.jaxb2_commons.lang.ToString;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
+import org.openestate.is24.restapi.xml.Adapter1;
 import org.openestate.is24.restapi.xml.common.ApartmentType;
 import org.openestate.is24.restapi.xml.common.BuildingEnergyRatingType;
 import org.openestate.is24.restapi.xml.common.CourtageInfo;
@@ -40,15 +43,15 @@ import org.openestate.is24.restapi.xml.common.YesNotApplicableType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="ApartmentBuy">
- *   &lt;complexContent>
- *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/realestates/1.0}RealEstate">
- *       &lt;sequence>
- *         &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}ExtendedApartmentBuyGroup"/>
- *       &lt;/sequence>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="ApartmentBuy"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/realestates/1.0}RealEstate"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}ExtendedApartmentBuyGroup"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/extension&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -103,61 +106,90 @@ public class ApartmentBuy
     implements Cloneable, CopyTo, Equals, ToString
 {
 
+    @XmlSchemaType(name = "string")
     protected ApartmentType apartmentType;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter15 .class)
+    @XmlJavaTypeAdapter(Adapter9 .class)
     protected Integer floor;
     protected Boolean lift;
     @Deprecated
     protected Boolean assistedLiving;
     protected EnergyPerformanceCertificate energyCertificate;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType cellar;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType handicappedAccessible;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlJavaTypeAdapter(Adapter10 .class)
     protected Integer numberOfParkingSpaces;
+    @XmlSchemaType(name = "string")
     protected RealEstateCondition condition;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter2 .class)
+    @XmlJavaTypeAdapter(Adapter11 .class)
     protected Integer lastRefurbishment;
+    @XmlSchemaType(name = "string")
     protected InteriorQuality interiorQuality;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlJavaTypeAdapter(Adapter12 .class)
     protected Integer constructionYear;
     protected Boolean constructionYearUnknown;
-    @XmlJavaTypeAdapter(Adapter4 .class)
+    @XmlJavaTypeAdapter(Adapter13 .class)
     protected String freeFrom;
+    @XmlSchemaType(name = "string")
     @Deprecated
     protected HeatingType heatingType;
+    @XmlSchemaType(name = "string")
     protected HeatingTypeEnev2014 heatingTypeEnev2014;
     @Deprecated
     protected FiringTypes firingTypes;
     protected EnergySourcesEnev2014 energySourcesEnev2014;
+    @XmlSchemaType(name = "string")
     protected BuildingEnergyRatingType buildingEnergyRatingType;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter5 .class)
-    protected Double thermalCharacteristic;
+    @XmlJavaTypeAdapter(Adapter14 .class)
+    protected BigDecimal thermalCharacteristic;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType energyConsumptionContainsWarmWater;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter6 .class)
+    @XmlJavaTypeAdapter(Adapter15 .class)
     protected Integer numberOfFloors;
-    protected Double usableFloorSpace;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter7 .class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal usableFloorSpace;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter16 .class)
     protected Integer numberOfBedRooms;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter8 .class)
+    @XmlJavaTypeAdapter(Adapter17 .class)
     protected Integer numberOfBathRooms;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType guestToilet;
+    @XmlSchemaType(name = "string")
     protected ParkingSpaceType parkingSpaceType;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType rented;
-    protected Double rentalIncome;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal rentalIncome;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType listed;
-    protected Double parkingSpacePrice;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal parkingSpacePrice;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType summerResidencePractical;
     protected Price price;
-    protected double livingSpace;
-    protected double numberOfRooms;
+    @XmlElement(required = true, type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal livingSpace;
+    @XmlElement(required = true, type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal numberOfRooms;
     protected Boolean energyPerformanceCertificate;
     protected Boolean builtInKitchen;
     protected Boolean balcony;
@@ -165,7 +197,10 @@ public class ApartmentBuy
     protected Boolean garden;
     @XmlElement(required = true)
     protected CourtageInfo courtage;
-    protected Double serviceCharge;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal serviceCharge;
 
     /**
      * Gets the value of the apartmentType property.
@@ -637,7 +672,7 @@ public class ApartmentBuy
      *     {@link String }
      *     
      */
-    public Double getThermalCharacteristic() {
+    public BigDecimal getThermalCharacteristic() {
         return thermalCharacteristic;
     }
 
@@ -649,7 +684,7 @@ public class ApartmentBuy
      *     {@link String }
      *     
      */
-    public void setThermalCharacteristic(Double value) {
+    public void setThermalCharacteristic(BigDecimal value) {
         this.thermalCharacteristic = value;
     }
 
@@ -706,10 +741,10 @@ public class ApartmentBuy
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getUsableFloorSpace() {
+    public BigDecimal getUsableFloorSpace() {
         return usableFloorSpace;
     }
 
@@ -718,10 +753,10 @@ public class ApartmentBuy
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setUsableFloorSpace(Double value) {
+    public void setUsableFloorSpace(BigDecimal value) {
         this.usableFloorSpace = value;
     }
 
@@ -850,10 +885,10 @@ public class ApartmentBuy
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getRentalIncome() {
+    public BigDecimal getRentalIncome() {
         return rentalIncome;
     }
 
@@ -862,10 +897,10 @@ public class ApartmentBuy
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setRentalIncome(Double value) {
+    public void setRentalIncome(BigDecimal value) {
         this.rentalIncome = value;
     }
 
@@ -898,10 +933,10 @@ public class ApartmentBuy
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getParkingSpacePrice() {
+    public BigDecimal getParkingSpacePrice() {
         return parkingSpacePrice;
     }
 
@@ -910,10 +945,10 @@ public class ApartmentBuy
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setParkingSpacePrice(Double value) {
+    public void setParkingSpacePrice(BigDecimal value) {
         this.parkingSpacePrice = value;
     }
 
@@ -968,32 +1003,48 @@ public class ApartmentBuy
     /**
      * Gets the value of the livingSpace property.
      * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public double getLivingSpace() {
+    public BigDecimal getLivingSpace() {
         return livingSpace;
     }
 
     /**
      * Sets the value of the livingSpace property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setLivingSpace(double value) {
+    public void setLivingSpace(BigDecimal value) {
         this.livingSpace = value;
     }
 
     /**
      * Gets the value of the numberOfRooms property.
      * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public double getNumberOfRooms() {
+    public BigDecimal getNumberOfRooms() {
         return numberOfRooms;
     }
 
     /**
      * Sets the value of the numberOfRooms property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setNumberOfRooms(double value) {
+    public void setNumberOfRooms(BigDecimal value) {
         this.numberOfRooms = value;
     }
 
@@ -1146,10 +1197,10 @@ public class ApartmentBuy
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getServiceCharge() {
+    public BigDecimal getServiceCharge() {
         return serviceCharge;
     }
 
@@ -1158,10 +1209,10 @@ public class ApartmentBuy
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setServiceCharge(Double value) {
+    public void setServiceCharge(BigDecimal value) {
         this.serviceCharge = value;
     }
 
@@ -1277,7 +1328,7 @@ public class ApartmentBuy
             strategy.appendField(locator, this, "buildingEnergyRatingType", buffer, theBuildingEnergyRatingType);
         }
         {
-            Double theThermalCharacteristic;
+            BigDecimal theThermalCharacteristic;
             theThermalCharacteristic = this.getThermalCharacteristic();
             strategy.appendField(locator, this, "thermalCharacteristic", buffer, theThermalCharacteristic);
         }
@@ -1292,7 +1343,7 @@ public class ApartmentBuy
             strategy.appendField(locator, this, "numberOfFloors", buffer, theNumberOfFloors);
         }
         {
-            Double theUsableFloorSpace;
+            BigDecimal theUsableFloorSpace;
             theUsableFloorSpace = this.getUsableFloorSpace();
             strategy.appendField(locator, this, "usableFloorSpace", buffer, theUsableFloorSpace);
         }
@@ -1322,7 +1373,7 @@ public class ApartmentBuy
             strategy.appendField(locator, this, "rented", buffer, theRented);
         }
         {
-            Double theRentalIncome;
+            BigDecimal theRentalIncome;
             theRentalIncome = this.getRentalIncome();
             strategy.appendField(locator, this, "rentalIncome", buffer, theRentalIncome);
         }
@@ -1332,7 +1383,7 @@ public class ApartmentBuy
             strategy.appendField(locator, this, "listed", buffer, theListed);
         }
         {
-            Double theParkingSpacePrice;
+            BigDecimal theParkingSpacePrice;
             theParkingSpacePrice = this.getParkingSpacePrice();
             strategy.appendField(locator, this, "parkingSpacePrice", buffer, theParkingSpacePrice);
         }
@@ -1347,12 +1398,12 @@ public class ApartmentBuy
             strategy.appendField(locator, this, "price", buffer, thePrice);
         }
         {
-            double theLivingSpace;
+            BigDecimal theLivingSpace;
             theLivingSpace = this.getLivingSpace();
             strategy.appendField(locator, this, "livingSpace", buffer, theLivingSpace);
         }
         {
-            double theNumberOfRooms;
+            BigDecimal theNumberOfRooms;
             theNumberOfRooms = this.getNumberOfRooms();
             strategy.appendField(locator, this, "numberOfRooms", buffer, theNumberOfRooms);
         }
@@ -1387,7 +1438,7 @@ public class ApartmentBuy
             strategy.appendField(locator, this, "courtage", buffer, theCourtage);
         }
         {
-            Double theServiceCharge;
+            BigDecimal theServiceCharge;
             theServiceCharge = this.getServiceCharge();
             strategy.appendField(locator, this, "serviceCharge", buffer, theServiceCharge);
         }
@@ -1561,9 +1612,9 @@ public class ApartmentBuy
                 copy.buildingEnergyRatingType = null;
             }
             if (this.thermalCharacteristic!= null) {
-                Double sourceThermalCharacteristic;
+                BigDecimal sourceThermalCharacteristic;
                 sourceThermalCharacteristic = this.getThermalCharacteristic();
-                Double copyThermalCharacteristic = ((Double) strategy.copy(LocatorUtils.property(locator, "thermalCharacteristic", sourceThermalCharacteristic), sourceThermalCharacteristic));
+                BigDecimal copyThermalCharacteristic = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "thermalCharacteristic", sourceThermalCharacteristic), sourceThermalCharacteristic));
                 copy.setThermalCharacteristic(copyThermalCharacteristic);
             } else {
                 copy.thermalCharacteristic = null;
@@ -1585,9 +1636,9 @@ public class ApartmentBuy
                 copy.numberOfFloors = null;
             }
             if (this.usableFloorSpace!= null) {
-                Double sourceUsableFloorSpace;
+                BigDecimal sourceUsableFloorSpace;
                 sourceUsableFloorSpace = this.getUsableFloorSpace();
-                Double copyUsableFloorSpace = ((Double) strategy.copy(LocatorUtils.property(locator, "usableFloorSpace", sourceUsableFloorSpace), sourceUsableFloorSpace));
+                BigDecimal copyUsableFloorSpace = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "usableFloorSpace", sourceUsableFloorSpace), sourceUsableFloorSpace));
                 copy.setUsableFloorSpace(copyUsableFloorSpace);
             } else {
                 copy.usableFloorSpace = null;
@@ -1633,9 +1684,9 @@ public class ApartmentBuy
                 copy.rented = null;
             }
             if (this.rentalIncome!= null) {
-                Double sourceRentalIncome;
+                BigDecimal sourceRentalIncome;
                 sourceRentalIncome = this.getRentalIncome();
-                Double copyRentalIncome = ((Double) strategy.copy(LocatorUtils.property(locator, "rentalIncome", sourceRentalIncome), sourceRentalIncome));
+                BigDecimal copyRentalIncome = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "rentalIncome", sourceRentalIncome), sourceRentalIncome));
                 copy.setRentalIncome(copyRentalIncome);
             } else {
                 copy.rentalIncome = null;
@@ -1649,9 +1700,9 @@ public class ApartmentBuy
                 copy.listed = null;
             }
             if (this.parkingSpacePrice!= null) {
-                Double sourceParkingSpacePrice;
+                BigDecimal sourceParkingSpacePrice;
                 sourceParkingSpacePrice = this.getParkingSpacePrice();
-                Double copyParkingSpacePrice = ((Double) strategy.copy(LocatorUtils.property(locator, "parkingSpacePrice", sourceParkingSpacePrice), sourceParkingSpacePrice));
+                BigDecimal copyParkingSpacePrice = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "parkingSpacePrice", sourceParkingSpacePrice), sourceParkingSpacePrice));
                 copy.setParkingSpacePrice(copyParkingSpacePrice);
             } else {
                 copy.parkingSpacePrice = null;
@@ -1672,17 +1723,21 @@ public class ApartmentBuy
             } else {
                 copy.price = null;
             }
-            {
-                double sourceLivingSpace;
+            if (this.livingSpace!= null) {
+                BigDecimal sourceLivingSpace;
                 sourceLivingSpace = this.getLivingSpace();
-                double copyLivingSpace = strategy.copy(LocatorUtils.property(locator, "livingSpace", sourceLivingSpace), sourceLivingSpace);
+                BigDecimal copyLivingSpace = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "livingSpace", sourceLivingSpace), sourceLivingSpace));
                 copy.setLivingSpace(copyLivingSpace);
+            } else {
+                copy.livingSpace = null;
             }
-            {
-                double sourceNumberOfRooms;
+            if (this.numberOfRooms!= null) {
+                BigDecimal sourceNumberOfRooms;
                 sourceNumberOfRooms = this.getNumberOfRooms();
-                double copyNumberOfRooms = strategy.copy(LocatorUtils.property(locator, "numberOfRooms", sourceNumberOfRooms), sourceNumberOfRooms);
+                BigDecimal copyNumberOfRooms = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "numberOfRooms", sourceNumberOfRooms), sourceNumberOfRooms));
                 copy.setNumberOfRooms(copyNumberOfRooms);
+            } else {
+                copy.numberOfRooms = null;
             }
             if (this.energyPerformanceCertificate!= null) {
                 Boolean sourceEnergyPerformanceCertificate;
@@ -1733,9 +1788,9 @@ public class ApartmentBuy
                 copy.courtage = null;
             }
             if (this.serviceCharge!= null) {
-                Double sourceServiceCharge;
+                BigDecimal sourceServiceCharge;
                 sourceServiceCharge = this.getServiceCharge();
-                Double copyServiceCharge = ((Double) strategy.copy(LocatorUtils.property(locator, "serviceCharge", sourceServiceCharge), sourceServiceCharge));
+                BigDecimal copyServiceCharge = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "serviceCharge", sourceServiceCharge), sourceServiceCharge));
                 copy.setServiceCharge(copyServiceCharge);
             } else {
                 copy.serviceCharge = null;
@@ -1749,7 +1804,7 @@ public class ApartmentBuy
     }
 
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
-        if (!(object instanceof ApartmentBuy)) {
+        if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
         if (this == object) {
@@ -1931,9 +1986,9 @@ public class ApartmentBuy
             }
         }
         {
-            Double lhsThermalCharacteristic;
+            BigDecimal lhsThermalCharacteristic;
             lhsThermalCharacteristic = this.getThermalCharacteristic();
-            Double rhsThermalCharacteristic;
+            BigDecimal rhsThermalCharacteristic;
             rhsThermalCharacteristic = that.getThermalCharacteristic();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "thermalCharacteristic", lhsThermalCharacteristic), LocatorUtils.property(thatLocator, "thermalCharacteristic", rhsThermalCharacteristic), lhsThermalCharacteristic, rhsThermalCharacteristic)) {
                 return false;
@@ -1958,9 +2013,9 @@ public class ApartmentBuy
             }
         }
         {
-            Double lhsUsableFloorSpace;
+            BigDecimal lhsUsableFloorSpace;
             lhsUsableFloorSpace = this.getUsableFloorSpace();
-            Double rhsUsableFloorSpace;
+            BigDecimal rhsUsableFloorSpace;
             rhsUsableFloorSpace = that.getUsableFloorSpace();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "usableFloorSpace", lhsUsableFloorSpace), LocatorUtils.property(thatLocator, "usableFloorSpace", rhsUsableFloorSpace), lhsUsableFloorSpace, rhsUsableFloorSpace)) {
                 return false;
@@ -2012,9 +2067,9 @@ public class ApartmentBuy
             }
         }
         {
-            Double lhsRentalIncome;
+            BigDecimal lhsRentalIncome;
             lhsRentalIncome = this.getRentalIncome();
-            Double rhsRentalIncome;
+            BigDecimal rhsRentalIncome;
             rhsRentalIncome = that.getRentalIncome();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "rentalIncome", lhsRentalIncome), LocatorUtils.property(thatLocator, "rentalIncome", rhsRentalIncome), lhsRentalIncome, rhsRentalIncome)) {
                 return false;
@@ -2030,9 +2085,9 @@ public class ApartmentBuy
             }
         }
         {
-            Double lhsParkingSpacePrice;
+            BigDecimal lhsParkingSpacePrice;
             lhsParkingSpacePrice = this.getParkingSpacePrice();
-            Double rhsParkingSpacePrice;
+            BigDecimal rhsParkingSpacePrice;
             rhsParkingSpacePrice = that.getParkingSpacePrice();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "parkingSpacePrice", lhsParkingSpacePrice), LocatorUtils.property(thatLocator, "parkingSpacePrice", rhsParkingSpacePrice), lhsParkingSpacePrice, rhsParkingSpacePrice)) {
                 return false;
@@ -2057,18 +2112,18 @@ public class ApartmentBuy
             }
         }
         {
-            double lhsLivingSpace;
+            BigDecimal lhsLivingSpace;
             lhsLivingSpace = this.getLivingSpace();
-            double rhsLivingSpace;
+            BigDecimal rhsLivingSpace;
             rhsLivingSpace = that.getLivingSpace();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "livingSpace", lhsLivingSpace), LocatorUtils.property(thatLocator, "livingSpace", rhsLivingSpace), lhsLivingSpace, rhsLivingSpace)) {
                 return false;
             }
         }
         {
-            double lhsNumberOfRooms;
+            BigDecimal lhsNumberOfRooms;
             lhsNumberOfRooms = this.getNumberOfRooms();
-            double rhsNumberOfRooms;
+            BigDecimal rhsNumberOfRooms;
             rhsNumberOfRooms = that.getNumberOfRooms();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "numberOfRooms", lhsNumberOfRooms), LocatorUtils.property(thatLocator, "numberOfRooms", rhsNumberOfRooms), lhsNumberOfRooms, rhsNumberOfRooms)) {
                 return false;
@@ -2129,9 +2184,9 @@ public class ApartmentBuy
             }
         }
         {
-            Double lhsServiceCharge;
+            BigDecimal lhsServiceCharge;
             lhsServiceCharge = this.getServiceCharge();
-            Double rhsServiceCharge;
+            BigDecimal rhsServiceCharge;
             rhsServiceCharge = that.getServiceCharge();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "serviceCharge", lhsServiceCharge), LocatorUtils.property(thatLocator, "serviceCharge", rhsServiceCharge), lhsServiceCharge, rhsServiceCharge)) {
                 return false;

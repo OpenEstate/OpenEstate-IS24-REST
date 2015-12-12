@@ -26,20 +26,20 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="GeoHierarchy">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="continent" type="{http://rest.immobilienscout24.de/schema/common/1.0}Continent" minOccurs="0"/>
- *         &lt;element name="country" type="{http://rest.immobilienscout24.de/schema/common/1.0}Country"/>
- *         &lt;element name="region" type="{http://rest.immobilienscout24.de/schema/common/1.0}Region"/>
- *         &lt;element name="city" type="{http://rest.immobilienscout24.de/schema/common/1.0}City"/>
- *         &lt;element name="quarter" type="{http://rest.immobilienscout24.de/schema/common/1.0}Quarter"/>
- *         &lt;element name="neighbourhood" type="{http://rest.immobilienscout24.de/schema/common/1.0}Neighbourhood" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="GeoHierarchy"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="continent" type="{http://rest.immobilienscout24.de/schema/common/1.0}Continent" minOccurs="0"/&gt;
+ *         &lt;element name="country" type="{http://rest.immobilienscout24.de/schema/common/1.0}Country"/&gt;
+ *         &lt;element name="region" type="{http://rest.immobilienscout24.de/schema/common/1.0}Region"/&gt;
+ *         &lt;element name="city" type="{http://rest.immobilienscout24.de/schema/common/1.0}City"/&gt;
+ *         &lt;element name="quarter" type="{http://rest.immobilienscout24.de/schema/common/1.0}Quarter"/&gt;
+ *         &lt;element name="neighbourhood" type="{http://rest.immobilienscout24.de/schema/common/1.0}Neighbourhood" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -330,7 +330,7 @@ public class GeoHierarchy
     }
 
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
-        if (!(object instanceof GeoHierarchy)) {
+        if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
         if (this == object) {

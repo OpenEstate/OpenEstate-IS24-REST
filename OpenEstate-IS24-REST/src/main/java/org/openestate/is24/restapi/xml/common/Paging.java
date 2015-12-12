@@ -4,7 +4,9 @@ package org.openestate.is24.restapi.xml.common;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.jvnet.jaxb2_commons.lang.CopyStrategy;
 import org.jvnet.jaxb2_commons.lang.CopyTo;
 import org.jvnet.jaxb2_commons.lang.Equals;
@@ -16,6 +18,7 @@ import org.jvnet.jaxb2_commons.lang.ToString;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
+import org.openestate.is24.restapi.xml.Adapter5;
 
 
 /**
@@ -27,20 +30,20 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="Paging">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="next" type="{http://rest.immobilienscout24.de/schema/common/1.0}ReferenceLink" minOccurs="0"/>
- *         &lt;element name="previous" type="{http://rest.immobilienscout24.de/schema/common/1.0}ReferenceLink" minOccurs="0"/>
- *         &lt;element name="pageNumber" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *         &lt;element name="pageSize" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *         &lt;element name="numberOfPages" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *         &lt;element name="numberOfHits" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="Paging"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="next" type="{http://rest.immobilienscout24.de/schema/common/1.0}ReferenceLink" minOccurs="0"/&gt;
+ *         &lt;element name="previous" type="{http://rest.immobilienscout24.de/schema/common/1.0}ReferenceLink" minOccurs="0"/&gt;
+ *         &lt;element name="pageNumber" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
+ *         &lt;element name="pageSize" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
+ *         &lt;element name="numberOfPages" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
+ *         &lt;element name="numberOfHits" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -60,11 +63,22 @@ public class Paging
 
     protected ReferenceLink next;
     protected ReferenceLink previous;
-    protected Integer pageNumber;
-    protected Integer pageSize;
-    protected Integer numberOfPages;
-    @XmlElement(defaultValue = "0")
-    protected int numberOfHits;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlSchemaType(name = "int")
+    protected Long pageNumber;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlSchemaType(name = "int")
+    protected Long pageSize;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlSchemaType(name = "int")
+    protected Long numberOfPages;
+    @XmlElement(required = true, type = String.class, defaultValue = "0")
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlSchemaType(name = "int")
+    protected Long numberOfHits;
 
     /**
      * Gets the value of the next property.
@@ -119,10 +133,10 @@ public class Paging
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public Integer getPageNumber() {
+    public Long getPageNumber() {
         return pageNumber;
     }
 
@@ -131,10 +145,10 @@ public class Paging
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public void setPageNumber(Integer value) {
+    public void setPageNumber(Long value) {
         this.pageNumber = value;
     }
 
@@ -143,10 +157,10 @@ public class Paging
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public Integer getPageSize() {
+    public Long getPageSize() {
         return pageSize;
     }
 
@@ -155,10 +169,10 @@ public class Paging
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public void setPageSize(Integer value) {
+    public void setPageSize(Long value) {
         this.pageSize = value;
     }
 
@@ -167,10 +181,10 @@ public class Paging
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public Integer getNumberOfPages() {
+    public Long getNumberOfPages() {
         return numberOfPages;
     }
 
@@ -179,26 +193,34 @@ public class Paging
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public void setNumberOfPages(Integer value) {
+    public void setNumberOfPages(Long value) {
         this.numberOfPages = value;
     }
 
     /**
      * Gets the value of the numberOfHits property.
      * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public int getNumberOfHits() {
+    public Long getNumberOfHits() {
         return numberOfHits;
     }
 
     /**
      * Sets the value of the numberOfHits property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setNumberOfHits(int value) {
+    public void setNumberOfHits(Long value) {
         this.numberOfHits = value;
     }
 
@@ -228,22 +250,22 @@ public class Paging
             strategy.appendField(locator, this, "previous", buffer, thePrevious);
         }
         {
-            Integer thePageNumber;
+            Long thePageNumber;
             thePageNumber = this.getPageNumber();
             strategy.appendField(locator, this, "pageNumber", buffer, thePageNumber);
         }
         {
-            Integer thePageSize;
+            Long thePageSize;
             thePageSize = this.getPageSize();
             strategy.appendField(locator, this, "pageSize", buffer, thePageSize);
         }
         {
-            Integer theNumberOfPages;
+            Long theNumberOfPages;
             theNumberOfPages = this.getNumberOfPages();
             strategy.appendField(locator, this, "numberOfPages", buffer, theNumberOfPages);
         }
         {
-            int theNumberOfHits;
+            Long theNumberOfHits;
             theNumberOfHits = this.getNumberOfHits();
             strategy.appendField(locator, this, "numberOfHits", buffer, theNumberOfHits);
         }
@@ -280,34 +302,36 @@ public class Paging
                 copy.previous = null;
             }
             if (this.pageNumber!= null) {
-                Integer sourcePageNumber;
+                Long sourcePageNumber;
                 sourcePageNumber = this.getPageNumber();
-                Integer copyPageNumber = ((Integer) strategy.copy(LocatorUtils.property(locator, "pageNumber", sourcePageNumber), sourcePageNumber));
+                Long copyPageNumber = ((Long) strategy.copy(LocatorUtils.property(locator, "pageNumber", sourcePageNumber), sourcePageNumber));
                 copy.setPageNumber(copyPageNumber);
             } else {
                 copy.pageNumber = null;
             }
             if (this.pageSize!= null) {
-                Integer sourcePageSize;
+                Long sourcePageSize;
                 sourcePageSize = this.getPageSize();
-                Integer copyPageSize = ((Integer) strategy.copy(LocatorUtils.property(locator, "pageSize", sourcePageSize), sourcePageSize));
+                Long copyPageSize = ((Long) strategy.copy(LocatorUtils.property(locator, "pageSize", sourcePageSize), sourcePageSize));
                 copy.setPageSize(copyPageSize);
             } else {
                 copy.pageSize = null;
             }
             if (this.numberOfPages!= null) {
-                Integer sourceNumberOfPages;
+                Long sourceNumberOfPages;
                 sourceNumberOfPages = this.getNumberOfPages();
-                Integer copyNumberOfPages = ((Integer) strategy.copy(LocatorUtils.property(locator, "numberOfPages", sourceNumberOfPages), sourceNumberOfPages));
+                Long copyNumberOfPages = ((Long) strategy.copy(LocatorUtils.property(locator, "numberOfPages", sourceNumberOfPages), sourceNumberOfPages));
                 copy.setNumberOfPages(copyNumberOfPages);
             } else {
                 copy.numberOfPages = null;
             }
-            {
-                int sourceNumberOfHits;
+            if (this.numberOfHits!= null) {
+                Long sourceNumberOfHits;
                 sourceNumberOfHits = this.getNumberOfHits();
-                int copyNumberOfHits = strategy.copy(LocatorUtils.property(locator, "numberOfHits", sourceNumberOfHits), sourceNumberOfHits);
+                Long copyNumberOfHits = ((Long) strategy.copy(LocatorUtils.property(locator, "numberOfHits", sourceNumberOfHits), sourceNumberOfHits));
                 copy.setNumberOfHits(copyNumberOfHits);
+            } else {
+                copy.numberOfHits = null;
             }
         }
         return draftCopy;
@@ -318,7 +342,7 @@ public class Paging
     }
 
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
-        if (!(object instanceof Paging)) {
+        if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
         if (this == object) {
@@ -344,36 +368,36 @@ public class Paging
             }
         }
         {
-            Integer lhsPageNumber;
+            Long lhsPageNumber;
             lhsPageNumber = this.getPageNumber();
-            Integer rhsPageNumber;
+            Long rhsPageNumber;
             rhsPageNumber = that.getPageNumber();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "pageNumber", lhsPageNumber), LocatorUtils.property(thatLocator, "pageNumber", rhsPageNumber), lhsPageNumber, rhsPageNumber)) {
                 return false;
             }
         }
         {
-            Integer lhsPageSize;
+            Long lhsPageSize;
             lhsPageSize = this.getPageSize();
-            Integer rhsPageSize;
+            Long rhsPageSize;
             rhsPageSize = that.getPageSize();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "pageSize", lhsPageSize), LocatorUtils.property(thatLocator, "pageSize", rhsPageSize), lhsPageSize, rhsPageSize)) {
                 return false;
             }
         }
         {
-            Integer lhsNumberOfPages;
+            Long lhsNumberOfPages;
             lhsNumberOfPages = this.getNumberOfPages();
-            Integer rhsNumberOfPages;
+            Long rhsNumberOfPages;
             rhsNumberOfPages = that.getNumberOfPages();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "numberOfPages", lhsNumberOfPages), LocatorUtils.property(thatLocator, "numberOfPages", rhsNumberOfPages), lhsNumberOfPages, rhsNumberOfPages)) {
                 return false;
             }
         }
         {
-            int lhsNumberOfHits;
+            Long lhsNumberOfHits;
             lhsNumberOfHits = this.getNumberOfHits();
-            int rhsNumberOfHits;
+            Long rhsNumberOfHits;
             rhsNumberOfHits = that.getNumberOfHits();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "numberOfHits", lhsNumberOfHits), LocatorUtils.property(thatLocator, "numberOfHits", rhsNumberOfHits), lhsNumberOfHits, rhsNumberOfHits)) {
                 return false;

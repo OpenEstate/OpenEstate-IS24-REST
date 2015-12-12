@@ -26,19 +26,19 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="User">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="contactDetails" type="{http://rest.immobilienscout24.de/schema/common/1.0}ContactDetails"/>
- *         &lt;element name="password" type="{http://rest.immobilienscout24.de/schema/common/1.0}Password"/>
- *         &lt;element name="sharedShortlistGroupId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *       &lt;/sequence>
- *       &lt;attribute name="id" type="{http://rest.immobilienscout24.de/schema/common/1.0}TextField" />
- *       &lt;attribute name="peid" type="{http://www.w3.org/2001/XMLSchema}long" />
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="User"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="contactDetails" type="{http://rest.immobilienscout24.de/schema/common/1.0}ContactDetails"/&gt;
+ *         &lt;element name="password" type="{http://rest.immobilienscout24.de/schema/common/1.0}Password"/&gt;
+ *         &lt;element name="sharedShortlistGroupId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *       &lt;attribute name="id" type="{http://rest.immobilienscout24.de/schema/common/1.0}TextField" /&gt;
+ *       &lt;attribute name="peid" type="{http://www.w3.org/2001/XMLSchema}long" /&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -289,7 +289,7 @@ public class User
     }
 
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
-        if (!(object instanceof User)) {
+        if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
         if (this == object) {

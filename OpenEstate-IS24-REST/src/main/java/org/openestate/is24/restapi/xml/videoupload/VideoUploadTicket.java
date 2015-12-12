@@ -20,8 +20,8 @@ import org.jvnet.jaxb2_commons.lang.ToString;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
-import org.openestate.is24.restapi.xml.Adapter1;
 import org.openestate.is24.restapi.xml.Adapter2;
+import org.openestate.is24.restapi.xml.Adapter4;
 
 
 /**
@@ -30,18 +30,18 @@ import org.openestate.is24.restapi.xml.Adapter2;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="VideoUploadTicket">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;all>
- *         &lt;element name="uploadUrl" type="{http://www.w3.org/2001/XMLSchema}anyURI"/>
- *         &lt;element name="validUntil" type="{http://www.w3.org/2001/XMLSchema}dateTime"/>
- *         &lt;element name="videoId" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="auth" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *       &lt;/all>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="VideoUploadTicket"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;all&gt;
+ *         &lt;element name="uploadUrl" type="{http://www.w3.org/2001/XMLSchema}anyURI"/&gt;
+ *         &lt;element name="validUntil" type="{http://www.w3.org/2001/XMLSchema}dateTime"/&gt;
+ *         &lt;element name="videoId" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="auth" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *       &lt;/all&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -55,7 +55,7 @@ public class VideoUploadTicket
 {
 
     @XmlElement(required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlJavaTypeAdapter(Adapter4 .class)
     @XmlSchemaType(name = "anyURI")
     protected URL uploadUrl;
     @XmlElement(required = true, type = String.class)
@@ -255,7 +255,7 @@ public class VideoUploadTicket
     }
 
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
-        if (!(object instanceof VideoUploadTicket)) {
+        if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
         if (this == object) {

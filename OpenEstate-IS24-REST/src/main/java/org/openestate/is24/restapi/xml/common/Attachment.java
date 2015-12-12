@@ -21,8 +21,8 @@ import org.jvnet.jaxb2_commons.lang.ToString;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
-import org.openestate.is24.restapi.xml.Adapter1;
 import org.openestate.is24.restapi.xml.Adapter2;
+import org.openestate.is24.restapi.xml.Adapter4;
 
 
 /**
@@ -33,30 +33,31 @@ import org.openestate.is24.restapi.xml.Adapter2;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="Attachment">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="title" minOccurs="0">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://rest.immobilienscout24.de/schema/common/1.0}TextField">
- *               &lt;maxLength value="30"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
- *         &lt;element name="checkSum" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="externalId" minOccurs="0">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://rest.immobilienscout24.de/schema/common/1.0}TextField">
- *               &lt;maxLength value="50"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
- *       &lt;/sequence>
- *       &lt;attGroup ref="{http://rest.immobilienscout24.de/schema/common/1.0}Reference"/>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="Attachment"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="title" minOccurs="0"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://rest.immobilienscout24.de/schema/common/1.0}TextField"&gt;
+ *               &lt;maxLength value="30"/&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="checkSum" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="externalId" minOccurs="0"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://rest.immobilienscout24.de/schema/common/1.0}TextField"&gt;
+ *               &lt;maxLength value="50"/&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="externalCheckSum" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *       &lt;attGroup ref="{http://rest.immobilienscout24.de/schema/common/1.0}Reference"/&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -65,25 +66,27 @@ import org.openestate.is24.restapi.xml.Adapter2;
 @XmlType(name = "Attachment", propOrder = {
     "title",
     "checkSum",
-    "externalId"
+    "externalId",
+    "externalCheckSum"
 })
 @XmlSeeAlso({
-    StreamingVideo.class,
     Picture.class,
-    Link.class,
-    ExtendedAttachment.class
+    StreamingVideo.class,
+    ExtendedAttachment.class,
+    Link.class
 })
 public abstract class Attachment
     implements Cloneable, CopyTo, Equals, ToString
 {
 
-    @XmlJavaTypeAdapter(Adapter42 .class)
+    @XmlJavaTypeAdapter(Adapter34 .class)
     protected String title;
     protected String checkSum;
-    @XmlJavaTypeAdapter(Adapter43 .class)
+    @XmlJavaTypeAdapter(Adapter35 .class)
     protected String externalId;
+    protected String externalCheckSum;
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")
-    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlJavaTypeAdapter(Adapter4 .class)
     @XmlSchemaType(name = "anyURI")
     protected URL href;
     @XmlAttribute(name = "id")
@@ -173,6 +176,30 @@ public abstract class Attachment
      */
     public void setExternalId(String value) {
         this.externalId = value;
+    }
+
+    /**
+     * Gets the value of the externalCheckSum property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getExternalCheckSum() {
+        return externalCheckSum;
+    }
+
+    /**
+     * Sets the value of the externalCheckSum property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setExternalCheckSum(String value) {
+        this.externalCheckSum = value;
     }
 
     /**
@@ -350,6 +377,11 @@ public abstract class Attachment
             strategy.appendField(locator, this, "externalId", buffer, theExternalId);
         }
         {
+            String theExternalCheckSum;
+            theExternalCheckSum = this.getExternalCheckSum();
+            strategy.appendField(locator, this, "externalCheckSum", buffer, theExternalCheckSum);
+        }
+        {
             URL theHref;
             theHref = this.getHref();
             strategy.appendField(locator, this, "href", buffer, theHref);
@@ -421,6 +453,14 @@ public abstract class Attachment
             } else {
                 copy.externalId = null;
             }
+            if (this.externalCheckSum!= null) {
+                String sourceExternalCheckSum;
+                sourceExternalCheckSum = this.getExternalCheckSum();
+                String copyExternalCheckSum = ((String) strategy.copy(LocatorUtils.property(locator, "externalCheckSum", sourceExternalCheckSum), sourceExternalCheckSum));
+                copy.setExternalCheckSum(copyExternalCheckSum);
+            } else {
+                copy.externalCheckSum = null;
+            }
             if (this.href!= null) {
                 URL sourceHref;
                 sourceHref = this.getHref();
@@ -474,7 +514,7 @@ public abstract class Attachment
     }
 
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
-        if (!(object instanceof Attachment)) {
+        if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
         if (this == object) {
@@ -505,6 +545,15 @@ public abstract class Attachment
             String rhsExternalId;
             rhsExternalId = that.getExternalId();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "externalId", lhsExternalId), LocatorUtils.property(thatLocator, "externalId", rhsExternalId), lhsExternalId, rhsExternalId)) {
+                return false;
+            }
+        }
+        {
+            String lhsExternalCheckSum;
+            lhsExternalCheckSum = this.getExternalCheckSum();
+            String rhsExternalCheckSum;
+            rhsExternalCheckSum = that.getExternalCheckSum();
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "externalCheckSum", lhsExternalCheckSum), LocatorUtils.property(thatLocator, "externalCheckSum", rhsExternalCheckSum), lhsExternalCheckSum, rhsExternalCheckSum)) {
                 return false;
             }
         }

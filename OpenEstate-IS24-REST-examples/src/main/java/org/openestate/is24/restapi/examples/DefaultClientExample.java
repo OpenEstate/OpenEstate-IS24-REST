@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright 2014-2015 OpenEstate.org.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,6 +15,7 @@
  */
 package org.openestate.is24.restapi.examples;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.openestate.is24.restapi.AbstractClient;
 import org.openestate.is24.restapi.DefaultClient;
 
@@ -24,11 +25,12 @@ import org.openestate.is24.restapi.DefaultClient;
  *
  * @author Andreas Rudolph <andy@openindex.de>
  */
+@SuppressFBWarnings
 public class DefaultClientExample
 {
-  final static String WEBSERVICE_URL = AbstractClient.LIVE_API;
-  final static String CONSUMER_KEY = "my consumer key";
-  final static String CONSUMER_SECRET = "my consumer secret";
+  private final static String WEBSERVICE_URL = AbstractClient.LIVE_API;
+  private final static String CONSUMER_KEY = "my consumer key";
+  private final static String CONSUMER_SECRET = "my consumer secret";
 
   /**
    * Main function.

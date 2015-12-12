@@ -1,10 +1,13 @@
 
 package org.openestate.is24.restapi.xml.realestates;
 
+import java.math.BigDecimal;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.jvnet.jaxb2_commons.lang.CopyStrategy;
 import org.jvnet.jaxb2_commons.lang.CopyTo;
 import org.jvnet.jaxb2_commons.lang.Equals;
@@ -16,6 +19,7 @@ import org.jvnet.jaxb2_commons.lang.ToString;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
+import org.openestate.is24.restapi.xml.Adapter1;
 import org.openestate.is24.restapi.xml.common.CourtageInfo;
 import org.openestate.is24.restapi.xml.common.HouseTypeBuildingType;
 import org.openestate.is24.restapi.xml.common.HouseTypeConstructionMethodType;
@@ -32,15 +36,15 @@ import org.openestate.is24.restapi.xml.common.Price;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="HouseType">
- *   &lt;complexContent>
- *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/realestates/1.0}RealEstate">
- *       &lt;sequence>
- *         &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}ExtendedHouseTypeGroup"/>
- *       &lt;/sequence>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="HouseType"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/realestates/1.0}RealEstate"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}ExtendedHouseTypeGroup"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/extension&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -71,17 +75,36 @@ public class HouseType
 
     @XmlElement(required = true)
     protected Price price;
-    protected double livingSpace;
-    protected Double totalArea;
-    protected Double baseArea;
-    protected Double numberOfRooms;
+    @XmlElement(required = true, type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal livingSpace;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal totalArea;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal baseArea;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal numberOfRooms;
     protected CourtageInfo courtage;
+    @XmlSchemaType(name = "string")
     protected HouseTypeConstructionMethodType constructionMethod;
     @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
     protected HouseTypeBuildingType buildingType;
+    @XmlSchemaType(name = "string")
     protected HouseTypeStageOfCompletionType stageOfCompletionType;
+    @XmlSchemaType(name = "string")
     protected HouseTypeEnergyStandardType energyStandardType;
-    protected Double uValue;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal uValue;
     protected String typeInformationNote;
     protected String modelInformationNote;
     protected String contructionPriceInformationNote;
@@ -115,16 +138,24 @@ public class HouseType
     /**
      * Gets the value of the livingSpace property.
      * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public double getLivingSpace() {
+    public BigDecimal getLivingSpace() {
         return livingSpace;
     }
 
     /**
      * Sets the value of the livingSpace property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setLivingSpace(double value) {
+    public void setLivingSpace(BigDecimal value) {
         this.livingSpace = value;
     }
 
@@ -133,10 +164,10 @@ public class HouseType
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getTotalArea() {
+    public BigDecimal getTotalArea() {
         return totalArea;
     }
 
@@ -145,10 +176,10 @@ public class HouseType
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setTotalArea(Double value) {
+    public void setTotalArea(BigDecimal value) {
         this.totalArea = value;
     }
 
@@ -157,10 +188,10 @@ public class HouseType
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getBaseArea() {
+    public BigDecimal getBaseArea() {
         return baseArea;
     }
 
@@ -169,10 +200,10 @@ public class HouseType
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setBaseArea(Double value) {
+    public void setBaseArea(BigDecimal value) {
         this.baseArea = value;
     }
 
@@ -181,10 +212,10 @@ public class HouseType
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getNumberOfRooms() {
+    public BigDecimal getNumberOfRooms() {
         return numberOfRooms;
     }
 
@@ -193,10 +224,10 @@ public class HouseType
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setNumberOfRooms(Double value) {
+    public void setNumberOfRooms(BigDecimal value) {
         this.numberOfRooms = value;
     }
 
@@ -325,10 +356,10 @@ public class HouseType
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getUValue() {
+    public BigDecimal getUValue() {
         return uValue;
     }
 
@@ -337,10 +368,10 @@ public class HouseType
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setUValue(Double value) {
+    public void setUValue(BigDecimal value) {
         this.uValue = value;
     }
 
@@ -486,22 +517,22 @@ public class HouseType
             strategy.appendField(locator, this, "price", buffer, thePrice);
         }
         {
-            double theLivingSpace;
+            BigDecimal theLivingSpace;
             theLivingSpace = this.getLivingSpace();
             strategy.appendField(locator, this, "livingSpace", buffer, theLivingSpace);
         }
         {
-            Double theTotalArea;
+            BigDecimal theTotalArea;
             theTotalArea = this.getTotalArea();
             strategy.appendField(locator, this, "totalArea", buffer, theTotalArea);
         }
         {
-            Double theBaseArea;
+            BigDecimal theBaseArea;
             theBaseArea = this.getBaseArea();
             strategy.appendField(locator, this, "baseArea", buffer, theBaseArea);
         }
         {
-            Double theNumberOfRooms;
+            BigDecimal theNumberOfRooms;
             theNumberOfRooms = this.getNumberOfRooms();
             strategy.appendField(locator, this, "numberOfRooms", buffer, theNumberOfRooms);
         }
@@ -531,7 +562,7 @@ public class HouseType
             strategy.appendField(locator, this, "energyStandardType", buffer, theEnergyStandardType);
         }
         {
-            Double theUValue;
+            BigDecimal theUValue;
             theUValue = this.getUValue();
             strategy.appendField(locator, this, "uValue", buffer, theUValue);
         }
@@ -585,32 +616,34 @@ public class HouseType
             } else {
                 copy.price = null;
             }
-            {
-                double sourceLivingSpace;
+            if (this.livingSpace!= null) {
+                BigDecimal sourceLivingSpace;
                 sourceLivingSpace = this.getLivingSpace();
-                double copyLivingSpace = strategy.copy(LocatorUtils.property(locator, "livingSpace", sourceLivingSpace), sourceLivingSpace);
+                BigDecimal copyLivingSpace = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "livingSpace", sourceLivingSpace), sourceLivingSpace));
                 copy.setLivingSpace(copyLivingSpace);
+            } else {
+                copy.livingSpace = null;
             }
             if (this.totalArea!= null) {
-                Double sourceTotalArea;
+                BigDecimal sourceTotalArea;
                 sourceTotalArea = this.getTotalArea();
-                Double copyTotalArea = ((Double) strategy.copy(LocatorUtils.property(locator, "totalArea", sourceTotalArea), sourceTotalArea));
+                BigDecimal copyTotalArea = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "totalArea", sourceTotalArea), sourceTotalArea));
                 copy.setTotalArea(copyTotalArea);
             } else {
                 copy.totalArea = null;
             }
             if (this.baseArea!= null) {
-                Double sourceBaseArea;
+                BigDecimal sourceBaseArea;
                 sourceBaseArea = this.getBaseArea();
-                Double copyBaseArea = ((Double) strategy.copy(LocatorUtils.property(locator, "baseArea", sourceBaseArea), sourceBaseArea));
+                BigDecimal copyBaseArea = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "baseArea", sourceBaseArea), sourceBaseArea));
                 copy.setBaseArea(copyBaseArea);
             } else {
                 copy.baseArea = null;
             }
             if (this.numberOfRooms!= null) {
-                Double sourceNumberOfRooms;
+                BigDecimal sourceNumberOfRooms;
                 sourceNumberOfRooms = this.getNumberOfRooms();
-                Double copyNumberOfRooms = ((Double) strategy.copy(LocatorUtils.property(locator, "numberOfRooms", sourceNumberOfRooms), sourceNumberOfRooms));
+                BigDecimal copyNumberOfRooms = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "numberOfRooms", sourceNumberOfRooms), sourceNumberOfRooms));
                 copy.setNumberOfRooms(copyNumberOfRooms);
             } else {
                 copy.numberOfRooms = null;
@@ -656,9 +689,9 @@ public class HouseType
                 copy.energyStandardType = null;
             }
             if (this.uValue!= null) {
-                Double sourceUValue;
+                BigDecimal sourceUValue;
                 sourceUValue = this.getUValue();
-                Double copyUValue = ((Double) strategy.copy(LocatorUtils.property(locator, "uValue", sourceUValue), sourceUValue));
+                BigDecimal copyUValue = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "uValue", sourceUValue), sourceUValue));
                 copy.setUValue(copyUValue);
             } else {
                 copy.uValue = null;
@@ -712,7 +745,7 @@ public class HouseType
     }
 
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
-        if (!(object instanceof HouseType)) {
+        if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
         if (this == object) {
@@ -732,36 +765,36 @@ public class HouseType
             }
         }
         {
-            double lhsLivingSpace;
+            BigDecimal lhsLivingSpace;
             lhsLivingSpace = this.getLivingSpace();
-            double rhsLivingSpace;
+            BigDecimal rhsLivingSpace;
             rhsLivingSpace = that.getLivingSpace();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "livingSpace", lhsLivingSpace), LocatorUtils.property(thatLocator, "livingSpace", rhsLivingSpace), lhsLivingSpace, rhsLivingSpace)) {
                 return false;
             }
         }
         {
-            Double lhsTotalArea;
+            BigDecimal lhsTotalArea;
             lhsTotalArea = this.getTotalArea();
-            Double rhsTotalArea;
+            BigDecimal rhsTotalArea;
             rhsTotalArea = that.getTotalArea();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "totalArea", lhsTotalArea), LocatorUtils.property(thatLocator, "totalArea", rhsTotalArea), lhsTotalArea, rhsTotalArea)) {
                 return false;
             }
         }
         {
-            Double lhsBaseArea;
+            BigDecimal lhsBaseArea;
             lhsBaseArea = this.getBaseArea();
-            Double rhsBaseArea;
+            BigDecimal rhsBaseArea;
             rhsBaseArea = that.getBaseArea();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "baseArea", lhsBaseArea), LocatorUtils.property(thatLocator, "baseArea", rhsBaseArea), lhsBaseArea, rhsBaseArea)) {
                 return false;
             }
         }
         {
-            Double lhsNumberOfRooms;
+            BigDecimal lhsNumberOfRooms;
             lhsNumberOfRooms = this.getNumberOfRooms();
-            Double rhsNumberOfRooms;
+            BigDecimal rhsNumberOfRooms;
             rhsNumberOfRooms = that.getNumberOfRooms();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "numberOfRooms", lhsNumberOfRooms), LocatorUtils.property(thatLocator, "numberOfRooms", rhsNumberOfRooms), lhsNumberOfRooms, rhsNumberOfRooms)) {
                 return false;
@@ -813,9 +846,9 @@ public class HouseType
             }
         }
         {
-            Double lhsUValue;
+            BigDecimal lhsUValue;
             lhsUValue = this.getUValue();
-            Double rhsUValue;
+            BigDecimal rhsUValue;
             rhsUValue = that.getUValue();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "uValue", lhsUValue), LocatorUtils.property(thatLocator, "uValue", rhsUValue), lhsUValue, rhsUValue)) {
                 return false;

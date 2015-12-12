@@ -1,11 +1,13 @@
 
 package org.openestate.is24.restapi.xml.realestateproject;
 
+import java.math.BigDecimal;
 import java.net.URL;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.jvnet.jaxb2_commons.lang.CopyStrategy;
@@ -19,7 +21,8 @@ import org.jvnet.jaxb2_commons.lang.ToString;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
-import org.openestate.is24.restapi.xml.Adapter1;
+import org.openestate.is24.restapi.xml.Adapter4;
+import org.openestate.is24.restapi.xml.Adapter5;
 import org.openestate.is24.restapi.xml.common.Adapter13;
 import org.openestate.is24.restapi.xml.common.Address;
 import org.openestate.is24.restapi.xml.common.AreaRangeMandatory;
@@ -35,32 +38,32 @@ import org.openestate.is24.restapi.xml.common.PriceRangeMandatory;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="RealEstateProject">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="title" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="price" type="{http://rest.immobilienscout24.de/schema/common/1.0}PriceRangeMandatory"/>
- *         &lt;element name="space" type="{http://rest.immobilienscout24.de/schema/common/1.0}AreaRangeMandatory"/>
- *         &lt;element name="minPriceProQm" type="{http://rest.immobilienscout24.de/schema/common/1.0}Number13.2Type" minOccurs="0"/>
- *         &lt;element name="numberOfHousingUnit">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}int">
- *               &lt;minInclusive value="1"/>
- *               &lt;maxInclusive value="1000"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
- *         &lt;element name="interiorQuality" type="{http://rest.immobilienscout24.de/schema/common/1.0}InteriorQuality"/>
- *         &lt;element name="freeFrom" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="address" type="{http://rest.immobilienscout24.de/schema/common/1.0}Address"/>
- *         &lt;element name="relaEstateProjectEntries" type="{http://rest.immobilienscout24.de/schema/offer/realestateproject/1.0}RealEstateProjectEntries" minOccurs="0"/>
- *         &lt;element name="homepageUrl" type="{http://rest.immobilienscout24.de/schema/common/1.0}uri" minOccurs="0"/>
- *       &lt;/sequence>
- *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}long" />
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="RealEstateProject"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="title" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="price" type="{http://rest.immobilienscout24.de/schema/common/1.0}PriceRangeMandatory"/&gt;
+ *         &lt;element name="space" type="{http://rest.immobilienscout24.de/schema/common/1.0}AreaRangeMandatory"/&gt;
+ *         &lt;element name="minPriceProQm" type="{http://rest.immobilienscout24.de/schema/common/1.0}Number13.2Type" minOccurs="0"/&gt;
+ *         &lt;element name="numberOfHousingUnit"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}int"&gt;
+ *               &lt;minInclusive value="1"/&gt;
+ *               &lt;maxInclusive value="1000"/&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="interiorQuality" type="{http://rest.immobilienscout24.de/schema/common/1.0}InteriorQuality"/&gt;
+ *         &lt;element name="freeFrom" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="address" type="{http://rest.immobilienscout24.de/schema/common/1.0}Address"/&gt;
+ *         &lt;element name="relaEstateProjectEntries" type="{http://rest.immobilienscout24.de/schema/offer/realestateproject/1.0}RealEstateProjectEntries" minOccurs="0"/&gt;
+ *         &lt;element name="homepageUrl" type="{http://rest.immobilienscout24.de/schema/common/1.0}uri" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}long" /&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -90,9 +93,13 @@ public class RealEstateProject
     protected AreaRangeMandatory space;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter13 .class)
-    protected Double minPriceProQm;
-    protected int numberOfHousingUnit;
+    @XmlSchemaType(name = "decimal")
+    protected BigDecimal minPriceProQm;
+    @XmlElement(required = true, type = String.class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    protected Long numberOfHousingUnit;
     @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
     protected InteriorQuality interiorQuality;
     @XmlElement(required = true)
     protected String freeFrom;
@@ -100,7 +107,8 @@ public class RealEstateProject
     protected Address address;
     protected RealEstateProjectEntries relaEstateProjectEntries;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlJavaTypeAdapter(Adapter4 .class)
+    @XmlSchemaType(name = "anyURI")
     protected URL homepageUrl;
     @XmlAttribute(name = "id")
     protected Long id;
@@ -185,7 +193,7 @@ public class RealEstateProject
      *     {@link String }
      *     
      */
-    public Double getMinPriceProQm() {
+    public BigDecimal getMinPriceProQm() {
         return minPriceProQm;
     }
 
@@ -197,23 +205,31 @@ public class RealEstateProject
      *     {@link String }
      *     
      */
-    public void setMinPriceProQm(Double value) {
+    public void setMinPriceProQm(BigDecimal value) {
         this.minPriceProQm = value;
     }
 
     /**
      * Gets the value of the numberOfHousingUnit property.
      * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public int getNumberOfHousingUnit() {
+    public Long getNumberOfHousingUnit() {
         return numberOfHousingUnit;
     }
 
     /**
      * Sets the value of the numberOfHousingUnit property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setNumberOfHousingUnit(int value) {
+    public void setNumberOfHousingUnit(Long value) {
         this.numberOfHousingUnit = value;
     }
 
@@ -392,12 +408,12 @@ public class RealEstateProject
             strategy.appendField(locator, this, "space", buffer, theSpace);
         }
         {
-            Double theMinPriceProQm;
+            BigDecimal theMinPriceProQm;
             theMinPriceProQm = this.getMinPriceProQm();
             strategy.appendField(locator, this, "minPriceProQm", buffer, theMinPriceProQm);
         }
         {
-            int theNumberOfHousingUnit;
+            Long theNumberOfHousingUnit;
             theNumberOfHousingUnit = this.getNumberOfHousingUnit();
             strategy.appendField(locator, this, "numberOfHousingUnit", buffer, theNumberOfHousingUnit);
         }
@@ -472,18 +488,20 @@ public class RealEstateProject
                 copy.space = null;
             }
             if (this.minPriceProQm!= null) {
-                Double sourceMinPriceProQm;
+                BigDecimal sourceMinPriceProQm;
                 sourceMinPriceProQm = this.getMinPriceProQm();
-                Double copyMinPriceProQm = ((Double) strategy.copy(LocatorUtils.property(locator, "minPriceProQm", sourceMinPriceProQm), sourceMinPriceProQm));
+                BigDecimal copyMinPriceProQm = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "minPriceProQm", sourceMinPriceProQm), sourceMinPriceProQm));
                 copy.setMinPriceProQm(copyMinPriceProQm);
             } else {
                 copy.minPriceProQm = null;
             }
-            {
-                int sourceNumberOfHousingUnit;
+            if (this.numberOfHousingUnit!= null) {
+                Long sourceNumberOfHousingUnit;
                 sourceNumberOfHousingUnit = this.getNumberOfHousingUnit();
-                int copyNumberOfHousingUnit = strategy.copy(LocatorUtils.property(locator, "numberOfHousingUnit", sourceNumberOfHousingUnit), sourceNumberOfHousingUnit);
+                Long copyNumberOfHousingUnit = ((Long) strategy.copy(LocatorUtils.property(locator, "numberOfHousingUnit", sourceNumberOfHousingUnit), sourceNumberOfHousingUnit));
                 copy.setNumberOfHousingUnit(copyNumberOfHousingUnit);
+            } else {
+                copy.numberOfHousingUnit = null;
             }
             if (this.interiorQuality!= null) {
                 InteriorQuality sourceInteriorQuality;
@@ -542,7 +560,7 @@ public class RealEstateProject
     }
 
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
-        if (!(object instanceof RealEstateProject)) {
+        if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
         if (this == object) {
@@ -577,18 +595,18 @@ public class RealEstateProject
             }
         }
         {
-            Double lhsMinPriceProQm;
+            BigDecimal lhsMinPriceProQm;
             lhsMinPriceProQm = this.getMinPriceProQm();
-            Double rhsMinPriceProQm;
+            BigDecimal rhsMinPriceProQm;
             rhsMinPriceProQm = that.getMinPriceProQm();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "minPriceProQm", lhsMinPriceProQm), LocatorUtils.property(thatLocator, "minPriceProQm", rhsMinPriceProQm), lhsMinPriceProQm, rhsMinPriceProQm)) {
                 return false;
             }
         }
         {
-            int lhsNumberOfHousingUnit;
+            Long lhsNumberOfHousingUnit;
             lhsNumberOfHousingUnit = this.getNumberOfHousingUnit();
-            int rhsNumberOfHousingUnit;
+            Long rhsNumberOfHousingUnit;
             rhsNumberOfHousingUnit = that.getNumberOfHousingUnit();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "numberOfHousingUnit", lhsNumberOfHousingUnit), LocatorUtils.property(thatLocator, "numberOfHousingUnit", rhsNumberOfHousingUnit), lhsNumberOfHousingUnit, rhsNumberOfHousingUnit)) {
                 return false;

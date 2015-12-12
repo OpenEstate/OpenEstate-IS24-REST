@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright 2014-2015 OpenEstate.org.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,14 +15,17 @@
  */
 package org.openestate.is24.restapi.utils;
 
+import java.io.Serializable;
+
 /**
  * Token for access verification at the Webservice.
  *
  * @since 0.1
  * @author Andreas Rudolph <andy@openindex.de>
  */
-public final class Verification
+public final class Verification implements Serializable
 {
+  private final static long serialVersionUID = -4565664511140680767L;
   //private final static Logger LOGGER = LoggerFactory.getLogger( Verification.class );
   public final String verificationUrl;
   public final String requestToken;

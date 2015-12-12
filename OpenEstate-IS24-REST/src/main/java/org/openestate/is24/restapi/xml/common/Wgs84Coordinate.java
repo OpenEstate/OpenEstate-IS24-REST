@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.common;
 
+import java.math.BigDecimal;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -27,30 +28,30 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="Wgs84Coordinate">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="latitude">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}double">
- *               &lt;minInclusive value="-90.0"/>
- *               &lt;maxInclusive value="90.0"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
- *         &lt;element name="longitude">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}double">
- *               &lt;minInclusive value="-180.0"/>
- *               &lt;maxInclusive value="180.0"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="Wgs84Coordinate"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="latitude"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}double"&gt;
+ *               &lt;minInclusive value="-90.0"/&gt;
+ *               &lt;maxInclusive value="90.0"/&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="longitude"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}double"&gt;
+ *               &lt;minInclusive value="-180.0"/&gt;
+ *               &lt;maxInclusive value="180.0"/&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -65,11 +66,11 @@ public class Wgs84Coordinate
 {
 
     @XmlElement(required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter52 .class)
-    protected Double latitude;
+    @XmlJavaTypeAdapter(Adapter60 .class)
+    protected BigDecimal latitude;
     @XmlElement(required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter53 .class)
-    protected Double longitude;
+    @XmlJavaTypeAdapter(Adapter61 .class)
+    protected BigDecimal longitude;
 
     /**
      * Gets the value of the latitude property.
@@ -79,7 +80,7 @@ public class Wgs84Coordinate
      *     {@link String }
      *     
      */
-    public Double getLatitude() {
+    public BigDecimal getLatitude() {
         return latitude;
     }
 
@@ -91,7 +92,7 @@ public class Wgs84Coordinate
      *     {@link String }
      *     
      */
-    public void setLatitude(Double value) {
+    public void setLatitude(BigDecimal value) {
         this.latitude = value;
     }
 
@@ -103,7 +104,7 @@ public class Wgs84Coordinate
      *     {@link String }
      *     
      */
-    public Double getLongitude() {
+    public BigDecimal getLongitude() {
         return longitude;
     }
 
@@ -115,7 +116,7 @@ public class Wgs84Coordinate
      *     {@link String }
      *     
      */
-    public void setLongitude(Double value) {
+    public void setLongitude(BigDecimal value) {
         this.longitude = value;
     }
 
@@ -135,12 +136,12 @@ public class Wgs84Coordinate
 
     public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
         {
-            Double theLatitude;
+            BigDecimal theLatitude;
             theLatitude = this.getLatitude();
             strategy.appendField(locator, this, "latitude", buffer, theLatitude);
         }
         {
-            Double theLongitude;
+            BigDecimal theLongitude;
             theLongitude = this.getLongitude();
             strategy.appendField(locator, this, "longitude", buffer, theLongitude);
         }
@@ -161,17 +162,17 @@ public class Wgs84Coordinate
         if (draftCopy instanceof Wgs84Coordinate) {
             final Wgs84Coordinate copy = ((Wgs84Coordinate) draftCopy);
             if (this.latitude!= null) {
-                Double sourceLatitude;
+                BigDecimal sourceLatitude;
                 sourceLatitude = this.getLatitude();
-                Double copyLatitude = ((Double) strategy.copy(LocatorUtils.property(locator, "latitude", sourceLatitude), sourceLatitude));
+                BigDecimal copyLatitude = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "latitude", sourceLatitude), sourceLatitude));
                 copy.setLatitude(copyLatitude);
             } else {
                 copy.latitude = null;
             }
             if (this.longitude!= null) {
-                Double sourceLongitude;
+                BigDecimal sourceLongitude;
                 sourceLongitude = this.getLongitude();
-                Double copyLongitude = ((Double) strategy.copy(LocatorUtils.property(locator, "longitude", sourceLongitude), sourceLongitude));
+                BigDecimal copyLongitude = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "longitude", sourceLongitude), sourceLongitude));
                 copy.setLongitude(copyLongitude);
             } else {
                 copy.longitude = null;
@@ -185,7 +186,7 @@ public class Wgs84Coordinate
     }
 
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
-        if (!(object instanceof Wgs84Coordinate)) {
+        if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
         if (this == object) {
@@ -193,18 +194,18 @@ public class Wgs84Coordinate
         }
         final Wgs84Coordinate that = ((Wgs84Coordinate) object);
         {
-            Double lhsLatitude;
+            BigDecimal lhsLatitude;
             lhsLatitude = this.getLatitude();
-            Double rhsLatitude;
+            BigDecimal rhsLatitude;
             rhsLatitude = that.getLatitude();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "latitude", lhsLatitude), LocatorUtils.property(thatLocator, "latitude", rhsLatitude), lhsLatitude, rhsLatitude)) {
                 return false;
             }
         }
         {
-            Double lhsLongitude;
+            BigDecimal lhsLongitude;
             lhsLongitude = this.getLongitude();
-            Double rhsLongitude;
+            BigDecimal rhsLongitude;
             rhsLongitude = that.getLongitude();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "longitude", lhsLongitude), LocatorUtils.property(thatLocator, "longitude", rhsLongitude), lhsLongitude, rhsLongitude)) {
                 return false;

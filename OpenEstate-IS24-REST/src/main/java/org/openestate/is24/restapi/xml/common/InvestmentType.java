@@ -11,29 +11,29 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="InvestmentType">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="SINGLE_FAMILY_HOUSE"/>
- *     &lt;enumeration value="MULTI_FAMILY_HOUSE"/>
- *     &lt;enumeration value="FREEHOLD_FLAT"/>
- *     &lt;enumeration value="SHOPPING_CENTRE"/>
- *     &lt;enumeration value="RESTAURANT"/>
- *     &lt;enumeration value="HOTEL"/>
- *     &lt;enumeration value="LEISURE_FACILITY"/>
- *     &lt;enumeration value="COMMERCIAL_UNIT"/>
- *     &lt;enumeration value="OFFICE_BUILDING"/>
- *     &lt;enumeration value="COMMERCIAL_BUILDING"/>
- *     &lt;enumeration value="COMMERCIAL_PROPERTY"/>
- *     &lt;enumeration value="HALL_STORAGE"/>
- *     &lt;enumeration value="INDUSTRIAL_PROPERTY"/>
- *     &lt;enumeration value="SHOP_SALES_FLOOR"/>
- *     &lt;enumeration value="SERVICE_CENTRE"/>
- *     &lt;enumeration value="OTHER"/>
- *     &lt;enumeration value="SUPERMARKET"/>
- *     &lt;enumeration value="LIVING_BUSINESS_HOUSE"/>
- *     &lt;enumeration value="HOUSING_ESTATE"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="InvestmentType"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="SINGLE_FAMILY_HOUSE"/&gt;
+ *     &lt;enumeration value="MULTI_FAMILY_HOUSE"/&gt;
+ *     &lt;enumeration value="FREEHOLD_FLAT"/&gt;
+ *     &lt;enumeration value="SHOPPING_CENTRE"/&gt;
+ *     &lt;enumeration value="RESTAURANT"/&gt;
+ *     &lt;enumeration value="HOTEL"/&gt;
+ *     &lt;enumeration value="LEISURE_FACILITY"/&gt;
+ *     &lt;enumeration value="COMMERCIAL_UNIT"/&gt;
+ *     &lt;enumeration value="OFFICE_BUILDING"/&gt;
+ *     &lt;enumeration value="COMMERCIAL_BUILDING"/&gt;
+ *     &lt;enumeration value="COMMERCIAL_PROPERTY"/&gt;
+ *     &lt;enumeration value="HALL_STORAGE"/&gt;
+ *     &lt;enumeration value="INDUSTRIAL_PROPERTY"/&gt;
+ *     &lt;enumeration value="SHOP_SALES_FLOOR"/&gt;
+ *     &lt;enumeration value="SERVICE_CENTRE"/&gt;
+ *     &lt;enumeration value="OTHER"/&gt;
+ *     &lt;enumeration value="SUPERMARKET"/&gt;
+ *     &lt;enumeration value="LIVING_BUSINESS_HOUSE"/&gt;
+ *     &lt;enumeration value="HOUSING_ESTATE"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  * 
  */

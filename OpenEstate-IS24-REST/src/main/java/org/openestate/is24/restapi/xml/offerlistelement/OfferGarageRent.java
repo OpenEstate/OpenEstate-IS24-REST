@@ -1,10 +1,13 @@
 
 package org.openestate.is24.restapi.xml.offerlistelement;
 
+import java.math.BigDecimal;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.jvnet.jaxb2_commons.lang.CopyStrategy;
 import org.jvnet.jaxb2_commons.lang.CopyTo;
 import org.jvnet.jaxb2_commons.lang.Equals;
@@ -16,6 +19,7 @@ import org.jvnet.jaxb2_commons.lang.ToString;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
+import org.openestate.is24.restapi.xml.Adapter1;
 import org.openestate.is24.restapi.xml.common.CourtageInfo;
 import org.openestate.is24.restapi.xml.common.Price;
 
@@ -28,13 +32,13 @@ import org.openestate.is24.restapi.xml.common.Price;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="OfferGarageRent">
- *   &lt;complexContent>
- *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/listelement/1.0}OfferRealEstateForList">
- *       &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}BaseGarageRentGroup"/>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="OfferGarageRent"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/listelement/1.0}OfferRealEstateForList"&gt;
+ *       &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}BaseGarageRentGroup"/&gt;
+ *     &lt;/extension&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -52,7 +56,10 @@ public class OfferGarageRent
 
     @XmlElement(required = true)
     protected Price price;
-    protected Double usableFloorSpace;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal usableFloorSpace;
     @XmlElement(required = true)
     protected CourtageInfo courtage;
 
@@ -85,10 +92,10 @@ public class OfferGarageRent
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getUsableFloorSpace() {
+    public BigDecimal getUsableFloorSpace() {
         return usableFloorSpace;
     }
 
@@ -97,10 +104,10 @@ public class OfferGarageRent
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setUsableFloorSpace(Double value) {
+    public void setUsableFloorSpace(BigDecimal value) {
         this.usableFloorSpace = value;
     }
 
@@ -150,7 +157,7 @@ public class OfferGarageRent
             strategy.appendField(locator, this, "price", buffer, thePrice);
         }
         {
-            Double theUsableFloorSpace;
+            BigDecimal theUsableFloorSpace;
             theUsableFloorSpace = this.getUsableFloorSpace();
             strategy.appendField(locator, this, "usableFloorSpace", buffer, theUsableFloorSpace);
         }
@@ -185,9 +192,9 @@ public class OfferGarageRent
                 copy.price = null;
             }
             if (this.usableFloorSpace!= null) {
-                Double sourceUsableFloorSpace;
+                BigDecimal sourceUsableFloorSpace;
                 sourceUsableFloorSpace = this.getUsableFloorSpace();
-                Double copyUsableFloorSpace = ((Double) strategy.copy(LocatorUtils.property(locator, "usableFloorSpace", sourceUsableFloorSpace), sourceUsableFloorSpace));
+                BigDecimal copyUsableFloorSpace = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "usableFloorSpace", sourceUsableFloorSpace), sourceUsableFloorSpace));
                 copy.setUsableFloorSpace(copyUsableFloorSpace);
             } else {
                 copy.usableFloorSpace = null;
@@ -209,7 +216,7 @@ public class OfferGarageRent
     }
 
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
-        if (!(object instanceof OfferGarageRent)) {
+        if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
         if (this == object) {
@@ -229,9 +236,9 @@ public class OfferGarageRent
             }
         }
         {
-            Double lhsUsableFloorSpace;
+            BigDecimal lhsUsableFloorSpace;
             lhsUsableFloorSpace = this.getUsableFloorSpace();
-            Double rhsUsableFloorSpace;
+            BigDecimal rhsUsableFloorSpace;
             rhsUsableFloorSpace = that.getUsableFloorSpace();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "usableFloorSpace", lhsUsableFloorSpace), LocatorUtils.property(thatLocator, "usableFloorSpace", rhsUsableFloorSpace), lhsUsableFloorSpace, rhsUsableFloorSpace)) {
                 return false;

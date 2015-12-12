@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright 2014-2015 OpenEstate.org.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,6 +18,7 @@ package org.openestate.is24.restapi.examples;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 import oauth.signpost.exception.OAuthException;
 import org.openestate.is24.restapi.AbstractClient;
 import org.openestate.is24.restapi.DefaultClient;
@@ -31,10 +32,10 @@ import org.openestate.is24.restapi.utils.Verification;
  */
 public class VerificationExample
 {
-  final static String WEBSERVICE_URL = AbstractClient.LIVE_API;
-  final static String CONSUMER_KEY = "my consumer key";
-  final static String CONSUMER_SECRET = "my consumer secret";
-  final static String CALLBACK_URL = "http://mywebsite.com/is24-callback.php";
+  private final static String WEBSERVICE_URL = AbstractClient.LIVE_API;
+  private final static String CONSUMER_KEY = "my consumer key";
+  private final static String CONSUMER_SECRET = "my consumer secret";
+  private final static String CALLBACK_URL = "http://mywebsite.com/is24-callback.php";
 
   /**
    * Main function.
@@ -65,7 +66,8 @@ public class VerificationExample
     System.out.println("Please enter your verification code: ");
     try
     {
-      BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
+      BufferedReader bufferRead = new BufferedReader(
+        new InputStreamReader( System.in, Charset.defaultCharset().name() ) );
       verificationCode = bufferRead.readLine();
     }
     catch(IOException ex)

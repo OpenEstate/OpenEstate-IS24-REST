@@ -27,16 +27,16 @@ import org.openestate.is24.restapi.xml.offerlistelement.RealEstateList;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType>
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="Paging" type="{http://rest.immobilienscout24.de/schema/common/1.0}Paging"/>
- *         &lt;element name="realEstateList" type="{http://rest.immobilienscout24.de/schema/offer/listelement/1.0}realEstateList"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="Paging" type="{http://rest.immobilienscout24.de/schema/common/1.0}Paging"/&gt;
+ *         &lt;element name="realEstateList" type="{http://rest.immobilienscout24.de/schema/offer/listelement/1.0}realEstateList"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -170,7 +170,7 @@ public class RealEstates
     }
 
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
-        if (!(object instanceof RealEstates)) {
+        if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
         if (this == object) {

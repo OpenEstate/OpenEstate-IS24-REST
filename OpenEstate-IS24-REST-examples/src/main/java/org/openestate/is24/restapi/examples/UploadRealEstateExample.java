@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright 2014-2015 OpenEstate.org.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,6 +16,7 @@
 package org.openestate.is24.restapi.examples;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import javax.xml.bind.JAXBException;
 import oauth.signpost.exception.OAuthException;
 import org.openestate.is24.restapi.AbstractClient;
@@ -43,11 +44,11 @@ import org.openestate.is24.restapi.xml.realestates.HouseBuy;
  */
 public class UploadRealEstateExample
 {
-  final static String WEBSERVICE_URL = AbstractClient.LIVE_API;
-  final static String CONSUMER_KEY = "my consumer key";
-  final static String CONSUMER_SECRET = "my consumer secret";
-  final static String ACCESS_KEY = "user's access key";
-  final static String ACCESS_SECRET = "user's access secret";
+  private final static String WEBSERVICE_URL = AbstractClient.LIVE_API;
+  private final static String CONSUMER_KEY = "my consumer key";
+  private final static String CONSUMER_SECRET = "my consumer secret";
+  private final static String ACCESS_KEY = "user's access key";
+  private final static String ACCESS_SECRET = "user's access secret";
 
   /**
    * Main function.
@@ -91,8 +92,8 @@ public class UploadRealEstateExample
     object.getAddress().setQuarter( "Mitte" );
     object.getAddress().setPreciseHouseNumber( true );
     object.getAddress().setWgs84Coordinate( commonFactory.createWgs84Coordinate() );
-    object.getAddress().getWgs84Coordinate().setLatitude( 52.519444d );
-    object.getAddress().getWgs84Coordinate().setLongitude( 13.406667d );
+    object.getAddress().getWgs84Coordinate().setLatitude( new BigDecimal( "52.519444" ) );
+    object.getAddress().getWgs84Coordinate().setLongitude( new BigDecimal( "13.406667" ) );
 
     // set object's notes
     object.setTitle( "a descriptive title for the object" );
@@ -105,7 +106,7 @@ public class UploadRealEstateExample
     object.getPrice().setCurrency( Currency.EUR );
     object.getPrice().setMarketingType( MarketingType.PURCHASE );
     object.getPrice().setPriceIntervalType( PriceIntervalType.ONE_TIME_CHARGE );
-    object.getPrice().setValue( 749999.99d );
+    object.getPrice().setValue( new BigDecimal( "749999.99" ) );
 
     // set courtage attributes
     object.setCourtage( commonFactory.createCourtageInfo() );
@@ -131,18 +132,18 @@ public class UploadRealEstateExample
     object.setInteriorQuality( InteriorQuality.LUXURY );
     object.setLastRefurbishment( 1995 );
     object.setListed( YesNotApplicableType.YES );
-    object.setLivingSpace( 123.45d );
+    object.setLivingSpace( new BigDecimal( "123.45" ) );
     object.setNumberOfBathRooms( 2 );
     object.setNumberOfBedRooms( 2 );
     object.setNumberOfFloors( 3 );
     object.setNumberOfParkingSpaces( 5 );
-    object.setNumberOfRooms( 6d );
-    object.setParkingSpacePrice( 423d );
-    object.setPlotArea( 456.78d );
-    object.setRentalIncome( 54223.41d );
+    object.setNumberOfRooms( new BigDecimal( "6" ) );
+    object.setParkingSpacePrice( new BigDecimal( "423") );
+    object.setPlotArea( new BigDecimal( "456.78" ) );
+    object.setRentalIncome( new BigDecimal( "54223.41" ) );
     object.setRented( YesNotApplicableType.YES );
     object.setSummerResidencePractical( YesNotApplicableType.YES );
-    object.setUsableFloorSpace( 456.78d );
+    object.setUsableFloorSpace( new BigDecimal( "456.78" ) );
 
     try
     {

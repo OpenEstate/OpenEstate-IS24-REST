@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright 2014-2015 OpenEstate.org.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -51,7 +51,7 @@ public class Resource
   }
 
   /**
-   * Loads resource informations from the response {@link Messages} of a created
+   * Load resource informations from the response {@link Messages} of a created
    * object.
    *
    * @param messages
@@ -67,7 +67,7 @@ public class Resource
   }
 
   /**
-   * Loads resource informations from the response {@link Message} of a created
+   * Load resource informations from the response {@link Message} of a created
    * object.
    *
    * @param message
@@ -103,7 +103,7 @@ public class Resource
   }
 
   /**
-   * Loads resource informations from the response {@link Messages}.
+   * Load resource informations from the response {@link Messages}.
    *
    * @param messages
    * messages from the body of the HTTP response
@@ -119,7 +119,7 @@ public class Resource
   }
 
   /**
-   * Loads resource informations from the response {@link Message}.
+   * Load resource informations from the response {@link Message}.
    *
    * @param message
    * message from the body of the HTTP response

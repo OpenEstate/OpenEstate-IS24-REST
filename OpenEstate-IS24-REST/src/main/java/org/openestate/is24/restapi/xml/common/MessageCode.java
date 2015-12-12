@@ -11,46 +11,46 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="MessageCode">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="MESSAGE_RESOURCE_CREATED"/>
- *     &lt;enumeration value="MESSAGE_RESOURCE_UPDATED"/>
- *     &lt;enumeration value="MESSAGE_RESOURCE_DELETED"/>
- *     &lt;enumeration value="MESSAGE_OPERATION_SUCCESSFUL"/>
- *     &lt;enumeration value="ERROR_COMMON_HEADER_PARAMETER_VALIDATION_FAILED"/>
- *     &lt;enumeration value="ERROR_COMMON_RESOURCE_REQUIRED"/>
- *     &lt;enumeration value="ERROR_COMMON_REQUEST_CONFLICT"/>
- *     &lt;enumeration value="ERROR_COMMON_AUTHENTICATION_REQUIRED"/>
- *     &lt;enumeration value="ERROR_COMMON_AUTHENTICATION_OAUTH_NONCE_EXPIRED"/>
- *     &lt;enumeration value="ERROR_COMMON_ACCESS_DENIED"/>
- *     &lt;enumeration value="ERROR_COMMON_SCHEMA_VALIDATION_FAILED"/>
- *     &lt;enumeration value="ERROR_COMMON_URL_PARAMETER_REQUIRED"/>
- *     &lt;enumeration value="ERROR_COMMON_URL_PARAMETER_VALIDATION_FAILED"/>
- *     &lt;enumeration value="ERROR_COMMON_URL_MULTIPLE_PARAMETERS_NOT_ALLOWED"/>
- *     &lt;enumeration value="ERROR_COMMON_URL_PARAMETER_NOT_SUPPORTED"/>
- *     &lt;enumeration value="ERROR_COMMON_NOT_IMPLEMENTED"/>
- *     &lt;enumeration value="ERROR_COMMON_SERVICE_UNAVAILABLE"/>
- *     &lt;enumeration value="ERROR_COMMON_INTERNAL_SERVER_ERROR"/>
- *     &lt;enumeration value="ERROR_COMMON_UNPROCESSABLE_ENTITY"/>
- *     &lt;enumeration value="ERROR_COMMON_INTERNAL_SERVER_ERROR_WITH_DETAILS"/>
- *     &lt;enumeration value="ERROR_COMMON_RESOURCE_NOT_FOUND"/>
- *     &lt;enumeration value="ERROR_COMMON_METHOD_NOT_ALLOWED"/>
- *     &lt;enumeration value="ERROR_COMMON_ACCEPT_TYPE_NOT_APPLICABLE"/>
- *     &lt;enumeration value="ERROR_COMMON_MEDIA_TYPE_UNSUPPORTED"/>
- *     &lt;enumeration value="ERROR_COMMON_BAD_REQUEST"/>
- *     &lt;enumeration value="ERROR_RESOURCE_NOT_SUPPORTED"/>
- *     &lt;enumeration value="ERROR_RESOURCE_NOT_FOUND"/>
- *     &lt;enumeration value="ERROR_RESOURCE_NOT_FOUND_FOR_MULTIPLE_PARAMETERS"/>
- *     &lt;enumeration value="ERROR_RESOURCE_VALIDATION"/>
- *     &lt;enumeration value="ERROR_REQUESTED_DATA_NOT_FOUND"/>
- *     &lt;enumeration value="ERROR_RESOURCE_NOT_UNIQUE"/>
- *     &lt;enumeration value="ERROR_RESOURCE_NO_LONGER_AVAILABLE"/>
- *     &lt;enumeration value="ERROR_DB_NOT_AVAILABLE"/>
- *     &lt;enumeration value="ERROR_CONTACT_DETAILS_MISSING"/>
- *     &lt;enumeration value="ERROR_INVALID_COORDINATES"/>
- *     &lt;enumeration value="ERROR_GEOCODING_FAILED"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="MessageCode"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="MESSAGE_RESOURCE_CREATED"/&gt;
+ *     &lt;enumeration value="MESSAGE_RESOURCE_UPDATED"/&gt;
+ *     &lt;enumeration value="MESSAGE_RESOURCE_DELETED"/&gt;
+ *     &lt;enumeration value="MESSAGE_OPERATION_SUCCESSFUL"/&gt;
+ *     &lt;enumeration value="ERROR_COMMON_HEADER_PARAMETER_VALIDATION_FAILED"/&gt;
+ *     &lt;enumeration value="ERROR_COMMON_RESOURCE_REQUIRED"/&gt;
+ *     &lt;enumeration value="ERROR_COMMON_REQUEST_CONFLICT"/&gt;
+ *     &lt;enumeration value="ERROR_COMMON_AUTHENTICATION_REQUIRED"/&gt;
+ *     &lt;enumeration value="ERROR_COMMON_AUTHENTICATION_OAUTH_NONCE_EXPIRED"/&gt;
+ *     &lt;enumeration value="ERROR_COMMON_ACCESS_DENIED"/&gt;
+ *     &lt;enumeration value="ERROR_COMMON_SCHEMA_VALIDATION_FAILED"/&gt;
+ *     &lt;enumeration value="ERROR_COMMON_URL_PARAMETER_REQUIRED"/&gt;
+ *     &lt;enumeration value="ERROR_COMMON_URL_PARAMETER_VALIDATION_FAILED"/&gt;
+ *     &lt;enumeration value="ERROR_COMMON_URL_MULTIPLE_PARAMETERS_NOT_ALLOWED"/&gt;
+ *     &lt;enumeration value="ERROR_COMMON_URL_PARAMETER_NOT_SUPPORTED"/&gt;
+ *     &lt;enumeration value="ERROR_COMMON_NOT_IMPLEMENTED"/&gt;
+ *     &lt;enumeration value="ERROR_COMMON_SERVICE_UNAVAILABLE"/&gt;
+ *     &lt;enumeration value="ERROR_COMMON_INTERNAL_SERVER_ERROR"/&gt;
+ *     &lt;enumeration value="ERROR_COMMON_UNPROCESSABLE_ENTITY"/&gt;
+ *     &lt;enumeration value="ERROR_COMMON_INTERNAL_SERVER_ERROR_WITH_DETAILS"/&gt;
+ *     &lt;enumeration value="ERROR_COMMON_RESOURCE_NOT_FOUND"/&gt;
+ *     &lt;enumeration value="ERROR_COMMON_METHOD_NOT_ALLOWED"/&gt;
+ *     &lt;enumeration value="ERROR_COMMON_ACCEPT_TYPE_NOT_APPLICABLE"/&gt;
+ *     &lt;enumeration value="ERROR_COMMON_MEDIA_TYPE_UNSUPPORTED"/&gt;
+ *     &lt;enumeration value="ERROR_COMMON_BAD_REQUEST"/&gt;
+ *     &lt;enumeration value="ERROR_RESOURCE_NOT_SUPPORTED"/&gt;
+ *     &lt;enumeration value="ERROR_RESOURCE_NOT_FOUND"/&gt;
+ *     &lt;enumeration value="ERROR_RESOURCE_NOT_FOUND_FOR_MULTIPLE_PARAMETERS"/&gt;
+ *     &lt;enumeration value="ERROR_RESOURCE_VALIDATION"/&gt;
+ *     &lt;enumeration value="ERROR_REQUESTED_DATA_NOT_FOUND"/&gt;
+ *     &lt;enumeration value="ERROR_RESOURCE_NOT_UNIQUE"/&gt;
+ *     &lt;enumeration value="ERROR_RESOURCE_NO_LONGER_AVAILABLE"/&gt;
+ *     &lt;enumeration value="ERROR_DB_NOT_AVAILABLE"/&gt;
+ *     &lt;enumeration value="ERROR_CONTACT_DETAILS_MISSING"/&gt;
+ *     &lt;enumeration value="ERROR_INVALID_COORDINATES"/&gt;
+ *     &lt;enumeration value="ERROR_GEOCODING_FAILED"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  * 
  */

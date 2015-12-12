@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright 2014-2015 OpenEstate.org.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -34,11 +34,11 @@ import org.openestate.is24.restapi.xml.realestates.RealEstates;
  */
 public class DownloadRealEstateListExample
 {
-  final static String WEBSERVICE_URL = AbstractClient.LIVE_API;
-  final static String CONSUMER_KEY = "my consumer key";
-  final static String CONSUMER_SECRET = "my consumer secret";
-  final static String ACCESS_KEY = "user's access key";
-  final static String ACCESS_SECRET = "user's access secret";
+  private final static String WEBSERVICE_URL = AbstractClient.LIVE_API;
+  private final static String CONSUMER_KEY = "my consumer key";
+  private final static String CONSUMER_SECRET = "my consumer secret";
+  private final static String ACCESS_KEY = "user's access key";
+  private final static String ACCESS_SECRET = "user's access secret";
 
   /**
    * Main function.

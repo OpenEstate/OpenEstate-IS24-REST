@@ -11,15 +11,15 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="RealEstateState">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="ACTIVE"/>
- *     &lt;enumeration value="INACTIVE"/>
- *     &lt;enumeration value="TO_BE_DELETED"/>
- *     &lt;enumeration value="DRAFT"/>
- *     &lt;enumeration value="ARCHIVED"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="RealEstateState"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="ACTIVE"/&gt;
+ *     &lt;enumeration value="INACTIVE"/&gt;
+ *     &lt;enumeration value="TO_BE_DELETED"/&gt;
+ *     &lt;enumeration value="DRAFT"/&gt;
+ *     &lt;enumeration value="ARCHIVED"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  * 
  */

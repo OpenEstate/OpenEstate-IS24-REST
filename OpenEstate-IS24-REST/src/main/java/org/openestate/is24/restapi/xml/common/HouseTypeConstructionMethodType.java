@@ -11,15 +11,15 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="HouseTypeConstructionMethodType">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="UNSPECIFIED"/>
- *     &lt;enumeration value="PREFABRICATED"/>
- *     &lt;enumeration value="WOOD_PREFABRICATED"/>
- *     &lt;enumeration value="SOLID"/>
- *     &lt;enumeration value="SOLID_PREFABRICATED"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="HouseTypeConstructionMethodType"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="UNSPECIFIED"/&gt;
+ *     &lt;enumeration value="PREFABRICATED"/&gt;
+ *     &lt;enumeration value="WOOD_PREFABRICATED"/&gt;
+ *     &lt;enumeration value="SOLID"/&gt;
+ *     &lt;enumeration value="SOLID_PREFABRICATED"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  * 
  */

@@ -97,7 +97,7 @@ public abstract class AbstractClient
   private OAuthProvider oAuthProvider = null;
 
   /**
-   * Creates an instance of {@link AbstractClient}.
+   * Create an instance of {@link AbstractClient}.
    *
    * @param apiBaseUrl
    * base URL of the IS24-Webservice (see {@link AbstractClient#LIVE_API} and
@@ -214,7 +214,7 @@ public abstract class AbstractClient
   }
 
   /**
-   * Creates an {@link OAuthConsumer} object for access credentials.
+   * Create an {@link OAuthConsumer} object for access credentials.
    * <p>
    * Different implementations of {@link AbstractClient} may create different
    * {@link OAuthConsumer} objects.
@@ -234,7 +234,7 @@ public abstract class AbstractClient
   }
 
   /**
-   * Creates an {@link OAuthProvider} for the IS24-Webservice.
+   * Create an {@link OAuthProvider} for the IS24-Webservice.
    * <p>
    * Different implementations of {@link AbstractClient} may create different
    * {@link OAuthProvider} objects.
@@ -254,7 +254,7 @@ public abstract class AbstractClient
   }
 
   /**
-   * Initiates a verification process.
+   * Initiate a verification process.
    *
    * @return
    * an instance of {@link Verification} that contains informations about the
@@ -269,7 +269,7 @@ public abstract class AbstractClient
   }
 
   /**
-   * Initiates a verification process.
+   * Initiate a verification process.
    *
    * @param callbackUrl
    * the URL, where the user is redirected to, after the verification was
@@ -291,7 +291,7 @@ public abstract class AbstractClient
   }
 
   /**
-   * Returns URL of the configured IS24-Webservice.
+   * Return URL of the configured IS24-Webservice.
    *
    * @return
    * URL of the configured IS24-Webservice
@@ -302,7 +302,7 @@ public abstract class AbstractClient
   }
 
   /**
-   * Returns {@link OAuthConsumer} of the client for the current authorization.
+   * Return {@link OAuthConsumer} of the client for the current authorization.
    *
    * @return
    * {@link OAuthConsumer} instance of the client
@@ -317,7 +317,7 @@ public abstract class AbstractClient
   }
 
   /**
-   * Returns {@link OAuthProvider} of the client for the current authorization.
+   * Return {@link OAuthProvider} of the client for the current authorization.
    *
    * @return
    * {@link OAuthProvider} instance of the client
@@ -332,24 +332,7 @@ public abstract class AbstractClient
   }
 
   /**
-   * Encodes a string value for use in an URL.
-   *
-   * @param value
-   * the value to encode
-   *
-   * @return
-   * the encoded value
-   *
-   * @deprecated use {@link #getUrlEncodedValue(java.lang.String)} instead
-   */
-  @Deprecated
-  public static String getEncodedParameterValue( String value )
-  {
-    return getUrlEncodedValue( value );
-  }
-
-  /**
-   * Returns encoding for transferred data.
+   * Return encoding for transferred data.
    * <p>
    * This function always returns {@link XmlUtils#DEFAULT_ENCODING}.
    *
@@ -362,7 +345,7 @@ public abstract class AbstractClient
   }
 
   /**
-   * Encodes a string value for use in an URL according to
+   * Encode a string value for use in an URL according to
    * <a href="http://www.ietf.org/rfc/rfc3986.txt">RFC 3986</a>.
    *
    * @param value
@@ -387,7 +370,7 @@ public abstract class AbstractClient
   }
 
   /**
-   * Sends a XML string to the IS24-Webservice.
+   * Send a XML string to the IS24-Webservice.
    * <p>
    * This function must be implemendet by specific implementations of
    * {@link AbstractClient}.
@@ -413,7 +396,7 @@ public abstract class AbstractClient
   protected abstract Response sendXmlRequest( URL url, RequestMethod method, String xml ) throws IOException, OAuthException;
 
   /**
-   * Sends a XML string together with a file to the IS24-Webservice.
+   * Send a XML string together with a file to the IS24-Webservice.
    * <p>
    * This function must be implemendet by specific implementations of
    * {@link AbstractClient}.
@@ -448,7 +431,7 @@ public abstract class AbstractClient
   protected abstract Response sendXmlAttachmentRequest( URL url, RequestMethod method, String xml, InputStream input, String fileName, String mimeType ) throws IOException, OAuthException;
 
   /**
-   * Sends a video with an authentication value to the IS24-Webservice.
+   * Send a video with an authentication value to the IS24-Webservice.
    * <p>
    * This function must be implemendet by specific implementations of
    * {@link AbstractClient}.

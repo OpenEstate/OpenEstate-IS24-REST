@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.realestates;
 
+import java.math.BigDecimal;
 import java.util.Calendar;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -19,7 +20,9 @@ import org.jvnet.jaxb2_commons.lang.ToString;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
+import org.openestate.is24.restapi.xml.Adapter1;
 import org.openestate.is24.restapi.xml.Adapter3;
+import org.openestate.is24.restapi.xml.Adapter5;
 import org.openestate.is24.restapi.xml.common.BuildingEnergyRatingType;
 import org.openestate.is24.restapi.xml.common.CourtageInfo;
 import org.openestate.is24.restapi.xml.common.EnergyPerformanceCertificate;
@@ -45,15 +48,15 @@ import org.openestate.is24.restapi.xml.common.YesNotApplicableType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="ShortTermAccommodation">
- *   &lt;complexContent>
- *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/realestates/1.0}RealEstate">
- *       &lt;sequence>
- *         &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}ExtendedShortTermAccommodationGroup"/>
- *       &lt;/sequence>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="ShortTermAccommodation"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/realestates/1.0}RealEstate"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}ExtendedShortTermAccommodationGroup"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/extension&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -106,47 +109,95 @@ public class ShortTermAccommodation
     implements Cloneable, CopyTo, Equals, ToString
 {
 
-    protected Double baseRent;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal baseRent;
+    @XmlSchemaType(name = "string")
     protected BuildingEnergyRatingType buildingEnergyRatingType;
     protected Boolean cellar;
+    @XmlSchemaType(name = "string")
     protected RealEstateCondition condition;
     protected String deposit;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter3 .class)
     @XmlSchemaType(name = "date")
     protected Calendar endRentalDate;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType energyConsumptionContainsWarmWater;
     @Deprecated
     protected FiringTypes firingTypes;
     protected EnergySourcesEnev2014 energySourcesEnev2014;
     protected String floor;
+    @XmlSchemaType(name = "string")
     protected FlatMateGenderType gender;
     protected Boolean guestToilet;
     protected Boolean handicappedAccessible;
+    @XmlSchemaType(name = "string")
     protected YesNoNotApplicableType hasFurniture;
+    @XmlSchemaType(name = "string")
     @Deprecated
     protected HeatingType heatingType;
+    @XmlSchemaType(name = "string")
     protected HeatingTypeEnev2014 heatingTypeEnev2014;
     protected Boolean lift;
-    protected Integer maxNumberOfPersons;
-    protected Double maxRentalTime;
-    protected Double minRentalTime;
-    protected Integer numberOfFloors;
-    protected Integer numberOfParkingSpaces;
-    protected Double parkingSpacePrice;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlSchemaType(name = "int")
+    protected Long maxNumberOfPersons;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal maxRentalTime;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal minRentalTime;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlSchemaType(name = "int")
+    protected Long numberOfFloors;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlSchemaType(name = "int")
+    protected Long numberOfParkingSpaces;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal parkingSpacePrice;
+    @XmlSchemaType(name = "string")
     protected ParkingSpaceType parkingSpaceType;
+    @XmlSchemaType(name = "string")
     protected PetsAllowedType petsAllowed;
-    protected Double serviceCharge;
-    protected Double thermalCharacteristic;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal serviceCharge;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal thermalCharacteristic;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
     @Deprecated
-    protected Double totalRent;
-    protected Integer constructionYear;
+    protected BigDecimal totalRent;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlSchemaType(name = "int")
+    protected Long constructionYear;
     protected Boolean constructionYearUnknown;
     protected EnergyPerformanceCertificate energyCertificate;
     @XmlElement(required = true)
     protected Price price;
-    protected Double livingSpace;
-    protected Double numberOfRooms;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal livingSpace;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal numberOfRooms;
     @XmlElement(required = true, type = String.class)
     @XmlJavaTypeAdapter(Adapter3 .class)
     @XmlSchemaType(name = "date")
@@ -155,6 +206,7 @@ public class ShortTermAccommodation
     protected Boolean garden;
     protected Boolean nonSmoker;
     @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
     protected ShortTermAccommodationType shortTermAccomodationType;
     @XmlElement(required = true)
     protected CourtageInfo courtage;
@@ -164,10 +216,10 @@ public class ShortTermAccommodation
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getBaseRent() {
+    public BigDecimal getBaseRent() {
         return baseRent;
     }
 
@@ -176,10 +228,10 @@ public class ShortTermAccommodation
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setBaseRent(Double value) {
+    public void setBaseRent(BigDecimal value) {
         this.baseRent = value;
     }
 
@@ -576,10 +628,10 @@ public class ShortTermAccommodation
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public Integer getMaxNumberOfPersons() {
+    public Long getMaxNumberOfPersons() {
         return maxNumberOfPersons;
     }
 
@@ -588,10 +640,10 @@ public class ShortTermAccommodation
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public void setMaxNumberOfPersons(Integer value) {
+    public void setMaxNumberOfPersons(Long value) {
         this.maxNumberOfPersons = value;
     }
 
@@ -600,10 +652,10 @@ public class ShortTermAccommodation
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getMaxRentalTime() {
+    public BigDecimal getMaxRentalTime() {
         return maxRentalTime;
     }
 
@@ -612,10 +664,10 @@ public class ShortTermAccommodation
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setMaxRentalTime(Double value) {
+    public void setMaxRentalTime(BigDecimal value) {
         this.maxRentalTime = value;
     }
 
@@ -624,10 +676,10 @@ public class ShortTermAccommodation
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getMinRentalTime() {
+    public BigDecimal getMinRentalTime() {
         return minRentalTime;
     }
 
@@ -636,10 +688,10 @@ public class ShortTermAccommodation
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setMinRentalTime(Double value) {
+    public void setMinRentalTime(BigDecimal value) {
         this.minRentalTime = value;
     }
 
@@ -648,10 +700,10 @@ public class ShortTermAccommodation
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public Integer getNumberOfFloors() {
+    public Long getNumberOfFloors() {
         return numberOfFloors;
     }
 
@@ -660,10 +712,10 @@ public class ShortTermAccommodation
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public void setNumberOfFloors(Integer value) {
+    public void setNumberOfFloors(Long value) {
         this.numberOfFloors = value;
     }
 
@@ -672,10 +724,10 @@ public class ShortTermAccommodation
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public Integer getNumberOfParkingSpaces() {
+    public Long getNumberOfParkingSpaces() {
         return numberOfParkingSpaces;
     }
 
@@ -684,10 +736,10 @@ public class ShortTermAccommodation
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public void setNumberOfParkingSpaces(Integer value) {
+    public void setNumberOfParkingSpaces(Long value) {
         this.numberOfParkingSpaces = value;
     }
 
@@ -696,10 +748,10 @@ public class ShortTermAccommodation
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getParkingSpacePrice() {
+    public BigDecimal getParkingSpacePrice() {
         return parkingSpacePrice;
     }
 
@@ -708,10 +760,10 @@ public class ShortTermAccommodation
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setParkingSpacePrice(Double value) {
+    public void setParkingSpacePrice(BigDecimal value) {
         this.parkingSpacePrice = value;
     }
 
@@ -768,10 +820,10 @@ public class ShortTermAccommodation
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getServiceCharge() {
+    public BigDecimal getServiceCharge() {
         return serviceCharge;
     }
 
@@ -780,10 +832,10 @@ public class ShortTermAccommodation
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setServiceCharge(Double value) {
+    public void setServiceCharge(BigDecimal value) {
         this.serviceCharge = value;
     }
 
@@ -792,10 +844,10 @@ public class ShortTermAccommodation
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getThermalCharacteristic() {
+    public BigDecimal getThermalCharacteristic() {
         return thermalCharacteristic;
     }
 
@@ -804,10 +856,10 @@ public class ShortTermAccommodation
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setThermalCharacteristic(Double value) {
+    public void setThermalCharacteristic(BigDecimal value) {
         this.thermalCharacteristic = value;
     }
 
@@ -816,11 +868,11 @@ public class ShortTermAccommodation
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
     @Deprecated
-    public Double getTotalRent() {
+    public BigDecimal getTotalRent() {
         return totalRent;
     }
 
@@ -829,11 +881,11 @@ public class ShortTermAccommodation
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
     @Deprecated
-    public void setTotalRent(Double value) {
+    public void setTotalRent(BigDecimal value) {
         this.totalRent = value;
     }
 
@@ -842,10 +894,10 @@ public class ShortTermAccommodation
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public Integer getConstructionYear() {
+    public Long getConstructionYear() {
         return constructionYear;
     }
 
@@ -854,10 +906,10 @@ public class ShortTermAccommodation
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public void setConstructionYear(Integer value) {
+    public void setConstructionYear(Long value) {
         this.constructionYear = value;
     }
 
@@ -938,10 +990,10 @@ public class ShortTermAccommodation
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getLivingSpace() {
+    public BigDecimal getLivingSpace() {
         return livingSpace;
     }
 
@@ -950,10 +1002,10 @@ public class ShortTermAccommodation
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setLivingSpace(Double value) {
+    public void setLivingSpace(BigDecimal value) {
         this.livingSpace = value;
     }
 
@@ -962,10 +1014,10 @@ public class ShortTermAccommodation
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getNumberOfRooms() {
+    public BigDecimal getNumberOfRooms() {
         return numberOfRooms;
     }
 
@@ -974,10 +1026,10 @@ public class ShortTermAccommodation
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setNumberOfRooms(Double value) {
+    public void setNumberOfRooms(BigDecimal value) {
         this.numberOfRooms = value;
     }
 
@@ -1142,7 +1194,7 @@ public class ShortTermAccommodation
     public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
         super.appendFields(locator, buffer, strategy);
         {
-            Double theBaseRent;
+            BigDecimal theBaseRent;
             theBaseRent = this.getBaseRent();
             strategy.appendField(locator, this, "baseRent", buffer, theBaseRent);
         }
@@ -1227,32 +1279,32 @@ public class ShortTermAccommodation
             strategy.appendField(locator, this, "lift", buffer, theLift);
         }
         {
-            Integer theMaxNumberOfPersons;
+            Long theMaxNumberOfPersons;
             theMaxNumberOfPersons = this.getMaxNumberOfPersons();
             strategy.appendField(locator, this, "maxNumberOfPersons", buffer, theMaxNumberOfPersons);
         }
         {
-            Double theMaxRentalTime;
+            BigDecimal theMaxRentalTime;
             theMaxRentalTime = this.getMaxRentalTime();
             strategy.appendField(locator, this, "maxRentalTime", buffer, theMaxRentalTime);
         }
         {
-            Double theMinRentalTime;
+            BigDecimal theMinRentalTime;
             theMinRentalTime = this.getMinRentalTime();
             strategy.appendField(locator, this, "minRentalTime", buffer, theMinRentalTime);
         }
         {
-            Integer theNumberOfFloors;
+            Long theNumberOfFloors;
             theNumberOfFloors = this.getNumberOfFloors();
             strategy.appendField(locator, this, "numberOfFloors", buffer, theNumberOfFloors);
         }
         {
-            Integer theNumberOfParkingSpaces;
+            Long theNumberOfParkingSpaces;
             theNumberOfParkingSpaces = this.getNumberOfParkingSpaces();
             strategy.appendField(locator, this, "numberOfParkingSpaces", buffer, theNumberOfParkingSpaces);
         }
         {
-            Double theParkingSpacePrice;
+            BigDecimal theParkingSpacePrice;
             theParkingSpacePrice = this.getParkingSpacePrice();
             strategy.appendField(locator, this, "parkingSpacePrice", buffer, theParkingSpacePrice);
         }
@@ -1267,22 +1319,22 @@ public class ShortTermAccommodation
             strategy.appendField(locator, this, "petsAllowed", buffer, thePetsAllowed);
         }
         {
-            Double theServiceCharge;
+            BigDecimal theServiceCharge;
             theServiceCharge = this.getServiceCharge();
             strategy.appendField(locator, this, "serviceCharge", buffer, theServiceCharge);
         }
         {
-            Double theThermalCharacteristic;
+            BigDecimal theThermalCharacteristic;
             theThermalCharacteristic = this.getThermalCharacteristic();
             strategy.appendField(locator, this, "thermalCharacteristic", buffer, theThermalCharacteristic);
         }
         {
-            Double theTotalRent;
+            BigDecimal theTotalRent;
             theTotalRent = this.getTotalRent();
             strategy.appendField(locator, this, "totalRent", buffer, theTotalRent);
         }
         {
-            Integer theConstructionYear;
+            Long theConstructionYear;
             theConstructionYear = this.getConstructionYear();
             strategy.appendField(locator, this, "constructionYear", buffer, theConstructionYear);
         }
@@ -1302,12 +1354,12 @@ public class ShortTermAccommodation
             strategy.appendField(locator, this, "price", buffer, thePrice);
         }
         {
-            Double theLivingSpace;
+            BigDecimal theLivingSpace;
             theLivingSpace = this.getLivingSpace();
             strategy.appendField(locator, this, "livingSpace", buffer, theLivingSpace);
         }
         {
-            Double theNumberOfRooms;
+            BigDecimal theNumberOfRooms;
             theNumberOfRooms = this.getNumberOfRooms();
             strategy.appendField(locator, this, "numberOfRooms", buffer, theNumberOfRooms);
         }
@@ -1359,9 +1411,9 @@ public class ShortTermAccommodation
         if (draftCopy instanceof ShortTermAccommodation) {
             final ShortTermAccommodation copy = ((ShortTermAccommodation) draftCopy);
             if (this.baseRent!= null) {
-                Double sourceBaseRent;
+                BigDecimal sourceBaseRent;
                 sourceBaseRent = this.getBaseRent();
-                Double copyBaseRent = ((Double) strategy.copy(LocatorUtils.property(locator, "baseRent", sourceBaseRent), sourceBaseRent));
+                BigDecimal copyBaseRent = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "baseRent", sourceBaseRent), sourceBaseRent));
                 copy.setBaseRent(copyBaseRent);
             } else {
                 copy.baseRent = null;
@@ -1495,49 +1547,49 @@ public class ShortTermAccommodation
                 copy.lift = null;
             }
             if (this.maxNumberOfPersons!= null) {
-                Integer sourceMaxNumberOfPersons;
+                Long sourceMaxNumberOfPersons;
                 sourceMaxNumberOfPersons = this.getMaxNumberOfPersons();
-                Integer copyMaxNumberOfPersons = ((Integer) strategy.copy(LocatorUtils.property(locator, "maxNumberOfPersons", sourceMaxNumberOfPersons), sourceMaxNumberOfPersons));
+                Long copyMaxNumberOfPersons = ((Long) strategy.copy(LocatorUtils.property(locator, "maxNumberOfPersons", sourceMaxNumberOfPersons), sourceMaxNumberOfPersons));
                 copy.setMaxNumberOfPersons(copyMaxNumberOfPersons);
             } else {
                 copy.maxNumberOfPersons = null;
             }
             if (this.maxRentalTime!= null) {
-                Double sourceMaxRentalTime;
+                BigDecimal sourceMaxRentalTime;
                 sourceMaxRentalTime = this.getMaxRentalTime();
-                Double copyMaxRentalTime = ((Double) strategy.copy(LocatorUtils.property(locator, "maxRentalTime", sourceMaxRentalTime), sourceMaxRentalTime));
+                BigDecimal copyMaxRentalTime = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "maxRentalTime", sourceMaxRentalTime), sourceMaxRentalTime));
                 copy.setMaxRentalTime(copyMaxRentalTime);
             } else {
                 copy.maxRentalTime = null;
             }
             if (this.minRentalTime!= null) {
-                Double sourceMinRentalTime;
+                BigDecimal sourceMinRentalTime;
                 sourceMinRentalTime = this.getMinRentalTime();
-                Double copyMinRentalTime = ((Double) strategy.copy(LocatorUtils.property(locator, "minRentalTime", sourceMinRentalTime), sourceMinRentalTime));
+                BigDecimal copyMinRentalTime = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "minRentalTime", sourceMinRentalTime), sourceMinRentalTime));
                 copy.setMinRentalTime(copyMinRentalTime);
             } else {
                 copy.minRentalTime = null;
             }
             if (this.numberOfFloors!= null) {
-                Integer sourceNumberOfFloors;
+                Long sourceNumberOfFloors;
                 sourceNumberOfFloors = this.getNumberOfFloors();
-                Integer copyNumberOfFloors = ((Integer) strategy.copy(LocatorUtils.property(locator, "numberOfFloors", sourceNumberOfFloors), sourceNumberOfFloors));
+                Long copyNumberOfFloors = ((Long) strategy.copy(LocatorUtils.property(locator, "numberOfFloors", sourceNumberOfFloors), sourceNumberOfFloors));
                 copy.setNumberOfFloors(copyNumberOfFloors);
             } else {
                 copy.numberOfFloors = null;
             }
             if (this.numberOfParkingSpaces!= null) {
-                Integer sourceNumberOfParkingSpaces;
+                Long sourceNumberOfParkingSpaces;
                 sourceNumberOfParkingSpaces = this.getNumberOfParkingSpaces();
-                Integer copyNumberOfParkingSpaces = ((Integer) strategy.copy(LocatorUtils.property(locator, "numberOfParkingSpaces", sourceNumberOfParkingSpaces), sourceNumberOfParkingSpaces));
+                Long copyNumberOfParkingSpaces = ((Long) strategy.copy(LocatorUtils.property(locator, "numberOfParkingSpaces", sourceNumberOfParkingSpaces), sourceNumberOfParkingSpaces));
                 copy.setNumberOfParkingSpaces(copyNumberOfParkingSpaces);
             } else {
                 copy.numberOfParkingSpaces = null;
             }
             if (this.parkingSpacePrice!= null) {
-                Double sourceParkingSpacePrice;
+                BigDecimal sourceParkingSpacePrice;
                 sourceParkingSpacePrice = this.getParkingSpacePrice();
-                Double copyParkingSpacePrice = ((Double) strategy.copy(LocatorUtils.property(locator, "parkingSpacePrice", sourceParkingSpacePrice), sourceParkingSpacePrice));
+                BigDecimal copyParkingSpacePrice = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "parkingSpacePrice", sourceParkingSpacePrice), sourceParkingSpacePrice));
                 copy.setParkingSpacePrice(copyParkingSpacePrice);
             } else {
                 copy.parkingSpacePrice = null;
@@ -1559,33 +1611,33 @@ public class ShortTermAccommodation
                 copy.petsAllowed = null;
             }
             if (this.serviceCharge!= null) {
-                Double sourceServiceCharge;
+                BigDecimal sourceServiceCharge;
                 sourceServiceCharge = this.getServiceCharge();
-                Double copyServiceCharge = ((Double) strategy.copy(LocatorUtils.property(locator, "serviceCharge", sourceServiceCharge), sourceServiceCharge));
+                BigDecimal copyServiceCharge = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "serviceCharge", sourceServiceCharge), sourceServiceCharge));
                 copy.setServiceCharge(copyServiceCharge);
             } else {
                 copy.serviceCharge = null;
             }
             if (this.thermalCharacteristic!= null) {
-                Double sourceThermalCharacteristic;
+                BigDecimal sourceThermalCharacteristic;
                 sourceThermalCharacteristic = this.getThermalCharacteristic();
-                Double copyThermalCharacteristic = ((Double) strategy.copy(LocatorUtils.property(locator, "thermalCharacteristic", sourceThermalCharacteristic), sourceThermalCharacteristic));
+                BigDecimal copyThermalCharacteristic = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "thermalCharacteristic", sourceThermalCharacteristic), sourceThermalCharacteristic));
                 copy.setThermalCharacteristic(copyThermalCharacteristic);
             } else {
                 copy.thermalCharacteristic = null;
             }
             if (this.totalRent!= null) {
-                Double sourceTotalRent;
+                BigDecimal sourceTotalRent;
                 sourceTotalRent = this.getTotalRent();
-                Double copyTotalRent = ((Double) strategy.copy(LocatorUtils.property(locator, "totalRent", sourceTotalRent), sourceTotalRent));
+                BigDecimal copyTotalRent = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "totalRent", sourceTotalRent), sourceTotalRent));
                 copy.setTotalRent(copyTotalRent);
             } else {
                 copy.totalRent = null;
             }
             if (this.constructionYear!= null) {
-                Integer sourceConstructionYear;
+                Long sourceConstructionYear;
                 sourceConstructionYear = this.getConstructionYear();
-                Integer copyConstructionYear = ((Integer) strategy.copy(LocatorUtils.property(locator, "constructionYear", sourceConstructionYear), sourceConstructionYear));
+                Long copyConstructionYear = ((Long) strategy.copy(LocatorUtils.property(locator, "constructionYear", sourceConstructionYear), sourceConstructionYear));
                 copy.setConstructionYear(copyConstructionYear);
             } else {
                 copy.constructionYear = null;
@@ -1615,17 +1667,17 @@ public class ShortTermAccommodation
                 copy.price = null;
             }
             if (this.livingSpace!= null) {
-                Double sourceLivingSpace;
+                BigDecimal sourceLivingSpace;
                 sourceLivingSpace = this.getLivingSpace();
-                Double copyLivingSpace = ((Double) strategy.copy(LocatorUtils.property(locator, "livingSpace", sourceLivingSpace), sourceLivingSpace));
+                BigDecimal copyLivingSpace = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "livingSpace", sourceLivingSpace), sourceLivingSpace));
                 copy.setLivingSpace(copyLivingSpace);
             } else {
                 copy.livingSpace = null;
             }
             if (this.numberOfRooms!= null) {
-                Double sourceNumberOfRooms;
+                BigDecimal sourceNumberOfRooms;
                 sourceNumberOfRooms = this.getNumberOfRooms();
-                Double copyNumberOfRooms = ((Double) strategy.copy(LocatorUtils.property(locator, "numberOfRooms", sourceNumberOfRooms), sourceNumberOfRooms));
+                BigDecimal copyNumberOfRooms = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "numberOfRooms", sourceNumberOfRooms), sourceNumberOfRooms));
                 copy.setNumberOfRooms(copyNumberOfRooms);
             } else {
                 copy.numberOfRooms = null;
@@ -1687,7 +1739,7 @@ public class ShortTermAccommodation
     }
 
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
-        if (!(object instanceof ShortTermAccommodation)) {
+        if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
         if (this == object) {
@@ -1698,9 +1750,9 @@ public class ShortTermAccommodation
         }
         final ShortTermAccommodation that = ((ShortTermAccommodation) object);
         {
-            Double lhsBaseRent;
+            BigDecimal lhsBaseRent;
             lhsBaseRent = this.getBaseRent();
-            Double rhsBaseRent;
+            BigDecimal rhsBaseRent;
             rhsBaseRent = that.getBaseRent();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "baseRent", lhsBaseRent), LocatorUtils.property(thatLocator, "baseRent", rhsBaseRent), lhsBaseRent, rhsBaseRent)) {
                 return false;
@@ -1851,54 +1903,54 @@ public class ShortTermAccommodation
             }
         }
         {
-            Integer lhsMaxNumberOfPersons;
+            Long lhsMaxNumberOfPersons;
             lhsMaxNumberOfPersons = this.getMaxNumberOfPersons();
-            Integer rhsMaxNumberOfPersons;
+            Long rhsMaxNumberOfPersons;
             rhsMaxNumberOfPersons = that.getMaxNumberOfPersons();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "maxNumberOfPersons", lhsMaxNumberOfPersons), LocatorUtils.property(thatLocator, "maxNumberOfPersons", rhsMaxNumberOfPersons), lhsMaxNumberOfPersons, rhsMaxNumberOfPersons)) {
                 return false;
             }
         }
         {
-            Double lhsMaxRentalTime;
+            BigDecimal lhsMaxRentalTime;
             lhsMaxRentalTime = this.getMaxRentalTime();
-            Double rhsMaxRentalTime;
+            BigDecimal rhsMaxRentalTime;
             rhsMaxRentalTime = that.getMaxRentalTime();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "maxRentalTime", lhsMaxRentalTime), LocatorUtils.property(thatLocator, "maxRentalTime", rhsMaxRentalTime), lhsMaxRentalTime, rhsMaxRentalTime)) {
                 return false;
             }
         }
         {
-            Double lhsMinRentalTime;
+            BigDecimal lhsMinRentalTime;
             lhsMinRentalTime = this.getMinRentalTime();
-            Double rhsMinRentalTime;
+            BigDecimal rhsMinRentalTime;
             rhsMinRentalTime = that.getMinRentalTime();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "minRentalTime", lhsMinRentalTime), LocatorUtils.property(thatLocator, "minRentalTime", rhsMinRentalTime), lhsMinRentalTime, rhsMinRentalTime)) {
                 return false;
             }
         }
         {
-            Integer lhsNumberOfFloors;
+            Long lhsNumberOfFloors;
             lhsNumberOfFloors = this.getNumberOfFloors();
-            Integer rhsNumberOfFloors;
+            Long rhsNumberOfFloors;
             rhsNumberOfFloors = that.getNumberOfFloors();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "numberOfFloors", lhsNumberOfFloors), LocatorUtils.property(thatLocator, "numberOfFloors", rhsNumberOfFloors), lhsNumberOfFloors, rhsNumberOfFloors)) {
                 return false;
             }
         }
         {
-            Integer lhsNumberOfParkingSpaces;
+            Long lhsNumberOfParkingSpaces;
             lhsNumberOfParkingSpaces = this.getNumberOfParkingSpaces();
-            Integer rhsNumberOfParkingSpaces;
+            Long rhsNumberOfParkingSpaces;
             rhsNumberOfParkingSpaces = that.getNumberOfParkingSpaces();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "numberOfParkingSpaces", lhsNumberOfParkingSpaces), LocatorUtils.property(thatLocator, "numberOfParkingSpaces", rhsNumberOfParkingSpaces), lhsNumberOfParkingSpaces, rhsNumberOfParkingSpaces)) {
                 return false;
             }
         }
         {
-            Double lhsParkingSpacePrice;
+            BigDecimal lhsParkingSpacePrice;
             lhsParkingSpacePrice = this.getParkingSpacePrice();
-            Double rhsParkingSpacePrice;
+            BigDecimal rhsParkingSpacePrice;
             rhsParkingSpacePrice = that.getParkingSpacePrice();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "parkingSpacePrice", lhsParkingSpacePrice), LocatorUtils.property(thatLocator, "parkingSpacePrice", rhsParkingSpacePrice), lhsParkingSpacePrice, rhsParkingSpacePrice)) {
                 return false;
@@ -1923,36 +1975,36 @@ public class ShortTermAccommodation
             }
         }
         {
-            Double lhsServiceCharge;
+            BigDecimal lhsServiceCharge;
             lhsServiceCharge = this.getServiceCharge();
-            Double rhsServiceCharge;
+            BigDecimal rhsServiceCharge;
             rhsServiceCharge = that.getServiceCharge();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "serviceCharge", lhsServiceCharge), LocatorUtils.property(thatLocator, "serviceCharge", rhsServiceCharge), lhsServiceCharge, rhsServiceCharge)) {
                 return false;
             }
         }
         {
-            Double lhsThermalCharacteristic;
+            BigDecimal lhsThermalCharacteristic;
             lhsThermalCharacteristic = this.getThermalCharacteristic();
-            Double rhsThermalCharacteristic;
+            BigDecimal rhsThermalCharacteristic;
             rhsThermalCharacteristic = that.getThermalCharacteristic();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "thermalCharacteristic", lhsThermalCharacteristic), LocatorUtils.property(thatLocator, "thermalCharacteristic", rhsThermalCharacteristic), lhsThermalCharacteristic, rhsThermalCharacteristic)) {
                 return false;
             }
         }
         {
-            Double lhsTotalRent;
+            BigDecimal lhsTotalRent;
             lhsTotalRent = this.getTotalRent();
-            Double rhsTotalRent;
+            BigDecimal rhsTotalRent;
             rhsTotalRent = that.getTotalRent();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "totalRent", lhsTotalRent), LocatorUtils.property(thatLocator, "totalRent", rhsTotalRent), lhsTotalRent, rhsTotalRent)) {
                 return false;
             }
         }
         {
-            Integer lhsConstructionYear;
+            Long lhsConstructionYear;
             lhsConstructionYear = this.getConstructionYear();
-            Integer rhsConstructionYear;
+            Long rhsConstructionYear;
             rhsConstructionYear = that.getConstructionYear();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "constructionYear", lhsConstructionYear), LocatorUtils.property(thatLocator, "constructionYear", rhsConstructionYear), lhsConstructionYear, rhsConstructionYear)) {
                 return false;
@@ -1986,18 +2038,18 @@ public class ShortTermAccommodation
             }
         }
         {
-            Double lhsLivingSpace;
+            BigDecimal lhsLivingSpace;
             lhsLivingSpace = this.getLivingSpace();
-            Double rhsLivingSpace;
+            BigDecimal rhsLivingSpace;
             rhsLivingSpace = that.getLivingSpace();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "livingSpace", lhsLivingSpace), LocatorUtils.property(thatLocator, "livingSpace", rhsLivingSpace), lhsLivingSpace, rhsLivingSpace)) {
                 return false;
             }
         }
         {
-            Double lhsNumberOfRooms;
+            BigDecimal lhsNumberOfRooms;
             lhsNumberOfRooms = this.getNumberOfRooms();
-            Double rhsNumberOfRooms;
+            BigDecimal rhsNumberOfRooms;
             rhsNumberOfRooms = that.getNumberOfRooms();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "numberOfRooms", lhsNumberOfRooms), LocatorUtils.property(thatLocator, "numberOfRooms", rhsNumberOfRooms), lhsNumberOfRooms, rhsNumberOfRooms)) {
                 return false;

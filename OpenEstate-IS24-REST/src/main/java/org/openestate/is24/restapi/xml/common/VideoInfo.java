@@ -21,7 +21,8 @@ import org.jvnet.jaxb2_commons.lang.ToString;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
-import org.openestate.is24.restapi.xml.Adapter1;
+import org.openestate.is24.restapi.xml.Adapter4;
+import org.openestate.is24.restapi.xml.Adapter5;
 
 
 /**
@@ -32,18 +33,20 @@ import org.openestate.is24.restapi.xml.Adapter1;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="VideoInfo">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="videoUrlList" type="{http://rest.immobilienscout24.de/schema/common/1.0}videoUrlList" maxOccurs="2"/>
- *         &lt;element name="duration" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *         &lt;element name="teaserUrl" type="{http://www.w3.org/2001/XMLSchema}anyURI" minOccurs="0"/>
- *         &lt;element name="title" type="{http://rest.immobilienscout24.de/schema/common/1.0}TextField" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="VideoInfo"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="videoUrlList" type="{http://rest.immobilienscout24.de/schema/common/1.0}videoUrlList" maxOccurs="2"/&gt;
+ *         &lt;element name="duration" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
+ *         &lt;element name="teaserUrl" type="{http://www.w3.org/2001/XMLSchema}anyURI" minOccurs="0"/&gt;
+ *         &lt;element name="title" type="{http://rest.immobilienscout24.de/schema/common/1.0}TextField" minOccurs="0"/&gt;
+ *         &lt;element name="processingProgress" type="{http://rest.immobilienscout24.de/schema/common/1.0}percentType" minOccurs="0"/&gt;
+ *         &lt;element name="processingStatus" type="{http://rest.immobilienscout24.de/schema/common/1.0}videoProcessingStatusType" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -53,7 +56,9 @@ import org.openestate.is24.restapi.xml.Adapter1;
     "videoUrlList",
     "duration",
     "teaserUrl",
-    "title"
+    "title",
+    "processingProgress",
+    "processingStatus"
 })
 public class VideoInfo
     implements Cloneable, CopyTo, Equals, ToString
@@ -61,12 +66,21 @@ public class VideoInfo
 
     @XmlElement(required = true)
     protected List<VideoUrlList> videoUrlList;
-    protected Integer duration;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlSchemaType(name = "int")
+    protected Long duration;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter4 .class)
     @XmlSchemaType(name = "anyURI")
     protected URL teaserUrl;
     protected String title;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlSchemaType(name = "int")
+    protected Integer processingProgress;
+    @XmlSchemaType(name = "string")
+    protected VideoProcessingStatusType processingStatus;
 
     /**
      * Gets the value of the videoUrlList property.
@@ -102,10 +116,10 @@ public class VideoInfo
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public Integer getDuration() {
+    public Long getDuration() {
         return duration;
     }
 
@@ -114,10 +128,10 @@ public class VideoInfo
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public void setDuration(Integer value) {
+    public void setDuration(Long value) {
         this.duration = value;
     }
 
@@ -169,6 +183,54 @@ public class VideoInfo
         this.title = value;
     }
 
+    /**
+     * Gets the value of the processingProgress property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Integer getProcessingProgress() {
+        return processingProgress;
+    }
+
+    /**
+     * Sets the value of the processingProgress property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setProcessingProgress(Integer value) {
+        this.processingProgress = value;
+    }
+
+    /**
+     * Gets the value of the processingStatus property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link VideoProcessingStatusType }
+     *     
+     */
+    public VideoProcessingStatusType getProcessingStatus() {
+        return processingStatus;
+    }
+
+    /**
+     * Sets the value of the processingStatus property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link VideoProcessingStatusType }
+     *     
+     */
+    public void setProcessingStatus(VideoProcessingStatusType value) {
+        this.processingStatus = value;
+    }
+
     public String toString() {
         final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
@@ -190,7 +252,7 @@ public class VideoInfo
             strategy.appendField(locator, this, "videoUrlList", buffer, theVideoUrlList);
         }
         {
-            Integer theDuration;
+            Long theDuration;
             theDuration = this.getDuration();
             strategy.appendField(locator, this, "duration", buffer, theDuration);
         }
@@ -203,6 +265,16 @@ public class VideoInfo
             String theTitle;
             theTitle = this.getTitle();
             strategy.appendField(locator, this, "title", buffer, theTitle);
+        }
+        {
+            Integer theProcessingProgress;
+            theProcessingProgress = this.getProcessingProgress();
+            strategy.appendField(locator, this, "processingProgress", buffer, theProcessingProgress);
+        }
+        {
+            VideoProcessingStatusType theProcessingStatus;
+            theProcessingStatus = this.getProcessingStatus();
+            strategy.appendField(locator, this, "processingStatus", buffer, theProcessingStatus);
         }
         return buffer;
     }
@@ -234,9 +306,9 @@ public class VideoInfo
                 copy.videoUrlList = null;
             }
             if (this.duration!= null) {
-                Integer sourceDuration;
+                Long sourceDuration;
                 sourceDuration = this.getDuration();
-                Integer copyDuration = ((Integer) strategy.copy(LocatorUtils.property(locator, "duration", sourceDuration), sourceDuration));
+                Long copyDuration = ((Long) strategy.copy(LocatorUtils.property(locator, "duration", sourceDuration), sourceDuration));
                 copy.setDuration(copyDuration);
             } else {
                 copy.duration = null;
@@ -257,6 +329,22 @@ public class VideoInfo
             } else {
                 copy.title = null;
             }
+            if (this.processingProgress!= null) {
+                Integer sourceProcessingProgress;
+                sourceProcessingProgress = this.getProcessingProgress();
+                Integer copyProcessingProgress = ((Integer) strategy.copy(LocatorUtils.property(locator, "processingProgress", sourceProcessingProgress), sourceProcessingProgress));
+                copy.setProcessingProgress(copyProcessingProgress);
+            } else {
+                copy.processingProgress = null;
+            }
+            if (this.processingStatus!= null) {
+                VideoProcessingStatusType sourceProcessingStatus;
+                sourceProcessingStatus = this.getProcessingStatus();
+                VideoProcessingStatusType copyProcessingStatus = ((VideoProcessingStatusType) strategy.copy(LocatorUtils.property(locator, "processingStatus", sourceProcessingStatus), sourceProcessingStatus));
+                copy.setProcessingStatus(copyProcessingStatus);
+            } else {
+                copy.processingStatus = null;
+            }
         }
         return draftCopy;
     }
@@ -266,7 +354,7 @@ public class VideoInfo
     }
 
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
-        if (!(object instanceof VideoInfo)) {
+        if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
         if (this == object) {
@@ -283,9 +371,9 @@ public class VideoInfo
             }
         }
         {
-            Integer lhsDuration;
+            Long lhsDuration;
             lhsDuration = this.getDuration();
-            Integer rhsDuration;
+            Long rhsDuration;
             rhsDuration = that.getDuration();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "duration", lhsDuration), LocatorUtils.property(thatLocator, "duration", rhsDuration), lhsDuration, rhsDuration)) {
                 return false;
@@ -306,6 +394,24 @@ public class VideoInfo
             String rhsTitle;
             rhsTitle = that.getTitle();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "title", lhsTitle), LocatorUtils.property(thatLocator, "title", rhsTitle), lhsTitle, rhsTitle)) {
+                return false;
+            }
+        }
+        {
+            Integer lhsProcessingProgress;
+            lhsProcessingProgress = this.getProcessingProgress();
+            Integer rhsProcessingProgress;
+            rhsProcessingProgress = that.getProcessingProgress();
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "processingProgress", lhsProcessingProgress), LocatorUtils.property(thatLocator, "processingProgress", rhsProcessingProgress), lhsProcessingProgress, rhsProcessingProgress)) {
+                return false;
+            }
+        }
+        {
+            VideoProcessingStatusType lhsProcessingStatus;
+            lhsProcessingStatus = this.getProcessingStatus();
+            VideoProcessingStatusType rhsProcessingStatus;
+            rhsProcessingStatus = that.getProcessingStatus();
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "processingStatus", lhsProcessingStatus), LocatorUtils.property(thatLocator, "processingStatus", rhsProcessingStatus), lhsProcessingStatus, rhsProcessingStatus)) {
                 return false;
             }
         }

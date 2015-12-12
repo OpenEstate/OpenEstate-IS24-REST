@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.offerlistelement;
 
+import java.math.BigDecimal;
 import java.util.Calendar;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -19,6 +20,7 @@ import org.jvnet.jaxb2_commons.lang.ToString;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
+import org.openestate.is24.restapi.xml.Adapter1;
 import org.openestate.is24.restapi.xml.Adapter3;
 import org.openestate.is24.restapi.xml.common.CourtageInfo;
 import org.openestate.is24.restapi.xml.common.Price;
@@ -34,13 +36,13 @@ import org.openestate.is24.restapi.xml.common.ShortTermAccommodationType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="OfferShortTermAccommodation">
- *   &lt;complexContent>
- *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/listelement/1.0}OfferRealEstateForList">
- *       &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}BaseShortTermAccommodationGroup"/>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="OfferShortTermAccommodation"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/listelement/1.0}OfferRealEstateForList"&gt;
+ *       &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}BaseShortTermAccommodationGroup"/&gt;
+ *     &lt;/extension&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -64,8 +66,14 @@ public class OfferShortTermAccommodation
 
     @XmlElement(required = true)
     protected Price price;
-    protected Double livingSpace;
-    protected Double numberOfRooms;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal livingSpace;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal numberOfRooms;
     @XmlElement(required = true, type = String.class)
     @XmlJavaTypeAdapter(Adapter3 .class)
     @XmlSchemaType(name = "date")
@@ -74,6 +82,7 @@ public class OfferShortTermAccommodation
     protected Boolean garden;
     protected Boolean nonSmoker;
     @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
     protected ShortTermAccommodationType shortTermAccomodationType;
     @XmlElement(required = true)
     protected CourtageInfo courtage;
@@ -107,10 +116,10 @@ public class OfferShortTermAccommodation
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getLivingSpace() {
+    public BigDecimal getLivingSpace() {
         return livingSpace;
     }
 
@@ -119,10 +128,10 @@ public class OfferShortTermAccommodation
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setLivingSpace(Double value) {
+    public void setLivingSpace(BigDecimal value) {
         this.livingSpace = value;
     }
 
@@ -131,10 +140,10 @@ public class OfferShortTermAccommodation
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getNumberOfRooms() {
+    public BigDecimal getNumberOfRooms() {
         return numberOfRooms;
     }
 
@@ -143,10 +152,10 @@ public class OfferShortTermAccommodation
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setNumberOfRooms(Double value) {
+    public void setNumberOfRooms(BigDecimal value) {
         this.numberOfRooms = value;
     }
 
@@ -316,12 +325,12 @@ public class OfferShortTermAccommodation
             strategy.appendField(locator, this, "price", buffer, thePrice);
         }
         {
-            Double theLivingSpace;
+            BigDecimal theLivingSpace;
             theLivingSpace = this.getLivingSpace();
             strategy.appendField(locator, this, "livingSpace", buffer, theLivingSpace);
         }
         {
-            Double theNumberOfRooms;
+            BigDecimal theNumberOfRooms;
             theNumberOfRooms = this.getNumberOfRooms();
             strategy.appendField(locator, this, "numberOfRooms", buffer, theNumberOfRooms);
         }
@@ -381,17 +390,17 @@ public class OfferShortTermAccommodation
                 copy.price = null;
             }
             if (this.livingSpace!= null) {
-                Double sourceLivingSpace;
+                BigDecimal sourceLivingSpace;
                 sourceLivingSpace = this.getLivingSpace();
-                Double copyLivingSpace = ((Double) strategy.copy(LocatorUtils.property(locator, "livingSpace", sourceLivingSpace), sourceLivingSpace));
+                BigDecimal copyLivingSpace = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "livingSpace", sourceLivingSpace), sourceLivingSpace));
                 copy.setLivingSpace(copyLivingSpace);
             } else {
                 copy.livingSpace = null;
             }
             if (this.numberOfRooms!= null) {
-                Double sourceNumberOfRooms;
+                BigDecimal sourceNumberOfRooms;
                 sourceNumberOfRooms = this.getNumberOfRooms();
-                Double copyNumberOfRooms = ((Double) strategy.copy(LocatorUtils.property(locator, "numberOfRooms", sourceNumberOfRooms), sourceNumberOfRooms));
+                BigDecimal copyNumberOfRooms = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "numberOfRooms", sourceNumberOfRooms), sourceNumberOfRooms));
                 copy.setNumberOfRooms(copyNumberOfRooms);
             } else {
                 copy.numberOfRooms = null;
@@ -453,7 +462,7 @@ public class OfferShortTermAccommodation
     }
 
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
-        if (!(object instanceof OfferShortTermAccommodation)) {
+        if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
         if (this == object) {
@@ -473,18 +482,18 @@ public class OfferShortTermAccommodation
             }
         }
         {
-            Double lhsLivingSpace;
+            BigDecimal lhsLivingSpace;
             lhsLivingSpace = this.getLivingSpace();
-            Double rhsLivingSpace;
+            BigDecimal rhsLivingSpace;
             rhsLivingSpace = that.getLivingSpace();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "livingSpace", lhsLivingSpace), LocatorUtils.property(thatLocator, "livingSpace", rhsLivingSpace), lhsLivingSpace, rhsLivingSpace)) {
                 return false;
             }
         }
         {
-            Double lhsNumberOfRooms;
+            BigDecimal lhsNumberOfRooms;
             lhsNumberOfRooms = this.getNumberOfRooms();
-            Double rhsNumberOfRooms;
+            BigDecimal rhsNumberOfRooms;
             rhsNumberOfRooms = that.getNumberOfRooms();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "numberOfRooms", lhsNumberOfRooms), LocatorUtils.property(thatLocator, "numberOfRooms", rhsNumberOfRooms), lhsNumberOfRooms, rhsNumberOfRooms)) {
                 return false;

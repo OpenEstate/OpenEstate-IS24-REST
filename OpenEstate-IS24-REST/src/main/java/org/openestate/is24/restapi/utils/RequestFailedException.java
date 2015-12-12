@@ -32,6 +32,7 @@ import org.slf4j.LoggerFactory;
  */
 public class RequestFailedException extends Exception
 {
+  private final static long serialVersionUID = -5913145712963169005L;
   private final static Logger LOGGER = LoggerFactory.getLogger( RequestFailedException.class );
 
   /**
@@ -121,7 +122,7 @@ public class RequestFailedException extends Exception
   }
 
   /**
-   * Returns the unique identifier of the failed HTTP request.
+   * Return the unique identifier of the failed HTTP request.
    * <p>
    * This values was passed through the <em>L-IS24-RequestRefnum</em> header
    * of the HTTP response.
@@ -137,7 +138,7 @@ public class RequestFailedException extends Exception
   }
 
   /**
-   * Returns the {@link Messages}, that were received in the body of the HTTP
+   * Return the {@link Messages}, that were received in the body of the HTTP
    * response.
    *
    * @return
@@ -151,7 +152,7 @@ public class RequestFailedException extends Exception
   }
 
   /**
-   * Returns the status code of the HTTP response.
+   * Return the status code of the HTTP response.
    *
    * @return
    * status code
@@ -164,7 +165,7 @@ public class RequestFailedException extends Exception
   }
 
   /**
-   * Returns the status message of the HTTP response.
+   * Return the status message of the HTTP response.
    *
    * @return
    * status message

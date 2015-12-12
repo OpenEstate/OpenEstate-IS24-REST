@@ -33,28 +33,28 @@ import org.openestate.is24.restapi.xml.offerlistelement.OfferRealEstateForList;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="AbstractRealEstateForList">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="externalId" type="{http://rest.immobilienscout24.de/schema/common/1.0}TextField" minOccurs="0"/>
- *         &lt;element name="title">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://rest.immobilienscout24.de/schema/common/1.0}TextField">
- *               &lt;maxLength value="100"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
- *         &lt;element name="creationDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
- *         &lt;element name="lastModificationDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
- *         &lt;element name="address" type="{http://rest.immobilienscout24.de/schema/common/1.0}Wgs84Address"/>
- *         &lt;element name="apiSearchData" type="{http://rest.immobilienscout24.de/schema/common/1.0}ApiSearchData" minOccurs="0"/>
- *         &lt;element name="realEstateState" type="{http://rest.immobilienscout24.de/schema/common/1.0}RealEstateState" minOccurs="0"/>
- *       &lt;/sequence>
- *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}long" />
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="AbstractRealEstateForList"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="externalId" type="{http://rest.immobilienscout24.de/schema/common/1.0}TextField" minOccurs="0"/&gt;
+ *         &lt;element name="title"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://rest.immobilienscout24.de/schema/common/1.0}TextField"&gt;
+ *               &lt;maxLength value="100"/&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="creationDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
+ *         &lt;element name="lastModificationDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
+ *         &lt;element name="address" type="{http://rest.immobilienscout24.de/schema/common/1.0}Wgs84Address"/&gt;
+ *         &lt;element name="apiSearchData" type="{http://rest.immobilienscout24.de/schema/common/1.0}ApiSearchData" minOccurs="0"/&gt;
+ *         &lt;element name="realEstateState" type="{http://rest.immobilienscout24.de/schema/common/1.0}RealEstateState" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}long" /&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -79,7 +79,7 @@ public abstract class AbstractRealEstateForList
 
     protected String externalId;
     @XmlElement(required = true)
-    @XmlJavaTypeAdapter(Adapter44 .class)
+    @XmlJavaTypeAdapter(Adapter15 .class)
     protected String title;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter2 .class)
@@ -92,6 +92,7 @@ public abstract class AbstractRealEstateForList
     @XmlElement(required = true)
     protected Wgs84Address address;
     protected ApiSearchData apiSearchData;
+    @XmlSchemaType(name = "string")
     protected RealEstateState realEstateState;
     @XmlAttribute(name = "id")
     protected Long id;
@@ -430,7 +431,7 @@ public abstract class AbstractRealEstateForList
     }
 
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
-        if (!(object instanceof AbstractRealEstateForList)) {
+        if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
         if (this == object) {

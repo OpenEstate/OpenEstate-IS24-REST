@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.realestates;
 
+import java.math.BigDecimal;
 import java.util.Calendar;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -19,6 +20,7 @@ import org.jvnet.jaxb2_commons.lang.ToString;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
+import org.openestate.is24.restapi.xml.Adapter1;
 import org.openestate.is24.restapi.xml.Adapter3;
 import org.openestate.is24.restapi.xml.common.BuildingEnergyRatingType;
 import org.openestate.is24.restapi.xml.common.CompulsoryAuctionType;
@@ -38,15 +40,15 @@ import org.openestate.is24.restapi.xml.common.YesNotApplicableType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="CompulsoryAuction">
- *   &lt;complexContent>
- *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/realestates/1.0}RealEstate">
- *       &lt;sequence>
- *         &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}ExtendedCompulsoryAuctionGroup"/>
- *       &lt;/sequence>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="CompulsoryAuction"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/realestates/1.0}RealEstate"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}ExtendedCompulsoryAuctionGroup"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/extension&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -102,28 +104,35 @@ public class CompulsoryAuction
     @XmlJavaTypeAdapter(Adapter3 .class)
     @XmlSchemaType(name = "date")
     protected Calendar recordationDate;
-    protected double area;
+    @XmlElement(required = true, type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal area;
     @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
     protected CompulsoryAuctionType auctionObjectType;
     protected CountyCourt countyCourt;
-    @XmlJavaTypeAdapter(Adapter10 .class)
+    @XmlJavaTypeAdapter(Adapter4 .class)
     protected String fileReferenceAtCountyCourt;
-    @XmlJavaTypeAdapter(Adapter11 .class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
     protected String numberOfFolio;
     @XmlElement(defaultValue = "false")
     protected Boolean splittingAuction;
-    @XmlJavaTypeAdapter(Adapter12 .class)
+    @XmlJavaTypeAdapter(Adapter6 .class)
     protected String owner;
     protected EnergyPerformanceCertificate energyCertificate;
+    @XmlSchemaType(name = "string")
     protected HeatingTypeEnev2014 heatingTypeEnev2014;
     protected EnergySourcesEnev2014 energySourcesEnev2014;
+    @XmlSchemaType(name = "string")
     protected BuildingEnergyRatingType buildingEnergyRatingType;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter13 .class)
-    protected Double thermalCharacteristic;
+    @XmlJavaTypeAdapter(Adapter7 .class)
+    protected BigDecimal thermalCharacteristic;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType energyConsumptionContainsWarmWater;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter14 .class)
+    @XmlJavaTypeAdapter(Adapter8 .class)
     protected Integer constructionYear;
     protected Boolean constructionYearUnknown;
 
@@ -298,16 +307,24 @@ public class CompulsoryAuction
     /**
      * Gets the value of the area property.
      * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public double getArea() {
+    public BigDecimal getArea() {
         return area;
     }
 
     /**
      * Sets the value of the area property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setArea(double value) {
+    public void setArea(BigDecimal value) {
         this.area = value;
     }
 
@@ -559,7 +576,7 @@ public class CompulsoryAuction
      *     {@link String }
      *     
      */
-    public Double getThermalCharacteristic() {
+    public BigDecimal getThermalCharacteristic() {
         return thermalCharacteristic;
     }
 
@@ -571,7 +588,7 @@ public class CompulsoryAuction
      *     {@link String }
      *     
      */
-    public void setThermalCharacteristic(Double value) {
+    public void setThermalCharacteristic(BigDecimal value) {
         this.thermalCharacteristic = value;
     }
 
@@ -699,7 +716,7 @@ public class CompulsoryAuction
             strategy.appendField(locator, this, "recordationDate", buffer, theRecordationDate);
         }
         {
-            double theArea;
+            BigDecimal theArea;
             theArea = this.getArea();
             strategy.appendField(locator, this, "area", buffer, theArea);
         }
@@ -754,7 +771,7 @@ public class CompulsoryAuction
             strategy.appendField(locator, this, "buildingEnergyRatingType", buffer, theBuildingEnergyRatingType);
         }
         {
-            Double theThermalCharacteristic;
+            BigDecimal theThermalCharacteristic;
             theThermalCharacteristic = this.getThermalCharacteristic();
             strategy.appendField(locator, this, "thermalCharacteristic", buffer, theThermalCharacteristic);
         }
@@ -846,11 +863,13 @@ public class CompulsoryAuction
             } else {
                 copy.recordationDate = null;
             }
-            {
-                double sourceArea;
+            if (this.area!= null) {
+                BigDecimal sourceArea;
                 sourceArea = this.getArea();
-                double copyArea = strategy.copy(LocatorUtils.property(locator, "area", sourceArea), sourceArea);
+                BigDecimal copyArea = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "area", sourceArea), sourceArea));
                 copy.setArea(copyArea);
+            } else {
+                copy.area = null;
             }
             if (this.auctionObjectType!= null) {
                 CompulsoryAuctionType sourceAuctionObjectType;
@@ -933,9 +952,9 @@ public class CompulsoryAuction
                 copy.buildingEnergyRatingType = null;
             }
             if (this.thermalCharacteristic!= null) {
-                Double sourceThermalCharacteristic;
+                BigDecimal sourceThermalCharacteristic;
                 sourceThermalCharacteristic = this.getThermalCharacteristic();
-                Double copyThermalCharacteristic = ((Double) strategy.copy(LocatorUtils.property(locator, "thermalCharacteristic", sourceThermalCharacteristic), sourceThermalCharacteristic));
+                BigDecimal copyThermalCharacteristic = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "thermalCharacteristic", sourceThermalCharacteristic), sourceThermalCharacteristic));
                 copy.setThermalCharacteristic(copyThermalCharacteristic);
             } else {
                 copy.thermalCharacteristic = null;
@@ -973,7 +992,7 @@ public class CompulsoryAuction
     }
 
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
-        if (!(object instanceof CompulsoryAuction)) {
+        if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
         if (this == object) {
@@ -1047,9 +1066,9 @@ public class CompulsoryAuction
             }
         }
         {
-            double lhsArea;
+            BigDecimal lhsArea;
             lhsArea = this.getArea();
-            double rhsArea;
+            BigDecimal rhsArea;
             rhsArea = that.getArea();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "area", lhsArea), LocatorUtils.property(thatLocator, "area", rhsArea), lhsArea, rhsArea)) {
                 return false;
@@ -1146,9 +1165,9 @@ public class CompulsoryAuction
             }
         }
         {
-            Double lhsThermalCharacteristic;
+            BigDecimal lhsThermalCharacteristic;
             lhsThermalCharacteristic = this.getThermalCharacteristic();
-            Double rhsThermalCharacteristic;
+            BigDecimal rhsThermalCharacteristic;
             rhsThermalCharacteristic = that.getThermalCharacteristic();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "thermalCharacteristic", lhsThermalCharacteristic), LocatorUtils.property(thatLocator, "thermalCharacteristic", rhsThermalCharacteristic), lhsThermalCharacteristic, rhsThermalCharacteristic)) {
                 return false;

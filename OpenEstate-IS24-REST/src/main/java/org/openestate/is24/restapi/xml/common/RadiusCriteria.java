@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.common;
 
+import java.math.BigDecimal;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -29,24 +30,24 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="RadiusCriteria">
- *   &lt;complexContent>
- *     &lt;extension base="{http://rest.immobilienscout24.de/schema/common/1.0}AbstractGeoCriteria">
- *       &lt;all>
- *         &lt;element name="wgs84" type="{http://rest.immobilienscout24.de/schema/common/1.0}Wgs84Coordinate"/>
- *         &lt;element name="radiusKm">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}double">
- *               &lt;minExclusive value="0"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
- *         &lt;element name="label" type="{http://rest.immobilienscout24.de/schema/common/1.0}TextField" minOccurs="0"/>
- *         &lt;element name="address" type="{http://rest.immobilienscout24.de/schema/common/1.0}Address" minOccurs="0"/>
- *       &lt;/all>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="RadiusCriteria"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;extension base="{http://rest.immobilienscout24.de/schema/common/1.0}AbstractGeoCriteria"&gt;
+ *       &lt;all&gt;
+ *         &lt;element name="wgs84" type="{http://rest.immobilienscout24.de/schema/common/1.0}Wgs84Coordinate"/&gt;
+ *         &lt;element name="radiusKm"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}double"&gt;
+ *               &lt;minExclusive value="0"/&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
+ *         &lt;element name="label" type="{http://rest.immobilienscout24.de/schema/common/1.0}TextField" minOccurs="0"/&gt;
+ *         &lt;element name="address" type="{http://rest.immobilienscout24.de/schema/common/1.0}Address" minOccurs="0"/&gt;
+ *       &lt;/all&gt;
+ *     &lt;/extension&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -66,8 +67,8 @@ public class RadiusCriteria
     @XmlElement(required = true)
     protected Wgs84Coordinate wgs84;
     @XmlElement(required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter49 .class)
-    protected Double radiusKm;
+    @XmlJavaTypeAdapter(Adapter27 .class)
+    protected BigDecimal radiusKm;
     protected String label;
     protected Address address;
 
@@ -103,7 +104,7 @@ public class RadiusCriteria
      *     {@link String }
      *     
      */
-    public Double getRadiusKm() {
+    public BigDecimal getRadiusKm() {
         return radiusKm;
     }
 
@@ -115,7 +116,7 @@ public class RadiusCriteria
      *     {@link String }
      *     
      */
-    public void setRadiusKm(Double value) {
+    public void setRadiusKm(BigDecimal value) {
         this.radiusKm = value;
     }
 
@@ -189,7 +190,7 @@ public class RadiusCriteria
             strategy.appendField(locator, this, "wgs84", buffer, theWgs84);
         }
         {
-            Double theRadiusKm;
+            BigDecimal theRadiusKm;
             theRadiusKm = this.getRadiusKm();
             strategy.appendField(locator, this, "radiusKm", buffer, theRadiusKm);
         }
@@ -229,9 +230,9 @@ public class RadiusCriteria
                 copy.wgs84 = null;
             }
             if (this.radiusKm!= null) {
-                Double sourceRadiusKm;
+                BigDecimal sourceRadiusKm;
                 sourceRadiusKm = this.getRadiusKm();
-                Double copyRadiusKm = ((Double) strategy.copy(LocatorUtils.property(locator, "radiusKm", sourceRadiusKm), sourceRadiusKm));
+                BigDecimal copyRadiusKm = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "radiusKm", sourceRadiusKm), sourceRadiusKm));
                 copy.setRadiusKm(copyRadiusKm);
             } else {
                 copy.radiusKm = null;
@@ -261,7 +262,7 @@ public class RadiusCriteria
     }
 
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
-        if (!(object instanceof RadiusCriteria)) {
+        if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
         if (this == object) {
@@ -281,9 +282,9 @@ public class RadiusCriteria
             }
         }
         {
-            Double lhsRadiusKm;
+            BigDecimal lhsRadiusKm;
             lhsRadiusKm = this.getRadiusKm();
-            Double rhsRadiusKm;
+            BigDecimal rhsRadiusKm;
             rhsRadiusKm = that.getRadiusKm();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "radiusKm", lhsRadiusKm), LocatorUtils.property(thatLocator, "radiusKm", rhsRadiusKm), lhsRadiusKm, rhsRadiusKm)) {
                 return false;

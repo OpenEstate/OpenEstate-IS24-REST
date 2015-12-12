@@ -22,8 +22,8 @@ import org.jvnet.jaxb2_commons.lang.ToString;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
-import org.openestate.is24.restapi.xml.Adapter1;
 import org.openestate.is24.restapi.xml.Adapter2;
+import org.openestate.is24.restapi.xml.Adapter4;
 import org.openestate.is24.restapi.xml.common.AbstractRealEstateForList;
 import org.openestate.is24.restapi.xml.common.Picture;
 import org.openestate.is24.restapi.xml.common.PublishChannels;
@@ -38,21 +38,21 @@ import org.openestate.is24.restapi.xml.common.RealEstateState;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="OfferRealEstateForList">
- *   &lt;complexContent>
- *     &lt;extension base="{http://rest.immobilienscout24.de/schema/common/1.0}AbstractRealEstateForList">
- *       &lt;sequence>
- *         &lt;element name="state" type="{http://rest.immobilienscout24.de/schema/common/1.0}RealEstateState"/>
- *         &lt;element name="titlePicture" type="{http://rest.immobilienscout24.de/schema/common/1.0}Picture"/>
- *         &lt;element name="floorplan" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
- *         &lt;sequence>
- *           &lt;element ref="{http://rest.immobilienscout24.de/schema/common/1.0}publishChannels" minOccurs="0"/>
- *         &lt;/sequence>
- *       &lt;/sequence>
- *       &lt;attGroup ref="{http://rest.immobilienscout24.de/schema/offer/listelement/1.0}Reference"/>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="OfferRealEstateForList"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;extension base="{http://rest.immobilienscout24.de/schema/common/1.0}AbstractRealEstateForList"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="state" type="{http://rest.immobilienscout24.de/schema/common/1.0}RealEstateState"/&gt;
+ *         &lt;element name="titlePicture" type="{http://rest.immobilienscout24.de/schema/common/1.0}Picture"/&gt;
+ *         &lt;element name="floorplan" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/&gt;
+ *         &lt;sequence&gt;
+ *           &lt;element ref="{http://rest.immobilienscout24.de/schema/common/1.0}publishChannels" minOccurs="0"/&gt;
+ *         &lt;/sequence&gt;
+ *       &lt;/sequence&gt;
+ *       &lt;attGroup ref="{http://rest.immobilienscout24.de/schema/offer/listelement/1.0}Reference"/&gt;
+ *     &lt;/extension&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -65,27 +65,27 @@ import org.openestate.is24.restapi.xml.common.RealEstateState;
     "publishChannels"
 })
 @XmlSeeAlso({
-    OfferTradeSite.class,
-    OfferHouseBuy.class,
-    OfferGarageRent.class,
-    OfferSpecialPurpose.class,
-    OfferLivingRentSite.class,
-    OfferGarageBuy.class,
-    OfferApartmentBuy.class,
-    OfferStore.class,
     OfferApartmentRent.class,
-    OfferFlatShareRoom.class,
-    OfferIndustry.class,
-    OfferCompulsoryAuction.class,
-    OfferSeniorCare.class,
-    OfferAssistedLiving.class,
-    OfferHouseType.class,
-    OfferInvestment.class,
     OfferHouseRent.class,
-    OfferGastronomy.class,
+    OfferApartmentBuy.class,
+    OfferHouseBuy.class,
     OfferShortTermAccommodation.class,
+    OfferHouseType.class,
     OfferOffice.class,
-    OfferLivingBuySite.class
+    OfferStore.class,
+    OfferGastronomy.class,
+    OfferIndustry.class,
+    OfferSpecialPurpose.class,
+    OfferInvestment.class,
+    OfferCompulsoryAuction.class,
+    OfferLivingBuySite.class,
+    OfferLivingRentSite.class,
+    OfferTradeSite.class,
+    OfferGarageBuy.class,
+    OfferGarageRent.class,
+    OfferFlatShareRoom.class,
+    OfferAssistedLiving.class,
+    OfferSeniorCare.class
 })
 public abstract class OfferRealEstateForList
     extends AbstractRealEstateForList
@@ -93,6 +93,7 @@ public abstract class OfferRealEstateForList
 {
 
     @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
     protected RealEstateState state;
     @XmlElement(required = true)
     protected Picture titlePicture;
@@ -100,7 +101,7 @@ public abstract class OfferRealEstateForList
     @XmlElement(namespace = "http://rest.immobilienscout24.de/schema/common/1.0")
     protected PublishChannels publishChannels;
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")
-    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlJavaTypeAdapter(Adapter4 .class)
     @XmlSchemaType(name = "anyURI")
     protected URL href;
     @XmlAttribute(name = "modification")
@@ -452,7 +453,7 @@ public abstract class OfferRealEstateForList
     }
 
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
-        if (!(object instanceof OfferRealEstateForList)) {
+        if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
         if (this == object) {

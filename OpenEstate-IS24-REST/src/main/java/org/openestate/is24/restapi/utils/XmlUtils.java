@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright 2014-2015 OpenEstate.org.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,16 +21,15 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.Reader;
 import java.io.StringReader;
+import java.math.BigDecimal;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 import java.text.DateFormat;
-import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.xml.bind.DatatypeConverter;
@@ -48,8 +47,13 @@ import org.apache.commons.lang3.SystemUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.openestate.is24.restapi.utils.validator.EmailValidator;
 import org.openestate.is24.restapi.xml.common.Attachment;
+import org.openestate.is24.restapi.xml.common.City;
+import org.openestate.is24.restapi.xml.common.Continent;
+import org.openestate.is24.restapi.xml.common.Country;
 import org.openestate.is24.restapi.xml.common.PublishObject;
+import org.openestate.is24.restapi.xml.common.Quarter;
 import org.openestate.is24.restapi.xml.common.RealtorContactDetails;
+import org.openestate.is24.restapi.xml.common.Region;
 import org.openestate.is24.restapi.xml.realestates.ApartmentBuy;
 import org.openestate.is24.restapi.xml.realestates.ApartmentRent;
 import org.openestate.is24.restapi.xml.realestates.AssistedLiving;
@@ -85,24 +89,20 @@ public final class XmlUtils
   public final static String DEFAULT_ENCODING = "UTF-8";
   private static JAXBContext JAXB = null;
   private final static String JAXB_PACKAGES = ""
-    + "org.openestate.is24.restapi.xml.alterationdate"
-    + ":org.openestate.is24.restapi.xml.attachmentsorder"
-    + ":org.openestate.is24.restapi.xml.bookingoverview"
+    + "org.openestate.is24.restapi.xml.attachmentsorder"
     + ":org.openestate.is24.restapi.xml.common"
+    + ":org.openestate.is24.restapi.xml.gis"
     + ":org.openestate.is24.restapi.xml.offerlistelement"
     + ":org.openestate.is24.restapi.xml.offeruser"
     + ":org.openestate.is24.restapi.xml.premiumplacement"
-    + ":org.openestate.is24.restapi.xml.productrecommendation"
     + ":org.openestate.is24.restapi.xml.realestatecounts"
     + ":org.openestate.is24.restapi.xml.realestateproject"
     + ":org.openestate.is24.restapi.xml.realestates"
-    + ":org.openestate.is24.restapi.xml.realestatestock"
     + ":org.openestate.is24.restapi.xml.realtor"
     + ":org.openestate.is24.restapi.xml.realtorbadges"
     + ":org.openestate.is24.restapi.xml.showcaseplacement"
     + ":org.openestate.is24.restapi.xml.topplacement"
-    + ":org.openestate.is24.restapi.xml.videoupload"
-    + ":org.openestate.is24.restapi.xml.zipandlocationtoregion";
+    + ":org.openestate.is24.restapi.xml.videoupload";
   private final static Pattern ANY_TAG_PATTERN = Pattern.compile(
     "<[^<>\\n]*>", Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE );
   private final static Pattern BR_TAG_PATTERN = Pattern.compile(
@@ -113,7 +113,7 @@ public final class XmlUtils
   }
 
   /**
-   * Creates a marshaller for XML generation.
+   * Create a marshaller for XML generation.
    *
    * @return
    * marshaller
@@ -127,7 +127,7 @@ public final class XmlUtils
   }
 
   /**
-   * Creates a marshaller for XML generation.
+   * Create a marshaller for XML generation.
    *
    * @param encoding
    * encoding of generated XML output
@@ -150,7 +150,7 @@ public final class XmlUtils
   }
 
   /**
-   * Creates an unmarshaller for XML parsing.
+   * Create an unmarshaller for XML parsing.
    *
    * @return
    * unmarshaller
@@ -193,7 +193,7 @@ public final class XmlUtils
   }
 
   /**
-   * Creates a XML string for a JAXB object.
+   * Create a XML string for a JAXB object.
    *
    * @param object
    * JAXB object, that is converted into XML output
@@ -213,7 +213,7 @@ public final class XmlUtils
   }
 
   /**
-   * Creates a XML string for a JAXB object.
+   * Create a XML string for a JAXB object.
    *
    * @param object
    * JAXB object, that is converted into XML output
@@ -236,7 +236,7 @@ public final class XmlUtils
   }
 
   /**
-   * Creates a XML string for a JAXB object.
+   * Create a XML string for a JAXB object.
    *
    * @param object
    * JAXB object, that is converted into XML output
@@ -268,9 +268,25 @@ public final class XmlUtils
       {
         writeXml( (Attachment) object, encoding, prettyPrint, output );
       }
+      else if (object instanceof City)
+      {
+        writeXml( (City) object, encoding, prettyPrint, output );
+      }
+      else if (object instanceof Continent)
+      {
+        writeXml( (Continent) object, encoding, prettyPrint, output );
+      }
+      else if (object instanceof Country)
+      {
+        writeXml( (Country) object, encoding, prettyPrint, output );
+      }
       else if (object instanceof PublishObject)
       {
         writeXml( (PublishObject) object, encoding, prettyPrint, output );
+      }
+      else if (object instanceof Quarter)
+      {
+        writeXml( (Quarter) object, encoding, prettyPrint, output );
       }
       else if (object instanceof RealtorContactDetails)
       {
@@ -279,6 +295,10 @@ public final class XmlUtils
       else if (object instanceof RealEstate)
       {
         writeXml( (RealEstate) object, encoding, prettyPrint, output );
+      }
+      else if (object instanceof Region)
+      {
+        writeXml( (Region) object, encoding, prettyPrint, output );
       }
       else
       {
@@ -296,7 +316,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link Color} value from XML.
+   * Read a {@link Color} value from XML.
    *
    * @param value
    * XML string
@@ -314,7 +334,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link Calendar} value from XML.
+   * Read a {@link Calendar} value from XML.
    *
    * @param value
    * XML string
@@ -350,38 +370,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link Double} value from XML.
-   *
-   * @param value
-   * XML string
-   *
-   * @param min
-   * minimal value
-   *
-   * @param max
-   * maximal value
-   *
-   * @param precision
-   * number of decimal places
-   *
-   * @return
-   * parsed value or null, if the value is invalid
-   */
-  private static Double parseDouble( String value, Double min, Double max, int precision )
-  {
-    if (StringUtils.isBlank( value )) return null;
-    try
-    {
-      return Double.valueOf( value );
-    }
-    catch (NumberFormatException ex)
-    {
-      return null;
-    }
-  }
-
-  /**
-   * Reads a {@link Double} value from XML
+   * Read a {@link BigDecimal} value from XML
    * with maximal 8 digits and 2 decimal places.
    *
    * @param value
@@ -390,13 +379,14 @@ public final class XmlUtils
    * @return
    * parsed value or null, if the value is invalid
    */
-  public static Double parseDouble8_2( String value )
+  public static BigDecimal parseDecimal8_2( String value )
   {
-    return parseDouble( value, 0d, 99999999d, 2 );
+    value = StringUtils.trimToNull( value );
+    return (value!=null)? DatatypeConverter.parseDecimal( value ): null;
   }
 
   /**
-   * Reads a {@link Double} value from XML
+   * Read a {@link BigDecimal} value from XML
    * with maximal 13 digits and 2 decimal places.
    *
    * @param value
@@ -405,13 +395,14 @@ public final class XmlUtils
    * @return
    * parsed value or null, if the value is invalid
    */
-  public static Double parseDouble13_2( String value )
+  public static BigDecimal parseDecimal13_2( String value )
   {
-    return parseDouble( value, 0d, 9999999999999d, 2 );
+    value = StringUtils.trimToNull( value );
+    return (value!=null)? DatatypeConverter.parseDecimal( value ): null;
   }
 
   /**
-   * Reads a positive {@link Double} value from XML
+   * Read a positive {@link BigDecimal} value from XML
    * with maximal 3 decimal places.
    *
    * @param value
@@ -420,13 +411,14 @@ public final class XmlUtils
    * @return
    * parsed value or null, if the value is invalid
    */
-  public static Double parseDoublePositive( String value )
+  public static BigDecimal parseDecimalPositive( String value )
   {
-    return parseDouble( value, 0.001d, null, 3 );
+    value = StringUtils.trimToNull( value );
+    return (value!=null)? DatatypeConverter.parseDecimal( value ): null;
   }
 
   /**
-   * Reads an e-mail address from XML.
+   * Read an e-mail address from XML.
    *
    * @param value
    * XML string
@@ -442,7 +434,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads an {@link Integer} value from XML,
+   * Read an {@link Integer} value from XML,
    * that matches the 'FlatShareSearchSize' simple type.
    *
    * @param value
@@ -457,7 +449,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads an {@link Integer} value from XML,
+   * Read an {@link Integer} value from XML,
    * that matches the type of the 'numberOfFloors' element.
    *
    * @param value
@@ -472,7 +464,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads an {@link Integer} value from XML,
+   * Read an {@link Integer} value from XML,
    * that matches the type of the 'groupNumber' element.
    *
    * @param value
@@ -487,7 +479,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads an {@link Integer} value from XML.
+   * Read an {@link Integer} value from XML.
    *
    * @param value
    * XML string
@@ -509,7 +501,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a positive {@link Integer} value from XML
+   * Read a positive {@link Integer} value from XML
    * with maximal 9 digits.
    *
    * @param value
@@ -524,7 +516,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads an {@link Integer} value from XML
+   * Read an {@link Integer} value from XML
    * from 0 to 99.
    *
    * @param value
@@ -539,7 +531,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads an {@link Integer} value from XML
+   * Read an {@link Integer} value from XML
    * from 0 to 999.
    *
    * @param value
@@ -554,7 +546,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads an {@link Integer} value from XML
+   * Read an {@link Integer} value from XML
    * from 0 to 9999.
    *
    * @param value
@@ -569,7 +561,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a positive {@link Integer} value from XML
+   * Read a positive {@link Integer} value from XML
    * up to 9999.
    *
    * @param value
@@ -584,7 +576,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads an {@link Integer} value from XML
+   * Read an {@link Integer} value from XML
    * from 0 to 99999.
    *
    * @param value
@@ -599,7 +591,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link Double} value from XML
+   * Read a {@link BigDecimal} value from XML
    * with a valid latitude range.
    *
    * @param value
@@ -608,13 +600,14 @@ public final class XmlUtils
    * @return
    * parsed value or null, if the value is invalid
    */
-  public static Double parseLatitude( String value )
+  public static BigDecimal parseLatitude( String value )
   {
-    return parseDouble( value, -90d, 90d, 10 );
+    value = StringUtils.trimToNull( value );
+    return (value!=null)? DatatypeConverter.parseDecimal( value ): null;
   }
 
   /**
-   * Reads a {@link Double} value from XML
+   * Read a {@link BigDecimal} value from XML
    * with a valid longitude range.
    *
    * @param value
@@ -623,13 +616,14 @@ public final class XmlUtils
    * @return
    * parsed value or null, if the value is invalid
    */
-  public static Double parseLongitude( String value )
+  public static BigDecimal parseLongitude( String value )
   {
-    return parseDouble( value, -180d, 180d, 10 );
+    value = StringUtils.trimToNull( value );
+    return (value!=null)? DatatypeConverter.parseDecimal( value ): null;
   }
 
   /**
-   * Reads a {@link String} value from XML
+   * Read a {@link String} value from XML
    * with a at least 1 character.
    *
    * @param value
@@ -644,7 +638,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link String} value from XML,
+   * Read a {@link String} value from XML,
    * that matches the 'Password' simple type.
    *
    * @param value
@@ -659,7 +653,22 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link String} value from XML
+   * Read an {@link Integer} value from XML
+   * from 0 to 99.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
+  public static Integer parsePercent( String value )
+  {
+    return parseInteger( value, 0, 99 );
+  }
+
+  /**
+   * Read a {@link String} value from XML
    * with a valid phone number.
    *
    * @param value
@@ -674,7 +683,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link String} value from XML
+   * Read a {@link String} value from XML
    * with a valid phone number area code.
    *
    * @param value
@@ -689,7 +698,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link String} value from XML
+   * Read a {@link String} value from XML
    * with a valid phone number country code.
    *
    * @param value
@@ -704,7 +713,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link String} value from XML
+   * Read a {@link String} value from XML
    * with a valid phone number subscriber part.
    *
    * @param value
@@ -719,7 +728,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link Double} value from XML,
+   * Read a {@link BigDecimal} value from XML,
    * that matches the 'PriceMultiplierType' simple type.
    *
    * @param value
@@ -728,13 +737,14 @@ public final class XmlUtils
    * @return
    * parsed value or null, if the value is invalid
    */
-  public static Double parsePriceMultiplier( String value )
+  public static BigDecimal parsePriceMultiplier( String value )
   {
-    return parseDouble( value, 0d, 99d, 1 );
+    value = StringUtils.trimToNull( value );
+    return (value!=null)? DatatypeConverter.parseDecimal( value ): null;
   }
 
   /**
-   * Reads a {@link Double} value from XML,
+   * Read a {@link BigDecimal} value from XML,
    * that matches the 'NumberOfRoomsType' simple type.
    *
    * @param value
@@ -743,13 +753,14 @@ public final class XmlUtils
    * @return
    * parsed value or null, if the value is invalid
    */
-  public static Double parseRoomNr( String value )
+  public static BigDecimal parseRoomNr( String value )
   {
-    return parseDouble( value, 0.5d, 9999d, 2 );
+    value = StringUtils.trimToNull( value );
+    return (value!=null)? DatatypeConverter.parseDecimal( value ): null;
   }
 
   /**
-   * Reads a {@link Double} value from XML,
+   * Read a {@link BigDecimal} value from XML,
    * that matches the type of the 'numberOfRooms' element in "BaseHouse".
    *
    * @param value
@@ -758,13 +769,14 @@ public final class XmlUtils
    * @return
    * parsed value or null, if the value is invalid
    */
-  public static Double parseRoomNrForBaseHouse( String value )
+  public static BigDecimal parseRoomNrForBaseHouse( String value )
   {
-    return parseDouble( value, 0d, 999d, 2 );
+    value = StringUtils.trimToNull( value );
+    return (value!=null)? DatatypeConverter.parseDecimal( value ): null;
   }
 
   /**
-   * Reads a {@link String} value from XML.
+   * Read a {@link String} value from XML.
    *
    * @param value
    * XML string
@@ -784,7 +796,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link String} value from XML
+   * Read a {@link String} value from XML
    * with maximal 15 characters.
    *
    * @param value
@@ -799,7 +811,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link String} value from XML
+   * Read a {@link String} value from XML
    * with maximal 16 characters.
    *
    * @param value
@@ -814,7 +826,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link String} value from XML
+   * Read a {@link String} value from XML
    * with maximal 18 characters.
    *
    * @param value
@@ -829,7 +841,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link String} value from XML
+   * Read a {@link String} value from XML
    * with maximal 20 characters.
    *
    * @param value
@@ -844,7 +856,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link String} value from XML
+   * Read a {@link String} value from XML
    * with maximal 30 characters.
    *
    * @param value
@@ -859,7 +871,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link String} value from XML
+   * Read a {@link String} value from XML
    * with maximal 40 characters.
    *
    * @param value
@@ -874,7 +886,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link String} value from XML
+   * Read a {@link String} value from XML
    * with maximal 50 characters.
    *
    * @param value
@@ -889,7 +901,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link String} value from XML
+   * Read a {@link String} value from XML
    * with maximal 80 characters.
    *
    * @param value
@@ -904,7 +916,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link String} value from XML
+   * Read a {@link String} value from XML
    * with maximal 100 characters.
    *
    * @param value
@@ -919,7 +931,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link String} value from XML
+   * Read a {@link String} value from XML
    * with maximal 1000 characters.
    *
    * @param value
@@ -934,7 +946,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link String} value from XML
+   * Read a {@link String} value from XML
    * with maximal 1800 characters.
    *
    * @param value
@@ -949,7 +961,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link String} value from XML
+   * Read a {@link String} value from XML
    * with maximal 2000 characters.
    *
    * @param value
@@ -964,7 +976,7 @@ public final class XmlUtils
   }
 
   /**
-   * Reads a {@link Double} value from XML,
+   * Read a {@link BigDecimal} value from XML,
    * that matches the type of the "thermalCharacteristic" element.
    *
    * @param value
@@ -973,13 +985,14 @@ public final class XmlUtils
    * @return
    * parsed value or null, if the value is invalid
    */
-  public static Double parseThermalCharacteristic( String value )
+  public static BigDecimal parseThermalCharacteristic( String value )
   {
-    return parseDouble( value, 0d, 1999d, 2 );
+    value = StringUtils.trimToNull( value );
+    return (value!=null)? DatatypeConverter.parseDecimal( value ): null;
   }
 
   /**
-   * Reads an {@link URL} value from XML.
+   * Read an {@link URL} value from XML.
    *
    * @param value
    * XML string
@@ -1001,7 +1014,22 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link Color} value into XML output.
+   * Read an {@link Integer} value from XML
+   * from 1000 to 9999.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
+  public static Integer parseYear( String value )
+  {
+    return parseInteger( value, 1000, 9999 );
+  }
+
+  /**
+   * Write a {@link Color} value into XML output.
    *
    * @param value
    * value to write
@@ -1030,7 +1058,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link Calendar} value into XML output.
+   * Write a {@link Calendar} value into XML output.
    *
    * @param value
    * value to write
@@ -1050,7 +1078,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link Double} value into XML output.
+   * Write a {@link BigDecimal} value into XML output.
    *
    * @param value
    * value to write
@@ -1070,33 +1098,34 @@ public final class XmlUtils
    * @throws IllegalArgumentException
    * if a validation error occured
    */
-  private static String printDouble( Double value, Double min, Double max, int precision )
+  private static String printDecimal( BigDecimal value, BigDecimal min, BigDecimal max, int precision, boolean zeroIncluded )
   {
     if (value==null)
     {
       throw new IllegalArgumentException(
         "The provided double value NULL is invalid!" );
     }
-    if (min!=null && value.doubleValue()<min.doubleValue())
+    value = value.setScale( precision, BigDecimal.ROUND_HALF_UP );
+
+    if (min!=null && value.compareTo( min )<=0)
     {
-      throw new IllegalArgumentException(
-        "The provided double value " + value + " is too small (minimum is " + min + ")!" );
+      if (!zeroIncluded || !BigDecimal.ZERO.equals( value ))
+      {
+        throw new IllegalArgumentException(
+          "The provided double value " + value + " is too small (minimum is " + min + ")!" );
+      }
     }
-    if (max!=null && value.doubleValue()>max.doubleValue())
+    if (max!=null && value.compareTo( max )>=0)
     {
       throw new IllegalArgumentException(
         "The provided double value " + value + " is too high (maximum is " + max + ")!" );
     }
 
-    NumberFormat format = NumberFormat.getInstance( Locale.ENGLISH );
-    format.setMaximumFractionDigits( precision );
-    format.setMinimumFractionDigits( 0 );
-    format.setGroupingUsed( false );
-    return format.format( value );
+    return DatatypeConverter.printDecimal( value );
   }
 
   /**
-   * Writes a {@link Double} value into XML output
+   * Write a {@link BigDecimal} value into XML output
    * with maximal 8 digits and 2 decimal places.
    *
    * @param value
@@ -1108,13 +1137,13 @@ public final class XmlUtils
    * @throws IllegalArgumentException
    * if a validation error occured
    */
-  public static String printDouble8_2( Double value )
+  public static String printDecimal8_2( BigDecimal value )
   {
-    return printDouble( value, 0d, 99999999d, 2 );
+    return printDecimal( value, BigDecimal.ZERO, BigDecimal.TEN.pow( 8 ), 2, false );
   }
 
   /**
-   * Writes a {@link Double} value into XML output
+   * Write a {@link BigDecimal} value into XML output
    * with maximal 13 digits and 2 decimal places.
    *
    * @param value
@@ -1126,13 +1155,13 @@ public final class XmlUtils
    * @throws IllegalArgumentException
    * if a validation error occured
    */
-  public static String printDouble13_2( Double value )
+  public static String printDecimal13_2( BigDecimal value )
   {
-    return printDouble( value, 0d, 9999999999999d, 2 );
+    return printDecimal( value, BigDecimal.ZERO, BigDecimal.TEN.pow( 13 ), 2, false );
   }
 
   /**
-   * Writes a positive {@link Double} value into XML output
+   * Write a positive {@link BigDecimal} value into XML output
    * with maximal 3 decimal places.
    *
    * @param value
@@ -1144,13 +1173,13 @@ public final class XmlUtils
    * @throws IllegalArgumentException
    * if a validation error occured
    */
-  public static String printDoublePositive( Double value )
+  public static String printDecimalPositive( BigDecimal value )
   {
-    return printDouble( value, 0.001d, null, 3 );
+    return printDecimal( value, BigDecimal.ZERO, null, 3, false );
   }
 
   /**
-   * Writes an e-mail address into XML output.
+   * Write an e-mail address into XML output.
    *
    * @param value
    * value to write
@@ -1173,7 +1202,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes an {@link Integer} value into XML output,
+   * Write an {@link Integer} value into XML output,
    * that matches the 'FlatShareSearchSize' simple type.
    *
    * @param value
@@ -1191,7 +1220,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes an {@link Integer} value into XML output,
+   * Write an {@link Integer} value into XML output,
    * that matches the type of the 'numberOfFloors' element.
    *
    * @param value
@@ -1209,7 +1238,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes an {@link Integer} value into XML output,
+   * Write an {@link Integer} value into XML output,
    * that matches the type of the 'groupNumber' element.
    *
    * @param value
@@ -1227,7 +1256,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes an {@link Integer} value into XML output.
+   * Write an {@link Integer} value into XML output.
    *
    * @param value
    * value to write
@@ -1251,12 +1280,12 @@ public final class XmlUtils
       throw new IllegalArgumentException(
         "The provided integer value NULL is invalid!" );
     }
-    if (min!=null && value.intValue()<min.intValue())
+    if (min!=null && value<min)
     {
       throw new IllegalArgumentException(
         "The provided integer value " + value + " is too small (minimum is " + min + ")!" );
     }
-    if (max!=null && value.intValue()>max.intValue())
+    if (max!=null && value>max)
     {
       throw new IllegalArgumentException(
         "The provided integer value " + value + " is too high (maximum is " + max + ")!" );
@@ -1265,7 +1294,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a positive {@link Integer} value into XML output
+   * Write a positive {@link Integer} value into XML output
    * with maximal 9 digits.
    *
    * @param value
@@ -1283,7 +1312,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes an {@link Integer} value into XML output
+   * Write an {@link Integer} value into XML output
    * from 0 to 99.
    *
    * @param value
@@ -1301,7 +1330,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes an {@link Integer} value into XML output
+   * Write an {@link Integer} value into XML output
    * from 0 to 999.
    *
    * @param value
@@ -1319,7 +1348,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes an {@link Integer} value into XML output
+   * Write an {@link Integer} value into XML output
    * from 0 to 9999.
    *
    * @param value
@@ -1337,7 +1366,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a positive {@link Integer} value into XML output
+   * Write a positive {@link Integer} value into XML output
    * up to 9999.
    *
    * @param value
@@ -1355,7 +1384,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes an {@link Integer} value into XML output
+   * Write an {@link Integer} value into XML output
    * from 0 to 99999.
    *
    * @param value
@@ -1373,7 +1402,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link Double} value into XML output
+   * Write a {@link BigDecimal} value into XML output
    * with a valid latitude range.
    *
    * @param value
@@ -1385,13 +1414,13 @@ public final class XmlUtils
    * @throws IllegalArgumentException
    * if a validation error occured
    */
-  public static String printLatitude( Double value )
+  public static String printLatitude( BigDecimal value )
   {
-    return printDouble( value, -90d, 90d, 10 );
+    return printDecimal( value, new BigDecimal( "-90" ), new BigDecimal( "90" ), 10, false );
   }
 
   /**
-   * Writes a {@link Double} value into XML output
+   * Write a {@link BigDecimal} value into XML output
    * with a valid longitude range.
    *
    * @param value
@@ -1403,13 +1432,13 @@ public final class XmlUtils
    * @throws IllegalArgumentException
    * if a validation error occured
    */
-  public static String printLongitude( Double value )
+  public static String printLongitude( BigDecimal value )
   {
-    return printDouble( value, -180d, 180d, 10 );
+    return printDecimal( value, new BigDecimal( "-180" ), new BigDecimal( "180" ), 10, false );
   }
 
   /**
-   * Writes a {@link String} value into XML output
+   * Write a {@link String} value into XML output
    * with a at least 1 character.
    *
    * @param value
@@ -1427,7 +1456,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link String} value into XML output,
+   * Write a {@link String} value into XML output,
    * that matches the 'Password' simple type.
    *
    * @param value
@@ -1445,7 +1474,25 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link String} value into XML output
+   * Write an {@link Integer} value into XML output
+   * from 0 to 99.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
+  public static String printPercent( Integer value )
+  {
+    return printInteger( value, 0, 99 );
+  }
+
+  /**
+   * Write a {@link String} value into XML output
    * with a valid phone number.
    *
    * @param value
@@ -1471,7 +1518,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link String} value into XML output
+   * Write a {@link String} value into XML output
    * with a valid phone number area code.
    *
    * @param value
@@ -1503,7 +1550,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link String} value into XML output
+   * Write a {@link String} value into XML output
    * with a valid phone number country code.
    *
    * @param value
@@ -1538,7 +1585,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link String} value into XML output
+   * Write a {@link String} value into XML output
    * with a valid phone number subscriber part.
    *
    * @param value
@@ -1583,7 +1630,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link Double} value into XML output,
+   * Write a {@link BigDecimal} value into XML output,
    * that matches the 'PriceMultiplierType' simple type.
    *
    * @param value
@@ -1595,13 +1642,13 @@ public final class XmlUtils
    * @throws IllegalArgumentException
    * if a validation error occured
    */
-  public static String printPriceMultiplier( Double value )
+  public static String printPriceMultiplier( BigDecimal value )
   {
-    return printDouble( value, 0d, 99d, 1 );
+    return printDecimal( value, BigDecimal.ZERO, BigDecimal.TEN.pow( 2 ), 1, true );
   }
 
   /**
-   * Writes a {@link Double} value into XML output,
+   * Write a {@link BigDecimal} value into XML output,
    * that matches the 'NumberOfRoomsType' simple type.
    *
    * @param value
@@ -1613,13 +1660,13 @@ public final class XmlUtils
    * @throws IllegalArgumentException
    * if a validation error occured
    */
-  public static String printRoomNr( Double value )
+  public static String printRoomNr( BigDecimal value )
   {
-    return printDouble( value, 0.5d, 9999d, 2 );
+    return printDecimal( value, new BigDecimal( "0.49" ), BigDecimal.TEN.pow( 4 ), 2, false );
   }
 
   /**
-   * Writes a {@link Double} value into XML output,
+   * Write a {@link BigDecimal} value into XML output,
    * that matches the type of the 'numberOfRooms' element in "BaseHouse".
    *
    * @param value
@@ -1631,13 +1678,13 @@ public final class XmlUtils
    * @throws IllegalArgumentException
    * if a validation error occured
    */
-  public static String printRoomNrForBaseHouse( Double value )
+  public static String printRoomNrForBaseHouse( BigDecimal value )
   {
-    return printDouble( value, 0d, 999d, 2 );
+    return printDecimal( value, BigDecimal.ZERO, BigDecimal.TEN.pow( 3 ), 1, true );
   }
 
   /**
-   * Writes a {@link String} value into XML output.
+   * Write a {@link String} value into XML output.
    *
    * @param value
    * XML string
@@ -1662,7 +1709,7 @@ public final class XmlUtils
       throw new IllegalArgumentException(
         "The provided text '" + value + "' is invalid!" );
     }
-    if (minLength!=null && val.length()<minLength.intValue())
+    if (minLength!=null && val.length()<minLength)
     {
       throw new IllegalArgumentException(
         "The provided text " + value + " is too short (minimum is " + minLength + ")!" );
@@ -1680,11 +1727,11 @@ public final class XmlUtils
     val = StringUtils.replace( val, ">", "»" );
 
     return (maxLength!=null)?
-      StringUtils.abbreviate( val, maxLength.intValue() ): val;
+      StringUtils.abbreviate( val, maxLength ): val;
   }
 
   /**
-   * Writes a {@link String} value into XML output
+   * Write a {@link String} value into XML output
    * with maximal 15 characters.
    *
    * @param value
@@ -1702,7 +1749,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link String} value into XML output
+   * Write a {@link String} value into XML output
    * with maximal 16 characters.
    *
    * @param value
@@ -1720,7 +1767,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link String} value into XML output
+   * Write a {@link String} value into XML output
    * with maximal 18 characters.
    *
    * @param value
@@ -1738,7 +1785,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link String} value into XML output
+   * Write a {@link String} value into XML output
    * with maximal 20 characters.
    *
    * @param value
@@ -1756,7 +1803,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link String} value into XML output
+   * Write a {@link String} value into XML output
    * with maximal 30 characters.
    *
    * @param value
@@ -1774,7 +1821,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link String} value into XML output
+   * Write a {@link String} value into XML output
    * with maximal 40 characters.
    *
    * @param value
@@ -1792,7 +1839,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link String} value into XML output
+   * Write a {@link String} value into XML output
    * with maximal 50 characters.
    *
    * @param value
@@ -1810,7 +1857,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link String} value into XML output
+   * Write a {@link String} value into XML output
    * with maximal 80 characters.
    *
    * @param value
@@ -1828,7 +1875,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link String} value into XML output
+   * Write a {@link String} value into XML output
    * with maximal 100 characters.
    *
    * @param value
@@ -1846,7 +1893,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link String} value into XML output
+   * Write a {@link String} value into XML output
    * with maximal 1000 characters.
    *
    * @param value
@@ -1864,7 +1911,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link String} value into XML output
+   * Write a {@link String} value into XML output
    * with maximal 1800 characters.
    *
    * @param value
@@ -1882,7 +1929,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link String} value into XML output
+   * Write a {@link String} value into XML output
    * with maximal 2000 characters.
    *
    * @param value
@@ -1900,7 +1947,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link Double} value into XML output,
+   * Write a {@link BigDecimal} value into XML output,
    * that matches the type of the "thermalCharacteristic" element.
    *
    * @param value
@@ -1912,13 +1959,13 @@ public final class XmlUtils
    * @throws IllegalArgumentException
    * if a validation error occured
    */
-  public static String printThermalCharacteristic( Double value )
+  public static String printThermalCharacteristic( BigDecimal value )
   {
-    return printDouble( value, 0d, 1999d, 2 );
+    return printDecimal( value, BigDecimal.ZERO, new BigDecimal( "2000" ), 3, false );
   }
 
   /**
-   * Writes an {@link URL} value into XML output.
+   * Write an {@link URL} value into XML output.
    *
    * @param value
    * value to write
@@ -1940,7 +1987,25 @@ public final class XmlUtils
   }
 
   /**
-   * Creates a JAXB object from a XML string.
+   * Write an {@link Integer} value into XML output
+   * from 1000 to 9999.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
+  public static String printYear( Integer value )
+  {
+    return printInteger( value, 1000, 9999 );
+  }
+
+  /**
+   * Create a JAXB object from a XML string.
    *
    * @param xml
    * XML string
@@ -1967,7 +2032,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes an {@link Attachment} as XML into an {@link OutputStream}.
+   * Write an {@link Attachment} as XML into an {@link OutputStream}.
    * <p>
    * The provided object is wrapped into a {@link JAXBElement} before XML
    * creation in order to match the requirements of the schema.
@@ -1990,7 +2055,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes an {@link Attachment} as XML into an {@link OutputStream}.
+   * Write an {@link Attachment} as XML into an {@link OutputStream}.
    * <p>
    * The provided object is wrapped into a {@link JAXBElement} before XML
    * creation in order to match the requirements of the schema.
@@ -2016,7 +2081,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes an {@link Attachment} as XML into an {@link OutputStream}.
+   * Write an {@link Attachment} as XML into an {@link OutputStream}.
    * <p>
    * The provided object is wrapped into a {@link JAXBElement} before XML
    * creation in order to match the requirements of the schema.
@@ -2045,7 +2110,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes an {@link Attachment} as XML into an {@link OutputStream}.
+   * Write an {@link Attachment} as XML into an {@link OutputStream}.
    * <p>
    * The provided object is wrapped into a {@link JAXBElement} before XML
    * creation in order to match the requirements of the schema.
@@ -2084,7 +2149,358 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link PublishObject} as XML into an {@link OutputStream}.
+   * Write a {@link City} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param city
+   * object to write
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
+  public static void writeXml( City city, OutputStream output ) throws JAXBException
+  {
+    writeXml( city, DEFAULT_ENCODING, true, output );
+  }
+
+  /**
+   * Write a {@link City} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param city
+   * object to write
+   *
+   * @param encoding
+   * encoding of generated XML output
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
+  public static void writeXml( City city, String encoding, OutputStream output ) throws JAXBException
+  {
+    writeXml( city, encoding, true, output );
+  }
+
+  /**
+   * Write a {@link City} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param city
+   * object to write
+   *
+   * @param encoding
+   * encoding of generated XML output
+   *
+   * @param prettyPrint
+   * enable pretty printing for generated XML output
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
+  public static void writeXml( City city, String encoding, boolean prettyPrint, OutputStream output ) throws JAXBException
+  {
+    writeXml( city, createMarshaller( encoding, prettyPrint ), output );
+  }
+
+  /**
+   * Write a {@link City} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param city
+   * object to write
+   *
+   * @param marshaller
+   * marshaller, that is used for XML generation
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
+  public static void writeXml( City city, Marshaller marshaller, OutputStream output ) throws JAXBException
+  {
+    final org.openestate.is24.restapi.xml.gis.ObjectFactory factory =
+      new org.openestate.is24.restapi.xml.gis.ObjectFactory();
+
+    marshaller.setEventHandler( new ValidationEventHandler()
+    {
+      @Override
+      public boolean handleEvent( ValidationEvent ve )
+      {
+        return true;
+      }
+    });
+
+    marshaller.marshal(
+      factory.createCity( city ), output );
+  }
+
+  /**
+   * Write a {@link Continent} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param continent
+   * object to write
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
+  public static void writeXml( Continent continent, OutputStream output ) throws JAXBException
+  {
+    writeXml( continent, DEFAULT_ENCODING, true, output );
+  }
+
+  /**
+   * Write a {@link Continent} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param continent
+   * object to write
+   *
+   * @param encoding
+   * encoding of generated XML output
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
+  public static void writeXml( Continent continent, String encoding, OutputStream output ) throws JAXBException
+  {
+    writeXml( continent, encoding, true, output );
+  }
+
+  /**
+   * Write a {@link Continent} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param continent
+   * object to write
+   *
+   * @param encoding
+   * encoding of generated XML output
+   *
+   * @param prettyPrint
+   * enable pretty printing for generated XML output
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
+  public static void writeXml( Continent continent, String encoding, boolean prettyPrint, OutputStream output ) throws JAXBException
+  {
+    writeXml( continent, createMarshaller( encoding, prettyPrint ), output );
+  }
+
+  /**
+   * Write a {@link Continent} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param continent
+   * object to write
+   *
+   * @param marshaller
+   * marshaller, that is used for XML generation
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
+  public static void writeXml( Continent continent, Marshaller marshaller, OutputStream output ) throws JAXBException
+  {
+    final org.openestate.is24.restapi.xml.gis.ObjectFactory factory =
+      new org.openestate.is24.restapi.xml.gis.ObjectFactory();
+
+    marshaller.setEventHandler( new ValidationEventHandler()
+    {
+      @Override
+      public boolean handleEvent( ValidationEvent ve )
+      {
+        return true;
+      }
+    });
+
+    marshaller.marshal(
+      factory.createContinent( continent ), output );
+  }
+
+  /**
+   * Write a {@link Country} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param country
+   * object to write
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
+  public static void writeXml( Country country, OutputStream output ) throws JAXBException
+  {
+    writeXml( country, DEFAULT_ENCODING, true, output );
+  }
+
+  /**
+   * Write a {@link Country} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param country
+   * object to write
+   *
+   * @param encoding
+   * encoding of generated XML output
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
+  public static void writeXml( Country country, String encoding, OutputStream output ) throws JAXBException
+  {
+    writeXml( country, encoding, true, output );
+  }
+
+  /**
+   * Write a {@link Country} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param country
+   * object to write
+   *
+   * @param encoding
+   * encoding of generated XML output
+   *
+   * @param prettyPrint
+   * enable pretty printing for generated XML output
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
+  public static void writeXml( Country country, String encoding, boolean prettyPrint, OutputStream output ) throws JAXBException
+  {
+    writeXml( country, createMarshaller( encoding, prettyPrint ), output );
+  }
+
+  /**
+   * Write a {@link Country} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param country
+   * object to write
+   *
+   * @param marshaller
+   * marshaller, that is used for XML generation
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
+  public static void writeXml( Country country, Marshaller marshaller, OutputStream output ) throws JAXBException
+  {
+    final org.openestate.is24.restapi.xml.gis.ObjectFactory factory =
+      new org.openestate.is24.restapi.xml.gis.ObjectFactory();
+
+    marshaller.setEventHandler( new ValidationEventHandler()
+    {
+      @Override
+      public boolean handleEvent( ValidationEvent ve )
+      {
+        return true;
+      }
+    });
+
+    marshaller.marshal(
+      factory.createCountry( country ), output );
+  }
+
+  /**
+   * Write a {@link PublishObject} as XML into an {@link OutputStream}.
    * <p>
    * The provided object is wrapped into a {@link JAXBElement} before XML
    * creation in order to match the requirements of the schema.
@@ -2107,7 +2523,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link PublishObject} as XML into an {@link OutputStream}.
+   * Write a {@link PublishObject} as XML into an {@link OutputStream}.
    * <p>
    * The provided object is wrapped into a {@link JAXBElement} before XML
    * creation in order to match the requirements of the schema.
@@ -2133,7 +2549,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link PublishObject} as XML into an {@link OutputStream}.
+   * Write a {@link PublishObject} as XML into an {@link OutputStream}.
    * <p>
    * The provided object is wrapped into a {@link JAXBElement} before XML
    * creation in order to match the requirements of the schema.
@@ -2162,7 +2578,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link PublishObject} as XML into an {@link OutputStream}.
+   * Write a {@link PublishObject} as XML into an {@link OutputStream}.
    * <p>
    * The provided object is wrapped into a {@link JAXBElement} before XML
    * creation in order to match the requirements of the schema.
@@ -2201,7 +2617,124 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link RealtorContactDetails} as XML into an {@link OutputStream}.
+   * Write a {@link Quarter} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param quarter
+   * object to write
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
+  public static void writeXml( Quarter quarter, OutputStream output ) throws JAXBException
+  {
+    writeXml( quarter, DEFAULT_ENCODING, true, output );
+  }
+
+  /**
+   * Write a {@link Quarter} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param quarter
+   * object to write
+   *
+   * @param encoding
+   * encoding of generated XML output
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
+  public static void writeXml( Quarter quarter, String encoding, OutputStream output ) throws JAXBException
+  {
+    writeXml( quarter, encoding, true, output );
+  }
+
+  /**
+   * Write a {@link Quarter} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param quarter
+   * object to write
+   *
+   * @param encoding
+   * encoding of generated XML output
+   *
+   * @param prettyPrint
+   * enable pretty printing for generated XML output
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
+  public static void writeXml( Quarter quarter, String encoding, boolean prettyPrint, OutputStream output ) throws JAXBException
+  {
+    writeXml( quarter, createMarshaller( encoding, prettyPrint ), output );
+  }
+
+  /**
+   * Write a {@link Quarter} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param quarter
+   * object to write
+   *
+   * @param marshaller
+   * marshaller, that is used for XML generation
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
+  public static void writeXml( Quarter quarter, Marshaller marshaller, OutputStream output ) throws JAXBException
+  {
+    final org.openestate.is24.restapi.xml.gis.ObjectFactory factory =
+      new org.openestate.is24.restapi.xml.gis.ObjectFactory();
+
+    marshaller.setEventHandler( new ValidationEventHandler()
+    {
+      @Override
+      public boolean handleEvent( ValidationEvent ve )
+      {
+        return true;
+      }
+    });
+
+    marshaller.marshal(
+      factory.createQuarter( quarter ), output );
+  }
+
+  /**
+   * Write a {@link RealtorContactDetails} as XML into an {@link OutputStream}.
    * <p>
    * The provided object is wrapped into a {@link JAXBElement} before XML
    * creation in order to match the requirements of the schema.
@@ -2224,7 +2757,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link RealtorContactDetails} as XML into an {@link OutputStream}.
+   * Write a {@link RealtorContactDetails} as XML into an {@link OutputStream}.
    * <p>
    * The provided object is wrapped into a {@link JAXBElement} before XML
    * creation in order to match the requirements of the schema.
@@ -2250,7 +2783,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link RealtorContactDetails} as XML into an {@link OutputStream}.
+   * Write a {@link RealtorContactDetails} as XML into an {@link OutputStream}.
    * <p>
    * The provided object is wrapped into a {@link JAXBElement} before XML
    * creation in order to match the requirements of the schema.
@@ -2279,7 +2812,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link RealtorContactDetails} as XML into an {@link OutputStream}.
+   * Write a {@link RealtorContactDetails} as XML into an {@link OutputStream}.
    * <p>
    * The provided object is wrapped into a {@link JAXBElement} before XML
    * creation in order to match the requirements of the schema.
@@ -2318,7 +2851,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link RealEstate} as XML into an {@link OutputStream}.
+   * Write a {@link RealEstate} as XML into an {@link OutputStream}.
    * <p>
    * The provided object is wrapped into a {@link JAXBElement} before XML
    * creation in order to match the requirements of the schema.
@@ -2341,7 +2874,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link RealEstate} as XML into an {@link OutputStream}.
+   * Write a {@link RealEstate} as XML into an {@link OutputStream}.
    * <p>
    * The provided object is wrapped into a {@link JAXBElement} before XML
    * creation in order to match the requirements of the schema.
@@ -2367,7 +2900,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link RealEstate} as XML into an {@link OutputStream}.
+   * Write a {@link RealEstate} as XML into an {@link OutputStream}.
    * <p>
    * The provided object is wrapped into a {@link JAXBElement} before XML
    * creation in order to match the requirements of the schema.
@@ -2396,7 +2929,7 @@ public final class XmlUtils
   }
 
   /**
-   * Writes a {@link RealEstate} as XML into an {@link OutputStream}.
+   * Write a {@link RealEstate} as XML into an {@link OutputStream}.
    * <p>
    * The provided object is wrapped into a {@link JAXBElement} before XML
    * creation in order to match the requirements of the schema.
@@ -2540,5 +3073,122 @@ public final class XmlUtils
       marshaller.marshal(
         factory.createRealEstate( realEstate ), output );
     }
+  }
+
+  /**
+   * Write a {@link Region} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param region
+   * object to write
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
+  public static void writeXml( Region region, OutputStream output ) throws JAXBException
+  {
+    writeXml( region, DEFAULT_ENCODING, true, output );
+  }
+
+  /**
+   * Write a {@link Region} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param region
+   * object to write
+   *
+   * @param encoding
+   * encoding of generated XML output
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
+  public static void writeXml( Region region, String encoding, OutputStream output ) throws JAXBException
+  {
+    writeXml( region, encoding, true, output );
+  }
+
+  /**
+   * Write a {@link Region} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param region
+   * object to write
+   *
+   * @param encoding
+   * encoding of generated XML output
+   *
+   * @param prettyPrint
+   * enable pretty printing for generated XML output
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
+  public static void writeXml( Region region, String encoding, boolean prettyPrint, OutputStream output ) throws JAXBException
+  {
+    writeXml( region, createMarshaller( encoding, prettyPrint ), output );
+  }
+
+  /**
+   * Write a {@link Region} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param region
+   * object to write
+   *
+   * @param marshaller
+   * marshaller, that is used for XML generation
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   */
+  public static void writeXml( Region region, Marshaller marshaller, OutputStream output ) throws JAXBException
+  {
+    final org.openestate.is24.restapi.xml.gis.ObjectFactory factory =
+      new org.openestate.is24.restapi.xml.gis.ObjectFactory();
+
+    marshaller.setEventHandler( new ValidationEventHandler()
+    {
+      @Override
+      public boolean handleEvent( ValidationEvent ve )
+      {
+        return true;
+      }
+    });
+
+    marshaller.marshal(
+      factory.createRegion( region ), output );
   }
 }

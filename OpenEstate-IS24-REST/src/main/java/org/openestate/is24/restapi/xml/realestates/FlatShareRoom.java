@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.realestates;
 
+import java.math.BigDecimal;
 import java.util.Calendar;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -19,9 +20,8 @@ import org.jvnet.jaxb2_commons.lang.ToString;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
-import org.openestate.is24.restapi.xml.Adapter3;
-import org.openestate.is24.restapi.xml.common.Adapter12;
-import org.openestate.is24.restapi.xml.common.Adapter5;
+import org.openestate.is24.restapi.xml.Adapter5;
+import org.openestate.is24.restapi.xml.common.Adapter7;
 import org.openestate.is24.restapi.xml.common.ApartmentType;
 import org.openestate.is24.restapi.xml.common.BuildingEnergyRatingType;
 import org.openestate.is24.restapi.xml.common.CourtageInfo;
@@ -49,15 +49,15 @@ import org.openestate.is24.restapi.xml.common.YesNotApplicableType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="FlatShareRoom">
- *   &lt;complexContent>
- *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/realestates/1.0}RealEstate">
- *       &lt;sequence>
- *         &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}ExtendedFlatShareRoomGroup"/>
- *       &lt;/sequence>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="FlatShareRoom"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/realestates/1.0}RealEstate"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}ExtendedFlatShareRoomGroup"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/extension&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -127,102 +127,191 @@ public class FlatShareRoom
     implements Cloneable, CopyTo, Equals, ToString
 {
 
-    protected double roomSize;
+    @XmlElement(required = true, type = String.class)
+    @XmlJavaTypeAdapter(org.openestate.is24.restapi.xml.Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal roomSize;
+    @XmlSchemaType(name = "string")
     protected FlooringType flooringType;
-    protected Double numberOfRooms;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(org.openestate.is24.restapi.xml.Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal numberOfRooms;
+    @XmlSchemaType(name = "string")
     protected ApartmentType apartmentType;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType cellar;
+    @XmlSchemaType(name = "string")
     @Deprecated
     protected HeatingType heatingType;
+    @XmlSchemaType(name = "string")
     protected HeatingTypeEnev2014 heatingTypeEnev2014;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType barrierFree;
     @XmlElement(required = true)
     protected CourtageInfo courtage;
     protected EnergyPerformanceCertificate energyCertificate;
     protected EnergySourcesEnev2014 energySourcesEnev2014;
+    @XmlSchemaType(name = "string")
     protected BuildingEnergyRatingType buildingEnergyRatingType;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter16 .class)
-    protected Double thermalCharacteristic;
+    @XmlJavaTypeAdapter(org.openestate.is24.restapi.xml.realestates.Adapter1 .class)
+    protected BigDecimal thermalCharacteristic;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType energyConsumptionContainsWarmWater;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter17 .class)
+    @XmlJavaTypeAdapter(org.openestate.is24.restapi.xml.realestates.Adapter2 .class)
     protected Integer constructionYear;
     protected Boolean constructionYearUnknown;
-    protected double baseRent;
-    protected Double totalRent;
-    protected Double serviceCharge;
-    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlElement(required = true, type = String.class)
+    @XmlJavaTypeAdapter(org.openestate.is24.restapi.xml.Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal baseRent;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(org.openestate.is24.restapi.xml.Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal totalRent;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(org.openestate.is24.restapi.xml.Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal serviceCharge;
+    @XmlJavaTypeAdapter(org.openestate.is24.restapi.xml.common.Adapter2 .class)
     protected String deposit;
-    protected Double heatingCosts;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(org.openestate.is24.restapi.xml.Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal heatingCosts;
+    @XmlSchemaType(name = "string")
     protected YesNoNotApplicableType heatingCostsInServiceCharge;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlJavaTypeAdapter(org.openestate.is24.restapi.xml.Adapter3 .class)
     @XmlSchemaType(name = "date")
     protected Calendar freeFrom;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter3 .class)
+    @XmlJavaTypeAdapter(org.openestate.is24.restapi.xml.Adapter3 .class)
     @XmlSchemaType(name = "date")
     protected Calendar freeUntil;
-    protected Integer minimumTermOfLease;
-    protected Double totalSpace;
-    protected Integer numberOfMaleFlatMates;
-    protected Integer numberOfFemaleFlatMates;
-    protected Integer ageOfFlatMatesFrom;
-    protected Integer ageOfFlatMatesTo;
-    protected Integer ageOfRequestedFrom;
-    protected Integer ageOfRequestedTo;
-    protected Integer numberOfRequestedFlatMates;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter18 .class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlSchemaType(name = "int")
+    protected Long minimumTermOfLease;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(org.openestate.is24.restapi.xml.Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal totalSpace;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlSchemaType(name = "int")
+    protected Long numberOfMaleFlatMates;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlSchemaType(name = "int")
+    protected Long numberOfFemaleFlatMates;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlSchemaType(name = "int")
+    protected Long ageOfFlatMatesFrom;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlSchemaType(name = "int")
+    protected Long ageOfFlatMatesTo;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlSchemaType(name = "int")
+    protected Long ageOfRequestedFrom;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlSchemaType(name = "int")
+    protected Long ageOfRequestedTo;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlSchemaType(name = "int")
+    protected Long numberOfRequestedFlatMates;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(org.openestate.is24.restapi.xml.realestates.Adapter3 .class)
     protected Integer floor;
-    protected Integer numberOfFloors;
-    protected Integer numberOfBathRooms;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlSchemaType(name = "int")
+    protected Long numberOfFloors;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlSchemaType(name = "int")
+    protected Long numberOfBathRooms;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType balcony;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType garden;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType lift;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType oven;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType refrigerator;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType stove;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType dishwasher;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType washingMachine;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType bathHasWc;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType bathHasShower;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType bathHasTub;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType guestToilet;
     @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
     protected PetsAllowedType petsAllowed;
     @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
     protected InternetConnectionType internetConnection;
     @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
     protected SmokingAllowedType smokingAllowed;
     @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
     protected FlatMateGenderType requestedGender;
     @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
     protected YesNoNotApplicableType furnishing;
     @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
     protected TvConnectionType tvConnection;
     @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
     protected TelephoneConnectionType telephoneConnection;
     @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
     protected ParkingSituationType parkingSituation;
     @XmlElement(required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter12 .class)
+    @XmlJavaTypeAdapter(Adapter7 .class)
+    @XmlSchemaType(name = "int")
     protected Integer flatShareSize;
 
     /**
      * Gets the value of the roomSize property.
      * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public double getRoomSize() {
+    public BigDecimal getRoomSize() {
         return roomSize;
     }
 
     /**
      * Sets the value of the roomSize property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setRoomSize(double value) {
+    public void setRoomSize(BigDecimal value) {
         this.roomSize = value;
     }
 
@@ -255,10 +344,10 @@ public class FlatShareRoom
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getNumberOfRooms() {
+    public BigDecimal getNumberOfRooms() {
         return numberOfRooms;
     }
 
@@ -267,10 +356,10 @@ public class FlatShareRoom
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setNumberOfRooms(Double value) {
+    public void setNumberOfRooms(BigDecimal value) {
         this.numberOfRooms = value;
     }
 
@@ -500,7 +589,7 @@ public class FlatShareRoom
      *     {@link String }
      *     
      */
-    public Double getThermalCharacteristic() {
+    public BigDecimal getThermalCharacteristic() {
         return thermalCharacteristic;
     }
 
@@ -512,7 +601,7 @@ public class FlatShareRoom
      *     {@link String }
      *     
      */
-    public void setThermalCharacteristic(Double value) {
+    public void setThermalCharacteristic(BigDecimal value) {
         this.thermalCharacteristic = value;
     }
 
@@ -591,16 +680,24 @@ public class FlatShareRoom
     /**
      * Gets the value of the baseRent property.
      * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public double getBaseRent() {
+    public BigDecimal getBaseRent() {
         return baseRent;
     }
 
     /**
      * Sets the value of the baseRent property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setBaseRent(double value) {
+    public void setBaseRent(BigDecimal value) {
         this.baseRent = value;
     }
 
@@ -609,10 +706,10 @@ public class FlatShareRoom
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getTotalRent() {
+    public BigDecimal getTotalRent() {
         return totalRent;
     }
 
@@ -621,10 +718,10 @@ public class FlatShareRoom
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setTotalRent(Double value) {
+    public void setTotalRent(BigDecimal value) {
         this.totalRent = value;
     }
 
@@ -633,10 +730,10 @@ public class FlatShareRoom
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getServiceCharge() {
+    public BigDecimal getServiceCharge() {
         return serviceCharge;
     }
 
@@ -645,10 +742,10 @@ public class FlatShareRoom
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setServiceCharge(Double value) {
+    public void setServiceCharge(BigDecimal value) {
         this.serviceCharge = value;
     }
 
@@ -681,10 +778,10 @@ public class FlatShareRoom
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getHeatingCosts() {
+    public BigDecimal getHeatingCosts() {
         return heatingCosts;
     }
 
@@ -693,10 +790,10 @@ public class FlatShareRoom
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setHeatingCosts(Double value) {
+    public void setHeatingCosts(BigDecimal value) {
         this.heatingCosts = value;
     }
 
@@ -777,10 +874,10 @@ public class FlatShareRoom
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public Integer getMinimumTermOfLease() {
+    public Long getMinimumTermOfLease() {
         return minimumTermOfLease;
     }
 
@@ -789,10 +886,10 @@ public class FlatShareRoom
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public void setMinimumTermOfLease(Integer value) {
+    public void setMinimumTermOfLease(Long value) {
         this.minimumTermOfLease = value;
     }
 
@@ -801,10 +898,10 @@ public class FlatShareRoom
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getTotalSpace() {
+    public BigDecimal getTotalSpace() {
         return totalSpace;
     }
 
@@ -813,10 +910,10 @@ public class FlatShareRoom
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setTotalSpace(Double value) {
+    public void setTotalSpace(BigDecimal value) {
         this.totalSpace = value;
     }
 
@@ -825,10 +922,10 @@ public class FlatShareRoom
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public Integer getNumberOfMaleFlatMates() {
+    public Long getNumberOfMaleFlatMates() {
         return numberOfMaleFlatMates;
     }
 
@@ -837,10 +934,10 @@ public class FlatShareRoom
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public void setNumberOfMaleFlatMates(Integer value) {
+    public void setNumberOfMaleFlatMates(Long value) {
         this.numberOfMaleFlatMates = value;
     }
 
@@ -849,10 +946,10 @@ public class FlatShareRoom
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public Integer getNumberOfFemaleFlatMates() {
+    public Long getNumberOfFemaleFlatMates() {
         return numberOfFemaleFlatMates;
     }
 
@@ -861,10 +958,10 @@ public class FlatShareRoom
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public void setNumberOfFemaleFlatMates(Integer value) {
+    public void setNumberOfFemaleFlatMates(Long value) {
         this.numberOfFemaleFlatMates = value;
     }
 
@@ -873,10 +970,10 @@ public class FlatShareRoom
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public Integer getAgeOfFlatMatesFrom() {
+    public Long getAgeOfFlatMatesFrom() {
         return ageOfFlatMatesFrom;
     }
 
@@ -885,10 +982,10 @@ public class FlatShareRoom
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public void setAgeOfFlatMatesFrom(Integer value) {
+    public void setAgeOfFlatMatesFrom(Long value) {
         this.ageOfFlatMatesFrom = value;
     }
 
@@ -897,10 +994,10 @@ public class FlatShareRoom
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public Integer getAgeOfFlatMatesTo() {
+    public Long getAgeOfFlatMatesTo() {
         return ageOfFlatMatesTo;
     }
 
@@ -909,10 +1006,10 @@ public class FlatShareRoom
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public void setAgeOfFlatMatesTo(Integer value) {
+    public void setAgeOfFlatMatesTo(Long value) {
         this.ageOfFlatMatesTo = value;
     }
 
@@ -921,10 +1018,10 @@ public class FlatShareRoom
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public Integer getAgeOfRequestedFrom() {
+    public Long getAgeOfRequestedFrom() {
         return ageOfRequestedFrom;
     }
 
@@ -933,10 +1030,10 @@ public class FlatShareRoom
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public void setAgeOfRequestedFrom(Integer value) {
+    public void setAgeOfRequestedFrom(Long value) {
         this.ageOfRequestedFrom = value;
     }
 
@@ -945,10 +1042,10 @@ public class FlatShareRoom
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public Integer getAgeOfRequestedTo() {
+    public Long getAgeOfRequestedTo() {
         return ageOfRequestedTo;
     }
 
@@ -957,10 +1054,10 @@ public class FlatShareRoom
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public void setAgeOfRequestedTo(Integer value) {
+    public void setAgeOfRequestedTo(Long value) {
         this.ageOfRequestedTo = value;
     }
 
@@ -969,10 +1066,10 @@ public class FlatShareRoom
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public Integer getNumberOfRequestedFlatMates() {
+    public Long getNumberOfRequestedFlatMates() {
         return numberOfRequestedFlatMates;
     }
 
@@ -981,10 +1078,10 @@ public class FlatShareRoom
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public void setNumberOfRequestedFlatMates(Integer value) {
+    public void setNumberOfRequestedFlatMates(Long value) {
         this.numberOfRequestedFlatMates = value;
     }
 
@@ -1017,10 +1114,10 @@ public class FlatShareRoom
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public Integer getNumberOfFloors() {
+    public Long getNumberOfFloors() {
         return numberOfFloors;
     }
 
@@ -1029,10 +1126,10 @@ public class FlatShareRoom
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public void setNumberOfFloors(Integer value) {
+    public void setNumberOfFloors(Long value) {
         this.numberOfFloors = value;
     }
 
@@ -1041,10 +1138,10 @@ public class FlatShareRoom
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public Integer getNumberOfBathRooms() {
+    public Long getNumberOfBathRooms() {
         return numberOfBathRooms;
     }
 
@@ -1053,10 +1150,10 @@ public class FlatShareRoom
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public void setNumberOfBathRooms(Integer value) {
+    public void setNumberOfBathRooms(Long value) {
         this.numberOfBathRooms = value;
     }
 
@@ -1581,7 +1678,7 @@ public class FlatShareRoom
     public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
         super.appendFields(locator, buffer, strategy);
         {
-            double theRoomSize;
+            BigDecimal theRoomSize;
             theRoomSize = this.getRoomSize();
             strategy.appendField(locator, this, "roomSize", buffer, theRoomSize);
         }
@@ -1591,7 +1688,7 @@ public class FlatShareRoom
             strategy.appendField(locator, this, "flooringType", buffer, theFlooringType);
         }
         {
-            Double theNumberOfRooms;
+            BigDecimal theNumberOfRooms;
             theNumberOfRooms = this.getNumberOfRooms();
             strategy.appendField(locator, this, "numberOfRooms", buffer, theNumberOfRooms);
         }
@@ -1641,7 +1738,7 @@ public class FlatShareRoom
             strategy.appendField(locator, this, "buildingEnergyRatingType", buffer, theBuildingEnergyRatingType);
         }
         {
-            Double theThermalCharacteristic;
+            BigDecimal theThermalCharacteristic;
             theThermalCharacteristic = this.getThermalCharacteristic();
             strategy.appendField(locator, this, "thermalCharacteristic", buffer, theThermalCharacteristic);
         }
@@ -1661,17 +1758,17 @@ public class FlatShareRoom
             strategy.appendField(locator, this, "constructionYearUnknown", buffer, theConstructionYearUnknown);
         }
         {
-            double theBaseRent;
+            BigDecimal theBaseRent;
             theBaseRent = this.getBaseRent();
             strategy.appendField(locator, this, "baseRent", buffer, theBaseRent);
         }
         {
-            Double theTotalRent;
+            BigDecimal theTotalRent;
             theTotalRent = this.getTotalRent();
             strategy.appendField(locator, this, "totalRent", buffer, theTotalRent);
         }
         {
-            Double theServiceCharge;
+            BigDecimal theServiceCharge;
             theServiceCharge = this.getServiceCharge();
             strategy.appendField(locator, this, "serviceCharge", buffer, theServiceCharge);
         }
@@ -1681,7 +1778,7 @@ public class FlatShareRoom
             strategy.appendField(locator, this, "deposit", buffer, theDeposit);
         }
         {
-            Double theHeatingCosts;
+            BigDecimal theHeatingCosts;
             theHeatingCosts = this.getHeatingCosts();
             strategy.appendField(locator, this, "heatingCosts", buffer, theHeatingCosts);
         }
@@ -1701,47 +1798,47 @@ public class FlatShareRoom
             strategy.appendField(locator, this, "freeUntil", buffer, theFreeUntil);
         }
         {
-            Integer theMinimumTermOfLease;
+            Long theMinimumTermOfLease;
             theMinimumTermOfLease = this.getMinimumTermOfLease();
             strategy.appendField(locator, this, "minimumTermOfLease", buffer, theMinimumTermOfLease);
         }
         {
-            Double theTotalSpace;
+            BigDecimal theTotalSpace;
             theTotalSpace = this.getTotalSpace();
             strategy.appendField(locator, this, "totalSpace", buffer, theTotalSpace);
         }
         {
-            Integer theNumberOfMaleFlatMates;
+            Long theNumberOfMaleFlatMates;
             theNumberOfMaleFlatMates = this.getNumberOfMaleFlatMates();
             strategy.appendField(locator, this, "numberOfMaleFlatMates", buffer, theNumberOfMaleFlatMates);
         }
         {
-            Integer theNumberOfFemaleFlatMates;
+            Long theNumberOfFemaleFlatMates;
             theNumberOfFemaleFlatMates = this.getNumberOfFemaleFlatMates();
             strategy.appendField(locator, this, "numberOfFemaleFlatMates", buffer, theNumberOfFemaleFlatMates);
         }
         {
-            Integer theAgeOfFlatMatesFrom;
+            Long theAgeOfFlatMatesFrom;
             theAgeOfFlatMatesFrom = this.getAgeOfFlatMatesFrom();
             strategy.appendField(locator, this, "ageOfFlatMatesFrom", buffer, theAgeOfFlatMatesFrom);
         }
         {
-            Integer theAgeOfFlatMatesTo;
+            Long theAgeOfFlatMatesTo;
             theAgeOfFlatMatesTo = this.getAgeOfFlatMatesTo();
             strategy.appendField(locator, this, "ageOfFlatMatesTo", buffer, theAgeOfFlatMatesTo);
         }
         {
-            Integer theAgeOfRequestedFrom;
+            Long theAgeOfRequestedFrom;
             theAgeOfRequestedFrom = this.getAgeOfRequestedFrom();
             strategy.appendField(locator, this, "ageOfRequestedFrom", buffer, theAgeOfRequestedFrom);
         }
         {
-            Integer theAgeOfRequestedTo;
+            Long theAgeOfRequestedTo;
             theAgeOfRequestedTo = this.getAgeOfRequestedTo();
             strategy.appendField(locator, this, "ageOfRequestedTo", buffer, theAgeOfRequestedTo);
         }
         {
-            Integer theNumberOfRequestedFlatMates;
+            Long theNumberOfRequestedFlatMates;
             theNumberOfRequestedFlatMates = this.getNumberOfRequestedFlatMates();
             strategy.appendField(locator, this, "numberOfRequestedFlatMates", buffer, theNumberOfRequestedFlatMates);
         }
@@ -1751,12 +1848,12 @@ public class FlatShareRoom
             strategy.appendField(locator, this, "floor", buffer, theFloor);
         }
         {
-            Integer theNumberOfFloors;
+            Long theNumberOfFloors;
             theNumberOfFloors = this.getNumberOfFloors();
             strategy.appendField(locator, this, "numberOfFloors", buffer, theNumberOfFloors);
         }
         {
-            Integer theNumberOfBathRooms;
+            Long theNumberOfBathRooms;
             theNumberOfBathRooms = this.getNumberOfBathRooms();
             strategy.appendField(locator, this, "numberOfBathRooms", buffer, theNumberOfBathRooms);
         }
@@ -1882,11 +1979,13 @@ public class FlatShareRoom
         super.copyTo(locator, draftCopy, strategy);
         if (draftCopy instanceof FlatShareRoom) {
             final FlatShareRoom copy = ((FlatShareRoom) draftCopy);
-            {
-                double sourceRoomSize;
+            if (this.roomSize!= null) {
+                BigDecimal sourceRoomSize;
                 sourceRoomSize = this.getRoomSize();
-                double copyRoomSize = strategy.copy(LocatorUtils.property(locator, "roomSize", sourceRoomSize), sourceRoomSize);
+                BigDecimal copyRoomSize = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "roomSize", sourceRoomSize), sourceRoomSize));
                 copy.setRoomSize(copyRoomSize);
+            } else {
+                copy.roomSize = null;
             }
             if (this.flooringType!= null) {
                 FlooringType sourceFlooringType;
@@ -1897,9 +1996,9 @@ public class FlatShareRoom
                 copy.flooringType = null;
             }
             if (this.numberOfRooms!= null) {
-                Double sourceNumberOfRooms;
+                BigDecimal sourceNumberOfRooms;
                 sourceNumberOfRooms = this.getNumberOfRooms();
-                Double copyNumberOfRooms = ((Double) strategy.copy(LocatorUtils.property(locator, "numberOfRooms", sourceNumberOfRooms), sourceNumberOfRooms));
+                BigDecimal copyNumberOfRooms = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "numberOfRooms", sourceNumberOfRooms), sourceNumberOfRooms));
                 copy.setNumberOfRooms(copyNumberOfRooms);
             } else {
                 copy.numberOfRooms = null;
@@ -1977,9 +2076,9 @@ public class FlatShareRoom
                 copy.buildingEnergyRatingType = null;
             }
             if (this.thermalCharacteristic!= null) {
-                Double sourceThermalCharacteristic;
+                BigDecimal sourceThermalCharacteristic;
                 sourceThermalCharacteristic = this.getThermalCharacteristic();
-                Double copyThermalCharacteristic = ((Double) strategy.copy(LocatorUtils.property(locator, "thermalCharacteristic", sourceThermalCharacteristic), sourceThermalCharacteristic));
+                BigDecimal copyThermalCharacteristic = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "thermalCharacteristic", sourceThermalCharacteristic), sourceThermalCharacteristic));
                 copy.setThermalCharacteristic(copyThermalCharacteristic);
             } else {
                 copy.thermalCharacteristic = null;
@@ -2008,24 +2107,26 @@ public class FlatShareRoom
             } else {
                 copy.constructionYearUnknown = null;
             }
-            {
-                double sourceBaseRent;
+            if (this.baseRent!= null) {
+                BigDecimal sourceBaseRent;
                 sourceBaseRent = this.getBaseRent();
-                double copyBaseRent = strategy.copy(LocatorUtils.property(locator, "baseRent", sourceBaseRent), sourceBaseRent);
+                BigDecimal copyBaseRent = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "baseRent", sourceBaseRent), sourceBaseRent));
                 copy.setBaseRent(copyBaseRent);
+            } else {
+                copy.baseRent = null;
             }
             if (this.totalRent!= null) {
-                Double sourceTotalRent;
+                BigDecimal sourceTotalRent;
                 sourceTotalRent = this.getTotalRent();
-                Double copyTotalRent = ((Double) strategy.copy(LocatorUtils.property(locator, "totalRent", sourceTotalRent), sourceTotalRent));
+                BigDecimal copyTotalRent = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "totalRent", sourceTotalRent), sourceTotalRent));
                 copy.setTotalRent(copyTotalRent);
             } else {
                 copy.totalRent = null;
             }
             if (this.serviceCharge!= null) {
-                Double sourceServiceCharge;
+                BigDecimal sourceServiceCharge;
                 sourceServiceCharge = this.getServiceCharge();
-                Double copyServiceCharge = ((Double) strategy.copy(LocatorUtils.property(locator, "serviceCharge", sourceServiceCharge), sourceServiceCharge));
+                BigDecimal copyServiceCharge = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "serviceCharge", sourceServiceCharge), sourceServiceCharge));
                 copy.setServiceCharge(copyServiceCharge);
             } else {
                 copy.serviceCharge = null;
@@ -2039,9 +2140,9 @@ public class FlatShareRoom
                 copy.deposit = null;
             }
             if (this.heatingCosts!= null) {
-                Double sourceHeatingCosts;
+                BigDecimal sourceHeatingCosts;
                 sourceHeatingCosts = this.getHeatingCosts();
-                Double copyHeatingCosts = ((Double) strategy.copy(LocatorUtils.property(locator, "heatingCosts", sourceHeatingCosts), sourceHeatingCosts));
+                BigDecimal copyHeatingCosts = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "heatingCosts", sourceHeatingCosts), sourceHeatingCosts));
                 copy.setHeatingCosts(copyHeatingCosts);
             } else {
                 copy.heatingCosts = null;
@@ -2071,73 +2172,73 @@ public class FlatShareRoom
                 copy.freeUntil = null;
             }
             if (this.minimumTermOfLease!= null) {
-                Integer sourceMinimumTermOfLease;
+                Long sourceMinimumTermOfLease;
                 sourceMinimumTermOfLease = this.getMinimumTermOfLease();
-                Integer copyMinimumTermOfLease = ((Integer) strategy.copy(LocatorUtils.property(locator, "minimumTermOfLease", sourceMinimumTermOfLease), sourceMinimumTermOfLease));
+                Long copyMinimumTermOfLease = ((Long) strategy.copy(LocatorUtils.property(locator, "minimumTermOfLease", sourceMinimumTermOfLease), sourceMinimumTermOfLease));
                 copy.setMinimumTermOfLease(copyMinimumTermOfLease);
             } else {
                 copy.minimumTermOfLease = null;
             }
             if (this.totalSpace!= null) {
-                Double sourceTotalSpace;
+                BigDecimal sourceTotalSpace;
                 sourceTotalSpace = this.getTotalSpace();
-                Double copyTotalSpace = ((Double) strategy.copy(LocatorUtils.property(locator, "totalSpace", sourceTotalSpace), sourceTotalSpace));
+                BigDecimal copyTotalSpace = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "totalSpace", sourceTotalSpace), sourceTotalSpace));
                 copy.setTotalSpace(copyTotalSpace);
             } else {
                 copy.totalSpace = null;
             }
             if (this.numberOfMaleFlatMates!= null) {
-                Integer sourceNumberOfMaleFlatMates;
+                Long sourceNumberOfMaleFlatMates;
                 sourceNumberOfMaleFlatMates = this.getNumberOfMaleFlatMates();
-                Integer copyNumberOfMaleFlatMates = ((Integer) strategy.copy(LocatorUtils.property(locator, "numberOfMaleFlatMates", sourceNumberOfMaleFlatMates), sourceNumberOfMaleFlatMates));
+                Long copyNumberOfMaleFlatMates = ((Long) strategy.copy(LocatorUtils.property(locator, "numberOfMaleFlatMates", sourceNumberOfMaleFlatMates), sourceNumberOfMaleFlatMates));
                 copy.setNumberOfMaleFlatMates(copyNumberOfMaleFlatMates);
             } else {
                 copy.numberOfMaleFlatMates = null;
             }
             if (this.numberOfFemaleFlatMates!= null) {
-                Integer sourceNumberOfFemaleFlatMates;
+                Long sourceNumberOfFemaleFlatMates;
                 sourceNumberOfFemaleFlatMates = this.getNumberOfFemaleFlatMates();
-                Integer copyNumberOfFemaleFlatMates = ((Integer) strategy.copy(LocatorUtils.property(locator, "numberOfFemaleFlatMates", sourceNumberOfFemaleFlatMates), sourceNumberOfFemaleFlatMates));
+                Long copyNumberOfFemaleFlatMates = ((Long) strategy.copy(LocatorUtils.property(locator, "numberOfFemaleFlatMates", sourceNumberOfFemaleFlatMates), sourceNumberOfFemaleFlatMates));
                 copy.setNumberOfFemaleFlatMates(copyNumberOfFemaleFlatMates);
             } else {
                 copy.numberOfFemaleFlatMates = null;
             }
             if (this.ageOfFlatMatesFrom!= null) {
-                Integer sourceAgeOfFlatMatesFrom;
+                Long sourceAgeOfFlatMatesFrom;
                 sourceAgeOfFlatMatesFrom = this.getAgeOfFlatMatesFrom();
-                Integer copyAgeOfFlatMatesFrom = ((Integer) strategy.copy(LocatorUtils.property(locator, "ageOfFlatMatesFrom", sourceAgeOfFlatMatesFrom), sourceAgeOfFlatMatesFrom));
+                Long copyAgeOfFlatMatesFrom = ((Long) strategy.copy(LocatorUtils.property(locator, "ageOfFlatMatesFrom", sourceAgeOfFlatMatesFrom), sourceAgeOfFlatMatesFrom));
                 copy.setAgeOfFlatMatesFrom(copyAgeOfFlatMatesFrom);
             } else {
                 copy.ageOfFlatMatesFrom = null;
             }
             if (this.ageOfFlatMatesTo!= null) {
-                Integer sourceAgeOfFlatMatesTo;
+                Long sourceAgeOfFlatMatesTo;
                 sourceAgeOfFlatMatesTo = this.getAgeOfFlatMatesTo();
-                Integer copyAgeOfFlatMatesTo = ((Integer) strategy.copy(LocatorUtils.property(locator, "ageOfFlatMatesTo", sourceAgeOfFlatMatesTo), sourceAgeOfFlatMatesTo));
+                Long copyAgeOfFlatMatesTo = ((Long) strategy.copy(LocatorUtils.property(locator, "ageOfFlatMatesTo", sourceAgeOfFlatMatesTo), sourceAgeOfFlatMatesTo));
                 copy.setAgeOfFlatMatesTo(copyAgeOfFlatMatesTo);
             } else {
                 copy.ageOfFlatMatesTo = null;
             }
             if (this.ageOfRequestedFrom!= null) {
-                Integer sourceAgeOfRequestedFrom;
+                Long sourceAgeOfRequestedFrom;
                 sourceAgeOfRequestedFrom = this.getAgeOfRequestedFrom();
-                Integer copyAgeOfRequestedFrom = ((Integer) strategy.copy(LocatorUtils.property(locator, "ageOfRequestedFrom", sourceAgeOfRequestedFrom), sourceAgeOfRequestedFrom));
+                Long copyAgeOfRequestedFrom = ((Long) strategy.copy(LocatorUtils.property(locator, "ageOfRequestedFrom", sourceAgeOfRequestedFrom), sourceAgeOfRequestedFrom));
                 copy.setAgeOfRequestedFrom(copyAgeOfRequestedFrom);
             } else {
                 copy.ageOfRequestedFrom = null;
             }
             if (this.ageOfRequestedTo!= null) {
-                Integer sourceAgeOfRequestedTo;
+                Long sourceAgeOfRequestedTo;
                 sourceAgeOfRequestedTo = this.getAgeOfRequestedTo();
-                Integer copyAgeOfRequestedTo = ((Integer) strategy.copy(LocatorUtils.property(locator, "ageOfRequestedTo", sourceAgeOfRequestedTo), sourceAgeOfRequestedTo));
+                Long copyAgeOfRequestedTo = ((Long) strategy.copy(LocatorUtils.property(locator, "ageOfRequestedTo", sourceAgeOfRequestedTo), sourceAgeOfRequestedTo));
                 copy.setAgeOfRequestedTo(copyAgeOfRequestedTo);
             } else {
                 copy.ageOfRequestedTo = null;
             }
             if (this.numberOfRequestedFlatMates!= null) {
-                Integer sourceNumberOfRequestedFlatMates;
+                Long sourceNumberOfRequestedFlatMates;
                 sourceNumberOfRequestedFlatMates = this.getNumberOfRequestedFlatMates();
-                Integer copyNumberOfRequestedFlatMates = ((Integer) strategy.copy(LocatorUtils.property(locator, "numberOfRequestedFlatMates", sourceNumberOfRequestedFlatMates), sourceNumberOfRequestedFlatMates));
+                Long copyNumberOfRequestedFlatMates = ((Long) strategy.copy(LocatorUtils.property(locator, "numberOfRequestedFlatMates", sourceNumberOfRequestedFlatMates), sourceNumberOfRequestedFlatMates));
                 copy.setNumberOfRequestedFlatMates(copyNumberOfRequestedFlatMates);
             } else {
                 copy.numberOfRequestedFlatMates = null;
@@ -2151,17 +2252,17 @@ public class FlatShareRoom
                 copy.floor = null;
             }
             if (this.numberOfFloors!= null) {
-                Integer sourceNumberOfFloors;
+                Long sourceNumberOfFloors;
                 sourceNumberOfFloors = this.getNumberOfFloors();
-                Integer copyNumberOfFloors = ((Integer) strategy.copy(LocatorUtils.property(locator, "numberOfFloors", sourceNumberOfFloors), sourceNumberOfFloors));
+                Long copyNumberOfFloors = ((Long) strategy.copy(LocatorUtils.property(locator, "numberOfFloors", sourceNumberOfFloors), sourceNumberOfFloors));
                 copy.setNumberOfFloors(copyNumberOfFloors);
             } else {
                 copy.numberOfFloors = null;
             }
             if (this.numberOfBathRooms!= null) {
-                Integer sourceNumberOfBathRooms;
+                Long sourceNumberOfBathRooms;
                 sourceNumberOfBathRooms = this.getNumberOfBathRooms();
-                Integer copyNumberOfBathRooms = ((Integer) strategy.copy(LocatorUtils.property(locator, "numberOfBathRooms", sourceNumberOfBathRooms), sourceNumberOfBathRooms));
+                Long copyNumberOfBathRooms = ((Long) strategy.copy(LocatorUtils.property(locator, "numberOfBathRooms", sourceNumberOfBathRooms), sourceNumberOfBathRooms));
                 copy.setNumberOfBathRooms(copyNumberOfBathRooms);
             } else {
                 copy.numberOfBathRooms = null;
@@ -2343,7 +2444,7 @@ public class FlatShareRoom
     }
 
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
-        if (!(object instanceof FlatShareRoom)) {
+        if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
         if (this == object) {
@@ -2354,9 +2455,9 @@ public class FlatShareRoom
         }
         final FlatShareRoom that = ((FlatShareRoom) object);
         {
-            double lhsRoomSize;
+            BigDecimal lhsRoomSize;
             lhsRoomSize = this.getRoomSize();
-            double rhsRoomSize;
+            BigDecimal rhsRoomSize;
             rhsRoomSize = that.getRoomSize();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "roomSize", lhsRoomSize), LocatorUtils.property(thatLocator, "roomSize", rhsRoomSize), lhsRoomSize, rhsRoomSize)) {
                 return false;
@@ -2372,9 +2473,9 @@ public class FlatShareRoom
             }
         }
         {
-            Double lhsNumberOfRooms;
+            BigDecimal lhsNumberOfRooms;
             lhsNumberOfRooms = this.getNumberOfRooms();
-            Double rhsNumberOfRooms;
+            BigDecimal rhsNumberOfRooms;
             rhsNumberOfRooms = that.getNumberOfRooms();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "numberOfRooms", lhsNumberOfRooms), LocatorUtils.property(thatLocator, "numberOfRooms", rhsNumberOfRooms), lhsNumberOfRooms, rhsNumberOfRooms)) {
                 return false;
@@ -2462,9 +2563,9 @@ public class FlatShareRoom
             }
         }
         {
-            Double lhsThermalCharacteristic;
+            BigDecimal lhsThermalCharacteristic;
             lhsThermalCharacteristic = this.getThermalCharacteristic();
-            Double rhsThermalCharacteristic;
+            BigDecimal rhsThermalCharacteristic;
             rhsThermalCharacteristic = that.getThermalCharacteristic();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "thermalCharacteristic", lhsThermalCharacteristic), LocatorUtils.property(thatLocator, "thermalCharacteristic", rhsThermalCharacteristic), lhsThermalCharacteristic, rhsThermalCharacteristic)) {
                 return false;
@@ -2498,27 +2599,27 @@ public class FlatShareRoom
             }
         }
         {
-            double lhsBaseRent;
+            BigDecimal lhsBaseRent;
             lhsBaseRent = this.getBaseRent();
-            double rhsBaseRent;
+            BigDecimal rhsBaseRent;
             rhsBaseRent = that.getBaseRent();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "baseRent", lhsBaseRent), LocatorUtils.property(thatLocator, "baseRent", rhsBaseRent), lhsBaseRent, rhsBaseRent)) {
                 return false;
             }
         }
         {
-            Double lhsTotalRent;
+            BigDecimal lhsTotalRent;
             lhsTotalRent = this.getTotalRent();
-            Double rhsTotalRent;
+            BigDecimal rhsTotalRent;
             rhsTotalRent = that.getTotalRent();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "totalRent", lhsTotalRent), LocatorUtils.property(thatLocator, "totalRent", rhsTotalRent), lhsTotalRent, rhsTotalRent)) {
                 return false;
             }
         }
         {
-            Double lhsServiceCharge;
+            BigDecimal lhsServiceCharge;
             lhsServiceCharge = this.getServiceCharge();
-            Double rhsServiceCharge;
+            BigDecimal rhsServiceCharge;
             rhsServiceCharge = that.getServiceCharge();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "serviceCharge", lhsServiceCharge), LocatorUtils.property(thatLocator, "serviceCharge", rhsServiceCharge), lhsServiceCharge, rhsServiceCharge)) {
                 return false;
@@ -2534,9 +2635,9 @@ public class FlatShareRoom
             }
         }
         {
-            Double lhsHeatingCosts;
+            BigDecimal lhsHeatingCosts;
             lhsHeatingCosts = this.getHeatingCosts();
-            Double rhsHeatingCosts;
+            BigDecimal rhsHeatingCosts;
             rhsHeatingCosts = that.getHeatingCosts();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "heatingCosts", lhsHeatingCosts), LocatorUtils.property(thatLocator, "heatingCosts", rhsHeatingCosts), lhsHeatingCosts, rhsHeatingCosts)) {
                 return false;
@@ -2570,81 +2671,81 @@ public class FlatShareRoom
             }
         }
         {
-            Integer lhsMinimumTermOfLease;
+            Long lhsMinimumTermOfLease;
             lhsMinimumTermOfLease = this.getMinimumTermOfLease();
-            Integer rhsMinimumTermOfLease;
+            Long rhsMinimumTermOfLease;
             rhsMinimumTermOfLease = that.getMinimumTermOfLease();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "minimumTermOfLease", lhsMinimumTermOfLease), LocatorUtils.property(thatLocator, "minimumTermOfLease", rhsMinimumTermOfLease), lhsMinimumTermOfLease, rhsMinimumTermOfLease)) {
                 return false;
             }
         }
         {
-            Double lhsTotalSpace;
+            BigDecimal lhsTotalSpace;
             lhsTotalSpace = this.getTotalSpace();
-            Double rhsTotalSpace;
+            BigDecimal rhsTotalSpace;
             rhsTotalSpace = that.getTotalSpace();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "totalSpace", lhsTotalSpace), LocatorUtils.property(thatLocator, "totalSpace", rhsTotalSpace), lhsTotalSpace, rhsTotalSpace)) {
                 return false;
             }
         }
         {
-            Integer lhsNumberOfMaleFlatMates;
+            Long lhsNumberOfMaleFlatMates;
             lhsNumberOfMaleFlatMates = this.getNumberOfMaleFlatMates();
-            Integer rhsNumberOfMaleFlatMates;
+            Long rhsNumberOfMaleFlatMates;
             rhsNumberOfMaleFlatMates = that.getNumberOfMaleFlatMates();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "numberOfMaleFlatMates", lhsNumberOfMaleFlatMates), LocatorUtils.property(thatLocator, "numberOfMaleFlatMates", rhsNumberOfMaleFlatMates), lhsNumberOfMaleFlatMates, rhsNumberOfMaleFlatMates)) {
                 return false;
             }
         }
         {
-            Integer lhsNumberOfFemaleFlatMates;
+            Long lhsNumberOfFemaleFlatMates;
             lhsNumberOfFemaleFlatMates = this.getNumberOfFemaleFlatMates();
-            Integer rhsNumberOfFemaleFlatMates;
+            Long rhsNumberOfFemaleFlatMates;
             rhsNumberOfFemaleFlatMates = that.getNumberOfFemaleFlatMates();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "numberOfFemaleFlatMates", lhsNumberOfFemaleFlatMates), LocatorUtils.property(thatLocator, "numberOfFemaleFlatMates", rhsNumberOfFemaleFlatMates), lhsNumberOfFemaleFlatMates, rhsNumberOfFemaleFlatMates)) {
                 return false;
             }
         }
         {
-            Integer lhsAgeOfFlatMatesFrom;
+            Long lhsAgeOfFlatMatesFrom;
             lhsAgeOfFlatMatesFrom = this.getAgeOfFlatMatesFrom();
-            Integer rhsAgeOfFlatMatesFrom;
+            Long rhsAgeOfFlatMatesFrom;
             rhsAgeOfFlatMatesFrom = that.getAgeOfFlatMatesFrom();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "ageOfFlatMatesFrom", lhsAgeOfFlatMatesFrom), LocatorUtils.property(thatLocator, "ageOfFlatMatesFrom", rhsAgeOfFlatMatesFrom), lhsAgeOfFlatMatesFrom, rhsAgeOfFlatMatesFrom)) {
                 return false;
             }
         }
         {
-            Integer lhsAgeOfFlatMatesTo;
+            Long lhsAgeOfFlatMatesTo;
             lhsAgeOfFlatMatesTo = this.getAgeOfFlatMatesTo();
-            Integer rhsAgeOfFlatMatesTo;
+            Long rhsAgeOfFlatMatesTo;
             rhsAgeOfFlatMatesTo = that.getAgeOfFlatMatesTo();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "ageOfFlatMatesTo", lhsAgeOfFlatMatesTo), LocatorUtils.property(thatLocator, "ageOfFlatMatesTo", rhsAgeOfFlatMatesTo), lhsAgeOfFlatMatesTo, rhsAgeOfFlatMatesTo)) {
                 return false;
             }
         }
         {
-            Integer lhsAgeOfRequestedFrom;
+            Long lhsAgeOfRequestedFrom;
             lhsAgeOfRequestedFrom = this.getAgeOfRequestedFrom();
-            Integer rhsAgeOfRequestedFrom;
+            Long rhsAgeOfRequestedFrom;
             rhsAgeOfRequestedFrom = that.getAgeOfRequestedFrom();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "ageOfRequestedFrom", lhsAgeOfRequestedFrom), LocatorUtils.property(thatLocator, "ageOfRequestedFrom", rhsAgeOfRequestedFrom), lhsAgeOfRequestedFrom, rhsAgeOfRequestedFrom)) {
                 return false;
             }
         }
         {
-            Integer lhsAgeOfRequestedTo;
+            Long lhsAgeOfRequestedTo;
             lhsAgeOfRequestedTo = this.getAgeOfRequestedTo();
-            Integer rhsAgeOfRequestedTo;
+            Long rhsAgeOfRequestedTo;
             rhsAgeOfRequestedTo = that.getAgeOfRequestedTo();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "ageOfRequestedTo", lhsAgeOfRequestedTo), LocatorUtils.property(thatLocator, "ageOfRequestedTo", rhsAgeOfRequestedTo), lhsAgeOfRequestedTo, rhsAgeOfRequestedTo)) {
                 return false;
             }
         }
         {
-            Integer lhsNumberOfRequestedFlatMates;
+            Long lhsNumberOfRequestedFlatMates;
             lhsNumberOfRequestedFlatMates = this.getNumberOfRequestedFlatMates();
-            Integer rhsNumberOfRequestedFlatMates;
+            Long rhsNumberOfRequestedFlatMates;
             rhsNumberOfRequestedFlatMates = that.getNumberOfRequestedFlatMates();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "numberOfRequestedFlatMates", lhsNumberOfRequestedFlatMates), LocatorUtils.property(thatLocator, "numberOfRequestedFlatMates", rhsNumberOfRequestedFlatMates), lhsNumberOfRequestedFlatMates, rhsNumberOfRequestedFlatMates)) {
                 return false;
@@ -2660,18 +2761,18 @@ public class FlatShareRoom
             }
         }
         {
-            Integer lhsNumberOfFloors;
+            Long lhsNumberOfFloors;
             lhsNumberOfFloors = this.getNumberOfFloors();
-            Integer rhsNumberOfFloors;
+            Long rhsNumberOfFloors;
             rhsNumberOfFloors = that.getNumberOfFloors();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "numberOfFloors", lhsNumberOfFloors), LocatorUtils.property(thatLocator, "numberOfFloors", rhsNumberOfFloors), lhsNumberOfFloors, rhsNumberOfFloors)) {
                 return false;
             }
         }
         {
-            Integer lhsNumberOfBathRooms;
+            Long lhsNumberOfBathRooms;
             lhsNumberOfBathRooms = this.getNumberOfBathRooms();
-            Integer rhsNumberOfBathRooms;
+            Long rhsNumberOfBathRooms;
             rhsNumberOfBathRooms = that.getNumberOfBathRooms();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "numberOfBathRooms", lhsNumberOfBathRooms), LocatorUtils.property(thatLocator, "numberOfBathRooms", rhsNumberOfBathRooms), lhsNumberOfBathRooms, rhsNumberOfBathRooms)) {
                 return false;

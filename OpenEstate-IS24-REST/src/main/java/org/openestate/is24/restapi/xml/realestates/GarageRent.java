@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.realestates;
 
+import java.math.BigDecimal;
 import java.util.Calendar;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -19,7 +20,9 @@ import org.jvnet.jaxb2_commons.lang.ToString;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
+import org.openestate.is24.restapi.xml.Adapter1;
 import org.openestate.is24.restapi.xml.Adapter3;
+import org.openestate.is24.restapi.xml.Adapter5;
 import org.openestate.is24.restapi.xml.common.CourtageInfo;
 import org.openestate.is24.restapi.xml.common.GarageType;
 import org.openestate.is24.restapi.xml.common.Price;
@@ -35,15 +38,15 @@ import org.openestate.is24.restapi.xml.common.RealEstateCondition;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="GarageRent">
- *   &lt;complexContent>
- *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/realestates/1.0}RealEstate">
- *       &lt;sequence>
- *         &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}ExtendedGarageRentGroup"/>
- *       &lt;/sequence>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="GarageRent"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/realestates/1.0}RealEstate"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}ExtendedGarageRentGroup"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/extension&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -70,7 +73,10 @@ public class GarageRent
 
     @XmlElement(required = true)
     protected Price price;
-    protected Double usableFloorSpace;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal usableFloorSpace;
     @XmlElement(required = true)
     protected CourtageInfo courtage;
     @XmlElement(type = String.class)
@@ -82,15 +88,29 @@ public class GarageRent
     @XmlSchemaType(name = "date")
     protected Calendar freeUntil;
     @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
     protected GarageType garageType;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter19 .class)
     protected Integer constructionYear;
-    protected Double lengthGarage;
-    protected Double widthGarage;
-    protected Double heightGarage;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal lengthGarage;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal widthGarage;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal heightGarage;
+    @XmlSchemaType(name = "string")
     protected RealEstateCondition condition;
-    protected Integer lastRefurbishment;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlSchemaType(name = "int")
+    protected Long lastRefurbishment;
 
     /**
      * Gets the value of the price property.
@@ -121,10 +141,10 @@ public class GarageRent
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getUsableFloorSpace() {
+    public BigDecimal getUsableFloorSpace() {
         return usableFloorSpace;
     }
 
@@ -133,10 +153,10 @@ public class GarageRent
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setUsableFloorSpace(Double value) {
+    public void setUsableFloorSpace(BigDecimal value) {
         this.usableFloorSpace = value;
     }
 
@@ -265,10 +285,10 @@ public class GarageRent
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getLengthGarage() {
+    public BigDecimal getLengthGarage() {
         return lengthGarage;
     }
 
@@ -277,10 +297,10 @@ public class GarageRent
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setLengthGarage(Double value) {
+    public void setLengthGarage(BigDecimal value) {
         this.lengthGarage = value;
     }
 
@@ -289,10 +309,10 @@ public class GarageRent
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getWidthGarage() {
+    public BigDecimal getWidthGarage() {
         return widthGarage;
     }
 
@@ -301,10 +321,10 @@ public class GarageRent
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setWidthGarage(Double value) {
+    public void setWidthGarage(BigDecimal value) {
         this.widthGarage = value;
     }
 
@@ -313,10 +333,10 @@ public class GarageRent
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getHeightGarage() {
+    public BigDecimal getHeightGarage() {
         return heightGarage;
     }
 
@@ -325,10 +345,10 @@ public class GarageRent
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setHeightGarage(Double value) {
+    public void setHeightGarage(BigDecimal value) {
         this.heightGarage = value;
     }
 
@@ -361,10 +381,10 @@ public class GarageRent
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public Integer getLastRefurbishment() {
+    public Long getLastRefurbishment() {
         return lastRefurbishment;
     }
 
@@ -373,10 +393,10 @@ public class GarageRent
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public void setLastRefurbishment(Integer value) {
+    public void setLastRefurbishment(Long value) {
         this.lastRefurbishment = value;
     }
 
@@ -402,7 +422,7 @@ public class GarageRent
             strategy.appendField(locator, this, "price", buffer, thePrice);
         }
         {
-            Double theUsableFloorSpace;
+            BigDecimal theUsableFloorSpace;
             theUsableFloorSpace = this.getUsableFloorSpace();
             strategy.appendField(locator, this, "usableFloorSpace", buffer, theUsableFloorSpace);
         }
@@ -432,17 +452,17 @@ public class GarageRent
             strategy.appendField(locator, this, "constructionYear", buffer, theConstructionYear);
         }
         {
-            Double theLengthGarage;
+            BigDecimal theLengthGarage;
             theLengthGarage = this.getLengthGarage();
             strategy.appendField(locator, this, "lengthGarage", buffer, theLengthGarage);
         }
         {
-            Double theWidthGarage;
+            BigDecimal theWidthGarage;
             theWidthGarage = this.getWidthGarage();
             strategy.appendField(locator, this, "widthGarage", buffer, theWidthGarage);
         }
         {
-            Double theHeightGarage;
+            BigDecimal theHeightGarage;
             theHeightGarage = this.getHeightGarage();
             strategy.appendField(locator, this, "heightGarage", buffer, theHeightGarage);
         }
@@ -452,7 +472,7 @@ public class GarageRent
             strategy.appendField(locator, this, "condition", buffer, theCondition);
         }
         {
-            Integer theLastRefurbishment;
+            Long theLastRefurbishment;
             theLastRefurbishment = this.getLastRefurbishment();
             strategy.appendField(locator, this, "lastRefurbishment", buffer, theLastRefurbishment);
         }
@@ -482,9 +502,9 @@ public class GarageRent
                 copy.price = null;
             }
             if (this.usableFloorSpace!= null) {
-                Double sourceUsableFloorSpace;
+                BigDecimal sourceUsableFloorSpace;
                 sourceUsableFloorSpace = this.getUsableFloorSpace();
-                Double copyUsableFloorSpace = ((Double) strategy.copy(LocatorUtils.property(locator, "usableFloorSpace", sourceUsableFloorSpace), sourceUsableFloorSpace));
+                BigDecimal copyUsableFloorSpace = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "usableFloorSpace", sourceUsableFloorSpace), sourceUsableFloorSpace));
                 copy.setUsableFloorSpace(copyUsableFloorSpace);
             } else {
                 copy.usableFloorSpace = null;
@@ -530,25 +550,25 @@ public class GarageRent
                 copy.constructionYear = null;
             }
             if (this.lengthGarage!= null) {
-                Double sourceLengthGarage;
+                BigDecimal sourceLengthGarage;
                 sourceLengthGarage = this.getLengthGarage();
-                Double copyLengthGarage = ((Double) strategy.copy(LocatorUtils.property(locator, "lengthGarage", sourceLengthGarage), sourceLengthGarage));
+                BigDecimal copyLengthGarage = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "lengthGarage", sourceLengthGarage), sourceLengthGarage));
                 copy.setLengthGarage(copyLengthGarage);
             } else {
                 copy.lengthGarage = null;
             }
             if (this.widthGarage!= null) {
-                Double sourceWidthGarage;
+                BigDecimal sourceWidthGarage;
                 sourceWidthGarage = this.getWidthGarage();
-                Double copyWidthGarage = ((Double) strategy.copy(LocatorUtils.property(locator, "widthGarage", sourceWidthGarage), sourceWidthGarage));
+                BigDecimal copyWidthGarage = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "widthGarage", sourceWidthGarage), sourceWidthGarage));
                 copy.setWidthGarage(copyWidthGarage);
             } else {
                 copy.widthGarage = null;
             }
             if (this.heightGarage!= null) {
-                Double sourceHeightGarage;
+                BigDecimal sourceHeightGarage;
                 sourceHeightGarage = this.getHeightGarage();
-                Double copyHeightGarage = ((Double) strategy.copy(LocatorUtils.property(locator, "heightGarage", sourceHeightGarage), sourceHeightGarage));
+                BigDecimal copyHeightGarage = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "heightGarage", sourceHeightGarage), sourceHeightGarage));
                 copy.setHeightGarage(copyHeightGarage);
             } else {
                 copy.heightGarage = null;
@@ -562,9 +582,9 @@ public class GarageRent
                 copy.condition = null;
             }
             if (this.lastRefurbishment!= null) {
-                Integer sourceLastRefurbishment;
+                Long sourceLastRefurbishment;
                 sourceLastRefurbishment = this.getLastRefurbishment();
-                Integer copyLastRefurbishment = ((Integer) strategy.copy(LocatorUtils.property(locator, "lastRefurbishment", sourceLastRefurbishment), sourceLastRefurbishment));
+                Long copyLastRefurbishment = ((Long) strategy.copy(LocatorUtils.property(locator, "lastRefurbishment", sourceLastRefurbishment), sourceLastRefurbishment));
                 copy.setLastRefurbishment(copyLastRefurbishment);
             } else {
                 copy.lastRefurbishment = null;
@@ -578,7 +598,7 @@ public class GarageRent
     }
 
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
-        if (!(object instanceof GarageRent)) {
+        if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
         if (this == object) {
@@ -598,9 +618,9 @@ public class GarageRent
             }
         }
         {
-            Double lhsUsableFloorSpace;
+            BigDecimal lhsUsableFloorSpace;
             lhsUsableFloorSpace = this.getUsableFloorSpace();
-            Double rhsUsableFloorSpace;
+            BigDecimal rhsUsableFloorSpace;
             rhsUsableFloorSpace = that.getUsableFloorSpace();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "usableFloorSpace", lhsUsableFloorSpace), LocatorUtils.property(thatLocator, "usableFloorSpace", rhsUsableFloorSpace), lhsUsableFloorSpace, rhsUsableFloorSpace)) {
                 return false;
@@ -652,27 +672,27 @@ public class GarageRent
             }
         }
         {
-            Double lhsLengthGarage;
+            BigDecimal lhsLengthGarage;
             lhsLengthGarage = this.getLengthGarage();
-            Double rhsLengthGarage;
+            BigDecimal rhsLengthGarage;
             rhsLengthGarage = that.getLengthGarage();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "lengthGarage", lhsLengthGarage), LocatorUtils.property(thatLocator, "lengthGarage", rhsLengthGarage), lhsLengthGarage, rhsLengthGarage)) {
                 return false;
             }
         }
         {
-            Double lhsWidthGarage;
+            BigDecimal lhsWidthGarage;
             lhsWidthGarage = this.getWidthGarage();
-            Double rhsWidthGarage;
+            BigDecimal rhsWidthGarage;
             rhsWidthGarage = that.getWidthGarage();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "widthGarage", lhsWidthGarage), LocatorUtils.property(thatLocator, "widthGarage", rhsWidthGarage), lhsWidthGarage, rhsWidthGarage)) {
                 return false;
             }
         }
         {
-            Double lhsHeightGarage;
+            BigDecimal lhsHeightGarage;
             lhsHeightGarage = this.getHeightGarage();
-            Double rhsHeightGarage;
+            BigDecimal rhsHeightGarage;
             rhsHeightGarage = that.getHeightGarage();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "heightGarage", lhsHeightGarage), LocatorUtils.property(thatLocator, "heightGarage", rhsHeightGarage), lhsHeightGarage, rhsHeightGarage)) {
                 return false;
@@ -688,9 +708,9 @@ public class GarageRent
             }
         }
         {
-            Integer lhsLastRefurbishment;
+            Long lhsLastRefurbishment;
             lhsLastRefurbishment = this.getLastRefurbishment();
-            Integer rhsLastRefurbishment;
+            Long rhsLastRefurbishment;
             rhsLastRefurbishment = that.getLastRefurbishment();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "lastRefurbishment", lhsLastRefurbishment), LocatorUtils.property(thatLocator, "lastRefurbishment", rhsLastRefurbishment), lhsLastRefurbishment, rhsLastRefurbishment)) {
                 return false;

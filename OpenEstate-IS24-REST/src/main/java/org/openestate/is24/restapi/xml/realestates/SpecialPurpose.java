@@ -1,10 +1,13 @@
 
 package org.openestate.is24.restapi.xml.realestates;
 
+import java.math.BigDecimal;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.jvnet.jaxb2_commons.lang.CopyStrategy;
 import org.jvnet.jaxb2_commons.lang.CopyTo;
 import org.jvnet.jaxb2_commons.lang.Equals;
@@ -16,6 +19,8 @@ import org.jvnet.jaxb2_commons.lang.ToString;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
+import org.openestate.is24.restapi.xml.Adapter1;
+import org.openestate.is24.restapi.xml.Adapter5;
 import org.openestate.is24.restapi.xml.common.BuildingEnergyRatingType;
 import org.openestate.is24.restapi.xml.common.CommercializationType;
 import org.openestate.is24.restapi.xml.common.CourtageInfo;
@@ -40,15 +45,15 @@ import org.openestate.is24.restapi.xml.common.YesNotApplicableType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="SpecialPurpose">
- *   &lt;complexContent>
- *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/realestates/1.0}RealEstate">
- *       &lt;sequence>
- *         &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}ExtendedSpecialPurposeGroup"/>
- *       &lt;/sequence>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="SpecialPurpose"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/realestates/1.0}RealEstate"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}ExtendedSpecialPurposeGroup"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/extension&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -100,48 +105,105 @@ public class SpecialPurpose
 {
 
     @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
     protected SpecialPurposeType specialPurposePropertyType;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
     @Deprecated
-    protected Double areaDivisibleFrom;
-    protected Double plotArea;
+    protected BigDecimal areaDivisibleFrom;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal plotArea;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType listed;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType lift;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType basement;
+    @XmlSchemaType(name = "string")
     protected FlooringType flooringType;
     protected String deposit;
     protected EnergyPerformanceCertificate energyCertificate;
     @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
     protected CommercializationType commercializationType;
     @XmlElement(required = true)
     protected Price price;
     protected Price calculatedPrice;
-    protected Double totalFloorSpace;
-    protected Double netFloorSpace;
-    protected Double minDivisible;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal totalFloorSpace;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal netFloorSpace;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal minDivisible;
     @XmlElement(required = true)
     protected CourtageInfo courtage;
-    protected Integer distanceToMRS;
-    protected Integer distanceToFM;
-    protected Integer distanceToPT;
-    protected Integer distanceToAirport;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlSchemaType(name = "int")
+    protected Long distanceToMRS;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlSchemaType(name = "int")
+    protected Long distanceToFM;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlSchemaType(name = "int")
+    protected Long distanceToPT;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlSchemaType(name = "int")
+    protected Long distanceToAirport;
+    @XmlSchemaType(name = "string")
     protected RealEstateCondition condition;
-    protected Integer numberOfParkingSpaces;
-    protected Double parkingSpacePrice;
-    protected Integer lastRefurbishment;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlSchemaType(name = "int")
+    protected Long numberOfParkingSpaces;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal parkingSpacePrice;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlSchemaType(name = "int")
+    protected Long lastRefurbishment;
+    @XmlSchemaType(name = "string")
     protected InteriorQuality interiorQuality;
-    protected Integer constructionYear;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlSchemaType(name = "int")
+    protected Long constructionYear;
     protected Boolean constructionYearUnknown;
     protected String freeFrom;
+    @XmlSchemaType(name = "string")
     @Deprecated
     protected HeatingType heatingType;
+    @XmlSchemaType(name = "string")
     protected HeatingTypeEnev2014 heatingTypeEnev2014;
     @Deprecated
     protected FiringTypes firingTypes;
     protected EnergySourcesEnev2014 energySourcesEnev2014;
-    protected Double thermalCharacteristic;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal thermalCharacteristic;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType energyConsumptionContainsWarmWater;
+    @XmlSchemaType(name = "string")
     protected BuildingEnergyRatingType buildingEnergyRatingType;
-    protected Double additionalArea;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal additionalArea;
     protected String numberOfFloors;
     protected Price additionalCosts;
 
@@ -174,11 +236,11 @@ public class SpecialPurpose
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
     @Deprecated
-    public Double getAreaDivisibleFrom() {
+    public BigDecimal getAreaDivisibleFrom() {
         return areaDivisibleFrom;
     }
 
@@ -187,11 +249,11 @@ public class SpecialPurpose
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
     @Deprecated
-    public void setAreaDivisibleFrom(Double value) {
+    public void setAreaDivisibleFrom(BigDecimal value) {
         this.areaDivisibleFrom = value;
     }
 
@@ -200,10 +262,10 @@ public class SpecialPurpose
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getPlotArea() {
+    public BigDecimal getPlotArea() {
         return plotArea;
     }
 
@@ -212,10 +274,10 @@ public class SpecialPurpose
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setPlotArea(Double value) {
+    public void setPlotArea(BigDecimal value) {
         this.plotArea = value;
     }
 
@@ -440,10 +502,10 @@ public class SpecialPurpose
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getTotalFloorSpace() {
+    public BigDecimal getTotalFloorSpace() {
         return totalFloorSpace;
     }
 
@@ -452,10 +514,10 @@ public class SpecialPurpose
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setTotalFloorSpace(Double value) {
+    public void setTotalFloorSpace(BigDecimal value) {
         this.totalFloorSpace = value;
     }
 
@@ -464,10 +526,10 @@ public class SpecialPurpose
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getNetFloorSpace() {
+    public BigDecimal getNetFloorSpace() {
         return netFloorSpace;
     }
 
@@ -476,10 +538,10 @@ public class SpecialPurpose
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setNetFloorSpace(Double value) {
+    public void setNetFloorSpace(BigDecimal value) {
         this.netFloorSpace = value;
     }
 
@@ -488,10 +550,10 @@ public class SpecialPurpose
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getMinDivisible() {
+    public BigDecimal getMinDivisible() {
         return minDivisible;
     }
 
@@ -500,10 +562,10 @@ public class SpecialPurpose
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setMinDivisible(Double value) {
+    public void setMinDivisible(BigDecimal value) {
         this.minDivisible = value;
     }
 
@@ -536,10 +598,10 @@ public class SpecialPurpose
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public Integer getDistanceToMRS() {
+    public Long getDistanceToMRS() {
         return distanceToMRS;
     }
 
@@ -548,10 +610,10 @@ public class SpecialPurpose
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public void setDistanceToMRS(Integer value) {
+    public void setDistanceToMRS(Long value) {
         this.distanceToMRS = value;
     }
 
@@ -560,10 +622,10 @@ public class SpecialPurpose
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public Integer getDistanceToFM() {
+    public Long getDistanceToFM() {
         return distanceToFM;
     }
 
@@ -572,10 +634,10 @@ public class SpecialPurpose
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public void setDistanceToFM(Integer value) {
+    public void setDistanceToFM(Long value) {
         this.distanceToFM = value;
     }
 
@@ -584,10 +646,10 @@ public class SpecialPurpose
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public Integer getDistanceToPT() {
+    public Long getDistanceToPT() {
         return distanceToPT;
     }
 
@@ -596,10 +658,10 @@ public class SpecialPurpose
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public void setDistanceToPT(Integer value) {
+    public void setDistanceToPT(Long value) {
         this.distanceToPT = value;
     }
 
@@ -608,10 +670,10 @@ public class SpecialPurpose
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public Integer getDistanceToAirport() {
+    public Long getDistanceToAirport() {
         return distanceToAirport;
     }
 
@@ -620,10 +682,10 @@ public class SpecialPurpose
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public void setDistanceToAirport(Integer value) {
+    public void setDistanceToAirport(Long value) {
         this.distanceToAirport = value;
     }
 
@@ -656,10 +718,10 @@ public class SpecialPurpose
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public Integer getNumberOfParkingSpaces() {
+    public Long getNumberOfParkingSpaces() {
         return numberOfParkingSpaces;
     }
 
@@ -668,10 +730,10 @@ public class SpecialPurpose
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public void setNumberOfParkingSpaces(Integer value) {
+    public void setNumberOfParkingSpaces(Long value) {
         this.numberOfParkingSpaces = value;
     }
 
@@ -680,10 +742,10 @@ public class SpecialPurpose
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getParkingSpacePrice() {
+    public BigDecimal getParkingSpacePrice() {
         return parkingSpacePrice;
     }
 
@@ -692,10 +754,10 @@ public class SpecialPurpose
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setParkingSpacePrice(Double value) {
+    public void setParkingSpacePrice(BigDecimal value) {
         this.parkingSpacePrice = value;
     }
 
@@ -704,10 +766,10 @@ public class SpecialPurpose
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public Integer getLastRefurbishment() {
+    public Long getLastRefurbishment() {
         return lastRefurbishment;
     }
 
@@ -716,10 +778,10 @@ public class SpecialPurpose
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public void setLastRefurbishment(Integer value) {
+    public void setLastRefurbishment(Long value) {
         this.lastRefurbishment = value;
     }
 
@@ -752,10 +814,10 @@ public class SpecialPurpose
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public Integer getConstructionYear() {
+    public Long getConstructionYear() {
         return constructionYear;
     }
 
@@ -764,10 +826,10 @@ public class SpecialPurpose
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public void setConstructionYear(Integer value) {
+    public void setConstructionYear(Long value) {
         this.constructionYear = value;
     }
 
@@ -924,10 +986,10 @@ public class SpecialPurpose
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getThermalCharacteristic() {
+    public BigDecimal getThermalCharacteristic() {
         return thermalCharacteristic;
     }
 
@@ -936,10 +998,10 @@ public class SpecialPurpose
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setThermalCharacteristic(Double value) {
+    public void setThermalCharacteristic(BigDecimal value) {
         this.thermalCharacteristic = value;
     }
 
@@ -996,10 +1058,10 @@ public class SpecialPurpose
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getAdditionalArea() {
+    public BigDecimal getAdditionalArea() {
         return additionalArea;
     }
 
@@ -1008,10 +1070,10 @@ public class SpecialPurpose
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setAdditionalArea(Double value) {
+    public void setAdditionalArea(BigDecimal value) {
         this.additionalArea = value;
     }
 
@@ -1085,12 +1147,12 @@ public class SpecialPurpose
             strategy.appendField(locator, this, "specialPurposePropertyType", buffer, theSpecialPurposePropertyType);
         }
         {
-            Double theAreaDivisibleFrom;
+            BigDecimal theAreaDivisibleFrom;
             theAreaDivisibleFrom = this.getAreaDivisibleFrom();
             strategy.appendField(locator, this, "areaDivisibleFrom", buffer, theAreaDivisibleFrom);
         }
         {
-            Double thePlotArea;
+            BigDecimal thePlotArea;
             thePlotArea = this.getPlotArea();
             strategy.appendField(locator, this, "plotArea", buffer, thePlotArea);
         }
@@ -1140,17 +1202,17 @@ public class SpecialPurpose
             strategy.appendField(locator, this, "calculatedPrice", buffer, theCalculatedPrice);
         }
         {
-            Double theTotalFloorSpace;
+            BigDecimal theTotalFloorSpace;
             theTotalFloorSpace = this.getTotalFloorSpace();
             strategy.appendField(locator, this, "totalFloorSpace", buffer, theTotalFloorSpace);
         }
         {
-            Double theNetFloorSpace;
+            BigDecimal theNetFloorSpace;
             theNetFloorSpace = this.getNetFloorSpace();
             strategy.appendField(locator, this, "netFloorSpace", buffer, theNetFloorSpace);
         }
         {
-            Double theMinDivisible;
+            BigDecimal theMinDivisible;
             theMinDivisible = this.getMinDivisible();
             strategy.appendField(locator, this, "minDivisible", buffer, theMinDivisible);
         }
@@ -1160,22 +1222,22 @@ public class SpecialPurpose
             strategy.appendField(locator, this, "courtage", buffer, theCourtage);
         }
         {
-            Integer theDistanceToMRS;
+            Long theDistanceToMRS;
             theDistanceToMRS = this.getDistanceToMRS();
             strategy.appendField(locator, this, "distanceToMRS", buffer, theDistanceToMRS);
         }
         {
-            Integer theDistanceToFM;
+            Long theDistanceToFM;
             theDistanceToFM = this.getDistanceToFM();
             strategy.appendField(locator, this, "distanceToFM", buffer, theDistanceToFM);
         }
         {
-            Integer theDistanceToPT;
+            Long theDistanceToPT;
             theDistanceToPT = this.getDistanceToPT();
             strategy.appendField(locator, this, "distanceToPT", buffer, theDistanceToPT);
         }
         {
-            Integer theDistanceToAirport;
+            Long theDistanceToAirport;
             theDistanceToAirport = this.getDistanceToAirport();
             strategy.appendField(locator, this, "distanceToAirport", buffer, theDistanceToAirport);
         }
@@ -1185,17 +1247,17 @@ public class SpecialPurpose
             strategy.appendField(locator, this, "condition", buffer, theCondition);
         }
         {
-            Integer theNumberOfParkingSpaces;
+            Long theNumberOfParkingSpaces;
             theNumberOfParkingSpaces = this.getNumberOfParkingSpaces();
             strategy.appendField(locator, this, "numberOfParkingSpaces", buffer, theNumberOfParkingSpaces);
         }
         {
-            Double theParkingSpacePrice;
+            BigDecimal theParkingSpacePrice;
             theParkingSpacePrice = this.getParkingSpacePrice();
             strategy.appendField(locator, this, "parkingSpacePrice", buffer, theParkingSpacePrice);
         }
         {
-            Integer theLastRefurbishment;
+            Long theLastRefurbishment;
             theLastRefurbishment = this.getLastRefurbishment();
             strategy.appendField(locator, this, "lastRefurbishment", buffer, theLastRefurbishment);
         }
@@ -1205,7 +1267,7 @@ public class SpecialPurpose
             strategy.appendField(locator, this, "interiorQuality", buffer, theInteriorQuality);
         }
         {
-            Integer theConstructionYear;
+            Long theConstructionYear;
             theConstructionYear = this.getConstructionYear();
             strategy.appendField(locator, this, "constructionYear", buffer, theConstructionYear);
         }
@@ -1240,7 +1302,7 @@ public class SpecialPurpose
             strategy.appendField(locator, this, "energySourcesEnev2014", buffer, theEnergySourcesEnev2014);
         }
         {
-            Double theThermalCharacteristic;
+            BigDecimal theThermalCharacteristic;
             theThermalCharacteristic = this.getThermalCharacteristic();
             strategy.appendField(locator, this, "thermalCharacteristic", buffer, theThermalCharacteristic);
         }
@@ -1255,7 +1317,7 @@ public class SpecialPurpose
             strategy.appendField(locator, this, "buildingEnergyRatingType", buffer, theBuildingEnergyRatingType);
         }
         {
-            Double theAdditionalArea;
+            BigDecimal theAdditionalArea;
             theAdditionalArea = this.getAdditionalArea();
             strategy.appendField(locator, this, "additionalArea", buffer, theAdditionalArea);
         }
@@ -1295,17 +1357,17 @@ public class SpecialPurpose
                 copy.specialPurposePropertyType = null;
             }
             if (this.areaDivisibleFrom!= null) {
-                Double sourceAreaDivisibleFrom;
+                BigDecimal sourceAreaDivisibleFrom;
                 sourceAreaDivisibleFrom = this.getAreaDivisibleFrom();
-                Double copyAreaDivisibleFrom = ((Double) strategy.copy(LocatorUtils.property(locator, "areaDivisibleFrom", sourceAreaDivisibleFrom), sourceAreaDivisibleFrom));
+                BigDecimal copyAreaDivisibleFrom = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "areaDivisibleFrom", sourceAreaDivisibleFrom), sourceAreaDivisibleFrom));
                 copy.setAreaDivisibleFrom(copyAreaDivisibleFrom);
             } else {
                 copy.areaDivisibleFrom = null;
             }
             if (this.plotArea!= null) {
-                Double sourcePlotArea;
+                BigDecimal sourcePlotArea;
                 sourcePlotArea = this.getPlotArea();
-                Double copyPlotArea = ((Double) strategy.copy(LocatorUtils.property(locator, "plotArea", sourcePlotArea), sourcePlotArea));
+                BigDecimal copyPlotArea = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "plotArea", sourcePlotArea), sourcePlotArea));
                 copy.setPlotArea(copyPlotArea);
             } else {
                 copy.plotArea = null;
@@ -1383,25 +1445,25 @@ public class SpecialPurpose
                 copy.calculatedPrice = null;
             }
             if (this.totalFloorSpace!= null) {
-                Double sourceTotalFloorSpace;
+                BigDecimal sourceTotalFloorSpace;
                 sourceTotalFloorSpace = this.getTotalFloorSpace();
-                Double copyTotalFloorSpace = ((Double) strategy.copy(LocatorUtils.property(locator, "totalFloorSpace", sourceTotalFloorSpace), sourceTotalFloorSpace));
+                BigDecimal copyTotalFloorSpace = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "totalFloorSpace", sourceTotalFloorSpace), sourceTotalFloorSpace));
                 copy.setTotalFloorSpace(copyTotalFloorSpace);
             } else {
                 copy.totalFloorSpace = null;
             }
             if (this.netFloorSpace!= null) {
-                Double sourceNetFloorSpace;
+                BigDecimal sourceNetFloorSpace;
                 sourceNetFloorSpace = this.getNetFloorSpace();
-                Double copyNetFloorSpace = ((Double) strategy.copy(LocatorUtils.property(locator, "netFloorSpace", sourceNetFloorSpace), sourceNetFloorSpace));
+                BigDecimal copyNetFloorSpace = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "netFloorSpace", sourceNetFloorSpace), sourceNetFloorSpace));
                 copy.setNetFloorSpace(copyNetFloorSpace);
             } else {
                 copy.netFloorSpace = null;
             }
             if (this.minDivisible!= null) {
-                Double sourceMinDivisible;
+                BigDecimal sourceMinDivisible;
                 sourceMinDivisible = this.getMinDivisible();
-                Double copyMinDivisible = ((Double) strategy.copy(LocatorUtils.property(locator, "minDivisible", sourceMinDivisible), sourceMinDivisible));
+                BigDecimal copyMinDivisible = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "minDivisible", sourceMinDivisible), sourceMinDivisible));
                 copy.setMinDivisible(copyMinDivisible);
             } else {
                 copy.minDivisible = null;
@@ -1415,33 +1477,33 @@ public class SpecialPurpose
                 copy.courtage = null;
             }
             if (this.distanceToMRS!= null) {
-                Integer sourceDistanceToMRS;
+                Long sourceDistanceToMRS;
                 sourceDistanceToMRS = this.getDistanceToMRS();
-                Integer copyDistanceToMRS = ((Integer) strategy.copy(LocatorUtils.property(locator, "distanceToMRS", sourceDistanceToMRS), sourceDistanceToMRS));
+                Long copyDistanceToMRS = ((Long) strategy.copy(LocatorUtils.property(locator, "distanceToMRS", sourceDistanceToMRS), sourceDistanceToMRS));
                 copy.setDistanceToMRS(copyDistanceToMRS);
             } else {
                 copy.distanceToMRS = null;
             }
             if (this.distanceToFM!= null) {
-                Integer sourceDistanceToFM;
+                Long sourceDistanceToFM;
                 sourceDistanceToFM = this.getDistanceToFM();
-                Integer copyDistanceToFM = ((Integer) strategy.copy(LocatorUtils.property(locator, "distanceToFM", sourceDistanceToFM), sourceDistanceToFM));
+                Long copyDistanceToFM = ((Long) strategy.copy(LocatorUtils.property(locator, "distanceToFM", sourceDistanceToFM), sourceDistanceToFM));
                 copy.setDistanceToFM(copyDistanceToFM);
             } else {
                 copy.distanceToFM = null;
             }
             if (this.distanceToPT!= null) {
-                Integer sourceDistanceToPT;
+                Long sourceDistanceToPT;
                 sourceDistanceToPT = this.getDistanceToPT();
-                Integer copyDistanceToPT = ((Integer) strategy.copy(LocatorUtils.property(locator, "distanceToPT", sourceDistanceToPT), sourceDistanceToPT));
+                Long copyDistanceToPT = ((Long) strategy.copy(LocatorUtils.property(locator, "distanceToPT", sourceDistanceToPT), sourceDistanceToPT));
                 copy.setDistanceToPT(copyDistanceToPT);
             } else {
                 copy.distanceToPT = null;
             }
             if (this.distanceToAirport!= null) {
-                Integer sourceDistanceToAirport;
+                Long sourceDistanceToAirport;
                 sourceDistanceToAirport = this.getDistanceToAirport();
-                Integer copyDistanceToAirport = ((Integer) strategy.copy(LocatorUtils.property(locator, "distanceToAirport", sourceDistanceToAirport), sourceDistanceToAirport));
+                Long copyDistanceToAirport = ((Long) strategy.copy(LocatorUtils.property(locator, "distanceToAirport", sourceDistanceToAirport), sourceDistanceToAirport));
                 copy.setDistanceToAirport(copyDistanceToAirport);
             } else {
                 copy.distanceToAirport = null;
@@ -1455,25 +1517,25 @@ public class SpecialPurpose
                 copy.condition = null;
             }
             if (this.numberOfParkingSpaces!= null) {
-                Integer sourceNumberOfParkingSpaces;
+                Long sourceNumberOfParkingSpaces;
                 sourceNumberOfParkingSpaces = this.getNumberOfParkingSpaces();
-                Integer copyNumberOfParkingSpaces = ((Integer) strategy.copy(LocatorUtils.property(locator, "numberOfParkingSpaces", sourceNumberOfParkingSpaces), sourceNumberOfParkingSpaces));
+                Long copyNumberOfParkingSpaces = ((Long) strategy.copy(LocatorUtils.property(locator, "numberOfParkingSpaces", sourceNumberOfParkingSpaces), sourceNumberOfParkingSpaces));
                 copy.setNumberOfParkingSpaces(copyNumberOfParkingSpaces);
             } else {
                 copy.numberOfParkingSpaces = null;
             }
             if (this.parkingSpacePrice!= null) {
-                Double sourceParkingSpacePrice;
+                BigDecimal sourceParkingSpacePrice;
                 sourceParkingSpacePrice = this.getParkingSpacePrice();
-                Double copyParkingSpacePrice = ((Double) strategy.copy(LocatorUtils.property(locator, "parkingSpacePrice", sourceParkingSpacePrice), sourceParkingSpacePrice));
+                BigDecimal copyParkingSpacePrice = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "parkingSpacePrice", sourceParkingSpacePrice), sourceParkingSpacePrice));
                 copy.setParkingSpacePrice(copyParkingSpacePrice);
             } else {
                 copy.parkingSpacePrice = null;
             }
             if (this.lastRefurbishment!= null) {
-                Integer sourceLastRefurbishment;
+                Long sourceLastRefurbishment;
                 sourceLastRefurbishment = this.getLastRefurbishment();
-                Integer copyLastRefurbishment = ((Integer) strategy.copy(LocatorUtils.property(locator, "lastRefurbishment", sourceLastRefurbishment), sourceLastRefurbishment));
+                Long copyLastRefurbishment = ((Long) strategy.copy(LocatorUtils.property(locator, "lastRefurbishment", sourceLastRefurbishment), sourceLastRefurbishment));
                 copy.setLastRefurbishment(copyLastRefurbishment);
             } else {
                 copy.lastRefurbishment = null;
@@ -1487,9 +1549,9 @@ public class SpecialPurpose
                 copy.interiorQuality = null;
             }
             if (this.constructionYear!= null) {
-                Integer sourceConstructionYear;
+                Long sourceConstructionYear;
                 sourceConstructionYear = this.getConstructionYear();
-                Integer copyConstructionYear = ((Integer) strategy.copy(LocatorUtils.property(locator, "constructionYear", sourceConstructionYear), sourceConstructionYear));
+                Long copyConstructionYear = ((Long) strategy.copy(LocatorUtils.property(locator, "constructionYear", sourceConstructionYear), sourceConstructionYear));
                 copy.setConstructionYear(copyConstructionYear);
             } else {
                 copy.constructionYear = null;
@@ -1543,9 +1605,9 @@ public class SpecialPurpose
                 copy.energySourcesEnev2014 = null;
             }
             if (this.thermalCharacteristic!= null) {
-                Double sourceThermalCharacteristic;
+                BigDecimal sourceThermalCharacteristic;
                 sourceThermalCharacteristic = this.getThermalCharacteristic();
-                Double copyThermalCharacteristic = ((Double) strategy.copy(LocatorUtils.property(locator, "thermalCharacteristic", sourceThermalCharacteristic), sourceThermalCharacteristic));
+                BigDecimal copyThermalCharacteristic = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "thermalCharacteristic", sourceThermalCharacteristic), sourceThermalCharacteristic));
                 copy.setThermalCharacteristic(copyThermalCharacteristic);
             } else {
                 copy.thermalCharacteristic = null;
@@ -1567,9 +1629,9 @@ public class SpecialPurpose
                 copy.buildingEnergyRatingType = null;
             }
             if (this.additionalArea!= null) {
-                Double sourceAdditionalArea;
+                BigDecimal sourceAdditionalArea;
                 sourceAdditionalArea = this.getAdditionalArea();
-                Double copyAdditionalArea = ((Double) strategy.copy(LocatorUtils.property(locator, "additionalArea", sourceAdditionalArea), sourceAdditionalArea));
+                BigDecimal copyAdditionalArea = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "additionalArea", sourceAdditionalArea), sourceAdditionalArea));
                 copy.setAdditionalArea(copyAdditionalArea);
             } else {
                 copy.additionalArea = null;
@@ -1599,7 +1661,7 @@ public class SpecialPurpose
     }
 
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
-        if (!(object instanceof SpecialPurpose)) {
+        if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
         if (this == object) {
@@ -1619,18 +1681,18 @@ public class SpecialPurpose
             }
         }
         {
-            Double lhsAreaDivisibleFrom;
+            BigDecimal lhsAreaDivisibleFrom;
             lhsAreaDivisibleFrom = this.getAreaDivisibleFrom();
-            Double rhsAreaDivisibleFrom;
+            BigDecimal rhsAreaDivisibleFrom;
             rhsAreaDivisibleFrom = that.getAreaDivisibleFrom();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "areaDivisibleFrom", lhsAreaDivisibleFrom), LocatorUtils.property(thatLocator, "areaDivisibleFrom", rhsAreaDivisibleFrom), lhsAreaDivisibleFrom, rhsAreaDivisibleFrom)) {
                 return false;
             }
         }
         {
-            Double lhsPlotArea;
+            BigDecimal lhsPlotArea;
             lhsPlotArea = this.getPlotArea();
-            Double rhsPlotArea;
+            BigDecimal rhsPlotArea;
             rhsPlotArea = that.getPlotArea();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "plotArea", lhsPlotArea), LocatorUtils.property(thatLocator, "plotArea", rhsPlotArea), lhsPlotArea, rhsPlotArea)) {
                 return false;
@@ -1718,27 +1780,27 @@ public class SpecialPurpose
             }
         }
         {
-            Double lhsTotalFloorSpace;
+            BigDecimal lhsTotalFloorSpace;
             lhsTotalFloorSpace = this.getTotalFloorSpace();
-            Double rhsTotalFloorSpace;
+            BigDecimal rhsTotalFloorSpace;
             rhsTotalFloorSpace = that.getTotalFloorSpace();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "totalFloorSpace", lhsTotalFloorSpace), LocatorUtils.property(thatLocator, "totalFloorSpace", rhsTotalFloorSpace), lhsTotalFloorSpace, rhsTotalFloorSpace)) {
                 return false;
             }
         }
         {
-            Double lhsNetFloorSpace;
+            BigDecimal lhsNetFloorSpace;
             lhsNetFloorSpace = this.getNetFloorSpace();
-            Double rhsNetFloorSpace;
+            BigDecimal rhsNetFloorSpace;
             rhsNetFloorSpace = that.getNetFloorSpace();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "netFloorSpace", lhsNetFloorSpace), LocatorUtils.property(thatLocator, "netFloorSpace", rhsNetFloorSpace), lhsNetFloorSpace, rhsNetFloorSpace)) {
                 return false;
             }
         }
         {
-            Double lhsMinDivisible;
+            BigDecimal lhsMinDivisible;
             lhsMinDivisible = this.getMinDivisible();
-            Double rhsMinDivisible;
+            BigDecimal rhsMinDivisible;
             rhsMinDivisible = that.getMinDivisible();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "minDivisible", lhsMinDivisible), LocatorUtils.property(thatLocator, "minDivisible", rhsMinDivisible), lhsMinDivisible, rhsMinDivisible)) {
                 return false;
@@ -1754,36 +1816,36 @@ public class SpecialPurpose
             }
         }
         {
-            Integer lhsDistanceToMRS;
+            Long lhsDistanceToMRS;
             lhsDistanceToMRS = this.getDistanceToMRS();
-            Integer rhsDistanceToMRS;
+            Long rhsDistanceToMRS;
             rhsDistanceToMRS = that.getDistanceToMRS();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "distanceToMRS", lhsDistanceToMRS), LocatorUtils.property(thatLocator, "distanceToMRS", rhsDistanceToMRS), lhsDistanceToMRS, rhsDistanceToMRS)) {
                 return false;
             }
         }
         {
-            Integer lhsDistanceToFM;
+            Long lhsDistanceToFM;
             lhsDistanceToFM = this.getDistanceToFM();
-            Integer rhsDistanceToFM;
+            Long rhsDistanceToFM;
             rhsDistanceToFM = that.getDistanceToFM();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "distanceToFM", lhsDistanceToFM), LocatorUtils.property(thatLocator, "distanceToFM", rhsDistanceToFM), lhsDistanceToFM, rhsDistanceToFM)) {
                 return false;
             }
         }
         {
-            Integer lhsDistanceToPT;
+            Long lhsDistanceToPT;
             lhsDistanceToPT = this.getDistanceToPT();
-            Integer rhsDistanceToPT;
+            Long rhsDistanceToPT;
             rhsDistanceToPT = that.getDistanceToPT();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "distanceToPT", lhsDistanceToPT), LocatorUtils.property(thatLocator, "distanceToPT", rhsDistanceToPT), lhsDistanceToPT, rhsDistanceToPT)) {
                 return false;
             }
         }
         {
-            Integer lhsDistanceToAirport;
+            Long lhsDistanceToAirport;
             lhsDistanceToAirport = this.getDistanceToAirport();
-            Integer rhsDistanceToAirport;
+            Long rhsDistanceToAirport;
             rhsDistanceToAirport = that.getDistanceToAirport();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "distanceToAirport", lhsDistanceToAirport), LocatorUtils.property(thatLocator, "distanceToAirport", rhsDistanceToAirport), lhsDistanceToAirport, rhsDistanceToAirport)) {
                 return false;
@@ -1799,27 +1861,27 @@ public class SpecialPurpose
             }
         }
         {
-            Integer lhsNumberOfParkingSpaces;
+            Long lhsNumberOfParkingSpaces;
             lhsNumberOfParkingSpaces = this.getNumberOfParkingSpaces();
-            Integer rhsNumberOfParkingSpaces;
+            Long rhsNumberOfParkingSpaces;
             rhsNumberOfParkingSpaces = that.getNumberOfParkingSpaces();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "numberOfParkingSpaces", lhsNumberOfParkingSpaces), LocatorUtils.property(thatLocator, "numberOfParkingSpaces", rhsNumberOfParkingSpaces), lhsNumberOfParkingSpaces, rhsNumberOfParkingSpaces)) {
                 return false;
             }
         }
         {
-            Double lhsParkingSpacePrice;
+            BigDecimal lhsParkingSpacePrice;
             lhsParkingSpacePrice = this.getParkingSpacePrice();
-            Double rhsParkingSpacePrice;
+            BigDecimal rhsParkingSpacePrice;
             rhsParkingSpacePrice = that.getParkingSpacePrice();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "parkingSpacePrice", lhsParkingSpacePrice), LocatorUtils.property(thatLocator, "parkingSpacePrice", rhsParkingSpacePrice), lhsParkingSpacePrice, rhsParkingSpacePrice)) {
                 return false;
             }
         }
         {
-            Integer lhsLastRefurbishment;
+            Long lhsLastRefurbishment;
             lhsLastRefurbishment = this.getLastRefurbishment();
-            Integer rhsLastRefurbishment;
+            Long rhsLastRefurbishment;
             rhsLastRefurbishment = that.getLastRefurbishment();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "lastRefurbishment", lhsLastRefurbishment), LocatorUtils.property(thatLocator, "lastRefurbishment", rhsLastRefurbishment), lhsLastRefurbishment, rhsLastRefurbishment)) {
                 return false;
@@ -1835,9 +1897,9 @@ public class SpecialPurpose
             }
         }
         {
-            Integer lhsConstructionYear;
+            Long lhsConstructionYear;
             lhsConstructionYear = this.getConstructionYear();
-            Integer rhsConstructionYear;
+            Long rhsConstructionYear;
             rhsConstructionYear = that.getConstructionYear();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "constructionYear", lhsConstructionYear), LocatorUtils.property(thatLocator, "constructionYear", rhsConstructionYear), lhsConstructionYear, rhsConstructionYear)) {
                 return false;
@@ -1898,9 +1960,9 @@ public class SpecialPurpose
             }
         }
         {
-            Double lhsThermalCharacteristic;
+            BigDecimal lhsThermalCharacteristic;
             lhsThermalCharacteristic = this.getThermalCharacteristic();
-            Double rhsThermalCharacteristic;
+            BigDecimal rhsThermalCharacteristic;
             rhsThermalCharacteristic = that.getThermalCharacteristic();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "thermalCharacteristic", lhsThermalCharacteristic), LocatorUtils.property(thatLocator, "thermalCharacteristic", rhsThermalCharacteristic), lhsThermalCharacteristic, rhsThermalCharacteristic)) {
                 return false;
@@ -1925,9 +1987,9 @@ public class SpecialPurpose
             }
         }
         {
-            Double lhsAdditionalArea;
+            BigDecimal lhsAdditionalArea;
             lhsAdditionalArea = this.getAdditionalArea();
-            Double rhsAdditionalArea;
+            BigDecimal rhsAdditionalArea;
             rhsAdditionalArea = that.getAdditionalArea();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "additionalArea", lhsAdditionalArea), LocatorUtils.property(thatLocator, "additionalArea", rhsAdditionalArea), lhsAdditionalArea, rhsAdditionalArea)) {
                 return false;

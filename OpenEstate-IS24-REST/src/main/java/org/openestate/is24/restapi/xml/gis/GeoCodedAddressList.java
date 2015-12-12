@@ -1,5 +1,5 @@
 
-package org.openestate.is24.restapi.xml.bookingoverview;
+package org.openestate.is24.restapi.xml.gis;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,57 +26,57 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType>
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence maxOccurs="unbounded" minOccurs="0">
- *         &lt;element name="productBooking" type="{ttp://rest.immobilienscout24.de/schema/offer/productbookingoverview/1.0}productBooking"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="geoCodedAddress" type="{http://rest.immobilienscout24.de/schema/platform/gis/1.0}GeoCodedAddress" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "productBooking"
+    "geoCodedAddress"
 })
-@XmlRootElement(name = "productBookingOverview")
-public class ProductBookingOverview
+@XmlRootElement(name = "geoCodedAddressList")
+public class GeoCodedAddressList
     implements Cloneable, CopyTo, Equals, ToString
 {
 
-    protected List<ProductBooking> productBooking;
+    protected List<GeoCodedAddress> geoCodedAddress;
 
     /**
-     * Gets the value of the productBooking property.
+     * Gets the value of the geoCodedAddress property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the productBooking property.
+     * This is why there is not a <CODE>set</CODE> method for the geoCodedAddress property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getProductBooking().add(newItem);
+     *    getGeoCodedAddress().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link ProductBooking }
+     * {@link GeoCodedAddress }
      * 
      * 
      */
-    public List<ProductBooking> getProductBooking() {
-        if (productBooking == null) {
-            productBooking = new ArrayList<ProductBooking>();
+    public List<GeoCodedAddress> getGeoCodedAddress() {
+        if (geoCodedAddress == null) {
+            geoCodedAddress = new ArrayList<GeoCodedAddress>();
         }
-        return this.productBooking;
+        return this.geoCodedAddress;
     }
 
     public String toString() {
@@ -95,9 +95,9 @@ public class ProductBookingOverview
 
     public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
         {
-            List<ProductBooking> theProductBooking;
-            theProductBooking = (((this.productBooking!= null)&&(!this.productBooking.isEmpty()))?this.getProductBooking():null);
-            strategy.appendField(locator, this, "productBooking", buffer, theProductBooking);
+            List<GeoCodedAddress> theGeoCodedAddress;
+            theGeoCodedAddress = (((this.geoCodedAddress!= null)&&(!this.geoCodedAddress.isEmpty()))?this.getGeoCodedAddress():null);
+            strategy.appendField(locator, this, "geoCodedAddress", buffer, theGeoCodedAddress);
         }
         return buffer;
     }
@@ -113,43 +113,43 @@ public class ProductBookingOverview
 
     public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
-        if (draftCopy instanceof ProductBookingOverview) {
-            final ProductBookingOverview copy = ((ProductBookingOverview) draftCopy);
-            if ((this.productBooking!= null)&&(!this.productBooking.isEmpty())) {
-                List<ProductBooking> sourceProductBooking;
-                sourceProductBooking = (((this.productBooking!= null)&&(!this.productBooking.isEmpty()))?this.getProductBooking():null);
+        if (draftCopy instanceof GeoCodedAddressList) {
+            final GeoCodedAddressList copy = ((GeoCodedAddressList) draftCopy);
+            if ((this.geoCodedAddress!= null)&&(!this.geoCodedAddress.isEmpty())) {
+                List<GeoCodedAddress> sourceGeoCodedAddress;
+                sourceGeoCodedAddress = (((this.geoCodedAddress!= null)&&(!this.geoCodedAddress.isEmpty()))?this.getGeoCodedAddress():null);
                 @SuppressWarnings("unchecked")
-                List<ProductBooking> copyProductBooking = ((List<ProductBooking> ) strategy.copy(LocatorUtils.property(locator, "productBooking", sourceProductBooking), sourceProductBooking));
-                copy.productBooking = null;
-                if (copyProductBooking!= null) {
-                    List<ProductBooking> uniqueProductBookingl = copy.getProductBooking();
-                    uniqueProductBookingl.addAll(copyProductBooking);
+                List<GeoCodedAddress> copyGeoCodedAddress = ((List<GeoCodedAddress> ) strategy.copy(LocatorUtils.property(locator, "geoCodedAddress", sourceGeoCodedAddress), sourceGeoCodedAddress));
+                copy.geoCodedAddress = null;
+                if (copyGeoCodedAddress!= null) {
+                    List<GeoCodedAddress> uniqueGeoCodedAddressl = copy.getGeoCodedAddress();
+                    uniqueGeoCodedAddressl.addAll(copyGeoCodedAddress);
                 }
             } else {
-                copy.productBooking = null;
+                copy.geoCodedAddress = null;
             }
         }
         return draftCopy;
     }
 
     public Object createNewInstance() {
-        return new ProductBookingOverview();
+        return new GeoCodedAddressList();
     }
 
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
-        if (!(object instanceof ProductBookingOverview)) {
+        if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
         if (this == object) {
             return true;
         }
-        final ProductBookingOverview that = ((ProductBookingOverview) object);
+        final GeoCodedAddressList that = ((GeoCodedAddressList) object);
         {
-            List<ProductBooking> lhsProductBooking;
-            lhsProductBooking = (((this.productBooking!= null)&&(!this.productBooking.isEmpty()))?this.getProductBooking():null);
-            List<ProductBooking> rhsProductBooking;
-            rhsProductBooking = (((that.productBooking!= null)&&(!that.productBooking.isEmpty()))?that.getProductBooking():null);
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "productBooking", lhsProductBooking), LocatorUtils.property(thatLocator, "productBooking", rhsProductBooking), lhsProductBooking, rhsProductBooking)) {
+            List<GeoCodedAddress> lhsGeoCodedAddress;
+            lhsGeoCodedAddress = (((this.geoCodedAddress!= null)&&(!this.geoCodedAddress.isEmpty()))?this.getGeoCodedAddress():null);
+            List<GeoCodedAddress> rhsGeoCodedAddress;
+            rhsGeoCodedAddress = (((that.geoCodedAddress!= null)&&(!that.geoCodedAddress.isEmpty()))?that.getGeoCodedAddress():null);
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "geoCodedAddress", lhsGeoCodedAddress), LocatorUtils.property(thatLocator, "geoCodedAddress", rhsGeoCodedAddress), lhsGeoCodedAddress, rhsGeoCodedAddress)) {
                 return false;
             }
         }

@@ -11,24 +11,24 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="FlooringType">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="NO_INFORMATION"/>
- *     &lt;enumeration value="CONCRETE"/>
- *     &lt;enumeration value="EPOXY_RESIN"/>
- *     &lt;enumeration value="TILES"/>
- *     &lt;enumeration value="PLANKS"/>
- *     &lt;enumeration value="LAMINATE"/>
- *     &lt;enumeration value="PARQUET"/>
- *     &lt;enumeration value="PVC"/>
- *     &lt;enumeration value="CARPET"/>
- *     &lt;enumeration value="ANTISTATIC_FLOOR"/>
- *     &lt;enumeration value="OFFICE_CARPET"/>
- *     &lt;enumeration value="STONE"/>
- *     &lt;enumeration value="CUSTOMIZABLE"/>
- *     &lt;enumeration value="WITHOUT"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="FlooringType"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="NO_INFORMATION"/&gt;
+ *     &lt;enumeration value="CONCRETE"/&gt;
+ *     &lt;enumeration value="EPOXY_RESIN"/&gt;
+ *     &lt;enumeration value="TILES"/&gt;
+ *     &lt;enumeration value="PLANKS"/&gt;
+ *     &lt;enumeration value="LAMINATE"/&gt;
+ *     &lt;enumeration value="PARQUET"/&gt;
+ *     &lt;enumeration value="PVC"/&gt;
+ *     &lt;enumeration value="CARPET"/&gt;
+ *     &lt;enumeration value="ANTISTATIC_FLOOR"/&gt;
+ *     &lt;enumeration value="OFFICE_CARPET"/&gt;
+ *     &lt;enumeration value="STONE"/&gt;
+ *     &lt;enumeration value="CUSTOMIZABLE"/&gt;
+ *     &lt;enumeration value="WITHOUT"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  * 
  */

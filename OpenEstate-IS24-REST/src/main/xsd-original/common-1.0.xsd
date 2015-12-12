@@ -52,7 +52,7 @@
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="realtorLogo" type="RealtorLogo">
+  <xs:element name="realtorLogo" type="RealtorLogo">
         <xs:annotation>
             <xs:documentation xml:lang="en">The logo of a realtor.</xs:documentation>
             <xs:documentation xml:lang="de-DE">Das Logo eines Anbieters</xs:documentation>
@@ -465,14 +465,42 @@
 			</xs:element>	
 		</xs:sequence>
 	</xs:complexType>
-    <xs:complexType name="RealtorLogo">
+    
+  <xs:complexType name="RealtorLogo">
         <xs:sequence>
-            <xs:element name="realtorLogoUrl" type="xs:anyURI" minOccurs="0">
-                <xs:annotation>
-                    <xs:documentation xml:lang="en">URL to realtor's logo</xs:documentation>
-                    <xs:documentation xml:lang="de-DE">URL zum Relatorlogo</xs:documentation>
-                </xs:annotation>
-            </xs:element>
+          <xs:element name="urls" minOccurs="0">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="url" minOccurs="1" maxOccurs="unbounded">
+                    <xs:annotation>
+                      <xs:documentation xml:lang="en">URL for the picture.</xs:documentation>
+                      <xs:documentation xml:lang="de-DE">URL des Bildes.</xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                      <xs:attribute name="scale" type="PictureScaleType">
+                        <xs:annotation>
+                          <xs:documentation xml:lang="en">picture scale</xs:documentation>
+                          <xs:documentation xml:lang="de-DE">Bildergröße</xs:documentation>
+                        </xs:annotation>
+                      </xs:attribute>
+                      <xs:attribute name="href" type="xs:anyURI">
+                        <xs:annotation>
+                          <xs:documentation xml:lang="en">URL to scaled picture</xs:documentation>
+                          <xs:documentation xml:lang="de-DE">URL zum skaliertem Bild
+                          </xs:documentation>
+                        </xs:annotation>
+                      </xs:attribute>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+          </xs:element>
+          <xs:element name="realtorLogoUrl" type="xs:anyURI" minOccurs="0">
+              <xs:annotation>
+                  <xs:documentation xml:lang="en">URL to realtor's logo</xs:documentation>
+                  <xs:documentation xml:lang="de-DE">URL zum Relatorlogo</xs:documentation>
+              </xs:annotation>
+          </xs:element>
         </xs:sequence>
     </xs:complexType>
 
@@ -1116,8 +1144,51 @@
                         <xs:documentation xml:lang="de-DE">Titel vom Video</xs:documentation>
                     </xs:annotation>
                 </xs:element>
+                <xs:element type="percentType" name="processingProgress" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="de-DE">Progress in percent information for media which is either processing or re-processing.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element type="videoProcessingStatusType" name="processingStatus" minOccurs="0" maxOccurs="1">
+                    <xs:annotation>
+                        <xs:documentation xml:lang="de-DE">The status of this media</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+
             </xs:sequence>
     </xs:complexType>
+
+    <xs:simpleType name="videoProcessingStatusType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="INCOMING">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">media status is incomming</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="PROCESSING">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">media status is processing</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="SUCCESSFUL">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">media status is successful</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="FAILED">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">media status is failed</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="percentType">
+        <xs:restriction base="xs:int">
+            <xs:minInclusive value="0"/>
+            <xs:maxExclusive value="100"/>
+        </xs:restriction>
+    </xs:simpleType>
 
     <xs:complexType name="videoUrlList">
         <xs:annotation>
@@ -1378,7 +1449,13 @@
 	                     <xs:maxLength value="50"/>
 	                 </xs:restriction>
 	            </xs:simpleType>            
-	        </xs:element>                           
+	        </xs:element>
+            <xs:element name="externalCheckSum" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">A customer specific checksum of this attachment</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Eine kundenspezifische Vergleichssumme dieses Anhangs</xs:documentation>
+                </xs:annotation>
+            </xs:element>
         </xs:sequence>
         <xs:attributeGroup ref="Reference"/>
     </xs:complexType>
@@ -2797,6 +2874,12 @@
             <xs:annotation>
               <xs:documentation xml:lang="en">template for white filling image</xs:documentation>
               <xs:documentation xml:lang="de-DE">Template für White filling</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="SCALE_MAX">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">heighest pictures dimension</xs:documentation>
+                <xs:documentation xml:lang="de-DE">Bild in höchster Auflösung</xs:documentation>
             </xs:annotation>
           </xs:enumeration>
         </xs:restriction>
@@ -6474,12 +6557,12 @@
             </xs:element>
             <xs:element name="lastRefurbishment" minOccurs="0">
                 <xs:annotation>
-                    <xs:documentation xml:lang="en">last refurbishment</xs:documentation>
-                    <xs:documentation xml:lang="de-DE">Letzte Modernisierung</xs:documentation>
+                    <xs:documentation xml:lang="en">Year of last refurbishment</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Jahr der letzte Modernisierung</xs:documentation>
                 </xs:annotation>
                 <xs:simpleType>
                     <xs:restriction base="xs:int">
-                        <xs:minInclusive value="0"/>
+                        <xs:minInclusive value="1000"/>
                         <xs:maxInclusive value="9999"/>
                     </xs:restriction>
                 </xs:simpleType>
@@ -11148,4 +11231,5 @@
             <xs:element name="tolerance" type="xs:nonNegativeInteger" minOccurs="1" maxOccurs="1" />
         </xs:sequence>
     </xs:complexType>
+
 </xs:schema>

@@ -6,12 +6,12 @@
   <parent>
     <groupId>org.openestate.is24</groupId>
     <artifactId>ALL</artifactId>
-    <version>0.2.3</version>
+    <version>0.3</version>
   </parent>
 
   <groupId>org.openestate.is24</groupId>
   <artifactId>OpenEstate-IS24-REST</artifactId>
-  <version>0.2.3</version>
+  <version>0.3</version>
   <packaging>jar</packaging>
 
   <name>OpenEstate-IS24-REST</name>
@@ -224,7 +224,7 @@
         <executions>
           <execution>
             <id>release</id>
-            <phase>package</phase>
+            <phase>install</phase>
             <goals>
               <goal>single</goal>
             </goals>
@@ -246,23 +246,30 @@
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>jaxb2-maven-plugin</artifactId>
         <configuration>
-          <outputDirectory>${basedir}/src/main/java</outputDirectory>
           <bindingFiles>binding.xjb</bindingFiles>
+          <outputDirectory>${basedir}/src/main/java</outputDirectory>
           <clearOutputDir>false</clearOutputDir>
           <target>2.1</target>
           <extension>true</extension>
-          <arguments>-Xannotate -XtoString -Xcopyable -Xequals -no-header</arguments>
+          <generateEpisode>false</generateEpisode>
+          <noGeneratedHeaderComments>true</noGeneratedHeaderComments>
+          <arguments>
+            <argument>-Xannotate</argument>
+            <argument>-XtoString</argument>
+            <argument>-Xcopyable</argument>
+            <argument>-Xequals</argument>
+          </arguments>
         </configuration>
         <dependencies>
           <dependency>
             <groupId>org.jvnet.jaxb2_commons</groupId>
             <artifactId>jaxb2-basics</artifactId>
-            <version>0.9.3</version>
+            <version>0.10.0</version>
           </dependency>
           <dependency>
             <groupId>org.jvnet.jaxb2_commons</groupId>
             <artifactId>jaxb2-basics-annotate</artifactId>
-            <version>1.0.1</version>
+            <version>1.0.2</version>
           </dependency>
         </dependencies>
       </plugin>

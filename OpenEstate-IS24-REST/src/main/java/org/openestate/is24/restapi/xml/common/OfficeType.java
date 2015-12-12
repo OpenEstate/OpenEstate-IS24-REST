@@ -11,23 +11,23 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="OfficeType">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="LOFT"/>
- *     &lt;enumeration value="STUDIO"/>
- *     &lt;enumeration value="OFFICE"/>
- *     &lt;enumeration value="OFFICE_FLOOR"/>
- *     &lt;enumeration value="OFFICE_BUILDING"/>
- *     &lt;enumeration value="OFFICE_CENTRE"/>
- *     &lt;enumeration value="OFFICE_STORAGE_BUILDING"/>
- *     &lt;enumeration value="SURGERY"/>
- *     &lt;enumeration value="SURGERY_FLOOR"/>
- *     &lt;enumeration value="SURGERY_BUILDING"/>
- *     &lt;enumeration value="COMMERCIAL_CENTRE"/>
- *     &lt;enumeration value="LIVING_AND_COMMERCIAL_BUILDING"/>
- *     &lt;enumeration value="OFFICE_AND_COMMERCIAL_BUILDING"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="OfficeType"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="LOFT"/&gt;
+ *     &lt;enumeration value="STUDIO"/&gt;
+ *     &lt;enumeration value="OFFICE"/&gt;
+ *     &lt;enumeration value="OFFICE_FLOOR"/&gt;
+ *     &lt;enumeration value="OFFICE_BUILDING"/&gt;
+ *     &lt;enumeration value="OFFICE_CENTRE"/&gt;
+ *     &lt;enumeration value="OFFICE_STORAGE_BUILDING"/&gt;
+ *     &lt;enumeration value="SURGERY"/&gt;
+ *     &lt;enumeration value="SURGERY_FLOOR"/&gt;
+ *     &lt;enumeration value="SURGERY_BUILDING"/&gt;
+ *     &lt;enumeration value="COMMERCIAL_CENTRE"/&gt;
+ *     &lt;enumeration value="LIVING_AND_COMMERCIAL_BUILDING"/&gt;
+ *     &lt;enumeration value="OFFICE_AND_COMMERCIAL_BUILDING"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  * 
  */

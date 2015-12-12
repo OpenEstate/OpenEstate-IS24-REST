@@ -2,6 +2,46 @@ Changelog for OpenEstate-IS24-REST
 ==================================
 
 
+0.3 (12 Dec 2015)
+-----------------
+
+### new features
+
+-   The library is available through [Maven Central Repository](http://search.maven.org/#search|ga|1|org.openestate.is24)
+    from this release on. See [documentation page about Maven](https://github.com/OpenEstate/OpenEstate-IS24-REST/wiki/Integration-with-Maven)
+    for more informations.
+-   Low level methods to access [Geo Information Service API](http://api.immobilienscout24.de/our-apis/gis.html)
+    were implemented (see [`GIS.java`](https://github.com/OpenEstate/OpenEstate-IS24-REST/blob/v0.3/OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/GIS.java)).
+
+### bugfixes
+
+-   Updates and publishings are separately executed during bulk exports.
+-   Always parse / print `xsd:decimal`, `xsd:double` or `xsd:float` values as
+    `java.lang.BigDecimal`.
+
+### updates
+
+-   The JAXB classes were regenerated against the latest XSD schemas from IS24.
+-   [`Authorization`](https://github.com/OpenEstate/OpenEstate-IS24-REST/blob/v0.3/OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/utils/Authorization.java) and
+    [`Verification`](https://github.com/OpenEstate/OpenEstate-IS24-REST/blob/v0.3/OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/utils/Verification.java)
+    classes are implementing [`java.io.Serializable`](https://docs.oracle.com/javase/7/docs/api/java/io/Serializable.html).
+-   The following schemas are not provided anymore by IS24. Their corresponding
+    Java classes / packages were removed from this library:
+    -   `alterationdate-1.0.xsd`
+    -   `bookingoverview-1.0.xsd`
+    -   `productrecommondation-1.0.xsd`
+    -   `realestatestock-1.0.xsd`
+    -   `zipandlocationtoregion-1.0.xsd`
+-   Classes and methods, that were marked as deprecated in 0.2.x versions
+    have been removed.
+-   Updated `annotations` library from FindBugs to version 3.0.1u2.
+-   Updated `commons-lang` library to version 3.4.
+-   Updated `jaxb2-basics` libraries to version 0.10.0.
+-   Updated `lorem` library to version 2.0.
+-   Updated `slf4j` library to version 1.7.13.
+-   Updated HTTP components libraries in the `hc43` module to version 4.3.6.
+
+
 0.2.3 (09 Apr 2015)
 -------------------
 

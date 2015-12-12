@@ -1,9 +1,11 @@
 
 package org.openestate.is24.restapi.xml.realestates;
 
+import java.math.BigDecimal;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.jvnet.jaxb2_commons.lang.CopyStrategy;
@@ -17,7 +19,9 @@ import org.jvnet.jaxb2_commons.lang.ToString;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
-import org.openestate.is24.restapi.xml.common.Adapter1;
+import org.openestate.is24.restapi.xml.Adapter1;
+import org.openestate.is24.restapi.xml.Adapter5;
+import org.openestate.is24.restapi.xml.common.Adapter10;
 import org.openestate.is24.restapi.xml.common.BalconyAvailableType;
 import org.openestate.is24.restapi.xml.common.BuildingEnergyRatingType;
 import org.openestate.is24.restapi.xml.common.EnergyPerformanceCertificate;
@@ -38,15 +42,15 @@ import org.openestate.is24.restapi.xml.common.YesNotApplicableType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="AssistedLiving">
- *   &lt;complexContent>
- *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/realestates/1.0}RealEstate">
- *       &lt;sequence>
- *         &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}ExtendedAssistedLivingGroup"/>
- *       &lt;/sequence>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="AssistedLiving"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/realestates/1.0}RealEstate"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}ExtendedAssistedLivingGroup"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/extension&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -112,66 +116,123 @@ public class AssistedLiving
 
     protected String shortDescription;
     @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
     protected PetsAllowedType petsAllowed;
     @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType trialLivingPossible;
     @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
     protected MarketingType marketingType;
     @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
     protected FacilityType facilityType;
     protected Price minBaseRent;
     protected Price minPurchasePrice;
-    protected Integer constructionYear;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlSchemaType(name = "int")
+    protected Long constructionYear;
     protected Boolean constructionYearUnknown;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
     @Deprecated
-    protected Double roomAvailableFrom;
+    protected BigDecimal roomAvailableFrom;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
     @Deprecated
-    protected Double roomAvailableTo;
+    protected BigDecimal roomAvailableTo;
+    @XmlSchemaType(name = "string")
     @Deprecated
     protected YesNotApplicableType cookingPossibilty;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType parkingAvailable;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType commonRoomsAvailable;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType gardenAvailable;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType fitnessAvailable;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType poolAvailable;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType publicTransportationAvailable;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType ambulantNursingServiceAvailable;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType emergencyCallInRoomAvailable;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType receptionManned;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType medicalAssistanceAvailable;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType homeHelpAvailable;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType counselingAvailable;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType loansAvailable;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter1 .class)
-    protected Double numberOfRoomsFrom;
+    @XmlJavaTypeAdapter(Adapter10 .class)
+    @XmlSchemaType(name = "decimal")
+    protected BigDecimal numberOfRoomsFrom;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter1 .class)
-    protected Double numberOfRoomsTo;
+    @XmlJavaTypeAdapter(Adapter10 .class)
+    @XmlSchemaType(name = "decimal")
+    protected BigDecimal numberOfRoomsTo;
     protected EnergyPerformanceCertificate energyCertificate;
+    @XmlSchemaType(name = "string")
     protected HeatingTypeEnev2014 heatingTypeEnev2014;
     protected EnergySourcesEnev2014 energySourcesEnev2014;
+    @XmlSchemaType(name = "string")
     protected BuildingEnergyRatingType buildingEnergyRatingType;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter9 .class)
-    protected Double thermalCharacteristic;
+    @XmlJavaTypeAdapter(Adapter18 .class)
+    protected BigDecimal thermalCharacteristic;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType energyConsumptionContainsWarmWater;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType barrierFree;
-    protected Integer numberOfLookedAfterApartments;
-    protected Integer numberOfNursingPlaces;
-    protected Double livingSpaceFrom;
-    protected Double livingSpaceTo;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlSchemaType(name = "int")
+    protected Long numberOfLookedAfterApartments;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlSchemaType(name = "int")
+    protected Long numberOfNursingPlaces;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal livingSpaceFrom;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
+    @XmlSchemaType(name = "double")
+    protected BigDecimal livingSpaceTo;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType handicappedAccessible;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType guestApartmentsAvailable;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType restaurantAvailable;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType cookingFacilitiesAvailable;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType ownFurniturePossible;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType cleaningServiceAvailable;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType shoppingFacilitiesAvailable;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType security24Hours;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType culturalProgramAvailable;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType leisureActivitiesAvailable;
+    @XmlSchemaType(name = "string")
     protected YesNotApplicableType religiousOfferingsAvailable;
+    @XmlSchemaType(name = "string")
     protected BalconyAvailableType balconyAvailable;
     @XmlElement(defaultValue = "false")
     protected Boolean branchEntry;
@@ -349,10 +410,10 @@ public class AssistedLiving
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public Integer getConstructionYear() {
+    public Long getConstructionYear() {
         return constructionYear;
     }
 
@@ -361,10 +422,10 @@ public class AssistedLiving
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public void setConstructionYear(Integer value) {
+    public void setConstructionYear(Long value) {
         this.constructionYear = value;
     }
 
@@ -397,11 +458,11 @@ public class AssistedLiving
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
     @Deprecated
-    public Double getRoomAvailableFrom() {
+    public BigDecimal getRoomAvailableFrom() {
         return roomAvailableFrom;
     }
 
@@ -410,11 +471,11 @@ public class AssistedLiving
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
     @Deprecated
-    public void setRoomAvailableFrom(Double value) {
+    public void setRoomAvailableFrom(BigDecimal value) {
         this.roomAvailableFrom = value;
     }
 
@@ -423,11 +484,11 @@ public class AssistedLiving
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
     @Deprecated
-    public Double getRoomAvailableTo() {
+    public BigDecimal getRoomAvailableTo() {
         return roomAvailableTo;
     }
 
@@ -436,11 +497,11 @@ public class AssistedLiving
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
     @Deprecated
-    public void setRoomAvailableTo(Double value) {
+    public void setRoomAvailableTo(BigDecimal value) {
         this.roomAvailableTo = value;
     }
 
@@ -790,7 +851,7 @@ public class AssistedLiving
      *     {@link String }
      *     
      */
-    public Double getNumberOfRoomsFrom() {
+    public BigDecimal getNumberOfRoomsFrom() {
         return numberOfRoomsFrom;
     }
 
@@ -802,7 +863,7 @@ public class AssistedLiving
      *     {@link String }
      *     
      */
-    public void setNumberOfRoomsFrom(Double value) {
+    public void setNumberOfRoomsFrom(BigDecimal value) {
         this.numberOfRoomsFrom = value;
     }
 
@@ -814,7 +875,7 @@ public class AssistedLiving
      *     {@link String }
      *     
      */
-    public Double getNumberOfRoomsTo() {
+    public BigDecimal getNumberOfRoomsTo() {
         return numberOfRoomsTo;
     }
 
@@ -826,7 +887,7 @@ public class AssistedLiving
      *     {@link String }
      *     
      */
-    public void setNumberOfRoomsTo(Double value) {
+    public void setNumberOfRoomsTo(BigDecimal value) {
         this.numberOfRoomsTo = value;
     }
 
@@ -934,7 +995,7 @@ public class AssistedLiving
      *     {@link String }
      *     
      */
-    public Double getThermalCharacteristic() {
+    public BigDecimal getThermalCharacteristic() {
         return thermalCharacteristic;
     }
 
@@ -946,7 +1007,7 @@ public class AssistedLiving
      *     {@link String }
      *     
      */
-    public void setThermalCharacteristic(Double value) {
+    public void setThermalCharacteristic(BigDecimal value) {
         this.thermalCharacteristic = value;
     }
 
@@ -1003,10 +1064,10 @@ public class AssistedLiving
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public Integer getNumberOfLookedAfterApartments() {
+    public Long getNumberOfLookedAfterApartments() {
         return numberOfLookedAfterApartments;
     }
 
@@ -1015,10 +1076,10 @@ public class AssistedLiving
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public void setNumberOfLookedAfterApartments(Integer value) {
+    public void setNumberOfLookedAfterApartments(Long value) {
         this.numberOfLookedAfterApartments = value;
     }
 
@@ -1027,10 +1088,10 @@ public class AssistedLiving
      * 
      * @return
      *     possible object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public Integer getNumberOfNursingPlaces() {
+    public Long getNumberOfNursingPlaces() {
         return numberOfNursingPlaces;
     }
 
@@ -1039,10 +1100,10 @@ public class AssistedLiving
      * 
      * @param value
      *     allowed object is
-     *     {@link Integer }
+     *     {@link String }
      *     
      */
-    public void setNumberOfNursingPlaces(Integer value) {
+    public void setNumberOfNursingPlaces(Long value) {
         this.numberOfNursingPlaces = value;
     }
 
@@ -1051,10 +1112,10 @@ public class AssistedLiving
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getLivingSpaceFrom() {
+    public BigDecimal getLivingSpaceFrom() {
         return livingSpaceFrom;
     }
 
@@ -1063,10 +1124,10 @@ public class AssistedLiving
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setLivingSpaceFrom(Double value) {
+    public void setLivingSpaceFrom(BigDecimal value) {
         this.livingSpaceFrom = value;
     }
 
@@ -1075,10 +1136,10 @@ public class AssistedLiving
      * 
      * @return
      *     possible object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public Double getLivingSpaceTo() {
+    public BigDecimal getLivingSpaceTo() {
         return livingSpaceTo;
     }
 
@@ -1087,10 +1148,10 @@ public class AssistedLiving
      * 
      * @param value
      *     allowed object is
-     *     {@link Double }
+     *     {@link String }
      *     
      */
-    public void setLivingSpaceTo(Double value) {
+    public void setLivingSpaceTo(BigDecimal value) {
         this.livingSpaceTo = value;
     }
 
@@ -1458,7 +1519,7 @@ public class AssistedLiving
             strategy.appendField(locator, this, "minPurchasePrice", buffer, theMinPurchasePrice);
         }
         {
-            Integer theConstructionYear;
+            Long theConstructionYear;
             theConstructionYear = this.getConstructionYear();
             strategy.appendField(locator, this, "constructionYear", buffer, theConstructionYear);
         }
@@ -1468,12 +1529,12 @@ public class AssistedLiving
             strategy.appendField(locator, this, "constructionYearUnknown", buffer, theConstructionYearUnknown);
         }
         {
-            Double theRoomAvailableFrom;
+            BigDecimal theRoomAvailableFrom;
             theRoomAvailableFrom = this.getRoomAvailableFrom();
             strategy.appendField(locator, this, "roomAvailableFrom", buffer, theRoomAvailableFrom);
         }
         {
-            Double theRoomAvailableTo;
+            BigDecimal theRoomAvailableTo;
             theRoomAvailableTo = this.getRoomAvailableTo();
             strategy.appendField(locator, this, "roomAvailableTo", buffer, theRoomAvailableTo);
         }
@@ -1548,12 +1609,12 @@ public class AssistedLiving
             strategy.appendField(locator, this, "loansAvailable", buffer, theLoansAvailable);
         }
         {
-            Double theNumberOfRoomsFrom;
+            BigDecimal theNumberOfRoomsFrom;
             theNumberOfRoomsFrom = this.getNumberOfRoomsFrom();
             strategy.appendField(locator, this, "numberOfRoomsFrom", buffer, theNumberOfRoomsFrom);
         }
         {
-            Double theNumberOfRoomsTo;
+            BigDecimal theNumberOfRoomsTo;
             theNumberOfRoomsTo = this.getNumberOfRoomsTo();
             strategy.appendField(locator, this, "numberOfRoomsTo", buffer, theNumberOfRoomsTo);
         }
@@ -1578,7 +1639,7 @@ public class AssistedLiving
             strategy.appendField(locator, this, "buildingEnergyRatingType", buffer, theBuildingEnergyRatingType);
         }
         {
-            Double theThermalCharacteristic;
+            BigDecimal theThermalCharacteristic;
             theThermalCharacteristic = this.getThermalCharacteristic();
             strategy.appendField(locator, this, "thermalCharacteristic", buffer, theThermalCharacteristic);
         }
@@ -1593,22 +1654,22 @@ public class AssistedLiving
             strategy.appendField(locator, this, "barrierFree", buffer, theBarrierFree);
         }
         {
-            Integer theNumberOfLookedAfterApartments;
+            Long theNumberOfLookedAfterApartments;
             theNumberOfLookedAfterApartments = this.getNumberOfLookedAfterApartments();
             strategy.appendField(locator, this, "numberOfLookedAfterApartments", buffer, theNumberOfLookedAfterApartments);
         }
         {
-            Integer theNumberOfNursingPlaces;
+            Long theNumberOfNursingPlaces;
             theNumberOfNursingPlaces = this.getNumberOfNursingPlaces();
             strategy.appendField(locator, this, "numberOfNursingPlaces", buffer, theNumberOfNursingPlaces);
         }
         {
-            Double theLivingSpaceFrom;
+            BigDecimal theLivingSpaceFrom;
             theLivingSpaceFrom = this.getLivingSpaceFrom();
             strategy.appendField(locator, this, "livingSpaceFrom", buffer, theLivingSpaceFrom);
         }
         {
-            Double theLivingSpaceTo;
+            BigDecimal theLivingSpaceTo;
             theLivingSpaceTo = this.getLivingSpaceTo();
             strategy.appendField(locator, this, "livingSpaceTo", buffer, theLivingSpaceTo);
         }
@@ -1751,9 +1812,9 @@ public class AssistedLiving
                 copy.minPurchasePrice = null;
             }
             if (this.constructionYear!= null) {
-                Integer sourceConstructionYear;
+                Long sourceConstructionYear;
                 sourceConstructionYear = this.getConstructionYear();
-                Integer copyConstructionYear = ((Integer) strategy.copy(LocatorUtils.property(locator, "constructionYear", sourceConstructionYear), sourceConstructionYear));
+                Long copyConstructionYear = ((Long) strategy.copy(LocatorUtils.property(locator, "constructionYear", sourceConstructionYear), sourceConstructionYear));
                 copy.setConstructionYear(copyConstructionYear);
             } else {
                 copy.constructionYear = null;
@@ -1767,17 +1828,17 @@ public class AssistedLiving
                 copy.constructionYearUnknown = null;
             }
             if (this.roomAvailableFrom!= null) {
-                Double sourceRoomAvailableFrom;
+                BigDecimal sourceRoomAvailableFrom;
                 sourceRoomAvailableFrom = this.getRoomAvailableFrom();
-                Double copyRoomAvailableFrom = ((Double) strategy.copy(LocatorUtils.property(locator, "roomAvailableFrom", sourceRoomAvailableFrom), sourceRoomAvailableFrom));
+                BigDecimal copyRoomAvailableFrom = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "roomAvailableFrom", sourceRoomAvailableFrom), sourceRoomAvailableFrom));
                 copy.setRoomAvailableFrom(copyRoomAvailableFrom);
             } else {
                 copy.roomAvailableFrom = null;
             }
             if (this.roomAvailableTo!= null) {
-                Double sourceRoomAvailableTo;
+                BigDecimal sourceRoomAvailableTo;
                 sourceRoomAvailableTo = this.getRoomAvailableTo();
-                Double copyRoomAvailableTo = ((Double) strategy.copy(LocatorUtils.property(locator, "roomAvailableTo", sourceRoomAvailableTo), sourceRoomAvailableTo));
+                BigDecimal copyRoomAvailableTo = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "roomAvailableTo", sourceRoomAvailableTo), sourceRoomAvailableTo));
                 copy.setRoomAvailableTo(copyRoomAvailableTo);
             } else {
                 copy.roomAvailableTo = null;
@@ -1895,17 +1956,17 @@ public class AssistedLiving
                 copy.loansAvailable = null;
             }
             if (this.numberOfRoomsFrom!= null) {
-                Double sourceNumberOfRoomsFrom;
+                BigDecimal sourceNumberOfRoomsFrom;
                 sourceNumberOfRoomsFrom = this.getNumberOfRoomsFrom();
-                Double copyNumberOfRoomsFrom = ((Double) strategy.copy(LocatorUtils.property(locator, "numberOfRoomsFrom", sourceNumberOfRoomsFrom), sourceNumberOfRoomsFrom));
+                BigDecimal copyNumberOfRoomsFrom = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "numberOfRoomsFrom", sourceNumberOfRoomsFrom), sourceNumberOfRoomsFrom));
                 copy.setNumberOfRoomsFrom(copyNumberOfRoomsFrom);
             } else {
                 copy.numberOfRoomsFrom = null;
             }
             if (this.numberOfRoomsTo!= null) {
-                Double sourceNumberOfRoomsTo;
+                BigDecimal sourceNumberOfRoomsTo;
                 sourceNumberOfRoomsTo = this.getNumberOfRoomsTo();
-                Double copyNumberOfRoomsTo = ((Double) strategy.copy(LocatorUtils.property(locator, "numberOfRoomsTo", sourceNumberOfRoomsTo), sourceNumberOfRoomsTo));
+                BigDecimal copyNumberOfRoomsTo = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "numberOfRoomsTo", sourceNumberOfRoomsTo), sourceNumberOfRoomsTo));
                 copy.setNumberOfRoomsTo(copyNumberOfRoomsTo);
             } else {
                 copy.numberOfRoomsTo = null;
@@ -1943,9 +2004,9 @@ public class AssistedLiving
                 copy.buildingEnergyRatingType = null;
             }
             if (this.thermalCharacteristic!= null) {
-                Double sourceThermalCharacteristic;
+                BigDecimal sourceThermalCharacteristic;
                 sourceThermalCharacteristic = this.getThermalCharacteristic();
-                Double copyThermalCharacteristic = ((Double) strategy.copy(LocatorUtils.property(locator, "thermalCharacteristic", sourceThermalCharacteristic), sourceThermalCharacteristic));
+                BigDecimal copyThermalCharacteristic = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "thermalCharacteristic", sourceThermalCharacteristic), sourceThermalCharacteristic));
                 copy.setThermalCharacteristic(copyThermalCharacteristic);
             } else {
                 copy.thermalCharacteristic = null;
@@ -1967,33 +2028,33 @@ public class AssistedLiving
                 copy.barrierFree = null;
             }
             if (this.numberOfLookedAfterApartments!= null) {
-                Integer sourceNumberOfLookedAfterApartments;
+                Long sourceNumberOfLookedAfterApartments;
                 sourceNumberOfLookedAfterApartments = this.getNumberOfLookedAfterApartments();
-                Integer copyNumberOfLookedAfterApartments = ((Integer) strategy.copy(LocatorUtils.property(locator, "numberOfLookedAfterApartments", sourceNumberOfLookedAfterApartments), sourceNumberOfLookedAfterApartments));
+                Long copyNumberOfLookedAfterApartments = ((Long) strategy.copy(LocatorUtils.property(locator, "numberOfLookedAfterApartments", sourceNumberOfLookedAfterApartments), sourceNumberOfLookedAfterApartments));
                 copy.setNumberOfLookedAfterApartments(copyNumberOfLookedAfterApartments);
             } else {
                 copy.numberOfLookedAfterApartments = null;
             }
             if (this.numberOfNursingPlaces!= null) {
-                Integer sourceNumberOfNursingPlaces;
+                Long sourceNumberOfNursingPlaces;
                 sourceNumberOfNursingPlaces = this.getNumberOfNursingPlaces();
-                Integer copyNumberOfNursingPlaces = ((Integer) strategy.copy(LocatorUtils.property(locator, "numberOfNursingPlaces", sourceNumberOfNursingPlaces), sourceNumberOfNursingPlaces));
+                Long copyNumberOfNursingPlaces = ((Long) strategy.copy(LocatorUtils.property(locator, "numberOfNursingPlaces", sourceNumberOfNursingPlaces), sourceNumberOfNursingPlaces));
                 copy.setNumberOfNursingPlaces(copyNumberOfNursingPlaces);
             } else {
                 copy.numberOfNursingPlaces = null;
             }
             if (this.livingSpaceFrom!= null) {
-                Double sourceLivingSpaceFrom;
+                BigDecimal sourceLivingSpaceFrom;
                 sourceLivingSpaceFrom = this.getLivingSpaceFrom();
-                Double copyLivingSpaceFrom = ((Double) strategy.copy(LocatorUtils.property(locator, "livingSpaceFrom", sourceLivingSpaceFrom), sourceLivingSpaceFrom));
+                BigDecimal copyLivingSpaceFrom = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "livingSpaceFrom", sourceLivingSpaceFrom), sourceLivingSpaceFrom));
                 copy.setLivingSpaceFrom(copyLivingSpaceFrom);
             } else {
                 copy.livingSpaceFrom = null;
             }
             if (this.livingSpaceTo!= null) {
-                Double sourceLivingSpaceTo;
+                BigDecimal sourceLivingSpaceTo;
                 sourceLivingSpaceTo = this.getLivingSpaceTo();
-                Double copyLivingSpaceTo = ((Double) strategy.copy(LocatorUtils.property(locator, "livingSpaceTo", sourceLivingSpaceTo), sourceLivingSpaceTo));
+                BigDecimal copyLivingSpaceTo = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "livingSpaceTo", sourceLivingSpaceTo), sourceLivingSpaceTo));
                 copy.setLivingSpaceTo(copyLivingSpaceTo);
             } else {
                 copy.livingSpaceTo = null;
@@ -2111,7 +2172,7 @@ public class AssistedLiving
     }
 
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
-        if (!(object instanceof AssistedLiving)) {
+        if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
         if (this == object) {
@@ -2185,9 +2246,9 @@ public class AssistedLiving
             }
         }
         {
-            Integer lhsConstructionYear;
+            Long lhsConstructionYear;
             lhsConstructionYear = this.getConstructionYear();
-            Integer rhsConstructionYear;
+            Long rhsConstructionYear;
             rhsConstructionYear = that.getConstructionYear();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "constructionYear", lhsConstructionYear), LocatorUtils.property(thatLocator, "constructionYear", rhsConstructionYear), lhsConstructionYear, rhsConstructionYear)) {
                 return false;
@@ -2203,18 +2264,18 @@ public class AssistedLiving
             }
         }
         {
-            Double lhsRoomAvailableFrom;
+            BigDecimal lhsRoomAvailableFrom;
             lhsRoomAvailableFrom = this.getRoomAvailableFrom();
-            Double rhsRoomAvailableFrom;
+            BigDecimal rhsRoomAvailableFrom;
             rhsRoomAvailableFrom = that.getRoomAvailableFrom();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "roomAvailableFrom", lhsRoomAvailableFrom), LocatorUtils.property(thatLocator, "roomAvailableFrom", rhsRoomAvailableFrom), lhsRoomAvailableFrom, rhsRoomAvailableFrom)) {
                 return false;
             }
         }
         {
-            Double lhsRoomAvailableTo;
+            BigDecimal lhsRoomAvailableTo;
             lhsRoomAvailableTo = this.getRoomAvailableTo();
-            Double rhsRoomAvailableTo;
+            BigDecimal rhsRoomAvailableTo;
             rhsRoomAvailableTo = that.getRoomAvailableTo();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "roomAvailableTo", lhsRoomAvailableTo), LocatorUtils.property(thatLocator, "roomAvailableTo", rhsRoomAvailableTo), lhsRoomAvailableTo, rhsRoomAvailableTo)) {
                 return false;
@@ -2347,18 +2408,18 @@ public class AssistedLiving
             }
         }
         {
-            Double lhsNumberOfRoomsFrom;
+            BigDecimal lhsNumberOfRoomsFrom;
             lhsNumberOfRoomsFrom = this.getNumberOfRoomsFrom();
-            Double rhsNumberOfRoomsFrom;
+            BigDecimal rhsNumberOfRoomsFrom;
             rhsNumberOfRoomsFrom = that.getNumberOfRoomsFrom();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "numberOfRoomsFrom", lhsNumberOfRoomsFrom), LocatorUtils.property(thatLocator, "numberOfRoomsFrom", rhsNumberOfRoomsFrom), lhsNumberOfRoomsFrom, rhsNumberOfRoomsFrom)) {
                 return false;
             }
         }
         {
-            Double lhsNumberOfRoomsTo;
+            BigDecimal lhsNumberOfRoomsTo;
             lhsNumberOfRoomsTo = this.getNumberOfRoomsTo();
-            Double rhsNumberOfRoomsTo;
+            BigDecimal rhsNumberOfRoomsTo;
             rhsNumberOfRoomsTo = that.getNumberOfRoomsTo();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "numberOfRoomsTo", lhsNumberOfRoomsTo), LocatorUtils.property(thatLocator, "numberOfRoomsTo", rhsNumberOfRoomsTo), lhsNumberOfRoomsTo, rhsNumberOfRoomsTo)) {
                 return false;
@@ -2401,9 +2462,9 @@ public class AssistedLiving
             }
         }
         {
-            Double lhsThermalCharacteristic;
+            BigDecimal lhsThermalCharacteristic;
             lhsThermalCharacteristic = this.getThermalCharacteristic();
-            Double rhsThermalCharacteristic;
+            BigDecimal rhsThermalCharacteristic;
             rhsThermalCharacteristic = that.getThermalCharacteristic();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "thermalCharacteristic", lhsThermalCharacteristic), LocatorUtils.property(thatLocator, "thermalCharacteristic", rhsThermalCharacteristic), lhsThermalCharacteristic, rhsThermalCharacteristic)) {
                 return false;
@@ -2428,36 +2489,36 @@ public class AssistedLiving
             }
         }
         {
-            Integer lhsNumberOfLookedAfterApartments;
+            Long lhsNumberOfLookedAfterApartments;
             lhsNumberOfLookedAfterApartments = this.getNumberOfLookedAfterApartments();
-            Integer rhsNumberOfLookedAfterApartments;
+            Long rhsNumberOfLookedAfterApartments;
             rhsNumberOfLookedAfterApartments = that.getNumberOfLookedAfterApartments();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "numberOfLookedAfterApartments", lhsNumberOfLookedAfterApartments), LocatorUtils.property(thatLocator, "numberOfLookedAfterApartments", rhsNumberOfLookedAfterApartments), lhsNumberOfLookedAfterApartments, rhsNumberOfLookedAfterApartments)) {
                 return false;
             }
         }
         {
-            Integer lhsNumberOfNursingPlaces;
+            Long lhsNumberOfNursingPlaces;
             lhsNumberOfNursingPlaces = this.getNumberOfNursingPlaces();
-            Integer rhsNumberOfNursingPlaces;
+            Long rhsNumberOfNursingPlaces;
             rhsNumberOfNursingPlaces = that.getNumberOfNursingPlaces();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "numberOfNursingPlaces", lhsNumberOfNursingPlaces), LocatorUtils.property(thatLocator, "numberOfNursingPlaces", rhsNumberOfNursingPlaces), lhsNumberOfNursingPlaces, rhsNumberOfNursingPlaces)) {
                 return false;
             }
         }
         {
-            Double lhsLivingSpaceFrom;
+            BigDecimal lhsLivingSpaceFrom;
             lhsLivingSpaceFrom = this.getLivingSpaceFrom();
-            Double rhsLivingSpaceFrom;
+            BigDecimal rhsLivingSpaceFrom;
             rhsLivingSpaceFrom = that.getLivingSpaceFrom();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "livingSpaceFrom", lhsLivingSpaceFrom), LocatorUtils.property(thatLocator, "livingSpaceFrom", rhsLivingSpaceFrom), lhsLivingSpaceFrom, rhsLivingSpaceFrom)) {
                 return false;
             }
         }
         {
-            Double lhsLivingSpaceTo;
+            BigDecimal lhsLivingSpaceTo;
             lhsLivingSpaceTo = this.getLivingSpaceTo();
-            Double rhsLivingSpaceTo;
+            BigDecimal rhsLivingSpaceTo;
             rhsLivingSpaceTo = that.getLivingSpaceTo();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "livingSpaceTo", lhsLivingSpaceTo), LocatorUtils.property(thatLocator, "livingSpaceTo", rhsLivingSpaceTo), lhsLivingSpaceTo, rhsLivingSpaceTo)) {
                 return false;

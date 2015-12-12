@@ -1,9 +1,11 @@
 
 package org.openestate.is24.restapi.xml.common;
 
+import java.math.BigDecimal;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.jvnet.jaxb2_commons.lang.CopyStrategy;
@@ -27,16 +29,16 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="PriceRangeMandatory">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;all>
- *         &lt;element name="minimal" type="{http://rest.immobilienscout24.de/schema/common/1.0}Number13.2Type"/>
- *         &lt;element name="maximal" type="{http://rest.immobilienscout24.de/schema/common/1.0}Number13.2Type"/>
- *       &lt;/all>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="PriceRangeMandatory"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;all&gt;
+ *         &lt;element name="minimal" type="{http://rest.immobilienscout24.de/schema/common/1.0}Number13.2Type"/&gt;
+ *         &lt;element name="maximal" type="{http://rest.immobilienscout24.de/schema/common/1.0}Number13.2Type"/&gt;
+ *       &lt;/all&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -51,10 +53,12 @@ public class PriceRangeMandatory
 
     @XmlElement(required = true, type = String.class)
     @XmlJavaTypeAdapter(Adapter13 .class)
-    protected Double minimal;
+    @XmlSchemaType(name = "decimal")
+    protected BigDecimal minimal;
     @XmlElement(required = true, type = String.class)
     @XmlJavaTypeAdapter(Adapter13 .class)
-    protected Double maximal;
+    @XmlSchemaType(name = "decimal")
+    protected BigDecimal maximal;
 
     /**
      * Gets the value of the minimal property.
@@ -64,7 +68,7 @@ public class PriceRangeMandatory
      *     {@link String }
      *     
      */
-    public Double getMinimal() {
+    public BigDecimal getMinimal() {
         return minimal;
     }
 
@@ -76,7 +80,7 @@ public class PriceRangeMandatory
      *     {@link String }
      *     
      */
-    public void setMinimal(Double value) {
+    public void setMinimal(BigDecimal value) {
         this.minimal = value;
     }
 
@@ -88,7 +92,7 @@ public class PriceRangeMandatory
      *     {@link String }
      *     
      */
-    public Double getMaximal() {
+    public BigDecimal getMaximal() {
         return maximal;
     }
 
@@ -100,7 +104,7 @@ public class PriceRangeMandatory
      *     {@link String }
      *     
      */
-    public void setMaximal(Double value) {
+    public void setMaximal(BigDecimal value) {
         this.maximal = value;
     }
 
@@ -120,12 +124,12 @@ public class PriceRangeMandatory
 
     public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
         {
-            Double theMinimal;
+            BigDecimal theMinimal;
             theMinimal = this.getMinimal();
             strategy.appendField(locator, this, "minimal", buffer, theMinimal);
         }
         {
-            Double theMaximal;
+            BigDecimal theMaximal;
             theMaximal = this.getMaximal();
             strategy.appendField(locator, this, "maximal", buffer, theMaximal);
         }
@@ -146,17 +150,17 @@ public class PriceRangeMandatory
         if (draftCopy instanceof PriceRangeMandatory) {
             final PriceRangeMandatory copy = ((PriceRangeMandatory) draftCopy);
             if (this.minimal!= null) {
-                Double sourceMinimal;
+                BigDecimal sourceMinimal;
                 sourceMinimal = this.getMinimal();
-                Double copyMinimal = ((Double) strategy.copy(LocatorUtils.property(locator, "minimal", sourceMinimal), sourceMinimal));
+                BigDecimal copyMinimal = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "minimal", sourceMinimal), sourceMinimal));
                 copy.setMinimal(copyMinimal);
             } else {
                 copy.minimal = null;
             }
             if (this.maximal!= null) {
-                Double sourceMaximal;
+                BigDecimal sourceMaximal;
                 sourceMaximal = this.getMaximal();
-                Double copyMaximal = ((Double) strategy.copy(LocatorUtils.property(locator, "maximal", sourceMaximal), sourceMaximal));
+                BigDecimal copyMaximal = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "maximal", sourceMaximal), sourceMaximal));
                 copy.setMaximal(copyMaximal);
             } else {
                 copy.maximal = null;
@@ -170,7 +174,7 @@ public class PriceRangeMandatory
     }
 
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
-        if (!(object instanceof PriceRangeMandatory)) {
+        if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
         if (this == object) {
@@ -178,18 +182,18 @@ public class PriceRangeMandatory
         }
         final PriceRangeMandatory that = ((PriceRangeMandatory) object);
         {
-            Double lhsMinimal;
+            BigDecimal lhsMinimal;
             lhsMinimal = this.getMinimal();
-            Double rhsMinimal;
+            BigDecimal rhsMinimal;
             rhsMinimal = that.getMinimal();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "minimal", lhsMinimal), LocatorUtils.property(thatLocator, "minimal", rhsMinimal), lhsMinimal, rhsMinimal)) {
                 return false;
             }
         }
         {
-            Double lhsMaximal;
+            BigDecimal lhsMaximal;
             lhsMaximal = this.getMaximal();
-            Double rhsMaximal;
+            BigDecimal rhsMaximal;
             rhsMaximal = that.getMaximal();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "maximal", lhsMaximal), LocatorUtils.property(thatLocator, "maximal", rhsMaximal), lhsMaximal, rhsMaximal)) {
                 return false;

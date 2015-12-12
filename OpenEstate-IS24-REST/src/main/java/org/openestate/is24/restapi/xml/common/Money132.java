@@ -1,9 +1,11 @@
 
 package org.openestate.is24.restapi.xml.common;
 
+import java.math.BigDecimal;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.jvnet.jaxb2_commons.lang.CopyStrategy;
@@ -25,16 +27,16 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="Money13.2">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="amount" type="{http://rest.immobilienscout24.de/schema/common/1.0}Number13.2Type"/>
- *         &lt;element name="currency" type="{http://rest.immobilienscout24.de/schema/common/1.0}Currency"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="Money13.2"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="amount" type="{http://rest.immobilienscout24.de/schema/common/1.0}Number13.2Type"/&gt;
+ *         &lt;element name="currency" type="{http://rest.immobilienscout24.de/schema/common/1.0}Currency"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -50,8 +52,10 @@ public class Money132
 
     @XmlElement(required = true, type = String.class)
     @XmlJavaTypeAdapter(Adapter13 .class)
-    protected Double amount;
+    @XmlSchemaType(name = "decimal")
+    protected BigDecimal amount;
     @XmlElement(required = true)
+    @XmlSchemaType(name = "string")
     protected Currency currency;
 
     /**
@@ -62,7 +66,7 @@ public class Money132
      *     {@link String }
      *     
      */
-    public Double getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
@@ -74,7 +78,7 @@ public class Money132
      *     {@link String }
      *     
      */
-    public void setAmount(Double value) {
+    public void setAmount(BigDecimal value) {
         this.amount = value;
     }
 
@@ -118,7 +122,7 @@ public class Money132
 
     public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
         {
-            Double theAmount;
+            BigDecimal theAmount;
             theAmount = this.getAmount();
             strategy.appendField(locator, this, "amount", buffer, theAmount);
         }
@@ -144,9 +148,9 @@ public class Money132
         if (draftCopy instanceof Money132) {
             final Money132 copy = ((Money132) draftCopy);
             if (this.amount!= null) {
-                Double sourceAmount;
+                BigDecimal sourceAmount;
                 sourceAmount = this.getAmount();
-                Double copyAmount = ((Double) strategy.copy(LocatorUtils.property(locator, "amount", sourceAmount), sourceAmount));
+                BigDecimal copyAmount = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "amount", sourceAmount), sourceAmount));
                 copy.setAmount(copyAmount);
             } else {
                 copy.amount = null;
@@ -168,7 +172,7 @@ public class Money132
     }
 
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
-        if (!(object instanceof Money132)) {
+        if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
         if (this == object) {
@@ -176,9 +180,9 @@ public class Money132
         }
         final Money132 that = ((Money132) object);
         {
-            Double lhsAmount;
+            BigDecimal lhsAmount;
             lhsAmount = this.getAmount();
-            Double rhsAmount;
+            BigDecimal rhsAmount;
             rhsAmount = that.getAmount();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "amount", lhsAmount), LocatorUtils.property(thatLocator, "amount", rhsAmount), lhsAmount, rhsAmount)) {
                 return false;

@@ -11,13 +11,13 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="FacilityType">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="ASSISTED_LIVING"/>
- *     &lt;enumeration value="RESIDENCE"/>
- *     &lt;enumeration value="SENIOR_PARK"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="FacilityType"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="ASSISTED_LIVING"/&gt;
+ *     &lt;enumeration value="RESIDENCE"/&gt;
+ *     &lt;enumeration value="SENIOR_PARK"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  * 
  */

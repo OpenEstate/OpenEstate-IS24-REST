@@ -1,19 +1,20 @@
 
 package org.openestate.is24.restapi.xml.common;
 
+import java.math.BigDecimal;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 public class Adapter22
-    extends XmlAdapter<String, String>
+    extends XmlAdapter<String, BigDecimal>
 {
 
 
-    public String unmarshal(String value) {
-        return (org.openestate.is24.restapi.utils.XmlUtils.parsePhoneNumber(value));
+    public BigDecimal unmarshal(String value) {
+        return (org.openestate.is24.restapi.utils.XmlUtils.parseThermalCharacteristic(value));
     }
 
-    public String marshal(String value) {
-        return (org.openestate.is24.restapi.utils.XmlUtils.printPhoneNumber(value));
+    public String marshal(BigDecimal value) {
+        return (org.openestate.is24.restapi.utils.XmlUtils.printThermalCharacteristic(value));
     }
 
 }

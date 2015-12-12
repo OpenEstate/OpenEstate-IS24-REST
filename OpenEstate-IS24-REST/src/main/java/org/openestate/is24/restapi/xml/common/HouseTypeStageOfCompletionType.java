@@ -11,16 +11,16 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="HouseTypeStageOfCompletionType">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="UNSPECIFIED"/>
- *     &lt;enumeration value="CONSTRUCTIONKIT"/>
- *     &lt;enumeration value="UPGRADING"/>
- *     &lt;enumeration value="TURNKEYWITHCELLAR"/>
- *     &lt;enumeration value="TURNKEYWITHOUTFLOORSLAP"/>
- *     &lt;enumeration value="TURNKEYWITHFLOORSLAP"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="HouseTypeStageOfCompletionType"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="UNSPECIFIED"/&gt;
+ *     &lt;enumeration value="CONSTRUCTIONKIT"/&gt;
+ *     &lt;enumeration value="UPGRADING"/&gt;
+ *     &lt;enumeration value="TURNKEYWITHCELLAR"/&gt;
+ *     &lt;enumeration value="TURNKEYWITHOUTFLOORSLAP"/&gt;
+ *     &lt;enumeration value="TURNKEYWITHFLOORSLAP"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  * 
  */

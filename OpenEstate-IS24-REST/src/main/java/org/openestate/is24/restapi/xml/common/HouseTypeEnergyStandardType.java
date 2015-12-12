@@ -11,20 +11,20 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="HouseTypeEnergyStandardType">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="UNSPECIFIED"/>
- *     &lt;enumeration value="LOW_ENERGY_40"/>
- *     &lt;enumeration value="LOW_ENERGY_60"/>
- *     &lt;enumeration value="PASSIVE_HOUSE"/>
- *     &lt;enumeration value="ENERGY_EFFICIENT_40"/>
- *     &lt;enumeration value="ENERGY_EFFICIENT_55"/>
- *     &lt;enumeration value="ENERGY_EFFICIENT_70"/>
- *     &lt;enumeration value="LOW_ENERGY_HOUSE"/>
- *     &lt;enumeration value="NULL_ENERGY_HOUSE"/>
- *     &lt;enumeration value="PLUS_ENERGY_HOUSE"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="HouseTypeEnergyStandardType"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="UNSPECIFIED"/&gt;
+ *     &lt;enumeration value="LOW_ENERGY_40"/&gt;
+ *     &lt;enumeration value="LOW_ENERGY_60"/&gt;
+ *     &lt;enumeration value="PASSIVE_HOUSE"/&gt;
+ *     &lt;enumeration value="ENERGY_EFFICIENT_40"/&gt;
+ *     &lt;enumeration value="ENERGY_EFFICIENT_55"/&gt;
+ *     &lt;enumeration value="ENERGY_EFFICIENT_70"/&gt;
+ *     &lt;enumeration value="LOW_ENERGY_HOUSE"/&gt;
+ *     &lt;enumeration value="NULL_ENERGY_HOUSE"/&gt;
+ *     &lt;enumeration value="PLUS_ENERGY_HOUSE"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  * 
  */

@@ -11,23 +11,23 @@ import javax.xml.bind.annotation.XmlType;
  * <p>The following schema fragment specifies the expected content contained within this class.
  * <p>
  * <pre>
- * &lt;simpleType name="BuildingType">
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *     &lt;enumeration value="NO_INFORMATION"/>
- *     &lt;enumeration value="SINGLE_FAMILY_HOUSE"/>
- *     &lt;enumeration value="MID_TERRACE_HOUSE"/>
- *     &lt;enumeration value="END_TERRACE_HOUSE"/>
- *     &lt;enumeration value="MULTI_FAMILY_HOUSE"/>
- *     &lt;enumeration value="BUNGALOW"/>
- *     &lt;enumeration value="FARMHOUSE"/>
- *     &lt;enumeration value="SEMIDETACHED_HOUSE"/>
- *     &lt;enumeration value="VILLA"/>
- *     &lt;enumeration value="CASTLE_MANOR_HOUSE"/>
- *     &lt;enumeration value="SPECIAL_REAL_ESTATE"/>
- *     &lt;enumeration value="TERRACE_HOUSE"/>
- *     &lt;enumeration value="OTHER"/>
- *   &lt;/restriction>
- * &lt;/simpleType>
+ * &lt;simpleType name="BuildingType"&gt;
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
+ *     &lt;enumeration value="NO_INFORMATION"/&gt;
+ *     &lt;enumeration value="SINGLE_FAMILY_HOUSE"/&gt;
+ *     &lt;enumeration value="MID_TERRACE_HOUSE"/&gt;
+ *     &lt;enumeration value="END_TERRACE_HOUSE"/&gt;
+ *     &lt;enumeration value="MULTI_FAMILY_HOUSE"/&gt;
+ *     &lt;enumeration value="BUNGALOW"/&gt;
+ *     &lt;enumeration value="FARMHOUSE"/&gt;
+ *     &lt;enumeration value="SEMIDETACHED_HOUSE"/&gt;
+ *     &lt;enumeration value="VILLA"/&gt;
+ *     &lt;enumeration value="CASTLE_MANOR_HOUSE"/&gt;
+ *     &lt;enumeration value="SPECIAL_REAL_ESTATE"/&gt;
+ *     &lt;enumeration value="TERRACE_HOUSE"/&gt;
+ *     &lt;enumeration value="OTHER"/&gt;
+ *   &lt;/restriction&gt;
+ * &lt;/simpleType&gt;
  * </pre>
  * 
  */

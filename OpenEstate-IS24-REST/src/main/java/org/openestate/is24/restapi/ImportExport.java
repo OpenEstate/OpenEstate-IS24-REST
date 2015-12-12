@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright 2014-2015 OpenEstate.org.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -87,7 +87,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the DELETEbyID method of the Attachment Webservice.
+     * Call the DELETEbyID method of the Attachment Webservice.
      * <p>
      * This method removes the attachment of a real estate object.
      *
@@ -133,7 +133,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the DELETEbyID method of the Attachment Webservice.
+     * Call the DELETEbyID method of the Attachment Webservice.
      * <p>
      * This method removes the attachment of a real estate object.
      *
@@ -211,7 +211,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the GETall method of the Attachment Webservice.
+     * Call the GETall method of the Attachment Webservice.
      * <p>
      * This method returns the list of attachments for a real estate object.
      *
@@ -253,7 +253,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the GETall method of the Attachment Webservice.
+     * Call the GETall method of the Attachment Webservice.
      * <p>
      * This method returns the list of attachments for a real estate object.
      *
@@ -323,7 +323,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the GETbyID method of the Attachment Webservice.
+     * Call the GETbyID method of the Attachment Webservice.
      * <p>
      * This method returns a specific attachment for a real estate object.
      *
@@ -369,7 +369,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the GETbyID method of the Attachment Webservice.
+     * Call the GETbyID method of the Attachment Webservice.
      * <p>
      * This method returns a specific attachment for a real estate object.
      *
@@ -415,7 +415,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the GETbyID method of the Attachment Webservice.
+     * Call the GETbyID method of the Attachment Webservice.
      * <p>
      * This method returns a specific attachment for a real estate object.
      *
@@ -461,7 +461,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the GETbyID method of the Attachment Webservice.
+     * Call the GETbyID method of the Attachment Webservice.
      * <p>
      * This method returns a specific attachment for a real estate object.
      *
@@ -535,7 +535,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the POST method of the Attachment Webservice.
+     * Call the POST method of the Attachment Webservice.
      * <p>
      * This method stores a new attachment for a specific real estate object.
      *
@@ -590,7 +590,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the POST method of the Attachment Webservice.
+     * Call the POST method of the Attachment Webservice.
      * <p>
      * This method stores a new attachment for a specific real estate object.
      *
@@ -704,7 +704,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the PUTbyID method of the Attachment Webservice.
+     * Call the PUTbyID method of the Attachment Webservice.
      * <p>
      * This method updates the informations about an attachment for a specific
      * real estate object.
@@ -757,7 +757,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the PUTbyID method of the Attachment Webservice.
+     * Call the PUTbyID method of the Attachment Webservice.
      * <p>
      * This method updates the informations about an attachment for a specific
      * real estate object.
@@ -853,7 +853,7 @@ public final class ImportExport
   public final static class AttachmentsOrderService
   {
     /**
-     * Calls the GET method of the AttachmentsOrder Webservice.
+     * Call the GET method of the AttachmentsOrder Webservice.
      * <p>
      * This method returns the attachment ordering for a specific real estate
      * object.
@@ -896,7 +896,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the GET method of the AttachmentsOrder Webservice.
+     * Call the GET method of the AttachmentsOrder Webservice.
      * <p>
      * This method returns the attachment ordering for a specific real estate
      * object.
@@ -961,7 +961,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the PUT method of the AttachmentsOrder Webservice.
+     * Call the PUT method of the AttachmentsOrder Webservice.
      * <p>
      * This method changes the attachment ordering for a specific real estate
      * object.
@@ -1009,7 +1009,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the PUT method of the AttachmentsOrder Webservice.
+     * Call the PUT method of the AttachmentsOrder Webservice.
      * <p>
      * This method changes the attachment ordering for a specific real estate
      * object.
@@ -1104,7 +1104,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the DELETEbyID method of the Contact Webservice.
+     * Call the DELETEbyID method of the Contact Webservice.
      * <p>
      * This method removes a contact person.
      *
@@ -1139,7 +1139,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the DELETEbyID method of the Contact Webservice.
+     * Call the DELETEbyID method of the Contact Webservice.
      * <p>
      * This method removes a contact person.
      *
@@ -1193,7 +1193,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the DELETEbyID method of the Contact Webservice.
+     * Call the DELETEbyID method of the Contact Webservice.
      * <p>
      * This method removes a contact person.
      *
@@ -1230,7 +1230,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the DELETEbyID method of the Contact Webservice.
+     * Call the DELETEbyID method of the Contact Webservice.
      * <p>
      * This method removes a contact person.
      *
@@ -1317,7 +1317,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the GETall method of the Contact Webservice.
+     * Call the GETall method of the Contact Webservice.
      * <p>
      * This method returns the list of contacts for the agency.
      *
@@ -1368,7 +1368,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the GETbyID method of the Contact Webservice.
+     * Call the GETbyID method of the Contact Webservice.
      * <p>
      * This method returns a specific contact for the agency.
      *
@@ -1408,7 +1408,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the GETbyID method of the Contact Webservice.
+     * Call the GETbyID method of the Contact Webservice.
      * <p>
      * This method returns a specific contact for the agency.
      *
@@ -1477,7 +1477,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the POST method of the Contact Webservice.
+     * Call the POST method of the Contact Webservice.
      * <p>
      * This method stores a new contact for the agency.
      *
@@ -1565,7 +1565,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the PUTbyID method of the Contact Webservice.
+     * Call the PUTbyID method of the Contact Webservice.
      * <p>
      * This method updates a specific contact for the agency.
      *
@@ -1608,7 +1608,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the PUTbyID method of the Contact Webservice.
+     * Call the PUTbyID method of the Contact Webservice.
      * <p>
      * This method updates a specific contact for the agency.
      *
@@ -1699,7 +1699,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the DELETEbyID method of the Publish Webservice.
+     * Call the DELETEbyID method of the Publish Webservice.
      * <p>
      * This method removes the attribution of a real estate object to a publish
      * channel.
@@ -1769,7 +1769,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the DELETEbyList method of the Publish Webservice.
+     * Call the DELETEbyList method of the Publish Webservice.
      * <p>
      * This method removes the attribution of a real estate object to a publish
      * channel.
@@ -1851,46 +1851,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the DELETEbyID method of the Publish Webservice.
-     * <p>
-     * This method removes the attribution of a real estate object to a publish
-     * channel.
-     *
-     * @param client
-     * {@link AbstractClient}, that is used to communicate with the Webservice
-     *
-     * @param is24PublishId
-     * the unique publishing ID, that was returned by
-     * {@link PublishService#post(org.openestate.is24.restapi.AbstractClient, org.openestate.is24.restapi.xml.common.PublishObject)},
-     * for which the publishing is removed
-     *
-     * @return
-     * response of the Webservice after a successful request
-     *
-     * @throws IOException
-     * if communication with the Webservice failed
-     *
-     * @throws OAuthException
-     * if authorization failed
-     *
-     * @throws JAXBException
-     * if XML reading / writing failed
-     *
-     * @throws RequestFailedException
-     * if the Webservice did not respond with a success message
-     *
-     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/publish/delete-by-id.html">DELETEbyID method</a>
-     * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/publish.html">Publish Webservice</a>
-     * @deprecated use {@link #delete(org.openestate.is24.restapi.AbstractClient, java.lang.String)} instead
-     */
-    @Deprecated
-    public static Messages deleteById( AbstractClient client, String is24PublishId ) throws IOException, OAuthException, JAXBException, RequestFailedException
-    {
-      return delete( client, is24PublishId );
-    }
-
-    /**
-     * Calls the GET method of the Publish Webservice.
+     * Call the GET method of the Publish Webservice.
      * <p>
      * This method returns a list of the publish channels, where a real estate
      * object is published.
@@ -1960,7 +1921,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the GETbyID method of the Publish Webservice.
+     * Call the GETbyID method of the Publish Webservice.
      * <p>
      * This method returns a specific publish channel, where a real estate
      * object is published.
@@ -2025,7 +1986,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the POSTbyID method of the Publish Webservice.
+     * Call the POSTbyID method of the Publish Webservice.
      * <p>
      * This method publishes a real estate object into a publish channel.
      *
@@ -2103,7 +2064,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the POST method of the Publish Webservice.
+     * Call the POST method of the Publish Webservice.
      * <p>
      * This method publishes mulitple real estate objects at once.
      *
@@ -2191,7 +2152,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the GET method of the PublishChannel Webservice.
+     * Call the GET method of the PublishChannel Webservice.
      * <p>
      * This method returns a list of the publish channels, that are usable for
      * the agency.
@@ -2265,7 +2226,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the DELETEbyID method of the RealEstate Webservice.
+     * Call the DELETEbyID method of the RealEstate Webservice.
      * <p>
      * This method removes a real estate object.
      *
@@ -2305,7 +2266,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the DELETEbyID method of the RealEstate Webservice.
+     * Call the DELETEbyID method of the RealEstate Webservice.
      * <p>
      * This method removes a real estate object.
      *
@@ -2377,7 +2338,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the GETall method of the RealEstate Webservice.
+     * Call the GETall method of the RealEstate Webservice.
      * <p>
      * This method returns the list of real estate objects for the agency.
      *
@@ -2461,7 +2422,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the GETbyID method of the RealEstate Webservice.
+     * Call the GETbyID method of the RealEstate Webservice.
      * <p>
      * This method returns a specific real estate object.
      *
@@ -2501,7 +2462,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the GETbyID method of the RealEstate Webservice.
+     * Call the GETbyID method of the RealEstate Webservice.
      * <p>
      * This method returns a specific real estate object.
      *
@@ -2569,7 +2530,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the POST method of the RealEstate Webservice.
+     * Call the POST method of the RealEstate Webservice.
      * <p>
      * This method stores a new real estate object.
      *
@@ -2604,7 +2565,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the POST method of the RealEstate Webservice.
+     * Call the POST method of the RealEstate Webservice.
      * <p>
      * This method stores a new real estate object.
      *
@@ -2705,7 +2666,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the PUTbyID method of the RealEstate Webservice.
+     * Call the PUTbyID method of the RealEstate Webservice.
      * <p>
      * This method updates a real estate object.
      *
@@ -2742,7 +2703,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the PUTbyID method of the RealEstate Webservice.
+     * Call the PUTbyID method of the RealEstate Webservice.
      * <p>
      * This method updates a real estate object.
      *
@@ -2798,7 +2759,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the PUTbyID method of the RealEstate Webservice.
+     * Call the PUTbyID method of the RealEstate Webservice.
      * <p>
      * This method updates a real estate object.
      *
@@ -2836,7 +2797,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the PUTbyID method of the RealEstate Webservice.
+     * Call the PUTbyID method of the RealEstate Webservice.
      * <p>
      * This method updates a real estate object.
      *
@@ -2935,7 +2896,7 @@ public final class ImportExport
   public final static class RealEstatesCountsService
   {
     /**
-     * Calls the GET method of the RealEstatesCounts Webservice.
+     * Call the GET method of the RealEstatesCounts Webservice.
      * <p>
      * This method returns the number of currently exported real estates.
      *
@@ -3076,7 +3037,7 @@ public final class ImportExport
     }
 
     /**
-     * Calls the GET method of the VideoUploadTicket Webservice.
+     * Call the GET method of the VideoUploadTicket Webservice.
      * <p>
      * This method retrieves a ticket from the Webservice, that is required to
      * upload a new video file.
