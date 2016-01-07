@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" session="false"%>
 <%--
- Copyright 2014-2015 OpenEstate.org.
+ Copyright 2014-2016 OpenEstate.org.
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
