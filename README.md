@@ -114,9 +114,9 @@ Dependencies
 -   [commons-codec 1.10](http://commons.apache.org/proper/commons-codec/)
 -   [commons-io 2.4](http://commons.apache.org/proper/commons-io/)
 -   [commons-lang 3.4](http://commons.apache.org/proper/commons-lang/)
--   [jaxb2-basics-runtime 0.10.0](https://github.com/highsource/jaxb2-basics)
+-   [jaxb2-basics-runtime 0.11.0](https://github.com/highsource/jaxb2-basics)
 -   [oauth-signpost 1.2.1.2](https://code.google.com/p/oauth-signpost/)
--   [SLF4J 1.7.13](http://www.slf4j.org/)
+-   [SLF4J 1.7.16](http://www.slf4j.org/)
 -   [Lorem 2.0](https://github.com/mdeanda/lorem) (only required by
     [`RandomRealEstateFactory.java`](OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/utils/RandomRealEstateFactory.java))
 -   [Apache HttpComponents 4.2](http://hc.apache.org/httpcomponents-client-4.2.x/) or
