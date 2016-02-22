@@ -10,15 +10,15 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.XmlValue;
-import org.jvnet.jaxb2_commons.lang.CopyStrategy;
-import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Equals;
-import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
+import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
+import org.jvnet.jaxb2_commons.lang.CopyTo2;
+import org.jvnet.jaxb2_commons.lang.Equals2;
+import org.jvnet.jaxb2_commons.lang.EqualsStrategy2;
 import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBEqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy;
-import org.jvnet.jaxb2_commons.lang.ToString;
-import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
+import org.jvnet.jaxb2_commons.lang.ToString2;
+import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 
@@ -61,8 +61,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
     "marketPlacePublishedRealEstatesCount"
 })
 @XmlRootElement(name = "realEstateCounts")
-public class RealEstateCounts
-    implements Cloneable, CopyTo, Equals, ToString
+public class RealEstateCounts implements Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(name = "is24publishedRealEstatesCount")
@@ -158,39 +157,39 @@ public class RealEstateCounts
     }
 
     public String toString() {
-        final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
         append(null, buffer, strategy);
         return buffer.toString();
     }
 
-    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
         strategy.appendEnd(locator, this, buffer);
         return buffer;
     }
 
-    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             long theIs24PublishedRealEstatesCount;
             theIs24PublishedRealEstatesCount = this.getIs24PublishedRealEstatesCount();
-            strategy.appendField(locator, this, "is24PublishedRealEstatesCount", buffer, theIs24PublishedRealEstatesCount);
+            strategy.appendField(locator, this, "is24PublishedRealEstatesCount", buffer, theIs24PublishedRealEstatesCount, true);
         }
         {
             long theIs24NotPublishedRealEstatesCount;
             theIs24NotPublishedRealEstatesCount = this.getIs24NotPublishedRealEstatesCount();
-            strategy.appendField(locator, this, "is24NotPublishedRealEstatesCount", buffer, theIs24NotPublishedRealEstatesCount);
+            strategy.appendField(locator, this, "is24NotPublishedRealEstatesCount", buffer, theIs24NotPublishedRealEstatesCount, true);
         }
         {
             Long theHomepagePublishedRealEstatesCount;
             theHomepagePublishedRealEstatesCount = this.getHomepagePublishedRealEstatesCount();
-            strategy.appendField(locator, this, "homepagePublishedRealEstatesCount", buffer, theHomepagePublishedRealEstatesCount);
+            strategy.appendField(locator, this, "homepagePublishedRealEstatesCount", buffer, theHomepagePublishedRealEstatesCount, (this.homepagePublishedRealEstatesCount!= null));
         }
         {
             List<RealEstateCounts.MarketPlacePublishedRealEstatesCount> theMarketPlacePublishedRealEstatesCount;
             theMarketPlacePublishedRealEstatesCount = (((this.marketPlacePublishedRealEstatesCount!= null)&&(!this.marketPlacePublishedRealEstatesCount.isEmpty()))?this.getMarketPlacePublishedRealEstatesCount():null);
-            strategy.appendField(locator, this, "marketPlacePublishedRealEstatesCount", buffer, theMarketPlacePublishedRealEstatesCount);
+            strategy.appendField(locator, this, "marketPlacePublishedRealEstatesCount", buffer, theMarketPlacePublishedRealEstatesCount, ((this.marketPlacePublishedRealEstatesCount!= null)&&(!this.marketPlacePublishedRealEstatesCount.isEmpty())));
         }
         return buffer;
     }
@@ -200,46 +199,68 @@ public class RealEstateCounts
     }
 
     public Object copyTo(Object target) {
-        final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof RealEstateCounts) {
             final RealEstateCounts copy = ((RealEstateCounts) draftCopy);
             {
-                long sourceIs24PublishedRealEstatesCount;
-                sourceIs24PublishedRealEstatesCount = this.getIs24PublishedRealEstatesCount();
-                long copyIs24PublishedRealEstatesCount = strategy.copy(LocatorUtils.property(locator, "is24PublishedRealEstatesCount", sourceIs24PublishedRealEstatesCount), sourceIs24PublishedRealEstatesCount);
-                copy.setIs24PublishedRealEstatesCount(copyIs24PublishedRealEstatesCount);
+                Boolean is24PublishedRealEstatesCountShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, true);
+                if (is24PublishedRealEstatesCountShouldBeCopiedAndSet == Boolean.TRUE) {
+                    long sourceIs24PublishedRealEstatesCount;
+                    sourceIs24PublishedRealEstatesCount = this.getIs24PublishedRealEstatesCount();
+                    long copyIs24PublishedRealEstatesCount = strategy.copy(LocatorUtils.property(locator, "is24PublishedRealEstatesCount", sourceIs24PublishedRealEstatesCount), sourceIs24PublishedRealEstatesCount, true);
+                    copy.setIs24PublishedRealEstatesCount(copyIs24PublishedRealEstatesCount);
+                } else {
+                    if (is24PublishedRealEstatesCountShouldBeCopiedAndSet == Boolean.FALSE) {
+                    }
+                }
             }
             {
-                long sourceIs24NotPublishedRealEstatesCount;
-                sourceIs24NotPublishedRealEstatesCount = this.getIs24NotPublishedRealEstatesCount();
-                long copyIs24NotPublishedRealEstatesCount = strategy.copy(LocatorUtils.property(locator, "is24NotPublishedRealEstatesCount", sourceIs24NotPublishedRealEstatesCount), sourceIs24NotPublishedRealEstatesCount);
-                copy.setIs24NotPublishedRealEstatesCount(copyIs24NotPublishedRealEstatesCount);
-            }
-            if (this.homepagePublishedRealEstatesCount!= null) {
-                Long sourceHomepagePublishedRealEstatesCount;
-                sourceHomepagePublishedRealEstatesCount = this.getHomepagePublishedRealEstatesCount();
-                Long copyHomepagePublishedRealEstatesCount = ((Long) strategy.copy(LocatorUtils.property(locator, "homepagePublishedRealEstatesCount", sourceHomepagePublishedRealEstatesCount), sourceHomepagePublishedRealEstatesCount));
-                copy.setHomepagePublishedRealEstatesCount(copyHomepagePublishedRealEstatesCount);
-            } else {
-                copy.homepagePublishedRealEstatesCount = null;
-            }
-            if ((this.marketPlacePublishedRealEstatesCount!= null)&&(!this.marketPlacePublishedRealEstatesCount.isEmpty())) {
-                List<RealEstateCounts.MarketPlacePublishedRealEstatesCount> sourceMarketPlacePublishedRealEstatesCount;
-                sourceMarketPlacePublishedRealEstatesCount = (((this.marketPlacePublishedRealEstatesCount!= null)&&(!this.marketPlacePublishedRealEstatesCount.isEmpty()))?this.getMarketPlacePublishedRealEstatesCount():null);
-                @SuppressWarnings("unchecked")
-                List<RealEstateCounts.MarketPlacePublishedRealEstatesCount> copyMarketPlacePublishedRealEstatesCount = ((List<RealEstateCounts.MarketPlacePublishedRealEstatesCount> ) strategy.copy(LocatorUtils.property(locator, "marketPlacePublishedRealEstatesCount", sourceMarketPlacePublishedRealEstatesCount), sourceMarketPlacePublishedRealEstatesCount));
-                copy.marketPlacePublishedRealEstatesCount = null;
-                if (copyMarketPlacePublishedRealEstatesCount!= null) {
-                    List<RealEstateCounts.MarketPlacePublishedRealEstatesCount> uniqueMarketPlacePublishedRealEstatesCountl = copy.getMarketPlacePublishedRealEstatesCount();
-                    uniqueMarketPlacePublishedRealEstatesCountl.addAll(copyMarketPlacePublishedRealEstatesCount);
+                Boolean is24NotPublishedRealEstatesCountShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, true);
+                if (is24NotPublishedRealEstatesCountShouldBeCopiedAndSet == Boolean.TRUE) {
+                    long sourceIs24NotPublishedRealEstatesCount;
+                    sourceIs24NotPublishedRealEstatesCount = this.getIs24NotPublishedRealEstatesCount();
+                    long copyIs24NotPublishedRealEstatesCount = strategy.copy(LocatorUtils.property(locator, "is24NotPublishedRealEstatesCount", sourceIs24NotPublishedRealEstatesCount), sourceIs24NotPublishedRealEstatesCount, true);
+                    copy.setIs24NotPublishedRealEstatesCount(copyIs24NotPublishedRealEstatesCount);
+                } else {
+                    if (is24NotPublishedRealEstatesCountShouldBeCopiedAndSet == Boolean.FALSE) {
+                    }
                 }
-            } else {
-                copy.marketPlacePublishedRealEstatesCount = null;
+            }
+            {
+                Boolean homepagePublishedRealEstatesCountShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.homepagePublishedRealEstatesCount!= null));
+                if (homepagePublishedRealEstatesCountShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Long sourceHomepagePublishedRealEstatesCount;
+                    sourceHomepagePublishedRealEstatesCount = this.getHomepagePublishedRealEstatesCount();
+                    Long copyHomepagePublishedRealEstatesCount = ((Long) strategy.copy(LocatorUtils.property(locator, "homepagePublishedRealEstatesCount", sourceHomepagePublishedRealEstatesCount), sourceHomepagePublishedRealEstatesCount, (this.homepagePublishedRealEstatesCount!= null)));
+                    copy.setHomepagePublishedRealEstatesCount(copyHomepagePublishedRealEstatesCount);
+                } else {
+                    if (homepagePublishedRealEstatesCountShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.homepagePublishedRealEstatesCount = null;
+                    }
+                }
+            }
+            {
+                Boolean marketPlacePublishedRealEstatesCountShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, ((this.marketPlacePublishedRealEstatesCount!= null)&&(!this.marketPlacePublishedRealEstatesCount.isEmpty())));
+                if (marketPlacePublishedRealEstatesCountShouldBeCopiedAndSet == Boolean.TRUE) {
+                    List<RealEstateCounts.MarketPlacePublishedRealEstatesCount> sourceMarketPlacePublishedRealEstatesCount;
+                    sourceMarketPlacePublishedRealEstatesCount = (((this.marketPlacePublishedRealEstatesCount!= null)&&(!this.marketPlacePublishedRealEstatesCount.isEmpty()))?this.getMarketPlacePublishedRealEstatesCount():null);
+                    @SuppressWarnings("unchecked")
+                    List<RealEstateCounts.MarketPlacePublishedRealEstatesCount> copyMarketPlacePublishedRealEstatesCount = ((List<RealEstateCounts.MarketPlacePublishedRealEstatesCount> ) strategy.copy(LocatorUtils.property(locator, "marketPlacePublishedRealEstatesCount", sourceMarketPlacePublishedRealEstatesCount), sourceMarketPlacePublishedRealEstatesCount, ((this.marketPlacePublishedRealEstatesCount!= null)&&(!this.marketPlacePublishedRealEstatesCount.isEmpty()))));
+                    copy.marketPlacePublishedRealEstatesCount = null;
+                    if (copyMarketPlacePublishedRealEstatesCount!= null) {
+                        List<RealEstateCounts.MarketPlacePublishedRealEstatesCount> uniqueMarketPlacePublishedRealEstatesCountl = copy.getMarketPlacePublishedRealEstatesCount();
+                        uniqueMarketPlacePublishedRealEstatesCountl.addAll(copyMarketPlacePublishedRealEstatesCount);
+                    }
+                } else {
+                    if (marketPlacePublishedRealEstatesCountShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.marketPlacePublishedRealEstatesCount = null;
+                    }
+                }
             }
         }
         return draftCopy;
@@ -249,7 +270,7 @@ public class RealEstateCounts
         return new RealEstateCounts();
     }
 
-    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
@@ -262,7 +283,7 @@ public class RealEstateCounts
             lhsIs24PublishedRealEstatesCount = this.getIs24PublishedRealEstatesCount();
             long rhsIs24PublishedRealEstatesCount;
             rhsIs24PublishedRealEstatesCount = that.getIs24PublishedRealEstatesCount();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "is24PublishedRealEstatesCount", lhsIs24PublishedRealEstatesCount), LocatorUtils.property(thatLocator, "is24PublishedRealEstatesCount", rhsIs24PublishedRealEstatesCount), lhsIs24PublishedRealEstatesCount, rhsIs24PublishedRealEstatesCount)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "is24PublishedRealEstatesCount", lhsIs24PublishedRealEstatesCount), LocatorUtils.property(thatLocator, "is24PublishedRealEstatesCount", rhsIs24PublishedRealEstatesCount), lhsIs24PublishedRealEstatesCount, rhsIs24PublishedRealEstatesCount, true, true)) {
                 return false;
             }
         }
@@ -271,7 +292,7 @@ public class RealEstateCounts
             lhsIs24NotPublishedRealEstatesCount = this.getIs24NotPublishedRealEstatesCount();
             long rhsIs24NotPublishedRealEstatesCount;
             rhsIs24NotPublishedRealEstatesCount = that.getIs24NotPublishedRealEstatesCount();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "is24NotPublishedRealEstatesCount", lhsIs24NotPublishedRealEstatesCount), LocatorUtils.property(thatLocator, "is24NotPublishedRealEstatesCount", rhsIs24NotPublishedRealEstatesCount), lhsIs24NotPublishedRealEstatesCount, rhsIs24NotPublishedRealEstatesCount)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "is24NotPublishedRealEstatesCount", lhsIs24NotPublishedRealEstatesCount), LocatorUtils.property(thatLocator, "is24NotPublishedRealEstatesCount", rhsIs24NotPublishedRealEstatesCount), lhsIs24NotPublishedRealEstatesCount, rhsIs24NotPublishedRealEstatesCount, true, true)) {
                 return false;
             }
         }
@@ -280,7 +301,7 @@ public class RealEstateCounts
             lhsHomepagePublishedRealEstatesCount = this.getHomepagePublishedRealEstatesCount();
             Long rhsHomepagePublishedRealEstatesCount;
             rhsHomepagePublishedRealEstatesCount = that.getHomepagePublishedRealEstatesCount();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "homepagePublishedRealEstatesCount", lhsHomepagePublishedRealEstatesCount), LocatorUtils.property(thatLocator, "homepagePublishedRealEstatesCount", rhsHomepagePublishedRealEstatesCount), lhsHomepagePublishedRealEstatesCount, rhsHomepagePublishedRealEstatesCount)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "homepagePublishedRealEstatesCount", lhsHomepagePublishedRealEstatesCount), LocatorUtils.property(thatLocator, "homepagePublishedRealEstatesCount", rhsHomepagePublishedRealEstatesCount), lhsHomepagePublishedRealEstatesCount, rhsHomepagePublishedRealEstatesCount, (this.homepagePublishedRealEstatesCount!= null), (that.homepagePublishedRealEstatesCount!= null))) {
                 return false;
             }
         }
@@ -289,7 +310,7 @@ public class RealEstateCounts
             lhsMarketPlacePublishedRealEstatesCount = (((this.marketPlacePublishedRealEstatesCount!= null)&&(!this.marketPlacePublishedRealEstatesCount.isEmpty()))?this.getMarketPlacePublishedRealEstatesCount():null);
             List<RealEstateCounts.MarketPlacePublishedRealEstatesCount> rhsMarketPlacePublishedRealEstatesCount;
             rhsMarketPlacePublishedRealEstatesCount = (((that.marketPlacePublishedRealEstatesCount!= null)&&(!that.marketPlacePublishedRealEstatesCount.isEmpty()))?that.getMarketPlacePublishedRealEstatesCount():null);
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "marketPlacePublishedRealEstatesCount", lhsMarketPlacePublishedRealEstatesCount), LocatorUtils.property(thatLocator, "marketPlacePublishedRealEstatesCount", rhsMarketPlacePublishedRealEstatesCount), lhsMarketPlacePublishedRealEstatesCount, rhsMarketPlacePublishedRealEstatesCount)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "marketPlacePublishedRealEstatesCount", lhsMarketPlacePublishedRealEstatesCount), LocatorUtils.property(thatLocator, "marketPlacePublishedRealEstatesCount", rhsMarketPlacePublishedRealEstatesCount), lhsMarketPlacePublishedRealEstatesCount, rhsMarketPlacePublishedRealEstatesCount, ((this.marketPlacePublishedRealEstatesCount!= null)&&(!this.marketPlacePublishedRealEstatesCount.isEmpty())), ((that.marketPlacePublishedRealEstatesCount!= null)&&(!that.marketPlacePublishedRealEstatesCount.isEmpty())))) {
                 return false;
             }
         }
@@ -297,7 +318,7 @@ public class RealEstateCounts
     }
 
     public boolean equals(Object object) {
-        final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
     }
 
@@ -323,8 +344,7 @@ public class RealEstateCounts
     @XmlType(name = "", propOrder = {
         "value"
     })
-    public static class MarketPlacePublishedRealEstatesCount
-        implements Cloneable, CopyTo, Equals, ToString
+    public static class MarketPlacePublishedRealEstatesCount implements Cloneable, CopyTo2, Equals2, ToString2
     {
 
         @XmlValue
@@ -373,29 +393,29 @@ public class RealEstateCounts
         }
 
         public String toString() {
-            final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+            final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
             final StringBuilder buffer = new StringBuilder();
             append(null, buffer, strategy);
             return buffer.toString();
         }
 
-        public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+        public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
             strategy.appendStart(locator, this, buffer);
             appendFields(locator, buffer, strategy);
             strategy.appendEnd(locator, this, buffer);
             return buffer;
         }
 
-        public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+        public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
             {
                 long theValue;
                 theValue = this.getValue();
-                strategy.appendField(locator, this, "value", buffer, theValue);
+                strategy.appendField(locator, this, "value", buffer, theValue, true);
             }
             {
                 String theName;
                 theName = this.getName();
-                strategy.appendField(locator, this, "name", buffer, theName);
+                strategy.appendField(locator, this, "name", buffer, theName, (this.name!= null));
             }
             return buffer;
         }
@@ -405,27 +425,38 @@ public class RealEstateCounts
         }
 
         public Object copyTo(Object target) {
-            final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+            final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
             return copyTo(null, target, strategy);
         }
 
-        public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+        public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
             final Object draftCopy = ((target == null)?createNewInstance():target);
             if (draftCopy instanceof RealEstateCounts.MarketPlacePublishedRealEstatesCount) {
                 final RealEstateCounts.MarketPlacePublishedRealEstatesCount copy = ((RealEstateCounts.MarketPlacePublishedRealEstatesCount) draftCopy);
                 {
-                    long sourceValue;
-                    sourceValue = this.getValue();
-                    long copyValue = strategy.copy(LocatorUtils.property(locator, "value", sourceValue), sourceValue);
-                    copy.setValue(copyValue);
+                    Boolean valueShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, true);
+                    if (valueShouldBeCopiedAndSet == Boolean.TRUE) {
+                        long sourceValue;
+                        sourceValue = this.getValue();
+                        long copyValue = strategy.copy(LocatorUtils.property(locator, "value", sourceValue), sourceValue, true);
+                        copy.setValue(copyValue);
+                    } else {
+                        if (valueShouldBeCopiedAndSet == Boolean.FALSE) {
+                        }
+                    }
                 }
-                if (this.name!= null) {
-                    String sourceName;
-                    sourceName = this.getName();
-                    String copyName = ((String) strategy.copy(LocatorUtils.property(locator, "name", sourceName), sourceName));
-                    copy.setName(copyName);
-                } else {
-                    copy.name = null;
+                {
+                    Boolean nameShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.name!= null));
+                    if (nameShouldBeCopiedAndSet == Boolean.TRUE) {
+                        String sourceName;
+                        sourceName = this.getName();
+                        String copyName = ((String) strategy.copy(LocatorUtils.property(locator, "name", sourceName), sourceName, (this.name!= null)));
+                        copy.setName(copyName);
+                    } else {
+                        if (nameShouldBeCopiedAndSet == Boolean.FALSE) {
+                            copy.name = null;
+                        }
+                    }
                 }
             }
             return draftCopy;
@@ -435,7 +466,7 @@ public class RealEstateCounts
             return new RealEstateCounts.MarketPlacePublishedRealEstatesCount();
         }
 
-        public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+        public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
             if ((object == null)||(this.getClass()!= object.getClass())) {
                 return false;
             }
@@ -448,7 +479,7 @@ public class RealEstateCounts
                 lhsValue = this.getValue();
                 long rhsValue;
                 rhsValue = that.getValue();
-                if (!strategy.equals(LocatorUtils.property(thisLocator, "value", lhsValue), LocatorUtils.property(thatLocator, "value", rhsValue), lhsValue, rhsValue)) {
+                if (!strategy.equals(LocatorUtils.property(thisLocator, "value", lhsValue), LocatorUtils.property(thatLocator, "value", rhsValue), lhsValue, rhsValue, true, true)) {
                     return false;
                 }
             }
@@ -457,7 +488,7 @@ public class RealEstateCounts
                 lhsName = this.getName();
                 String rhsName;
                 rhsName = that.getName();
-                if (!strategy.equals(LocatorUtils.property(thisLocator, "name", lhsName), LocatorUtils.property(thatLocator, "name", rhsName), lhsName, rhsName)) {
+                if (!strategy.equals(LocatorUtils.property(thisLocator, "name", lhsName), LocatorUtils.property(thatLocator, "name", rhsName), lhsName, rhsName, (this.name!= null), (that.name!= null))) {
                     return false;
                 }
             }
@@ -465,7 +496,7 @@ public class RealEstateCounts
         }
 
         public boolean equals(Object object) {
-            final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+            final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
             return equals(null, null, object, strategy);
         }
 

@@ -7,15 +7,15 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import org.jvnet.jaxb2_commons.lang.CopyStrategy;
-import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Equals;
-import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
+import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
+import org.jvnet.jaxb2_commons.lang.CopyTo2;
+import org.jvnet.jaxb2_commons.lang.Equals2;
+import org.jvnet.jaxb2_commons.lang.EqualsStrategy2;
 import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBEqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy;
-import org.jvnet.jaxb2_commons.lang.ToString;
-import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
+import org.jvnet.jaxb2_commons.lang.ToString2;
+import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 
@@ -49,8 +49,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
     "password",
     "sharedShortlistGroupId"
 })
-public class User
-    implements Cloneable, CopyTo, Equals, ToString
+public class User implements Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(required = true)
@@ -185,44 +184,44 @@ public class User
     }
 
     public String toString() {
-        final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
         append(null, buffer, strategy);
         return buffer.toString();
     }
 
-    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
         strategy.appendEnd(locator, this, buffer);
         return buffer;
     }
 
-    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             ContactDetails theContactDetails;
             theContactDetails = this.getContactDetails();
-            strategy.appendField(locator, this, "contactDetails", buffer, theContactDetails);
+            strategy.appendField(locator, this, "contactDetails", buffer, theContactDetails, (this.contactDetails!= null));
         }
         {
             String thePassword;
             thePassword = this.getPassword();
-            strategy.appendField(locator, this, "password", buffer, thePassword);
+            strategy.appendField(locator, this, "password", buffer, thePassword, (this.password!= null));
         }
         {
             Long theSharedShortlistGroupId;
             theSharedShortlistGroupId = this.getSharedShortlistGroupId();
-            strategy.appendField(locator, this, "sharedShortlistGroupId", buffer, theSharedShortlistGroupId);
+            strategy.appendField(locator, this, "sharedShortlistGroupId", buffer, theSharedShortlistGroupId, (this.sharedShortlistGroupId!= null));
         }
         {
             String theId;
             theId = this.getId();
-            strategy.appendField(locator, this, "id", buffer, theId);
+            strategy.appendField(locator, this, "id", buffer, theId, (this.id!= null));
         }
         {
             Long thePeid;
             thePeid = this.getPeid();
-            strategy.appendField(locator, this, "peid", buffer, thePeid);
+            strategy.appendField(locator, this, "peid", buffer, thePeid, (this.peid!= null));
         }
         return buffer;
     }
@@ -232,53 +231,78 @@ public class User
     }
 
     public Object copyTo(Object target) {
-        final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof User) {
             final User copy = ((User) draftCopy);
-            if (this.contactDetails!= null) {
-                ContactDetails sourceContactDetails;
-                sourceContactDetails = this.getContactDetails();
-                ContactDetails copyContactDetails = ((ContactDetails) strategy.copy(LocatorUtils.property(locator, "contactDetails", sourceContactDetails), sourceContactDetails));
-                copy.setContactDetails(copyContactDetails);
-            } else {
-                copy.contactDetails = null;
+            {
+                Boolean contactDetailsShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.contactDetails!= null));
+                if (contactDetailsShouldBeCopiedAndSet == Boolean.TRUE) {
+                    ContactDetails sourceContactDetails;
+                    sourceContactDetails = this.getContactDetails();
+                    ContactDetails copyContactDetails = ((ContactDetails) strategy.copy(LocatorUtils.property(locator, "contactDetails", sourceContactDetails), sourceContactDetails, (this.contactDetails!= null)));
+                    copy.setContactDetails(copyContactDetails);
+                } else {
+                    if (contactDetailsShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.contactDetails = null;
+                    }
+                }
             }
-            if (this.password!= null) {
-                String sourcePassword;
-                sourcePassword = this.getPassword();
-                String copyPassword = ((String) strategy.copy(LocatorUtils.property(locator, "password", sourcePassword), sourcePassword));
-                copy.setPassword(copyPassword);
-            } else {
-                copy.password = null;
+            {
+                Boolean passwordShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.password!= null));
+                if (passwordShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourcePassword;
+                    sourcePassword = this.getPassword();
+                    String copyPassword = ((String) strategy.copy(LocatorUtils.property(locator, "password", sourcePassword), sourcePassword, (this.password!= null)));
+                    copy.setPassword(copyPassword);
+                } else {
+                    if (passwordShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.password = null;
+                    }
+                }
             }
-            if (this.sharedShortlistGroupId!= null) {
-                Long sourceSharedShortlistGroupId;
-                sourceSharedShortlistGroupId = this.getSharedShortlistGroupId();
-                Long copySharedShortlistGroupId = ((Long) strategy.copy(LocatorUtils.property(locator, "sharedShortlistGroupId", sourceSharedShortlistGroupId), sourceSharedShortlistGroupId));
-                copy.setSharedShortlistGroupId(copySharedShortlistGroupId);
-            } else {
-                copy.sharedShortlistGroupId = null;
+            {
+                Boolean sharedShortlistGroupIdShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.sharedShortlistGroupId!= null));
+                if (sharedShortlistGroupIdShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Long sourceSharedShortlistGroupId;
+                    sourceSharedShortlistGroupId = this.getSharedShortlistGroupId();
+                    Long copySharedShortlistGroupId = ((Long) strategy.copy(LocatorUtils.property(locator, "sharedShortlistGroupId", sourceSharedShortlistGroupId), sourceSharedShortlistGroupId, (this.sharedShortlistGroupId!= null)));
+                    copy.setSharedShortlistGroupId(copySharedShortlistGroupId);
+                } else {
+                    if (sharedShortlistGroupIdShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.sharedShortlistGroupId = null;
+                    }
+                }
             }
-            if (this.id!= null) {
-                String sourceId;
-                sourceId = this.getId();
-                String copyId = ((String) strategy.copy(LocatorUtils.property(locator, "id", sourceId), sourceId));
-                copy.setId(copyId);
-            } else {
-                copy.id = null;
+            {
+                Boolean idShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.id!= null));
+                if (idShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceId;
+                    sourceId = this.getId();
+                    String copyId = ((String) strategy.copy(LocatorUtils.property(locator, "id", sourceId), sourceId, (this.id!= null)));
+                    copy.setId(copyId);
+                } else {
+                    if (idShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.id = null;
+                    }
+                }
             }
-            if (this.peid!= null) {
-                Long sourcePeid;
-                sourcePeid = this.getPeid();
-                Long copyPeid = ((Long) strategy.copy(LocatorUtils.property(locator, "peid", sourcePeid), sourcePeid));
-                copy.setPeid(copyPeid);
-            } else {
-                copy.peid = null;
+            {
+                Boolean peidShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.peid!= null));
+                if (peidShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Long sourcePeid;
+                    sourcePeid = this.getPeid();
+                    Long copyPeid = ((Long) strategy.copy(LocatorUtils.property(locator, "peid", sourcePeid), sourcePeid, (this.peid!= null)));
+                    copy.setPeid(copyPeid);
+                } else {
+                    if (peidShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.peid = null;
+                    }
+                }
             }
         }
         return draftCopy;
@@ -288,7 +312,7 @@ public class User
         return new User();
     }
 
-    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
@@ -301,7 +325,7 @@ public class User
             lhsContactDetails = this.getContactDetails();
             ContactDetails rhsContactDetails;
             rhsContactDetails = that.getContactDetails();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "contactDetails", lhsContactDetails), LocatorUtils.property(thatLocator, "contactDetails", rhsContactDetails), lhsContactDetails, rhsContactDetails)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "contactDetails", lhsContactDetails), LocatorUtils.property(thatLocator, "contactDetails", rhsContactDetails), lhsContactDetails, rhsContactDetails, (this.contactDetails!= null), (that.contactDetails!= null))) {
                 return false;
             }
         }
@@ -310,7 +334,7 @@ public class User
             lhsPassword = this.getPassword();
             String rhsPassword;
             rhsPassword = that.getPassword();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "password", lhsPassword), LocatorUtils.property(thatLocator, "password", rhsPassword), lhsPassword, rhsPassword)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "password", lhsPassword), LocatorUtils.property(thatLocator, "password", rhsPassword), lhsPassword, rhsPassword, (this.password!= null), (that.password!= null))) {
                 return false;
             }
         }
@@ -319,7 +343,7 @@ public class User
             lhsSharedShortlistGroupId = this.getSharedShortlistGroupId();
             Long rhsSharedShortlistGroupId;
             rhsSharedShortlistGroupId = that.getSharedShortlistGroupId();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "sharedShortlistGroupId", lhsSharedShortlistGroupId), LocatorUtils.property(thatLocator, "sharedShortlistGroupId", rhsSharedShortlistGroupId), lhsSharedShortlistGroupId, rhsSharedShortlistGroupId)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "sharedShortlistGroupId", lhsSharedShortlistGroupId), LocatorUtils.property(thatLocator, "sharedShortlistGroupId", rhsSharedShortlistGroupId), lhsSharedShortlistGroupId, rhsSharedShortlistGroupId, (this.sharedShortlistGroupId!= null), (that.sharedShortlistGroupId!= null))) {
                 return false;
             }
         }
@@ -328,7 +352,7 @@ public class User
             lhsId = this.getId();
             String rhsId;
             rhsId = that.getId();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "id", lhsId), LocatorUtils.property(thatLocator, "id", rhsId), lhsId, rhsId)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "id", lhsId), LocatorUtils.property(thatLocator, "id", rhsId), lhsId, rhsId, (this.id!= null), (that.id!= null))) {
                 return false;
             }
         }
@@ -337,7 +361,7 @@ public class User
             lhsPeid = this.getPeid();
             Long rhsPeid;
             rhsPeid = that.getPeid();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "peid", lhsPeid), LocatorUtils.property(thatLocator, "peid", rhsPeid), lhsPeid, rhsPeid)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "peid", lhsPeid), LocatorUtils.property(thatLocator, "peid", rhsPeid), lhsPeid, rhsPeid, (this.peid!= null), (that.peid!= null))) {
                 return false;
             }
         }
@@ -345,7 +369,7 @@ public class User
     }
 
     public boolean equals(Object object) {
-        final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
     }
 

@@ -5,15 +5,15 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-import org.jvnet.jaxb2_commons.lang.CopyStrategy;
-import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Equals;
-import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
+import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
+import org.jvnet.jaxb2_commons.lang.CopyTo2;
+import org.jvnet.jaxb2_commons.lang.Equals2;
+import org.jvnet.jaxb2_commons.lang.EqualsStrategy2;
 import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBEqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy;
-import org.jvnet.jaxb2_commons.lang.ToString;
-import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
+import org.jvnet.jaxb2_commons.lang.ToString2;
+import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 
@@ -53,8 +53,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
     "quarter",
     "neighbourhood"
 })
-public class GeoHierarchy
-    implements Cloneable, CopyTo, Equals, ToString
+public class GeoHierarchy implements Cloneable, CopyTo2, Equals2, ToString2
 {
 
     protected Continent continent;
@@ -213,49 +212,49 @@ public class GeoHierarchy
     }
 
     public String toString() {
-        final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
         append(null, buffer, strategy);
         return buffer.toString();
     }
 
-    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
         strategy.appendEnd(locator, this, buffer);
         return buffer;
     }
 
-    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             Continent theContinent;
             theContinent = this.getContinent();
-            strategy.appendField(locator, this, "continent", buffer, theContinent);
+            strategy.appendField(locator, this, "continent", buffer, theContinent, (this.continent!= null));
         }
         {
             Country theCountry;
             theCountry = this.getCountry();
-            strategy.appendField(locator, this, "country", buffer, theCountry);
+            strategy.appendField(locator, this, "country", buffer, theCountry, (this.country!= null));
         }
         {
             Region theRegion;
             theRegion = this.getRegion();
-            strategy.appendField(locator, this, "region", buffer, theRegion);
+            strategy.appendField(locator, this, "region", buffer, theRegion, (this.region!= null));
         }
         {
             City theCity;
             theCity = this.getCity();
-            strategy.appendField(locator, this, "city", buffer, theCity);
+            strategy.appendField(locator, this, "city", buffer, theCity, (this.city!= null));
         }
         {
             Quarter theQuarter;
             theQuarter = this.getQuarter();
-            strategy.appendField(locator, this, "quarter", buffer, theQuarter);
+            strategy.appendField(locator, this, "quarter", buffer, theQuarter, (this.quarter!= null));
         }
         {
             Neighbourhood theNeighbourhood;
             theNeighbourhood = this.getNeighbourhood();
-            strategy.appendField(locator, this, "neighbourhood", buffer, theNeighbourhood);
+            strategy.appendField(locator, this, "neighbourhood", buffer, theNeighbourhood, (this.neighbourhood!= null));
         }
         return buffer;
     }
@@ -265,61 +264,91 @@ public class GeoHierarchy
     }
 
     public Object copyTo(Object target) {
-        final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof GeoHierarchy) {
             final GeoHierarchy copy = ((GeoHierarchy) draftCopy);
-            if (this.continent!= null) {
-                Continent sourceContinent;
-                sourceContinent = this.getContinent();
-                Continent copyContinent = ((Continent) strategy.copy(LocatorUtils.property(locator, "continent", sourceContinent), sourceContinent));
-                copy.setContinent(copyContinent);
-            } else {
-                copy.continent = null;
+            {
+                Boolean continentShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.continent!= null));
+                if (continentShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Continent sourceContinent;
+                    sourceContinent = this.getContinent();
+                    Continent copyContinent = ((Continent) strategy.copy(LocatorUtils.property(locator, "continent", sourceContinent), sourceContinent, (this.continent!= null)));
+                    copy.setContinent(copyContinent);
+                } else {
+                    if (continentShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.continent = null;
+                    }
+                }
             }
-            if (this.country!= null) {
-                Country sourceCountry;
-                sourceCountry = this.getCountry();
-                Country copyCountry = ((Country) strategy.copy(LocatorUtils.property(locator, "country", sourceCountry), sourceCountry));
-                copy.setCountry(copyCountry);
-            } else {
-                copy.country = null;
+            {
+                Boolean countryShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.country!= null));
+                if (countryShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Country sourceCountry;
+                    sourceCountry = this.getCountry();
+                    Country copyCountry = ((Country) strategy.copy(LocatorUtils.property(locator, "country", sourceCountry), sourceCountry, (this.country!= null)));
+                    copy.setCountry(copyCountry);
+                } else {
+                    if (countryShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.country = null;
+                    }
+                }
             }
-            if (this.region!= null) {
-                Region sourceRegion;
-                sourceRegion = this.getRegion();
-                Region copyRegion = ((Region) strategy.copy(LocatorUtils.property(locator, "region", sourceRegion), sourceRegion));
-                copy.setRegion(copyRegion);
-            } else {
-                copy.region = null;
+            {
+                Boolean regionShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.region!= null));
+                if (regionShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Region sourceRegion;
+                    sourceRegion = this.getRegion();
+                    Region copyRegion = ((Region) strategy.copy(LocatorUtils.property(locator, "region", sourceRegion), sourceRegion, (this.region!= null)));
+                    copy.setRegion(copyRegion);
+                } else {
+                    if (regionShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.region = null;
+                    }
+                }
             }
-            if (this.city!= null) {
-                City sourceCity;
-                sourceCity = this.getCity();
-                City copyCity = ((City) strategy.copy(LocatorUtils.property(locator, "city", sourceCity), sourceCity));
-                copy.setCity(copyCity);
-            } else {
-                copy.city = null;
+            {
+                Boolean cityShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.city!= null));
+                if (cityShouldBeCopiedAndSet == Boolean.TRUE) {
+                    City sourceCity;
+                    sourceCity = this.getCity();
+                    City copyCity = ((City) strategy.copy(LocatorUtils.property(locator, "city", sourceCity), sourceCity, (this.city!= null)));
+                    copy.setCity(copyCity);
+                } else {
+                    if (cityShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.city = null;
+                    }
+                }
             }
-            if (this.quarter!= null) {
-                Quarter sourceQuarter;
-                sourceQuarter = this.getQuarter();
-                Quarter copyQuarter = ((Quarter) strategy.copy(LocatorUtils.property(locator, "quarter", sourceQuarter), sourceQuarter));
-                copy.setQuarter(copyQuarter);
-            } else {
-                copy.quarter = null;
+            {
+                Boolean quarterShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.quarter!= null));
+                if (quarterShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Quarter sourceQuarter;
+                    sourceQuarter = this.getQuarter();
+                    Quarter copyQuarter = ((Quarter) strategy.copy(LocatorUtils.property(locator, "quarter", sourceQuarter), sourceQuarter, (this.quarter!= null)));
+                    copy.setQuarter(copyQuarter);
+                } else {
+                    if (quarterShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.quarter = null;
+                    }
+                }
             }
-            if (this.neighbourhood!= null) {
-                Neighbourhood sourceNeighbourhood;
-                sourceNeighbourhood = this.getNeighbourhood();
-                Neighbourhood copyNeighbourhood = ((Neighbourhood) strategy.copy(LocatorUtils.property(locator, "neighbourhood", sourceNeighbourhood), sourceNeighbourhood));
-                copy.setNeighbourhood(copyNeighbourhood);
-            } else {
-                copy.neighbourhood = null;
+            {
+                Boolean neighbourhoodShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.neighbourhood!= null));
+                if (neighbourhoodShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Neighbourhood sourceNeighbourhood;
+                    sourceNeighbourhood = this.getNeighbourhood();
+                    Neighbourhood copyNeighbourhood = ((Neighbourhood) strategy.copy(LocatorUtils.property(locator, "neighbourhood", sourceNeighbourhood), sourceNeighbourhood, (this.neighbourhood!= null)));
+                    copy.setNeighbourhood(copyNeighbourhood);
+                } else {
+                    if (neighbourhoodShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.neighbourhood = null;
+                    }
+                }
             }
         }
         return draftCopy;
@@ -329,7 +358,7 @@ public class GeoHierarchy
         return new GeoHierarchy();
     }
 
-    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
@@ -342,7 +371,7 @@ public class GeoHierarchy
             lhsContinent = this.getContinent();
             Continent rhsContinent;
             rhsContinent = that.getContinent();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "continent", lhsContinent), LocatorUtils.property(thatLocator, "continent", rhsContinent), lhsContinent, rhsContinent)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "continent", lhsContinent), LocatorUtils.property(thatLocator, "continent", rhsContinent), lhsContinent, rhsContinent, (this.continent!= null), (that.continent!= null))) {
                 return false;
             }
         }
@@ -351,7 +380,7 @@ public class GeoHierarchy
             lhsCountry = this.getCountry();
             Country rhsCountry;
             rhsCountry = that.getCountry();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "country", lhsCountry), LocatorUtils.property(thatLocator, "country", rhsCountry), lhsCountry, rhsCountry)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "country", lhsCountry), LocatorUtils.property(thatLocator, "country", rhsCountry), lhsCountry, rhsCountry, (this.country!= null), (that.country!= null))) {
                 return false;
             }
         }
@@ -360,7 +389,7 @@ public class GeoHierarchy
             lhsRegion = this.getRegion();
             Region rhsRegion;
             rhsRegion = that.getRegion();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "region", lhsRegion), LocatorUtils.property(thatLocator, "region", rhsRegion), lhsRegion, rhsRegion)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "region", lhsRegion), LocatorUtils.property(thatLocator, "region", rhsRegion), lhsRegion, rhsRegion, (this.region!= null), (that.region!= null))) {
                 return false;
             }
         }
@@ -369,7 +398,7 @@ public class GeoHierarchy
             lhsCity = this.getCity();
             City rhsCity;
             rhsCity = that.getCity();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "city", lhsCity), LocatorUtils.property(thatLocator, "city", rhsCity), lhsCity, rhsCity)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "city", lhsCity), LocatorUtils.property(thatLocator, "city", rhsCity), lhsCity, rhsCity, (this.city!= null), (that.city!= null))) {
                 return false;
             }
         }
@@ -378,7 +407,7 @@ public class GeoHierarchy
             lhsQuarter = this.getQuarter();
             Quarter rhsQuarter;
             rhsQuarter = that.getQuarter();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "quarter", lhsQuarter), LocatorUtils.property(thatLocator, "quarter", rhsQuarter), lhsQuarter, rhsQuarter)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "quarter", lhsQuarter), LocatorUtils.property(thatLocator, "quarter", rhsQuarter), lhsQuarter, rhsQuarter, (this.quarter!= null), (that.quarter!= null))) {
                 return false;
             }
         }
@@ -387,7 +416,7 @@ public class GeoHierarchy
             lhsNeighbourhood = this.getNeighbourhood();
             Neighbourhood rhsNeighbourhood;
             rhsNeighbourhood = that.getNeighbourhood();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "neighbourhood", lhsNeighbourhood), LocatorUtils.property(thatLocator, "neighbourhood", rhsNeighbourhood), lhsNeighbourhood, rhsNeighbourhood)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "neighbourhood", lhsNeighbourhood), LocatorUtils.property(thatLocator, "neighbourhood", rhsNeighbourhood), lhsNeighbourhood, rhsNeighbourhood, (this.neighbourhood!= null), (that.neighbourhood!= null))) {
                 return false;
             }
         }
@@ -395,7 +424,7 @@ public class GeoHierarchy
     }
 
     public boolean equals(Object object) {
-        final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
     }
 

@@ -6,15 +6,15 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import org.jvnet.jaxb2_commons.lang.CopyStrategy;
-import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Equals;
-import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
+import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
+import org.jvnet.jaxb2_commons.lang.CopyTo2;
+import org.jvnet.jaxb2_commons.lang.Equals2;
+import org.jvnet.jaxb2_commons.lang.EqualsStrategy2;
 import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBEqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy;
-import org.jvnet.jaxb2_commons.lang.ToString;
-import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
+import org.jvnet.jaxb2_commons.lang.ToString2;
+import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 import org.openestate.is24.restapi.xml.common.FacilityType;
@@ -56,7 +56,7 @@ import org.openestate.is24.restapi.xml.common.YesNotApplicableType;
 })
 public class OfferAssistedLiving
     extends OfferRealEstateForList
-    implements Cloneable, CopyTo, Equals, ToString
+    implements Cloneable, CopyTo2, Equals2, ToString2
 {
 
     protected String shortDescription;
@@ -238,55 +238,55 @@ public class OfferAssistedLiving
     }
 
     public String toString() {
-        final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
         append(null, buffer, strategy);
         return buffer.toString();
     }
 
-    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
         strategy.appendEnd(locator, this, buffer);
         return buffer;
     }
 
-    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         super.appendFields(locator, buffer, strategy);
         {
             String theShortDescription;
             theShortDescription = this.getShortDescription();
-            strategy.appendField(locator, this, "shortDescription", buffer, theShortDescription);
+            strategy.appendField(locator, this, "shortDescription", buffer, theShortDescription, (this.shortDescription!= null));
         }
         {
             PetsAllowedType thePetsAllowed;
             thePetsAllowed = this.getPetsAllowed();
-            strategy.appendField(locator, this, "petsAllowed", buffer, thePetsAllowed);
+            strategy.appendField(locator, this, "petsAllowed", buffer, thePetsAllowed, (this.petsAllowed!= null));
         }
         {
             YesNotApplicableType theTrialLivingPossible;
             theTrialLivingPossible = this.getTrialLivingPossible();
-            strategy.appendField(locator, this, "trialLivingPossible", buffer, theTrialLivingPossible);
+            strategy.appendField(locator, this, "trialLivingPossible", buffer, theTrialLivingPossible, (this.trialLivingPossible!= null));
         }
         {
             YesNotApplicableType theCookingPossibilty;
             theCookingPossibilty = this.getCookingPossibilty();
-            strategy.appendField(locator, this, "cookingPossibilty", buffer, theCookingPossibilty);
+            strategy.appendField(locator, this, "cookingPossibilty", buffer, theCookingPossibilty, (this.cookingPossibilty!= null));
         }
         {
             MarketingType theMarketingType;
             theMarketingType = this.getMarketingType();
-            strategy.appendField(locator, this, "marketingType", buffer, theMarketingType);
+            strategy.appendField(locator, this, "marketingType", buffer, theMarketingType, (this.marketingType!= null));
         }
         {
             FacilityType theFacilityType;
             theFacilityType = this.getFacilityType();
-            strategy.appendField(locator, this, "facilityType", buffer, theFacilityType);
+            strategy.appendField(locator, this, "facilityType", buffer, theFacilityType, (this.facilityType!= null));
         }
         {
             boolean theBalcony;
             theBalcony = this.isBalcony();
-            strategy.appendField(locator, this, "balcony", buffer, theBalcony);
+            strategy.appendField(locator, this, "balcony", buffer, theBalcony, true);
         }
         return buffer;
     }
@@ -296,68 +296,104 @@ public class OfferAssistedLiving
     }
 
     public Object copyTo(Object target) {
-        final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         super.copyTo(locator, draftCopy, strategy);
         if (draftCopy instanceof OfferAssistedLiving) {
             final OfferAssistedLiving copy = ((OfferAssistedLiving) draftCopy);
-            if (this.shortDescription!= null) {
-                String sourceShortDescription;
-                sourceShortDescription = this.getShortDescription();
-                String copyShortDescription = ((String) strategy.copy(LocatorUtils.property(locator, "shortDescription", sourceShortDescription), sourceShortDescription));
-                copy.setShortDescription(copyShortDescription);
-            } else {
-                copy.shortDescription = null;
-            }
-            if (this.petsAllowed!= null) {
-                PetsAllowedType sourcePetsAllowed;
-                sourcePetsAllowed = this.getPetsAllowed();
-                PetsAllowedType copyPetsAllowed = ((PetsAllowedType) strategy.copy(LocatorUtils.property(locator, "petsAllowed", sourcePetsAllowed), sourcePetsAllowed));
-                copy.setPetsAllowed(copyPetsAllowed);
-            } else {
-                copy.petsAllowed = null;
-            }
-            if (this.trialLivingPossible!= null) {
-                YesNotApplicableType sourceTrialLivingPossible;
-                sourceTrialLivingPossible = this.getTrialLivingPossible();
-                YesNotApplicableType copyTrialLivingPossible = ((YesNotApplicableType) strategy.copy(LocatorUtils.property(locator, "trialLivingPossible", sourceTrialLivingPossible), sourceTrialLivingPossible));
-                copy.setTrialLivingPossible(copyTrialLivingPossible);
-            } else {
-                copy.trialLivingPossible = null;
-            }
-            if (this.cookingPossibilty!= null) {
-                YesNotApplicableType sourceCookingPossibilty;
-                sourceCookingPossibilty = this.getCookingPossibilty();
-                YesNotApplicableType copyCookingPossibilty = ((YesNotApplicableType) strategy.copy(LocatorUtils.property(locator, "cookingPossibilty", sourceCookingPossibilty), sourceCookingPossibilty));
-                copy.setCookingPossibilty(copyCookingPossibilty);
-            } else {
-                copy.cookingPossibilty = null;
-            }
-            if (this.marketingType!= null) {
-                MarketingType sourceMarketingType;
-                sourceMarketingType = this.getMarketingType();
-                MarketingType copyMarketingType = ((MarketingType) strategy.copy(LocatorUtils.property(locator, "marketingType", sourceMarketingType), sourceMarketingType));
-                copy.setMarketingType(copyMarketingType);
-            } else {
-                copy.marketingType = null;
-            }
-            if (this.facilityType!= null) {
-                FacilityType sourceFacilityType;
-                sourceFacilityType = this.getFacilityType();
-                FacilityType copyFacilityType = ((FacilityType) strategy.copy(LocatorUtils.property(locator, "facilityType", sourceFacilityType), sourceFacilityType));
-                copy.setFacilityType(copyFacilityType);
-            } else {
-                copy.facilityType = null;
+            {
+                Boolean shortDescriptionShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.shortDescription!= null));
+                if (shortDescriptionShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceShortDescription;
+                    sourceShortDescription = this.getShortDescription();
+                    String copyShortDescription = ((String) strategy.copy(LocatorUtils.property(locator, "shortDescription", sourceShortDescription), sourceShortDescription, (this.shortDescription!= null)));
+                    copy.setShortDescription(copyShortDescription);
+                } else {
+                    if (shortDescriptionShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.shortDescription = null;
+                    }
+                }
             }
             {
-                boolean sourceBalcony;
-                sourceBalcony = this.isBalcony();
-                boolean copyBalcony = strategy.copy(LocatorUtils.property(locator, "balcony", sourceBalcony), sourceBalcony);
-                copy.setBalcony(copyBalcony);
+                Boolean petsAllowedShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.petsAllowed!= null));
+                if (petsAllowedShouldBeCopiedAndSet == Boolean.TRUE) {
+                    PetsAllowedType sourcePetsAllowed;
+                    sourcePetsAllowed = this.getPetsAllowed();
+                    PetsAllowedType copyPetsAllowed = ((PetsAllowedType) strategy.copy(LocatorUtils.property(locator, "petsAllowed", sourcePetsAllowed), sourcePetsAllowed, (this.petsAllowed!= null)));
+                    copy.setPetsAllowed(copyPetsAllowed);
+                } else {
+                    if (petsAllowedShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.petsAllowed = null;
+                    }
+                }
+            }
+            {
+                Boolean trialLivingPossibleShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.trialLivingPossible!= null));
+                if (trialLivingPossibleShouldBeCopiedAndSet == Boolean.TRUE) {
+                    YesNotApplicableType sourceTrialLivingPossible;
+                    sourceTrialLivingPossible = this.getTrialLivingPossible();
+                    YesNotApplicableType copyTrialLivingPossible = ((YesNotApplicableType) strategy.copy(LocatorUtils.property(locator, "trialLivingPossible", sourceTrialLivingPossible), sourceTrialLivingPossible, (this.trialLivingPossible!= null)));
+                    copy.setTrialLivingPossible(copyTrialLivingPossible);
+                } else {
+                    if (trialLivingPossibleShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.trialLivingPossible = null;
+                    }
+                }
+            }
+            {
+                Boolean cookingPossibiltyShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.cookingPossibilty!= null));
+                if (cookingPossibiltyShouldBeCopiedAndSet == Boolean.TRUE) {
+                    YesNotApplicableType sourceCookingPossibilty;
+                    sourceCookingPossibilty = this.getCookingPossibilty();
+                    YesNotApplicableType copyCookingPossibilty = ((YesNotApplicableType) strategy.copy(LocatorUtils.property(locator, "cookingPossibilty", sourceCookingPossibilty), sourceCookingPossibilty, (this.cookingPossibilty!= null)));
+                    copy.setCookingPossibilty(copyCookingPossibilty);
+                } else {
+                    if (cookingPossibiltyShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.cookingPossibilty = null;
+                    }
+                }
+            }
+            {
+                Boolean marketingTypeShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.marketingType!= null));
+                if (marketingTypeShouldBeCopiedAndSet == Boolean.TRUE) {
+                    MarketingType sourceMarketingType;
+                    sourceMarketingType = this.getMarketingType();
+                    MarketingType copyMarketingType = ((MarketingType) strategy.copy(LocatorUtils.property(locator, "marketingType", sourceMarketingType), sourceMarketingType, (this.marketingType!= null)));
+                    copy.setMarketingType(copyMarketingType);
+                } else {
+                    if (marketingTypeShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.marketingType = null;
+                    }
+                }
+            }
+            {
+                Boolean facilityTypeShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.facilityType!= null));
+                if (facilityTypeShouldBeCopiedAndSet == Boolean.TRUE) {
+                    FacilityType sourceFacilityType;
+                    sourceFacilityType = this.getFacilityType();
+                    FacilityType copyFacilityType = ((FacilityType) strategy.copy(LocatorUtils.property(locator, "facilityType", sourceFacilityType), sourceFacilityType, (this.facilityType!= null)));
+                    copy.setFacilityType(copyFacilityType);
+                } else {
+                    if (facilityTypeShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.facilityType = null;
+                    }
+                }
+            }
+            {
+                Boolean balconyShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, true);
+                if (balconyShouldBeCopiedAndSet == Boolean.TRUE) {
+                    boolean sourceBalcony;
+                    sourceBalcony = this.isBalcony();
+                    boolean copyBalcony = strategy.copy(LocatorUtils.property(locator, "balcony", sourceBalcony), sourceBalcony, true);
+                    copy.setBalcony(copyBalcony);
+                } else {
+                    if (balconyShouldBeCopiedAndSet == Boolean.FALSE) {
+                    }
+                }
             }
         }
         return draftCopy;
@@ -367,7 +403,7 @@ public class OfferAssistedLiving
         return new OfferAssistedLiving();
     }
 
-    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
@@ -383,7 +419,7 @@ public class OfferAssistedLiving
             lhsShortDescription = this.getShortDescription();
             String rhsShortDescription;
             rhsShortDescription = that.getShortDescription();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "shortDescription", lhsShortDescription), LocatorUtils.property(thatLocator, "shortDescription", rhsShortDescription), lhsShortDescription, rhsShortDescription)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "shortDescription", lhsShortDescription), LocatorUtils.property(thatLocator, "shortDescription", rhsShortDescription), lhsShortDescription, rhsShortDescription, (this.shortDescription!= null), (that.shortDescription!= null))) {
                 return false;
             }
         }
@@ -392,7 +428,7 @@ public class OfferAssistedLiving
             lhsPetsAllowed = this.getPetsAllowed();
             PetsAllowedType rhsPetsAllowed;
             rhsPetsAllowed = that.getPetsAllowed();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "petsAllowed", lhsPetsAllowed), LocatorUtils.property(thatLocator, "petsAllowed", rhsPetsAllowed), lhsPetsAllowed, rhsPetsAllowed)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "petsAllowed", lhsPetsAllowed), LocatorUtils.property(thatLocator, "petsAllowed", rhsPetsAllowed), lhsPetsAllowed, rhsPetsAllowed, (this.petsAllowed!= null), (that.petsAllowed!= null))) {
                 return false;
             }
         }
@@ -401,7 +437,7 @@ public class OfferAssistedLiving
             lhsTrialLivingPossible = this.getTrialLivingPossible();
             YesNotApplicableType rhsTrialLivingPossible;
             rhsTrialLivingPossible = that.getTrialLivingPossible();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "trialLivingPossible", lhsTrialLivingPossible), LocatorUtils.property(thatLocator, "trialLivingPossible", rhsTrialLivingPossible), lhsTrialLivingPossible, rhsTrialLivingPossible)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "trialLivingPossible", lhsTrialLivingPossible), LocatorUtils.property(thatLocator, "trialLivingPossible", rhsTrialLivingPossible), lhsTrialLivingPossible, rhsTrialLivingPossible, (this.trialLivingPossible!= null), (that.trialLivingPossible!= null))) {
                 return false;
             }
         }
@@ -410,7 +446,7 @@ public class OfferAssistedLiving
             lhsCookingPossibilty = this.getCookingPossibilty();
             YesNotApplicableType rhsCookingPossibilty;
             rhsCookingPossibilty = that.getCookingPossibilty();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "cookingPossibilty", lhsCookingPossibilty), LocatorUtils.property(thatLocator, "cookingPossibilty", rhsCookingPossibilty), lhsCookingPossibilty, rhsCookingPossibilty)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "cookingPossibilty", lhsCookingPossibilty), LocatorUtils.property(thatLocator, "cookingPossibilty", rhsCookingPossibilty), lhsCookingPossibilty, rhsCookingPossibilty, (this.cookingPossibilty!= null), (that.cookingPossibilty!= null))) {
                 return false;
             }
         }
@@ -419,7 +455,7 @@ public class OfferAssistedLiving
             lhsMarketingType = this.getMarketingType();
             MarketingType rhsMarketingType;
             rhsMarketingType = that.getMarketingType();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "marketingType", lhsMarketingType), LocatorUtils.property(thatLocator, "marketingType", rhsMarketingType), lhsMarketingType, rhsMarketingType)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "marketingType", lhsMarketingType), LocatorUtils.property(thatLocator, "marketingType", rhsMarketingType), lhsMarketingType, rhsMarketingType, (this.marketingType!= null), (that.marketingType!= null))) {
                 return false;
             }
         }
@@ -428,7 +464,7 @@ public class OfferAssistedLiving
             lhsFacilityType = this.getFacilityType();
             FacilityType rhsFacilityType;
             rhsFacilityType = that.getFacilityType();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "facilityType", lhsFacilityType), LocatorUtils.property(thatLocator, "facilityType", rhsFacilityType), lhsFacilityType, rhsFacilityType)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "facilityType", lhsFacilityType), LocatorUtils.property(thatLocator, "facilityType", rhsFacilityType), lhsFacilityType, rhsFacilityType, (this.facilityType!= null), (that.facilityType!= null))) {
                 return false;
             }
         }
@@ -437,7 +473,7 @@ public class OfferAssistedLiving
             lhsBalcony = this.isBalcony();
             boolean rhsBalcony;
             rhsBalcony = that.isBalcony();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "balcony", lhsBalcony), LocatorUtils.property(thatLocator, "balcony", rhsBalcony), lhsBalcony, rhsBalcony)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "balcony", lhsBalcony), LocatorUtils.property(thatLocator, "balcony", rhsBalcony), lhsBalcony, rhsBalcony, true, true)) {
                 return false;
             }
         }
@@ -445,7 +481,7 @@ public class OfferAssistedLiving
     }
 
     public boolean equals(Object object) {
-        final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
     }
 

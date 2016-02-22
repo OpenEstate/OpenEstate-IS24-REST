@@ -4,15 +4,15 @@ package org.openestate.is24.restapi.xml.common;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
-import org.jvnet.jaxb2_commons.lang.CopyStrategy;
-import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Equals;
-import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
+import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
+import org.jvnet.jaxb2_commons.lang.CopyTo2;
+import org.jvnet.jaxb2_commons.lang.Equals2;
+import org.jvnet.jaxb2_commons.lang.EqualsStrategy2;
 import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBEqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy;
-import org.jvnet.jaxb2_commons.lang.ToString;
-import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
+import org.jvnet.jaxb2_commons.lang.ToString2;
+import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 
@@ -42,8 +42,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
     "autopilotEnabled",
     "sendEmailWithAutopilotReport"
 })
-public class AutopilotSettings
-    implements Cloneable, CopyTo, Equals, ToString
+public class AutopilotSettings implements Cloneable, CopyTo2, Equals2, ToString2
 {
 
     protected Boolean autopilotEnabled;
@@ -98,29 +97,29 @@ public class AutopilotSettings
     }
 
     public String toString() {
-        final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
         append(null, buffer, strategy);
         return buffer.toString();
     }
 
-    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
         strategy.appendEnd(locator, this, buffer);
         return buffer;
     }
 
-    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             Boolean theAutopilotEnabled;
             theAutopilotEnabled = this.isAutopilotEnabled();
-            strategy.appendField(locator, this, "autopilotEnabled", buffer, theAutopilotEnabled);
+            strategy.appendField(locator, this, "autopilotEnabled", buffer, theAutopilotEnabled, (this.autopilotEnabled!= null));
         }
         {
             Boolean theSendEmailWithAutopilotReport;
             theSendEmailWithAutopilotReport = this.isSendEmailWithAutopilotReport();
-            strategy.appendField(locator, this, "sendEmailWithAutopilotReport", buffer, theSendEmailWithAutopilotReport);
+            strategy.appendField(locator, this, "sendEmailWithAutopilotReport", buffer, theSendEmailWithAutopilotReport, (this.sendEmailWithAutopilotReport!= null));
         }
         return buffer;
     }
@@ -130,29 +129,39 @@ public class AutopilotSettings
     }
 
     public Object copyTo(Object target) {
-        final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof AutopilotSettings) {
             final AutopilotSettings copy = ((AutopilotSettings) draftCopy);
-            if (this.autopilotEnabled!= null) {
-                Boolean sourceAutopilotEnabled;
-                sourceAutopilotEnabled = this.isAutopilotEnabled();
-                Boolean copyAutopilotEnabled = ((Boolean) strategy.copy(LocatorUtils.property(locator, "autopilotEnabled", sourceAutopilotEnabled), sourceAutopilotEnabled));
-                copy.setAutopilotEnabled(copyAutopilotEnabled);
-            } else {
-                copy.autopilotEnabled = null;
+            {
+                Boolean autopilotEnabledShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.autopilotEnabled!= null));
+                if (autopilotEnabledShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Boolean sourceAutopilotEnabled;
+                    sourceAutopilotEnabled = this.isAutopilotEnabled();
+                    Boolean copyAutopilotEnabled = ((Boolean) strategy.copy(LocatorUtils.property(locator, "autopilotEnabled", sourceAutopilotEnabled), sourceAutopilotEnabled, (this.autopilotEnabled!= null)));
+                    copy.setAutopilotEnabled(copyAutopilotEnabled);
+                } else {
+                    if (autopilotEnabledShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.autopilotEnabled = null;
+                    }
+                }
             }
-            if (this.sendEmailWithAutopilotReport!= null) {
-                Boolean sourceSendEmailWithAutopilotReport;
-                sourceSendEmailWithAutopilotReport = this.isSendEmailWithAutopilotReport();
-                Boolean copySendEmailWithAutopilotReport = ((Boolean) strategy.copy(LocatorUtils.property(locator, "sendEmailWithAutopilotReport", sourceSendEmailWithAutopilotReport), sourceSendEmailWithAutopilotReport));
-                copy.setSendEmailWithAutopilotReport(copySendEmailWithAutopilotReport);
-            } else {
-                copy.sendEmailWithAutopilotReport = null;
+            {
+                Boolean sendEmailWithAutopilotReportShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.sendEmailWithAutopilotReport!= null));
+                if (sendEmailWithAutopilotReportShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Boolean sourceSendEmailWithAutopilotReport;
+                    sourceSendEmailWithAutopilotReport = this.isSendEmailWithAutopilotReport();
+                    Boolean copySendEmailWithAutopilotReport = ((Boolean) strategy.copy(LocatorUtils.property(locator, "sendEmailWithAutopilotReport", sourceSendEmailWithAutopilotReport), sourceSendEmailWithAutopilotReport, (this.sendEmailWithAutopilotReport!= null)));
+                    copy.setSendEmailWithAutopilotReport(copySendEmailWithAutopilotReport);
+                } else {
+                    if (sendEmailWithAutopilotReportShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.sendEmailWithAutopilotReport = null;
+                    }
+                }
             }
         }
         return draftCopy;
@@ -162,7 +171,7 @@ public class AutopilotSettings
         return new AutopilotSettings();
     }
 
-    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
@@ -175,7 +184,7 @@ public class AutopilotSettings
             lhsAutopilotEnabled = this.isAutopilotEnabled();
             Boolean rhsAutopilotEnabled;
             rhsAutopilotEnabled = that.isAutopilotEnabled();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "autopilotEnabled", lhsAutopilotEnabled), LocatorUtils.property(thatLocator, "autopilotEnabled", rhsAutopilotEnabled), lhsAutopilotEnabled, rhsAutopilotEnabled)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "autopilotEnabled", lhsAutopilotEnabled), LocatorUtils.property(thatLocator, "autopilotEnabled", rhsAutopilotEnabled), lhsAutopilotEnabled, rhsAutopilotEnabled, (this.autopilotEnabled!= null), (that.autopilotEnabled!= null))) {
                 return false;
             }
         }
@@ -184,7 +193,7 @@ public class AutopilotSettings
             lhsSendEmailWithAutopilotReport = this.isSendEmailWithAutopilotReport();
             Boolean rhsSendEmailWithAutopilotReport;
             rhsSendEmailWithAutopilotReport = that.isSendEmailWithAutopilotReport();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "sendEmailWithAutopilotReport", lhsSendEmailWithAutopilotReport), LocatorUtils.property(thatLocator, "sendEmailWithAutopilotReport", rhsSendEmailWithAutopilotReport), lhsSendEmailWithAutopilotReport, rhsSendEmailWithAutopilotReport)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "sendEmailWithAutopilotReport", lhsSendEmailWithAutopilotReport), LocatorUtils.property(thatLocator, "sendEmailWithAutopilotReport", rhsSendEmailWithAutopilotReport), lhsSendEmailWithAutopilotReport, rhsSendEmailWithAutopilotReport, (this.sendEmailWithAutopilotReport!= null), (that.sendEmailWithAutopilotReport!= null))) {
                 return false;
             }
         }
@@ -192,7 +201,7 @@ public class AutopilotSettings
     }
 
     public boolean equals(Object object) {
-        final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
     }
 

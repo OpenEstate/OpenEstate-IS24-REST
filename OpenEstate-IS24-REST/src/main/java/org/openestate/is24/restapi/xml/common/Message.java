@@ -6,15 +6,15 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import org.jvnet.jaxb2_commons.lang.CopyStrategy;
-import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Equals;
-import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
+import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
+import org.jvnet.jaxb2_commons.lang.CopyTo2;
+import org.jvnet.jaxb2_commons.lang.Equals2;
+import org.jvnet.jaxb2_commons.lang.EqualsStrategy2;
 import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBEqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy;
-import org.jvnet.jaxb2_commons.lang.ToString;
-import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
+import org.jvnet.jaxb2_commons.lang.ToString2;
+import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 
@@ -46,8 +46,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 @XmlType(name = "Message", propOrder = {
 
 })
-public class Message
-    implements Cloneable, CopyTo, Equals, ToString
+public class Message implements Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(required = true)
@@ -131,34 +130,34 @@ public class Message
     }
 
     public String toString() {
-        final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
         append(null, buffer, strategy);
         return buffer.toString();
     }
 
-    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
         strategy.appendEnd(locator, this, buffer);
         return buffer;
     }
 
-    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             MessageCode theMessageCode;
             theMessageCode = this.getMessageCode();
-            strategy.appendField(locator, this, "messageCode", buffer, theMessageCode);
+            strategy.appendField(locator, this, "messageCode", buffer, theMessageCode, (this.messageCode!= null));
         }
         {
             String theMessage;
             theMessage = this.getMessage();
-            strategy.appendField(locator, this, "message", buffer, theMessage);
+            strategy.appendField(locator, this, "message", buffer, theMessage, (this.message!= null));
         }
         {
             String theId;
             theId = this.getId();
-            strategy.appendField(locator, this, "id", buffer, theId);
+            strategy.appendField(locator, this, "id", buffer, theId, (this.id!= null));
         }
         return buffer;
     }
@@ -168,37 +167,52 @@ public class Message
     }
 
     public Object copyTo(Object target) {
-        final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof Message) {
             final Message copy = ((Message) draftCopy);
-            if (this.messageCode!= null) {
-                MessageCode sourceMessageCode;
-                sourceMessageCode = this.getMessageCode();
-                MessageCode copyMessageCode = ((MessageCode) strategy.copy(LocatorUtils.property(locator, "messageCode", sourceMessageCode), sourceMessageCode));
-                copy.setMessageCode(copyMessageCode);
-            } else {
-                copy.messageCode = null;
+            {
+                Boolean messageCodeShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.messageCode!= null));
+                if (messageCodeShouldBeCopiedAndSet == Boolean.TRUE) {
+                    MessageCode sourceMessageCode;
+                    sourceMessageCode = this.getMessageCode();
+                    MessageCode copyMessageCode = ((MessageCode) strategy.copy(LocatorUtils.property(locator, "messageCode", sourceMessageCode), sourceMessageCode, (this.messageCode!= null)));
+                    copy.setMessageCode(copyMessageCode);
+                } else {
+                    if (messageCodeShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.messageCode = null;
+                    }
+                }
             }
-            if (this.message!= null) {
-                String sourceMessage;
-                sourceMessage = this.getMessage();
-                String copyMessage = ((String) strategy.copy(LocatorUtils.property(locator, "message", sourceMessage), sourceMessage));
-                copy.setMessage(copyMessage);
-            } else {
-                copy.message = null;
+            {
+                Boolean messageShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.message!= null));
+                if (messageShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceMessage;
+                    sourceMessage = this.getMessage();
+                    String copyMessage = ((String) strategy.copy(LocatorUtils.property(locator, "message", sourceMessage), sourceMessage, (this.message!= null)));
+                    copy.setMessage(copyMessage);
+                } else {
+                    if (messageShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.message = null;
+                    }
+                }
             }
-            if (this.id!= null) {
-                String sourceId;
-                sourceId = this.getId();
-                String copyId = ((String) strategy.copy(LocatorUtils.property(locator, "id", sourceId), sourceId));
-                copy.setId(copyId);
-            } else {
-                copy.id = null;
+            {
+                Boolean idShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.id!= null));
+                if (idShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceId;
+                    sourceId = this.getId();
+                    String copyId = ((String) strategy.copy(LocatorUtils.property(locator, "id", sourceId), sourceId, (this.id!= null)));
+                    copy.setId(copyId);
+                } else {
+                    if (idShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.id = null;
+                    }
+                }
             }
         }
         return draftCopy;
@@ -208,7 +222,7 @@ public class Message
         return new Message();
     }
 
-    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
@@ -221,7 +235,7 @@ public class Message
             lhsMessageCode = this.getMessageCode();
             MessageCode rhsMessageCode;
             rhsMessageCode = that.getMessageCode();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "messageCode", lhsMessageCode), LocatorUtils.property(thatLocator, "messageCode", rhsMessageCode), lhsMessageCode, rhsMessageCode)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "messageCode", lhsMessageCode), LocatorUtils.property(thatLocator, "messageCode", rhsMessageCode), lhsMessageCode, rhsMessageCode, (this.messageCode!= null), (that.messageCode!= null))) {
                 return false;
             }
         }
@@ -230,7 +244,7 @@ public class Message
             lhsMessage = this.getMessage();
             String rhsMessage;
             rhsMessage = that.getMessage();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "message", lhsMessage), LocatorUtils.property(thatLocator, "message", rhsMessage), lhsMessage, rhsMessage)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "message", lhsMessage), LocatorUtils.property(thatLocator, "message", rhsMessage), lhsMessage, rhsMessage, (this.message!= null), (that.message!= null))) {
                 return false;
             }
         }
@@ -239,7 +253,7 @@ public class Message
             lhsId = this.getId();
             String rhsId;
             rhsId = that.getId();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "id", lhsId), LocatorUtils.property(thatLocator, "id", rhsId), lhsId, rhsId)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "id", lhsId), LocatorUtils.property(thatLocator, "id", rhsId), lhsId, rhsId, (this.id!= null), (that.id!= null))) {
                 return false;
             }
         }
@@ -247,7 +261,7 @@ public class Message
     }
 
     public boolean equals(Object object) {
-        final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
     }
 

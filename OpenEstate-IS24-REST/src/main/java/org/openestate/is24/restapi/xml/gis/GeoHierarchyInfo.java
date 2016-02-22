@@ -8,15 +8,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import org.jvnet.jaxb2_commons.lang.CopyStrategy;
-import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Equals;
-import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
+import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
+import org.jvnet.jaxb2_commons.lang.CopyTo2;
+import org.jvnet.jaxb2_commons.lang.Equals2;
+import org.jvnet.jaxb2_commons.lang.EqualsStrategy2;
 import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBEqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy;
-import org.jvnet.jaxb2_commons.lang.ToString;
-import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
+import org.jvnet.jaxb2_commons.lang.ToString2;
+import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 import org.openestate.is24.restapi.xml.Adapter5;
@@ -56,8 +56,7 @@ import org.openestate.is24.restapi.xml.Adapter5;
     "gkz"
 })
 @XmlRootElement(name = "geoHierarchyInfo")
-public class GeoHierarchyInfo
-    implements Cloneable, CopyTo, Equals, ToString
+public class GeoHierarchyInfo implements Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(type = String.class)
@@ -221,49 +220,49 @@ public class GeoHierarchyInfo
     }
 
     public String toString() {
-        final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
         append(null, buffer, strategy);
         return buffer.toString();
     }
 
-    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
         strategy.appendEnd(locator, this, buffer);
         return buffer;
     }
 
-    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             Long theRegionId;
             theRegionId = this.getRegionId();
-            strategy.appendField(locator, this, "regionId", buffer, theRegionId);
+            strategy.appendField(locator, this, "regionId", buffer, theRegionId, (this.regionId!= null));
         }
         {
             Long theCityId;
             theCityId = this.getCityId();
-            strategy.appendField(locator, this, "cityId", buffer, theCityId);
+            strategy.appendField(locator, this, "cityId", buffer, theCityId, (this.cityId!= null));
         }
         {
             Long theDistrictId;
             theDistrictId = this.getDistrictId();
-            strategy.appendField(locator, this, "districtId", buffer, theDistrictId);
+            strategy.appendField(locator, this, "districtId", buffer, theDistrictId, (this.districtId!= null));
         }
         {
             String thePostalCode;
             thePostalCode = this.getPostalCode();
-            strategy.appendField(locator, this, "postalCode", buffer, thePostalCode);
+            strategy.appendField(locator, this, "postalCode", buffer, thePostalCode, (this.postalCode!= null));
         }
         {
             Long theNeighbourhoodId;
             theNeighbourhoodId = this.getNeighbourhoodId();
-            strategy.appendField(locator, this, "neighbourhoodId", buffer, theNeighbourhoodId);
+            strategy.appendField(locator, this, "neighbourhoodId", buffer, theNeighbourhoodId, (this.neighbourhoodId!= null));
         }
         {
             String theGkz;
             theGkz = this.getGkz();
-            strategy.appendField(locator, this, "gkz", buffer, theGkz);
+            strategy.appendField(locator, this, "gkz", buffer, theGkz, (this.gkz!= null));
         }
         return buffer;
     }
@@ -273,61 +272,91 @@ public class GeoHierarchyInfo
     }
 
     public Object copyTo(Object target) {
-        final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof GeoHierarchyInfo) {
             final GeoHierarchyInfo copy = ((GeoHierarchyInfo) draftCopy);
-            if (this.regionId!= null) {
-                Long sourceRegionId;
-                sourceRegionId = this.getRegionId();
-                Long copyRegionId = ((Long) strategy.copy(LocatorUtils.property(locator, "regionId", sourceRegionId), sourceRegionId));
-                copy.setRegionId(copyRegionId);
-            } else {
-                copy.regionId = null;
+            {
+                Boolean regionIdShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.regionId!= null));
+                if (regionIdShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Long sourceRegionId;
+                    sourceRegionId = this.getRegionId();
+                    Long copyRegionId = ((Long) strategy.copy(LocatorUtils.property(locator, "regionId", sourceRegionId), sourceRegionId, (this.regionId!= null)));
+                    copy.setRegionId(copyRegionId);
+                } else {
+                    if (regionIdShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.regionId = null;
+                    }
+                }
             }
-            if (this.cityId!= null) {
-                Long sourceCityId;
-                sourceCityId = this.getCityId();
-                Long copyCityId = ((Long) strategy.copy(LocatorUtils.property(locator, "cityId", sourceCityId), sourceCityId));
-                copy.setCityId(copyCityId);
-            } else {
-                copy.cityId = null;
+            {
+                Boolean cityIdShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.cityId!= null));
+                if (cityIdShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Long sourceCityId;
+                    sourceCityId = this.getCityId();
+                    Long copyCityId = ((Long) strategy.copy(LocatorUtils.property(locator, "cityId", sourceCityId), sourceCityId, (this.cityId!= null)));
+                    copy.setCityId(copyCityId);
+                } else {
+                    if (cityIdShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.cityId = null;
+                    }
+                }
             }
-            if (this.districtId!= null) {
-                Long sourceDistrictId;
-                sourceDistrictId = this.getDistrictId();
-                Long copyDistrictId = ((Long) strategy.copy(LocatorUtils.property(locator, "districtId", sourceDistrictId), sourceDistrictId));
-                copy.setDistrictId(copyDistrictId);
-            } else {
-                copy.districtId = null;
+            {
+                Boolean districtIdShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.districtId!= null));
+                if (districtIdShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Long sourceDistrictId;
+                    sourceDistrictId = this.getDistrictId();
+                    Long copyDistrictId = ((Long) strategy.copy(LocatorUtils.property(locator, "districtId", sourceDistrictId), sourceDistrictId, (this.districtId!= null)));
+                    copy.setDistrictId(copyDistrictId);
+                } else {
+                    if (districtIdShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.districtId = null;
+                    }
+                }
             }
-            if (this.postalCode!= null) {
-                String sourcePostalCode;
-                sourcePostalCode = this.getPostalCode();
-                String copyPostalCode = ((String) strategy.copy(LocatorUtils.property(locator, "postalCode", sourcePostalCode), sourcePostalCode));
-                copy.setPostalCode(copyPostalCode);
-            } else {
-                copy.postalCode = null;
+            {
+                Boolean postalCodeShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.postalCode!= null));
+                if (postalCodeShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourcePostalCode;
+                    sourcePostalCode = this.getPostalCode();
+                    String copyPostalCode = ((String) strategy.copy(LocatorUtils.property(locator, "postalCode", sourcePostalCode), sourcePostalCode, (this.postalCode!= null)));
+                    copy.setPostalCode(copyPostalCode);
+                } else {
+                    if (postalCodeShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.postalCode = null;
+                    }
+                }
             }
-            if (this.neighbourhoodId!= null) {
-                Long sourceNeighbourhoodId;
-                sourceNeighbourhoodId = this.getNeighbourhoodId();
-                Long copyNeighbourhoodId = ((Long) strategy.copy(LocatorUtils.property(locator, "neighbourhoodId", sourceNeighbourhoodId), sourceNeighbourhoodId));
-                copy.setNeighbourhoodId(copyNeighbourhoodId);
-            } else {
-                copy.neighbourhoodId = null;
+            {
+                Boolean neighbourhoodIdShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.neighbourhoodId!= null));
+                if (neighbourhoodIdShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Long sourceNeighbourhoodId;
+                    sourceNeighbourhoodId = this.getNeighbourhoodId();
+                    Long copyNeighbourhoodId = ((Long) strategy.copy(LocatorUtils.property(locator, "neighbourhoodId", sourceNeighbourhoodId), sourceNeighbourhoodId, (this.neighbourhoodId!= null)));
+                    copy.setNeighbourhoodId(copyNeighbourhoodId);
+                } else {
+                    if (neighbourhoodIdShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.neighbourhoodId = null;
+                    }
+                }
             }
-            if (this.gkz!= null) {
-                String sourceGkz;
-                sourceGkz = this.getGkz();
-                String copyGkz = ((String) strategy.copy(LocatorUtils.property(locator, "gkz", sourceGkz), sourceGkz));
-                copy.setGkz(copyGkz);
-            } else {
-                copy.gkz = null;
+            {
+                Boolean gkzShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.gkz!= null));
+                if (gkzShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceGkz;
+                    sourceGkz = this.getGkz();
+                    String copyGkz = ((String) strategy.copy(LocatorUtils.property(locator, "gkz", sourceGkz), sourceGkz, (this.gkz!= null)));
+                    copy.setGkz(copyGkz);
+                } else {
+                    if (gkzShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.gkz = null;
+                    }
+                }
             }
         }
         return draftCopy;
@@ -337,7 +366,7 @@ public class GeoHierarchyInfo
         return new GeoHierarchyInfo();
     }
 
-    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
@@ -350,7 +379,7 @@ public class GeoHierarchyInfo
             lhsRegionId = this.getRegionId();
             Long rhsRegionId;
             rhsRegionId = that.getRegionId();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "regionId", lhsRegionId), LocatorUtils.property(thatLocator, "regionId", rhsRegionId), lhsRegionId, rhsRegionId)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "regionId", lhsRegionId), LocatorUtils.property(thatLocator, "regionId", rhsRegionId), lhsRegionId, rhsRegionId, (this.regionId!= null), (that.regionId!= null))) {
                 return false;
             }
         }
@@ -359,7 +388,7 @@ public class GeoHierarchyInfo
             lhsCityId = this.getCityId();
             Long rhsCityId;
             rhsCityId = that.getCityId();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "cityId", lhsCityId), LocatorUtils.property(thatLocator, "cityId", rhsCityId), lhsCityId, rhsCityId)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "cityId", lhsCityId), LocatorUtils.property(thatLocator, "cityId", rhsCityId), lhsCityId, rhsCityId, (this.cityId!= null), (that.cityId!= null))) {
                 return false;
             }
         }
@@ -368,7 +397,7 @@ public class GeoHierarchyInfo
             lhsDistrictId = this.getDistrictId();
             Long rhsDistrictId;
             rhsDistrictId = that.getDistrictId();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "districtId", lhsDistrictId), LocatorUtils.property(thatLocator, "districtId", rhsDistrictId), lhsDistrictId, rhsDistrictId)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "districtId", lhsDistrictId), LocatorUtils.property(thatLocator, "districtId", rhsDistrictId), lhsDistrictId, rhsDistrictId, (this.districtId!= null), (that.districtId!= null))) {
                 return false;
             }
         }
@@ -377,7 +406,7 @@ public class GeoHierarchyInfo
             lhsPostalCode = this.getPostalCode();
             String rhsPostalCode;
             rhsPostalCode = that.getPostalCode();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "postalCode", lhsPostalCode), LocatorUtils.property(thatLocator, "postalCode", rhsPostalCode), lhsPostalCode, rhsPostalCode)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "postalCode", lhsPostalCode), LocatorUtils.property(thatLocator, "postalCode", rhsPostalCode), lhsPostalCode, rhsPostalCode, (this.postalCode!= null), (that.postalCode!= null))) {
                 return false;
             }
         }
@@ -386,7 +415,7 @@ public class GeoHierarchyInfo
             lhsNeighbourhoodId = this.getNeighbourhoodId();
             Long rhsNeighbourhoodId;
             rhsNeighbourhoodId = that.getNeighbourhoodId();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "neighbourhoodId", lhsNeighbourhoodId), LocatorUtils.property(thatLocator, "neighbourhoodId", rhsNeighbourhoodId), lhsNeighbourhoodId, rhsNeighbourhoodId)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "neighbourhoodId", lhsNeighbourhoodId), LocatorUtils.property(thatLocator, "neighbourhoodId", rhsNeighbourhoodId), lhsNeighbourhoodId, rhsNeighbourhoodId, (this.neighbourhoodId!= null), (that.neighbourhoodId!= null))) {
                 return false;
             }
         }
@@ -395,7 +424,7 @@ public class GeoHierarchyInfo
             lhsGkz = this.getGkz();
             String rhsGkz;
             rhsGkz = that.getGkz();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "gkz", lhsGkz), LocatorUtils.property(thatLocator, "gkz", rhsGkz), lhsGkz, rhsGkz)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "gkz", lhsGkz), LocatorUtils.property(thatLocator, "gkz", rhsGkz), lhsGkz, rhsGkz, (this.gkz!= null), (that.gkz!= null))) {
                 return false;
             }
         }
@@ -403,7 +432,7 @@ public class GeoHierarchyInfo
     }
 
     public boolean equals(Object object) {
-        final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
     }
 

@@ -4,15 +4,15 @@ package org.openestate.is24.restapi.xml.realtor;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
-import org.jvnet.jaxb2_commons.lang.CopyStrategy;
-import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Equals;
-import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
+import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
+import org.jvnet.jaxb2_commons.lang.CopyTo2;
+import org.jvnet.jaxb2_commons.lang.Equals2;
+import org.jvnet.jaxb2_commons.lang.EqualsStrategy2;
 import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBEqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy;
-import org.jvnet.jaxb2_commons.lang.ToString;
-import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
+import org.jvnet.jaxb2_commons.lang.ToString2;
+import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 
@@ -42,8 +42,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
     "customerNumber",
     "businessCardActivated"
 })
-public class Realtor
-    implements Cloneable, CopyTo, Equals, ToString
+public class Realtor implements Cloneable, CopyTo2, Equals2, ToString2
 {
 
     protected String customerNumber;
@@ -90,29 +89,29 @@ public class Realtor
     }
 
     public String toString() {
-        final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
         append(null, buffer, strategy);
         return buffer.toString();
     }
 
-    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
         strategy.appendEnd(locator, this, buffer);
         return buffer;
     }
 
-    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             String theCustomerNumber;
             theCustomerNumber = this.getCustomerNumber();
-            strategy.appendField(locator, this, "customerNumber", buffer, theCustomerNumber);
+            strategy.appendField(locator, this, "customerNumber", buffer, theCustomerNumber, (this.customerNumber!= null));
         }
         {
             boolean theBusinessCardActivated;
             theBusinessCardActivated = this.isBusinessCardActivated();
-            strategy.appendField(locator, this, "businessCardActivated", buffer, theBusinessCardActivated);
+            strategy.appendField(locator, this, "businessCardActivated", buffer, theBusinessCardActivated, true);
         }
         return buffer;
     }
@@ -122,27 +121,38 @@ public class Realtor
     }
 
     public Object copyTo(Object target) {
-        final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof Realtor) {
             final Realtor copy = ((Realtor) draftCopy);
-            if (this.customerNumber!= null) {
-                String sourceCustomerNumber;
-                sourceCustomerNumber = this.getCustomerNumber();
-                String copyCustomerNumber = ((String) strategy.copy(LocatorUtils.property(locator, "customerNumber", sourceCustomerNumber), sourceCustomerNumber));
-                copy.setCustomerNumber(copyCustomerNumber);
-            } else {
-                copy.customerNumber = null;
+            {
+                Boolean customerNumberShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.customerNumber!= null));
+                if (customerNumberShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceCustomerNumber;
+                    sourceCustomerNumber = this.getCustomerNumber();
+                    String copyCustomerNumber = ((String) strategy.copy(LocatorUtils.property(locator, "customerNumber", sourceCustomerNumber), sourceCustomerNumber, (this.customerNumber!= null)));
+                    copy.setCustomerNumber(copyCustomerNumber);
+                } else {
+                    if (customerNumberShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.customerNumber = null;
+                    }
+                }
             }
             {
-                boolean sourceBusinessCardActivated;
-                sourceBusinessCardActivated = this.isBusinessCardActivated();
-                boolean copyBusinessCardActivated = strategy.copy(LocatorUtils.property(locator, "businessCardActivated", sourceBusinessCardActivated), sourceBusinessCardActivated);
-                copy.setBusinessCardActivated(copyBusinessCardActivated);
+                Boolean businessCardActivatedShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, true);
+                if (businessCardActivatedShouldBeCopiedAndSet == Boolean.TRUE) {
+                    boolean sourceBusinessCardActivated;
+                    sourceBusinessCardActivated = this.isBusinessCardActivated();
+                    boolean copyBusinessCardActivated = strategy.copy(LocatorUtils.property(locator, "businessCardActivated", sourceBusinessCardActivated), sourceBusinessCardActivated, true);
+                    copy.setBusinessCardActivated(copyBusinessCardActivated);
+                } else {
+                    if (businessCardActivatedShouldBeCopiedAndSet == Boolean.FALSE) {
+                    }
+                }
             }
         }
         return draftCopy;
@@ -152,7 +162,7 @@ public class Realtor
         return new Realtor();
     }
 
-    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
@@ -165,7 +175,7 @@ public class Realtor
             lhsCustomerNumber = this.getCustomerNumber();
             String rhsCustomerNumber;
             rhsCustomerNumber = that.getCustomerNumber();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "customerNumber", lhsCustomerNumber), LocatorUtils.property(thatLocator, "customerNumber", rhsCustomerNumber), lhsCustomerNumber, rhsCustomerNumber)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "customerNumber", lhsCustomerNumber), LocatorUtils.property(thatLocator, "customerNumber", rhsCustomerNumber), lhsCustomerNumber, rhsCustomerNumber, (this.customerNumber!= null), (that.customerNumber!= null))) {
                 return false;
             }
         }
@@ -174,7 +184,7 @@ public class Realtor
             lhsBusinessCardActivated = this.isBusinessCardActivated();
             boolean rhsBusinessCardActivated;
             rhsBusinessCardActivated = that.isBusinessCardActivated();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "businessCardActivated", lhsBusinessCardActivated), LocatorUtils.property(thatLocator, "businessCardActivated", rhsBusinessCardActivated), lhsBusinessCardActivated, rhsBusinessCardActivated)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "businessCardActivated", lhsBusinessCardActivated), LocatorUtils.property(thatLocator, "businessCardActivated", rhsBusinessCardActivated), lhsBusinessCardActivated, rhsBusinessCardActivated, true, true)) {
                 return false;
             }
         }
@@ -182,7 +192,7 @@ public class Realtor
     }
 
     public boolean equals(Object object) {
-        final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
     }
 

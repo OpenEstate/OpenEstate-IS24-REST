@@ -7,15 +7,15 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-import org.jvnet.jaxb2_commons.lang.CopyStrategy;
-import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Equals;
-import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
+import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
+import org.jvnet.jaxb2_commons.lang.CopyTo2;
+import org.jvnet.jaxb2_commons.lang.Equals2;
+import org.jvnet.jaxb2_commons.lang.EqualsStrategy2;
 import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBEqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy;
-import org.jvnet.jaxb2_commons.lang.ToString;
-import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
+import org.jvnet.jaxb2_commons.lang.ToString2;
+import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 
@@ -44,8 +44,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
     "realtorContactDetails"
 })
 @XmlRootElement(name = "realtorContactDetailsList")
-public class RealtorContactDetailsList
-    implements Cloneable, CopyTo, Equals, ToString
+public class RealtorContactDetailsList implements Cloneable, CopyTo2, Equals2, ToString2
 {
 
     protected List<RealtorContactDetails> realtorContactDetails;
@@ -80,24 +79,24 @@ public class RealtorContactDetailsList
     }
 
     public String toString() {
-        final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
         append(null, buffer, strategy);
         return buffer.toString();
     }
 
-    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
         strategy.appendEnd(locator, this, buffer);
         return buffer;
     }
 
-    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             List<RealtorContactDetails> theRealtorContactDetails;
             theRealtorContactDetails = (((this.realtorContactDetails!= null)&&(!this.realtorContactDetails.isEmpty()))?this.getRealtorContactDetails():null);
-            strategy.appendField(locator, this, "realtorContactDetails", buffer, theRealtorContactDetails);
+            strategy.appendField(locator, this, "realtorContactDetails", buffer, theRealtorContactDetails, ((this.realtorContactDetails!= null)&&(!this.realtorContactDetails.isEmpty())));
         }
         return buffer;
     }
@@ -107,26 +106,31 @@ public class RealtorContactDetailsList
     }
 
     public Object copyTo(Object target) {
-        final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof RealtorContactDetailsList) {
             final RealtorContactDetailsList copy = ((RealtorContactDetailsList) draftCopy);
-            if ((this.realtorContactDetails!= null)&&(!this.realtorContactDetails.isEmpty())) {
-                List<RealtorContactDetails> sourceRealtorContactDetails;
-                sourceRealtorContactDetails = (((this.realtorContactDetails!= null)&&(!this.realtorContactDetails.isEmpty()))?this.getRealtorContactDetails():null);
-                @SuppressWarnings("unchecked")
-                List<RealtorContactDetails> copyRealtorContactDetails = ((List<RealtorContactDetails> ) strategy.copy(LocatorUtils.property(locator, "realtorContactDetails", sourceRealtorContactDetails), sourceRealtorContactDetails));
-                copy.realtorContactDetails = null;
-                if (copyRealtorContactDetails!= null) {
-                    List<RealtorContactDetails> uniqueRealtorContactDetailsl = copy.getRealtorContactDetails();
-                    uniqueRealtorContactDetailsl.addAll(copyRealtorContactDetails);
+            {
+                Boolean realtorContactDetailsShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, ((this.realtorContactDetails!= null)&&(!this.realtorContactDetails.isEmpty())));
+                if (realtorContactDetailsShouldBeCopiedAndSet == Boolean.TRUE) {
+                    List<RealtorContactDetails> sourceRealtorContactDetails;
+                    sourceRealtorContactDetails = (((this.realtorContactDetails!= null)&&(!this.realtorContactDetails.isEmpty()))?this.getRealtorContactDetails():null);
+                    @SuppressWarnings("unchecked")
+                    List<RealtorContactDetails> copyRealtorContactDetails = ((List<RealtorContactDetails> ) strategy.copy(LocatorUtils.property(locator, "realtorContactDetails", sourceRealtorContactDetails), sourceRealtorContactDetails, ((this.realtorContactDetails!= null)&&(!this.realtorContactDetails.isEmpty()))));
+                    copy.realtorContactDetails = null;
+                    if (copyRealtorContactDetails!= null) {
+                        List<RealtorContactDetails> uniqueRealtorContactDetailsl = copy.getRealtorContactDetails();
+                        uniqueRealtorContactDetailsl.addAll(copyRealtorContactDetails);
+                    }
+                } else {
+                    if (realtorContactDetailsShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.realtorContactDetails = null;
+                    }
                 }
-            } else {
-                copy.realtorContactDetails = null;
             }
         }
         return draftCopy;
@@ -136,7 +140,7 @@ public class RealtorContactDetailsList
         return new RealtorContactDetailsList();
     }
 
-    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
@@ -149,7 +153,7 @@ public class RealtorContactDetailsList
             lhsRealtorContactDetails = (((this.realtorContactDetails!= null)&&(!this.realtorContactDetails.isEmpty()))?this.getRealtorContactDetails():null);
             List<RealtorContactDetails> rhsRealtorContactDetails;
             rhsRealtorContactDetails = (((that.realtorContactDetails!= null)&&(!that.realtorContactDetails.isEmpty()))?that.getRealtorContactDetails():null);
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "realtorContactDetails", lhsRealtorContactDetails), LocatorUtils.property(thatLocator, "realtorContactDetails", rhsRealtorContactDetails), lhsRealtorContactDetails, rhsRealtorContactDetails)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "realtorContactDetails", lhsRealtorContactDetails), LocatorUtils.property(thatLocator, "realtorContactDetails", rhsRealtorContactDetails), lhsRealtorContactDetails, rhsRealtorContactDetails, ((this.realtorContactDetails!= null)&&(!this.realtorContactDetails.isEmpty())), ((that.realtorContactDetails!= null)&&(!that.realtorContactDetails.isEmpty())))) {
                 return false;
             }
         }
@@ -157,7 +161,7 @@ public class RealtorContactDetailsList
     }
 
     public boolean equals(Object object) {
-        final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
     }
 

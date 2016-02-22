@@ -7,15 +7,15 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import org.jvnet.jaxb2_commons.lang.CopyStrategy;
-import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Equals;
-import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
+import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
+import org.jvnet.jaxb2_commons.lang.CopyTo2;
+import org.jvnet.jaxb2_commons.lang.Equals2;
+import org.jvnet.jaxb2_commons.lang.EqualsStrategy2;
 import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBEqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy;
-import org.jvnet.jaxb2_commons.lang.ToString;
-import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
+import org.jvnet.jaxb2_commons.lang.ToString2;
+import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 
@@ -57,8 +57,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 @XmlType(name = "CourtageInfo", propOrder = {
 
 })
-public class CourtageInfo
-    implements Cloneable, CopyTo, Equals, ToString
+public class CourtageInfo implements Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(required = true)
@@ -142,34 +141,34 @@ public class CourtageInfo
     }
 
     public String toString() {
-        final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
         append(null, buffer, strategy);
         return buffer.toString();
     }
 
-    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
         strategy.appendEnd(locator, this, buffer);
         return buffer;
     }
 
-    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             YesNoNotApplicableType theHasCourtage;
             theHasCourtage = this.getHasCourtage();
-            strategy.appendField(locator, this, "hasCourtage", buffer, theHasCourtage);
+            strategy.appendField(locator, this, "hasCourtage", buffer, theHasCourtage, (this.hasCourtage!= null));
         }
         {
             String theCourtage;
             theCourtage = this.getCourtage();
-            strategy.appendField(locator, this, "courtage", buffer, theCourtage);
+            strategy.appendField(locator, this, "courtage", buffer, theCourtage, (this.courtage!= null));
         }
         {
             String theCourtageNote;
             theCourtageNote = this.getCourtageNote();
-            strategy.appendField(locator, this, "courtageNote", buffer, theCourtageNote);
+            strategy.appendField(locator, this, "courtageNote", buffer, theCourtageNote, (this.courtageNote!= null));
         }
         return buffer;
     }
@@ -179,37 +178,52 @@ public class CourtageInfo
     }
 
     public Object copyTo(Object target) {
-        final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof CourtageInfo) {
             final CourtageInfo copy = ((CourtageInfo) draftCopy);
-            if (this.hasCourtage!= null) {
-                YesNoNotApplicableType sourceHasCourtage;
-                sourceHasCourtage = this.getHasCourtage();
-                YesNoNotApplicableType copyHasCourtage = ((YesNoNotApplicableType) strategy.copy(LocatorUtils.property(locator, "hasCourtage", sourceHasCourtage), sourceHasCourtage));
-                copy.setHasCourtage(copyHasCourtage);
-            } else {
-                copy.hasCourtage = null;
+            {
+                Boolean hasCourtageShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.hasCourtage!= null));
+                if (hasCourtageShouldBeCopiedAndSet == Boolean.TRUE) {
+                    YesNoNotApplicableType sourceHasCourtage;
+                    sourceHasCourtage = this.getHasCourtage();
+                    YesNoNotApplicableType copyHasCourtage = ((YesNoNotApplicableType) strategy.copy(LocatorUtils.property(locator, "hasCourtage", sourceHasCourtage), sourceHasCourtage, (this.hasCourtage!= null)));
+                    copy.setHasCourtage(copyHasCourtage);
+                } else {
+                    if (hasCourtageShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.hasCourtage = null;
+                    }
+                }
             }
-            if (this.courtage!= null) {
-                String sourceCourtage;
-                sourceCourtage = this.getCourtage();
-                String copyCourtage = ((String) strategy.copy(LocatorUtils.property(locator, "courtage", sourceCourtage), sourceCourtage));
-                copy.setCourtage(copyCourtage);
-            } else {
-                copy.courtage = null;
+            {
+                Boolean courtageShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.courtage!= null));
+                if (courtageShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceCourtage;
+                    sourceCourtage = this.getCourtage();
+                    String copyCourtage = ((String) strategy.copy(LocatorUtils.property(locator, "courtage", sourceCourtage), sourceCourtage, (this.courtage!= null)));
+                    copy.setCourtage(copyCourtage);
+                } else {
+                    if (courtageShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.courtage = null;
+                    }
+                }
             }
-            if (this.courtageNote!= null) {
-                String sourceCourtageNote;
-                sourceCourtageNote = this.getCourtageNote();
-                String copyCourtageNote = ((String) strategy.copy(LocatorUtils.property(locator, "courtageNote", sourceCourtageNote), sourceCourtageNote));
-                copy.setCourtageNote(copyCourtageNote);
-            } else {
-                copy.courtageNote = null;
+            {
+                Boolean courtageNoteShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.courtageNote!= null));
+                if (courtageNoteShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceCourtageNote;
+                    sourceCourtageNote = this.getCourtageNote();
+                    String copyCourtageNote = ((String) strategy.copy(LocatorUtils.property(locator, "courtageNote", sourceCourtageNote), sourceCourtageNote, (this.courtageNote!= null)));
+                    copy.setCourtageNote(copyCourtageNote);
+                } else {
+                    if (courtageNoteShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.courtageNote = null;
+                    }
+                }
             }
         }
         return draftCopy;
@@ -219,7 +233,7 @@ public class CourtageInfo
         return new CourtageInfo();
     }
 
-    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
@@ -232,7 +246,7 @@ public class CourtageInfo
             lhsHasCourtage = this.getHasCourtage();
             YesNoNotApplicableType rhsHasCourtage;
             rhsHasCourtage = that.getHasCourtage();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "hasCourtage", lhsHasCourtage), LocatorUtils.property(thatLocator, "hasCourtage", rhsHasCourtage), lhsHasCourtage, rhsHasCourtage)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "hasCourtage", lhsHasCourtage), LocatorUtils.property(thatLocator, "hasCourtage", rhsHasCourtage), lhsHasCourtage, rhsHasCourtage, (this.hasCourtage!= null), (that.hasCourtage!= null))) {
                 return false;
             }
         }
@@ -241,7 +255,7 @@ public class CourtageInfo
             lhsCourtage = this.getCourtage();
             String rhsCourtage;
             rhsCourtage = that.getCourtage();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "courtage", lhsCourtage), LocatorUtils.property(thatLocator, "courtage", rhsCourtage), lhsCourtage, rhsCourtage)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "courtage", lhsCourtage), LocatorUtils.property(thatLocator, "courtage", rhsCourtage), lhsCourtage, rhsCourtage, (this.courtage!= null), (that.courtage!= null))) {
                 return false;
             }
         }
@@ -250,7 +264,7 @@ public class CourtageInfo
             lhsCourtageNote = this.getCourtageNote();
             String rhsCourtageNote;
             rhsCourtageNote = that.getCourtageNote();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "courtageNote", lhsCourtageNote), LocatorUtils.property(thatLocator, "courtageNote", rhsCourtageNote), lhsCourtageNote, rhsCourtageNote)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "courtageNote", lhsCourtageNote), LocatorUtils.property(thatLocator, "courtageNote", rhsCourtageNote), lhsCourtageNote, rhsCourtageNote, (this.courtageNote!= null), (that.courtageNote!= null))) {
                 return false;
             }
         }
@@ -258,7 +272,7 @@ public class CourtageInfo
     }
 
     public boolean equals(Object object) {
-        final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
     }
 

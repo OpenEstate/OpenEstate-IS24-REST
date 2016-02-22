@@ -8,15 +8,15 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import org.jvnet.jaxb2_commons.lang.CopyStrategy;
-import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Equals;
-import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
+import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
+import org.jvnet.jaxb2_commons.lang.CopyTo2;
+import org.jvnet.jaxb2_commons.lang.Equals2;
+import org.jvnet.jaxb2_commons.lang.EqualsStrategy2;
 import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBEqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy;
-import org.jvnet.jaxb2_commons.lang.ToString;
-import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
+import org.jvnet.jaxb2_commons.lang.ToString2;
+import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 import org.openestate.is24.restapi.xml.Adapter2;
@@ -48,8 +48,7 @@ import org.openestate.is24.restapi.xml.Adapter2;
 @XmlType(name = "DateRange", propOrder = {
 
 })
-public class DateRange
-    implements Cloneable, CopyTo, Equals, ToString
+public class DateRange implements Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(type = String.class)
@@ -110,29 +109,29 @@ public class DateRange
     }
 
     public String toString() {
-        final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
         append(null, buffer, strategy);
         return buffer.toString();
     }
 
-    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
         strategy.appendEnd(locator, this, buffer);
         return buffer;
     }
 
-    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             Calendar theDateFrom;
             theDateFrom = this.getDateFrom();
-            strategy.appendField(locator, this, "dateFrom", buffer, theDateFrom);
+            strategy.appendField(locator, this, "dateFrom", buffer, theDateFrom, (this.dateFrom!= null));
         }
         {
             Calendar theDateTo;
             theDateTo = this.getDateTo();
-            strategy.appendField(locator, this, "dateTo", buffer, theDateTo);
+            strategy.appendField(locator, this, "dateTo", buffer, theDateTo, (this.dateTo!= null));
         }
         return buffer;
     }
@@ -142,29 +141,39 @@ public class DateRange
     }
 
     public Object copyTo(Object target) {
-        final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof DateRange) {
             final DateRange copy = ((DateRange) draftCopy);
-            if (this.dateFrom!= null) {
-                Calendar sourceDateFrom;
-                sourceDateFrom = this.getDateFrom();
-                Calendar copyDateFrom = ((Calendar) strategy.copy(LocatorUtils.property(locator, "dateFrom", sourceDateFrom), sourceDateFrom));
-                copy.setDateFrom(copyDateFrom);
-            } else {
-                copy.dateFrom = null;
+            {
+                Boolean dateFromShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.dateFrom!= null));
+                if (dateFromShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Calendar sourceDateFrom;
+                    sourceDateFrom = this.getDateFrom();
+                    Calendar copyDateFrom = ((Calendar) strategy.copy(LocatorUtils.property(locator, "dateFrom", sourceDateFrom), sourceDateFrom, (this.dateFrom!= null)));
+                    copy.setDateFrom(copyDateFrom);
+                } else {
+                    if (dateFromShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.dateFrom = null;
+                    }
+                }
             }
-            if (this.dateTo!= null) {
-                Calendar sourceDateTo;
-                sourceDateTo = this.getDateTo();
-                Calendar copyDateTo = ((Calendar) strategy.copy(LocatorUtils.property(locator, "dateTo", sourceDateTo), sourceDateTo));
-                copy.setDateTo(copyDateTo);
-            } else {
-                copy.dateTo = null;
+            {
+                Boolean dateToShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.dateTo!= null));
+                if (dateToShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Calendar sourceDateTo;
+                    sourceDateTo = this.getDateTo();
+                    Calendar copyDateTo = ((Calendar) strategy.copy(LocatorUtils.property(locator, "dateTo", sourceDateTo), sourceDateTo, (this.dateTo!= null)));
+                    copy.setDateTo(copyDateTo);
+                } else {
+                    if (dateToShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.dateTo = null;
+                    }
+                }
             }
         }
         return draftCopy;
@@ -174,7 +183,7 @@ public class DateRange
         return new DateRange();
     }
 
-    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
@@ -187,7 +196,7 @@ public class DateRange
             lhsDateFrom = this.getDateFrom();
             Calendar rhsDateFrom;
             rhsDateFrom = that.getDateFrom();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "dateFrom", lhsDateFrom), LocatorUtils.property(thatLocator, "dateFrom", rhsDateFrom), lhsDateFrom, rhsDateFrom)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "dateFrom", lhsDateFrom), LocatorUtils.property(thatLocator, "dateFrom", rhsDateFrom), lhsDateFrom, rhsDateFrom, (this.dateFrom!= null), (that.dateFrom!= null))) {
                 return false;
             }
         }
@@ -196,7 +205,7 @@ public class DateRange
             lhsDateTo = this.getDateTo();
             Calendar rhsDateTo;
             rhsDateTo = that.getDateTo();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "dateTo", lhsDateTo), LocatorUtils.property(thatLocator, "dateTo", rhsDateTo), lhsDateTo, rhsDateTo)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "dateTo", lhsDateTo), LocatorUtils.property(thatLocator, "dateTo", rhsDateTo), lhsDateTo, rhsDateTo, (this.dateTo!= null), (that.dateTo!= null))) {
                 return false;
             }
         }
@@ -204,7 +213,7 @@ public class DateRange
     }
 
     public boolean equals(Object object) {
-        final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
     }
 

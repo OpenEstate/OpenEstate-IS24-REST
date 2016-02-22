@@ -7,15 +7,15 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-import org.jvnet.jaxb2_commons.lang.CopyStrategy;
-import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Equals;
-import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
+import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
+import org.jvnet.jaxb2_commons.lang.CopyTo2;
+import org.jvnet.jaxb2_commons.lang.Equals2;
+import org.jvnet.jaxb2_commons.lang.EqualsStrategy2;
 import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBEqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy;
-import org.jvnet.jaxb2_commons.lang.ToString;
-import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
+import org.jvnet.jaxb2_commons.lang.ToString2;
+import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 
@@ -48,8 +48,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
     "strictEntry"
 })
 @XmlRootElement(name = "strictList")
-public class StrictList
-    implements Cloneable, CopyTo, Equals, ToString
+public class StrictList implements Cloneable, CopyTo2, Equals2, ToString2
 {
 
     protected Paging paging;
@@ -134,34 +133,34 @@ public class StrictList
     }
 
     public String toString() {
-        final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
         append(null, buffer, strategy);
         return buffer.toString();
     }
 
-    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
         strategy.appendEnd(locator, this, buffer);
         return buffer;
     }
 
-    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             Paging thePaging;
             thePaging = this.getPaging();
-            strategy.appendField(locator, this, "paging", buffer, thePaging);
+            strategy.appendField(locator, this, "paging", buffer, thePaging, (this.paging!= null));
         }
         {
             MatchCountList theMatchCountList;
             theMatchCountList = this.getMatchCountList();
-            strategy.appendField(locator, this, "matchCountList", buffer, theMatchCountList);
+            strategy.appendField(locator, this, "matchCountList", buffer, theMatchCountList, (this.matchCountList!= null));
         }
         {
             List<StrictEntry> theStrictEntry;
             theStrictEntry = (((this.strictEntry!= null)&&(!this.strictEntry.isEmpty()))?this.getStrictEntry():null);
-            strategy.appendField(locator, this, "strictEntry", buffer, theStrictEntry);
+            strategy.appendField(locator, this, "strictEntry", buffer, theStrictEntry, ((this.strictEntry!= null)&&(!this.strictEntry.isEmpty())));
         }
         return buffer;
     }
@@ -171,42 +170,57 @@ public class StrictList
     }
 
     public Object copyTo(Object target) {
-        final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof StrictList) {
             final StrictList copy = ((StrictList) draftCopy);
-            if (this.paging!= null) {
-                Paging sourcePaging;
-                sourcePaging = this.getPaging();
-                Paging copyPaging = ((Paging) strategy.copy(LocatorUtils.property(locator, "paging", sourcePaging), sourcePaging));
-                copy.setPaging(copyPaging);
-            } else {
-                copy.paging = null;
-            }
-            if (this.matchCountList!= null) {
-                MatchCountList sourceMatchCountList;
-                sourceMatchCountList = this.getMatchCountList();
-                MatchCountList copyMatchCountList = ((MatchCountList) strategy.copy(LocatorUtils.property(locator, "matchCountList", sourceMatchCountList), sourceMatchCountList));
-                copy.setMatchCountList(copyMatchCountList);
-            } else {
-                copy.matchCountList = null;
-            }
-            if ((this.strictEntry!= null)&&(!this.strictEntry.isEmpty())) {
-                List<StrictEntry> sourceStrictEntry;
-                sourceStrictEntry = (((this.strictEntry!= null)&&(!this.strictEntry.isEmpty()))?this.getStrictEntry():null);
-                @SuppressWarnings("unchecked")
-                List<StrictEntry> copyStrictEntry = ((List<StrictEntry> ) strategy.copy(LocatorUtils.property(locator, "strictEntry", sourceStrictEntry), sourceStrictEntry));
-                copy.strictEntry = null;
-                if (copyStrictEntry!= null) {
-                    List<StrictEntry> uniqueStrictEntryl = copy.getStrictEntry();
-                    uniqueStrictEntryl.addAll(copyStrictEntry);
+            {
+                Boolean pagingShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.paging!= null));
+                if (pagingShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Paging sourcePaging;
+                    sourcePaging = this.getPaging();
+                    Paging copyPaging = ((Paging) strategy.copy(LocatorUtils.property(locator, "paging", sourcePaging), sourcePaging, (this.paging!= null)));
+                    copy.setPaging(copyPaging);
+                } else {
+                    if (pagingShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.paging = null;
+                    }
                 }
-            } else {
-                copy.strictEntry = null;
+            }
+            {
+                Boolean matchCountListShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.matchCountList!= null));
+                if (matchCountListShouldBeCopiedAndSet == Boolean.TRUE) {
+                    MatchCountList sourceMatchCountList;
+                    sourceMatchCountList = this.getMatchCountList();
+                    MatchCountList copyMatchCountList = ((MatchCountList) strategy.copy(LocatorUtils.property(locator, "matchCountList", sourceMatchCountList), sourceMatchCountList, (this.matchCountList!= null)));
+                    copy.setMatchCountList(copyMatchCountList);
+                } else {
+                    if (matchCountListShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.matchCountList = null;
+                    }
+                }
+            }
+            {
+                Boolean strictEntryShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, ((this.strictEntry!= null)&&(!this.strictEntry.isEmpty())));
+                if (strictEntryShouldBeCopiedAndSet == Boolean.TRUE) {
+                    List<StrictEntry> sourceStrictEntry;
+                    sourceStrictEntry = (((this.strictEntry!= null)&&(!this.strictEntry.isEmpty()))?this.getStrictEntry():null);
+                    @SuppressWarnings("unchecked")
+                    List<StrictEntry> copyStrictEntry = ((List<StrictEntry> ) strategy.copy(LocatorUtils.property(locator, "strictEntry", sourceStrictEntry), sourceStrictEntry, ((this.strictEntry!= null)&&(!this.strictEntry.isEmpty()))));
+                    copy.strictEntry = null;
+                    if (copyStrictEntry!= null) {
+                        List<StrictEntry> uniqueStrictEntryl = copy.getStrictEntry();
+                        uniqueStrictEntryl.addAll(copyStrictEntry);
+                    }
+                } else {
+                    if (strictEntryShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.strictEntry = null;
+                    }
+                }
             }
         }
         return draftCopy;
@@ -216,7 +230,7 @@ public class StrictList
         return new StrictList();
     }
 
-    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
@@ -229,7 +243,7 @@ public class StrictList
             lhsPaging = this.getPaging();
             Paging rhsPaging;
             rhsPaging = that.getPaging();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "paging", lhsPaging), LocatorUtils.property(thatLocator, "paging", rhsPaging), lhsPaging, rhsPaging)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "paging", lhsPaging), LocatorUtils.property(thatLocator, "paging", rhsPaging), lhsPaging, rhsPaging, (this.paging!= null), (that.paging!= null))) {
                 return false;
             }
         }
@@ -238,7 +252,7 @@ public class StrictList
             lhsMatchCountList = this.getMatchCountList();
             MatchCountList rhsMatchCountList;
             rhsMatchCountList = that.getMatchCountList();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "matchCountList", lhsMatchCountList), LocatorUtils.property(thatLocator, "matchCountList", rhsMatchCountList), lhsMatchCountList, rhsMatchCountList)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "matchCountList", lhsMatchCountList), LocatorUtils.property(thatLocator, "matchCountList", rhsMatchCountList), lhsMatchCountList, rhsMatchCountList, (this.matchCountList!= null), (that.matchCountList!= null))) {
                 return false;
             }
         }
@@ -247,7 +261,7 @@ public class StrictList
             lhsStrictEntry = (((this.strictEntry!= null)&&(!this.strictEntry.isEmpty()))?this.getStrictEntry():null);
             List<StrictEntry> rhsStrictEntry;
             rhsStrictEntry = (((that.strictEntry!= null)&&(!that.strictEntry.isEmpty()))?that.getStrictEntry():null);
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "strictEntry", lhsStrictEntry), LocatorUtils.property(thatLocator, "strictEntry", rhsStrictEntry), lhsStrictEntry, rhsStrictEntry)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "strictEntry", lhsStrictEntry), LocatorUtils.property(thatLocator, "strictEntry", rhsStrictEntry), lhsStrictEntry, rhsStrictEntry, ((this.strictEntry!= null)&&(!this.strictEntry.isEmpty())), ((that.strictEntry!= null)&&(!that.strictEntry.isEmpty())))) {
                 return false;
             }
         }
@@ -255,7 +269,7 @@ public class StrictList
     }
 
     public boolean equals(Object object) {
-        final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
     }
 

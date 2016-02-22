@@ -7,15 +7,15 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import org.jvnet.jaxb2_commons.lang.CopyStrategy;
-import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Equals;
-import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
+import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
+import org.jvnet.jaxb2_commons.lang.CopyTo2;
+import org.jvnet.jaxb2_commons.lang.Equals2;
+import org.jvnet.jaxb2_commons.lang.EqualsStrategy2;
 import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBEqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy;
-import org.jvnet.jaxb2_commons.lang.ToString;
-import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
+import org.jvnet.jaxb2_commons.lang.ToString2;
+import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 import org.openestate.is24.restapi.xml.Adapter5;
@@ -45,8 +45,7 @@ import org.openestate.is24.restapi.xml.Adapter5;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "GeoHierarchyStatistic")
-public class GeoHierarchyStatistic
-    implements Cloneable, CopyTo, Equals, ToString
+public class GeoHierarchyStatistic implements Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlAttribute(name = "realEstateType", required = true)
@@ -105,29 +104,29 @@ public class GeoHierarchyStatistic
     }
 
     public String toString() {
-        final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
         append(null, buffer, strategy);
         return buffer.toString();
     }
 
-    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
         strategy.appendEnd(locator, this, buffer);
         return buffer;
     }
 
-    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             RealEstateType theRealEstateType;
             theRealEstateType = this.getRealEstateType();
-            strategy.appendField(locator, this, "realEstateType", buffer, theRealEstateType);
+            strategy.appendField(locator, this, "realEstateType", buffer, theRealEstateType, (this.realEstateType!= null));
         }
         {
             Long theCount;
             theCount = this.getCount();
-            strategy.appendField(locator, this, "count", buffer, theCount);
+            strategy.appendField(locator, this, "count", buffer, theCount, (this.count!= null));
         }
         return buffer;
     }
@@ -137,29 +136,39 @@ public class GeoHierarchyStatistic
     }
 
     public Object copyTo(Object target) {
-        final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof GeoHierarchyStatistic) {
             final GeoHierarchyStatistic copy = ((GeoHierarchyStatistic) draftCopy);
-            if (this.realEstateType!= null) {
-                RealEstateType sourceRealEstateType;
-                sourceRealEstateType = this.getRealEstateType();
-                RealEstateType copyRealEstateType = ((RealEstateType) strategy.copy(LocatorUtils.property(locator, "realEstateType", sourceRealEstateType), sourceRealEstateType));
-                copy.setRealEstateType(copyRealEstateType);
-            } else {
-                copy.realEstateType = null;
+            {
+                Boolean realEstateTypeShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.realEstateType!= null));
+                if (realEstateTypeShouldBeCopiedAndSet == Boolean.TRUE) {
+                    RealEstateType sourceRealEstateType;
+                    sourceRealEstateType = this.getRealEstateType();
+                    RealEstateType copyRealEstateType = ((RealEstateType) strategy.copy(LocatorUtils.property(locator, "realEstateType", sourceRealEstateType), sourceRealEstateType, (this.realEstateType!= null)));
+                    copy.setRealEstateType(copyRealEstateType);
+                } else {
+                    if (realEstateTypeShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.realEstateType = null;
+                    }
+                }
             }
-            if (this.count!= null) {
-                Long sourceCount;
-                sourceCount = this.getCount();
-                Long copyCount = ((Long) strategy.copy(LocatorUtils.property(locator, "count", sourceCount), sourceCount));
-                copy.setCount(copyCount);
-            } else {
-                copy.count = null;
+            {
+                Boolean countShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.count!= null));
+                if (countShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Long sourceCount;
+                    sourceCount = this.getCount();
+                    Long copyCount = ((Long) strategy.copy(LocatorUtils.property(locator, "count", sourceCount), sourceCount, (this.count!= null)));
+                    copy.setCount(copyCount);
+                } else {
+                    if (countShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.count = null;
+                    }
+                }
             }
         }
         return draftCopy;
@@ -169,7 +178,7 @@ public class GeoHierarchyStatistic
         return new GeoHierarchyStatistic();
     }
 
-    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
@@ -182,7 +191,7 @@ public class GeoHierarchyStatistic
             lhsRealEstateType = this.getRealEstateType();
             RealEstateType rhsRealEstateType;
             rhsRealEstateType = that.getRealEstateType();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "realEstateType", lhsRealEstateType), LocatorUtils.property(thatLocator, "realEstateType", rhsRealEstateType), lhsRealEstateType, rhsRealEstateType)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "realEstateType", lhsRealEstateType), LocatorUtils.property(thatLocator, "realEstateType", rhsRealEstateType), lhsRealEstateType, rhsRealEstateType, (this.realEstateType!= null), (that.realEstateType!= null))) {
                 return false;
             }
         }
@@ -191,7 +200,7 @@ public class GeoHierarchyStatistic
             lhsCount = this.getCount();
             Long rhsCount;
             rhsCount = that.getCount();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "count", lhsCount), LocatorUtils.property(thatLocator, "count", rhsCount), lhsCount, rhsCount)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "count", lhsCount), LocatorUtils.property(thatLocator, "count", rhsCount), lhsCount, rhsCount, (this.count!= null), (that.count!= null))) {
                 return false;
             }
         }
@@ -199,7 +208,7 @@ public class GeoHierarchyStatistic
     }
 
     public boolean equals(Object object) {
-        final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
     }
 

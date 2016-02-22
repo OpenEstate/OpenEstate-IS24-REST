@@ -8,15 +8,15 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import org.jvnet.jaxb2_commons.lang.CopyStrategy;
-import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Equals;
-import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
+import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
+import org.jvnet.jaxb2_commons.lang.CopyTo2;
+import org.jvnet.jaxb2_commons.lang.Equals2;
+import org.jvnet.jaxb2_commons.lang.EqualsStrategy2;
 import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBEqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy;
-import org.jvnet.jaxb2_commons.lang.ToString;
-import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
+import org.jvnet.jaxb2_commons.lang.ToString2;
+import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 
@@ -96,8 +96,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 @XmlType(name = "EnergyPerformanceCertificate", propOrder = {
 
 })
-public class EnergyPerformanceCertificate
-    implements Cloneable, CopyTo, Equals, ToString
+public class EnergyPerformanceCertificate implements Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlSchemaType(name = "string")
@@ -342,64 +341,64 @@ public class EnergyPerformanceCertificate
     }
 
     public String toString() {
-        final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
         append(null, buffer, strategy);
         return buffer.toString();
     }
 
-    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
         strategy.appendEnd(locator, this, buffer);
         return buffer;
     }
 
-    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             EnergyCertificateAvailability theEnergyCertificateAvailability;
             theEnergyCertificateAvailability = this.getEnergyCertificateAvailability();
-            strategy.appendField(locator, this, "energyCertificateAvailability", buffer, theEnergyCertificateAvailability);
+            strategy.appendField(locator, this, "energyCertificateAvailability", buffer, theEnergyCertificateAvailability, (this.energyCertificateAvailability!= null));
         }
         {
             EnergyCertificateCreationDate theEnergyCertificateCreationDate;
             theEnergyCertificateCreationDate = this.getEnergyCertificateCreationDate();
-            strategy.appendField(locator, this, "energyCertificateCreationDate", buffer, theEnergyCertificateCreationDate);
+            strategy.appendField(locator, this, "energyCertificateCreationDate", buffer, theEnergyCertificateCreationDate, (this.energyCertificateCreationDate!= null));
         }
         {
             EnergyEfficiencyClass theEnergyEfficiencyClass;
             theEnergyEfficiencyClass = this.getEnergyEfficiencyClass();
-            strategy.appendField(locator, this, "energyEfficiencyClass", buffer, theEnergyEfficiencyClass);
+            strategy.appendField(locator, this, "energyEfficiencyClass", buffer, theEnergyEfficiencyClass, (this.energyEfficiencyClass!= null));
         }
         {
             BigDecimal theElectricityConsumption;
             theElectricityConsumption = this.getElectricityConsumption();
-            strategy.appendField(locator, this, "electricityConsumption", buffer, theElectricityConsumption);
+            strategy.appendField(locator, this, "electricityConsumption", buffer, theElectricityConsumption, (this.electricityConsumption!= null));
         }
         {
             BigDecimal theHeatingConsumption;
             theHeatingConsumption = this.getHeatingConsumption();
-            strategy.appendField(locator, this, "heatingConsumption", buffer, theHeatingConsumption);
+            strategy.appendField(locator, this, "heatingConsumption", buffer, theHeatingConsumption, (this.heatingConsumption!= null));
         }
         {
             BigDecimal theEnergyConsumptionElectricity;
             theEnergyConsumptionElectricity = this.getEnergyConsumptionElectricity();
-            strategy.appendField(locator, this, "energyConsumptionElectricity", buffer, theEnergyConsumptionElectricity);
+            strategy.appendField(locator, this, "energyConsumptionElectricity", buffer, theEnergyConsumptionElectricity, (this.energyConsumptionElectricity!= null));
         }
         {
             BigDecimal theEnergyConsumptionHeating;
             theEnergyConsumptionHeating = this.getEnergyConsumptionHeating();
-            strategy.appendField(locator, this, "energyConsumptionHeating", buffer, theEnergyConsumptionHeating);
+            strategy.appendField(locator, this, "energyConsumptionHeating", buffer, theEnergyConsumptionHeating, (this.energyConsumptionHeating!= null));
         }
         {
             BigDecimal theThermalCharacteristicElectricity;
             theThermalCharacteristicElectricity = this.getThermalCharacteristicElectricity();
-            strategy.appendField(locator, this, "thermalCharacteristicElectricity", buffer, theThermalCharacteristicElectricity);
+            strategy.appendField(locator, this, "thermalCharacteristicElectricity", buffer, theThermalCharacteristicElectricity, (this.thermalCharacteristicElectricity!= null));
         }
         {
             BigDecimal theThermalCharacteristicHeating;
             theThermalCharacteristicHeating = this.getThermalCharacteristicHeating();
-            strategy.appendField(locator, this, "thermalCharacteristicHeating", buffer, theThermalCharacteristicHeating);
+            strategy.appendField(locator, this, "thermalCharacteristicHeating", buffer, theThermalCharacteristicHeating, (this.thermalCharacteristicHeating!= null));
         }
         return buffer;
     }
@@ -409,85 +408,130 @@ public class EnergyPerformanceCertificate
     }
 
     public Object copyTo(Object target) {
-        final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof EnergyPerformanceCertificate) {
             final EnergyPerformanceCertificate copy = ((EnergyPerformanceCertificate) draftCopy);
-            if (this.energyCertificateAvailability!= null) {
-                EnergyCertificateAvailability sourceEnergyCertificateAvailability;
-                sourceEnergyCertificateAvailability = this.getEnergyCertificateAvailability();
-                EnergyCertificateAvailability copyEnergyCertificateAvailability = ((EnergyCertificateAvailability) strategy.copy(LocatorUtils.property(locator, "energyCertificateAvailability", sourceEnergyCertificateAvailability), sourceEnergyCertificateAvailability));
-                copy.setEnergyCertificateAvailability(copyEnergyCertificateAvailability);
-            } else {
-                copy.energyCertificateAvailability = null;
+            {
+                Boolean energyCertificateAvailabilityShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.energyCertificateAvailability!= null));
+                if (energyCertificateAvailabilityShouldBeCopiedAndSet == Boolean.TRUE) {
+                    EnergyCertificateAvailability sourceEnergyCertificateAvailability;
+                    sourceEnergyCertificateAvailability = this.getEnergyCertificateAvailability();
+                    EnergyCertificateAvailability copyEnergyCertificateAvailability = ((EnergyCertificateAvailability) strategy.copy(LocatorUtils.property(locator, "energyCertificateAvailability", sourceEnergyCertificateAvailability), sourceEnergyCertificateAvailability, (this.energyCertificateAvailability!= null)));
+                    copy.setEnergyCertificateAvailability(copyEnergyCertificateAvailability);
+                } else {
+                    if (energyCertificateAvailabilityShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.energyCertificateAvailability = null;
+                    }
+                }
             }
-            if (this.energyCertificateCreationDate!= null) {
-                EnergyCertificateCreationDate sourceEnergyCertificateCreationDate;
-                sourceEnergyCertificateCreationDate = this.getEnergyCertificateCreationDate();
-                EnergyCertificateCreationDate copyEnergyCertificateCreationDate = ((EnergyCertificateCreationDate) strategy.copy(LocatorUtils.property(locator, "energyCertificateCreationDate", sourceEnergyCertificateCreationDate), sourceEnergyCertificateCreationDate));
-                copy.setEnergyCertificateCreationDate(copyEnergyCertificateCreationDate);
-            } else {
-                copy.energyCertificateCreationDate = null;
+            {
+                Boolean energyCertificateCreationDateShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.energyCertificateCreationDate!= null));
+                if (energyCertificateCreationDateShouldBeCopiedAndSet == Boolean.TRUE) {
+                    EnergyCertificateCreationDate sourceEnergyCertificateCreationDate;
+                    sourceEnergyCertificateCreationDate = this.getEnergyCertificateCreationDate();
+                    EnergyCertificateCreationDate copyEnergyCertificateCreationDate = ((EnergyCertificateCreationDate) strategy.copy(LocatorUtils.property(locator, "energyCertificateCreationDate", sourceEnergyCertificateCreationDate), sourceEnergyCertificateCreationDate, (this.energyCertificateCreationDate!= null)));
+                    copy.setEnergyCertificateCreationDate(copyEnergyCertificateCreationDate);
+                } else {
+                    if (energyCertificateCreationDateShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.energyCertificateCreationDate = null;
+                    }
+                }
             }
-            if (this.energyEfficiencyClass!= null) {
-                EnergyEfficiencyClass sourceEnergyEfficiencyClass;
-                sourceEnergyEfficiencyClass = this.getEnergyEfficiencyClass();
-                EnergyEfficiencyClass copyEnergyEfficiencyClass = ((EnergyEfficiencyClass) strategy.copy(LocatorUtils.property(locator, "energyEfficiencyClass", sourceEnergyEfficiencyClass), sourceEnergyEfficiencyClass));
-                copy.setEnergyEfficiencyClass(copyEnergyEfficiencyClass);
-            } else {
-                copy.energyEfficiencyClass = null;
+            {
+                Boolean energyEfficiencyClassShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.energyEfficiencyClass!= null));
+                if (energyEfficiencyClassShouldBeCopiedAndSet == Boolean.TRUE) {
+                    EnergyEfficiencyClass sourceEnergyEfficiencyClass;
+                    sourceEnergyEfficiencyClass = this.getEnergyEfficiencyClass();
+                    EnergyEfficiencyClass copyEnergyEfficiencyClass = ((EnergyEfficiencyClass) strategy.copy(LocatorUtils.property(locator, "energyEfficiencyClass", sourceEnergyEfficiencyClass), sourceEnergyEfficiencyClass, (this.energyEfficiencyClass!= null)));
+                    copy.setEnergyEfficiencyClass(copyEnergyEfficiencyClass);
+                } else {
+                    if (energyEfficiencyClassShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.energyEfficiencyClass = null;
+                    }
+                }
             }
-            if (this.electricityConsumption!= null) {
-                BigDecimal sourceElectricityConsumption;
-                sourceElectricityConsumption = this.getElectricityConsumption();
-                BigDecimal copyElectricityConsumption = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "electricityConsumption", sourceElectricityConsumption), sourceElectricityConsumption));
-                copy.setElectricityConsumption(copyElectricityConsumption);
-            } else {
-                copy.electricityConsumption = null;
+            {
+                Boolean electricityConsumptionShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.electricityConsumption!= null));
+                if (electricityConsumptionShouldBeCopiedAndSet == Boolean.TRUE) {
+                    BigDecimal sourceElectricityConsumption;
+                    sourceElectricityConsumption = this.getElectricityConsumption();
+                    BigDecimal copyElectricityConsumption = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "electricityConsumption", sourceElectricityConsumption), sourceElectricityConsumption, (this.electricityConsumption!= null)));
+                    copy.setElectricityConsumption(copyElectricityConsumption);
+                } else {
+                    if (electricityConsumptionShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.electricityConsumption = null;
+                    }
+                }
             }
-            if (this.heatingConsumption!= null) {
-                BigDecimal sourceHeatingConsumption;
-                sourceHeatingConsumption = this.getHeatingConsumption();
-                BigDecimal copyHeatingConsumption = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "heatingConsumption", sourceHeatingConsumption), sourceHeatingConsumption));
-                copy.setHeatingConsumption(copyHeatingConsumption);
-            } else {
-                copy.heatingConsumption = null;
+            {
+                Boolean heatingConsumptionShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.heatingConsumption!= null));
+                if (heatingConsumptionShouldBeCopiedAndSet == Boolean.TRUE) {
+                    BigDecimal sourceHeatingConsumption;
+                    sourceHeatingConsumption = this.getHeatingConsumption();
+                    BigDecimal copyHeatingConsumption = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "heatingConsumption", sourceHeatingConsumption), sourceHeatingConsumption, (this.heatingConsumption!= null)));
+                    copy.setHeatingConsumption(copyHeatingConsumption);
+                } else {
+                    if (heatingConsumptionShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.heatingConsumption = null;
+                    }
+                }
             }
-            if (this.energyConsumptionElectricity!= null) {
-                BigDecimal sourceEnergyConsumptionElectricity;
-                sourceEnergyConsumptionElectricity = this.getEnergyConsumptionElectricity();
-                BigDecimal copyEnergyConsumptionElectricity = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "energyConsumptionElectricity", sourceEnergyConsumptionElectricity), sourceEnergyConsumptionElectricity));
-                copy.setEnergyConsumptionElectricity(copyEnergyConsumptionElectricity);
-            } else {
-                copy.energyConsumptionElectricity = null;
+            {
+                Boolean energyConsumptionElectricityShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.energyConsumptionElectricity!= null));
+                if (energyConsumptionElectricityShouldBeCopiedAndSet == Boolean.TRUE) {
+                    BigDecimal sourceEnergyConsumptionElectricity;
+                    sourceEnergyConsumptionElectricity = this.getEnergyConsumptionElectricity();
+                    BigDecimal copyEnergyConsumptionElectricity = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "energyConsumptionElectricity", sourceEnergyConsumptionElectricity), sourceEnergyConsumptionElectricity, (this.energyConsumptionElectricity!= null)));
+                    copy.setEnergyConsumptionElectricity(copyEnergyConsumptionElectricity);
+                } else {
+                    if (energyConsumptionElectricityShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.energyConsumptionElectricity = null;
+                    }
+                }
             }
-            if (this.energyConsumptionHeating!= null) {
-                BigDecimal sourceEnergyConsumptionHeating;
-                sourceEnergyConsumptionHeating = this.getEnergyConsumptionHeating();
-                BigDecimal copyEnergyConsumptionHeating = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "energyConsumptionHeating", sourceEnergyConsumptionHeating), sourceEnergyConsumptionHeating));
-                copy.setEnergyConsumptionHeating(copyEnergyConsumptionHeating);
-            } else {
-                copy.energyConsumptionHeating = null;
+            {
+                Boolean energyConsumptionHeatingShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.energyConsumptionHeating!= null));
+                if (energyConsumptionHeatingShouldBeCopiedAndSet == Boolean.TRUE) {
+                    BigDecimal sourceEnergyConsumptionHeating;
+                    sourceEnergyConsumptionHeating = this.getEnergyConsumptionHeating();
+                    BigDecimal copyEnergyConsumptionHeating = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "energyConsumptionHeating", sourceEnergyConsumptionHeating), sourceEnergyConsumptionHeating, (this.energyConsumptionHeating!= null)));
+                    copy.setEnergyConsumptionHeating(copyEnergyConsumptionHeating);
+                } else {
+                    if (energyConsumptionHeatingShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.energyConsumptionHeating = null;
+                    }
+                }
             }
-            if (this.thermalCharacteristicElectricity!= null) {
-                BigDecimal sourceThermalCharacteristicElectricity;
-                sourceThermalCharacteristicElectricity = this.getThermalCharacteristicElectricity();
-                BigDecimal copyThermalCharacteristicElectricity = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "thermalCharacteristicElectricity", sourceThermalCharacteristicElectricity), sourceThermalCharacteristicElectricity));
-                copy.setThermalCharacteristicElectricity(copyThermalCharacteristicElectricity);
-            } else {
-                copy.thermalCharacteristicElectricity = null;
+            {
+                Boolean thermalCharacteristicElectricityShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.thermalCharacteristicElectricity!= null));
+                if (thermalCharacteristicElectricityShouldBeCopiedAndSet == Boolean.TRUE) {
+                    BigDecimal sourceThermalCharacteristicElectricity;
+                    sourceThermalCharacteristicElectricity = this.getThermalCharacteristicElectricity();
+                    BigDecimal copyThermalCharacteristicElectricity = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "thermalCharacteristicElectricity", sourceThermalCharacteristicElectricity), sourceThermalCharacteristicElectricity, (this.thermalCharacteristicElectricity!= null)));
+                    copy.setThermalCharacteristicElectricity(copyThermalCharacteristicElectricity);
+                } else {
+                    if (thermalCharacteristicElectricityShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.thermalCharacteristicElectricity = null;
+                    }
+                }
             }
-            if (this.thermalCharacteristicHeating!= null) {
-                BigDecimal sourceThermalCharacteristicHeating;
-                sourceThermalCharacteristicHeating = this.getThermalCharacteristicHeating();
-                BigDecimal copyThermalCharacteristicHeating = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "thermalCharacteristicHeating", sourceThermalCharacteristicHeating), sourceThermalCharacteristicHeating));
-                copy.setThermalCharacteristicHeating(copyThermalCharacteristicHeating);
-            } else {
-                copy.thermalCharacteristicHeating = null;
+            {
+                Boolean thermalCharacteristicHeatingShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.thermalCharacteristicHeating!= null));
+                if (thermalCharacteristicHeatingShouldBeCopiedAndSet == Boolean.TRUE) {
+                    BigDecimal sourceThermalCharacteristicHeating;
+                    sourceThermalCharacteristicHeating = this.getThermalCharacteristicHeating();
+                    BigDecimal copyThermalCharacteristicHeating = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "thermalCharacteristicHeating", sourceThermalCharacteristicHeating), sourceThermalCharacteristicHeating, (this.thermalCharacteristicHeating!= null)));
+                    copy.setThermalCharacteristicHeating(copyThermalCharacteristicHeating);
+                } else {
+                    if (thermalCharacteristicHeatingShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.thermalCharacteristicHeating = null;
+                    }
+                }
             }
         }
         return draftCopy;
@@ -497,7 +541,7 @@ public class EnergyPerformanceCertificate
         return new EnergyPerformanceCertificate();
     }
 
-    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
@@ -510,7 +554,7 @@ public class EnergyPerformanceCertificate
             lhsEnergyCertificateAvailability = this.getEnergyCertificateAvailability();
             EnergyCertificateAvailability rhsEnergyCertificateAvailability;
             rhsEnergyCertificateAvailability = that.getEnergyCertificateAvailability();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "energyCertificateAvailability", lhsEnergyCertificateAvailability), LocatorUtils.property(thatLocator, "energyCertificateAvailability", rhsEnergyCertificateAvailability), lhsEnergyCertificateAvailability, rhsEnergyCertificateAvailability)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "energyCertificateAvailability", lhsEnergyCertificateAvailability), LocatorUtils.property(thatLocator, "energyCertificateAvailability", rhsEnergyCertificateAvailability), lhsEnergyCertificateAvailability, rhsEnergyCertificateAvailability, (this.energyCertificateAvailability!= null), (that.energyCertificateAvailability!= null))) {
                 return false;
             }
         }
@@ -519,7 +563,7 @@ public class EnergyPerformanceCertificate
             lhsEnergyCertificateCreationDate = this.getEnergyCertificateCreationDate();
             EnergyCertificateCreationDate rhsEnergyCertificateCreationDate;
             rhsEnergyCertificateCreationDate = that.getEnergyCertificateCreationDate();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "energyCertificateCreationDate", lhsEnergyCertificateCreationDate), LocatorUtils.property(thatLocator, "energyCertificateCreationDate", rhsEnergyCertificateCreationDate), lhsEnergyCertificateCreationDate, rhsEnergyCertificateCreationDate)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "energyCertificateCreationDate", lhsEnergyCertificateCreationDate), LocatorUtils.property(thatLocator, "energyCertificateCreationDate", rhsEnergyCertificateCreationDate), lhsEnergyCertificateCreationDate, rhsEnergyCertificateCreationDate, (this.energyCertificateCreationDate!= null), (that.energyCertificateCreationDate!= null))) {
                 return false;
             }
         }
@@ -528,7 +572,7 @@ public class EnergyPerformanceCertificate
             lhsEnergyEfficiencyClass = this.getEnergyEfficiencyClass();
             EnergyEfficiencyClass rhsEnergyEfficiencyClass;
             rhsEnergyEfficiencyClass = that.getEnergyEfficiencyClass();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "energyEfficiencyClass", lhsEnergyEfficiencyClass), LocatorUtils.property(thatLocator, "energyEfficiencyClass", rhsEnergyEfficiencyClass), lhsEnergyEfficiencyClass, rhsEnergyEfficiencyClass)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "energyEfficiencyClass", lhsEnergyEfficiencyClass), LocatorUtils.property(thatLocator, "energyEfficiencyClass", rhsEnergyEfficiencyClass), lhsEnergyEfficiencyClass, rhsEnergyEfficiencyClass, (this.energyEfficiencyClass!= null), (that.energyEfficiencyClass!= null))) {
                 return false;
             }
         }
@@ -537,7 +581,7 @@ public class EnergyPerformanceCertificate
             lhsElectricityConsumption = this.getElectricityConsumption();
             BigDecimal rhsElectricityConsumption;
             rhsElectricityConsumption = that.getElectricityConsumption();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "electricityConsumption", lhsElectricityConsumption), LocatorUtils.property(thatLocator, "electricityConsumption", rhsElectricityConsumption), lhsElectricityConsumption, rhsElectricityConsumption)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "electricityConsumption", lhsElectricityConsumption), LocatorUtils.property(thatLocator, "electricityConsumption", rhsElectricityConsumption), lhsElectricityConsumption, rhsElectricityConsumption, (this.electricityConsumption!= null), (that.electricityConsumption!= null))) {
                 return false;
             }
         }
@@ -546,7 +590,7 @@ public class EnergyPerformanceCertificate
             lhsHeatingConsumption = this.getHeatingConsumption();
             BigDecimal rhsHeatingConsumption;
             rhsHeatingConsumption = that.getHeatingConsumption();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "heatingConsumption", lhsHeatingConsumption), LocatorUtils.property(thatLocator, "heatingConsumption", rhsHeatingConsumption), lhsHeatingConsumption, rhsHeatingConsumption)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "heatingConsumption", lhsHeatingConsumption), LocatorUtils.property(thatLocator, "heatingConsumption", rhsHeatingConsumption), lhsHeatingConsumption, rhsHeatingConsumption, (this.heatingConsumption!= null), (that.heatingConsumption!= null))) {
                 return false;
             }
         }
@@ -555,7 +599,7 @@ public class EnergyPerformanceCertificate
             lhsEnergyConsumptionElectricity = this.getEnergyConsumptionElectricity();
             BigDecimal rhsEnergyConsumptionElectricity;
             rhsEnergyConsumptionElectricity = that.getEnergyConsumptionElectricity();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "energyConsumptionElectricity", lhsEnergyConsumptionElectricity), LocatorUtils.property(thatLocator, "energyConsumptionElectricity", rhsEnergyConsumptionElectricity), lhsEnergyConsumptionElectricity, rhsEnergyConsumptionElectricity)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "energyConsumptionElectricity", lhsEnergyConsumptionElectricity), LocatorUtils.property(thatLocator, "energyConsumptionElectricity", rhsEnergyConsumptionElectricity), lhsEnergyConsumptionElectricity, rhsEnergyConsumptionElectricity, (this.energyConsumptionElectricity!= null), (that.energyConsumptionElectricity!= null))) {
                 return false;
             }
         }
@@ -564,7 +608,7 @@ public class EnergyPerformanceCertificate
             lhsEnergyConsumptionHeating = this.getEnergyConsumptionHeating();
             BigDecimal rhsEnergyConsumptionHeating;
             rhsEnergyConsumptionHeating = that.getEnergyConsumptionHeating();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "energyConsumptionHeating", lhsEnergyConsumptionHeating), LocatorUtils.property(thatLocator, "energyConsumptionHeating", rhsEnergyConsumptionHeating), lhsEnergyConsumptionHeating, rhsEnergyConsumptionHeating)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "energyConsumptionHeating", lhsEnergyConsumptionHeating), LocatorUtils.property(thatLocator, "energyConsumptionHeating", rhsEnergyConsumptionHeating), lhsEnergyConsumptionHeating, rhsEnergyConsumptionHeating, (this.energyConsumptionHeating!= null), (that.energyConsumptionHeating!= null))) {
                 return false;
             }
         }
@@ -573,7 +617,7 @@ public class EnergyPerformanceCertificate
             lhsThermalCharacteristicElectricity = this.getThermalCharacteristicElectricity();
             BigDecimal rhsThermalCharacteristicElectricity;
             rhsThermalCharacteristicElectricity = that.getThermalCharacteristicElectricity();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "thermalCharacteristicElectricity", lhsThermalCharacteristicElectricity), LocatorUtils.property(thatLocator, "thermalCharacteristicElectricity", rhsThermalCharacteristicElectricity), lhsThermalCharacteristicElectricity, rhsThermalCharacteristicElectricity)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "thermalCharacteristicElectricity", lhsThermalCharacteristicElectricity), LocatorUtils.property(thatLocator, "thermalCharacteristicElectricity", rhsThermalCharacteristicElectricity), lhsThermalCharacteristicElectricity, rhsThermalCharacteristicElectricity, (this.thermalCharacteristicElectricity!= null), (that.thermalCharacteristicElectricity!= null))) {
                 return false;
             }
         }
@@ -582,7 +626,7 @@ public class EnergyPerformanceCertificate
             lhsThermalCharacteristicHeating = this.getThermalCharacteristicHeating();
             BigDecimal rhsThermalCharacteristicHeating;
             rhsThermalCharacteristicHeating = that.getThermalCharacteristicHeating();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "thermalCharacteristicHeating", lhsThermalCharacteristicHeating), LocatorUtils.property(thatLocator, "thermalCharacteristicHeating", rhsThermalCharacteristicHeating), lhsThermalCharacteristicHeating, rhsThermalCharacteristicHeating)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "thermalCharacteristicHeating", lhsThermalCharacteristicHeating), LocatorUtils.property(thatLocator, "thermalCharacteristicHeating", rhsThermalCharacteristicHeating), lhsThermalCharacteristicHeating, rhsThermalCharacteristicHeating, (this.thermalCharacteristicHeating!= null), (that.thermalCharacteristicHeating!= null))) {
                 return false;
             }
         }
@@ -590,7 +634,7 @@ public class EnergyPerformanceCertificate
     }
 
     public boolean equals(Object object) {
-        final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
     }
 

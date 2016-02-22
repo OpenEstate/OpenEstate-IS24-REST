@@ -4,15 +4,15 @@ package org.openestate.is24.restapi.xml.common;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
-import org.jvnet.jaxb2_commons.lang.CopyStrategy;
-import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Equals;
-import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
+import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
+import org.jvnet.jaxb2_commons.lang.CopyTo2;
+import org.jvnet.jaxb2_commons.lang.Equals2;
+import org.jvnet.jaxb2_commons.lang.EqualsStrategy2;
 import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBEqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy;
-import org.jvnet.jaxb2_commons.lang.ToString;
-import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
+import org.jvnet.jaxb2_commons.lang.ToString2;
+import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 
@@ -47,8 +47,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 @XmlType(name = "GeoInfoNodeCriteria", propOrder = {
 
 })
-public class GeoInfoNodeCriteria
-    implements Cloneable, CopyTo, Equals, ToString
+public class GeoInfoNodeCriteria implements Cloneable, CopyTo2, Equals2, ToString2
 {
 
     protected long continentId;
@@ -187,49 +186,49 @@ public class GeoInfoNodeCriteria
     }
 
     public String toString() {
-        final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
         append(null, buffer, strategy);
         return buffer.toString();
     }
 
-    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
         strategy.appendEnd(locator, this, buffer);
         return buffer;
     }
 
-    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             long theContinentId;
             theContinentId = this.getContinentId();
-            strategy.appendField(locator, this, "continentId", buffer, theContinentId);
+            strategy.appendField(locator, this, "continentId", buffer, theContinentId, true);
         }
         {
             long theCountryId;
             theCountryId = this.getCountryId();
-            strategy.appendField(locator, this, "countryId", buffer, theCountryId);
+            strategy.appendField(locator, this, "countryId", buffer, theCountryId, true);
         }
         {
             Long theRegionId;
             theRegionId = this.getRegionId();
-            strategy.appendField(locator, this, "regionId", buffer, theRegionId);
+            strategy.appendField(locator, this, "regionId", buffer, theRegionId, (this.regionId!= null));
         }
         {
             Long theCityId;
             theCityId = this.getCityId();
-            strategy.appendField(locator, this, "cityId", buffer, theCityId);
+            strategy.appendField(locator, this, "cityId", buffer, theCityId, (this.cityId!= null));
         }
         {
             Long theDistrictId;
             theDistrictId = this.getDistrictId();
-            strategy.appendField(locator, this, "districtId", buffer, theDistrictId);
+            strategy.appendField(locator, this, "districtId", buffer, theDistrictId, (this.districtId!= null));
         }
         {
             String theLabel;
             theLabel = this.getLabel();
-            strategy.appendField(locator, this, "label", buffer, theLabel);
+            strategy.appendField(locator, this, "label", buffer, theLabel, (this.label!= null));
         }
         return buffer;
     }
@@ -239,57 +238,89 @@ public class GeoInfoNodeCriteria
     }
 
     public Object copyTo(Object target) {
-        final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof GeoInfoNodeCriteria) {
             final GeoInfoNodeCriteria copy = ((GeoInfoNodeCriteria) draftCopy);
             {
-                long sourceContinentId;
-                sourceContinentId = this.getContinentId();
-                long copyContinentId = strategy.copy(LocatorUtils.property(locator, "continentId", sourceContinentId), sourceContinentId);
-                copy.setContinentId(copyContinentId);
+                Boolean continentIdShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, true);
+                if (continentIdShouldBeCopiedAndSet == Boolean.TRUE) {
+                    long sourceContinentId;
+                    sourceContinentId = this.getContinentId();
+                    long copyContinentId = strategy.copy(LocatorUtils.property(locator, "continentId", sourceContinentId), sourceContinentId, true);
+                    copy.setContinentId(copyContinentId);
+                } else {
+                    if (continentIdShouldBeCopiedAndSet == Boolean.FALSE) {
+                    }
+                }
             }
             {
-                long sourceCountryId;
-                sourceCountryId = this.getCountryId();
-                long copyCountryId = strategy.copy(LocatorUtils.property(locator, "countryId", sourceCountryId), sourceCountryId);
-                copy.setCountryId(copyCountryId);
+                Boolean countryIdShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, true);
+                if (countryIdShouldBeCopiedAndSet == Boolean.TRUE) {
+                    long sourceCountryId;
+                    sourceCountryId = this.getCountryId();
+                    long copyCountryId = strategy.copy(LocatorUtils.property(locator, "countryId", sourceCountryId), sourceCountryId, true);
+                    copy.setCountryId(copyCountryId);
+                } else {
+                    if (countryIdShouldBeCopiedAndSet == Boolean.FALSE) {
+                    }
+                }
             }
-            if (this.regionId!= null) {
-                Long sourceRegionId;
-                sourceRegionId = this.getRegionId();
-                Long copyRegionId = ((Long) strategy.copy(LocatorUtils.property(locator, "regionId", sourceRegionId), sourceRegionId));
-                copy.setRegionId(copyRegionId);
-            } else {
-                copy.regionId = null;
+            {
+                Boolean regionIdShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.regionId!= null));
+                if (regionIdShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Long sourceRegionId;
+                    sourceRegionId = this.getRegionId();
+                    Long copyRegionId = ((Long) strategy.copy(LocatorUtils.property(locator, "regionId", sourceRegionId), sourceRegionId, (this.regionId!= null)));
+                    copy.setRegionId(copyRegionId);
+                } else {
+                    if (regionIdShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.regionId = null;
+                    }
+                }
             }
-            if (this.cityId!= null) {
-                Long sourceCityId;
-                sourceCityId = this.getCityId();
-                Long copyCityId = ((Long) strategy.copy(LocatorUtils.property(locator, "cityId", sourceCityId), sourceCityId));
-                copy.setCityId(copyCityId);
-            } else {
-                copy.cityId = null;
+            {
+                Boolean cityIdShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.cityId!= null));
+                if (cityIdShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Long sourceCityId;
+                    sourceCityId = this.getCityId();
+                    Long copyCityId = ((Long) strategy.copy(LocatorUtils.property(locator, "cityId", sourceCityId), sourceCityId, (this.cityId!= null)));
+                    copy.setCityId(copyCityId);
+                } else {
+                    if (cityIdShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.cityId = null;
+                    }
+                }
             }
-            if (this.districtId!= null) {
-                Long sourceDistrictId;
-                sourceDistrictId = this.getDistrictId();
-                Long copyDistrictId = ((Long) strategy.copy(LocatorUtils.property(locator, "districtId", sourceDistrictId), sourceDistrictId));
-                copy.setDistrictId(copyDistrictId);
-            } else {
-                copy.districtId = null;
+            {
+                Boolean districtIdShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.districtId!= null));
+                if (districtIdShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Long sourceDistrictId;
+                    sourceDistrictId = this.getDistrictId();
+                    Long copyDistrictId = ((Long) strategy.copy(LocatorUtils.property(locator, "districtId", sourceDistrictId), sourceDistrictId, (this.districtId!= null)));
+                    copy.setDistrictId(copyDistrictId);
+                } else {
+                    if (districtIdShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.districtId = null;
+                    }
+                }
             }
-            if (this.label!= null) {
-                String sourceLabel;
-                sourceLabel = this.getLabel();
-                String copyLabel = ((String) strategy.copy(LocatorUtils.property(locator, "label", sourceLabel), sourceLabel));
-                copy.setLabel(copyLabel);
-            } else {
-                copy.label = null;
+            {
+                Boolean labelShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.label!= null));
+                if (labelShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceLabel;
+                    sourceLabel = this.getLabel();
+                    String copyLabel = ((String) strategy.copy(LocatorUtils.property(locator, "label", sourceLabel), sourceLabel, (this.label!= null)));
+                    copy.setLabel(copyLabel);
+                } else {
+                    if (labelShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.label = null;
+                    }
+                }
             }
         }
         return draftCopy;
@@ -299,7 +330,7 @@ public class GeoInfoNodeCriteria
         return new GeoInfoNodeCriteria();
     }
 
-    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
@@ -312,7 +343,7 @@ public class GeoInfoNodeCriteria
             lhsContinentId = this.getContinentId();
             long rhsContinentId;
             rhsContinentId = that.getContinentId();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "continentId", lhsContinentId), LocatorUtils.property(thatLocator, "continentId", rhsContinentId), lhsContinentId, rhsContinentId)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "continentId", lhsContinentId), LocatorUtils.property(thatLocator, "continentId", rhsContinentId), lhsContinentId, rhsContinentId, true, true)) {
                 return false;
             }
         }
@@ -321,7 +352,7 @@ public class GeoInfoNodeCriteria
             lhsCountryId = this.getCountryId();
             long rhsCountryId;
             rhsCountryId = that.getCountryId();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "countryId", lhsCountryId), LocatorUtils.property(thatLocator, "countryId", rhsCountryId), lhsCountryId, rhsCountryId)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "countryId", lhsCountryId), LocatorUtils.property(thatLocator, "countryId", rhsCountryId), lhsCountryId, rhsCountryId, true, true)) {
                 return false;
             }
         }
@@ -330,7 +361,7 @@ public class GeoInfoNodeCriteria
             lhsRegionId = this.getRegionId();
             Long rhsRegionId;
             rhsRegionId = that.getRegionId();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "regionId", lhsRegionId), LocatorUtils.property(thatLocator, "regionId", rhsRegionId), lhsRegionId, rhsRegionId)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "regionId", lhsRegionId), LocatorUtils.property(thatLocator, "regionId", rhsRegionId), lhsRegionId, rhsRegionId, (this.regionId!= null), (that.regionId!= null))) {
                 return false;
             }
         }
@@ -339,7 +370,7 @@ public class GeoInfoNodeCriteria
             lhsCityId = this.getCityId();
             Long rhsCityId;
             rhsCityId = that.getCityId();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "cityId", lhsCityId), LocatorUtils.property(thatLocator, "cityId", rhsCityId), lhsCityId, rhsCityId)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "cityId", lhsCityId), LocatorUtils.property(thatLocator, "cityId", rhsCityId), lhsCityId, rhsCityId, (this.cityId!= null), (that.cityId!= null))) {
                 return false;
             }
         }
@@ -348,7 +379,7 @@ public class GeoInfoNodeCriteria
             lhsDistrictId = this.getDistrictId();
             Long rhsDistrictId;
             rhsDistrictId = that.getDistrictId();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "districtId", lhsDistrictId), LocatorUtils.property(thatLocator, "districtId", rhsDistrictId), lhsDistrictId, rhsDistrictId)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "districtId", lhsDistrictId), LocatorUtils.property(thatLocator, "districtId", rhsDistrictId), lhsDistrictId, rhsDistrictId, (this.districtId!= null), (that.districtId!= null))) {
                 return false;
             }
         }
@@ -357,7 +388,7 @@ public class GeoInfoNodeCriteria
             lhsLabel = this.getLabel();
             String rhsLabel;
             rhsLabel = that.getLabel();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "label", lhsLabel), LocatorUtils.property(thatLocator, "label", rhsLabel), lhsLabel, rhsLabel)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "label", lhsLabel), LocatorUtils.property(thatLocator, "label", rhsLabel), lhsLabel, rhsLabel, (this.label!= null), (that.label!= null))) {
                 return false;
             }
         }
@@ -365,7 +396,7 @@ public class GeoInfoNodeCriteria
     }
 
     public boolean equals(Object object) {
-        final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
     }
 

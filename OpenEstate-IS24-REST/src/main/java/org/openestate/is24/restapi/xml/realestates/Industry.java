@@ -8,15 +8,15 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import org.jvnet.jaxb2_commons.lang.CopyStrategy;
-import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Equals;
-import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
+import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
+import org.jvnet.jaxb2_commons.lang.CopyTo2;
+import org.jvnet.jaxb2_commons.lang.Equals2;
+import org.jvnet.jaxb2_commons.lang.EqualsStrategy2;
 import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBEqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy;
-import org.jvnet.jaxb2_commons.lang.ToString;
-import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
+import org.jvnet.jaxb2_commons.lang.ToString2;
+import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 import org.openestate.is24.restapi.xml.Adapter1;
@@ -108,7 +108,7 @@ import org.openestate.is24.restapi.xml.common.YesNotApplicableType;
 })
 public class Industry
     extends RealEstate
-    implements Cloneable, CopyTo, Equals, ToString
+    implements Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(required = true)
@@ -1325,245 +1325,245 @@ public class Industry
     }
 
     public String toString() {
-        final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
         append(null, buffer, strategy);
         return buffer.toString();
     }
 
-    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
         strategy.appendEnd(locator, this, buffer);
         return buffer;
     }
 
-    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         super.appendFields(locator, buffer, strategy);
         {
             IndustryType theIndustryType;
             theIndustryType = this.getIndustryType();
-            strategy.appendField(locator, this, "industryType", buffer, theIndustryType);
+            strategy.appendField(locator, this, "industryType", buffer, theIndustryType, (this.industryType!= null));
         }
         {
             BigDecimal theAreaDivisibleFrom;
             theAreaDivisibleFrom = this.getAreaDivisibleFrom();
-            strategy.appendField(locator, this, "areaDivisibleFrom", buffer, theAreaDivisibleFrom);
+            strategy.appendField(locator, this, "areaDivisibleFrom", buffer, theAreaDivisibleFrom, (this.areaDivisibleFrom!= null));
         }
         {
             BigDecimal thePlotArea;
             thePlotArea = this.getPlotArea();
-            strategy.appendField(locator, this, "plotArea", buffer, thePlotArea);
+            strategy.appendField(locator, this, "plotArea", buffer, thePlotArea, (this.plotArea!= null));
         }
         {
             BigDecimal theHallHeight;
             theHallHeight = this.getHallHeight();
-            strategy.appendField(locator, this, "hallHeight", buffer, theHallHeight);
+            strategy.appendField(locator, this, "hallHeight", buffer, theHallHeight, (this.hallHeight!= null));
         }
         {
             FlooringType theFlooringType;
             theFlooringType = this.getFlooringType();
-            strategy.appendField(locator, this, "flooringType", buffer, theFlooringType);
+            strategy.appendField(locator, this, "flooringType", buffer, theFlooringType, (this.flooringType!= null));
         }
         {
             YesNotApplicableType theRamp;
             theRamp = this.getRamp();
-            strategy.appendField(locator, this, "ramp", buffer, theRamp);
+            strategy.appendField(locator, this, "ramp", buffer, theRamp, (this.ramp!= null));
         }
         {
             YesNotApplicableType theLift;
             theLift = this.getLift();
-            strategy.appendField(locator, this, "lift", buffer, theLift);
+            strategy.appendField(locator, this, "lift", buffer, theLift, (this.lift!= null));
         }
         {
             YesNotApplicableType theAutoLift;
             theAutoLift = this.getAutoLift();
-            strategy.appendField(locator, this, "autoLift", buffer, theAutoLift);
+            strategy.appendField(locator, this, "autoLift", buffer, theAutoLift, (this.autoLift!= null));
         }
         {
             YesNotApplicableType theGoodsLift;
             theGoodsLift = this.getGoodsLift();
-            strategy.appendField(locator, this, "goodsLift", buffer, theGoodsLift);
+            strategy.appendField(locator, this, "goodsLift", buffer, theGoodsLift, (this.goodsLift!= null));
         }
         {
             BigDecimal theGoodsLiftLoad;
             theGoodsLiftLoad = this.getGoodsLiftLoad();
-            strategy.appendField(locator, this, "goodsLiftLoad", buffer, theGoodsLiftLoad);
+            strategy.appendField(locator, this, "goodsLiftLoad", buffer, theGoodsLiftLoad, (this.goodsLiftLoad!= null));
         }
         {
             YesNotApplicableType theCraneRunway;
             theCraneRunway = this.getCraneRunway();
-            strategy.appendField(locator, this, "craneRunway", buffer, theCraneRunway);
+            strategy.appendField(locator, this, "craneRunway", buffer, theCraneRunway, (this.craneRunway!= null));
         }
         {
             BigDecimal theCraneRunwayLoad;
             theCraneRunwayLoad = this.getCraneRunwayLoad();
-            strategy.appendField(locator, this, "craneRunwayLoad", buffer, theCraneRunwayLoad);
+            strategy.appendField(locator, this, "craneRunwayLoad", buffer, theCraneRunwayLoad, (this.craneRunwayLoad!= null));
         }
         {
             BigDecimal theFloorLoad;
             theFloorLoad = this.getFloorLoad();
-            strategy.appendField(locator, this, "floorLoad", buffer, theFloorLoad);
+            strategy.appendField(locator, this, "floorLoad", buffer, theFloorLoad, (this.floorLoad!= null));
         }
         {
             Long theConnectedLoad;
             theConnectedLoad = this.getConnectedLoad();
-            strategy.appendField(locator, this, "connectedLoad", buffer, theConnectedLoad);
+            strategy.appendField(locator, this, "connectedLoad", buffer, theConnectedLoad, (this.connectedLoad!= null));
         }
         {
             String theDeposit;
             theDeposit = this.getDeposit();
-            strategy.appendField(locator, this, "deposit", buffer, theDeposit);
+            strategy.appendField(locator, this, "deposit", buffer, theDeposit, (this.deposit!= null));
         }
         {
             EnergyPerformanceCertificate theEnergyCertificate;
             theEnergyCertificate = this.getEnergyCertificate();
-            strategy.appendField(locator, this, "energyCertificate", buffer, theEnergyCertificate);
+            strategy.appendField(locator, this, "energyCertificate", buffer, theEnergyCertificate, (this.energyCertificate!= null));
         }
         {
             CommercializationType theCommercializationType;
             theCommercializationType = this.getCommercializationType();
-            strategy.appendField(locator, this, "commercializationType", buffer, theCommercializationType);
+            strategy.appendField(locator, this, "commercializationType", buffer, theCommercializationType, (this.commercializationType!= null));
         }
         {
             Price thePrice;
             thePrice = this.getPrice();
-            strategy.appendField(locator, this, "price", buffer, thePrice);
+            strategy.appendField(locator, this, "price", buffer, thePrice, (this.price!= null));
         }
         {
             Price theCalculatedPrice;
             theCalculatedPrice = this.getCalculatedPrice();
-            strategy.appendField(locator, this, "calculatedPrice", buffer, theCalculatedPrice);
+            strategy.appendField(locator, this, "calculatedPrice", buffer, theCalculatedPrice, (this.calculatedPrice!= null));
         }
         {
             BigDecimal theTotalFloorSpace;
             theTotalFloorSpace = this.getTotalFloorSpace();
-            strategy.appendField(locator, this, "totalFloorSpace", buffer, theTotalFloorSpace);
+            strategy.appendField(locator, this, "totalFloorSpace", buffer, theTotalFloorSpace, (this.totalFloorSpace!= null));
         }
         {
             BigDecimal theNetFloorSpace;
             theNetFloorSpace = this.getNetFloorSpace();
-            strategy.appendField(locator, this, "netFloorSpace", buffer, theNetFloorSpace);
+            strategy.appendField(locator, this, "netFloorSpace", buffer, theNetFloorSpace, (this.netFloorSpace!= null));
         }
         {
             BigDecimal theMinDivisible;
             theMinDivisible = this.getMinDivisible();
-            strategy.appendField(locator, this, "minDivisible", buffer, theMinDivisible);
+            strategy.appendField(locator, this, "minDivisible", buffer, theMinDivisible, (this.minDivisible!= null));
         }
         {
             CourtageInfo theCourtage;
             theCourtage = this.getCourtage();
-            strategy.appendField(locator, this, "courtage", buffer, theCourtage);
+            strategy.appendField(locator, this, "courtage", buffer, theCourtage, (this.courtage!= null));
         }
         {
             Long theDistanceToMRS;
             theDistanceToMRS = this.getDistanceToMRS();
-            strategy.appendField(locator, this, "distanceToMRS", buffer, theDistanceToMRS);
+            strategy.appendField(locator, this, "distanceToMRS", buffer, theDistanceToMRS, (this.distanceToMRS!= null));
         }
         {
             Long theDistanceToFM;
             theDistanceToFM = this.getDistanceToFM();
-            strategy.appendField(locator, this, "distanceToFM", buffer, theDistanceToFM);
+            strategy.appendField(locator, this, "distanceToFM", buffer, theDistanceToFM, (this.distanceToFM!= null));
         }
         {
             Long theDistanceToPT;
             theDistanceToPT = this.getDistanceToPT();
-            strategy.appendField(locator, this, "distanceToPT", buffer, theDistanceToPT);
+            strategy.appendField(locator, this, "distanceToPT", buffer, theDistanceToPT, (this.distanceToPT!= null));
         }
         {
             Long theDistanceToAirport;
             theDistanceToAirport = this.getDistanceToAirport();
-            strategy.appendField(locator, this, "distanceToAirport", buffer, theDistanceToAirport);
+            strategy.appendField(locator, this, "distanceToAirport", buffer, theDistanceToAirport, (this.distanceToAirport!= null));
         }
         {
             RealEstateCondition theCondition;
             theCondition = this.getCondition();
-            strategy.appendField(locator, this, "condition", buffer, theCondition);
+            strategy.appendField(locator, this, "condition", buffer, theCondition, (this.condition!= null));
         }
         {
             Long theNumberOfParkingSpaces;
             theNumberOfParkingSpaces = this.getNumberOfParkingSpaces();
-            strategy.appendField(locator, this, "numberOfParkingSpaces", buffer, theNumberOfParkingSpaces);
+            strategy.appendField(locator, this, "numberOfParkingSpaces", buffer, theNumberOfParkingSpaces, (this.numberOfParkingSpaces!= null));
         }
         {
             BigDecimal theParkingSpacePrice;
             theParkingSpacePrice = this.getParkingSpacePrice();
-            strategy.appendField(locator, this, "parkingSpacePrice", buffer, theParkingSpacePrice);
+            strategy.appendField(locator, this, "parkingSpacePrice", buffer, theParkingSpacePrice, (this.parkingSpacePrice!= null));
         }
         {
             Long theLastRefurbishment;
             theLastRefurbishment = this.getLastRefurbishment();
-            strategy.appendField(locator, this, "lastRefurbishment", buffer, theLastRefurbishment);
+            strategy.appendField(locator, this, "lastRefurbishment", buffer, theLastRefurbishment, (this.lastRefurbishment!= null));
         }
         {
             InteriorQuality theInteriorQuality;
             theInteriorQuality = this.getInteriorQuality();
-            strategy.appendField(locator, this, "interiorQuality", buffer, theInteriorQuality);
+            strategy.appendField(locator, this, "interiorQuality", buffer, theInteriorQuality, (this.interiorQuality!= null));
         }
         {
             Long theConstructionYear;
             theConstructionYear = this.getConstructionYear();
-            strategy.appendField(locator, this, "constructionYear", buffer, theConstructionYear);
+            strategy.appendField(locator, this, "constructionYear", buffer, theConstructionYear, (this.constructionYear!= null));
         }
         {
             Boolean theConstructionYearUnknown;
             theConstructionYearUnknown = this.isConstructionYearUnknown();
-            strategy.appendField(locator, this, "constructionYearUnknown", buffer, theConstructionYearUnknown);
+            strategy.appendField(locator, this, "constructionYearUnknown", buffer, theConstructionYearUnknown, (this.constructionYearUnknown!= null));
         }
         {
             String theFreeFrom;
             theFreeFrom = this.getFreeFrom();
-            strategy.appendField(locator, this, "freeFrom", buffer, theFreeFrom);
+            strategy.appendField(locator, this, "freeFrom", buffer, theFreeFrom, (this.freeFrom!= null));
         }
         {
             HeatingType theHeatingType;
             theHeatingType = this.getHeatingType();
-            strategy.appendField(locator, this, "heatingType", buffer, theHeatingType);
+            strategy.appendField(locator, this, "heatingType", buffer, theHeatingType, (this.heatingType!= null));
         }
         {
             HeatingTypeEnev2014 theHeatingTypeEnev2014;
             theHeatingTypeEnev2014 = this.getHeatingTypeEnev2014();
-            strategy.appendField(locator, this, "heatingTypeEnev2014", buffer, theHeatingTypeEnev2014);
+            strategy.appendField(locator, this, "heatingTypeEnev2014", buffer, theHeatingTypeEnev2014, (this.heatingTypeEnev2014 != null));
         }
         {
             FiringTypes theFiringTypes;
             theFiringTypes = this.getFiringTypes();
-            strategy.appendField(locator, this, "firingTypes", buffer, theFiringTypes);
+            strategy.appendField(locator, this, "firingTypes", buffer, theFiringTypes, (this.firingTypes!= null));
         }
         {
             EnergySourcesEnev2014 theEnergySourcesEnev2014;
             theEnergySourcesEnev2014 = this.getEnergySourcesEnev2014();
-            strategy.appendField(locator, this, "energySourcesEnev2014", buffer, theEnergySourcesEnev2014);
+            strategy.appendField(locator, this, "energySourcesEnev2014", buffer, theEnergySourcesEnev2014, (this.energySourcesEnev2014 != null));
         }
         {
             BigDecimal theThermalCharacteristic;
             theThermalCharacteristic = this.getThermalCharacteristic();
-            strategy.appendField(locator, this, "thermalCharacteristic", buffer, theThermalCharacteristic);
+            strategy.appendField(locator, this, "thermalCharacteristic", buffer, theThermalCharacteristic, (this.thermalCharacteristic!= null));
         }
         {
             YesNotApplicableType theEnergyConsumptionContainsWarmWater;
             theEnergyConsumptionContainsWarmWater = this.getEnergyConsumptionContainsWarmWater();
-            strategy.appendField(locator, this, "energyConsumptionContainsWarmWater", buffer, theEnergyConsumptionContainsWarmWater);
+            strategy.appendField(locator, this, "energyConsumptionContainsWarmWater", buffer, theEnergyConsumptionContainsWarmWater, (this.energyConsumptionContainsWarmWater!= null));
         }
         {
             BuildingEnergyRatingType theBuildingEnergyRatingType;
             theBuildingEnergyRatingType = this.getBuildingEnergyRatingType();
-            strategy.appendField(locator, this, "buildingEnergyRatingType", buffer, theBuildingEnergyRatingType);
+            strategy.appendField(locator, this, "buildingEnergyRatingType", buffer, theBuildingEnergyRatingType, (this.buildingEnergyRatingType!= null));
         }
         {
             BigDecimal theAdditionalArea;
             theAdditionalArea = this.getAdditionalArea();
-            strategy.appendField(locator, this, "additionalArea", buffer, theAdditionalArea);
+            strategy.appendField(locator, this, "additionalArea", buffer, theAdditionalArea, (this.additionalArea!= null));
         }
         {
             String theNumberOfFloors;
             theNumberOfFloors = this.getNumberOfFloors();
-            strategy.appendField(locator, this, "numberOfFloors", buffer, theNumberOfFloors);
+            strategy.appendField(locator, this, "numberOfFloors", buffer, theNumberOfFloors, (this.numberOfFloors!= null));
         }
         {
             Price theAdditionalCosts;
             theAdditionalCosts = this.getAdditionalCosts();
-            strategy.appendField(locator, this, "additionalCosts", buffer, theAdditionalCosts);
+            strategy.appendField(locator, this, "additionalCosts", buffer, theAdditionalCosts, (this.additionalCosts!= null));
         }
         return buffer;
     }
@@ -1573,374 +1573,599 @@ public class Industry
     }
 
     public Object copyTo(Object target) {
-        final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         super.copyTo(locator, draftCopy, strategy);
         if (draftCopy instanceof Industry) {
             final Industry copy = ((Industry) draftCopy);
-            if (this.industryType!= null) {
-                IndustryType sourceIndustryType;
-                sourceIndustryType = this.getIndustryType();
-                IndustryType copyIndustryType = ((IndustryType) strategy.copy(LocatorUtils.property(locator, "industryType", sourceIndustryType), sourceIndustryType));
-                copy.setIndustryType(copyIndustryType);
-            } else {
-                copy.industryType = null;
+            {
+                Boolean industryTypeShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.industryType!= null));
+                if (industryTypeShouldBeCopiedAndSet == Boolean.TRUE) {
+                    IndustryType sourceIndustryType;
+                    sourceIndustryType = this.getIndustryType();
+                    IndustryType copyIndustryType = ((IndustryType) strategy.copy(LocatorUtils.property(locator, "industryType", sourceIndustryType), sourceIndustryType, (this.industryType!= null)));
+                    copy.setIndustryType(copyIndustryType);
+                } else {
+                    if (industryTypeShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.industryType = null;
+                    }
+                }
             }
-            if (this.areaDivisibleFrom!= null) {
-                BigDecimal sourceAreaDivisibleFrom;
-                sourceAreaDivisibleFrom = this.getAreaDivisibleFrom();
-                BigDecimal copyAreaDivisibleFrom = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "areaDivisibleFrom", sourceAreaDivisibleFrom), sourceAreaDivisibleFrom));
-                copy.setAreaDivisibleFrom(copyAreaDivisibleFrom);
-            } else {
-                copy.areaDivisibleFrom = null;
+            {
+                Boolean areaDivisibleFromShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.areaDivisibleFrom!= null));
+                if (areaDivisibleFromShouldBeCopiedAndSet == Boolean.TRUE) {
+                    BigDecimal sourceAreaDivisibleFrom;
+                    sourceAreaDivisibleFrom = this.getAreaDivisibleFrom();
+                    BigDecimal copyAreaDivisibleFrom = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "areaDivisibleFrom", sourceAreaDivisibleFrom), sourceAreaDivisibleFrom, (this.areaDivisibleFrom!= null)));
+                    copy.setAreaDivisibleFrom(copyAreaDivisibleFrom);
+                } else {
+                    if (areaDivisibleFromShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.areaDivisibleFrom = null;
+                    }
+                }
             }
-            if (this.plotArea!= null) {
-                BigDecimal sourcePlotArea;
-                sourcePlotArea = this.getPlotArea();
-                BigDecimal copyPlotArea = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "plotArea", sourcePlotArea), sourcePlotArea));
-                copy.setPlotArea(copyPlotArea);
-            } else {
-                copy.plotArea = null;
+            {
+                Boolean plotAreaShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.plotArea!= null));
+                if (plotAreaShouldBeCopiedAndSet == Boolean.TRUE) {
+                    BigDecimal sourcePlotArea;
+                    sourcePlotArea = this.getPlotArea();
+                    BigDecimal copyPlotArea = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "plotArea", sourcePlotArea), sourcePlotArea, (this.plotArea!= null)));
+                    copy.setPlotArea(copyPlotArea);
+                } else {
+                    if (plotAreaShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.plotArea = null;
+                    }
+                }
             }
-            if (this.hallHeight!= null) {
-                BigDecimal sourceHallHeight;
-                sourceHallHeight = this.getHallHeight();
-                BigDecimal copyHallHeight = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "hallHeight", sourceHallHeight), sourceHallHeight));
-                copy.setHallHeight(copyHallHeight);
-            } else {
-                copy.hallHeight = null;
+            {
+                Boolean hallHeightShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.hallHeight!= null));
+                if (hallHeightShouldBeCopiedAndSet == Boolean.TRUE) {
+                    BigDecimal sourceHallHeight;
+                    sourceHallHeight = this.getHallHeight();
+                    BigDecimal copyHallHeight = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "hallHeight", sourceHallHeight), sourceHallHeight, (this.hallHeight!= null)));
+                    copy.setHallHeight(copyHallHeight);
+                } else {
+                    if (hallHeightShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.hallHeight = null;
+                    }
+                }
             }
-            if (this.flooringType!= null) {
-                FlooringType sourceFlooringType;
-                sourceFlooringType = this.getFlooringType();
-                FlooringType copyFlooringType = ((FlooringType) strategy.copy(LocatorUtils.property(locator, "flooringType", sourceFlooringType), sourceFlooringType));
-                copy.setFlooringType(copyFlooringType);
-            } else {
-                copy.flooringType = null;
+            {
+                Boolean flooringTypeShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.flooringType!= null));
+                if (flooringTypeShouldBeCopiedAndSet == Boolean.TRUE) {
+                    FlooringType sourceFlooringType;
+                    sourceFlooringType = this.getFlooringType();
+                    FlooringType copyFlooringType = ((FlooringType) strategy.copy(LocatorUtils.property(locator, "flooringType", sourceFlooringType), sourceFlooringType, (this.flooringType!= null)));
+                    copy.setFlooringType(copyFlooringType);
+                } else {
+                    if (flooringTypeShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.flooringType = null;
+                    }
+                }
             }
-            if (this.ramp!= null) {
-                YesNotApplicableType sourceRamp;
-                sourceRamp = this.getRamp();
-                YesNotApplicableType copyRamp = ((YesNotApplicableType) strategy.copy(LocatorUtils.property(locator, "ramp", sourceRamp), sourceRamp));
-                copy.setRamp(copyRamp);
-            } else {
-                copy.ramp = null;
+            {
+                Boolean rampShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.ramp!= null));
+                if (rampShouldBeCopiedAndSet == Boolean.TRUE) {
+                    YesNotApplicableType sourceRamp;
+                    sourceRamp = this.getRamp();
+                    YesNotApplicableType copyRamp = ((YesNotApplicableType) strategy.copy(LocatorUtils.property(locator, "ramp", sourceRamp), sourceRamp, (this.ramp!= null)));
+                    copy.setRamp(copyRamp);
+                } else {
+                    if (rampShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.ramp = null;
+                    }
+                }
             }
-            if (this.lift!= null) {
-                YesNotApplicableType sourceLift;
-                sourceLift = this.getLift();
-                YesNotApplicableType copyLift = ((YesNotApplicableType) strategy.copy(LocatorUtils.property(locator, "lift", sourceLift), sourceLift));
-                copy.setLift(copyLift);
-            } else {
-                copy.lift = null;
+            {
+                Boolean liftShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.lift!= null));
+                if (liftShouldBeCopiedAndSet == Boolean.TRUE) {
+                    YesNotApplicableType sourceLift;
+                    sourceLift = this.getLift();
+                    YesNotApplicableType copyLift = ((YesNotApplicableType) strategy.copy(LocatorUtils.property(locator, "lift", sourceLift), sourceLift, (this.lift!= null)));
+                    copy.setLift(copyLift);
+                } else {
+                    if (liftShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.lift = null;
+                    }
+                }
             }
-            if (this.autoLift!= null) {
-                YesNotApplicableType sourceAutoLift;
-                sourceAutoLift = this.getAutoLift();
-                YesNotApplicableType copyAutoLift = ((YesNotApplicableType) strategy.copy(LocatorUtils.property(locator, "autoLift", sourceAutoLift), sourceAutoLift));
-                copy.setAutoLift(copyAutoLift);
-            } else {
-                copy.autoLift = null;
+            {
+                Boolean autoLiftShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.autoLift!= null));
+                if (autoLiftShouldBeCopiedAndSet == Boolean.TRUE) {
+                    YesNotApplicableType sourceAutoLift;
+                    sourceAutoLift = this.getAutoLift();
+                    YesNotApplicableType copyAutoLift = ((YesNotApplicableType) strategy.copy(LocatorUtils.property(locator, "autoLift", sourceAutoLift), sourceAutoLift, (this.autoLift!= null)));
+                    copy.setAutoLift(copyAutoLift);
+                } else {
+                    if (autoLiftShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.autoLift = null;
+                    }
+                }
             }
-            if (this.goodsLift!= null) {
-                YesNotApplicableType sourceGoodsLift;
-                sourceGoodsLift = this.getGoodsLift();
-                YesNotApplicableType copyGoodsLift = ((YesNotApplicableType) strategy.copy(LocatorUtils.property(locator, "goodsLift", sourceGoodsLift), sourceGoodsLift));
-                copy.setGoodsLift(copyGoodsLift);
-            } else {
-                copy.goodsLift = null;
+            {
+                Boolean goodsLiftShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.goodsLift!= null));
+                if (goodsLiftShouldBeCopiedAndSet == Boolean.TRUE) {
+                    YesNotApplicableType sourceGoodsLift;
+                    sourceGoodsLift = this.getGoodsLift();
+                    YesNotApplicableType copyGoodsLift = ((YesNotApplicableType) strategy.copy(LocatorUtils.property(locator, "goodsLift", sourceGoodsLift), sourceGoodsLift, (this.goodsLift!= null)));
+                    copy.setGoodsLift(copyGoodsLift);
+                } else {
+                    if (goodsLiftShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.goodsLift = null;
+                    }
+                }
             }
-            if (this.goodsLiftLoad!= null) {
-                BigDecimal sourceGoodsLiftLoad;
-                sourceGoodsLiftLoad = this.getGoodsLiftLoad();
-                BigDecimal copyGoodsLiftLoad = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "goodsLiftLoad", sourceGoodsLiftLoad), sourceGoodsLiftLoad));
-                copy.setGoodsLiftLoad(copyGoodsLiftLoad);
-            } else {
-                copy.goodsLiftLoad = null;
+            {
+                Boolean goodsLiftLoadShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.goodsLiftLoad!= null));
+                if (goodsLiftLoadShouldBeCopiedAndSet == Boolean.TRUE) {
+                    BigDecimal sourceGoodsLiftLoad;
+                    sourceGoodsLiftLoad = this.getGoodsLiftLoad();
+                    BigDecimal copyGoodsLiftLoad = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "goodsLiftLoad", sourceGoodsLiftLoad), sourceGoodsLiftLoad, (this.goodsLiftLoad!= null)));
+                    copy.setGoodsLiftLoad(copyGoodsLiftLoad);
+                } else {
+                    if (goodsLiftLoadShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.goodsLiftLoad = null;
+                    }
+                }
             }
-            if (this.craneRunway!= null) {
-                YesNotApplicableType sourceCraneRunway;
-                sourceCraneRunway = this.getCraneRunway();
-                YesNotApplicableType copyCraneRunway = ((YesNotApplicableType) strategy.copy(LocatorUtils.property(locator, "craneRunway", sourceCraneRunway), sourceCraneRunway));
-                copy.setCraneRunway(copyCraneRunway);
-            } else {
-                copy.craneRunway = null;
+            {
+                Boolean craneRunwayShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.craneRunway!= null));
+                if (craneRunwayShouldBeCopiedAndSet == Boolean.TRUE) {
+                    YesNotApplicableType sourceCraneRunway;
+                    sourceCraneRunway = this.getCraneRunway();
+                    YesNotApplicableType copyCraneRunway = ((YesNotApplicableType) strategy.copy(LocatorUtils.property(locator, "craneRunway", sourceCraneRunway), sourceCraneRunway, (this.craneRunway!= null)));
+                    copy.setCraneRunway(copyCraneRunway);
+                } else {
+                    if (craneRunwayShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.craneRunway = null;
+                    }
+                }
             }
-            if (this.craneRunwayLoad!= null) {
-                BigDecimal sourceCraneRunwayLoad;
-                sourceCraneRunwayLoad = this.getCraneRunwayLoad();
-                BigDecimal copyCraneRunwayLoad = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "craneRunwayLoad", sourceCraneRunwayLoad), sourceCraneRunwayLoad));
-                copy.setCraneRunwayLoad(copyCraneRunwayLoad);
-            } else {
-                copy.craneRunwayLoad = null;
+            {
+                Boolean craneRunwayLoadShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.craneRunwayLoad!= null));
+                if (craneRunwayLoadShouldBeCopiedAndSet == Boolean.TRUE) {
+                    BigDecimal sourceCraneRunwayLoad;
+                    sourceCraneRunwayLoad = this.getCraneRunwayLoad();
+                    BigDecimal copyCraneRunwayLoad = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "craneRunwayLoad", sourceCraneRunwayLoad), sourceCraneRunwayLoad, (this.craneRunwayLoad!= null)));
+                    copy.setCraneRunwayLoad(copyCraneRunwayLoad);
+                } else {
+                    if (craneRunwayLoadShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.craneRunwayLoad = null;
+                    }
+                }
             }
-            if (this.floorLoad!= null) {
-                BigDecimal sourceFloorLoad;
-                sourceFloorLoad = this.getFloorLoad();
-                BigDecimal copyFloorLoad = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "floorLoad", sourceFloorLoad), sourceFloorLoad));
-                copy.setFloorLoad(copyFloorLoad);
-            } else {
-                copy.floorLoad = null;
+            {
+                Boolean floorLoadShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.floorLoad!= null));
+                if (floorLoadShouldBeCopiedAndSet == Boolean.TRUE) {
+                    BigDecimal sourceFloorLoad;
+                    sourceFloorLoad = this.getFloorLoad();
+                    BigDecimal copyFloorLoad = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "floorLoad", sourceFloorLoad), sourceFloorLoad, (this.floorLoad!= null)));
+                    copy.setFloorLoad(copyFloorLoad);
+                } else {
+                    if (floorLoadShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.floorLoad = null;
+                    }
+                }
             }
-            if (this.connectedLoad!= null) {
-                Long sourceConnectedLoad;
-                sourceConnectedLoad = this.getConnectedLoad();
-                Long copyConnectedLoad = ((Long) strategy.copy(LocatorUtils.property(locator, "connectedLoad", sourceConnectedLoad), sourceConnectedLoad));
-                copy.setConnectedLoad(copyConnectedLoad);
-            } else {
-                copy.connectedLoad = null;
+            {
+                Boolean connectedLoadShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.connectedLoad!= null));
+                if (connectedLoadShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Long sourceConnectedLoad;
+                    sourceConnectedLoad = this.getConnectedLoad();
+                    Long copyConnectedLoad = ((Long) strategy.copy(LocatorUtils.property(locator, "connectedLoad", sourceConnectedLoad), sourceConnectedLoad, (this.connectedLoad!= null)));
+                    copy.setConnectedLoad(copyConnectedLoad);
+                } else {
+                    if (connectedLoadShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.connectedLoad = null;
+                    }
+                }
             }
-            if (this.deposit!= null) {
-                String sourceDeposit;
-                sourceDeposit = this.getDeposit();
-                String copyDeposit = ((String) strategy.copy(LocatorUtils.property(locator, "deposit", sourceDeposit), sourceDeposit));
-                copy.setDeposit(copyDeposit);
-            } else {
-                copy.deposit = null;
+            {
+                Boolean depositShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.deposit!= null));
+                if (depositShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceDeposit;
+                    sourceDeposit = this.getDeposit();
+                    String copyDeposit = ((String) strategy.copy(LocatorUtils.property(locator, "deposit", sourceDeposit), sourceDeposit, (this.deposit!= null)));
+                    copy.setDeposit(copyDeposit);
+                } else {
+                    if (depositShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.deposit = null;
+                    }
+                }
             }
-            if (this.energyCertificate!= null) {
-                EnergyPerformanceCertificate sourceEnergyCertificate;
-                sourceEnergyCertificate = this.getEnergyCertificate();
-                EnergyPerformanceCertificate copyEnergyCertificate = ((EnergyPerformanceCertificate) strategy.copy(LocatorUtils.property(locator, "energyCertificate", sourceEnergyCertificate), sourceEnergyCertificate));
-                copy.setEnergyCertificate(copyEnergyCertificate);
-            } else {
-                copy.energyCertificate = null;
+            {
+                Boolean energyCertificateShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.energyCertificate!= null));
+                if (energyCertificateShouldBeCopiedAndSet == Boolean.TRUE) {
+                    EnergyPerformanceCertificate sourceEnergyCertificate;
+                    sourceEnergyCertificate = this.getEnergyCertificate();
+                    EnergyPerformanceCertificate copyEnergyCertificate = ((EnergyPerformanceCertificate) strategy.copy(LocatorUtils.property(locator, "energyCertificate", sourceEnergyCertificate), sourceEnergyCertificate, (this.energyCertificate!= null)));
+                    copy.setEnergyCertificate(copyEnergyCertificate);
+                } else {
+                    if (energyCertificateShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.energyCertificate = null;
+                    }
+                }
             }
-            if (this.commercializationType!= null) {
-                CommercializationType sourceCommercializationType;
-                sourceCommercializationType = this.getCommercializationType();
-                CommercializationType copyCommercializationType = ((CommercializationType) strategy.copy(LocatorUtils.property(locator, "commercializationType", sourceCommercializationType), sourceCommercializationType));
-                copy.setCommercializationType(copyCommercializationType);
-            } else {
-                copy.commercializationType = null;
+            {
+                Boolean commercializationTypeShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.commercializationType!= null));
+                if (commercializationTypeShouldBeCopiedAndSet == Boolean.TRUE) {
+                    CommercializationType sourceCommercializationType;
+                    sourceCommercializationType = this.getCommercializationType();
+                    CommercializationType copyCommercializationType = ((CommercializationType) strategy.copy(LocatorUtils.property(locator, "commercializationType", sourceCommercializationType), sourceCommercializationType, (this.commercializationType!= null)));
+                    copy.setCommercializationType(copyCommercializationType);
+                } else {
+                    if (commercializationTypeShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.commercializationType = null;
+                    }
+                }
             }
-            if (this.price!= null) {
-                Price sourcePrice;
-                sourcePrice = this.getPrice();
-                Price copyPrice = ((Price) strategy.copy(LocatorUtils.property(locator, "price", sourcePrice), sourcePrice));
-                copy.setPrice(copyPrice);
-            } else {
-                copy.price = null;
+            {
+                Boolean priceShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.price!= null));
+                if (priceShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Price sourcePrice;
+                    sourcePrice = this.getPrice();
+                    Price copyPrice = ((Price) strategy.copy(LocatorUtils.property(locator, "price", sourcePrice), sourcePrice, (this.price!= null)));
+                    copy.setPrice(copyPrice);
+                } else {
+                    if (priceShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.price = null;
+                    }
+                }
             }
-            if (this.calculatedPrice!= null) {
-                Price sourceCalculatedPrice;
-                sourceCalculatedPrice = this.getCalculatedPrice();
-                Price copyCalculatedPrice = ((Price) strategy.copy(LocatorUtils.property(locator, "calculatedPrice", sourceCalculatedPrice), sourceCalculatedPrice));
-                copy.setCalculatedPrice(copyCalculatedPrice);
-            } else {
-                copy.calculatedPrice = null;
+            {
+                Boolean calculatedPriceShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.calculatedPrice!= null));
+                if (calculatedPriceShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Price sourceCalculatedPrice;
+                    sourceCalculatedPrice = this.getCalculatedPrice();
+                    Price copyCalculatedPrice = ((Price) strategy.copy(LocatorUtils.property(locator, "calculatedPrice", sourceCalculatedPrice), sourceCalculatedPrice, (this.calculatedPrice!= null)));
+                    copy.setCalculatedPrice(copyCalculatedPrice);
+                } else {
+                    if (calculatedPriceShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.calculatedPrice = null;
+                    }
+                }
             }
-            if (this.totalFloorSpace!= null) {
-                BigDecimal sourceTotalFloorSpace;
-                sourceTotalFloorSpace = this.getTotalFloorSpace();
-                BigDecimal copyTotalFloorSpace = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "totalFloorSpace", sourceTotalFloorSpace), sourceTotalFloorSpace));
-                copy.setTotalFloorSpace(copyTotalFloorSpace);
-            } else {
-                copy.totalFloorSpace = null;
+            {
+                Boolean totalFloorSpaceShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.totalFloorSpace!= null));
+                if (totalFloorSpaceShouldBeCopiedAndSet == Boolean.TRUE) {
+                    BigDecimal sourceTotalFloorSpace;
+                    sourceTotalFloorSpace = this.getTotalFloorSpace();
+                    BigDecimal copyTotalFloorSpace = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "totalFloorSpace", sourceTotalFloorSpace), sourceTotalFloorSpace, (this.totalFloorSpace!= null)));
+                    copy.setTotalFloorSpace(copyTotalFloorSpace);
+                } else {
+                    if (totalFloorSpaceShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.totalFloorSpace = null;
+                    }
+                }
             }
-            if (this.netFloorSpace!= null) {
-                BigDecimal sourceNetFloorSpace;
-                sourceNetFloorSpace = this.getNetFloorSpace();
-                BigDecimal copyNetFloorSpace = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "netFloorSpace", sourceNetFloorSpace), sourceNetFloorSpace));
-                copy.setNetFloorSpace(copyNetFloorSpace);
-            } else {
-                copy.netFloorSpace = null;
+            {
+                Boolean netFloorSpaceShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.netFloorSpace!= null));
+                if (netFloorSpaceShouldBeCopiedAndSet == Boolean.TRUE) {
+                    BigDecimal sourceNetFloorSpace;
+                    sourceNetFloorSpace = this.getNetFloorSpace();
+                    BigDecimal copyNetFloorSpace = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "netFloorSpace", sourceNetFloorSpace), sourceNetFloorSpace, (this.netFloorSpace!= null)));
+                    copy.setNetFloorSpace(copyNetFloorSpace);
+                } else {
+                    if (netFloorSpaceShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.netFloorSpace = null;
+                    }
+                }
             }
-            if (this.minDivisible!= null) {
-                BigDecimal sourceMinDivisible;
-                sourceMinDivisible = this.getMinDivisible();
-                BigDecimal copyMinDivisible = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "minDivisible", sourceMinDivisible), sourceMinDivisible));
-                copy.setMinDivisible(copyMinDivisible);
-            } else {
-                copy.minDivisible = null;
+            {
+                Boolean minDivisibleShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.minDivisible!= null));
+                if (minDivisibleShouldBeCopiedAndSet == Boolean.TRUE) {
+                    BigDecimal sourceMinDivisible;
+                    sourceMinDivisible = this.getMinDivisible();
+                    BigDecimal copyMinDivisible = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "minDivisible", sourceMinDivisible), sourceMinDivisible, (this.minDivisible!= null)));
+                    copy.setMinDivisible(copyMinDivisible);
+                } else {
+                    if (minDivisibleShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.minDivisible = null;
+                    }
+                }
             }
-            if (this.courtage!= null) {
-                CourtageInfo sourceCourtage;
-                sourceCourtage = this.getCourtage();
-                CourtageInfo copyCourtage = ((CourtageInfo) strategy.copy(LocatorUtils.property(locator, "courtage", sourceCourtage), sourceCourtage));
-                copy.setCourtage(copyCourtage);
-            } else {
-                copy.courtage = null;
+            {
+                Boolean courtageShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.courtage!= null));
+                if (courtageShouldBeCopiedAndSet == Boolean.TRUE) {
+                    CourtageInfo sourceCourtage;
+                    sourceCourtage = this.getCourtage();
+                    CourtageInfo copyCourtage = ((CourtageInfo) strategy.copy(LocatorUtils.property(locator, "courtage", sourceCourtage), sourceCourtage, (this.courtage!= null)));
+                    copy.setCourtage(copyCourtage);
+                } else {
+                    if (courtageShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.courtage = null;
+                    }
+                }
             }
-            if (this.distanceToMRS!= null) {
-                Long sourceDistanceToMRS;
-                sourceDistanceToMRS = this.getDistanceToMRS();
-                Long copyDistanceToMRS = ((Long) strategy.copy(LocatorUtils.property(locator, "distanceToMRS", sourceDistanceToMRS), sourceDistanceToMRS));
-                copy.setDistanceToMRS(copyDistanceToMRS);
-            } else {
-                copy.distanceToMRS = null;
+            {
+                Boolean distanceToMRSShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.distanceToMRS!= null));
+                if (distanceToMRSShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Long sourceDistanceToMRS;
+                    sourceDistanceToMRS = this.getDistanceToMRS();
+                    Long copyDistanceToMRS = ((Long) strategy.copy(LocatorUtils.property(locator, "distanceToMRS", sourceDistanceToMRS), sourceDistanceToMRS, (this.distanceToMRS!= null)));
+                    copy.setDistanceToMRS(copyDistanceToMRS);
+                } else {
+                    if (distanceToMRSShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.distanceToMRS = null;
+                    }
+                }
             }
-            if (this.distanceToFM!= null) {
-                Long sourceDistanceToFM;
-                sourceDistanceToFM = this.getDistanceToFM();
-                Long copyDistanceToFM = ((Long) strategy.copy(LocatorUtils.property(locator, "distanceToFM", sourceDistanceToFM), sourceDistanceToFM));
-                copy.setDistanceToFM(copyDistanceToFM);
-            } else {
-                copy.distanceToFM = null;
+            {
+                Boolean distanceToFMShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.distanceToFM!= null));
+                if (distanceToFMShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Long sourceDistanceToFM;
+                    sourceDistanceToFM = this.getDistanceToFM();
+                    Long copyDistanceToFM = ((Long) strategy.copy(LocatorUtils.property(locator, "distanceToFM", sourceDistanceToFM), sourceDistanceToFM, (this.distanceToFM!= null)));
+                    copy.setDistanceToFM(copyDistanceToFM);
+                } else {
+                    if (distanceToFMShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.distanceToFM = null;
+                    }
+                }
             }
-            if (this.distanceToPT!= null) {
-                Long sourceDistanceToPT;
-                sourceDistanceToPT = this.getDistanceToPT();
-                Long copyDistanceToPT = ((Long) strategy.copy(LocatorUtils.property(locator, "distanceToPT", sourceDistanceToPT), sourceDistanceToPT));
-                copy.setDistanceToPT(copyDistanceToPT);
-            } else {
-                copy.distanceToPT = null;
+            {
+                Boolean distanceToPTShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.distanceToPT!= null));
+                if (distanceToPTShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Long sourceDistanceToPT;
+                    sourceDistanceToPT = this.getDistanceToPT();
+                    Long copyDistanceToPT = ((Long) strategy.copy(LocatorUtils.property(locator, "distanceToPT", sourceDistanceToPT), sourceDistanceToPT, (this.distanceToPT!= null)));
+                    copy.setDistanceToPT(copyDistanceToPT);
+                } else {
+                    if (distanceToPTShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.distanceToPT = null;
+                    }
+                }
             }
-            if (this.distanceToAirport!= null) {
-                Long sourceDistanceToAirport;
-                sourceDistanceToAirport = this.getDistanceToAirport();
-                Long copyDistanceToAirport = ((Long) strategy.copy(LocatorUtils.property(locator, "distanceToAirport", sourceDistanceToAirport), sourceDistanceToAirport));
-                copy.setDistanceToAirport(copyDistanceToAirport);
-            } else {
-                copy.distanceToAirport = null;
+            {
+                Boolean distanceToAirportShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.distanceToAirport!= null));
+                if (distanceToAirportShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Long sourceDistanceToAirport;
+                    sourceDistanceToAirport = this.getDistanceToAirport();
+                    Long copyDistanceToAirport = ((Long) strategy.copy(LocatorUtils.property(locator, "distanceToAirport", sourceDistanceToAirport), sourceDistanceToAirport, (this.distanceToAirport!= null)));
+                    copy.setDistanceToAirport(copyDistanceToAirport);
+                } else {
+                    if (distanceToAirportShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.distanceToAirport = null;
+                    }
+                }
             }
-            if (this.condition!= null) {
-                RealEstateCondition sourceCondition;
-                sourceCondition = this.getCondition();
-                RealEstateCondition copyCondition = ((RealEstateCondition) strategy.copy(LocatorUtils.property(locator, "condition", sourceCondition), sourceCondition));
-                copy.setCondition(copyCondition);
-            } else {
-                copy.condition = null;
+            {
+                Boolean conditionShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.condition!= null));
+                if (conditionShouldBeCopiedAndSet == Boolean.TRUE) {
+                    RealEstateCondition sourceCondition;
+                    sourceCondition = this.getCondition();
+                    RealEstateCondition copyCondition = ((RealEstateCondition) strategy.copy(LocatorUtils.property(locator, "condition", sourceCondition), sourceCondition, (this.condition!= null)));
+                    copy.setCondition(copyCondition);
+                } else {
+                    if (conditionShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.condition = null;
+                    }
+                }
             }
-            if (this.numberOfParkingSpaces!= null) {
-                Long sourceNumberOfParkingSpaces;
-                sourceNumberOfParkingSpaces = this.getNumberOfParkingSpaces();
-                Long copyNumberOfParkingSpaces = ((Long) strategy.copy(LocatorUtils.property(locator, "numberOfParkingSpaces", sourceNumberOfParkingSpaces), sourceNumberOfParkingSpaces));
-                copy.setNumberOfParkingSpaces(copyNumberOfParkingSpaces);
-            } else {
-                copy.numberOfParkingSpaces = null;
+            {
+                Boolean numberOfParkingSpacesShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.numberOfParkingSpaces!= null));
+                if (numberOfParkingSpacesShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Long sourceNumberOfParkingSpaces;
+                    sourceNumberOfParkingSpaces = this.getNumberOfParkingSpaces();
+                    Long copyNumberOfParkingSpaces = ((Long) strategy.copy(LocatorUtils.property(locator, "numberOfParkingSpaces", sourceNumberOfParkingSpaces), sourceNumberOfParkingSpaces, (this.numberOfParkingSpaces!= null)));
+                    copy.setNumberOfParkingSpaces(copyNumberOfParkingSpaces);
+                } else {
+                    if (numberOfParkingSpacesShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.numberOfParkingSpaces = null;
+                    }
+                }
             }
-            if (this.parkingSpacePrice!= null) {
-                BigDecimal sourceParkingSpacePrice;
-                sourceParkingSpacePrice = this.getParkingSpacePrice();
-                BigDecimal copyParkingSpacePrice = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "parkingSpacePrice", sourceParkingSpacePrice), sourceParkingSpacePrice));
-                copy.setParkingSpacePrice(copyParkingSpacePrice);
-            } else {
-                copy.parkingSpacePrice = null;
+            {
+                Boolean parkingSpacePriceShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.parkingSpacePrice!= null));
+                if (parkingSpacePriceShouldBeCopiedAndSet == Boolean.TRUE) {
+                    BigDecimal sourceParkingSpacePrice;
+                    sourceParkingSpacePrice = this.getParkingSpacePrice();
+                    BigDecimal copyParkingSpacePrice = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "parkingSpacePrice", sourceParkingSpacePrice), sourceParkingSpacePrice, (this.parkingSpacePrice!= null)));
+                    copy.setParkingSpacePrice(copyParkingSpacePrice);
+                } else {
+                    if (parkingSpacePriceShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.parkingSpacePrice = null;
+                    }
+                }
             }
-            if (this.lastRefurbishment!= null) {
-                Long sourceLastRefurbishment;
-                sourceLastRefurbishment = this.getLastRefurbishment();
-                Long copyLastRefurbishment = ((Long) strategy.copy(LocatorUtils.property(locator, "lastRefurbishment", sourceLastRefurbishment), sourceLastRefurbishment));
-                copy.setLastRefurbishment(copyLastRefurbishment);
-            } else {
-                copy.lastRefurbishment = null;
+            {
+                Boolean lastRefurbishmentShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.lastRefurbishment!= null));
+                if (lastRefurbishmentShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Long sourceLastRefurbishment;
+                    sourceLastRefurbishment = this.getLastRefurbishment();
+                    Long copyLastRefurbishment = ((Long) strategy.copy(LocatorUtils.property(locator, "lastRefurbishment", sourceLastRefurbishment), sourceLastRefurbishment, (this.lastRefurbishment!= null)));
+                    copy.setLastRefurbishment(copyLastRefurbishment);
+                } else {
+                    if (lastRefurbishmentShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.lastRefurbishment = null;
+                    }
+                }
             }
-            if (this.interiorQuality!= null) {
-                InteriorQuality sourceInteriorQuality;
-                sourceInteriorQuality = this.getInteriorQuality();
-                InteriorQuality copyInteriorQuality = ((InteriorQuality) strategy.copy(LocatorUtils.property(locator, "interiorQuality", sourceInteriorQuality), sourceInteriorQuality));
-                copy.setInteriorQuality(copyInteriorQuality);
-            } else {
-                copy.interiorQuality = null;
+            {
+                Boolean interiorQualityShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.interiorQuality!= null));
+                if (interiorQualityShouldBeCopiedAndSet == Boolean.TRUE) {
+                    InteriorQuality sourceInteriorQuality;
+                    sourceInteriorQuality = this.getInteriorQuality();
+                    InteriorQuality copyInteriorQuality = ((InteriorQuality) strategy.copy(LocatorUtils.property(locator, "interiorQuality", sourceInteriorQuality), sourceInteriorQuality, (this.interiorQuality!= null)));
+                    copy.setInteriorQuality(copyInteriorQuality);
+                } else {
+                    if (interiorQualityShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.interiorQuality = null;
+                    }
+                }
             }
-            if (this.constructionYear!= null) {
-                Long sourceConstructionYear;
-                sourceConstructionYear = this.getConstructionYear();
-                Long copyConstructionYear = ((Long) strategy.copy(LocatorUtils.property(locator, "constructionYear", sourceConstructionYear), sourceConstructionYear));
-                copy.setConstructionYear(copyConstructionYear);
-            } else {
-                copy.constructionYear = null;
+            {
+                Boolean constructionYearShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.constructionYear!= null));
+                if (constructionYearShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Long sourceConstructionYear;
+                    sourceConstructionYear = this.getConstructionYear();
+                    Long copyConstructionYear = ((Long) strategy.copy(LocatorUtils.property(locator, "constructionYear", sourceConstructionYear), sourceConstructionYear, (this.constructionYear!= null)));
+                    copy.setConstructionYear(copyConstructionYear);
+                } else {
+                    if (constructionYearShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.constructionYear = null;
+                    }
+                }
             }
-            if (this.constructionYearUnknown!= null) {
-                Boolean sourceConstructionYearUnknown;
-                sourceConstructionYearUnknown = this.isConstructionYearUnknown();
-                Boolean copyConstructionYearUnknown = ((Boolean) strategy.copy(LocatorUtils.property(locator, "constructionYearUnknown", sourceConstructionYearUnknown), sourceConstructionYearUnknown));
-                copy.setConstructionYearUnknown(copyConstructionYearUnknown);
-            } else {
-                copy.constructionYearUnknown = null;
+            {
+                Boolean constructionYearUnknownShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.constructionYearUnknown!= null));
+                if (constructionYearUnknownShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Boolean sourceConstructionYearUnknown;
+                    sourceConstructionYearUnknown = this.isConstructionYearUnknown();
+                    Boolean copyConstructionYearUnknown = ((Boolean) strategy.copy(LocatorUtils.property(locator, "constructionYearUnknown", sourceConstructionYearUnknown), sourceConstructionYearUnknown, (this.constructionYearUnknown!= null)));
+                    copy.setConstructionYearUnknown(copyConstructionYearUnknown);
+                } else {
+                    if (constructionYearUnknownShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.constructionYearUnknown = null;
+                    }
+                }
             }
-            if (this.freeFrom!= null) {
-                String sourceFreeFrom;
-                sourceFreeFrom = this.getFreeFrom();
-                String copyFreeFrom = ((String) strategy.copy(LocatorUtils.property(locator, "freeFrom", sourceFreeFrom), sourceFreeFrom));
-                copy.setFreeFrom(copyFreeFrom);
-            } else {
-                copy.freeFrom = null;
+            {
+                Boolean freeFromShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.freeFrom!= null));
+                if (freeFromShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceFreeFrom;
+                    sourceFreeFrom = this.getFreeFrom();
+                    String copyFreeFrom = ((String) strategy.copy(LocatorUtils.property(locator, "freeFrom", sourceFreeFrom), sourceFreeFrom, (this.freeFrom!= null)));
+                    copy.setFreeFrom(copyFreeFrom);
+                } else {
+                    if (freeFromShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.freeFrom = null;
+                    }
+                }
             }
-            if (this.heatingType!= null) {
-                HeatingType sourceHeatingType;
-                sourceHeatingType = this.getHeatingType();
-                HeatingType copyHeatingType = ((HeatingType) strategy.copy(LocatorUtils.property(locator, "heatingType", sourceHeatingType), sourceHeatingType));
-                copy.setHeatingType(copyHeatingType);
-            } else {
-                copy.heatingType = null;
+            {
+                Boolean heatingTypeShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.heatingType!= null));
+                if (heatingTypeShouldBeCopiedAndSet == Boolean.TRUE) {
+                    HeatingType sourceHeatingType;
+                    sourceHeatingType = this.getHeatingType();
+                    HeatingType copyHeatingType = ((HeatingType) strategy.copy(LocatorUtils.property(locator, "heatingType", sourceHeatingType), sourceHeatingType, (this.heatingType!= null)));
+                    copy.setHeatingType(copyHeatingType);
+                } else {
+                    if (heatingTypeShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.heatingType = null;
+                    }
+                }
             }
-            if (this.heatingTypeEnev2014 != null) {
-                HeatingTypeEnev2014 sourceHeatingTypeEnev2014;
-                sourceHeatingTypeEnev2014 = this.getHeatingTypeEnev2014();
-                HeatingTypeEnev2014 copyHeatingTypeEnev2014 = ((HeatingTypeEnev2014) strategy.copy(LocatorUtils.property(locator, "heatingTypeEnev2014", sourceHeatingTypeEnev2014), sourceHeatingTypeEnev2014));
-                copy.setHeatingTypeEnev2014(copyHeatingTypeEnev2014);
-            } else {
-                copy.heatingTypeEnev2014 = null;
+            {
+                Boolean heatingTypeEnev2014ShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.heatingTypeEnev2014 != null));
+                if (heatingTypeEnev2014ShouldBeCopiedAndSet == Boolean.TRUE) {
+                    HeatingTypeEnev2014 sourceHeatingTypeEnev2014;
+                    sourceHeatingTypeEnev2014 = this.getHeatingTypeEnev2014();
+                    HeatingTypeEnev2014 copyHeatingTypeEnev2014 = ((HeatingTypeEnev2014) strategy.copy(LocatorUtils.property(locator, "heatingTypeEnev2014", sourceHeatingTypeEnev2014), sourceHeatingTypeEnev2014, (this.heatingTypeEnev2014 != null)));
+                    copy.setHeatingTypeEnev2014(copyHeatingTypeEnev2014);
+                } else {
+                    if (heatingTypeEnev2014ShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.heatingTypeEnev2014 = null;
+                    }
+                }
             }
-            if (this.firingTypes!= null) {
-                FiringTypes sourceFiringTypes;
-                sourceFiringTypes = this.getFiringTypes();
-                FiringTypes copyFiringTypes = ((FiringTypes) strategy.copy(LocatorUtils.property(locator, "firingTypes", sourceFiringTypes), sourceFiringTypes));
-                copy.setFiringTypes(copyFiringTypes);
-            } else {
-                copy.firingTypes = null;
+            {
+                Boolean firingTypesShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.firingTypes!= null));
+                if (firingTypesShouldBeCopiedAndSet == Boolean.TRUE) {
+                    FiringTypes sourceFiringTypes;
+                    sourceFiringTypes = this.getFiringTypes();
+                    FiringTypes copyFiringTypes = ((FiringTypes) strategy.copy(LocatorUtils.property(locator, "firingTypes", sourceFiringTypes), sourceFiringTypes, (this.firingTypes!= null)));
+                    copy.setFiringTypes(copyFiringTypes);
+                } else {
+                    if (firingTypesShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.firingTypes = null;
+                    }
+                }
             }
-            if (this.energySourcesEnev2014 != null) {
-                EnergySourcesEnev2014 sourceEnergySourcesEnev2014;
-                sourceEnergySourcesEnev2014 = this.getEnergySourcesEnev2014();
-                EnergySourcesEnev2014 copyEnergySourcesEnev2014 = ((EnergySourcesEnev2014) strategy.copy(LocatorUtils.property(locator, "energySourcesEnev2014", sourceEnergySourcesEnev2014), sourceEnergySourcesEnev2014));
-                copy.setEnergySourcesEnev2014(copyEnergySourcesEnev2014);
-            } else {
-                copy.energySourcesEnev2014 = null;
+            {
+                Boolean energySourcesEnev2014ShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.energySourcesEnev2014 != null));
+                if (energySourcesEnev2014ShouldBeCopiedAndSet == Boolean.TRUE) {
+                    EnergySourcesEnev2014 sourceEnergySourcesEnev2014;
+                    sourceEnergySourcesEnev2014 = this.getEnergySourcesEnev2014();
+                    EnergySourcesEnev2014 copyEnergySourcesEnev2014 = ((EnergySourcesEnev2014) strategy.copy(LocatorUtils.property(locator, "energySourcesEnev2014", sourceEnergySourcesEnev2014), sourceEnergySourcesEnev2014, (this.energySourcesEnev2014 != null)));
+                    copy.setEnergySourcesEnev2014(copyEnergySourcesEnev2014);
+                } else {
+                    if (energySourcesEnev2014ShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.energySourcesEnev2014 = null;
+                    }
+                }
             }
-            if (this.thermalCharacteristic!= null) {
-                BigDecimal sourceThermalCharacteristic;
-                sourceThermalCharacteristic = this.getThermalCharacteristic();
-                BigDecimal copyThermalCharacteristic = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "thermalCharacteristic", sourceThermalCharacteristic), sourceThermalCharacteristic));
-                copy.setThermalCharacteristic(copyThermalCharacteristic);
-            } else {
-                copy.thermalCharacteristic = null;
+            {
+                Boolean thermalCharacteristicShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.thermalCharacteristic!= null));
+                if (thermalCharacteristicShouldBeCopiedAndSet == Boolean.TRUE) {
+                    BigDecimal sourceThermalCharacteristic;
+                    sourceThermalCharacteristic = this.getThermalCharacteristic();
+                    BigDecimal copyThermalCharacteristic = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "thermalCharacteristic", sourceThermalCharacteristic), sourceThermalCharacteristic, (this.thermalCharacteristic!= null)));
+                    copy.setThermalCharacteristic(copyThermalCharacteristic);
+                } else {
+                    if (thermalCharacteristicShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.thermalCharacteristic = null;
+                    }
+                }
             }
-            if (this.energyConsumptionContainsWarmWater!= null) {
-                YesNotApplicableType sourceEnergyConsumptionContainsWarmWater;
-                sourceEnergyConsumptionContainsWarmWater = this.getEnergyConsumptionContainsWarmWater();
-                YesNotApplicableType copyEnergyConsumptionContainsWarmWater = ((YesNotApplicableType) strategy.copy(LocatorUtils.property(locator, "energyConsumptionContainsWarmWater", sourceEnergyConsumptionContainsWarmWater), sourceEnergyConsumptionContainsWarmWater));
-                copy.setEnergyConsumptionContainsWarmWater(copyEnergyConsumptionContainsWarmWater);
-            } else {
-                copy.energyConsumptionContainsWarmWater = null;
+            {
+                Boolean energyConsumptionContainsWarmWaterShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.energyConsumptionContainsWarmWater!= null));
+                if (energyConsumptionContainsWarmWaterShouldBeCopiedAndSet == Boolean.TRUE) {
+                    YesNotApplicableType sourceEnergyConsumptionContainsWarmWater;
+                    sourceEnergyConsumptionContainsWarmWater = this.getEnergyConsumptionContainsWarmWater();
+                    YesNotApplicableType copyEnergyConsumptionContainsWarmWater = ((YesNotApplicableType) strategy.copy(LocatorUtils.property(locator, "energyConsumptionContainsWarmWater", sourceEnergyConsumptionContainsWarmWater), sourceEnergyConsumptionContainsWarmWater, (this.energyConsumptionContainsWarmWater!= null)));
+                    copy.setEnergyConsumptionContainsWarmWater(copyEnergyConsumptionContainsWarmWater);
+                } else {
+                    if (energyConsumptionContainsWarmWaterShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.energyConsumptionContainsWarmWater = null;
+                    }
+                }
             }
-            if (this.buildingEnergyRatingType!= null) {
-                BuildingEnergyRatingType sourceBuildingEnergyRatingType;
-                sourceBuildingEnergyRatingType = this.getBuildingEnergyRatingType();
-                BuildingEnergyRatingType copyBuildingEnergyRatingType = ((BuildingEnergyRatingType) strategy.copy(LocatorUtils.property(locator, "buildingEnergyRatingType", sourceBuildingEnergyRatingType), sourceBuildingEnergyRatingType));
-                copy.setBuildingEnergyRatingType(copyBuildingEnergyRatingType);
-            } else {
-                copy.buildingEnergyRatingType = null;
+            {
+                Boolean buildingEnergyRatingTypeShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.buildingEnergyRatingType!= null));
+                if (buildingEnergyRatingTypeShouldBeCopiedAndSet == Boolean.TRUE) {
+                    BuildingEnergyRatingType sourceBuildingEnergyRatingType;
+                    sourceBuildingEnergyRatingType = this.getBuildingEnergyRatingType();
+                    BuildingEnergyRatingType copyBuildingEnergyRatingType = ((BuildingEnergyRatingType) strategy.copy(LocatorUtils.property(locator, "buildingEnergyRatingType", sourceBuildingEnergyRatingType), sourceBuildingEnergyRatingType, (this.buildingEnergyRatingType!= null)));
+                    copy.setBuildingEnergyRatingType(copyBuildingEnergyRatingType);
+                } else {
+                    if (buildingEnergyRatingTypeShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.buildingEnergyRatingType = null;
+                    }
+                }
             }
-            if (this.additionalArea!= null) {
-                BigDecimal sourceAdditionalArea;
-                sourceAdditionalArea = this.getAdditionalArea();
-                BigDecimal copyAdditionalArea = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "additionalArea", sourceAdditionalArea), sourceAdditionalArea));
-                copy.setAdditionalArea(copyAdditionalArea);
-            } else {
-                copy.additionalArea = null;
+            {
+                Boolean additionalAreaShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.additionalArea!= null));
+                if (additionalAreaShouldBeCopiedAndSet == Boolean.TRUE) {
+                    BigDecimal sourceAdditionalArea;
+                    sourceAdditionalArea = this.getAdditionalArea();
+                    BigDecimal copyAdditionalArea = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "additionalArea", sourceAdditionalArea), sourceAdditionalArea, (this.additionalArea!= null)));
+                    copy.setAdditionalArea(copyAdditionalArea);
+                } else {
+                    if (additionalAreaShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.additionalArea = null;
+                    }
+                }
             }
-            if (this.numberOfFloors!= null) {
-                String sourceNumberOfFloors;
-                sourceNumberOfFloors = this.getNumberOfFloors();
-                String copyNumberOfFloors = ((String) strategy.copy(LocatorUtils.property(locator, "numberOfFloors", sourceNumberOfFloors), sourceNumberOfFloors));
-                copy.setNumberOfFloors(copyNumberOfFloors);
-            } else {
-                copy.numberOfFloors = null;
+            {
+                Boolean numberOfFloorsShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.numberOfFloors!= null));
+                if (numberOfFloorsShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceNumberOfFloors;
+                    sourceNumberOfFloors = this.getNumberOfFloors();
+                    String copyNumberOfFloors = ((String) strategy.copy(LocatorUtils.property(locator, "numberOfFloors", sourceNumberOfFloors), sourceNumberOfFloors, (this.numberOfFloors!= null)));
+                    copy.setNumberOfFloors(copyNumberOfFloors);
+                } else {
+                    if (numberOfFloorsShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.numberOfFloors = null;
+                    }
+                }
             }
-            if (this.additionalCosts!= null) {
-                Price sourceAdditionalCosts;
-                sourceAdditionalCosts = this.getAdditionalCosts();
-                Price copyAdditionalCosts = ((Price) strategy.copy(LocatorUtils.property(locator, "additionalCosts", sourceAdditionalCosts), sourceAdditionalCosts));
-                copy.setAdditionalCosts(copyAdditionalCosts);
-            } else {
-                copy.additionalCosts = null;
+            {
+                Boolean additionalCostsShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.additionalCosts!= null));
+                if (additionalCostsShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Price sourceAdditionalCosts;
+                    sourceAdditionalCosts = this.getAdditionalCosts();
+                    Price copyAdditionalCosts = ((Price) strategy.copy(LocatorUtils.property(locator, "additionalCosts", sourceAdditionalCosts), sourceAdditionalCosts, (this.additionalCosts!= null)));
+                    copy.setAdditionalCosts(copyAdditionalCosts);
+                } else {
+                    if (additionalCostsShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.additionalCosts = null;
+                    }
+                }
             }
         }
         return draftCopy;
@@ -1950,7 +2175,7 @@ public class Industry
         return new Industry();
     }
 
-    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
@@ -1966,7 +2191,7 @@ public class Industry
             lhsIndustryType = this.getIndustryType();
             IndustryType rhsIndustryType;
             rhsIndustryType = that.getIndustryType();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "industryType", lhsIndustryType), LocatorUtils.property(thatLocator, "industryType", rhsIndustryType), lhsIndustryType, rhsIndustryType)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "industryType", lhsIndustryType), LocatorUtils.property(thatLocator, "industryType", rhsIndustryType), lhsIndustryType, rhsIndustryType, (this.industryType!= null), (that.industryType!= null))) {
                 return false;
             }
         }
@@ -1975,7 +2200,7 @@ public class Industry
             lhsAreaDivisibleFrom = this.getAreaDivisibleFrom();
             BigDecimal rhsAreaDivisibleFrom;
             rhsAreaDivisibleFrom = that.getAreaDivisibleFrom();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "areaDivisibleFrom", lhsAreaDivisibleFrom), LocatorUtils.property(thatLocator, "areaDivisibleFrom", rhsAreaDivisibleFrom), lhsAreaDivisibleFrom, rhsAreaDivisibleFrom)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "areaDivisibleFrom", lhsAreaDivisibleFrom), LocatorUtils.property(thatLocator, "areaDivisibleFrom", rhsAreaDivisibleFrom), lhsAreaDivisibleFrom, rhsAreaDivisibleFrom, (this.areaDivisibleFrom!= null), (that.areaDivisibleFrom!= null))) {
                 return false;
             }
         }
@@ -1984,7 +2209,7 @@ public class Industry
             lhsPlotArea = this.getPlotArea();
             BigDecimal rhsPlotArea;
             rhsPlotArea = that.getPlotArea();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "plotArea", lhsPlotArea), LocatorUtils.property(thatLocator, "plotArea", rhsPlotArea), lhsPlotArea, rhsPlotArea)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "plotArea", lhsPlotArea), LocatorUtils.property(thatLocator, "plotArea", rhsPlotArea), lhsPlotArea, rhsPlotArea, (this.plotArea!= null), (that.plotArea!= null))) {
                 return false;
             }
         }
@@ -1993,7 +2218,7 @@ public class Industry
             lhsHallHeight = this.getHallHeight();
             BigDecimal rhsHallHeight;
             rhsHallHeight = that.getHallHeight();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "hallHeight", lhsHallHeight), LocatorUtils.property(thatLocator, "hallHeight", rhsHallHeight), lhsHallHeight, rhsHallHeight)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "hallHeight", lhsHallHeight), LocatorUtils.property(thatLocator, "hallHeight", rhsHallHeight), lhsHallHeight, rhsHallHeight, (this.hallHeight!= null), (that.hallHeight!= null))) {
                 return false;
             }
         }
@@ -2002,7 +2227,7 @@ public class Industry
             lhsFlooringType = this.getFlooringType();
             FlooringType rhsFlooringType;
             rhsFlooringType = that.getFlooringType();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "flooringType", lhsFlooringType), LocatorUtils.property(thatLocator, "flooringType", rhsFlooringType), lhsFlooringType, rhsFlooringType)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "flooringType", lhsFlooringType), LocatorUtils.property(thatLocator, "flooringType", rhsFlooringType), lhsFlooringType, rhsFlooringType, (this.flooringType!= null), (that.flooringType!= null))) {
                 return false;
             }
         }
@@ -2011,7 +2236,7 @@ public class Industry
             lhsRamp = this.getRamp();
             YesNotApplicableType rhsRamp;
             rhsRamp = that.getRamp();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "ramp", lhsRamp), LocatorUtils.property(thatLocator, "ramp", rhsRamp), lhsRamp, rhsRamp)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "ramp", lhsRamp), LocatorUtils.property(thatLocator, "ramp", rhsRamp), lhsRamp, rhsRamp, (this.ramp!= null), (that.ramp!= null))) {
                 return false;
             }
         }
@@ -2020,7 +2245,7 @@ public class Industry
             lhsLift = this.getLift();
             YesNotApplicableType rhsLift;
             rhsLift = that.getLift();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "lift", lhsLift), LocatorUtils.property(thatLocator, "lift", rhsLift), lhsLift, rhsLift)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "lift", lhsLift), LocatorUtils.property(thatLocator, "lift", rhsLift), lhsLift, rhsLift, (this.lift!= null), (that.lift!= null))) {
                 return false;
             }
         }
@@ -2029,7 +2254,7 @@ public class Industry
             lhsAutoLift = this.getAutoLift();
             YesNotApplicableType rhsAutoLift;
             rhsAutoLift = that.getAutoLift();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "autoLift", lhsAutoLift), LocatorUtils.property(thatLocator, "autoLift", rhsAutoLift), lhsAutoLift, rhsAutoLift)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "autoLift", lhsAutoLift), LocatorUtils.property(thatLocator, "autoLift", rhsAutoLift), lhsAutoLift, rhsAutoLift, (this.autoLift!= null), (that.autoLift!= null))) {
                 return false;
             }
         }
@@ -2038,7 +2263,7 @@ public class Industry
             lhsGoodsLift = this.getGoodsLift();
             YesNotApplicableType rhsGoodsLift;
             rhsGoodsLift = that.getGoodsLift();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "goodsLift", lhsGoodsLift), LocatorUtils.property(thatLocator, "goodsLift", rhsGoodsLift), lhsGoodsLift, rhsGoodsLift)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "goodsLift", lhsGoodsLift), LocatorUtils.property(thatLocator, "goodsLift", rhsGoodsLift), lhsGoodsLift, rhsGoodsLift, (this.goodsLift!= null), (that.goodsLift!= null))) {
                 return false;
             }
         }
@@ -2047,7 +2272,7 @@ public class Industry
             lhsGoodsLiftLoad = this.getGoodsLiftLoad();
             BigDecimal rhsGoodsLiftLoad;
             rhsGoodsLiftLoad = that.getGoodsLiftLoad();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "goodsLiftLoad", lhsGoodsLiftLoad), LocatorUtils.property(thatLocator, "goodsLiftLoad", rhsGoodsLiftLoad), lhsGoodsLiftLoad, rhsGoodsLiftLoad)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "goodsLiftLoad", lhsGoodsLiftLoad), LocatorUtils.property(thatLocator, "goodsLiftLoad", rhsGoodsLiftLoad), lhsGoodsLiftLoad, rhsGoodsLiftLoad, (this.goodsLiftLoad!= null), (that.goodsLiftLoad!= null))) {
                 return false;
             }
         }
@@ -2056,7 +2281,7 @@ public class Industry
             lhsCraneRunway = this.getCraneRunway();
             YesNotApplicableType rhsCraneRunway;
             rhsCraneRunway = that.getCraneRunway();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "craneRunway", lhsCraneRunway), LocatorUtils.property(thatLocator, "craneRunway", rhsCraneRunway), lhsCraneRunway, rhsCraneRunway)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "craneRunway", lhsCraneRunway), LocatorUtils.property(thatLocator, "craneRunway", rhsCraneRunway), lhsCraneRunway, rhsCraneRunway, (this.craneRunway!= null), (that.craneRunway!= null))) {
                 return false;
             }
         }
@@ -2065,7 +2290,7 @@ public class Industry
             lhsCraneRunwayLoad = this.getCraneRunwayLoad();
             BigDecimal rhsCraneRunwayLoad;
             rhsCraneRunwayLoad = that.getCraneRunwayLoad();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "craneRunwayLoad", lhsCraneRunwayLoad), LocatorUtils.property(thatLocator, "craneRunwayLoad", rhsCraneRunwayLoad), lhsCraneRunwayLoad, rhsCraneRunwayLoad)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "craneRunwayLoad", lhsCraneRunwayLoad), LocatorUtils.property(thatLocator, "craneRunwayLoad", rhsCraneRunwayLoad), lhsCraneRunwayLoad, rhsCraneRunwayLoad, (this.craneRunwayLoad!= null), (that.craneRunwayLoad!= null))) {
                 return false;
             }
         }
@@ -2074,7 +2299,7 @@ public class Industry
             lhsFloorLoad = this.getFloorLoad();
             BigDecimal rhsFloorLoad;
             rhsFloorLoad = that.getFloorLoad();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "floorLoad", lhsFloorLoad), LocatorUtils.property(thatLocator, "floorLoad", rhsFloorLoad), lhsFloorLoad, rhsFloorLoad)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "floorLoad", lhsFloorLoad), LocatorUtils.property(thatLocator, "floorLoad", rhsFloorLoad), lhsFloorLoad, rhsFloorLoad, (this.floorLoad!= null), (that.floorLoad!= null))) {
                 return false;
             }
         }
@@ -2083,7 +2308,7 @@ public class Industry
             lhsConnectedLoad = this.getConnectedLoad();
             Long rhsConnectedLoad;
             rhsConnectedLoad = that.getConnectedLoad();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "connectedLoad", lhsConnectedLoad), LocatorUtils.property(thatLocator, "connectedLoad", rhsConnectedLoad), lhsConnectedLoad, rhsConnectedLoad)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "connectedLoad", lhsConnectedLoad), LocatorUtils.property(thatLocator, "connectedLoad", rhsConnectedLoad), lhsConnectedLoad, rhsConnectedLoad, (this.connectedLoad!= null), (that.connectedLoad!= null))) {
                 return false;
             }
         }
@@ -2092,7 +2317,7 @@ public class Industry
             lhsDeposit = this.getDeposit();
             String rhsDeposit;
             rhsDeposit = that.getDeposit();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "deposit", lhsDeposit), LocatorUtils.property(thatLocator, "deposit", rhsDeposit), lhsDeposit, rhsDeposit)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "deposit", lhsDeposit), LocatorUtils.property(thatLocator, "deposit", rhsDeposit), lhsDeposit, rhsDeposit, (this.deposit!= null), (that.deposit!= null))) {
                 return false;
             }
         }
@@ -2101,7 +2326,7 @@ public class Industry
             lhsEnergyCertificate = this.getEnergyCertificate();
             EnergyPerformanceCertificate rhsEnergyCertificate;
             rhsEnergyCertificate = that.getEnergyCertificate();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "energyCertificate", lhsEnergyCertificate), LocatorUtils.property(thatLocator, "energyCertificate", rhsEnergyCertificate), lhsEnergyCertificate, rhsEnergyCertificate)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "energyCertificate", lhsEnergyCertificate), LocatorUtils.property(thatLocator, "energyCertificate", rhsEnergyCertificate), lhsEnergyCertificate, rhsEnergyCertificate, (this.energyCertificate!= null), (that.energyCertificate!= null))) {
                 return false;
             }
         }
@@ -2110,7 +2335,7 @@ public class Industry
             lhsCommercializationType = this.getCommercializationType();
             CommercializationType rhsCommercializationType;
             rhsCommercializationType = that.getCommercializationType();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "commercializationType", lhsCommercializationType), LocatorUtils.property(thatLocator, "commercializationType", rhsCommercializationType), lhsCommercializationType, rhsCommercializationType)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "commercializationType", lhsCommercializationType), LocatorUtils.property(thatLocator, "commercializationType", rhsCommercializationType), lhsCommercializationType, rhsCommercializationType, (this.commercializationType!= null), (that.commercializationType!= null))) {
                 return false;
             }
         }
@@ -2119,7 +2344,7 @@ public class Industry
             lhsPrice = this.getPrice();
             Price rhsPrice;
             rhsPrice = that.getPrice();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "price", lhsPrice), LocatorUtils.property(thatLocator, "price", rhsPrice), lhsPrice, rhsPrice)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "price", lhsPrice), LocatorUtils.property(thatLocator, "price", rhsPrice), lhsPrice, rhsPrice, (this.price!= null), (that.price!= null))) {
                 return false;
             }
         }
@@ -2128,7 +2353,7 @@ public class Industry
             lhsCalculatedPrice = this.getCalculatedPrice();
             Price rhsCalculatedPrice;
             rhsCalculatedPrice = that.getCalculatedPrice();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "calculatedPrice", lhsCalculatedPrice), LocatorUtils.property(thatLocator, "calculatedPrice", rhsCalculatedPrice), lhsCalculatedPrice, rhsCalculatedPrice)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "calculatedPrice", lhsCalculatedPrice), LocatorUtils.property(thatLocator, "calculatedPrice", rhsCalculatedPrice), lhsCalculatedPrice, rhsCalculatedPrice, (this.calculatedPrice!= null), (that.calculatedPrice!= null))) {
                 return false;
             }
         }
@@ -2137,7 +2362,7 @@ public class Industry
             lhsTotalFloorSpace = this.getTotalFloorSpace();
             BigDecimal rhsTotalFloorSpace;
             rhsTotalFloorSpace = that.getTotalFloorSpace();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "totalFloorSpace", lhsTotalFloorSpace), LocatorUtils.property(thatLocator, "totalFloorSpace", rhsTotalFloorSpace), lhsTotalFloorSpace, rhsTotalFloorSpace)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "totalFloorSpace", lhsTotalFloorSpace), LocatorUtils.property(thatLocator, "totalFloorSpace", rhsTotalFloorSpace), lhsTotalFloorSpace, rhsTotalFloorSpace, (this.totalFloorSpace!= null), (that.totalFloorSpace!= null))) {
                 return false;
             }
         }
@@ -2146,7 +2371,7 @@ public class Industry
             lhsNetFloorSpace = this.getNetFloorSpace();
             BigDecimal rhsNetFloorSpace;
             rhsNetFloorSpace = that.getNetFloorSpace();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "netFloorSpace", lhsNetFloorSpace), LocatorUtils.property(thatLocator, "netFloorSpace", rhsNetFloorSpace), lhsNetFloorSpace, rhsNetFloorSpace)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "netFloorSpace", lhsNetFloorSpace), LocatorUtils.property(thatLocator, "netFloorSpace", rhsNetFloorSpace), lhsNetFloorSpace, rhsNetFloorSpace, (this.netFloorSpace!= null), (that.netFloorSpace!= null))) {
                 return false;
             }
         }
@@ -2155,7 +2380,7 @@ public class Industry
             lhsMinDivisible = this.getMinDivisible();
             BigDecimal rhsMinDivisible;
             rhsMinDivisible = that.getMinDivisible();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "minDivisible", lhsMinDivisible), LocatorUtils.property(thatLocator, "minDivisible", rhsMinDivisible), lhsMinDivisible, rhsMinDivisible)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "minDivisible", lhsMinDivisible), LocatorUtils.property(thatLocator, "minDivisible", rhsMinDivisible), lhsMinDivisible, rhsMinDivisible, (this.minDivisible!= null), (that.minDivisible!= null))) {
                 return false;
             }
         }
@@ -2164,7 +2389,7 @@ public class Industry
             lhsCourtage = this.getCourtage();
             CourtageInfo rhsCourtage;
             rhsCourtage = that.getCourtage();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "courtage", lhsCourtage), LocatorUtils.property(thatLocator, "courtage", rhsCourtage), lhsCourtage, rhsCourtage)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "courtage", lhsCourtage), LocatorUtils.property(thatLocator, "courtage", rhsCourtage), lhsCourtage, rhsCourtage, (this.courtage!= null), (that.courtage!= null))) {
                 return false;
             }
         }
@@ -2173,7 +2398,7 @@ public class Industry
             lhsDistanceToMRS = this.getDistanceToMRS();
             Long rhsDistanceToMRS;
             rhsDistanceToMRS = that.getDistanceToMRS();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "distanceToMRS", lhsDistanceToMRS), LocatorUtils.property(thatLocator, "distanceToMRS", rhsDistanceToMRS), lhsDistanceToMRS, rhsDistanceToMRS)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "distanceToMRS", lhsDistanceToMRS), LocatorUtils.property(thatLocator, "distanceToMRS", rhsDistanceToMRS), lhsDistanceToMRS, rhsDistanceToMRS, (this.distanceToMRS!= null), (that.distanceToMRS!= null))) {
                 return false;
             }
         }
@@ -2182,7 +2407,7 @@ public class Industry
             lhsDistanceToFM = this.getDistanceToFM();
             Long rhsDistanceToFM;
             rhsDistanceToFM = that.getDistanceToFM();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "distanceToFM", lhsDistanceToFM), LocatorUtils.property(thatLocator, "distanceToFM", rhsDistanceToFM), lhsDistanceToFM, rhsDistanceToFM)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "distanceToFM", lhsDistanceToFM), LocatorUtils.property(thatLocator, "distanceToFM", rhsDistanceToFM), lhsDistanceToFM, rhsDistanceToFM, (this.distanceToFM!= null), (that.distanceToFM!= null))) {
                 return false;
             }
         }
@@ -2191,7 +2416,7 @@ public class Industry
             lhsDistanceToPT = this.getDistanceToPT();
             Long rhsDistanceToPT;
             rhsDistanceToPT = that.getDistanceToPT();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "distanceToPT", lhsDistanceToPT), LocatorUtils.property(thatLocator, "distanceToPT", rhsDistanceToPT), lhsDistanceToPT, rhsDistanceToPT)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "distanceToPT", lhsDistanceToPT), LocatorUtils.property(thatLocator, "distanceToPT", rhsDistanceToPT), lhsDistanceToPT, rhsDistanceToPT, (this.distanceToPT!= null), (that.distanceToPT!= null))) {
                 return false;
             }
         }
@@ -2200,7 +2425,7 @@ public class Industry
             lhsDistanceToAirport = this.getDistanceToAirport();
             Long rhsDistanceToAirport;
             rhsDistanceToAirport = that.getDistanceToAirport();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "distanceToAirport", lhsDistanceToAirport), LocatorUtils.property(thatLocator, "distanceToAirport", rhsDistanceToAirport), lhsDistanceToAirport, rhsDistanceToAirport)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "distanceToAirport", lhsDistanceToAirport), LocatorUtils.property(thatLocator, "distanceToAirport", rhsDistanceToAirport), lhsDistanceToAirport, rhsDistanceToAirport, (this.distanceToAirport!= null), (that.distanceToAirport!= null))) {
                 return false;
             }
         }
@@ -2209,7 +2434,7 @@ public class Industry
             lhsCondition = this.getCondition();
             RealEstateCondition rhsCondition;
             rhsCondition = that.getCondition();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "condition", lhsCondition), LocatorUtils.property(thatLocator, "condition", rhsCondition), lhsCondition, rhsCondition)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "condition", lhsCondition), LocatorUtils.property(thatLocator, "condition", rhsCondition), lhsCondition, rhsCondition, (this.condition!= null), (that.condition!= null))) {
                 return false;
             }
         }
@@ -2218,7 +2443,7 @@ public class Industry
             lhsNumberOfParkingSpaces = this.getNumberOfParkingSpaces();
             Long rhsNumberOfParkingSpaces;
             rhsNumberOfParkingSpaces = that.getNumberOfParkingSpaces();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "numberOfParkingSpaces", lhsNumberOfParkingSpaces), LocatorUtils.property(thatLocator, "numberOfParkingSpaces", rhsNumberOfParkingSpaces), lhsNumberOfParkingSpaces, rhsNumberOfParkingSpaces)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "numberOfParkingSpaces", lhsNumberOfParkingSpaces), LocatorUtils.property(thatLocator, "numberOfParkingSpaces", rhsNumberOfParkingSpaces), lhsNumberOfParkingSpaces, rhsNumberOfParkingSpaces, (this.numberOfParkingSpaces!= null), (that.numberOfParkingSpaces!= null))) {
                 return false;
             }
         }
@@ -2227,7 +2452,7 @@ public class Industry
             lhsParkingSpacePrice = this.getParkingSpacePrice();
             BigDecimal rhsParkingSpacePrice;
             rhsParkingSpacePrice = that.getParkingSpacePrice();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "parkingSpacePrice", lhsParkingSpacePrice), LocatorUtils.property(thatLocator, "parkingSpacePrice", rhsParkingSpacePrice), lhsParkingSpacePrice, rhsParkingSpacePrice)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "parkingSpacePrice", lhsParkingSpacePrice), LocatorUtils.property(thatLocator, "parkingSpacePrice", rhsParkingSpacePrice), lhsParkingSpacePrice, rhsParkingSpacePrice, (this.parkingSpacePrice!= null), (that.parkingSpacePrice!= null))) {
                 return false;
             }
         }
@@ -2236,7 +2461,7 @@ public class Industry
             lhsLastRefurbishment = this.getLastRefurbishment();
             Long rhsLastRefurbishment;
             rhsLastRefurbishment = that.getLastRefurbishment();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "lastRefurbishment", lhsLastRefurbishment), LocatorUtils.property(thatLocator, "lastRefurbishment", rhsLastRefurbishment), lhsLastRefurbishment, rhsLastRefurbishment)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "lastRefurbishment", lhsLastRefurbishment), LocatorUtils.property(thatLocator, "lastRefurbishment", rhsLastRefurbishment), lhsLastRefurbishment, rhsLastRefurbishment, (this.lastRefurbishment!= null), (that.lastRefurbishment!= null))) {
                 return false;
             }
         }
@@ -2245,7 +2470,7 @@ public class Industry
             lhsInteriorQuality = this.getInteriorQuality();
             InteriorQuality rhsInteriorQuality;
             rhsInteriorQuality = that.getInteriorQuality();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "interiorQuality", lhsInteriorQuality), LocatorUtils.property(thatLocator, "interiorQuality", rhsInteriorQuality), lhsInteriorQuality, rhsInteriorQuality)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "interiorQuality", lhsInteriorQuality), LocatorUtils.property(thatLocator, "interiorQuality", rhsInteriorQuality), lhsInteriorQuality, rhsInteriorQuality, (this.interiorQuality!= null), (that.interiorQuality!= null))) {
                 return false;
             }
         }
@@ -2254,7 +2479,7 @@ public class Industry
             lhsConstructionYear = this.getConstructionYear();
             Long rhsConstructionYear;
             rhsConstructionYear = that.getConstructionYear();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "constructionYear", lhsConstructionYear), LocatorUtils.property(thatLocator, "constructionYear", rhsConstructionYear), lhsConstructionYear, rhsConstructionYear)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "constructionYear", lhsConstructionYear), LocatorUtils.property(thatLocator, "constructionYear", rhsConstructionYear), lhsConstructionYear, rhsConstructionYear, (this.constructionYear!= null), (that.constructionYear!= null))) {
                 return false;
             }
         }
@@ -2263,7 +2488,7 @@ public class Industry
             lhsConstructionYearUnknown = this.isConstructionYearUnknown();
             Boolean rhsConstructionYearUnknown;
             rhsConstructionYearUnknown = that.isConstructionYearUnknown();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "constructionYearUnknown", lhsConstructionYearUnknown), LocatorUtils.property(thatLocator, "constructionYearUnknown", rhsConstructionYearUnknown), lhsConstructionYearUnknown, rhsConstructionYearUnknown)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "constructionYearUnknown", lhsConstructionYearUnknown), LocatorUtils.property(thatLocator, "constructionYearUnknown", rhsConstructionYearUnknown), lhsConstructionYearUnknown, rhsConstructionYearUnknown, (this.constructionYearUnknown!= null), (that.constructionYearUnknown!= null))) {
                 return false;
             }
         }
@@ -2272,7 +2497,7 @@ public class Industry
             lhsFreeFrom = this.getFreeFrom();
             String rhsFreeFrom;
             rhsFreeFrom = that.getFreeFrom();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "freeFrom", lhsFreeFrom), LocatorUtils.property(thatLocator, "freeFrom", rhsFreeFrom), lhsFreeFrom, rhsFreeFrom)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "freeFrom", lhsFreeFrom), LocatorUtils.property(thatLocator, "freeFrom", rhsFreeFrom), lhsFreeFrom, rhsFreeFrom, (this.freeFrom!= null), (that.freeFrom!= null))) {
                 return false;
             }
         }
@@ -2281,7 +2506,7 @@ public class Industry
             lhsHeatingType = this.getHeatingType();
             HeatingType rhsHeatingType;
             rhsHeatingType = that.getHeatingType();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "heatingType", lhsHeatingType), LocatorUtils.property(thatLocator, "heatingType", rhsHeatingType), lhsHeatingType, rhsHeatingType)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "heatingType", lhsHeatingType), LocatorUtils.property(thatLocator, "heatingType", rhsHeatingType), lhsHeatingType, rhsHeatingType, (this.heatingType!= null), (that.heatingType!= null))) {
                 return false;
             }
         }
@@ -2290,7 +2515,7 @@ public class Industry
             lhsHeatingTypeEnev2014 = this.getHeatingTypeEnev2014();
             HeatingTypeEnev2014 rhsHeatingTypeEnev2014;
             rhsHeatingTypeEnev2014 = that.getHeatingTypeEnev2014();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "heatingTypeEnev2014", lhsHeatingTypeEnev2014), LocatorUtils.property(thatLocator, "heatingTypeEnev2014", rhsHeatingTypeEnev2014), lhsHeatingTypeEnev2014, rhsHeatingTypeEnev2014)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "heatingTypeEnev2014", lhsHeatingTypeEnev2014), LocatorUtils.property(thatLocator, "heatingTypeEnev2014", rhsHeatingTypeEnev2014), lhsHeatingTypeEnev2014, rhsHeatingTypeEnev2014, (this.heatingTypeEnev2014 != null), (that.heatingTypeEnev2014 != null))) {
                 return false;
             }
         }
@@ -2299,7 +2524,7 @@ public class Industry
             lhsFiringTypes = this.getFiringTypes();
             FiringTypes rhsFiringTypes;
             rhsFiringTypes = that.getFiringTypes();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "firingTypes", lhsFiringTypes), LocatorUtils.property(thatLocator, "firingTypes", rhsFiringTypes), lhsFiringTypes, rhsFiringTypes)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "firingTypes", lhsFiringTypes), LocatorUtils.property(thatLocator, "firingTypes", rhsFiringTypes), lhsFiringTypes, rhsFiringTypes, (this.firingTypes!= null), (that.firingTypes!= null))) {
                 return false;
             }
         }
@@ -2308,7 +2533,7 @@ public class Industry
             lhsEnergySourcesEnev2014 = this.getEnergySourcesEnev2014();
             EnergySourcesEnev2014 rhsEnergySourcesEnev2014;
             rhsEnergySourcesEnev2014 = that.getEnergySourcesEnev2014();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "energySourcesEnev2014", lhsEnergySourcesEnev2014), LocatorUtils.property(thatLocator, "energySourcesEnev2014", rhsEnergySourcesEnev2014), lhsEnergySourcesEnev2014, rhsEnergySourcesEnev2014)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "energySourcesEnev2014", lhsEnergySourcesEnev2014), LocatorUtils.property(thatLocator, "energySourcesEnev2014", rhsEnergySourcesEnev2014), lhsEnergySourcesEnev2014, rhsEnergySourcesEnev2014, (this.energySourcesEnev2014 != null), (that.energySourcesEnev2014 != null))) {
                 return false;
             }
         }
@@ -2317,7 +2542,7 @@ public class Industry
             lhsThermalCharacteristic = this.getThermalCharacteristic();
             BigDecimal rhsThermalCharacteristic;
             rhsThermalCharacteristic = that.getThermalCharacteristic();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "thermalCharacteristic", lhsThermalCharacteristic), LocatorUtils.property(thatLocator, "thermalCharacteristic", rhsThermalCharacteristic), lhsThermalCharacteristic, rhsThermalCharacteristic)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "thermalCharacteristic", lhsThermalCharacteristic), LocatorUtils.property(thatLocator, "thermalCharacteristic", rhsThermalCharacteristic), lhsThermalCharacteristic, rhsThermalCharacteristic, (this.thermalCharacteristic!= null), (that.thermalCharacteristic!= null))) {
                 return false;
             }
         }
@@ -2326,7 +2551,7 @@ public class Industry
             lhsEnergyConsumptionContainsWarmWater = this.getEnergyConsumptionContainsWarmWater();
             YesNotApplicableType rhsEnergyConsumptionContainsWarmWater;
             rhsEnergyConsumptionContainsWarmWater = that.getEnergyConsumptionContainsWarmWater();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "energyConsumptionContainsWarmWater", lhsEnergyConsumptionContainsWarmWater), LocatorUtils.property(thatLocator, "energyConsumptionContainsWarmWater", rhsEnergyConsumptionContainsWarmWater), lhsEnergyConsumptionContainsWarmWater, rhsEnergyConsumptionContainsWarmWater)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "energyConsumptionContainsWarmWater", lhsEnergyConsumptionContainsWarmWater), LocatorUtils.property(thatLocator, "energyConsumptionContainsWarmWater", rhsEnergyConsumptionContainsWarmWater), lhsEnergyConsumptionContainsWarmWater, rhsEnergyConsumptionContainsWarmWater, (this.energyConsumptionContainsWarmWater!= null), (that.energyConsumptionContainsWarmWater!= null))) {
                 return false;
             }
         }
@@ -2335,7 +2560,7 @@ public class Industry
             lhsBuildingEnergyRatingType = this.getBuildingEnergyRatingType();
             BuildingEnergyRatingType rhsBuildingEnergyRatingType;
             rhsBuildingEnergyRatingType = that.getBuildingEnergyRatingType();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "buildingEnergyRatingType", lhsBuildingEnergyRatingType), LocatorUtils.property(thatLocator, "buildingEnergyRatingType", rhsBuildingEnergyRatingType), lhsBuildingEnergyRatingType, rhsBuildingEnergyRatingType)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "buildingEnergyRatingType", lhsBuildingEnergyRatingType), LocatorUtils.property(thatLocator, "buildingEnergyRatingType", rhsBuildingEnergyRatingType), lhsBuildingEnergyRatingType, rhsBuildingEnergyRatingType, (this.buildingEnergyRatingType!= null), (that.buildingEnergyRatingType!= null))) {
                 return false;
             }
         }
@@ -2344,7 +2569,7 @@ public class Industry
             lhsAdditionalArea = this.getAdditionalArea();
             BigDecimal rhsAdditionalArea;
             rhsAdditionalArea = that.getAdditionalArea();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "additionalArea", lhsAdditionalArea), LocatorUtils.property(thatLocator, "additionalArea", rhsAdditionalArea), lhsAdditionalArea, rhsAdditionalArea)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "additionalArea", lhsAdditionalArea), LocatorUtils.property(thatLocator, "additionalArea", rhsAdditionalArea), lhsAdditionalArea, rhsAdditionalArea, (this.additionalArea!= null), (that.additionalArea!= null))) {
                 return false;
             }
         }
@@ -2353,7 +2578,7 @@ public class Industry
             lhsNumberOfFloors = this.getNumberOfFloors();
             String rhsNumberOfFloors;
             rhsNumberOfFloors = that.getNumberOfFloors();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "numberOfFloors", lhsNumberOfFloors), LocatorUtils.property(thatLocator, "numberOfFloors", rhsNumberOfFloors), lhsNumberOfFloors, rhsNumberOfFloors)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "numberOfFloors", lhsNumberOfFloors), LocatorUtils.property(thatLocator, "numberOfFloors", rhsNumberOfFloors), lhsNumberOfFloors, rhsNumberOfFloors, (this.numberOfFloors!= null), (that.numberOfFloors!= null))) {
                 return false;
             }
         }
@@ -2362,7 +2587,7 @@ public class Industry
             lhsAdditionalCosts = this.getAdditionalCosts();
             Price rhsAdditionalCosts;
             rhsAdditionalCosts = that.getAdditionalCosts();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "additionalCosts", lhsAdditionalCosts), LocatorUtils.property(thatLocator, "additionalCosts", rhsAdditionalCosts), lhsAdditionalCosts, rhsAdditionalCosts)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "additionalCosts", lhsAdditionalCosts), LocatorUtils.property(thatLocator, "additionalCosts", rhsAdditionalCosts), lhsAdditionalCosts, rhsAdditionalCosts, (this.additionalCosts!= null), (that.additionalCosts!= null))) {
                 return false;
             }
         }
@@ -2370,7 +2595,7 @@ public class Industry
     }
 
     public boolean equals(Object object) {
-        final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
     }
 

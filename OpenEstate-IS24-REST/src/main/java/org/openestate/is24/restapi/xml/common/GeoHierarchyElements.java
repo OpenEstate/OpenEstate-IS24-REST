@@ -6,15 +6,15 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
-import org.jvnet.jaxb2_commons.lang.CopyStrategy;
-import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Equals;
-import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
+import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
+import org.jvnet.jaxb2_commons.lang.CopyTo2;
+import org.jvnet.jaxb2_commons.lang.Equals2;
+import org.jvnet.jaxb2_commons.lang.EqualsStrategy2;
 import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBEqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy;
-import org.jvnet.jaxb2_commons.lang.ToString;
-import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
+import org.jvnet.jaxb2_commons.lang.ToString2;
+import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 
@@ -44,8 +44,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 @XmlType(name = "GeoHierarchyElements", propOrder = {
     "geoHierarchyElement"
 })
-public class GeoHierarchyElements
-    implements Cloneable, CopyTo, Equals, ToString
+public class GeoHierarchyElements implements Cloneable, CopyTo2, Equals2, ToString2
 {
 
     protected List<GeoHierarchyElement> geoHierarchyElement;
@@ -80,24 +79,24 @@ public class GeoHierarchyElements
     }
 
     public String toString() {
-        final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
         append(null, buffer, strategy);
         return buffer.toString();
     }
 
-    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
         strategy.appendEnd(locator, this, buffer);
         return buffer;
     }
 
-    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             List<GeoHierarchyElement> theGeoHierarchyElement;
             theGeoHierarchyElement = (((this.geoHierarchyElement!= null)&&(!this.geoHierarchyElement.isEmpty()))?this.getGeoHierarchyElement():null);
-            strategy.appendField(locator, this, "geoHierarchyElement", buffer, theGeoHierarchyElement);
+            strategy.appendField(locator, this, "geoHierarchyElement", buffer, theGeoHierarchyElement, ((this.geoHierarchyElement!= null)&&(!this.geoHierarchyElement.isEmpty())));
         }
         return buffer;
     }
@@ -107,26 +106,31 @@ public class GeoHierarchyElements
     }
 
     public Object copyTo(Object target) {
-        final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof GeoHierarchyElements) {
             final GeoHierarchyElements copy = ((GeoHierarchyElements) draftCopy);
-            if ((this.geoHierarchyElement!= null)&&(!this.geoHierarchyElement.isEmpty())) {
-                List<GeoHierarchyElement> sourceGeoHierarchyElement;
-                sourceGeoHierarchyElement = (((this.geoHierarchyElement!= null)&&(!this.geoHierarchyElement.isEmpty()))?this.getGeoHierarchyElement():null);
-                @SuppressWarnings("unchecked")
-                List<GeoHierarchyElement> copyGeoHierarchyElement = ((List<GeoHierarchyElement> ) strategy.copy(LocatorUtils.property(locator, "geoHierarchyElement", sourceGeoHierarchyElement), sourceGeoHierarchyElement));
-                copy.geoHierarchyElement = null;
-                if (copyGeoHierarchyElement!= null) {
-                    List<GeoHierarchyElement> uniqueGeoHierarchyElementl = copy.getGeoHierarchyElement();
-                    uniqueGeoHierarchyElementl.addAll(copyGeoHierarchyElement);
+            {
+                Boolean geoHierarchyElementShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, ((this.geoHierarchyElement!= null)&&(!this.geoHierarchyElement.isEmpty())));
+                if (geoHierarchyElementShouldBeCopiedAndSet == Boolean.TRUE) {
+                    List<GeoHierarchyElement> sourceGeoHierarchyElement;
+                    sourceGeoHierarchyElement = (((this.geoHierarchyElement!= null)&&(!this.geoHierarchyElement.isEmpty()))?this.getGeoHierarchyElement():null);
+                    @SuppressWarnings("unchecked")
+                    List<GeoHierarchyElement> copyGeoHierarchyElement = ((List<GeoHierarchyElement> ) strategy.copy(LocatorUtils.property(locator, "geoHierarchyElement", sourceGeoHierarchyElement), sourceGeoHierarchyElement, ((this.geoHierarchyElement!= null)&&(!this.geoHierarchyElement.isEmpty()))));
+                    copy.geoHierarchyElement = null;
+                    if (copyGeoHierarchyElement!= null) {
+                        List<GeoHierarchyElement> uniqueGeoHierarchyElementl = copy.getGeoHierarchyElement();
+                        uniqueGeoHierarchyElementl.addAll(copyGeoHierarchyElement);
+                    }
+                } else {
+                    if (geoHierarchyElementShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.geoHierarchyElement = null;
+                    }
                 }
-            } else {
-                copy.geoHierarchyElement = null;
             }
         }
         return draftCopy;
@@ -136,7 +140,7 @@ public class GeoHierarchyElements
         return new GeoHierarchyElements();
     }
 
-    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
@@ -149,7 +153,7 @@ public class GeoHierarchyElements
             lhsGeoHierarchyElement = (((this.geoHierarchyElement!= null)&&(!this.geoHierarchyElement.isEmpty()))?this.getGeoHierarchyElement():null);
             List<GeoHierarchyElement> rhsGeoHierarchyElement;
             rhsGeoHierarchyElement = (((that.geoHierarchyElement!= null)&&(!that.geoHierarchyElement.isEmpty()))?that.getGeoHierarchyElement():null);
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "geoHierarchyElement", lhsGeoHierarchyElement), LocatorUtils.property(thatLocator, "geoHierarchyElement", rhsGeoHierarchyElement), lhsGeoHierarchyElement, rhsGeoHierarchyElement)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "geoHierarchyElement", lhsGeoHierarchyElement), LocatorUtils.property(thatLocator, "geoHierarchyElement", rhsGeoHierarchyElement), lhsGeoHierarchyElement, rhsGeoHierarchyElement, ((this.geoHierarchyElement!= null)&&(!this.geoHierarchyElement.isEmpty())), ((that.geoHierarchyElement!= null)&&(!that.geoHierarchyElement.isEmpty())))) {
                 return false;
             }
         }
@@ -157,7 +161,7 @@ public class GeoHierarchyElements
     }
 
     public boolean equals(Object object) {
-        final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
     }
 

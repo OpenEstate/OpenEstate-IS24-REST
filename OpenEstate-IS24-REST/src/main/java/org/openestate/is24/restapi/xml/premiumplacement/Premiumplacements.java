@@ -10,15 +10,15 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import org.jvnet.jaxb2_commons.lang.CopyStrategy;
-import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Equals;
-import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
+import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
+import org.jvnet.jaxb2_commons.lang.CopyTo2;
+import org.jvnet.jaxb2_commons.lang.Equals2;
+import org.jvnet.jaxb2_commons.lang.EqualsStrategy2;
 import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBEqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy;
-import org.jvnet.jaxb2_commons.lang.ToString;
-import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
+import org.jvnet.jaxb2_commons.lang.ToString2;
+import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 import org.openestate.is24.restapi.xml.Adapter4;
@@ -50,8 +50,7 @@ import org.openestate.is24.restapi.xml.Adapter4;
 @XmlType(name = "Premiumplacements", propOrder = {
     "premiumplacement"
 })
-public class Premiumplacements
-    implements Cloneable, CopyTo, Equals, ToString
+public class Premiumplacements implements Cloneable, CopyTo2, Equals2, ToString2
 {
 
     protected List<Premiumplacement> premiumplacement;
@@ -114,29 +113,29 @@ public class Premiumplacements
     }
 
     public String toString() {
-        final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
         append(null, buffer, strategy);
         return buffer.toString();
     }
 
-    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
         strategy.appendEnd(locator, this, buffer);
         return buffer;
     }
 
-    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             List<Premiumplacement> thePremiumplacement;
             thePremiumplacement = (((this.premiumplacement!= null)&&(!this.premiumplacement.isEmpty()))?this.getPremiumplacement():null);
-            strategy.appendField(locator, this, "premiumplacement", buffer, thePremiumplacement);
+            strategy.appendField(locator, this, "premiumplacement", buffer, thePremiumplacement, ((this.premiumplacement!= null)&&(!this.premiumplacement.isEmpty())));
         }
         {
             URL theHref;
             theHref = this.getHref();
-            strategy.appendField(locator, this, "href", buffer, theHref);
+            strategy.appendField(locator, this, "href", buffer, theHref, (this.href!= null));
         }
         return buffer;
     }
@@ -146,34 +145,44 @@ public class Premiumplacements
     }
 
     public Object copyTo(Object target) {
-        final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof Premiumplacements) {
             final Premiumplacements copy = ((Premiumplacements) draftCopy);
-            if ((this.premiumplacement!= null)&&(!this.premiumplacement.isEmpty())) {
-                List<Premiumplacement> sourcePremiumplacement;
-                sourcePremiumplacement = (((this.premiumplacement!= null)&&(!this.premiumplacement.isEmpty()))?this.getPremiumplacement():null);
-                @SuppressWarnings("unchecked")
-                List<Premiumplacement> copyPremiumplacement = ((List<Premiumplacement> ) strategy.copy(LocatorUtils.property(locator, "premiumplacement", sourcePremiumplacement), sourcePremiumplacement));
-                copy.premiumplacement = null;
-                if (copyPremiumplacement!= null) {
-                    List<Premiumplacement> uniquePremiumplacementl = copy.getPremiumplacement();
-                    uniquePremiumplacementl.addAll(copyPremiumplacement);
+            {
+                Boolean premiumplacementShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, ((this.premiumplacement!= null)&&(!this.premiumplacement.isEmpty())));
+                if (premiumplacementShouldBeCopiedAndSet == Boolean.TRUE) {
+                    List<Premiumplacement> sourcePremiumplacement;
+                    sourcePremiumplacement = (((this.premiumplacement!= null)&&(!this.premiumplacement.isEmpty()))?this.getPremiumplacement():null);
+                    @SuppressWarnings("unchecked")
+                    List<Premiumplacement> copyPremiumplacement = ((List<Premiumplacement> ) strategy.copy(LocatorUtils.property(locator, "premiumplacement", sourcePremiumplacement), sourcePremiumplacement, ((this.premiumplacement!= null)&&(!this.premiumplacement.isEmpty()))));
+                    copy.premiumplacement = null;
+                    if (copyPremiumplacement!= null) {
+                        List<Premiumplacement> uniquePremiumplacementl = copy.getPremiumplacement();
+                        uniquePremiumplacementl.addAll(copyPremiumplacement);
+                    }
+                } else {
+                    if (premiumplacementShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.premiumplacement = null;
+                    }
                 }
-            } else {
-                copy.premiumplacement = null;
             }
-            if (this.href!= null) {
-                URL sourceHref;
-                sourceHref = this.getHref();
-                URL copyHref = ((URL) strategy.copy(LocatorUtils.property(locator, "href", sourceHref), sourceHref));
-                copy.setHref(copyHref);
-            } else {
-                copy.href = null;
+            {
+                Boolean hrefShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.href!= null));
+                if (hrefShouldBeCopiedAndSet == Boolean.TRUE) {
+                    URL sourceHref;
+                    sourceHref = this.getHref();
+                    URL copyHref = ((URL) strategy.copy(LocatorUtils.property(locator, "href", sourceHref), sourceHref, (this.href!= null)));
+                    copy.setHref(copyHref);
+                } else {
+                    if (hrefShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.href = null;
+                    }
+                }
             }
         }
         return draftCopy;
@@ -183,7 +192,7 @@ public class Premiumplacements
         return new Premiumplacements();
     }
 
-    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
@@ -196,7 +205,7 @@ public class Premiumplacements
             lhsPremiumplacement = (((this.premiumplacement!= null)&&(!this.premiumplacement.isEmpty()))?this.getPremiumplacement():null);
             List<Premiumplacement> rhsPremiumplacement;
             rhsPremiumplacement = (((that.premiumplacement!= null)&&(!that.premiumplacement.isEmpty()))?that.getPremiumplacement():null);
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "premiumplacement", lhsPremiumplacement), LocatorUtils.property(thatLocator, "premiumplacement", rhsPremiumplacement), lhsPremiumplacement, rhsPremiumplacement)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "premiumplacement", lhsPremiumplacement), LocatorUtils.property(thatLocator, "premiumplacement", rhsPremiumplacement), lhsPremiumplacement, rhsPremiumplacement, ((this.premiumplacement!= null)&&(!this.premiumplacement.isEmpty())), ((that.premiumplacement!= null)&&(!that.premiumplacement.isEmpty())))) {
                 return false;
             }
         }
@@ -205,7 +214,7 @@ public class Premiumplacements
             lhsHref = this.getHref();
             URL rhsHref;
             rhsHref = that.getHref();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "href", lhsHref), LocatorUtils.property(thatLocator, "href", rhsHref), lhsHref, rhsHref)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "href", lhsHref), LocatorUtils.property(thatLocator, "href", rhsHref), lhsHref, rhsHref, (this.href!= null), (that.href!= null))) {
                 return false;
             }
         }
@@ -213,7 +222,7 @@ public class Premiumplacements
     }
 
     public boolean equals(Object object) {
-        final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
     }
 

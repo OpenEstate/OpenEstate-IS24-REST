@@ -7,15 +7,15 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-import org.jvnet.jaxb2_commons.lang.CopyStrategy;
-import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Equals;
-import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
+import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
+import org.jvnet.jaxb2_commons.lang.CopyTo2;
+import org.jvnet.jaxb2_commons.lang.Equals2;
+import org.jvnet.jaxb2_commons.lang.EqualsStrategy2;
 import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBEqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy;
-import org.jvnet.jaxb2_commons.lang.ToString;
-import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
+import org.jvnet.jaxb2_commons.lang.ToString2;
+import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 
@@ -44,8 +44,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
     "publishObject"
 })
 @XmlRootElement(name = "publishObjects")
-public class PublishObjects
-    implements Cloneable, CopyTo, Equals, ToString
+public class PublishObjects implements Cloneable, CopyTo2, Equals2, ToString2
 {
 
     protected List<PublishObject> publishObject;
@@ -80,24 +79,24 @@ public class PublishObjects
     }
 
     public String toString() {
-        final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
         append(null, buffer, strategy);
         return buffer.toString();
     }
 
-    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
         strategy.appendEnd(locator, this, buffer);
         return buffer;
     }
 
-    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             List<PublishObject> thePublishObject;
             thePublishObject = (((this.publishObject!= null)&&(!this.publishObject.isEmpty()))?this.getPublishObject():null);
-            strategy.appendField(locator, this, "publishObject", buffer, thePublishObject);
+            strategy.appendField(locator, this, "publishObject", buffer, thePublishObject, ((this.publishObject!= null)&&(!this.publishObject.isEmpty())));
         }
         return buffer;
     }
@@ -107,26 +106,31 @@ public class PublishObjects
     }
 
     public Object copyTo(Object target) {
-        final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof PublishObjects) {
             final PublishObjects copy = ((PublishObjects) draftCopy);
-            if ((this.publishObject!= null)&&(!this.publishObject.isEmpty())) {
-                List<PublishObject> sourcePublishObject;
-                sourcePublishObject = (((this.publishObject!= null)&&(!this.publishObject.isEmpty()))?this.getPublishObject():null);
-                @SuppressWarnings("unchecked")
-                List<PublishObject> copyPublishObject = ((List<PublishObject> ) strategy.copy(LocatorUtils.property(locator, "publishObject", sourcePublishObject), sourcePublishObject));
-                copy.publishObject = null;
-                if (copyPublishObject!= null) {
-                    List<PublishObject> uniquePublishObjectl = copy.getPublishObject();
-                    uniquePublishObjectl.addAll(copyPublishObject);
+            {
+                Boolean publishObjectShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, ((this.publishObject!= null)&&(!this.publishObject.isEmpty())));
+                if (publishObjectShouldBeCopiedAndSet == Boolean.TRUE) {
+                    List<PublishObject> sourcePublishObject;
+                    sourcePublishObject = (((this.publishObject!= null)&&(!this.publishObject.isEmpty()))?this.getPublishObject():null);
+                    @SuppressWarnings("unchecked")
+                    List<PublishObject> copyPublishObject = ((List<PublishObject> ) strategy.copy(LocatorUtils.property(locator, "publishObject", sourcePublishObject), sourcePublishObject, ((this.publishObject!= null)&&(!this.publishObject.isEmpty()))));
+                    copy.publishObject = null;
+                    if (copyPublishObject!= null) {
+                        List<PublishObject> uniquePublishObjectl = copy.getPublishObject();
+                        uniquePublishObjectl.addAll(copyPublishObject);
+                    }
+                } else {
+                    if (publishObjectShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.publishObject = null;
+                    }
                 }
-            } else {
-                copy.publishObject = null;
             }
         }
         return draftCopy;
@@ -136,7 +140,7 @@ public class PublishObjects
         return new PublishObjects();
     }
 
-    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
@@ -149,7 +153,7 @@ public class PublishObjects
             lhsPublishObject = (((this.publishObject!= null)&&(!this.publishObject.isEmpty()))?this.getPublishObject():null);
             List<PublishObject> rhsPublishObject;
             rhsPublishObject = (((that.publishObject!= null)&&(!that.publishObject.isEmpty()))?that.getPublishObject():null);
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "publishObject", lhsPublishObject), LocatorUtils.property(thatLocator, "publishObject", rhsPublishObject), lhsPublishObject, rhsPublishObject)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "publishObject", lhsPublishObject), LocatorUtils.property(thatLocator, "publishObject", rhsPublishObject), lhsPublishObject, rhsPublishObject, ((this.publishObject!= null)&&(!this.publishObject.isEmpty())), ((that.publishObject!= null)&&(!that.publishObject.isEmpty())))) {
                 return false;
             }
         }
@@ -157,7 +161,7 @@ public class PublishObjects
     }
 
     public boolean equals(Object object) {
-        final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
     }
 

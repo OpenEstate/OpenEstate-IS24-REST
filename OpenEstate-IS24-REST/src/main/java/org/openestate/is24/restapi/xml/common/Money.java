@@ -7,15 +7,15 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import org.jvnet.jaxb2_commons.lang.CopyStrategy;
-import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Equals;
-import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
+import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
+import org.jvnet.jaxb2_commons.lang.CopyTo2;
+import org.jvnet.jaxb2_commons.lang.Equals2;
+import org.jvnet.jaxb2_commons.lang.EqualsStrategy2;
 import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBEqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy;
-import org.jvnet.jaxb2_commons.lang.ToString;
-import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
+import org.jvnet.jaxb2_commons.lang.ToString2;
+import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 
@@ -44,8 +44,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 @XmlType(name = "Money", propOrder = {
 
 })
-public class Money
-    implements Cloneable, CopyTo, Equals, ToString
+public class Money implements Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(required = true)
@@ -103,29 +102,29 @@ public class Money
     }
 
     public String toString() {
-        final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
         append(null, buffer, strategy);
         return buffer.toString();
     }
 
-    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
         strategy.appendEnd(locator, this, buffer);
         return buffer;
     }
 
-    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             BigDecimal theAmount;
             theAmount = this.getAmount();
-            strategy.appendField(locator, this, "amount", buffer, theAmount);
+            strategy.appendField(locator, this, "amount", buffer, theAmount, (this.amount!= null));
         }
         {
             Currency theCurrency;
             theCurrency = this.getCurrency();
-            strategy.appendField(locator, this, "currency", buffer, theCurrency);
+            strategy.appendField(locator, this, "currency", buffer, theCurrency, (this.currency!= null));
         }
         return buffer;
     }
@@ -135,29 +134,39 @@ public class Money
     }
 
     public Object copyTo(Object target) {
-        final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof Money) {
             final Money copy = ((Money) draftCopy);
-            if (this.amount!= null) {
-                BigDecimal sourceAmount;
-                sourceAmount = this.getAmount();
-                BigDecimal copyAmount = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "amount", sourceAmount), sourceAmount));
-                copy.setAmount(copyAmount);
-            } else {
-                copy.amount = null;
+            {
+                Boolean amountShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.amount!= null));
+                if (amountShouldBeCopiedAndSet == Boolean.TRUE) {
+                    BigDecimal sourceAmount;
+                    sourceAmount = this.getAmount();
+                    BigDecimal copyAmount = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "amount", sourceAmount), sourceAmount, (this.amount!= null)));
+                    copy.setAmount(copyAmount);
+                } else {
+                    if (amountShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.amount = null;
+                    }
+                }
             }
-            if (this.currency!= null) {
-                Currency sourceCurrency;
-                sourceCurrency = this.getCurrency();
-                Currency copyCurrency = ((Currency) strategy.copy(LocatorUtils.property(locator, "currency", sourceCurrency), sourceCurrency));
-                copy.setCurrency(copyCurrency);
-            } else {
-                copy.currency = null;
+            {
+                Boolean currencyShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.currency!= null));
+                if (currencyShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Currency sourceCurrency;
+                    sourceCurrency = this.getCurrency();
+                    Currency copyCurrency = ((Currency) strategy.copy(LocatorUtils.property(locator, "currency", sourceCurrency), sourceCurrency, (this.currency!= null)));
+                    copy.setCurrency(copyCurrency);
+                } else {
+                    if (currencyShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.currency = null;
+                    }
+                }
             }
         }
         return draftCopy;
@@ -167,7 +176,7 @@ public class Money
         return new Money();
     }
 
-    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
@@ -180,7 +189,7 @@ public class Money
             lhsAmount = this.getAmount();
             BigDecimal rhsAmount;
             rhsAmount = that.getAmount();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "amount", lhsAmount), LocatorUtils.property(thatLocator, "amount", rhsAmount), lhsAmount, rhsAmount)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "amount", lhsAmount), LocatorUtils.property(thatLocator, "amount", rhsAmount), lhsAmount, rhsAmount, (this.amount!= null), (that.amount!= null))) {
                 return false;
             }
         }
@@ -189,7 +198,7 @@ public class Money
             lhsCurrency = this.getCurrency();
             Currency rhsCurrency;
             rhsCurrency = that.getCurrency();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "currency", lhsCurrency), LocatorUtils.property(thatLocator, "currency", rhsCurrency), lhsCurrency, rhsCurrency)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "currency", lhsCurrency), LocatorUtils.property(thatLocator, "currency", rhsCurrency), lhsCurrency, rhsCurrency, (this.currency!= null), (that.currency!= null))) {
                 return false;
             }
         }
@@ -197,7 +206,7 @@ public class Money
     }
 
     public boolean equals(Object object) {
-        final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
     }
 

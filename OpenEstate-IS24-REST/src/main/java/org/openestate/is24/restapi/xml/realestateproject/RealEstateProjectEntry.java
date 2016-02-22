@@ -5,15 +5,15 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
-import org.jvnet.jaxb2_commons.lang.CopyStrategy;
-import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Equals;
-import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
+import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
+import org.jvnet.jaxb2_commons.lang.CopyTo2;
+import org.jvnet.jaxb2_commons.lang.Equals2;
+import org.jvnet.jaxb2_commons.lang.EqualsStrategy2;
 import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBEqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy;
-import org.jvnet.jaxb2_commons.lang.ToString;
-import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
+import org.jvnet.jaxb2_commons.lang.ToString2;
+import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 
@@ -48,8 +48,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
     "realEstateId",
     "realEstateExternalId"
 })
-public class RealEstateProjectEntry
-    implements Cloneable, CopyTo, Equals, ToString
+public class RealEstateProjectEntry implements Cloneable, CopyTo2, Equals2, ToString2
 {
 
     protected Long realEstateId;
@@ -130,34 +129,34 @@ public class RealEstateProjectEntry
     }
 
     public String toString() {
-        final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
         append(null, buffer, strategy);
         return buffer.toString();
     }
 
-    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
         strategy.appendEnd(locator, this, buffer);
         return buffer;
     }
 
-    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             Long theRealEstateId;
             theRealEstateId = this.getRealEstateId();
-            strategy.appendField(locator, this, "realEstateId", buffer, theRealEstateId);
+            strategy.appendField(locator, this, "realEstateId", buffer, theRealEstateId, (this.realEstateId!= null));
         }
         {
             String theRealEstateExternalId;
             theRealEstateExternalId = this.getRealEstateExternalId();
-            strategy.appendField(locator, this, "realEstateExternalId", buffer, theRealEstateExternalId);
+            strategy.appendField(locator, this, "realEstateExternalId", buffer, theRealEstateExternalId, (this.realEstateExternalId!= null));
         }
         {
             Long theId;
             theId = this.getId();
-            strategy.appendField(locator, this, "id", buffer, theId);
+            strategy.appendField(locator, this, "id", buffer, theId, (this.id!= null));
         }
         return buffer;
     }
@@ -167,37 +166,52 @@ public class RealEstateProjectEntry
     }
 
     public Object copyTo(Object target) {
-        final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof RealEstateProjectEntry) {
             final RealEstateProjectEntry copy = ((RealEstateProjectEntry) draftCopy);
-            if (this.realEstateId!= null) {
-                Long sourceRealEstateId;
-                sourceRealEstateId = this.getRealEstateId();
-                Long copyRealEstateId = ((Long) strategy.copy(LocatorUtils.property(locator, "realEstateId", sourceRealEstateId), sourceRealEstateId));
-                copy.setRealEstateId(copyRealEstateId);
-            } else {
-                copy.realEstateId = null;
+            {
+                Boolean realEstateIdShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.realEstateId!= null));
+                if (realEstateIdShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Long sourceRealEstateId;
+                    sourceRealEstateId = this.getRealEstateId();
+                    Long copyRealEstateId = ((Long) strategy.copy(LocatorUtils.property(locator, "realEstateId", sourceRealEstateId), sourceRealEstateId, (this.realEstateId!= null)));
+                    copy.setRealEstateId(copyRealEstateId);
+                } else {
+                    if (realEstateIdShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.realEstateId = null;
+                    }
+                }
             }
-            if (this.realEstateExternalId!= null) {
-                String sourceRealEstateExternalId;
-                sourceRealEstateExternalId = this.getRealEstateExternalId();
-                String copyRealEstateExternalId = ((String) strategy.copy(LocatorUtils.property(locator, "realEstateExternalId", sourceRealEstateExternalId), sourceRealEstateExternalId));
-                copy.setRealEstateExternalId(copyRealEstateExternalId);
-            } else {
-                copy.realEstateExternalId = null;
+            {
+                Boolean realEstateExternalIdShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.realEstateExternalId!= null));
+                if (realEstateExternalIdShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceRealEstateExternalId;
+                    sourceRealEstateExternalId = this.getRealEstateExternalId();
+                    String copyRealEstateExternalId = ((String) strategy.copy(LocatorUtils.property(locator, "realEstateExternalId", sourceRealEstateExternalId), sourceRealEstateExternalId, (this.realEstateExternalId!= null)));
+                    copy.setRealEstateExternalId(copyRealEstateExternalId);
+                } else {
+                    if (realEstateExternalIdShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.realEstateExternalId = null;
+                    }
+                }
             }
-            if (this.id!= null) {
-                Long sourceId;
-                sourceId = this.getId();
-                Long copyId = ((Long) strategy.copy(LocatorUtils.property(locator, "id", sourceId), sourceId));
-                copy.setId(copyId);
-            } else {
-                copy.id = null;
+            {
+                Boolean idShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.id!= null));
+                if (idShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Long sourceId;
+                    sourceId = this.getId();
+                    Long copyId = ((Long) strategy.copy(LocatorUtils.property(locator, "id", sourceId), sourceId, (this.id!= null)));
+                    copy.setId(copyId);
+                } else {
+                    if (idShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.id = null;
+                    }
+                }
             }
         }
         return draftCopy;
@@ -207,7 +221,7 @@ public class RealEstateProjectEntry
         return new RealEstateProjectEntry();
     }
 
-    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
@@ -220,7 +234,7 @@ public class RealEstateProjectEntry
             lhsRealEstateId = this.getRealEstateId();
             Long rhsRealEstateId;
             rhsRealEstateId = that.getRealEstateId();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "realEstateId", lhsRealEstateId), LocatorUtils.property(thatLocator, "realEstateId", rhsRealEstateId), lhsRealEstateId, rhsRealEstateId)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "realEstateId", lhsRealEstateId), LocatorUtils.property(thatLocator, "realEstateId", rhsRealEstateId), lhsRealEstateId, rhsRealEstateId, (this.realEstateId!= null), (that.realEstateId!= null))) {
                 return false;
             }
         }
@@ -229,7 +243,7 @@ public class RealEstateProjectEntry
             lhsRealEstateExternalId = this.getRealEstateExternalId();
             String rhsRealEstateExternalId;
             rhsRealEstateExternalId = that.getRealEstateExternalId();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "realEstateExternalId", lhsRealEstateExternalId), LocatorUtils.property(thatLocator, "realEstateExternalId", rhsRealEstateExternalId), lhsRealEstateExternalId, rhsRealEstateExternalId)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "realEstateExternalId", lhsRealEstateExternalId), LocatorUtils.property(thatLocator, "realEstateExternalId", rhsRealEstateExternalId), lhsRealEstateExternalId, rhsRealEstateExternalId, (this.realEstateExternalId!= null), (that.realEstateExternalId!= null))) {
                 return false;
             }
         }
@@ -238,7 +252,7 @@ public class RealEstateProjectEntry
             lhsId = this.getId();
             Long rhsId;
             rhsId = that.getId();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "id", lhsId), LocatorUtils.property(thatLocator, "id", rhsId), lhsId, rhsId)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "id", lhsId), LocatorUtils.property(thatLocator, "id", rhsId), lhsId, rhsId, (this.id!= null), (that.id!= null))) {
                 return false;
             }
         }
@@ -246,7 +260,7 @@ public class RealEstateProjectEntry
     }
 
     public boolean equals(Object object) {
-        final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
     }
 

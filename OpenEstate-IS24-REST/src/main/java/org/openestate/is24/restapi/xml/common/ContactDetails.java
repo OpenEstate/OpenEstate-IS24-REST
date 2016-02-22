@@ -7,15 +7,15 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import org.jvnet.jaxb2_commons.lang.CopyStrategy;
-import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Equals;
-import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
+import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
+import org.jvnet.jaxb2_commons.lang.CopyTo2;
+import org.jvnet.jaxb2_commons.lang.Equals2;
+import org.jvnet.jaxb2_commons.lang.EqualsStrategy2;
 import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBEqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy;
-import org.jvnet.jaxb2_commons.lang.ToString;
-import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
+import org.jvnet.jaxb2_commons.lang.ToString2;
+import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 
@@ -58,7 +58,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 })
 public class ContactDetails
     extends BaseContactDetails
-    implements Cloneable, CopyTo, Equals, ToString
+    implements Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlJavaTypeAdapter(Adapter58 .class)
@@ -115,30 +115,30 @@ public class ContactDetails
     }
 
     public String toString() {
-        final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
         append(null, buffer, strategy);
         return buffer.toString();
     }
 
-    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
         strategy.appendEnd(locator, this, buffer);
         return buffer;
     }
 
-    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         super.appendFields(locator, buffer, strategy);
         {
             String theOfficeHours;
             theOfficeHours = this.getOfficeHours();
-            strategy.appendField(locator, this, "officeHours", buffer, theOfficeHours);
+            strategy.appendField(locator, this, "officeHours", buffer, theOfficeHours, (this.officeHours!= null));
         }
         {
             Long theId;
             theId = this.getId();
-            strategy.appendField(locator, this, "id", buffer, theId);
+            strategy.appendField(locator, this, "id", buffer, theId, (this.id!= null));
         }
         return buffer;
     }
@@ -148,30 +148,40 @@ public class ContactDetails
     }
 
     public Object copyTo(Object target) {
-        final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         super.copyTo(locator, draftCopy, strategy);
         if (draftCopy instanceof ContactDetails) {
             final ContactDetails copy = ((ContactDetails) draftCopy);
-            if (this.officeHours!= null) {
-                String sourceOfficeHours;
-                sourceOfficeHours = this.getOfficeHours();
-                String copyOfficeHours = ((String) strategy.copy(LocatorUtils.property(locator, "officeHours", sourceOfficeHours), sourceOfficeHours));
-                copy.setOfficeHours(copyOfficeHours);
-            } else {
-                copy.officeHours = null;
+            {
+                Boolean officeHoursShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.officeHours!= null));
+                if (officeHoursShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceOfficeHours;
+                    sourceOfficeHours = this.getOfficeHours();
+                    String copyOfficeHours = ((String) strategy.copy(LocatorUtils.property(locator, "officeHours", sourceOfficeHours), sourceOfficeHours, (this.officeHours!= null)));
+                    copy.setOfficeHours(copyOfficeHours);
+                } else {
+                    if (officeHoursShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.officeHours = null;
+                    }
+                }
             }
-            if (this.id!= null) {
-                Long sourceId;
-                sourceId = this.getId();
-                Long copyId = ((Long) strategy.copy(LocatorUtils.property(locator, "id", sourceId), sourceId));
-                copy.setId(copyId);
-            } else {
-                copy.id = null;
+            {
+                Boolean idShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.id!= null));
+                if (idShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Long sourceId;
+                    sourceId = this.getId();
+                    Long copyId = ((Long) strategy.copy(LocatorUtils.property(locator, "id", sourceId), sourceId, (this.id!= null)));
+                    copy.setId(copyId);
+                } else {
+                    if (idShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.id = null;
+                    }
+                }
             }
         }
         return draftCopy;
@@ -181,7 +191,7 @@ public class ContactDetails
         return new ContactDetails();
     }
 
-    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
@@ -197,7 +207,7 @@ public class ContactDetails
             lhsOfficeHours = this.getOfficeHours();
             String rhsOfficeHours;
             rhsOfficeHours = that.getOfficeHours();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "officeHours", lhsOfficeHours), LocatorUtils.property(thatLocator, "officeHours", rhsOfficeHours), lhsOfficeHours, rhsOfficeHours)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "officeHours", lhsOfficeHours), LocatorUtils.property(thatLocator, "officeHours", rhsOfficeHours), lhsOfficeHours, rhsOfficeHours, (this.officeHours!= null), (that.officeHours!= null))) {
                 return false;
             }
         }
@@ -206,7 +216,7 @@ public class ContactDetails
             lhsId = this.getId();
             Long rhsId;
             rhsId = that.getId();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "id", lhsId), LocatorUtils.property(thatLocator, "id", rhsId), lhsId, rhsId)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "id", lhsId), LocatorUtils.property(thatLocator, "id", rhsId), lhsId, rhsId, (this.id!= null), (that.id!= null))) {
                 return false;
             }
         }
@@ -214,7 +224,7 @@ public class ContactDetails
     }
 
     public boolean equals(Object object) {
-        final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
     }
 

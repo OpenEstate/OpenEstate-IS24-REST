@@ -8,15 +8,15 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import org.jvnet.jaxb2_commons.lang.CopyStrategy;
-import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Equals;
-import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
+import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
+import org.jvnet.jaxb2_commons.lang.CopyTo2;
+import org.jvnet.jaxb2_commons.lang.Equals2;
+import org.jvnet.jaxb2_commons.lang.EqualsStrategy2;
 import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBEqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy;
-import org.jvnet.jaxb2_commons.lang.ToString;
-import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
+import org.jvnet.jaxb2_commons.lang.ToString2;
+import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 
@@ -47,8 +47,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 @XmlType(name = "NumberOfRoomsRange", propOrder = {
 
 })
-public class NumberOfRoomsRange
-    implements Cloneable, CopyTo, Equals, ToString
+public class NumberOfRoomsRange implements Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(type = String.class)
@@ -109,29 +108,29 @@ public class NumberOfRoomsRange
     }
 
     public String toString() {
-        final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
         append(null, buffer, strategy);
         return buffer.toString();
     }
 
-    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
         strategy.appendEnd(locator, this, buffer);
         return buffer;
     }
 
-    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             BigDecimal theMinimal;
             theMinimal = this.getMinimal();
-            strategy.appendField(locator, this, "minimal", buffer, theMinimal);
+            strategy.appendField(locator, this, "minimal", buffer, theMinimal, (this.minimal!= null));
         }
         {
             BigDecimal theMaximal;
             theMaximal = this.getMaximal();
-            strategy.appendField(locator, this, "maximal", buffer, theMaximal);
+            strategy.appendField(locator, this, "maximal", buffer, theMaximal, (this.maximal!= null));
         }
         return buffer;
     }
@@ -141,29 +140,39 @@ public class NumberOfRoomsRange
     }
 
     public Object copyTo(Object target) {
-        final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof NumberOfRoomsRange) {
             final NumberOfRoomsRange copy = ((NumberOfRoomsRange) draftCopy);
-            if (this.minimal!= null) {
-                BigDecimal sourceMinimal;
-                sourceMinimal = this.getMinimal();
-                BigDecimal copyMinimal = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "minimal", sourceMinimal), sourceMinimal));
-                copy.setMinimal(copyMinimal);
-            } else {
-                copy.minimal = null;
+            {
+                Boolean minimalShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.minimal!= null));
+                if (minimalShouldBeCopiedAndSet == Boolean.TRUE) {
+                    BigDecimal sourceMinimal;
+                    sourceMinimal = this.getMinimal();
+                    BigDecimal copyMinimal = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "minimal", sourceMinimal), sourceMinimal, (this.minimal!= null)));
+                    copy.setMinimal(copyMinimal);
+                } else {
+                    if (minimalShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.minimal = null;
+                    }
+                }
             }
-            if (this.maximal!= null) {
-                BigDecimal sourceMaximal;
-                sourceMaximal = this.getMaximal();
-                BigDecimal copyMaximal = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "maximal", sourceMaximal), sourceMaximal));
-                copy.setMaximal(copyMaximal);
-            } else {
-                copy.maximal = null;
+            {
+                Boolean maximalShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.maximal!= null));
+                if (maximalShouldBeCopiedAndSet == Boolean.TRUE) {
+                    BigDecimal sourceMaximal;
+                    sourceMaximal = this.getMaximal();
+                    BigDecimal copyMaximal = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "maximal", sourceMaximal), sourceMaximal, (this.maximal!= null)));
+                    copy.setMaximal(copyMaximal);
+                } else {
+                    if (maximalShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.maximal = null;
+                    }
+                }
             }
         }
         return draftCopy;
@@ -173,7 +182,7 @@ public class NumberOfRoomsRange
         return new NumberOfRoomsRange();
     }
 
-    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
@@ -186,7 +195,7 @@ public class NumberOfRoomsRange
             lhsMinimal = this.getMinimal();
             BigDecimal rhsMinimal;
             rhsMinimal = that.getMinimal();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "minimal", lhsMinimal), LocatorUtils.property(thatLocator, "minimal", rhsMinimal), lhsMinimal, rhsMinimal)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "minimal", lhsMinimal), LocatorUtils.property(thatLocator, "minimal", rhsMinimal), lhsMinimal, rhsMinimal, (this.minimal!= null), (that.minimal!= null))) {
                 return false;
             }
         }
@@ -195,7 +204,7 @@ public class NumberOfRoomsRange
             lhsMaximal = this.getMaximal();
             BigDecimal rhsMaximal;
             rhsMaximal = that.getMaximal();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "maximal", lhsMaximal), LocatorUtils.property(thatLocator, "maximal", rhsMaximal), lhsMaximal, rhsMaximal)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "maximal", lhsMaximal), LocatorUtils.property(thatLocator, "maximal", rhsMaximal), lhsMaximal, rhsMaximal, (this.maximal!= null), (that.maximal!= null))) {
                 return false;
             }
         }
@@ -203,7 +212,7 @@ public class NumberOfRoomsRange
     }
 
     public boolean equals(Object object) {
-        final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
     }
 

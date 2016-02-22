@@ -10,15 +10,15 @@ import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import org.jvnet.jaxb2_commons.lang.CopyStrategy;
-import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Equals;
-import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
+import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
+import org.jvnet.jaxb2_commons.lang.CopyTo2;
+import org.jvnet.jaxb2_commons.lang.Equals2;
+import org.jvnet.jaxb2_commons.lang.EqualsStrategy2;
 import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBEqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy;
-import org.jvnet.jaxb2_commons.lang.ToString;
-import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
+import org.jvnet.jaxb2_commons.lang.ToString2;
+import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 import org.openestate.is24.restapi.xml.Adapter2;
@@ -73,8 +73,7 @@ import org.openestate.is24.restapi.xml.offerlistelement.OfferRealEstateForList;
     OfferRealEstateForList.class,
     AbstractRealEstate.class
 })
-public abstract class AbstractRealEstateForList
-    implements Cloneable, CopyTo, Equals, ToString
+public abstract class AbstractRealEstateForList implements Cloneable, CopyTo2, Equals2, ToString2
 {
 
     protected String externalId;
@@ -290,59 +289,59 @@ public abstract class AbstractRealEstateForList
     }
 
     public String toString() {
-        final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
         append(null, buffer, strategy);
         return buffer.toString();
     }
 
-    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
         strategy.appendEnd(locator, this, buffer);
         return buffer;
     }
 
-    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             String theExternalId;
             theExternalId = this.getExternalId();
-            strategy.appendField(locator, this, "externalId", buffer, theExternalId);
+            strategy.appendField(locator, this, "externalId", buffer, theExternalId, (this.externalId!= null));
         }
         {
             String theTitle;
             theTitle = this.getTitle();
-            strategy.appendField(locator, this, "title", buffer, theTitle);
+            strategy.appendField(locator, this, "title", buffer, theTitle, (this.title!= null));
         }
         {
             Calendar theCreationDate;
             theCreationDate = this.getCreationDate();
-            strategy.appendField(locator, this, "creationDate", buffer, theCreationDate);
+            strategy.appendField(locator, this, "creationDate", buffer, theCreationDate, (this.creationDate!= null));
         }
         {
             Calendar theLastModificationDate;
             theLastModificationDate = this.getLastModificationDate();
-            strategy.appendField(locator, this, "lastModificationDate", buffer, theLastModificationDate);
+            strategy.appendField(locator, this, "lastModificationDate", buffer, theLastModificationDate, (this.lastModificationDate!= null));
         }
         {
             Wgs84Address theAddress;
             theAddress = this.getAddress();
-            strategy.appendField(locator, this, "address", buffer, theAddress);
+            strategy.appendField(locator, this, "address", buffer, theAddress, (this.address!= null));
         }
         {
             ApiSearchData theApiSearchData;
             theApiSearchData = this.getApiSearchData();
-            strategy.appendField(locator, this, "apiSearchData", buffer, theApiSearchData);
+            strategy.appendField(locator, this, "apiSearchData", buffer, theApiSearchData, (this.apiSearchData!= null));
         }
         {
             RealEstateState theRealEstateState;
             theRealEstateState = this.getRealEstateState();
-            strategy.appendField(locator, this, "realEstateState", buffer, theRealEstateState);
+            strategy.appendField(locator, this, "realEstateState", buffer, theRealEstateState, (this.realEstateState!= null));
         }
         {
             Long theId;
             theId = this.getId();
-            strategy.appendField(locator, this, "id", buffer, theId);
+            strategy.appendField(locator, this, "id", buffer, theId, (this.id!= null));
         }
         return buffer;
     }
@@ -352,85 +351,125 @@ public abstract class AbstractRealEstateForList
     }
 
     public Object copyTo(Object target) {
-        final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         if (null == target) {
             throw new IllegalArgumentException("Target argument must not be null for abstract copyable classes.");
         }
         if (target instanceof AbstractRealEstateForList) {
             final AbstractRealEstateForList copy = ((AbstractRealEstateForList) target);
-            if (this.externalId!= null) {
-                String sourceExternalId;
-                sourceExternalId = this.getExternalId();
-                String copyExternalId = ((String) strategy.copy(LocatorUtils.property(locator, "externalId", sourceExternalId), sourceExternalId));
-                copy.setExternalId(copyExternalId);
-            } else {
-                copy.externalId = null;
+            {
+                Boolean externalIdShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.externalId!= null));
+                if (externalIdShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceExternalId;
+                    sourceExternalId = this.getExternalId();
+                    String copyExternalId = ((String) strategy.copy(LocatorUtils.property(locator, "externalId", sourceExternalId), sourceExternalId, (this.externalId!= null)));
+                    copy.setExternalId(copyExternalId);
+                } else {
+                    if (externalIdShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.externalId = null;
+                    }
+                }
             }
-            if (this.title!= null) {
-                String sourceTitle;
-                sourceTitle = this.getTitle();
-                String copyTitle = ((String) strategy.copy(LocatorUtils.property(locator, "title", sourceTitle), sourceTitle));
-                copy.setTitle(copyTitle);
-            } else {
-                copy.title = null;
+            {
+                Boolean titleShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.title!= null));
+                if (titleShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceTitle;
+                    sourceTitle = this.getTitle();
+                    String copyTitle = ((String) strategy.copy(LocatorUtils.property(locator, "title", sourceTitle), sourceTitle, (this.title!= null)));
+                    copy.setTitle(copyTitle);
+                } else {
+                    if (titleShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.title = null;
+                    }
+                }
             }
-            if (this.creationDate!= null) {
-                Calendar sourceCreationDate;
-                sourceCreationDate = this.getCreationDate();
-                Calendar copyCreationDate = ((Calendar) strategy.copy(LocatorUtils.property(locator, "creationDate", sourceCreationDate), sourceCreationDate));
-                copy.setCreationDate(copyCreationDate);
-            } else {
-                copy.creationDate = null;
+            {
+                Boolean creationDateShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.creationDate!= null));
+                if (creationDateShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Calendar sourceCreationDate;
+                    sourceCreationDate = this.getCreationDate();
+                    Calendar copyCreationDate = ((Calendar) strategy.copy(LocatorUtils.property(locator, "creationDate", sourceCreationDate), sourceCreationDate, (this.creationDate!= null)));
+                    copy.setCreationDate(copyCreationDate);
+                } else {
+                    if (creationDateShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.creationDate = null;
+                    }
+                }
             }
-            if (this.lastModificationDate!= null) {
-                Calendar sourceLastModificationDate;
-                sourceLastModificationDate = this.getLastModificationDate();
-                Calendar copyLastModificationDate = ((Calendar) strategy.copy(LocatorUtils.property(locator, "lastModificationDate", sourceLastModificationDate), sourceLastModificationDate));
-                copy.setLastModificationDate(copyLastModificationDate);
-            } else {
-                copy.lastModificationDate = null;
+            {
+                Boolean lastModificationDateShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.lastModificationDate!= null));
+                if (lastModificationDateShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Calendar sourceLastModificationDate;
+                    sourceLastModificationDate = this.getLastModificationDate();
+                    Calendar copyLastModificationDate = ((Calendar) strategy.copy(LocatorUtils.property(locator, "lastModificationDate", sourceLastModificationDate), sourceLastModificationDate, (this.lastModificationDate!= null)));
+                    copy.setLastModificationDate(copyLastModificationDate);
+                } else {
+                    if (lastModificationDateShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.lastModificationDate = null;
+                    }
+                }
             }
-            if (this.address!= null) {
-                Wgs84Address sourceAddress;
-                sourceAddress = this.getAddress();
-                Wgs84Address copyAddress = ((Wgs84Address) strategy.copy(LocatorUtils.property(locator, "address", sourceAddress), sourceAddress));
-                copy.setAddress(copyAddress);
-            } else {
-                copy.address = null;
+            {
+                Boolean addressShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.address!= null));
+                if (addressShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Wgs84Address sourceAddress;
+                    sourceAddress = this.getAddress();
+                    Wgs84Address copyAddress = ((Wgs84Address) strategy.copy(LocatorUtils.property(locator, "address", sourceAddress), sourceAddress, (this.address!= null)));
+                    copy.setAddress(copyAddress);
+                } else {
+                    if (addressShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.address = null;
+                    }
+                }
             }
-            if (this.apiSearchData!= null) {
-                ApiSearchData sourceApiSearchData;
-                sourceApiSearchData = this.getApiSearchData();
-                ApiSearchData copyApiSearchData = ((ApiSearchData) strategy.copy(LocatorUtils.property(locator, "apiSearchData", sourceApiSearchData), sourceApiSearchData));
-                copy.setApiSearchData(copyApiSearchData);
-            } else {
-                copy.apiSearchData = null;
+            {
+                Boolean apiSearchDataShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.apiSearchData!= null));
+                if (apiSearchDataShouldBeCopiedAndSet == Boolean.TRUE) {
+                    ApiSearchData sourceApiSearchData;
+                    sourceApiSearchData = this.getApiSearchData();
+                    ApiSearchData copyApiSearchData = ((ApiSearchData) strategy.copy(LocatorUtils.property(locator, "apiSearchData", sourceApiSearchData), sourceApiSearchData, (this.apiSearchData!= null)));
+                    copy.setApiSearchData(copyApiSearchData);
+                } else {
+                    if (apiSearchDataShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.apiSearchData = null;
+                    }
+                }
             }
-            if (this.realEstateState!= null) {
-                RealEstateState sourceRealEstateState;
-                sourceRealEstateState = this.getRealEstateState();
-                RealEstateState copyRealEstateState = ((RealEstateState) strategy.copy(LocatorUtils.property(locator, "realEstateState", sourceRealEstateState), sourceRealEstateState));
-                copy.setRealEstateState(copyRealEstateState);
-            } else {
-                copy.realEstateState = null;
+            {
+                Boolean realEstateStateShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.realEstateState!= null));
+                if (realEstateStateShouldBeCopiedAndSet == Boolean.TRUE) {
+                    RealEstateState sourceRealEstateState;
+                    sourceRealEstateState = this.getRealEstateState();
+                    RealEstateState copyRealEstateState = ((RealEstateState) strategy.copy(LocatorUtils.property(locator, "realEstateState", sourceRealEstateState), sourceRealEstateState, (this.realEstateState!= null)));
+                    copy.setRealEstateState(copyRealEstateState);
+                } else {
+                    if (realEstateStateShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.realEstateState = null;
+                    }
+                }
             }
-            if (this.id!= null) {
-                Long sourceId;
-                sourceId = this.getId();
-                Long copyId = ((Long) strategy.copy(LocatorUtils.property(locator, "id", sourceId), sourceId));
-                copy.setId(copyId);
-            } else {
-                copy.id = null;
+            {
+                Boolean idShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.id!= null));
+                if (idShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Long sourceId;
+                    sourceId = this.getId();
+                    Long copyId = ((Long) strategy.copy(LocatorUtils.property(locator, "id", sourceId), sourceId, (this.id!= null)));
+                    copy.setId(copyId);
+                } else {
+                    if (idShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.id = null;
+                    }
+                }
             }
         }
         return target;
     }
 
-    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
@@ -443,7 +482,7 @@ public abstract class AbstractRealEstateForList
             lhsExternalId = this.getExternalId();
             String rhsExternalId;
             rhsExternalId = that.getExternalId();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "externalId", lhsExternalId), LocatorUtils.property(thatLocator, "externalId", rhsExternalId), lhsExternalId, rhsExternalId)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "externalId", lhsExternalId), LocatorUtils.property(thatLocator, "externalId", rhsExternalId), lhsExternalId, rhsExternalId, (this.externalId!= null), (that.externalId!= null))) {
                 return false;
             }
         }
@@ -452,7 +491,7 @@ public abstract class AbstractRealEstateForList
             lhsTitle = this.getTitle();
             String rhsTitle;
             rhsTitle = that.getTitle();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "title", lhsTitle), LocatorUtils.property(thatLocator, "title", rhsTitle), lhsTitle, rhsTitle)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "title", lhsTitle), LocatorUtils.property(thatLocator, "title", rhsTitle), lhsTitle, rhsTitle, (this.title!= null), (that.title!= null))) {
                 return false;
             }
         }
@@ -461,7 +500,7 @@ public abstract class AbstractRealEstateForList
             lhsCreationDate = this.getCreationDate();
             Calendar rhsCreationDate;
             rhsCreationDate = that.getCreationDate();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "creationDate", lhsCreationDate), LocatorUtils.property(thatLocator, "creationDate", rhsCreationDate), lhsCreationDate, rhsCreationDate)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "creationDate", lhsCreationDate), LocatorUtils.property(thatLocator, "creationDate", rhsCreationDate), lhsCreationDate, rhsCreationDate, (this.creationDate!= null), (that.creationDate!= null))) {
                 return false;
             }
         }
@@ -470,7 +509,7 @@ public abstract class AbstractRealEstateForList
             lhsLastModificationDate = this.getLastModificationDate();
             Calendar rhsLastModificationDate;
             rhsLastModificationDate = that.getLastModificationDate();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "lastModificationDate", lhsLastModificationDate), LocatorUtils.property(thatLocator, "lastModificationDate", rhsLastModificationDate), lhsLastModificationDate, rhsLastModificationDate)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "lastModificationDate", lhsLastModificationDate), LocatorUtils.property(thatLocator, "lastModificationDate", rhsLastModificationDate), lhsLastModificationDate, rhsLastModificationDate, (this.lastModificationDate!= null), (that.lastModificationDate!= null))) {
                 return false;
             }
         }
@@ -479,7 +518,7 @@ public abstract class AbstractRealEstateForList
             lhsAddress = this.getAddress();
             Wgs84Address rhsAddress;
             rhsAddress = that.getAddress();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "address", lhsAddress), LocatorUtils.property(thatLocator, "address", rhsAddress), lhsAddress, rhsAddress)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "address", lhsAddress), LocatorUtils.property(thatLocator, "address", rhsAddress), lhsAddress, rhsAddress, (this.address!= null), (that.address!= null))) {
                 return false;
             }
         }
@@ -488,7 +527,7 @@ public abstract class AbstractRealEstateForList
             lhsApiSearchData = this.getApiSearchData();
             ApiSearchData rhsApiSearchData;
             rhsApiSearchData = that.getApiSearchData();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "apiSearchData", lhsApiSearchData), LocatorUtils.property(thatLocator, "apiSearchData", rhsApiSearchData), lhsApiSearchData, rhsApiSearchData)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "apiSearchData", lhsApiSearchData), LocatorUtils.property(thatLocator, "apiSearchData", rhsApiSearchData), lhsApiSearchData, rhsApiSearchData, (this.apiSearchData!= null), (that.apiSearchData!= null))) {
                 return false;
             }
         }
@@ -497,7 +536,7 @@ public abstract class AbstractRealEstateForList
             lhsRealEstateState = this.getRealEstateState();
             RealEstateState rhsRealEstateState;
             rhsRealEstateState = that.getRealEstateState();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "realEstateState", lhsRealEstateState), LocatorUtils.property(thatLocator, "realEstateState", rhsRealEstateState), lhsRealEstateState, rhsRealEstateState)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "realEstateState", lhsRealEstateState), LocatorUtils.property(thatLocator, "realEstateState", rhsRealEstateState), lhsRealEstateState, rhsRealEstateState, (this.realEstateState!= null), (that.realEstateState!= null))) {
                 return false;
             }
         }
@@ -506,7 +545,7 @@ public abstract class AbstractRealEstateForList
             lhsId = this.getId();
             Long rhsId;
             rhsId = that.getId();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "id", lhsId), LocatorUtils.property(thatLocator, "id", rhsId), lhsId, rhsId)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "id", lhsId), LocatorUtils.property(thatLocator, "id", rhsId), lhsId, rhsId, (this.id!= null), (that.id!= null))) {
                 return false;
             }
         }
@@ -514,7 +553,7 @@ public abstract class AbstractRealEstateForList
     }
 
     public boolean equals(Object object) {
-        final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
     }
 
