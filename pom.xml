@@ -296,6 +296,7 @@
           <appendAssemblyId>false</appendAssemblyId>
           <attach>false</attach>
           <useAllReactorProjects>true</useAllReactorProjects>
+          <tarLongFileMode>posix</tarLongFileMode>
           <descriptors>
             <descriptor>assembly.xml</descriptor>
           </descriptors>

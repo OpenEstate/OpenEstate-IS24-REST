@@ -5,7 +5,7 @@
 
   <id>release</id>
   <baseDirectory>OpenEstate-IS24-REST</baseDirectory>
-  <includeBaseDirectory>false</includeBaseDirectory>
+  <includeBaseDirectory>true</includeBaseDirectory>
   <formats>
     <format>dir</format>
     <format>zip</format>
