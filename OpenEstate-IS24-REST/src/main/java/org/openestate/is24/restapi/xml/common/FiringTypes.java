@@ -7,15 +7,15 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import org.jvnet.jaxb2_commons.lang.CopyStrategy;
-import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Equals;
-import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
+import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
+import org.jvnet.jaxb2_commons.lang.CopyTo2;
+import org.jvnet.jaxb2_commons.lang.Equals2;
+import org.jvnet.jaxb2_commons.lang.EqualsStrategy2;
 import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBEqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy;
-import org.jvnet.jaxb2_commons.lang.ToString;
-import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
+import org.jvnet.jaxb2_commons.lang.ToString2;
+import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 
@@ -46,8 +46,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
     "firingType"
 })
 @Deprecated
-public class FiringTypes
-    implements Cloneable, CopyTo, Equals, ToString
+public class FiringTypes implements Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlSchemaType(name = "string")
@@ -85,24 +84,24 @@ public class FiringTypes
     }
 
     public String toString() {
-        final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
         append(null, buffer, strategy);
         return buffer.toString();
     }
 
-    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
         strategy.appendEnd(locator, this, buffer);
         return buffer;
     }
 
-    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             List<FiringType> theFiringType;
             theFiringType = (((this.firingType!= null)&&(!this.firingType.isEmpty()))?this.getFiringType():null);
-            strategy.appendField(locator, this, "firingType", buffer, theFiringType);
+            strategy.appendField(locator, this, "firingType", buffer, theFiringType, ((this.firingType!= null)&&(!this.firingType.isEmpty())));
         }
         return buffer;
     }
@@ -112,26 +111,31 @@ public class FiringTypes
     }
 
     public Object copyTo(Object target) {
-        final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof FiringTypes) {
             final FiringTypes copy = ((FiringTypes) draftCopy);
-            if ((this.firingType!= null)&&(!this.firingType.isEmpty())) {
-                List<FiringType> sourceFiringType;
-                sourceFiringType = (((this.firingType!= null)&&(!this.firingType.isEmpty()))?this.getFiringType():null);
-                @SuppressWarnings("unchecked")
-                List<FiringType> copyFiringType = ((List<FiringType> ) strategy.copy(LocatorUtils.property(locator, "firingType", sourceFiringType), sourceFiringType));
-                copy.firingType = null;
-                if (copyFiringType!= null) {
-                    List<FiringType> uniqueFiringTypel = copy.getFiringType();
-                    uniqueFiringTypel.addAll(copyFiringType);
+            {
+                Boolean firingTypeShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, ((this.firingType!= null)&&(!this.firingType.isEmpty())));
+                if (firingTypeShouldBeCopiedAndSet == Boolean.TRUE) {
+                    List<FiringType> sourceFiringType;
+                    sourceFiringType = (((this.firingType!= null)&&(!this.firingType.isEmpty()))?this.getFiringType():null);
+                    @SuppressWarnings("unchecked")
+                    List<FiringType> copyFiringType = ((List<FiringType> ) strategy.copy(LocatorUtils.property(locator, "firingType", sourceFiringType), sourceFiringType, ((this.firingType!= null)&&(!this.firingType.isEmpty()))));
+                    copy.firingType = null;
+                    if (copyFiringType!= null) {
+                        List<FiringType> uniqueFiringTypel = copy.getFiringType();
+                        uniqueFiringTypel.addAll(copyFiringType);
+                    }
+                } else {
+                    if (firingTypeShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.firingType = null;
+                    }
                 }
-            } else {
-                copy.firingType = null;
             }
         }
         return draftCopy;
@@ -141,7 +145,7 @@ public class FiringTypes
         return new FiringTypes();
     }
 
-    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
@@ -154,7 +158,7 @@ public class FiringTypes
             lhsFiringType = (((this.firingType!= null)&&(!this.firingType.isEmpty()))?this.getFiringType():null);
             List<FiringType> rhsFiringType;
             rhsFiringType = (((that.firingType!= null)&&(!that.firingType.isEmpty()))?that.getFiringType():null);
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "firingType", lhsFiringType), LocatorUtils.property(thatLocator, "firingType", rhsFiringType), lhsFiringType, rhsFiringType)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "firingType", lhsFiringType), LocatorUtils.property(thatLocator, "firingType", rhsFiringType), lhsFiringType, rhsFiringType, ((this.firingType!= null)&&(!this.firingType.isEmpty())), ((that.firingType!= null)&&(!that.firingType.isEmpty())))) {
                 return false;
             }
         }
@@ -162,7 +166,7 @@ public class FiringTypes
     }
 
     public boolean equals(Object object) {
-        final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
     }
 

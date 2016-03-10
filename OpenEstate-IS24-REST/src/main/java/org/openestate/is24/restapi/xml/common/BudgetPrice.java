@@ -5,15 +5,15 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import org.jvnet.jaxb2_commons.lang.CopyStrategy;
-import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Equals;
-import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
+import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
+import org.jvnet.jaxb2_commons.lang.CopyTo2;
+import org.jvnet.jaxb2_commons.lang.Equals2;
+import org.jvnet.jaxb2_commons.lang.EqualsStrategy2;
 import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBEqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy;
-import org.jvnet.jaxb2_commons.lang.ToString;
-import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
+import org.jvnet.jaxb2_commons.lang.ToString2;
+import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 
@@ -45,7 +45,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 })
 public class BudgetPrice
     extends Price
-    implements Cloneable, CopyTo, Equals, ToString
+    implements Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlSchemaType(name = "string")
@@ -76,25 +76,25 @@ public class BudgetPrice
     }
 
     public String toString() {
-        final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
         append(null, buffer, strategy);
         return buffer.toString();
     }
 
-    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
         strategy.appendEnd(locator, this, buffer);
         return buffer;
     }
 
-    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         super.appendFields(locator, buffer, strategy);
         {
             RentScopeType theRentScope;
             theRentScope = this.getRentScope();
-            strategy.appendField(locator, this, "rentScope", buffer, theRentScope);
+            strategy.appendField(locator, this, "rentScope", buffer, theRentScope, (this.rentScope!= null));
         }
         return buffer;
     }
@@ -104,22 +104,27 @@ public class BudgetPrice
     }
 
     public Object copyTo(Object target) {
-        final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         super.copyTo(locator, draftCopy, strategy);
         if (draftCopy instanceof BudgetPrice) {
             final BudgetPrice copy = ((BudgetPrice) draftCopy);
-            if (this.rentScope!= null) {
-                RentScopeType sourceRentScope;
-                sourceRentScope = this.getRentScope();
-                RentScopeType copyRentScope = ((RentScopeType) strategy.copy(LocatorUtils.property(locator, "rentScope", sourceRentScope), sourceRentScope));
-                copy.setRentScope(copyRentScope);
-            } else {
-                copy.rentScope = null;
+            {
+                Boolean rentScopeShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.rentScope!= null));
+                if (rentScopeShouldBeCopiedAndSet == Boolean.TRUE) {
+                    RentScopeType sourceRentScope;
+                    sourceRentScope = this.getRentScope();
+                    RentScopeType copyRentScope = ((RentScopeType) strategy.copy(LocatorUtils.property(locator, "rentScope", sourceRentScope), sourceRentScope, (this.rentScope!= null)));
+                    copy.setRentScope(copyRentScope);
+                } else {
+                    if (rentScopeShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.rentScope = null;
+                    }
+                }
             }
         }
         return draftCopy;
@@ -129,7 +134,7 @@ public class BudgetPrice
         return new BudgetPrice();
     }
 
-    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
@@ -145,7 +150,7 @@ public class BudgetPrice
             lhsRentScope = this.getRentScope();
             RentScopeType rhsRentScope;
             rhsRentScope = that.getRentScope();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "rentScope", lhsRentScope), LocatorUtils.property(thatLocator, "rentScope", rhsRentScope), lhsRentScope, rhsRentScope)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "rentScope", lhsRentScope), LocatorUtils.property(thatLocator, "rentScope", rhsRentScope), lhsRentScope, rhsRentScope, (this.rentScope!= null), (that.rentScope!= null))) {
                 return false;
             }
         }
@@ -153,7 +158,7 @@ public class BudgetPrice
     }
 
     public boolean equals(Object object) {
-        final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
     }
 

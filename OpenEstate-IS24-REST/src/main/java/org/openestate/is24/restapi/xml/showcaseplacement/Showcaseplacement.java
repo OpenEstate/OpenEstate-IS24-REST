@@ -5,15 +5,15 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
-import org.jvnet.jaxb2_commons.lang.CopyStrategy;
-import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Equals;
-import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
+import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
+import org.jvnet.jaxb2_commons.lang.CopyTo2;
+import org.jvnet.jaxb2_commons.lang.Equals2;
+import org.jvnet.jaxb2_commons.lang.EqualsStrategy2;
 import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBEqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy;
-import org.jvnet.jaxb2_commons.lang.ToString;
-import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
+import org.jvnet.jaxb2_commons.lang.ToString2;
+import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 import org.openestate.is24.restapi.xml.common.DateRange;
@@ -52,8 +52,7 @@ import org.openestate.is24.restapi.xml.common.DateRange;
     "servicePeriod",
     "externalId"
 })
-public class Showcaseplacement
-    implements Cloneable, CopyTo, Equals, ToString
+public class Showcaseplacement implements Cloneable, CopyTo2, Equals2, ToString2
 {
 
     protected String messageCode;
@@ -210,49 +209,49 @@ public class Showcaseplacement
     }
 
     public String toString() {
-        final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
         append(null, buffer, strategy);
         return buffer.toString();
     }
 
-    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
         strategy.appendEnd(locator, this, buffer);
         return buffer;
     }
 
-    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             String theMessageCode;
             theMessageCode = this.getMessageCode();
-            strategy.appendField(locator, this, "messageCode", buffer, theMessageCode);
+            strategy.appendField(locator, this, "messageCode", buffer, theMessageCode, (this.messageCode!= null));
         }
         {
             String theMessage;
             theMessage = this.getMessage();
-            strategy.appendField(locator, this, "message", buffer, theMessage);
+            strategy.appendField(locator, this, "message", buffer, theMessage, (this.message!= null));
         }
         {
             DateRange theServicePeriod;
             theServicePeriod = this.getServicePeriod();
-            strategy.appendField(locator, this, "servicePeriod", buffer, theServicePeriod);
+            strategy.appendField(locator, this, "servicePeriod", buffer, theServicePeriod, (this.servicePeriod!= null));
         }
         {
             String theExternalId;
             theExternalId = this.getExternalId();
-            strategy.appendField(locator, this, "externalId", buffer, theExternalId);
+            strategy.appendField(locator, this, "externalId", buffer, theExternalId, (this.externalId!= null));
         }
         {
             String theRealestateid;
             theRealestateid = this.getRealestateid();
-            strategy.appendField(locator, this, "realestateid", buffer, theRealestateid);
+            strategy.appendField(locator, this, "realestateid", buffer, theRealestateid, (this.realestateid!= null));
         }
         {
             String theVoucher;
             theVoucher = this.getVoucher();
-            strategy.appendField(locator, this, "voucher", buffer, theVoucher);
+            strategy.appendField(locator, this, "voucher", buffer, theVoucher, (this.voucher!= null));
         }
         return buffer;
     }
@@ -262,61 +261,91 @@ public class Showcaseplacement
     }
 
     public Object copyTo(Object target) {
-        final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof Showcaseplacement) {
             final Showcaseplacement copy = ((Showcaseplacement) draftCopy);
-            if (this.messageCode!= null) {
-                String sourceMessageCode;
-                sourceMessageCode = this.getMessageCode();
-                String copyMessageCode = ((String) strategy.copy(LocatorUtils.property(locator, "messageCode", sourceMessageCode), sourceMessageCode));
-                copy.setMessageCode(copyMessageCode);
-            } else {
-                copy.messageCode = null;
+            {
+                Boolean messageCodeShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.messageCode!= null));
+                if (messageCodeShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceMessageCode;
+                    sourceMessageCode = this.getMessageCode();
+                    String copyMessageCode = ((String) strategy.copy(LocatorUtils.property(locator, "messageCode", sourceMessageCode), sourceMessageCode, (this.messageCode!= null)));
+                    copy.setMessageCode(copyMessageCode);
+                } else {
+                    if (messageCodeShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.messageCode = null;
+                    }
+                }
             }
-            if (this.message!= null) {
-                String sourceMessage;
-                sourceMessage = this.getMessage();
-                String copyMessage = ((String) strategy.copy(LocatorUtils.property(locator, "message", sourceMessage), sourceMessage));
-                copy.setMessage(copyMessage);
-            } else {
-                copy.message = null;
+            {
+                Boolean messageShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.message!= null));
+                if (messageShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceMessage;
+                    sourceMessage = this.getMessage();
+                    String copyMessage = ((String) strategy.copy(LocatorUtils.property(locator, "message", sourceMessage), sourceMessage, (this.message!= null)));
+                    copy.setMessage(copyMessage);
+                } else {
+                    if (messageShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.message = null;
+                    }
+                }
             }
-            if (this.servicePeriod!= null) {
-                DateRange sourceServicePeriod;
-                sourceServicePeriod = this.getServicePeriod();
-                DateRange copyServicePeriod = ((DateRange) strategy.copy(LocatorUtils.property(locator, "servicePeriod", sourceServicePeriod), sourceServicePeriod));
-                copy.setServicePeriod(copyServicePeriod);
-            } else {
-                copy.servicePeriod = null;
+            {
+                Boolean servicePeriodShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.servicePeriod!= null));
+                if (servicePeriodShouldBeCopiedAndSet == Boolean.TRUE) {
+                    DateRange sourceServicePeriod;
+                    sourceServicePeriod = this.getServicePeriod();
+                    DateRange copyServicePeriod = ((DateRange) strategy.copy(LocatorUtils.property(locator, "servicePeriod", sourceServicePeriod), sourceServicePeriod, (this.servicePeriod!= null)));
+                    copy.setServicePeriod(copyServicePeriod);
+                } else {
+                    if (servicePeriodShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.servicePeriod = null;
+                    }
+                }
             }
-            if (this.externalId!= null) {
-                String sourceExternalId;
-                sourceExternalId = this.getExternalId();
-                String copyExternalId = ((String) strategy.copy(LocatorUtils.property(locator, "externalId", sourceExternalId), sourceExternalId));
-                copy.setExternalId(copyExternalId);
-            } else {
-                copy.externalId = null;
+            {
+                Boolean externalIdShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.externalId!= null));
+                if (externalIdShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceExternalId;
+                    sourceExternalId = this.getExternalId();
+                    String copyExternalId = ((String) strategy.copy(LocatorUtils.property(locator, "externalId", sourceExternalId), sourceExternalId, (this.externalId!= null)));
+                    copy.setExternalId(copyExternalId);
+                } else {
+                    if (externalIdShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.externalId = null;
+                    }
+                }
             }
-            if (this.realestateid!= null) {
-                String sourceRealestateid;
-                sourceRealestateid = this.getRealestateid();
-                String copyRealestateid = ((String) strategy.copy(LocatorUtils.property(locator, "realestateid", sourceRealestateid), sourceRealestateid));
-                copy.setRealestateid(copyRealestateid);
-            } else {
-                copy.realestateid = null;
+            {
+                Boolean realestateidShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.realestateid!= null));
+                if (realestateidShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceRealestateid;
+                    sourceRealestateid = this.getRealestateid();
+                    String copyRealestateid = ((String) strategy.copy(LocatorUtils.property(locator, "realestateid", sourceRealestateid), sourceRealestateid, (this.realestateid!= null)));
+                    copy.setRealestateid(copyRealestateid);
+                } else {
+                    if (realestateidShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.realestateid = null;
+                    }
+                }
             }
-            if (this.voucher!= null) {
-                String sourceVoucher;
-                sourceVoucher = this.getVoucher();
-                String copyVoucher = ((String) strategy.copy(LocatorUtils.property(locator, "voucher", sourceVoucher), sourceVoucher));
-                copy.setVoucher(copyVoucher);
-            } else {
-                copy.voucher = null;
+            {
+                Boolean voucherShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.voucher!= null));
+                if (voucherShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceVoucher;
+                    sourceVoucher = this.getVoucher();
+                    String copyVoucher = ((String) strategy.copy(LocatorUtils.property(locator, "voucher", sourceVoucher), sourceVoucher, (this.voucher!= null)));
+                    copy.setVoucher(copyVoucher);
+                } else {
+                    if (voucherShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.voucher = null;
+                    }
+                }
             }
         }
         return draftCopy;
@@ -326,7 +355,7 @@ public class Showcaseplacement
         return new Showcaseplacement();
     }
 
-    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
@@ -339,7 +368,7 @@ public class Showcaseplacement
             lhsMessageCode = this.getMessageCode();
             String rhsMessageCode;
             rhsMessageCode = that.getMessageCode();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "messageCode", lhsMessageCode), LocatorUtils.property(thatLocator, "messageCode", rhsMessageCode), lhsMessageCode, rhsMessageCode)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "messageCode", lhsMessageCode), LocatorUtils.property(thatLocator, "messageCode", rhsMessageCode), lhsMessageCode, rhsMessageCode, (this.messageCode!= null), (that.messageCode!= null))) {
                 return false;
             }
         }
@@ -348,7 +377,7 @@ public class Showcaseplacement
             lhsMessage = this.getMessage();
             String rhsMessage;
             rhsMessage = that.getMessage();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "message", lhsMessage), LocatorUtils.property(thatLocator, "message", rhsMessage), lhsMessage, rhsMessage)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "message", lhsMessage), LocatorUtils.property(thatLocator, "message", rhsMessage), lhsMessage, rhsMessage, (this.message!= null), (that.message!= null))) {
                 return false;
             }
         }
@@ -357,7 +386,7 @@ public class Showcaseplacement
             lhsServicePeriod = this.getServicePeriod();
             DateRange rhsServicePeriod;
             rhsServicePeriod = that.getServicePeriod();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "servicePeriod", lhsServicePeriod), LocatorUtils.property(thatLocator, "servicePeriod", rhsServicePeriod), lhsServicePeriod, rhsServicePeriod)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "servicePeriod", lhsServicePeriod), LocatorUtils.property(thatLocator, "servicePeriod", rhsServicePeriod), lhsServicePeriod, rhsServicePeriod, (this.servicePeriod!= null), (that.servicePeriod!= null))) {
                 return false;
             }
         }
@@ -366,7 +395,7 @@ public class Showcaseplacement
             lhsExternalId = this.getExternalId();
             String rhsExternalId;
             rhsExternalId = that.getExternalId();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "externalId", lhsExternalId), LocatorUtils.property(thatLocator, "externalId", rhsExternalId), lhsExternalId, rhsExternalId)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "externalId", lhsExternalId), LocatorUtils.property(thatLocator, "externalId", rhsExternalId), lhsExternalId, rhsExternalId, (this.externalId!= null), (that.externalId!= null))) {
                 return false;
             }
         }
@@ -375,7 +404,7 @@ public class Showcaseplacement
             lhsRealestateid = this.getRealestateid();
             String rhsRealestateid;
             rhsRealestateid = that.getRealestateid();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "realestateid", lhsRealestateid), LocatorUtils.property(thatLocator, "realestateid", rhsRealestateid), lhsRealestateid, rhsRealestateid)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "realestateid", lhsRealestateid), LocatorUtils.property(thatLocator, "realestateid", rhsRealestateid), lhsRealestateid, rhsRealestateid, (this.realestateid!= null), (that.realestateid!= null))) {
                 return false;
             }
         }
@@ -384,7 +413,7 @@ public class Showcaseplacement
             lhsVoucher = this.getVoucher();
             String rhsVoucher;
             rhsVoucher = that.getVoucher();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "voucher", lhsVoucher), LocatorUtils.property(thatLocator, "voucher", rhsVoucher), lhsVoucher, rhsVoucher)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "voucher", lhsVoucher), LocatorUtils.property(thatLocator, "voucher", rhsVoucher), lhsVoucher, rhsVoucher, (this.voucher!= null), (that.voucher!= null))) {
                 return false;
             }
         }
@@ -392,7 +421,7 @@ public class Showcaseplacement
     }
 
     public boolean equals(Object object) {
-        final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
     }
 

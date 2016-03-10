@@ -10,15 +10,15 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import org.jvnet.jaxb2_commons.lang.CopyStrategy;
-import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Equals;
-import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
+import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
+import org.jvnet.jaxb2_commons.lang.CopyTo2;
+import org.jvnet.jaxb2_commons.lang.Equals2;
+import org.jvnet.jaxb2_commons.lang.EqualsStrategy2;
 import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBEqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy;
-import org.jvnet.jaxb2_commons.lang.ToString;
-import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
+import org.jvnet.jaxb2_commons.lang.ToString2;
+import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 import org.openestate.is24.restapi.xml.Adapter4;
@@ -60,8 +60,7 @@ import org.openestate.is24.restapi.xml.Adapter5;
     "processingProgress",
     "processingStatus"
 })
-public class VideoInfo
-    implements Cloneable, CopyTo, Equals, ToString
+public class VideoInfo implements Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(required = true)
@@ -232,49 +231,49 @@ public class VideoInfo
     }
 
     public String toString() {
-        final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
         append(null, buffer, strategy);
         return buffer.toString();
     }
 
-    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
         strategy.appendEnd(locator, this, buffer);
         return buffer;
     }
 
-    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             List<VideoUrlList> theVideoUrlList;
             theVideoUrlList = (((this.videoUrlList!= null)&&(!this.videoUrlList.isEmpty()))?this.getVideoUrlList():null);
-            strategy.appendField(locator, this, "videoUrlList", buffer, theVideoUrlList);
+            strategy.appendField(locator, this, "videoUrlList", buffer, theVideoUrlList, ((this.videoUrlList!= null)&&(!this.videoUrlList.isEmpty())));
         }
         {
             Long theDuration;
             theDuration = this.getDuration();
-            strategy.appendField(locator, this, "duration", buffer, theDuration);
+            strategy.appendField(locator, this, "duration", buffer, theDuration, (this.duration!= null));
         }
         {
             URL theTeaserUrl;
             theTeaserUrl = this.getTeaserUrl();
-            strategy.appendField(locator, this, "teaserUrl", buffer, theTeaserUrl);
+            strategy.appendField(locator, this, "teaserUrl", buffer, theTeaserUrl, (this.teaserUrl!= null));
         }
         {
             String theTitle;
             theTitle = this.getTitle();
-            strategy.appendField(locator, this, "title", buffer, theTitle);
+            strategy.appendField(locator, this, "title", buffer, theTitle, (this.title!= null));
         }
         {
             Integer theProcessingProgress;
             theProcessingProgress = this.getProcessingProgress();
-            strategy.appendField(locator, this, "processingProgress", buffer, theProcessingProgress);
+            strategy.appendField(locator, this, "processingProgress", buffer, theProcessingProgress, (this.processingProgress!= null));
         }
         {
             VideoProcessingStatusType theProcessingStatus;
             theProcessingStatus = this.getProcessingStatus();
-            strategy.appendField(locator, this, "processingStatus", buffer, theProcessingStatus);
+            strategy.appendField(locator, this, "processingStatus", buffer, theProcessingStatus, (this.processingStatus!= null));
         }
         return buffer;
     }
@@ -284,66 +283,96 @@ public class VideoInfo
     }
 
     public Object copyTo(Object target) {
-        final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof VideoInfo) {
             final VideoInfo copy = ((VideoInfo) draftCopy);
-            if ((this.videoUrlList!= null)&&(!this.videoUrlList.isEmpty())) {
-                List<VideoUrlList> sourceVideoUrlList;
-                sourceVideoUrlList = (((this.videoUrlList!= null)&&(!this.videoUrlList.isEmpty()))?this.getVideoUrlList():null);
-                @SuppressWarnings("unchecked")
-                List<VideoUrlList> copyVideoUrlList = ((List<VideoUrlList> ) strategy.copy(LocatorUtils.property(locator, "videoUrlList", sourceVideoUrlList), sourceVideoUrlList));
-                copy.videoUrlList = null;
-                if (copyVideoUrlList!= null) {
-                    List<VideoUrlList> uniqueVideoUrlListl = copy.getVideoUrlList();
-                    uniqueVideoUrlListl.addAll(copyVideoUrlList);
+            {
+                Boolean videoUrlListShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, ((this.videoUrlList!= null)&&(!this.videoUrlList.isEmpty())));
+                if (videoUrlListShouldBeCopiedAndSet == Boolean.TRUE) {
+                    List<VideoUrlList> sourceVideoUrlList;
+                    sourceVideoUrlList = (((this.videoUrlList!= null)&&(!this.videoUrlList.isEmpty()))?this.getVideoUrlList():null);
+                    @SuppressWarnings("unchecked")
+                    List<VideoUrlList> copyVideoUrlList = ((List<VideoUrlList> ) strategy.copy(LocatorUtils.property(locator, "videoUrlList", sourceVideoUrlList), sourceVideoUrlList, ((this.videoUrlList!= null)&&(!this.videoUrlList.isEmpty()))));
+                    copy.videoUrlList = null;
+                    if (copyVideoUrlList!= null) {
+                        List<VideoUrlList> uniqueVideoUrlListl = copy.getVideoUrlList();
+                        uniqueVideoUrlListl.addAll(copyVideoUrlList);
+                    }
+                } else {
+                    if (videoUrlListShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.videoUrlList = null;
+                    }
                 }
-            } else {
-                copy.videoUrlList = null;
             }
-            if (this.duration!= null) {
-                Long sourceDuration;
-                sourceDuration = this.getDuration();
-                Long copyDuration = ((Long) strategy.copy(LocatorUtils.property(locator, "duration", sourceDuration), sourceDuration));
-                copy.setDuration(copyDuration);
-            } else {
-                copy.duration = null;
+            {
+                Boolean durationShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.duration!= null));
+                if (durationShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Long sourceDuration;
+                    sourceDuration = this.getDuration();
+                    Long copyDuration = ((Long) strategy.copy(LocatorUtils.property(locator, "duration", sourceDuration), sourceDuration, (this.duration!= null)));
+                    copy.setDuration(copyDuration);
+                } else {
+                    if (durationShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.duration = null;
+                    }
+                }
             }
-            if (this.teaserUrl!= null) {
-                URL sourceTeaserUrl;
-                sourceTeaserUrl = this.getTeaserUrl();
-                URL copyTeaserUrl = ((URL) strategy.copy(LocatorUtils.property(locator, "teaserUrl", sourceTeaserUrl), sourceTeaserUrl));
-                copy.setTeaserUrl(copyTeaserUrl);
-            } else {
-                copy.teaserUrl = null;
+            {
+                Boolean teaserUrlShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.teaserUrl!= null));
+                if (teaserUrlShouldBeCopiedAndSet == Boolean.TRUE) {
+                    URL sourceTeaserUrl;
+                    sourceTeaserUrl = this.getTeaserUrl();
+                    URL copyTeaserUrl = ((URL) strategy.copy(LocatorUtils.property(locator, "teaserUrl", sourceTeaserUrl), sourceTeaserUrl, (this.teaserUrl!= null)));
+                    copy.setTeaserUrl(copyTeaserUrl);
+                } else {
+                    if (teaserUrlShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.teaserUrl = null;
+                    }
+                }
             }
-            if (this.title!= null) {
-                String sourceTitle;
-                sourceTitle = this.getTitle();
-                String copyTitle = ((String) strategy.copy(LocatorUtils.property(locator, "title", sourceTitle), sourceTitle));
-                copy.setTitle(copyTitle);
-            } else {
-                copy.title = null;
+            {
+                Boolean titleShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.title!= null));
+                if (titleShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceTitle;
+                    sourceTitle = this.getTitle();
+                    String copyTitle = ((String) strategy.copy(LocatorUtils.property(locator, "title", sourceTitle), sourceTitle, (this.title!= null)));
+                    copy.setTitle(copyTitle);
+                } else {
+                    if (titleShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.title = null;
+                    }
+                }
             }
-            if (this.processingProgress!= null) {
-                Integer sourceProcessingProgress;
-                sourceProcessingProgress = this.getProcessingProgress();
-                Integer copyProcessingProgress = ((Integer) strategy.copy(LocatorUtils.property(locator, "processingProgress", sourceProcessingProgress), sourceProcessingProgress));
-                copy.setProcessingProgress(copyProcessingProgress);
-            } else {
-                copy.processingProgress = null;
+            {
+                Boolean processingProgressShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.processingProgress!= null));
+                if (processingProgressShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Integer sourceProcessingProgress;
+                    sourceProcessingProgress = this.getProcessingProgress();
+                    Integer copyProcessingProgress = ((Integer) strategy.copy(LocatorUtils.property(locator, "processingProgress", sourceProcessingProgress), sourceProcessingProgress, (this.processingProgress!= null)));
+                    copy.setProcessingProgress(copyProcessingProgress);
+                } else {
+                    if (processingProgressShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.processingProgress = null;
+                    }
+                }
             }
-            if (this.processingStatus!= null) {
-                VideoProcessingStatusType sourceProcessingStatus;
-                sourceProcessingStatus = this.getProcessingStatus();
-                VideoProcessingStatusType copyProcessingStatus = ((VideoProcessingStatusType) strategy.copy(LocatorUtils.property(locator, "processingStatus", sourceProcessingStatus), sourceProcessingStatus));
-                copy.setProcessingStatus(copyProcessingStatus);
-            } else {
-                copy.processingStatus = null;
+            {
+                Boolean processingStatusShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.processingStatus!= null));
+                if (processingStatusShouldBeCopiedAndSet == Boolean.TRUE) {
+                    VideoProcessingStatusType sourceProcessingStatus;
+                    sourceProcessingStatus = this.getProcessingStatus();
+                    VideoProcessingStatusType copyProcessingStatus = ((VideoProcessingStatusType) strategy.copy(LocatorUtils.property(locator, "processingStatus", sourceProcessingStatus), sourceProcessingStatus, (this.processingStatus!= null)));
+                    copy.setProcessingStatus(copyProcessingStatus);
+                } else {
+                    if (processingStatusShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.processingStatus = null;
+                    }
+                }
             }
         }
         return draftCopy;
@@ -353,7 +382,7 @@ public class VideoInfo
         return new VideoInfo();
     }
 
-    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
@@ -366,7 +395,7 @@ public class VideoInfo
             lhsVideoUrlList = (((this.videoUrlList!= null)&&(!this.videoUrlList.isEmpty()))?this.getVideoUrlList():null);
             List<VideoUrlList> rhsVideoUrlList;
             rhsVideoUrlList = (((that.videoUrlList!= null)&&(!that.videoUrlList.isEmpty()))?that.getVideoUrlList():null);
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "videoUrlList", lhsVideoUrlList), LocatorUtils.property(thatLocator, "videoUrlList", rhsVideoUrlList), lhsVideoUrlList, rhsVideoUrlList)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "videoUrlList", lhsVideoUrlList), LocatorUtils.property(thatLocator, "videoUrlList", rhsVideoUrlList), lhsVideoUrlList, rhsVideoUrlList, ((this.videoUrlList!= null)&&(!this.videoUrlList.isEmpty())), ((that.videoUrlList!= null)&&(!that.videoUrlList.isEmpty())))) {
                 return false;
             }
         }
@@ -375,7 +404,7 @@ public class VideoInfo
             lhsDuration = this.getDuration();
             Long rhsDuration;
             rhsDuration = that.getDuration();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "duration", lhsDuration), LocatorUtils.property(thatLocator, "duration", rhsDuration), lhsDuration, rhsDuration)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "duration", lhsDuration), LocatorUtils.property(thatLocator, "duration", rhsDuration), lhsDuration, rhsDuration, (this.duration!= null), (that.duration!= null))) {
                 return false;
             }
         }
@@ -384,7 +413,7 @@ public class VideoInfo
             lhsTeaserUrl = this.getTeaserUrl();
             URL rhsTeaserUrl;
             rhsTeaserUrl = that.getTeaserUrl();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "teaserUrl", lhsTeaserUrl), LocatorUtils.property(thatLocator, "teaserUrl", rhsTeaserUrl), lhsTeaserUrl, rhsTeaserUrl)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "teaserUrl", lhsTeaserUrl), LocatorUtils.property(thatLocator, "teaserUrl", rhsTeaserUrl), lhsTeaserUrl, rhsTeaserUrl, (this.teaserUrl!= null), (that.teaserUrl!= null))) {
                 return false;
             }
         }
@@ -393,7 +422,7 @@ public class VideoInfo
             lhsTitle = this.getTitle();
             String rhsTitle;
             rhsTitle = that.getTitle();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "title", lhsTitle), LocatorUtils.property(thatLocator, "title", rhsTitle), lhsTitle, rhsTitle)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "title", lhsTitle), LocatorUtils.property(thatLocator, "title", rhsTitle), lhsTitle, rhsTitle, (this.title!= null), (that.title!= null))) {
                 return false;
             }
         }
@@ -402,7 +431,7 @@ public class VideoInfo
             lhsProcessingProgress = this.getProcessingProgress();
             Integer rhsProcessingProgress;
             rhsProcessingProgress = that.getProcessingProgress();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "processingProgress", lhsProcessingProgress), LocatorUtils.property(thatLocator, "processingProgress", rhsProcessingProgress), lhsProcessingProgress, rhsProcessingProgress)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "processingProgress", lhsProcessingProgress), LocatorUtils.property(thatLocator, "processingProgress", rhsProcessingProgress), lhsProcessingProgress, rhsProcessingProgress, (this.processingProgress!= null), (that.processingProgress!= null))) {
                 return false;
             }
         }
@@ -411,7 +440,7 @@ public class VideoInfo
             lhsProcessingStatus = this.getProcessingStatus();
             VideoProcessingStatusType rhsProcessingStatus;
             rhsProcessingStatus = that.getProcessingStatus();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "processingStatus", lhsProcessingStatus), LocatorUtils.property(thatLocator, "processingStatus", rhsProcessingStatus), lhsProcessingStatus, rhsProcessingStatus)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "processingStatus", lhsProcessingStatus), LocatorUtils.property(thatLocator, "processingStatus", rhsProcessingStatus), lhsProcessingStatus, rhsProcessingStatus, (this.processingStatus!= null), (that.processingStatus!= null))) {
                 return false;
             }
         }
@@ -419,7 +448,7 @@ public class VideoInfo
     }
 
     public boolean equals(Object object) {
-        final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
     }
 

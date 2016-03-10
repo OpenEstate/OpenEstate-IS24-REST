@@ -7,15 +7,15 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import org.jvnet.jaxb2_commons.lang.CopyStrategy;
-import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Equals;
-import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
+import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
+import org.jvnet.jaxb2_commons.lang.CopyTo2;
+import org.jvnet.jaxb2_commons.lang.Equals2;
+import org.jvnet.jaxb2_commons.lang.EqualsStrategy2;
 import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBEqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy;
-import org.jvnet.jaxb2_commons.lang.ToString;
-import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
+import org.jvnet.jaxb2_commons.lang.ToString2;
+import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 import org.openestate.is24.restapi.xml.Adapter5;
@@ -57,8 +57,7 @@ import org.openestate.is24.restapi.xml.Adapter5;
     "numberOfPages",
     "numberOfHits"
 })
-public class Paging
-    implements Cloneable, CopyTo, Equals, ToString
+public class Paging implements Cloneable, CopyTo2, Equals2, ToString2
 {
 
     protected ReferenceLink next;
@@ -225,49 +224,49 @@ public class Paging
     }
 
     public String toString() {
-        final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
         append(null, buffer, strategy);
         return buffer.toString();
     }
 
-    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
         strategy.appendEnd(locator, this, buffer);
         return buffer;
     }
 
-    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             ReferenceLink theNext;
             theNext = this.getNext();
-            strategy.appendField(locator, this, "next", buffer, theNext);
+            strategy.appendField(locator, this, "next", buffer, theNext, (this.next!= null));
         }
         {
             ReferenceLink thePrevious;
             thePrevious = this.getPrevious();
-            strategy.appendField(locator, this, "previous", buffer, thePrevious);
+            strategy.appendField(locator, this, "previous", buffer, thePrevious, (this.previous!= null));
         }
         {
             Long thePageNumber;
             thePageNumber = this.getPageNumber();
-            strategy.appendField(locator, this, "pageNumber", buffer, thePageNumber);
+            strategy.appendField(locator, this, "pageNumber", buffer, thePageNumber, (this.pageNumber!= null));
         }
         {
             Long thePageSize;
             thePageSize = this.getPageSize();
-            strategy.appendField(locator, this, "pageSize", buffer, thePageSize);
+            strategy.appendField(locator, this, "pageSize", buffer, thePageSize, (this.pageSize!= null));
         }
         {
             Long theNumberOfPages;
             theNumberOfPages = this.getNumberOfPages();
-            strategy.appendField(locator, this, "numberOfPages", buffer, theNumberOfPages);
+            strategy.appendField(locator, this, "numberOfPages", buffer, theNumberOfPages, (this.numberOfPages!= null));
         }
         {
             Long theNumberOfHits;
             theNumberOfHits = this.getNumberOfHits();
-            strategy.appendField(locator, this, "numberOfHits", buffer, theNumberOfHits);
+            strategy.appendField(locator, this, "numberOfHits", buffer, theNumberOfHits, (this.numberOfHits!= null));
         }
         return buffer;
     }
@@ -277,61 +276,91 @@ public class Paging
     }
 
     public Object copyTo(Object target) {
-        final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof Paging) {
             final Paging copy = ((Paging) draftCopy);
-            if (this.next!= null) {
-                ReferenceLink sourceNext;
-                sourceNext = this.getNext();
-                ReferenceLink copyNext = ((ReferenceLink) strategy.copy(LocatorUtils.property(locator, "next", sourceNext), sourceNext));
-                copy.setNext(copyNext);
-            } else {
-                copy.next = null;
+            {
+                Boolean nextShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.next!= null));
+                if (nextShouldBeCopiedAndSet == Boolean.TRUE) {
+                    ReferenceLink sourceNext;
+                    sourceNext = this.getNext();
+                    ReferenceLink copyNext = ((ReferenceLink) strategy.copy(LocatorUtils.property(locator, "next", sourceNext), sourceNext, (this.next!= null)));
+                    copy.setNext(copyNext);
+                } else {
+                    if (nextShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.next = null;
+                    }
+                }
             }
-            if (this.previous!= null) {
-                ReferenceLink sourcePrevious;
-                sourcePrevious = this.getPrevious();
-                ReferenceLink copyPrevious = ((ReferenceLink) strategy.copy(LocatorUtils.property(locator, "previous", sourcePrevious), sourcePrevious));
-                copy.setPrevious(copyPrevious);
-            } else {
-                copy.previous = null;
+            {
+                Boolean previousShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.previous!= null));
+                if (previousShouldBeCopiedAndSet == Boolean.TRUE) {
+                    ReferenceLink sourcePrevious;
+                    sourcePrevious = this.getPrevious();
+                    ReferenceLink copyPrevious = ((ReferenceLink) strategy.copy(LocatorUtils.property(locator, "previous", sourcePrevious), sourcePrevious, (this.previous!= null)));
+                    copy.setPrevious(copyPrevious);
+                } else {
+                    if (previousShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.previous = null;
+                    }
+                }
             }
-            if (this.pageNumber!= null) {
-                Long sourcePageNumber;
-                sourcePageNumber = this.getPageNumber();
-                Long copyPageNumber = ((Long) strategy.copy(LocatorUtils.property(locator, "pageNumber", sourcePageNumber), sourcePageNumber));
-                copy.setPageNumber(copyPageNumber);
-            } else {
-                copy.pageNumber = null;
+            {
+                Boolean pageNumberShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.pageNumber!= null));
+                if (pageNumberShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Long sourcePageNumber;
+                    sourcePageNumber = this.getPageNumber();
+                    Long copyPageNumber = ((Long) strategy.copy(LocatorUtils.property(locator, "pageNumber", sourcePageNumber), sourcePageNumber, (this.pageNumber!= null)));
+                    copy.setPageNumber(copyPageNumber);
+                } else {
+                    if (pageNumberShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.pageNumber = null;
+                    }
+                }
             }
-            if (this.pageSize!= null) {
-                Long sourcePageSize;
-                sourcePageSize = this.getPageSize();
-                Long copyPageSize = ((Long) strategy.copy(LocatorUtils.property(locator, "pageSize", sourcePageSize), sourcePageSize));
-                copy.setPageSize(copyPageSize);
-            } else {
-                copy.pageSize = null;
+            {
+                Boolean pageSizeShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.pageSize!= null));
+                if (pageSizeShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Long sourcePageSize;
+                    sourcePageSize = this.getPageSize();
+                    Long copyPageSize = ((Long) strategy.copy(LocatorUtils.property(locator, "pageSize", sourcePageSize), sourcePageSize, (this.pageSize!= null)));
+                    copy.setPageSize(copyPageSize);
+                } else {
+                    if (pageSizeShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.pageSize = null;
+                    }
+                }
             }
-            if (this.numberOfPages!= null) {
-                Long sourceNumberOfPages;
-                sourceNumberOfPages = this.getNumberOfPages();
-                Long copyNumberOfPages = ((Long) strategy.copy(LocatorUtils.property(locator, "numberOfPages", sourceNumberOfPages), sourceNumberOfPages));
-                copy.setNumberOfPages(copyNumberOfPages);
-            } else {
-                copy.numberOfPages = null;
+            {
+                Boolean numberOfPagesShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.numberOfPages!= null));
+                if (numberOfPagesShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Long sourceNumberOfPages;
+                    sourceNumberOfPages = this.getNumberOfPages();
+                    Long copyNumberOfPages = ((Long) strategy.copy(LocatorUtils.property(locator, "numberOfPages", sourceNumberOfPages), sourceNumberOfPages, (this.numberOfPages!= null)));
+                    copy.setNumberOfPages(copyNumberOfPages);
+                } else {
+                    if (numberOfPagesShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.numberOfPages = null;
+                    }
+                }
             }
-            if (this.numberOfHits!= null) {
-                Long sourceNumberOfHits;
-                sourceNumberOfHits = this.getNumberOfHits();
-                Long copyNumberOfHits = ((Long) strategy.copy(LocatorUtils.property(locator, "numberOfHits", sourceNumberOfHits), sourceNumberOfHits));
-                copy.setNumberOfHits(copyNumberOfHits);
-            } else {
-                copy.numberOfHits = null;
+            {
+                Boolean numberOfHitsShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.numberOfHits!= null));
+                if (numberOfHitsShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Long sourceNumberOfHits;
+                    sourceNumberOfHits = this.getNumberOfHits();
+                    Long copyNumberOfHits = ((Long) strategy.copy(LocatorUtils.property(locator, "numberOfHits", sourceNumberOfHits), sourceNumberOfHits, (this.numberOfHits!= null)));
+                    copy.setNumberOfHits(copyNumberOfHits);
+                } else {
+                    if (numberOfHitsShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.numberOfHits = null;
+                    }
+                }
             }
         }
         return draftCopy;
@@ -341,7 +370,7 @@ public class Paging
         return new Paging();
     }
 
-    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
@@ -354,7 +383,7 @@ public class Paging
             lhsNext = this.getNext();
             ReferenceLink rhsNext;
             rhsNext = that.getNext();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "next", lhsNext), LocatorUtils.property(thatLocator, "next", rhsNext), lhsNext, rhsNext)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "next", lhsNext), LocatorUtils.property(thatLocator, "next", rhsNext), lhsNext, rhsNext, (this.next!= null), (that.next!= null))) {
                 return false;
             }
         }
@@ -363,7 +392,7 @@ public class Paging
             lhsPrevious = this.getPrevious();
             ReferenceLink rhsPrevious;
             rhsPrevious = that.getPrevious();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "previous", lhsPrevious), LocatorUtils.property(thatLocator, "previous", rhsPrevious), lhsPrevious, rhsPrevious)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "previous", lhsPrevious), LocatorUtils.property(thatLocator, "previous", rhsPrevious), lhsPrevious, rhsPrevious, (this.previous!= null), (that.previous!= null))) {
                 return false;
             }
         }
@@ -372,7 +401,7 @@ public class Paging
             lhsPageNumber = this.getPageNumber();
             Long rhsPageNumber;
             rhsPageNumber = that.getPageNumber();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "pageNumber", lhsPageNumber), LocatorUtils.property(thatLocator, "pageNumber", rhsPageNumber), lhsPageNumber, rhsPageNumber)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "pageNumber", lhsPageNumber), LocatorUtils.property(thatLocator, "pageNumber", rhsPageNumber), lhsPageNumber, rhsPageNumber, (this.pageNumber!= null), (that.pageNumber!= null))) {
                 return false;
             }
         }
@@ -381,7 +410,7 @@ public class Paging
             lhsPageSize = this.getPageSize();
             Long rhsPageSize;
             rhsPageSize = that.getPageSize();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "pageSize", lhsPageSize), LocatorUtils.property(thatLocator, "pageSize", rhsPageSize), lhsPageSize, rhsPageSize)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "pageSize", lhsPageSize), LocatorUtils.property(thatLocator, "pageSize", rhsPageSize), lhsPageSize, rhsPageSize, (this.pageSize!= null), (that.pageSize!= null))) {
                 return false;
             }
         }
@@ -390,7 +419,7 @@ public class Paging
             lhsNumberOfPages = this.getNumberOfPages();
             Long rhsNumberOfPages;
             rhsNumberOfPages = that.getNumberOfPages();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "numberOfPages", lhsNumberOfPages), LocatorUtils.property(thatLocator, "numberOfPages", rhsNumberOfPages), lhsNumberOfPages, rhsNumberOfPages)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "numberOfPages", lhsNumberOfPages), LocatorUtils.property(thatLocator, "numberOfPages", rhsNumberOfPages), lhsNumberOfPages, rhsNumberOfPages, (this.numberOfPages!= null), (that.numberOfPages!= null))) {
                 return false;
             }
         }
@@ -399,7 +428,7 @@ public class Paging
             lhsNumberOfHits = this.getNumberOfHits();
             Long rhsNumberOfHits;
             rhsNumberOfHits = that.getNumberOfHits();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "numberOfHits", lhsNumberOfHits), LocatorUtils.property(thatLocator, "numberOfHits", rhsNumberOfHits), lhsNumberOfHits, rhsNumberOfHits)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "numberOfHits", lhsNumberOfHits), LocatorUtils.property(thatLocator, "numberOfHits", rhsNumberOfHits), lhsNumberOfHits, rhsNumberOfHits, (this.numberOfHits!= null), (that.numberOfHits!= null))) {
                 return false;
             }
         }
@@ -407,7 +436,7 @@ public class Paging
     }
 
     public boolean equals(Object object) {
-        final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
     }
 

@@ -6,15 +6,15 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
-import org.jvnet.jaxb2_commons.lang.CopyStrategy;
-import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Equals;
-import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
+import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
+import org.jvnet.jaxb2_commons.lang.CopyTo2;
+import org.jvnet.jaxb2_commons.lang.Equals2;
+import org.jvnet.jaxb2_commons.lang.EqualsStrategy2;
 import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBEqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy;
-import org.jvnet.jaxb2_commons.lang.ToString;
-import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
+import org.jvnet.jaxb2_commons.lang.ToString2;
+import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 
@@ -44,8 +44,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 @XmlType(name = "MatchCountList", propOrder = {
     "matchCount"
 })
-public class MatchCountList
-    implements Cloneable, CopyTo, Equals, ToString
+public class MatchCountList implements Cloneable, CopyTo2, Equals2, ToString2
 {
 
     protected List<MatchCount> matchCount;
@@ -80,24 +79,24 @@ public class MatchCountList
     }
 
     public String toString() {
-        final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
         append(null, buffer, strategy);
         return buffer.toString();
     }
 
-    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
         strategy.appendEnd(locator, this, buffer);
         return buffer;
     }
 
-    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             List<MatchCount> theMatchCount;
             theMatchCount = (((this.matchCount!= null)&&(!this.matchCount.isEmpty()))?this.getMatchCount():null);
-            strategy.appendField(locator, this, "matchCount", buffer, theMatchCount);
+            strategy.appendField(locator, this, "matchCount", buffer, theMatchCount, ((this.matchCount!= null)&&(!this.matchCount.isEmpty())));
         }
         return buffer;
     }
@@ -107,26 +106,31 @@ public class MatchCountList
     }
 
     public Object copyTo(Object target) {
-        final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof MatchCountList) {
             final MatchCountList copy = ((MatchCountList) draftCopy);
-            if ((this.matchCount!= null)&&(!this.matchCount.isEmpty())) {
-                List<MatchCount> sourceMatchCount;
-                sourceMatchCount = (((this.matchCount!= null)&&(!this.matchCount.isEmpty()))?this.getMatchCount():null);
-                @SuppressWarnings("unchecked")
-                List<MatchCount> copyMatchCount = ((List<MatchCount> ) strategy.copy(LocatorUtils.property(locator, "matchCount", sourceMatchCount), sourceMatchCount));
-                copy.matchCount = null;
-                if (copyMatchCount!= null) {
-                    List<MatchCount> uniqueMatchCountl = copy.getMatchCount();
-                    uniqueMatchCountl.addAll(copyMatchCount);
+            {
+                Boolean matchCountShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, ((this.matchCount!= null)&&(!this.matchCount.isEmpty())));
+                if (matchCountShouldBeCopiedAndSet == Boolean.TRUE) {
+                    List<MatchCount> sourceMatchCount;
+                    sourceMatchCount = (((this.matchCount!= null)&&(!this.matchCount.isEmpty()))?this.getMatchCount():null);
+                    @SuppressWarnings("unchecked")
+                    List<MatchCount> copyMatchCount = ((List<MatchCount> ) strategy.copy(LocatorUtils.property(locator, "matchCount", sourceMatchCount), sourceMatchCount, ((this.matchCount!= null)&&(!this.matchCount.isEmpty()))));
+                    copy.matchCount = null;
+                    if (copyMatchCount!= null) {
+                        List<MatchCount> uniqueMatchCountl = copy.getMatchCount();
+                        uniqueMatchCountl.addAll(copyMatchCount);
+                    }
+                } else {
+                    if (matchCountShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.matchCount = null;
+                    }
                 }
-            } else {
-                copy.matchCount = null;
             }
         }
         return draftCopy;
@@ -136,7 +140,7 @@ public class MatchCountList
         return new MatchCountList();
     }
 
-    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
@@ -149,7 +153,7 @@ public class MatchCountList
             lhsMatchCount = (((this.matchCount!= null)&&(!this.matchCount.isEmpty()))?this.getMatchCount():null);
             List<MatchCount> rhsMatchCount;
             rhsMatchCount = (((that.matchCount!= null)&&(!that.matchCount.isEmpty()))?that.getMatchCount():null);
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "matchCount", lhsMatchCount), LocatorUtils.property(thatLocator, "matchCount", rhsMatchCount), lhsMatchCount, rhsMatchCount)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "matchCount", lhsMatchCount), LocatorUtils.property(thatLocator, "matchCount", rhsMatchCount), lhsMatchCount, rhsMatchCount, ((this.matchCount!= null)&&(!this.matchCount.isEmpty())), ((that.matchCount!= null)&&(!that.matchCount.isEmpty())))) {
                 return false;
             }
         }
@@ -157,7 +161,7 @@ public class MatchCountList
     }
 
     public boolean equals(Object object) {
-        final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
     }
 

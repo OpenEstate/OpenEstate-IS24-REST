@@ -7,15 +7,15 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import org.jvnet.jaxb2_commons.lang.CopyStrategy;
-import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Equals;
-import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
+import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
+import org.jvnet.jaxb2_commons.lang.CopyTo2;
+import org.jvnet.jaxb2_commons.lang.Equals2;
+import org.jvnet.jaxb2_commons.lang.EqualsStrategy2;
 import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBEqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy;
-import org.jvnet.jaxb2_commons.lang.ToString;
-import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
+import org.jvnet.jaxb2_commons.lang.ToString2;
+import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 
@@ -47,8 +47,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
     "count",
     "tolerance"
 })
-public class Contingent
-    implements Cloneable, CopyTo, Equals, ToString
+public class Contingent implements Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(required = true)
@@ -107,29 +106,29 @@ public class Contingent
     }
 
     public String toString() {
-        final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
         append(null, buffer, strategy);
         return buffer.toString();
     }
 
-    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
         strategy.appendEnd(locator, this, buffer);
         return buffer;
     }
 
-    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             BigInteger theCount;
             theCount = this.getCount();
-            strategy.appendField(locator, this, "count", buffer, theCount);
+            strategy.appendField(locator, this, "count", buffer, theCount, (this.count!= null));
         }
         {
             BigInteger theTolerance;
             theTolerance = this.getTolerance();
-            strategy.appendField(locator, this, "tolerance", buffer, theTolerance);
+            strategy.appendField(locator, this, "tolerance", buffer, theTolerance, (this.tolerance!= null));
         }
         return buffer;
     }
@@ -139,29 +138,39 @@ public class Contingent
     }
 
     public Object copyTo(Object target) {
-        final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof Contingent) {
             final Contingent copy = ((Contingent) draftCopy);
-            if (this.count!= null) {
-                BigInteger sourceCount;
-                sourceCount = this.getCount();
-                BigInteger copyCount = ((BigInteger) strategy.copy(LocatorUtils.property(locator, "count", sourceCount), sourceCount));
-                copy.setCount(copyCount);
-            } else {
-                copy.count = null;
+            {
+                Boolean countShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.count!= null));
+                if (countShouldBeCopiedAndSet == Boolean.TRUE) {
+                    BigInteger sourceCount;
+                    sourceCount = this.getCount();
+                    BigInteger copyCount = ((BigInteger) strategy.copy(LocatorUtils.property(locator, "count", sourceCount), sourceCount, (this.count!= null)));
+                    copy.setCount(copyCount);
+                } else {
+                    if (countShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.count = null;
+                    }
+                }
             }
-            if (this.tolerance!= null) {
-                BigInteger sourceTolerance;
-                sourceTolerance = this.getTolerance();
-                BigInteger copyTolerance = ((BigInteger) strategy.copy(LocatorUtils.property(locator, "tolerance", sourceTolerance), sourceTolerance));
-                copy.setTolerance(copyTolerance);
-            } else {
-                copy.tolerance = null;
+            {
+                Boolean toleranceShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.tolerance!= null));
+                if (toleranceShouldBeCopiedAndSet == Boolean.TRUE) {
+                    BigInteger sourceTolerance;
+                    sourceTolerance = this.getTolerance();
+                    BigInteger copyTolerance = ((BigInteger) strategy.copy(LocatorUtils.property(locator, "tolerance", sourceTolerance), sourceTolerance, (this.tolerance!= null)));
+                    copy.setTolerance(copyTolerance);
+                } else {
+                    if (toleranceShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.tolerance = null;
+                    }
+                }
             }
         }
         return draftCopy;
@@ -171,7 +180,7 @@ public class Contingent
         return new Contingent();
     }
 
-    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
@@ -184,7 +193,7 @@ public class Contingent
             lhsCount = this.getCount();
             BigInteger rhsCount;
             rhsCount = that.getCount();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "count", lhsCount), LocatorUtils.property(thatLocator, "count", rhsCount), lhsCount, rhsCount)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "count", lhsCount), LocatorUtils.property(thatLocator, "count", rhsCount), lhsCount, rhsCount, (this.count!= null), (that.count!= null))) {
                 return false;
             }
         }
@@ -193,7 +202,7 @@ public class Contingent
             lhsTolerance = this.getTolerance();
             BigInteger rhsTolerance;
             rhsTolerance = that.getTolerance();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "tolerance", lhsTolerance), LocatorUtils.property(thatLocator, "tolerance", rhsTolerance), lhsTolerance, rhsTolerance)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "tolerance", lhsTolerance), LocatorUtils.property(thatLocator, "tolerance", rhsTolerance), lhsTolerance, rhsTolerance, (this.tolerance!= null), (that.tolerance!= null))) {
                 return false;
             }
         }
@@ -201,7 +210,7 @@ public class Contingent
     }
 
     public boolean equals(Object object) {
-        final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
     }
 

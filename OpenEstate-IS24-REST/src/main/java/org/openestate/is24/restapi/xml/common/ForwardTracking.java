@@ -6,15 +6,15 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import org.jvnet.jaxb2_commons.lang.CopyStrategy;
-import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Equals;
-import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
+import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
+import org.jvnet.jaxb2_commons.lang.CopyTo2;
+import org.jvnet.jaxb2_commons.lang.Equals2;
+import org.jvnet.jaxb2_commons.lang.EqualsStrategy2;
 import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBEqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy;
-import org.jvnet.jaxb2_commons.lang.ToString;
-import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
+import org.jvnet.jaxb2_commons.lang.ToString2;
+import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 
@@ -55,8 +55,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
     "code",
     "type"
 })
-public class ForwardTracking
-    implements Cloneable, CopyTo, Equals, ToString
+public class ForwardTracking implements Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(required = true)
@@ -114,29 +113,29 @@ public class ForwardTracking
     }
 
     public String toString() {
-        final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
         append(null, buffer, strategy);
         return buffer.toString();
     }
 
-    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
         strategy.appendEnd(locator, this, buffer);
         return buffer;
     }
 
-    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             String theCode;
             theCode = this.getCode();
-            strategy.appendField(locator, this, "code", buffer, theCode);
+            strategy.appendField(locator, this, "code", buffer, theCode, (this.code!= null));
         }
         {
             ForwardTrackingType theType;
             theType = this.getType();
-            strategy.appendField(locator, this, "type", buffer, theType);
+            strategy.appendField(locator, this, "type", buffer, theType, (this.type!= null));
         }
         return buffer;
     }
@@ -146,29 +145,39 @@ public class ForwardTracking
     }
 
     public Object copyTo(Object target) {
-        final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof ForwardTracking) {
             final ForwardTracking copy = ((ForwardTracking) draftCopy);
-            if (this.code!= null) {
-                String sourceCode;
-                sourceCode = this.getCode();
-                String copyCode = ((String) strategy.copy(LocatorUtils.property(locator, "code", sourceCode), sourceCode));
-                copy.setCode(copyCode);
-            } else {
-                copy.code = null;
+            {
+                Boolean codeShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.code!= null));
+                if (codeShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceCode;
+                    sourceCode = this.getCode();
+                    String copyCode = ((String) strategy.copy(LocatorUtils.property(locator, "code", sourceCode), sourceCode, (this.code!= null)));
+                    copy.setCode(copyCode);
+                } else {
+                    if (codeShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.code = null;
+                    }
+                }
             }
-            if (this.type!= null) {
-                ForwardTrackingType sourceType;
-                sourceType = this.getType();
-                ForwardTrackingType copyType = ((ForwardTrackingType) strategy.copy(LocatorUtils.property(locator, "type", sourceType), sourceType));
-                copy.setType(copyType);
-            } else {
-                copy.type = null;
+            {
+                Boolean typeShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.type!= null));
+                if (typeShouldBeCopiedAndSet == Boolean.TRUE) {
+                    ForwardTrackingType sourceType;
+                    sourceType = this.getType();
+                    ForwardTrackingType copyType = ((ForwardTrackingType) strategy.copy(LocatorUtils.property(locator, "type", sourceType), sourceType, (this.type!= null)));
+                    copy.setType(copyType);
+                } else {
+                    if (typeShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.type = null;
+                    }
+                }
             }
         }
         return draftCopy;
@@ -178,7 +187,7 @@ public class ForwardTracking
         return new ForwardTracking();
     }
 
-    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
@@ -191,7 +200,7 @@ public class ForwardTracking
             lhsCode = this.getCode();
             String rhsCode;
             rhsCode = that.getCode();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "code", lhsCode), LocatorUtils.property(thatLocator, "code", rhsCode), lhsCode, rhsCode)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "code", lhsCode), LocatorUtils.property(thatLocator, "code", rhsCode), lhsCode, rhsCode, (this.code!= null), (that.code!= null))) {
                 return false;
             }
         }
@@ -200,7 +209,7 @@ public class ForwardTracking
             lhsType = this.getType();
             ForwardTrackingType rhsType;
             rhsType = that.getType();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "type", lhsType), LocatorUtils.property(thatLocator, "type", rhsType), lhsType, rhsType)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "type", lhsType), LocatorUtils.property(thatLocator, "type", rhsType), lhsType, rhsType, (this.type!= null), (that.type!= null))) {
                 return false;
             }
         }
@@ -208,7 +217,7 @@ public class ForwardTracking
     }
 
     public boolean equals(Object object) {
-        final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
     }
 

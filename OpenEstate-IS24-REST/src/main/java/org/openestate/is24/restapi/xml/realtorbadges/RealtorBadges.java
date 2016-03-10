@@ -7,15 +7,15 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
-import org.jvnet.jaxb2_commons.lang.CopyStrategy;
-import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Equals;
-import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
+import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
+import org.jvnet.jaxb2_commons.lang.CopyTo2;
+import org.jvnet.jaxb2_commons.lang.Equals2;
+import org.jvnet.jaxb2_commons.lang.EqualsStrategy2;
 import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBEqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy;
-import org.jvnet.jaxb2_commons.lang.ToString;
-import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
+import org.jvnet.jaxb2_commons.lang.ToString2;
+import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 
@@ -53,8 +53,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 @XmlType(name = "RealtorBadges", propOrder = {
 
 })
-public class RealtorBadges
-    implements Cloneable, CopyTo, Equals, ToString
+public class RealtorBadges implements Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(required = true)
@@ -85,24 +84,24 @@ public class RealtorBadges
     }
 
     public String toString() {
-        final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
         append(null, buffer, strategy);
         return buffer.toString();
     }
 
-    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
         strategy.appendEnd(locator, this, buffer);
         return buffer;
     }
 
-    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             RealtorBadges.Badges theBadges;
             theBadges = this.getBadges();
-            strategy.appendField(locator, this, "badges", buffer, theBadges);
+            strategy.appendField(locator, this, "badges", buffer, theBadges, (this.badges!= null));
         }
         return buffer;
     }
@@ -112,21 +111,26 @@ public class RealtorBadges
     }
 
     public Object copyTo(Object target) {
-        final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof RealtorBadges) {
             final RealtorBadges copy = ((RealtorBadges) draftCopy);
-            if (this.badges!= null) {
-                RealtorBadges.Badges sourceBadges;
-                sourceBadges = this.getBadges();
-                RealtorBadges.Badges copyBadges = ((RealtorBadges.Badges) strategy.copy(LocatorUtils.property(locator, "badges", sourceBadges), sourceBadges));
-                copy.setBadges(copyBadges);
-            } else {
-                copy.badges = null;
+            {
+                Boolean badgesShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.badges!= null));
+                if (badgesShouldBeCopiedAndSet == Boolean.TRUE) {
+                    RealtorBadges.Badges sourceBadges;
+                    sourceBadges = this.getBadges();
+                    RealtorBadges.Badges copyBadges = ((RealtorBadges.Badges) strategy.copy(LocatorUtils.property(locator, "badges", sourceBadges), sourceBadges, (this.badges!= null)));
+                    copy.setBadges(copyBadges);
+                } else {
+                    if (badgesShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.badges = null;
+                    }
+                }
             }
         }
         return draftCopy;
@@ -136,7 +140,7 @@ public class RealtorBadges
         return new RealtorBadges();
     }
 
-    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
@@ -149,7 +153,7 @@ public class RealtorBadges
             lhsBadges = this.getBadges();
             RealtorBadges.Badges rhsBadges;
             rhsBadges = that.getBadges();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "badges", lhsBadges), LocatorUtils.property(thatLocator, "badges", rhsBadges), lhsBadges, rhsBadges)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "badges", lhsBadges), LocatorUtils.property(thatLocator, "badges", rhsBadges), lhsBadges, rhsBadges, (this.badges!= null), (that.badges!= null))) {
                 return false;
             }
         }
@@ -157,7 +161,7 @@ public class RealtorBadges
     }
 
     public boolean equals(Object object) {
-        final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
     }
 
@@ -185,8 +189,7 @@ public class RealtorBadges
     @XmlType(name = "", propOrder = {
         "badge"
     })
-    public static class Badges
-        implements Cloneable, CopyTo, Equals, ToString
+    public static class Badges implements Cloneable, CopyTo2, Equals2, ToString2
     {
 
         protected List<Badge> badge;
@@ -221,24 +224,24 @@ public class RealtorBadges
         }
 
         public String toString() {
-            final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+            final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
             final StringBuilder buffer = new StringBuilder();
             append(null, buffer, strategy);
             return buffer.toString();
         }
 
-        public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+        public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
             strategy.appendStart(locator, this, buffer);
             appendFields(locator, buffer, strategy);
             strategy.appendEnd(locator, this, buffer);
             return buffer;
         }
 
-        public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+        public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
             {
                 List<Badge> theBadge;
                 theBadge = (((this.badge!= null)&&(!this.badge.isEmpty()))?this.getBadge():null);
-                strategy.appendField(locator, this, "badge", buffer, theBadge);
+                strategy.appendField(locator, this, "badge", buffer, theBadge, ((this.badge!= null)&&(!this.badge.isEmpty())));
             }
             return buffer;
         }
@@ -248,26 +251,31 @@ public class RealtorBadges
         }
 
         public Object copyTo(Object target) {
-            final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+            final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
             return copyTo(null, target, strategy);
         }
 
-        public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+        public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
             final Object draftCopy = ((target == null)?createNewInstance():target);
             if (draftCopy instanceof RealtorBadges.Badges) {
                 final RealtorBadges.Badges copy = ((RealtorBadges.Badges) draftCopy);
-                if ((this.badge!= null)&&(!this.badge.isEmpty())) {
-                    List<Badge> sourceBadge;
-                    sourceBadge = (((this.badge!= null)&&(!this.badge.isEmpty()))?this.getBadge():null);
-                    @SuppressWarnings("unchecked")
-                    List<Badge> copyBadge = ((List<Badge> ) strategy.copy(LocatorUtils.property(locator, "badge", sourceBadge), sourceBadge));
-                    copy.badge = null;
-                    if (copyBadge!= null) {
-                        List<Badge> uniqueBadgel = copy.getBadge();
-                        uniqueBadgel.addAll(copyBadge);
+                {
+                    Boolean badgeShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, ((this.badge!= null)&&(!this.badge.isEmpty())));
+                    if (badgeShouldBeCopiedAndSet == Boolean.TRUE) {
+                        List<Badge> sourceBadge;
+                        sourceBadge = (((this.badge!= null)&&(!this.badge.isEmpty()))?this.getBadge():null);
+                        @SuppressWarnings("unchecked")
+                        List<Badge> copyBadge = ((List<Badge> ) strategy.copy(LocatorUtils.property(locator, "badge", sourceBadge), sourceBadge, ((this.badge!= null)&&(!this.badge.isEmpty()))));
+                        copy.badge = null;
+                        if (copyBadge!= null) {
+                            List<Badge> uniqueBadgel = copy.getBadge();
+                            uniqueBadgel.addAll(copyBadge);
+                        }
+                    } else {
+                        if (badgeShouldBeCopiedAndSet == Boolean.FALSE) {
+                            copy.badge = null;
+                        }
                     }
-                } else {
-                    copy.badge = null;
                 }
             }
             return draftCopy;
@@ -277,7 +285,7 @@ public class RealtorBadges
             return new RealtorBadges.Badges();
         }
 
-        public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+        public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
             if ((object == null)||(this.getClass()!= object.getClass())) {
                 return false;
             }
@@ -290,7 +298,7 @@ public class RealtorBadges
                 lhsBadge = (((this.badge!= null)&&(!this.badge.isEmpty()))?this.getBadge():null);
                 List<Badge> rhsBadge;
                 rhsBadge = (((that.badge!= null)&&(!that.badge.isEmpty()))?that.getBadge():null);
-                if (!strategy.equals(LocatorUtils.property(thisLocator, "badge", lhsBadge), LocatorUtils.property(thatLocator, "badge", rhsBadge), lhsBadge, rhsBadge)) {
+                if (!strategy.equals(LocatorUtils.property(thisLocator, "badge", lhsBadge), LocatorUtils.property(thatLocator, "badge", rhsBadge), lhsBadge, rhsBadge, ((this.badge!= null)&&(!this.badge.isEmpty())), ((that.badge!= null)&&(!that.badge.isEmpty())))) {
                     return false;
                 }
             }
@@ -298,7 +306,7 @@ public class RealtorBadges
         }
 
         public boolean equals(Object object) {
-            final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+            final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
             return equals(null, null, object, strategy);
         }
 

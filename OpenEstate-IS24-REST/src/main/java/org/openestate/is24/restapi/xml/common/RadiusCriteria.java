@@ -7,15 +7,15 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import org.jvnet.jaxb2_commons.lang.CopyStrategy;
-import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Equals;
-import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
+import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
+import org.jvnet.jaxb2_commons.lang.CopyTo2;
+import org.jvnet.jaxb2_commons.lang.Equals2;
+import org.jvnet.jaxb2_commons.lang.EqualsStrategy2;
 import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBEqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy;
-import org.jvnet.jaxb2_commons.lang.ToString;
-import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
+import org.jvnet.jaxb2_commons.lang.ToString2;
+import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 
@@ -61,7 +61,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 })
 public class RadiusCriteria
     extends AbstractGeoCriteria
-    implements Cloneable, CopyTo, Equals, ToString
+    implements Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(required = true)
@@ -169,40 +169,40 @@ public class RadiusCriteria
     }
 
     public String toString() {
-        final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
         append(null, buffer, strategy);
         return buffer.toString();
     }
 
-    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
         strategy.appendEnd(locator, this, buffer);
         return buffer;
     }
 
-    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         super.appendFields(locator, buffer, strategy);
         {
             Wgs84Coordinate theWgs84;
             theWgs84 = this.getWgs84();
-            strategy.appendField(locator, this, "wgs84", buffer, theWgs84);
+            strategy.appendField(locator, this, "wgs84", buffer, theWgs84, (this.wgs84 != null));
         }
         {
             BigDecimal theRadiusKm;
             theRadiusKm = this.getRadiusKm();
-            strategy.appendField(locator, this, "radiusKm", buffer, theRadiusKm);
+            strategy.appendField(locator, this, "radiusKm", buffer, theRadiusKm, (this.radiusKm!= null));
         }
         {
             String theLabel;
             theLabel = this.getLabel();
-            strategy.appendField(locator, this, "label", buffer, theLabel);
+            strategy.appendField(locator, this, "label", buffer, theLabel, (this.label!= null));
         }
         {
             Address theAddress;
             theAddress = this.getAddress();
-            strategy.appendField(locator, this, "address", buffer, theAddress);
+            strategy.appendField(locator, this, "address", buffer, theAddress, (this.address!= null));
         }
         return buffer;
     }
@@ -212,46 +212,66 @@ public class RadiusCriteria
     }
 
     public Object copyTo(Object target) {
-        final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         super.copyTo(locator, draftCopy, strategy);
         if (draftCopy instanceof RadiusCriteria) {
             final RadiusCriteria copy = ((RadiusCriteria) draftCopy);
-            if (this.wgs84 != null) {
-                Wgs84Coordinate sourceWgs84;
-                sourceWgs84 = this.getWgs84();
-                Wgs84Coordinate copyWgs84 = ((Wgs84Coordinate) strategy.copy(LocatorUtils.property(locator, "wgs84", sourceWgs84), sourceWgs84));
-                copy.setWgs84(copyWgs84);
-            } else {
-                copy.wgs84 = null;
+            {
+                Boolean wgs84ShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.wgs84 != null));
+                if (wgs84ShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Wgs84Coordinate sourceWgs84;
+                    sourceWgs84 = this.getWgs84();
+                    Wgs84Coordinate copyWgs84 = ((Wgs84Coordinate) strategy.copy(LocatorUtils.property(locator, "wgs84", sourceWgs84), sourceWgs84, (this.wgs84 != null)));
+                    copy.setWgs84(copyWgs84);
+                } else {
+                    if (wgs84ShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.wgs84 = null;
+                    }
+                }
             }
-            if (this.radiusKm!= null) {
-                BigDecimal sourceRadiusKm;
-                sourceRadiusKm = this.getRadiusKm();
-                BigDecimal copyRadiusKm = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "radiusKm", sourceRadiusKm), sourceRadiusKm));
-                copy.setRadiusKm(copyRadiusKm);
-            } else {
-                copy.radiusKm = null;
+            {
+                Boolean radiusKmShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.radiusKm!= null));
+                if (radiusKmShouldBeCopiedAndSet == Boolean.TRUE) {
+                    BigDecimal sourceRadiusKm;
+                    sourceRadiusKm = this.getRadiusKm();
+                    BigDecimal copyRadiusKm = ((BigDecimal) strategy.copy(LocatorUtils.property(locator, "radiusKm", sourceRadiusKm), sourceRadiusKm, (this.radiusKm!= null)));
+                    copy.setRadiusKm(copyRadiusKm);
+                } else {
+                    if (radiusKmShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.radiusKm = null;
+                    }
+                }
             }
-            if (this.label!= null) {
-                String sourceLabel;
-                sourceLabel = this.getLabel();
-                String copyLabel = ((String) strategy.copy(LocatorUtils.property(locator, "label", sourceLabel), sourceLabel));
-                copy.setLabel(copyLabel);
-            } else {
-                copy.label = null;
+            {
+                Boolean labelShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.label!= null));
+                if (labelShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceLabel;
+                    sourceLabel = this.getLabel();
+                    String copyLabel = ((String) strategy.copy(LocatorUtils.property(locator, "label", sourceLabel), sourceLabel, (this.label!= null)));
+                    copy.setLabel(copyLabel);
+                } else {
+                    if (labelShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.label = null;
+                    }
+                }
             }
-            if (this.address!= null) {
-                Address sourceAddress;
-                sourceAddress = this.getAddress();
-                Address copyAddress = ((Address) strategy.copy(LocatorUtils.property(locator, "address", sourceAddress), sourceAddress));
-                copy.setAddress(copyAddress);
-            } else {
-                copy.address = null;
+            {
+                Boolean addressShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.address!= null));
+                if (addressShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Address sourceAddress;
+                    sourceAddress = this.getAddress();
+                    Address copyAddress = ((Address) strategy.copy(LocatorUtils.property(locator, "address", sourceAddress), sourceAddress, (this.address!= null)));
+                    copy.setAddress(copyAddress);
+                } else {
+                    if (addressShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.address = null;
+                    }
+                }
             }
         }
         return draftCopy;
@@ -261,7 +281,7 @@ public class RadiusCriteria
         return new RadiusCriteria();
     }
 
-    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
@@ -277,7 +297,7 @@ public class RadiusCriteria
             lhsWgs84 = this.getWgs84();
             Wgs84Coordinate rhsWgs84;
             rhsWgs84 = that.getWgs84();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "wgs84", lhsWgs84), LocatorUtils.property(thatLocator, "wgs84", rhsWgs84), lhsWgs84, rhsWgs84)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "wgs84", lhsWgs84), LocatorUtils.property(thatLocator, "wgs84", rhsWgs84), lhsWgs84, rhsWgs84, (this.wgs84 != null), (that.wgs84 != null))) {
                 return false;
             }
         }
@@ -286,7 +306,7 @@ public class RadiusCriteria
             lhsRadiusKm = this.getRadiusKm();
             BigDecimal rhsRadiusKm;
             rhsRadiusKm = that.getRadiusKm();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "radiusKm", lhsRadiusKm), LocatorUtils.property(thatLocator, "radiusKm", rhsRadiusKm), lhsRadiusKm, rhsRadiusKm)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "radiusKm", lhsRadiusKm), LocatorUtils.property(thatLocator, "radiusKm", rhsRadiusKm), lhsRadiusKm, rhsRadiusKm, (this.radiusKm!= null), (that.radiusKm!= null))) {
                 return false;
             }
         }
@@ -295,7 +315,7 @@ public class RadiusCriteria
             lhsLabel = this.getLabel();
             String rhsLabel;
             rhsLabel = that.getLabel();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "label", lhsLabel), LocatorUtils.property(thatLocator, "label", rhsLabel), lhsLabel, rhsLabel)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "label", lhsLabel), LocatorUtils.property(thatLocator, "label", rhsLabel), lhsLabel, rhsLabel, (this.label!= null), (that.label!= null))) {
                 return false;
             }
         }
@@ -304,7 +324,7 @@ public class RadiusCriteria
             lhsAddress = this.getAddress();
             Address rhsAddress;
             rhsAddress = that.getAddress();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "address", lhsAddress), LocatorUtils.property(thatLocator, "address", rhsAddress), lhsAddress, rhsAddress)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "address", lhsAddress), LocatorUtils.property(thatLocator, "address", rhsAddress), lhsAddress, rhsAddress, (this.address!= null), (that.address!= null))) {
                 return false;
             }
         }
@@ -312,7 +332,7 @@ public class RadiusCriteria
     }
 
     public boolean equals(Object object) {
-        final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
     }
 

@@ -9,15 +9,15 @@ import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import org.jvnet.jaxb2_commons.lang.CopyStrategy;
-import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Equals;
-import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
+import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
+import org.jvnet.jaxb2_commons.lang.CopyTo2;
+import org.jvnet.jaxb2_commons.lang.Equals2;
+import org.jvnet.jaxb2_commons.lang.EqualsStrategy2;
 import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBEqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy;
-import org.jvnet.jaxb2_commons.lang.ToString;
-import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
+import org.jvnet.jaxb2_commons.lang.ToString2;
+import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 import org.openestate.is24.restapi.xml.Adapter4;
@@ -216,8 +216,7 @@ import org.openestate.is24.restapi.xml.Adapter4;
     MasterDataContactDetailsType.class,
     ContactDetails.class
 })
-public class BaseContactDetails
-    implements Cloneable, CopyTo, Equals, ToString
+public class BaseContactDetails implements Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlJavaTypeAdapter(Adapter5 .class)
@@ -847,139 +846,139 @@ public class BaseContactDetails
     }
 
     public String toString() {
-        final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
         append(null, buffer, strategy);
         return buffer.toString();
     }
 
-    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
         strategy.appendEnd(locator, this, buffer);
         return buffer;
     }
 
-    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             String theEmail;
             theEmail = this.getEmail();
-            strategy.appendField(locator, this, "email", buffer, theEmail);
+            strategy.appendField(locator, this, "email", buffer, theEmail, (this.email!= null));
         }
         {
             SalutationType theSalutation;
             theSalutation = this.getSalutation();
-            strategy.appendField(locator, this, "salutation", buffer, theSalutation);
+            strategy.appendField(locator, this, "salutation", buffer, theSalutation, (this.salutation!= null));
         }
         {
             String theFirstname;
             theFirstname = this.getFirstname();
-            strategy.appendField(locator, this, "firstname", buffer, theFirstname);
+            strategy.appendField(locator, this, "firstname", buffer, theFirstname, (this.firstname!= null));
         }
         {
             String theLastname;
             theLastname = this.getLastname();
-            strategy.appendField(locator, this, "lastname", buffer, theLastname);
+            strategy.appendField(locator, this, "lastname", buffer, theLastname, (this.lastname!= null));
         }
         {
             String theFaxNumberCountryCode;
             theFaxNumberCountryCode = this.getFaxNumberCountryCode();
-            strategy.appendField(locator, this, "faxNumberCountryCode", buffer, theFaxNumberCountryCode);
+            strategy.appendField(locator, this, "faxNumberCountryCode", buffer, theFaxNumberCountryCode, (this.faxNumberCountryCode!= null));
         }
         {
             String theFaxNumberAreaCode;
             theFaxNumberAreaCode = this.getFaxNumberAreaCode();
-            strategy.appendField(locator, this, "faxNumberAreaCode", buffer, theFaxNumberAreaCode);
+            strategy.appendField(locator, this, "faxNumberAreaCode", buffer, theFaxNumberAreaCode, (this.faxNumberAreaCode!= null));
         }
         {
             String theFaxNumberSubscriber;
             theFaxNumberSubscriber = this.getFaxNumberSubscriber();
-            strategy.appendField(locator, this, "faxNumberSubscriber", buffer, theFaxNumberSubscriber);
+            strategy.appendField(locator, this, "faxNumberSubscriber", buffer, theFaxNumberSubscriber, (this.faxNumberSubscriber!= null));
         }
         {
             String theFaxNumber;
             theFaxNumber = this.getFaxNumber();
-            strategy.appendField(locator, this, "faxNumber", buffer, theFaxNumber);
+            strategy.appendField(locator, this, "faxNumber", buffer, theFaxNumber, (this.faxNumber!= null));
         }
         {
             String thePhoneNumberCountryCode;
             thePhoneNumberCountryCode = this.getPhoneNumberCountryCode();
-            strategy.appendField(locator, this, "phoneNumberCountryCode", buffer, thePhoneNumberCountryCode);
+            strategy.appendField(locator, this, "phoneNumberCountryCode", buffer, thePhoneNumberCountryCode, (this.phoneNumberCountryCode!= null));
         }
         {
             String thePhoneNumberAreaCode;
             thePhoneNumberAreaCode = this.getPhoneNumberAreaCode();
-            strategy.appendField(locator, this, "phoneNumberAreaCode", buffer, thePhoneNumberAreaCode);
+            strategy.appendField(locator, this, "phoneNumberAreaCode", buffer, thePhoneNumberAreaCode, (this.phoneNumberAreaCode!= null));
         }
         {
             String thePhoneNumberSubscriber;
             thePhoneNumberSubscriber = this.getPhoneNumberSubscriber();
-            strategy.appendField(locator, this, "phoneNumberSubscriber", buffer, thePhoneNumberSubscriber);
+            strategy.appendField(locator, this, "phoneNumberSubscriber", buffer, thePhoneNumberSubscriber, (this.phoneNumberSubscriber!= null));
         }
         {
             String thePhoneNumber;
             thePhoneNumber = this.getPhoneNumber();
-            strategy.appendField(locator, this, "phoneNumber", buffer, thePhoneNumber);
+            strategy.appendField(locator, this, "phoneNumber", buffer, thePhoneNumber, (this.phoneNumber!= null));
         }
         {
             String theCellPhoneNumberCountryCode;
             theCellPhoneNumberCountryCode = this.getCellPhoneNumberCountryCode();
-            strategy.appendField(locator, this, "cellPhoneNumberCountryCode", buffer, theCellPhoneNumberCountryCode);
+            strategy.appendField(locator, this, "cellPhoneNumberCountryCode", buffer, theCellPhoneNumberCountryCode, (this.cellPhoneNumberCountryCode!= null));
         }
         {
             String theCellPhoneNumberAreaCode;
             theCellPhoneNumberAreaCode = this.getCellPhoneNumberAreaCode();
-            strategy.appendField(locator, this, "cellPhoneNumberAreaCode", buffer, theCellPhoneNumberAreaCode);
+            strategy.appendField(locator, this, "cellPhoneNumberAreaCode", buffer, theCellPhoneNumberAreaCode, (this.cellPhoneNumberAreaCode!= null));
         }
         {
             String theCellPhoneNumberSubscriber;
             theCellPhoneNumberSubscriber = this.getCellPhoneNumberSubscriber();
-            strategy.appendField(locator, this, "cellPhoneNumberSubscriber", buffer, theCellPhoneNumberSubscriber);
+            strategy.appendField(locator, this, "cellPhoneNumberSubscriber", buffer, theCellPhoneNumberSubscriber, (this.cellPhoneNumberSubscriber!= null));
         }
         {
             String theCellPhoneNumber;
             theCellPhoneNumber = this.getCellPhoneNumber();
-            strategy.appendField(locator, this, "cellPhoneNumber", buffer, theCellPhoneNumber);
+            strategy.appendField(locator, this, "cellPhoneNumber", buffer, theCellPhoneNumber, (this.cellPhoneNumber!= null));
         }
         {
             Address theAddress;
             theAddress = this.getAddress();
-            strategy.appendField(locator, this, "address", buffer, theAddress);
+            strategy.appendField(locator, this, "address", buffer, theAddress, (this.address!= null));
         }
         {
             CountryCode theCountryCode;
             theCountryCode = this.getCountryCode();
-            strategy.appendField(locator, this, "countryCode", buffer, theCountryCode);
+            strategy.appendField(locator, this, "countryCode", buffer, theCountryCode, (this.countryCode!= null));
         }
         {
             String theTitle;
             theTitle = this.getTitle();
-            strategy.appendField(locator, this, "title", buffer, theTitle);
+            strategy.appendField(locator, this, "title", buffer, theTitle, (this.title!= null));
         }
         {
             String theAdditionName;
             theAdditionName = this.getAdditionName();
-            strategy.appendField(locator, this, "additionName", buffer, theAdditionName);
+            strategy.appendField(locator, this, "additionName", buffer, theAdditionName, (this.additionName!= null));
         }
         {
             String theCompany;
             theCompany = this.getCompany();
-            strategy.appendField(locator, this, "company", buffer, theCompany);
+            strategy.appendField(locator, this, "company", buffer, theCompany, (this.company!= null));
         }
         {
             URL theHomepageUrl;
             theHomepageUrl = this.getHomepageUrl();
-            strategy.appendField(locator, this, "homepageUrl", buffer, theHomepageUrl);
+            strategy.appendField(locator, this, "homepageUrl", buffer, theHomepageUrl, (this.homepageUrl!= null));
         }
         {
             URL thePortraitUrl;
             thePortraitUrl = this.getPortraitUrl();
-            strategy.appendField(locator, this, "portraitUrl", buffer, thePortraitUrl);
+            strategy.appendField(locator, this, "portraitUrl", buffer, thePortraitUrl, (this.portraitUrl!= null));
         }
         {
             String thePosition;
             thePosition = this.getPosition();
-            strategy.appendField(locator, this, "position", buffer, thePosition);
+            strategy.appendField(locator, this, "position", buffer, thePosition, (this.position!= null));
         }
         return buffer;
     }
@@ -989,205 +988,325 @@ public class BaseContactDetails
     }
 
     public Object copyTo(Object target) {
-        final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof BaseContactDetails) {
             final BaseContactDetails copy = ((BaseContactDetails) draftCopy);
-            if (this.email!= null) {
-                String sourceEmail;
-                sourceEmail = this.getEmail();
-                String copyEmail = ((String) strategy.copy(LocatorUtils.property(locator, "email", sourceEmail), sourceEmail));
-                copy.setEmail(copyEmail);
-            } else {
-                copy.email = null;
+            {
+                Boolean emailShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.email!= null));
+                if (emailShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceEmail;
+                    sourceEmail = this.getEmail();
+                    String copyEmail = ((String) strategy.copy(LocatorUtils.property(locator, "email", sourceEmail), sourceEmail, (this.email!= null)));
+                    copy.setEmail(copyEmail);
+                } else {
+                    if (emailShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.email = null;
+                    }
+                }
             }
-            if (this.salutation!= null) {
-                SalutationType sourceSalutation;
-                sourceSalutation = this.getSalutation();
-                SalutationType copySalutation = ((SalutationType) strategy.copy(LocatorUtils.property(locator, "salutation", sourceSalutation), sourceSalutation));
-                copy.setSalutation(copySalutation);
-            } else {
-                copy.salutation = null;
+            {
+                Boolean salutationShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.salutation!= null));
+                if (salutationShouldBeCopiedAndSet == Boolean.TRUE) {
+                    SalutationType sourceSalutation;
+                    sourceSalutation = this.getSalutation();
+                    SalutationType copySalutation = ((SalutationType) strategy.copy(LocatorUtils.property(locator, "salutation", sourceSalutation), sourceSalutation, (this.salutation!= null)));
+                    copy.setSalutation(copySalutation);
+                } else {
+                    if (salutationShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.salutation = null;
+                    }
+                }
             }
-            if (this.firstname!= null) {
-                String sourceFirstname;
-                sourceFirstname = this.getFirstname();
-                String copyFirstname = ((String) strategy.copy(LocatorUtils.property(locator, "firstname", sourceFirstname), sourceFirstname));
-                copy.setFirstname(copyFirstname);
-            } else {
-                copy.firstname = null;
+            {
+                Boolean firstnameShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.firstname!= null));
+                if (firstnameShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceFirstname;
+                    sourceFirstname = this.getFirstname();
+                    String copyFirstname = ((String) strategy.copy(LocatorUtils.property(locator, "firstname", sourceFirstname), sourceFirstname, (this.firstname!= null)));
+                    copy.setFirstname(copyFirstname);
+                } else {
+                    if (firstnameShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.firstname = null;
+                    }
+                }
             }
-            if (this.lastname!= null) {
-                String sourceLastname;
-                sourceLastname = this.getLastname();
-                String copyLastname = ((String) strategy.copy(LocatorUtils.property(locator, "lastname", sourceLastname), sourceLastname));
-                copy.setLastname(copyLastname);
-            } else {
-                copy.lastname = null;
+            {
+                Boolean lastnameShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.lastname!= null));
+                if (lastnameShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceLastname;
+                    sourceLastname = this.getLastname();
+                    String copyLastname = ((String) strategy.copy(LocatorUtils.property(locator, "lastname", sourceLastname), sourceLastname, (this.lastname!= null)));
+                    copy.setLastname(copyLastname);
+                } else {
+                    if (lastnameShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.lastname = null;
+                    }
+                }
             }
-            if (this.faxNumberCountryCode!= null) {
-                String sourceFaxNumberCountryCode;
-                sourceFaxNumberCountryCode = this.getFaxNumberCountryCode();
-                String copyFaxNumberCountryCode = ((String) strategy.copy(LocatorUtils.property(locator, "faxNumberCountryCode", sourceFaxNumberCountryCode), sourceFaxNumberCountryCode));
-                copy.setFaxNumberCountryCode(copyFaxNumberCountryCode);
-            } else {
-                copy.faxNumberCountryCode = null;
+            {
+                Boolean faxNumberCountryCodeShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.faxNumberCountryCode!= null));
+                if (faxNumberCountryCodeShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceFaxNumberCountryCode;
+                    sourceFaxNumberCountryCode = this.getFaxNumberCountryCode();
+                    String copyFaxNumberCountryCode = ((String) strategy.copy(LocatorUtils.property(locator, "faxNumberCountryCode", sourceFaxNumberCountryCode), sourceFaxNumberCountryCode, (this.faxNumberCountryCode!= null)));
+                    copy.setFaxNumberCountryCode(copyFaxNumberCountryCode);
+                } else {
+                    if (faxNumberCountryCodeShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.faxNumberCountryCode = null;
+                    }
+                }
             }
-            if (this.faxNumberAreaCode!= null) {
-                String sourceFaxNumberAreaCode;
-                sourceFaxNumberAreaCode = this.getFaxNumberAreaCode();
-                String copyFaxNumberAreaCode = ((String) strategy.copy(LocatorUtils.property(locator, "faxNumberAreaCode", sourceFaxNumberAreaCode), sourceFaxNumberAreaCode));
-                copy.setFaxNumberAreaCode(copyFaxNumberAreaCode);
-            } else {
-                copy.faxNumberAreaCode = null;
+            {
+                Boolean faxNumberAreaCodeShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.faxNumberAreaCode!= null));
+                if (faxNumberAreaCodeShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceFaxNumberAreaCode;
+                    sourceFaxNumberAreaCode = this.getFaxNumberAreaCode();
+                    String copyFaxNumberAreaCode = ((String) strategy.copy(LocatorUtils.property(locator, "faxNumberAreaCode", sourceFaxNumberAreaCode), sourceFaxNumberAreaCode, (this.faxNumberAreaCode!= null)));
+                    copy.setFaxNumberAreaCode(copyFaxNumberAreaCode);
+                } else {
+                    if (faxNumberAreaCodeShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.faxNumberAreaCode = null;
+                    }
+                }
             }
-            if (this.faxNumberSubscriber!= null) {
-                String sourceFaxNumberSubscriber;
-                sourceFaxNumberSubscriber = this.getFaxNumberSubscriber();
-                String copyFaxNumberSubscriber = ((String) strategy.copy(LocatorUtils.property(locator, "faxNumberSubscriber", sourceFaxNumberSubscriber), sourceFaxNumberSubscriber));
-                copy.setFaxNumberSubscriber(copyFaxNumberSubscriber);
-            } else {
-                copy.faxNumberSubscriber = null;
+            {
+                Boolean faxNumberSubscriberShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.faxNumberSubscriber!= null));
+                if (faxNumberSubscriberShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceFaxNumberSubscriber;
+                    sourceFaxNumberSubscriber = this.getFaxNumberSubscriber();
+                    String copyFaxNumberSubscriber = ((String) strategy.copy(LocatorUtils.property(locator, "faxNumberSubscriber", sourceFaxNumberSubscriber), sourceFaxNumberSubscriber, (this.faxNumberSubscriber!= null)));
+                    copy.setFaxNumberSubscriber(copyFaxNumberSubscriber);
+                } else {
+                    if (faxNumberSubscriberShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.faxNumberSubscriber = null;
+                    }
+                }
             }
-            if (this.faxNumber!= null) {
-                String sourceFaxNumber;
-                sourceFaxNumber = this.getFaxNumber();
-                String copyFaxNumber = ((String) strategy.copy(LocatorUtils.property(locator, "faxNumber", sourceFaxNumber), sourceFaxNumber));
-                copy.setFaxNumber(copyFaxNumber);
-            } else {
-                copy.faxNumber = null;
+            {
+                Boolean faxNumberShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.faxNumber!= null));
+                if (faxNumberShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceFaxNumber;
+                    sourceFaxNumber = this.getFaxNumber();
+                    String copyFaxNumber = ((String) strategy.copy(LocatorUtils.property(locator, "faxNumber", sourceFaxNumber), sourceFaxNumber, (this.faxNumber!= null)));
+                    copy.setFaxNumber(copyFaxNumber);
+                } else {
+                    if (faxNumberShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.faxNumber = null;
+                    }
+                }
             }
-            if (this.phoneNumberCountryCode!= null) {
-                String sourcePhoneNumberCountryCode;
-                sourcePhoneNumberCountryCode = this.getPhoneNumberCountryCode();
-                String copyPhoneNumberCountryCode = ((String) strategy.copy(LocatorUtils.property(locator, "phoneNumberCountryCode", sourcePhoneNumberCountryCode), sourcePhoneNumberCountryCode));
-                copy.setPhoneNumberCountryCode(copyPhoneNumberCountryCode);
-            } else {
-                copy.phoneNumberCountryCode = null;
+            {
+                Boolean phoneNumberCountryCodeShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.phoneNumberCountryCode!= null));
+                if (phoneNumberCountryCodeShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourcePhoneNumberCountryCode;
+                    sourcePhoneNumberCountryCode = this.getPhoneNumberCountryCode();
+                    String copyPhoneNumberCountryCode = ((String) strategy.copy(LocatorUtils.property(locator, "phoneNumberCountryCode", sourcePhoneNumberCountryCode), sourcePhoneNumberCountryCode, (this.phoneNumberCountryCode!= null)));
+                    copy.setPhoneNumberCountryCode(copyPhoneNumberCountryCode);
+                } else {
+                    if (phoneNumberCountryCodeShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.phoneNumberCountryCode = null;
+                    }
+                }
             }
-            if (this.phoneNumberAreaCode!= null) {
-                String sourcePhoneNumberAreaCode;
-                sourcePhoneNumberAreaCode = this.getPhoneNumberAreaCode();
-                String copyPhoneNumberAreaCode = ((String) strategy.copy(LocatorUtils.property(locator, "phoneNumberAreaCode", sourcePhoneNumberAreaCode), sourcePhoneNumberAreaCode));
-                copy.setPhoneNumberAreaCode(copyPhoneNumberAreaCode);
-            } else {
-                copy.phoneNumberAreaCode = null;
+            {
+                Boolean phoneNumberAreaCodeShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.phoneNumberAreaCode!= null));
+                if (phoneNumberAreaCodeShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourcePhoneNumberAreaCode;
+                    sourcePhoneNumberAreaCode = this.getPhoneNumberAreaCode();
+                    String copyPhoneNumberAreaCode = ((String) strategy.copy(LocatorUtils.property(locator, "phoneNumberAreaCode", sourcePhoneNumberAreaCode), sourcePhoneNumberAreaCode, (this.phoneNumberAreaCode!= null)));
+                    copy.setPhoneNumberAreaCode(copyPhoneNumberAreaCode);
+                } else {
+                    if (phoneNumberAreaCodeShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.phoneNumberAreaCode = null;
+                    }
+                }
             }
-            if (this.phoneNumberSubscriber!= null) {
-                String sourcePhoneNumberSubscriber;
-                sourcePhoneNumberSubscriber = this.getPhoneNumberSubscriber();
-                String copyPhoneNumberSubscriber = ((String) strategy.copy(LocatorUtils.property(locator, "phoneNumberSubscriber", sourcePhoneNumberSubscriber), sourcePhoneNumberSubscriber));
-                copy.setPhoneNumberSubscriber(copyPhoneNumberSubscriber);
-            } else {
-                copy.phoneNumberSubscriber = null;
+            {
+                Boolean phoneNumberSubscriberShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.phoneNumberSubscriber!= null));
+                if (phoneNumberSubscriberShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourcePhoneNumberSubscriber;
+                    sourcePhoneNumberSubscriber = this.getPhoneNumberSubscriber();
+                    String copyPhoneNumberSubscriber = ((String) strategy.copy(LocatorUtils.property(locator, "phoneNumberSubscriber", sourcePhoneNumberSubscriber), sourcePhoneNumberSubscriber, (this.phoneNumberSubscriber!= null)));
+                    copy.setPhoneNumberSubscriber(copyPhoneNumberSubscriber);
+                } else {
+                    if (phoneNumberSubscriberShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.phoneNumberSubscriber = null;
+                    }
+                }
             }
-            if (this.phoneNumber!= null) {
-                String sourcePhoneNumber;
-                sourcePhoneNumber = this.getPhoneNumber();
-                String copyPhoneNumber = ((String) strategy.copy(LocatorUtils.property(locator, "phoneNumber", sourcePhoneNumber), sourcePhoneNumber));
-                copy.setPhoneNumber(copyPhoneNumber);
-            } else {
-                copy.phoneNumber = null;
+            {
+                Boolean phoneNumberShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.phoneNumber!= null));
+                if (phoneNumberShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourcePhoneNumber;
+                    sourcePhoneNumber = this.getPhoneNumber();
+                    String copyPhoneNumber = ((String) strategy.copy(LocatorUtils.property(locator, "phoneNumber", sourcePhoneNumber), sourcePhoneNumber, (this.phoneNumber!= null)));
+                    copy.setPhoneNumber(copyPhoneNumber);
+                } else {
+                    if (phoneNumberShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.phoneNumber = null;
+                    }
+                }
             }
-            if (this.cellPhoneNumberCountryCode!= null) {
-                String sourceCellPhoneNumberCountryCode;
-                sourceCellPhoneNumberCountryCode = this.getCellPhoneNumberCountryCode();
-                String copyCellPhoneNumberCountryCode = ((String) strategy.copy(LocatorUtils.property(locator, "cellPhoneNumberCountryCode", sourceCellPhoneNumberCountryCode), sourceCellPhoneNumberCountryCode));
-                copy.setCellPhoneNumberCountryCode(copyCellPhoneNumberCountryCode);
-            } else {
-                copy.cellPhoneNumberCountryCode = null;
+            {
+                Boolean cellPhoneNumberCountryCodeShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.cellPhoneNumberCountryCode!= null));
+                if (cellPhoneNumberCountryCodeShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceCellPhoneNumberCountryCode;
+                    sourceCellPhoneNumberCountryCode = this.getCellPhoneNumberCountryCode();
+                    String copyCellPhoneNumberCountryCode = ((String) strategy.copy(LocatorUtils.property(locator, "cellPhoneNumberCountryCode", sourceCellPhoneNumberCountryCode), sourceCellPhoneNumberCountryCode, (this.cellPhoneNumberCountryCode!= null)));
+                    copy.setCellPhoneNumberCountryCode(copyCellPhoneNumberCountryCode);
+                } else {
+                    if (cellPhoneNumberCountryCodeShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.cellPhoneNumberCountryCode = null;
+                    }
+                }
             }
-            if (this.cellPhoneNumberAreaCode!= null) {
-                String sourceCellPhoneNumberAreaCode;
-                sourceCellPhoneNumberAreaCode = this.getCellPhoneNumberAreaCode();
-                String copyCellPhoneNumberAreaCode = ((String) strategy.copy(LocatorUtils.property(locator, "cellPhoneNumberAreaCode", sourceCellPhoneNumberAreaCode), sourceCellPhoneNumberAreaCode));
-                copy.setCellPhoneNumberAreaCode(copyCellPhoneNumberAreaCode);
-            } else {
-                copy.cellPhoneNumberAreaCode = null;
+            {
+                Boolean cellPhoneNumberAreaCodeShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.cellPhoneNumberAreaCode!= null));
+                if (cellPhoneNumberAreaCodeShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceCellPhoneNumberAreaCode;
+                    sourceCellPhoneNumberAreaCode = this.getCellPhoneNumberAreaCode();
+                    String copyCellPhoneNumberAreaCode = ((String) strategy.copy(LocatorUtils.property(locator, "cellPhoneNumberAreaCode", sourceCellPhoneNumberAreaCode), sourceCellPhoneNumberAreaCode, (this.cellPhoneNumberAreaCode!= null)));
+                    copy.setCellPhoneNumberAreaCode(copyCellPhoneNumberAreaCode);
+                } else {
+                    if (cellPhoneNumberAreaCodeShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.cellPhoneNumberAreaCode = null;
+                    }
+                }
             }
-            if (this.cellPhoneNumberSubscriber!= null) {
-                String sourceCellPhoneNumberSubscriber;
-                sourceCellPhoneNumberSubscriber = this.getCellPhoneNumberSubscriber();
-                String copyCellPhoneNumberSubscriber = ((String) strategy.copy(LocatorUtils.property(locator, "cellPhoneNumberSubscriber", sourceCellPhoneNumberSubscriber), sourceCellPhoneNumberSubscriber));
-                copy.setCellPhoneNumberSubscriber(copyCellPhoneNumberSubscriber);
-            } else {
-                copy.cellPhoneNumberSubscriber = null;
+            {
+                Boolean cellPhoneNumberSubscriberShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.cellPhoneNumberSubscriber!= null));
+                if (cellPhoneNumberSubscriberShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceCellPhoneNumberSubscriber;
+                    sourceCellPhoneNumberSubscriber = this.getCellPhoneNumberSubscriber();
+                    String copyCellPhoneNumberSubscriber = ((String) strategy.copy(LocatorUtils.property(locator, "cellPhoneNumberSubscriber", sourceCellPhoneNumberSubscriber), sourceCellPhoneNumberSubscriber, (this.cellPhoneNumberSubscriber!= null)));
+                    copy.setCellPhoneNumberSubscriber(copyCellPhoneNumberSubscriber);
+                } else {
+                    if (cellPhoneNumberSubscriberShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.cellPhoneNumberSubscriber = null;
+                    }
+                }
             }
-            if (this.cellPhoneNumber!= null) {
-                String sourceCellPhoneNumber;
-                sourceCellPhoneNumber = this.getCellPhoneNumber();
-                String copyCellPhoneNumber = ((String) strategy.copy(LocatorUtils.property(locator, "cellPhoneNumber", sourceCellPhoneNumber), sourceCellPhoneNumber));
-                copy.setCellPhoneNumber(copyCellPhoneNumber);
-            } else {
-                copy.cellPhoneNumber = null;
+            {
+                Boolean cellPhoneNumberShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.cellPhoneNumber!= null));
+                if (cellPhoneNumberShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceCellPhoneNumber;
+                    sourceCellPhoneNumber = this.getCellPhoneNumber();
+                    String copyCellPhoneNumber = ((String) strategy.copy(LocatorUtils.property(locator, "cellPhoneNumber", sourceCellPhoneNumber), sourceCellPhoneNumber, (this.cellPhoneNumber!= null)));
+                    copy.setCellPhoneNumber(copyCellPhoneNumber);
+                } else {
+                    if (cellPhoneNumberShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.cellPhoneNumber = null;
+                    }
+                }
             }
-            if (this.address!= null) {
-                Address sourceAddress;
-                sourceAddress = this.getAddress();
-                Address copyAddress = ((Address) strategy.copy(LocatorUtils.property(locator, "address", sourceAddress), sourceAddress));
-                copy.setAddress(copyAddress);
-            } else {
-                copy.address = null;
+            {
+                Boolean addressShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.address!= null));
+                if (addressShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Address sourceAddress;
+                    sourceAddress = this.getAddress();
+                    Address copyAddress = ((Address) strategy.copy(LocatorUtils.property(locator, "address", sourceAddress), sourceAddress, (this.address!= null)));
+                    copy.setAddress(copyAddress);
+                } else {
+                    if (addressShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.address = null;
+                    }
+                }
             }
-            if (this.countryCode!= null) {
-                CountryCode sourceCountryCode;
-                sourceCountryCode = this.getCountryCode();
-                CountryCode copyCountryCode = ((CountryCode) strategy.copy(LocatorUtils.property(locator, "countryCode", sourceCountryCode), sourceCountryCode));
-                copy.setCountryCode(copyCountryCode);
-            } else {
-                copy.countryCode = null;
+            {
+                Boolean countryCodeShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.countryCode!= null));
+                if (countryCodeShouldBeCopiedAndSet == Boolean.TRUE) {
+                    CountryCode sourceCountryCode;
+                    sourceCountryCode = this.getCountryCode();
+                    CountryCode copyCountryCode = ((CountryCode) strategy.copy(LocatorUtils.property(locator, "countryCode", sourceCountryCode), sourceCountryCode, (this.countryCode!= null)));
+                    copy.setCountryCode(copyCountryCode);
+                } else {
+                    if (countryCodeShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.countryCode = null;
+                    }
+                }
             }
-            if (this.title!= null) {
-                String sourceTitle;
-                sourceTitle = this.getTitle();
-                String copyTitle = ((String) strategy.copy(LocatorUtils.property(locator, "title", sourceTitle), sourceTitle));
-                copy.setTitle(copyTitle);
-            } else {
-                copy.title = null;
+            {
+                Boolean titleShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.title!= null));
+                if (titleShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceTitle;
+                    sourceTitle = this.getTitle();
+                    String copyTitle = ((String) strategy.copy(LocatorUtils.property(locator, "title", sourceTitle), sourceTitle, (this.title!= null)));
+                    copy.setTitle(copyTitle);
+                } else {
+                    if (titleShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.title = null;
+                    }
+                }
             }
-            if (this.additionName!= null) {
-                String sourceAdditionName;
-                sourceAdditionName = this.getAdditionName();
-                String copyAdditionName = ((String) strategy.copy(LocatorUtils.property(locator, "additionName", sourceAdditionName), sourceAdditionName));
-                copy.setAdditionName(copyAdditionName);
-            } else {
-                copy.additionName = null;
+            {
+                Boolean additionNameShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.additionName!= null));
+                if (additionNameShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceAdditionName;
+                    sourceAdditionName = this.getAdditionName();
+                    String copyAdditionName = ((String) strategy.copy(LocatorUtils.property(locator, "additionName", sourceAdditionName), sourceAdditionName, (this.additionName!= null)));
+                    copy.setAdditionName(copyAdditionName);
+                } else {
+                    if (additionNameShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.additionName = null;
+                    }
+                }
             }
-            if (this.company!= null) {
-                String sourceCompany;
-                sourceCompany = this.getCompany();
-                String copyCompany = ((String) strategy.copy(LocatorUtils.property(locator, "company", sourceCompany), sourceCompany));
-                copy.setCompany(copyCompany);
-            } else {
-                copy.company = null;
+            {
+                Boolean companyShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.company!= null));
+                if (companyShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceCompany;
+                    sourceCompany = this.getCompany();
+                    String copyCompany = ((String) strategy.copy(LocatorUtils.property(locator, "company", sourceCompany), sourceCompany, (this.company!= null)));
+                    copy.setCompany(copyCompany);
+                } else {
+                    if (companyShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.company = null;
+                    }
+                }
             }
-            if (this.homepageUrl!= null) {
-                URL sourceHomepageUrl;
-                sourceHomepageUrl = this.getHomepageUrl();
-                URL copyHomepageUrl = ((URL) strategy.copy(LocatorUtils.property(locator, "homepageUrl", sourceHomepageUrl), sourceHomepageUrl));
-                copy.setHomepageUrl(copyHomepageUrl);
-            } else {
-                copy.homepageUrl = null;
+            {
+                Boolean homepageUrlShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.homepageUrl!= null));
+                if (homepageUrlShouldBeCopiedAndSet == Boolean.TRUE) {
+                    URL sourceHomepageUrl;
+                    sourceHomepageUrl = this.getHomepageUrl();
+                    URL copyHomepageUrl = ((URL) strategy.copy(LocatorUtils.property(locator, "homepageUrl", sourceHomepageUrl), sourceHomepageUrl, (this.homepageUrl!= null)));
+                    copy.setHomepageUrl(copyHomepageUrl);
+                } else {
+                    if (homepageUrlShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.homepageUrl = null;
+                    }
+                }
             }
-            if (this.portraitUrl!= null) {
-                URL sourcePortraitUrl;
-                sourcePortraitUrl = this.getPortraitUrl();
-                URL copyPortraitUrl = ((URL) strategy.copy(LocatorUtils.property(locator, "portraitUrl", sourcePortraitUrl), sourcePortraitUrl));
-                copy.setPortraitUrl(copyPortraitUrl);
-            } else {
-                copy.portraitUrl = null;
+            {
+                Boolean portraitUrlShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.portraitUrl!= null));
+                if (portraitUrlShouldBeCopiedAndSet == Boolean.TRUE) {
+                    URL sourcePortraitUrl;
+                    sourcePortraitUrl = this.getPortraitUrl();
+                    URL copyPortraitUrl = ((URL) strategy.copy(LocatorUtils.property(locator, "portraitUrl", sourcePortraitUrl), sourcePortraitUrl, (this.portraitUrl!= null)));
+                    copy.setPortraitUrl(copyPortraitUrl);
+                } else {
+                    if (portraitUrlShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.portraitUrl = null;
+                    }
+                }
             }
-            if (this.position!= null) {
-                String sourcePosition;
-                sourcePosition = this.getPosition();
-                String copyPosition = ((String) strategy.copy(LocatorUtils.property(locator, "position", sourcePosition), sourcePosition));
-                copy.setPosition(copyPosition);
-            } else {
-                copy.position = null;
+            {
+                Boolean positionShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.position!= null));
+                if (positionShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourcePosition;
+                    sourcePosition = this.getPosition();
+                    String copyPosition = ((String) strategy.copy(LocatorUtils.property(locator, "position", sourcePosition), sourcePosition, (this.position!= null)));
+                    copy.setPosition(copyPosition);
+                } else {
+                    if (positionShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.position = null;
+                    }
+                }
             }
         }
         return draftCopy;
@@ -1197,7 +1316,7 @@ public class BaseContactDetails
         return new BaseContactDetails();
     }
 
-    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
@@ -1210,7 +1329,7 @@ public class BaseContactDetails
             lhsEmail = this.getEmail();
             String rhsEmail;
             rhsEmail = that.getEmail();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "email", lhsEmail), LocatorUtils.property(thatLocator, "email", rhsEmail), lhsEmail, rhsEmail)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "email", lhsEmail), LocatorUtils.property(thatLocator, "email", rhsEmail), lhsEmail, rhsEmail, (this.email!= null), (that.email!= null))) {
                 return false;
             }
         }
@@ -1219,7 +1338,7 @@ public class BaseContactDetails
             lhsSalutation = this.getSalutation();
             SalutationType rhsSalutation;
             rhsSalutation = that.getSalutation();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "salutation", lhsSalutation), LocatorUtils.property(thatLocator, "salutation", rhsSalutation), lhsSalutation, rhsSalutation)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "salutation", lhsSalutation), LocatorUtils.property(thatLocator, "salutation", rhsSalutation), lhsSalutation, rhsSalutation, (this.salutation!= null), (that.salutation!= null))) {
                 return false;
             }
         }
@@ -1228,7 +1347,7 @@ public class BaseContactDetails
             lhsFirstname = this.getFirstname();
             String rhsFirstname;
             rhsFirstname = that.getFirstname();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "firstname", lhsFirstname), LocatorUtils.property(thatLocator, "firstname", rhsFirstname), lhsFirstname, rhsFirstname)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "firstname", lhsFirstname), LocatorUtils.property(thatLocator, "firstname", rhsFirstname), lhsFirstname, rhsFirstname, (this.firstname!= null), (that.firstname!= null))) {
                 return false;
             }
         }
@@ -1237,7 +1356,7 @@ public class BaseContactDetails
             lhsLastname = this.getLastname();
             String rhsLastname;
             rhsLastname = that.getLastname();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "lastname", lhsLastname), LocatorUtils.property(thatLocator, "lastname", rhsLastname), lhsLastname, rhsLastname)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "lastname", lhsLastname), LocatorUtils.property(thatLocator, "lastname", rhsLastname), lhsLastname, rhsLastname, (this.lastname!= null), (that.lastname!= null))) {
                 return false;
             }
         }
@@ -1246,7 +1365,7 @@ public class BaseContactDetails
             lhsFaxNumberCountryCode = this.getFaxNumberCountryCode();
             String rhsFaxNumberCountryCode;
             rhsFaxNumberCountryCode = that.getFaxNumberCountryCode();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "faxNumberCountryCode", lhsFaxNumberCountryCode), LocatorUtils.property(thatLocator, "faxNumberCountryCode", rhsFaxNumberCountryCode), lhsFaxNumberCountryCode, rhsFaxNumberCountryCode)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "faxNumberCountryCode", lhsFaxNumberCountryCode), LocatorUtils.property(thatLocator, "faxNumberCountryCode", rhsFaxNumberCountryCode), lhsFaxNumberCountryCode, rhsFaxNumberCountryCode, (this.faxNumberCountryCode!= null), (that.faxNumberCountryCode!= null))) {
                 return false;
             }
         }
@@ -1255,7 +1374,7 @@ public class BaseContactDetails
             lhsFaxNumberAreaCode = this.getFaxNumberAreaCode();
             String rhsFaxNumberAreaCode;
             rhsFaxNumberAreaCode = that.getFaxNumberAreaCode();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "faxNumberAreaCode", lhsFaxNumberAreaCode), LocatorUtils.property(thatLocator, "faxNumberAreaCode", rhsFaxNumberAreaCode), lhsFaxNumberAreaCode, rhsFaxNumberAreaCode)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "faxNumberAreaCode", lhsFaxNumberAreaCode), LocatorUtils.property(thatLocator, "faxNumberAreaCode", rhsFaxNumberAreaCode), lhsFaxNumberAreaCode, rhsFaxNumberAreaCode, (this.faxNumberAreaCode!= null), (that.faxNumberAreaCode!= null))) {
                 return false;
             }
         }
@@ -1264,7 +1383,7 @@ public class BaseContactDetails
             lhsFaxNumberSubscriber = this.getFaxNumberSubscriber();
             String rhsFaxNumberSubscriber;
             rhsFaxNumberSubscriber = that.getFaxNumberSubscriber();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "faxNumberSubscriber", lhsFaxNumberSubscriber), LocatorUtils.property(thatLocator, "faxNumberSubscriber", rhsFaxNumberSubscriber), lhsFaxNumberSubscriber, rhsFaxNumberSubscriber)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "faxNumberSubscriber", lhsFaxNumberSubscriber), LocatorUtils.property(thatLocator, "faxNumberSubscriber", rhsFaxNumberSubscriber), lhsFaxNumberSubscriber, rhsFaxNumberSubscriber, (this.faxNumberSubscriber!= null), (that.faxNumberSubscriber!= null))) {
                 return false;
             }
         }
@@ -1273,7 +1392,7 @@ public class BaseContactDetails
             lhsFaxNumber = this.getFaxNumber();
             String rhsFaxNumber;
             rhsFaxNumber = that.getFaxNumber();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "faxNumber", lhsFaxNumber), LocatorUtils.property(thatLocator, "faxNumber", rhsFaxNumber), lhsFaxNumber, rhsFaxNumber)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "faxNumber", lhsFaxNumber), LocatorUtils.property(thatLocator, "faxNumber", rhsFaxNumber), lhsFaxNumber, rhsFaxNumber, (this.faxNumber!= null), (that.faxNumber!= null))) {
                 return false;
             }
         }
@@ -1282,7 +1401,7 @@ public class BaseContactDetails
             lhsPhoneNumberCountryCode = this.getPhoneNumberCountryCode();
             String rhsPhoneNumberCountryCode;
             rhsPhoneNumberCountryCode = that.getPhoneNumberCountryCode();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "phoneNumberCountryCode", lhsPhoneNumberCountryCode), LocatorUtils.property(thatLocator, "phoneNumberCountryCode", rhsPhoneNumberCountryCode), lhsPhoneNumberCountryCode, rhsPhoneNumberCountryCode)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "phoneNumberCountryCode", lhsPhoneNumberCountryCode), LocatorUtils.property(thatLocator, "phoneNumberCountryCode", rhsPhoneNumberCountryCode), lhsPhoneNumberCountryCode, rhsPhoneNumberCountryCode, (this.phoneNumberCountryCode!= null), (that.phoneNumberCountryCode!= null))) {
                 return false;
             }
         }
@@ -1291,7 +1410,7 @@ public class BaseContactDetails
             lhsPhoneNumberAreaCode = this.getPhoneNumberAreaCode();
             String rhsPhoneNumberAreaCode;
             rhsPhoneNumberAreaCode = that.getPhoneNumberAreaCode();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "phoneNumberAreaCode", lhsPhoneNumberAreaCode), LocatorUtils.property(thatLocator, "phoneNumberAreaCode", rhsPhoneNumberAreaCode), lhsPhoneNumberAreaCode, rhsPhoneNumberAreaCode)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "phoneNumberAreaCode", lhsPhoneNumberAreaCode), LocatorUtils.property(thatLocator, "phoneNumberAreaCode", rhsPhoneNumberAreaCode), lhsPhoneNumberAreaCode, rhsPhoneNumberAreaCode, (this.phoneNumberAreaCode!= null), (that.phoneNumberAreaCode!= null))) {
                 return false;
             }
         }
@@ -1300,7 +1419,7 @@ public class BaseContactDetails
             lhsPhoneNumberSubscriber = this.getPhoneNumberSubscriber();
             String rhsPhoneNumberSubscriber;
             rhsPhoneNumberSubscriber = that.getPhoneNumberSubscriber();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "phoneNumberSubscriber", lhsPhoneNumberSubscriber), LocatorUtils.property(thatLocator, "phoneNumberSubscriber", rhsPhoneNumberSubscriber), lhsPhoneNumberSubscriber, rhsPhoneNumberSubscriber)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "phoneNumberSubscriber", lhsPhoneNumberSubscriber), LocatorUtils.property(thatLocator, "phoneNumberSubscriber", rhsPhoneNumberSubscriber), lhsPhoneNumberSubscriber, rhsPhoneNumberSubscriber, (this.phoneNumberSubscriber!= null), (that.phoneNumberSubscriber!= null))) {
                 return false;
             }
         }
@@ -1309,7 +1428,7 @@ public class BaseContactDetails
             lhsPhoneNumber = this.getPhoneNumber();
             String rhsPhoneNumber;
             rhsPhoneNumber = that.getPhoneNumber();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "phoneNumber", lhsPhoneNumber), LocatorUtils.property(thatLocator, "phoneNumber", rhsPhoneNumber), lhsPhoneNumber, rhsPhoneNumber)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "phoneNumber", lhsPhoneNumber), LocatorUtils.property(thatLocator, "phoneNumber", rhsPhoneNumber), lhsPhoneNumber, rhsPhoneNumber, (this.phoneNumber!= null), (that.phoneNumber!= null))) {
                 return false;
             }
         }
@@ -1318,7 +1437,7 @@ public class BaseContactDetails
             lhsCellPhoneNumberCountryCode = this.getCellPhoneNumberCountryCode();
             String rhsCellPhoneNumberCountryCode;
             rhsCellPhoneNumberCountryCode = that.getCellPhoneNumberCountryCode();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "cellPhoneNumberCountryCode", lhsCellPhoneNumberCountryCode), LocatorUtils.property(thatLocator, "cellPhoneNumberCountryCode", rhsCellPhoneNumberCountryCode), lhsCellPhoneNumberCountryCode, rhsCellPhoneNumberCountryCode)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "cellPhoneNumberCountryCode", lhsCellPhoneNumberCountryCode), LocatorUtils.property(thatLocator, "cellPhoneNumberCountryCode", rhsCellPhoneNumberCountryCode), lhsCellPhoneNumberCountryCode, rhsCellPhoneNumberCountryCode, (this.cellPhoneNumberCountryCode!= null), (that.cellPhoneNumberCountryCode!= null))) {
                 return false;
             }
         }
@@ -1327,7 +1446,7 @@ public class BaseContactDetails
             lhsCellPhoneNumberAreaCode = this.getCellPhoneNumberAreaCode();
             String rhsCellPhoneNumberAreaCode;
             rhsCellPhoneNumberAreaCode = that.getCellPhoneNumberAreaCode();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "cellPhoneNumberAreaCode", lhsCellPhoneNumberAreaCode), LocatorUtils.property(thatLocator, "cellPhoneNumberAreaCode", rhsCellPhoneNumberAreaCode), lhsCellPhoneNumberAreaCode, rhsCellPhoneNumberAreaCode)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "cellPhoneNumberAreaCode", lhsCellPhoneNumberAreaCode), LocatorUtils.property(thatLocator, "cellPhoneNumberAreaCode", rhsCellPhoneNumberAreaCode), lhsCellPhoneNumberAreaCode, rhsCellPhoneNumberAreaCode, (this.cellPhoneNumberAreaCode!= null), (that.cellPhoneNumberAreaCode!= null))) {
                 return false;
             }
         }
@@ -1336,7 +1455,7 @@ public class BaseContactDetails
             lhsCellPhoneNumberSubscriber = this.getCellPhoneNumberSubscriber();
             String rhsCellPhoneNumberSubscriber;
             rhsCellPhoneNumberSubscriber = that.getCellPhoneNumberSubscriber();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "cellPhoneNumberSubscriber", lhsCellPhoneNumberSubscriber), LocatorUtils.property(thatLocator, "cellPhoneNumberSubscriber", rhsCellPhoneNumberSubscriber), lhsCellPhoneNumberSubscriber, rhsCellPhoneNumberSubscriber)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "cellPhoneNumberSubscriber", lhsCellPhoneNumberSubscriber), LocatorUtils.property(thatLocator, "cellPhoneNumberSubscriber", rhsCellPhoneNumberSubscriber), lhsCellPhoneNumberSubscriber, rhsCellPhoneNumberSubscriber, (this.cellPhoneNumberSubscriber!= null), (that.cellPhoneNumberSubscriber!= null))) {
                 return false;
             }
         }
@@ -1345,7 +1464,7 @@ public class BaseContactDetails
             lhsCellPhoneNumber = this.getCellPhoneNumber();
             String rhsCellPhoneNumber;
             rhsCellPhoneNumber = that.getCellPhoneNumber();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "cellPhoneNumber", lhsCellPhoneNumber), LocatorUtils.property(thatLocator, "cellPhoneNumber", rhsCellPhoneNumber), lhsCellPhoneNumber, rhsCellPhoneNumber)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "cellPhoneNumber", lhsCellPhoneNumber), LocatorUtils.property(thatLocator, "cellPhoneNumber", rhsCellPhoneNumber), lhsCellPhoneNumber, rhsCellPhoneNumber, (this.cellPhoneNumber!= null), (that.cellPhoneNumber!= null))) {
                 return false;
             }
         }
@@ -1354,7 +1473,7 @@ public class BaseContactDetails
             lhsAddress = this.getAddress();
             Address rhsAddress;
             rhsAddress = that.getAddress();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "address", lhsAddress), LocatorUtils.property(thatLocator, "address", rhsAddress), lhsAddress, rhsAddress)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "address", lhsAddress), LocatorUtils.property(thatLocator, "address", rhsAddress), lhsAddress, rhsAddress, (this.address!= null), (that.address!= null))) {
                 return false;
             }
         }
@@ -1363,7 +1482,7 @@ public class BaseContactDetails
             lhsCountryCode = this.getCountryCode();
             CountryCode rhsCountryCode;
             rhsCountryCode = that.getCountryCode();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "countryCode", lhsCountryCode), LocatorUtils.property(thatLocator, "countryCode", rhsCountryCode), lhsCountryCode, rhsCountryCode)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "countryCode", lhsCountryCode), LocatorUtils.property(thatLocator, "countryCode", rhsCountryCode), lhsCountryCode, rhsCountryCode, (this.countryCode!= null), (that.countryCode!= null))) {
                 return false;
             }
         }
@@ -1372,7 +1491,7 @@ public class BaseContactDetails
             lhsTitle = this.getTitle();
             String rhsTitle;
             rhsTitle = that.getTitle();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "title", lhsTitle), LocatorUtils.property(thatLocator, "title", rhsTitle), lhsTitle, rhsTitle)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "title", lhsTitle), LocatorUtils.property(thatLocator, "title", rhsTitle), lhsTitle, rhsTitle, (this.title!= null), (that.title!= null))) {
                 return false;
             }
         }
@@ -1381,7 +1500,7 @@ public class BaseContactDetails
             lhsAdditionName = this.getAdditionName();
             String rhsAdditionName;
             rhsAdditionName = that.getAdditionName();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "additionName", lhsAdditionName), LocatorUtils.property(thatLocator, "additionName", rhsAdditionName), lhsAdditionName, rhsAdditionName)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "additionName", lhsAdditionName), LocatorUtils.property(thatLocator, "additionName", rhsAdditionName), lhsAdditionName, rhsAdditionName, (this.additionName!= null), (that.additionName!= null))) {
                 return false;
             }
         }
@@ -1390,7 +1509,7 @@ public class BaseContactDetails
             lhsCompany = this.getCompany();
             String rhsCompany;
             rhsCompany = that.getCompany();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "company", lhsCompany), LocatorUtils.property(thatLocator, "company", rhsCompany), lhsCompany, rhsCompany)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "company", lhsCompany), LocatorUtils.property(thatLocator, "company", rhsCompany), lhsCompany, rhsCompany, (this.company!= null), (that.company!= null))) {
                 return false;
             }
         }
@@ -1399,7 +1518,7 @@ public class BaseContactDetails
             lhsHomepageUrl = this.getHomepageUrl();
             URL rhsHomepageUrl;
             rhsHomepageUrl = that.getHomepageUrl();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "homepageUrl", lhsHomepageUrl), LocatorUtils.property(thatLocator, "homepageUrl", rhsHomepageUrl), lhsHomepageUrl, rhsHomepageUrl)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "homepageUrl", lhsHomepageUrl), LocatorUtils.property(thatLocator, "homepageUrl", rhsHomepageUrl), lhsHomepageUrl, rhsHomepageUrl, (this.homepageUrl!= null), (that.homepageUrl!= null))) {
                 return false;
             }
         }
@@ -1408,7 +1527,7 @@ public class BaseContactDetails
             lhsPortraitUrl = this.getPortraitUrl();
             URL rhsPortraitUrl;
             rhsPortraitUrl = that.getPortraitUrl();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "portraitUrl", lhsPortraitUrl), LocatorUtils.property(thatLocator, "portraitUrl", rhsPortraitUrl), lhsPortraitUrl, rhsPortraitUrl)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "portraitUrl", lhsPortraitUrl), LocatorUtils.property(thatLocator, "portraitUrl", rhsPortraitUrl), lhsPortraitUrl, rhsPortraitUrl, (this.portraitUrl!= null), (that.portraitUrl!= null))) {
                 return false;
             }
         }
@@ -1417,7 +1536,7 @@ public class BaseContactDetails
             lhsPosition = this.getPosition();
             String rhsPosition;
             rhsPosition = that.getPosition();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "position", lhsPosition), LocatorUtils.property(thatLocator, "position", rhsPosition), lhsPosition, rhsPosition)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "position", lhsPosition), LocatorUtils.property(thatLocator, "position", rhsPosition), lhsPosition, rhsPosition, (this.position!= null), (that.position!= null))) {
                 return false;
             }
         }
@@ -1425,7 +1544,7 @@ public class BaseContactDetails
     }
 
     public boolean equals(Object object) {
-        final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
     }
 

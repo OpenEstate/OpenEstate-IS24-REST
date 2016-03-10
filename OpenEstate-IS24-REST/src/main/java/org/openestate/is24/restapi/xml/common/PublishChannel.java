@@ -5,15 +5,15 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
-import org.jvnet.jaxb2_commons.lang.CopyStrategy;
-import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Equals;
-import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
+import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
+import org.jvnet.jaxb2_commons.lang.CopyTo2;
+import org.jvnet.jaxb2_commons.lang.Equals2;
+import org.jvnet.jaxb2_commons.lang.EqualsStrategy2;
 import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBEqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy;
-import org.jvnet.jaxb2_commons.lang.ToString;
-import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
+import org.jvnet.jaxb2_commons.lang.ToString2;
+import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 
@@ -40,8 +40,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "PublishChannel")
-public class PublishChannel
-    implements Cloneable, CopyTo, Equals, ToString
+public class PublishChannel implements Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlAttribute(name = "id")
@@ -98,29 +97,29 @@ public class PublishChannel
     }
 
     public String toString() {
-        final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
         append(null, buffer, strategy);
         return buffer.toString();
     }
 
-    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
         strategy.appendEnd(locator, this, buffer);
         return buffer;
     }
 
-    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             Long theId;
             theId = this.getId();
-            strategy.appendField(locator, this, "id", buffer, theId);
+            strategy.appendField(locator, this, "id", buffer, theId, (this.id!= null));
         }
         {
             String theTitle;
             theTitle = this.getTitle();
-            strategy.appendField(locator, this, "title", buffer, theTitle);
+            strategy.appendField(locator, this, "title", buffer, theTitle, (this.title!= null));
         }
         return buffer;
     }
@@ -130,29 +129,39 @@ public class PublishChannel
     }
 
     public Object copyTo(Object target) {
-        final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof PublishChannel) {
             final PublishChannel copy = ((PublishChannel) draftCopy);
-            if (this.id!= null) {
-                Long sourceId;
-                sourceId = this.getId();
-                Long copyId = ((Long) strategy.copy(LocatorUtils.property(locator, "id", sourceId), sourceId));
-                copy.setId(copyId);
-            } else {
-                copy.id = null;
+            {
+                Boolean idShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.id!= null));
+                if (idShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Long sourceId;
+                    sourceId = this.getId();
+                    Long copyId = ((Long) strategy.copy(LocatorUtils.property(locator, "id", sourceId), sourceId, (this.id!= null)));
+                    copy.setId(copyId);
+                } else {
+                    if (idShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.id = null;
+                    }
+                }
             }
-            if (this.title!= null) {
-                String sourceTitle;
-                sourceTitle = this.getTitle();
-                String copyTitle = ((String) strategy.copy(LocatorUtils.property(locator, "title", sourceTitle), sourceTitle));
-                copy.setTitle(copyTitle);
-            } else {
-                copy.title = null;
+            {
+                Boolean titleShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.title!= null));
+                if (titleShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceTitle;
+                    sourceTitle = this.getTitle();
+                    String copyTitle = ((String) strategy.copy(LocatorUtils.property(locator, "title", sourceTitle), sourceTitle, (this.title!= null)));
+                    copy.setTitle(copyTitle);
+                } else {
+                    if (titleShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.title = null;
+                    }
+                }
             }
         }
         return draftCopy;
@@ -162,7 +171,7 @@ public class PublishChannel
         return new PublishChannel();
     }
 
-    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
@@ -175,7 +184,7 @@ public class PublishChannel
             lhsId = this.getId();
             Long rhsId;
             rhsId = that.getId();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "id", lhsId), LocatorUtils.property(thatLocator, "id", rhsId), lhsId, rhsId)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "id", lhsId), LocatorUtils.property(thatLocator, "id", rhsId), lhsId, rhsId, (this.id!= null), (that.id!= null))) {
                 return false;
             }
         }
@@ -184,7 +193,7 @@ public class PublishChannel
             lhsTitle = this.getTitle();
             String rhsTitle;
             rhsTitle = that.getTitle();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "title", lhsTitle), LocatorUtils.property(thatLocator, "title", rhsTitle), lhsTitle, rhsTitle)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "title", lhsTitle), LocatorUtils.property(thatLocator, "title", rhsTitle), lhsTitle, rhsTitle, (this.title!= null), (that.title!= null))) {
                 return false;
             }
         }
@@ -192,7 +201,7 @@ public class PublishChannel
     }
 
     public boolean equals(Object object) {
-        final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
     }
 

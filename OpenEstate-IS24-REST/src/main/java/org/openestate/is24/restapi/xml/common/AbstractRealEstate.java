@@ -9,15 +9,15 @@ import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import org.jvnet.jaxb2_commons.lang.CopyStrategy;
-import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Equals;
-import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
+import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
+import org.jvnet.jaxb2_commons.lang.CopyTo2;
+import org.jvnet.jaxb2_commons.lang.Equals2;
+import org.jvnet.jaxb2_commons.lang.EqualsStrategy2;
 import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBEqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy;
-import org.jvnet.jaxb2_commons.lang.ToString;
-import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
+import org.jvnet.jaxb2_commons.lang.ToString2;
+import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 import org.openestate.is24.restapi.xml.Adapter4;
@@ -102,7 +102,7 @@ import org.openestate.is24.restapi.xml.realestates.RealEstate;
 })
 public abstract class AbstractRealEstate
     extends AbstractRealEstateForList
-    implements Cloneable, CopyTo, Equals, ToString
+    implements Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(type = String.class)
@@ -344,65 +344,65 @@ public abstract class AbstractRealEstate
     }
 
     public String toString() {
-        final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
         append(null, buffer, strategy);
         return buffer.toString();
     }
 
-    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
         strategy.appendEnd(locator, this, buffer);
         return buffer;
     }
 
-    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         super.appendFields(locator, buffer, strategy);
         {
             Integer theGroupNumber;
             theGroupNumber = this.getGroupNumber();
-            strategy.appendField(locator, this, "groupNumber", buffer, theGroupNumber);
+            strategy.appendField(locator, this, "groupNumber", buffer, theGroupNumber, (this.groupNumber!= null));
         }
         {
             String theDescriptionNote;
             theDescriptionNote = this.getDescriptionNote();
-            strategy.appendField(locator, this, "descriptionNote", buffer, theDescriptionNote);
+            strategy.appendField(locator, this, "descriptionNote", buffer, theDescriptionNote, (this.descriptionNote!= null));
         }
         {
             String theFurnishingNote;
             theFurnishingNote = this.getFurnishingNote();
-            strategy.appendField(locator, this, "furnishingNote", buffer, theFurnishingNote);
+            strategy.appendField(locator, this, "furnishingNote", buffer, theFurnishingNote, (this.furnishingNote!= null));
         }
         {
             String theLocationNote;
             theLocationNote = this.getLocationNote();
-            strategy.appendField(locator, this, "locationNote", buffer, theLocationNote);
+            strategy.appendField(locator, this, "locationNote", buffer, theLocationNote, (this.locationNote!= null));
         }
         {
             String theOtherNote;
             theOtherNote = this.getOtherNote();
-            strategy.appendField(locator, this, "otherNote", buffer, theOtherNote);
+            strategy.appendField(locator, this, "otherNote", buffer, theOtherNote, (this.otherNote!= null));
         }
         {
             Attachments theAttachments;
             theAttachments = this.getAttachments();
-            strategy.appendField(locator, this, "attachments", buffer, theAttachments);
+            strategy.appendField(locator, this, "attachments", buffer, theAttachments, (this.attachments!= null));
         }
         {
             URL theReferencePriceServiceCall;
             theReferencePriceServiceCall = this.getReferencePriceServiceCall();
-            strategy.appendField(locator, this, "referencePriceServiceCall", buffer, theReferencePriceServiceCall);
+            strategy.appendField(locator, this, "referencePriceServiceCall", buffer, theReferencePriceServiceCall, (this.referencePriceServiceCall!= null));
         }
         {
             URL theReferencePriceApiCall;
             theReferencePriceApiCall = this.getReferencePriceApiCall();
-            strategy.appendField(locator, this, "referencePriceApiCall", buffer, theReferencePriceApiCall);
+            strategy.appendField(locator, this, "referencePriceApiCall", buffer, theReferencePriceApiCall, (this.referencePriceApiCall!= null));
         }
         {
             Long theRealEstateProjectId;
             theRealEstateProjectId = this.getRealEstateProjectId();
-            strategy.appendField(locator, this, "realEstateProjectId", buffer, theRealEstateProjectId);
+            strategy.appendField(locator, this, "realEstateProjectId", buffer, theRealEstateProjectId, (this.realEstateProjectId!= null));
         }
         return buffer;
     }
@@ -412,94 +412,139 @@ public abstract class AbstractRealEstate
     }
 
     public Object copyTo(Object target) {
-        final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         if (null == target) {
             throw new IllegalArgumentException("Target argument must not be null for abstract copyable classes.");
         }
         super.copyTo(locator, target, strategy);
         if (target instanceof AbstractRealEstate) {
             final AbstractRealEstate copy = ((AbstractRealEstate) target);
-            if (this.groupNumber!= null) {
-                Integer sourceGroupNumber;
-                sourceGroupNumber = this.getGroupNumber();
-                Integer copyGroupNumber = ((Integer) strategy.copy(LocatorUtils.property(locator, "groupNumber", sourceGroupNumber), sourceGroupNumber));
-                copy.setGroupNumber(copyGroupNumber);
-            } else {
-                copy.groupNumber = null;
+            {
+                Boolean groupNumberShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.groupNumber!= null));
+                if (groupNumberShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Integer sourceGroupNumber;
+                    sourceGroupNumber = this.getGroupNumber();
+                    Integer copyGroupNumber = ((Integer) strategy.copy(LocatorUtils.property(locator, "groupNumber", sourceGroupNumber), sourceGroupNumber, (this.groupNumber!= null)));
+                    copy.setGroupNumber(copyGroupNumber);
+                } else {
+                    if (groupNumberShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.groupNumber = null;
+                    }
+                }
             }
-            if (this.descriptionNote!= null) {
-                String sourceDescriptionNote;
-                sourceDescriptionNote = this.getDescriptionNote();
-                String copyDescriptionNote = ((String) strategy.copy(LocatorUtils.property(locator, "descriptionNote", sourceDescriptionNote), sourceDescriptionNote));
-                copy.setDescriptionNote(copyDescriptionNote);
-            } else {
-                copy.descriptionNote = null;
+            {
+                Boolean descriptionNoteShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.descriptionNote!= null));
+                if (descriptionNoteShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceDescriptionNote;
+                    sourceDescriptionNote = this.getDescriptionNote();
+                    String copyDescriptionNote = ((String) strategy.copy(LocatorUtils.property(locator, "descriptionNote", sourceDescriptionNote), sourceDescriptionNote, (this.descriptionNote!= null)));
+                    copy.setDescriptionNote(copyDescriptionNote);
+                } else {
+                    if (descriptionNoteShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.descriptionNote = null;
+                    }
+                }
             }
-            if (this.furnishingNote!= null) {
-                String sourceFurnishingNote;
-                sourceFurnishingNote = this.getFurnishingNote();
-                String copyFurnishingNote = ((String) strategy.copy(LocatorUtils.property(locator, "furnishingNote", sourceFurnishingNote), sourceFurnishingNote));
-                copy.setFurnishingNote(copyFurnishingNote);
-            } else {
-                copy.furnishingNote = null;
+            {
+                Boolean furnishingNoteShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.furnishingNote!= null));
+                if (furnishingNoteShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceFurnishingNote;
+                    sourceFurnishingNote = this.getFurnishingNote();
+                    String copyFurnishingNote = ((String) strategy.copy(LocatorUtils.property(locator, "furnishingNote", sourceFurnishingNote), sourceFurnishingNote, (this.furnishingNote!= null)));
+                    copy.setFurnishingNote(copyFurnishingNote);
+                } else {
+                    if (furnishingNoteShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.furnishingNote = null;
+                    }
+                }
             }
-            if (this.locationNote!= null) {
-                String sourceLocationNote;
-                sourceLocationNote = this.getLocationNote();
-                String copyLocationNote = ((String) strategy.copy(LocatorUtils.property(locator, "locationNote", sourceLocationNote), sourceLocationNote));
-                copy.setLocationNote(copyLocationNote);
-            } else {
-                copy.locationNote = null;
+            {
+                Boolean locationNoteShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.locationNote!= null));
+                if (locationNoteShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceLocationNote;
+                    sourceLocationNote = this.getLocationNote();
+                    String copyLocationNote = ((String) strategy.copy(LocatorUtils.property(locator, "locationNote", sourceLocationNote), sourceLocationNote, (this.locationNote!= null)));
+                    copy.setLocationNote(copyLocationNote);
+                } else {
+                    if (locationNoteShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.locationNote = null;
+                    }
+                }
             }
-            if (this.otherNote!= null) {
-                String sourceOtherNote;
-                sourceOtherNote = this.getOtherNote();
-                String copyOtherNote = ((String) strategy.copy(LocatorUtils.property(locator, "otherNote", sourceOtherNote), sourceOtherNote));
-                copy.setOtherNote(copyOtherNote);
-            } else {
-                copy.otherNote = null;
+            {
+                Boolean otherNoteShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.otherNote!= null));
+                if (otherNoteShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceOtherNote;
+                    sourceOtherNote = this.getOtherNote();
+                    String copyOtherNote = ((String) strategy.copy(LocatorUtils.property(locator, "otherNote", sourceOtherNote), sourceOtherNote, (this.otherNote!= null)));
+                    copy.setOtherNote(copyOtherNote);
+                } else {
+                    if (otherNoteShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.otherNote = null;
+                    }
+                }
             }
-            if (this.attachments!= null) {
-                Attachments sourceAttachments;
-                sourceAttachments = this.getAttachments();
-                Attachments copyAttachments = ((Attachments) strategy.copy(LocatorUtils.property(locator, "attachments", sourceAttachments), sourceAttachments));
-                copy.setAttachments(copyAttachments);
-            } else {
-                copy.attachments = null;
+            {
+                Boolean attachmentsShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.attachments!= null));
+                if (attachmentsShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Attachments sourceAttachments;
+                    sourceAttachments = this.getAttachments();
+                    Attachments copyAttachments = ((Attachments) strategy.copy(LocatorUtils.property(locator, "attachments", sourceAttachments), sourceAttachments, (this.attachments!= null)));
+                    copy.setAttachments(copyAttachments);
+                } else {
+                    if (attachmentsShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.attachments = null;
+                    }
+                }
             }
-            if (this.referencePriceServiceCall!= null) {
-                URL sourceReferencePriceServiceCall;
-                sourceReferencePriceServiceCall = this.getReferencePriceServiceCall();
-                URL copyReferencePriceServiceCall = ((URL) strategy.copy(LocatorUtils.property(locator, "referencePriceServiceCall", sourceReferencePriceServiceCall), sourceReferencePriceServiceCall));
-                copy.setReferencePriceServiceCall(copyReferencePriceServiceCall);
-            } else {
-                copy.referencePriceServiceCall = null;
+            {
+                Boolean referencePriceServiceCallShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.referencePriceServiceCall!= null));
+                if (referencePriceServiceCallShouldBeCopiedAndSet == Boolean.TRUE) {
+                    URL sourceReferencePriceServiceCall;
+                    sourceReferencePriceServiceCall = this.getReferencePriceServiceCall();
+                    URL copyReferencePriceServiceCall = ((URL) strategy.copy(LocatorUtils.property(locator, "referencePriceServiceCall", sourceReferencePriceServiceCall), sourceReferencePriceServiceCall, (this.referencePriceServiceCall!= null)));
+                    copy.setReferencePriceServiceCall(copyReferencePriceServiceCall);
+                } else {
+                    if (referencePriceServiceCallShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.referencePriceServiceCall = null;
+                    }
+                }
             }
-            if (this.referencePriceApiCall!= null) {
-                URL sourceReferencePriceApiCall;
-                sourceReferencePriceApiCall = this.getReferencePriceApiCall();
-                URL copyReferencePriceApiCall = ((URL) strategy.copy(LocatorUtils.property(locator, "referencePriceApiCall", sourceReferencePriceApiCall), sourceReferencePriceApiCall));
-                copy.setReferencePriceApiCall(copyReferencePriceApiCall);
-            } else {
-                copy.referencePriceApiCall = null;
+            {
+                Boolean referencePriceApiCallShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.referencePriceApiCall!= null));
+                if (referencePriceApiCallShouldBeCopiedAndSet == Boolean.TRUE) {
+                    URL sourceReferencePriceApiCall;
+                    sourceReferencePriceApiCall = this.getReferencePriceApiCall();
+                    URL copyReferencePriceApiCall = ((URL) strategy.copy(LocatorUtils.property(locator, "referencePriceApiCall", sourceReferencePriceApiCall), sourceReferencePriceApiCall, (this.referencePriceApiCall!= null)));
+                    copy.setReferencePriceApiCall(copyReferencePriceApiCall);
+                } else {
+                    if (referencePriceApiCallShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.referencePriceApiCall = null;
+                    }
+                }
             }
-            if (this.realEstateProjectId!= null) {
-                Long sourceRealEstateProjectId;
-                sourceRealEstateProjectId = this.getRealEstateProjectId();
-                Long copyRealEstateProjectId = ((Long) strategy.copy(LocatorUtils.property(locator, "realEstateProjectId", sourceRealEstateProjectId), sourceRealEstateProjectId));
-                copy.setRealEstateProjectId(copyRealEstateProjectId);
-            } else {
-                copy.realEstateProjectId = null;
+            {
+                Boolean realEstateProjectIdShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.realEstateProjectId!= null));
+                if (realEstateProjectIdShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Long sourceRealEstateProjectId;
+                    sourceRealEstateProjectId = this.getRealEstateProjectId();
+                    Long copyRealEstateProjectId = ((Long) strategy.copy(LocatorUtils.property(locator, "realEstateProjectId", sourceRealEstateProjectId), sourceRealEstateProjectId, (this.realEstateProjectId!= null)));
+                    copy.setRealEstateProjectId(copyRealEstateProjectId);
+                } else {
+                    if (realEstateProjectIdShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.realEstateProjectId = null;
+                    }
+                }
             }
         }
         return target;
     }
 
-    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
@@ -515,7 +560,7 @@ public abstract class AbstractRealEstate
             lhsGroupNumber = this.getGroupNumber();
             Integer rhsGroupNumber;
             rhsGroupNumber = that.getGroupNumber();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "groupNumber", lhsGroupNumber), LocatorUtils.property(thatLocator, "groupNumber", rhsGroupNumber), lhsGroupNumber, rhsGroupNumber)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "groupNumber", lhsGroupNumber), LocatorUtils.property(thatLocator, "groupNumber", rhsGroupNumber), lhsGroupNumber, rhsGroupNumber, (this.groupNumber!= null), (that.groupNumber!= null))) {
                 return false;
             }
         }
@@ -524,7 +569,7 @@ public abstract class AbstractRealEstate
             lhsDescriptionNote = this.getDescriptionNote();
             String rhsDescriptionNote;
             rhsDescriptionNote = that.getDescriptionNote();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "descriptionNote", lhsDescriptionNote), LocatorUtils.property(thatLocator, "descriptionNote", rhsDescriptionNote), lhsDescriptionNote, rhsDescriptionNote)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "descriptionNote", lhsDescriptionNote), LocatorUtils.property(thatLocator, "descriptionNote", rhsDescriptionNote), lhsDescriptionNote, rhsDescriptionNote, (this.descriptionNote!= null), (that.descriptionNote!= null))) {
                 return false;
             }
         }
@@ -533,7 +578,7 @@ public abstract class AbstractRealEstate
             lhsFurnishingNote = this.getFurnishingNote();
             String rhsFurnishingNote;
             rhsFurnishingNote = that.getFurnishingNote();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "furnishingNote", lhsFurnishingNote), LocatorUtils.property(thatLocator, "furnishingNote", rhsFurnishingNote), lhsFurnishingNote, rhsFurnishingNote)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "furnishingNote", lhsFurnishingNote), LocatorUtils.property(thatLocator, "furnishingNote", rhsFurnishingNote), lhsFurnishingNote, rhsFurnishingNote, (this.furnishingNote!= null), (that.furnishingNote!= null))) {
                 return false;
             }
         }
@@ -542,7 +587,7 @@ public abstract class AbstractRealEstate
             lhsLocationNote = this.getLocationNote();
             String rhsLocationNote;
             rhsLocationNote = that.getLocationNote();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "locationNote", lhsLocationNote), LocatorUtils.property(thatLocator, "locationNote", rhsLocationNote), lhsLocationNote, rhsLocationNote)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "locationNote", lhsLocationNote), LocatorUtils.property(thatLocator, "locationNote", rhsLocationNote), lhsLocationNote, rhsLocationNote, (this.locationNote!= null), (that.locationNote!= null))) {
                 return false;
             }
         }
@@ -551,7 +596,7 @@ public abstract class AbstractRealEstate
             lhsOtherNote = this.getOtherNote();
             String rhsOtherNote;
             rhsOtherNote = that.getOtherNote();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "otherNote", lhsOtherNote), LocatorUtils.property(thatLocator, "otherNote", rhsOtherNote), lhsOtherNote, rhsOtherNote)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "otherNote", lhsOtherNote), LocatorUtils.property(thatLocator, "otherNote", rhsOtherNote), lhsOtherNote, rhsOtherNote, (this.otherNote!= null), (that.otherNote!= null))) {
                 return false;
             }
         }
@@ -560,7 +605,7 @@ public abstract class AbstractRealEstate
             lhsAttachments = this.getAttachments();
             Attachments rhsAttachments;
             rhsAttachments = that.getAttachments();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "attachments", lhsAttachments), LocatorUtils.property(thatLocator, "attachments", rhsAttachments), lhsAttachments, rhsAttachments)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "attachments", lhsAttachments), LocatorUtils.property(thatLocator, "attachments", rhsAttachments), lhsAttachments, rhsAttachments, (this.attachments!= null), (that.attachments!= null))) {
                 return false;
             }
         }
@@ -569,7 +614,7 @@ public abstract class AbstractRealEstate
             lhsReferencePriceServiceCall = this.getReferencePriceServiceCall();
             URL rhsReferencePriceServiceCall;
             rhsReferencePriceServiceCall = that.getReferencePriceServiceCall();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "referencePriceServiceCall", lhsReferencePriceServiceCall), LocatorUtils.property(thatLocator, "referencePriceServiceCall", rhsReferencePriceServiceCall), lhsReferencePriceServiceCall, rhsReferencePriceServiceCall)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "referencePriceServiceCall", lhsReferencePriceServiceCall), LocatorUtils.property(thatLocator, "referencePriceServiceCall", rhsReferencePriceServiceCall), lhsReferencePriceServiceCall, rhsReferencePriceServiceCall, (this.referencePriceServiceCall!= null), (that.referencePriceServiceCall!= null))) {
                 return false;
             }
         }
@@ -578,7 +623,7 @@ public abstract class AbstractRealEstate
             lhsReferencePriceApiCall = this.getReferencePriceApiCall();
             URL rhsReferencePriceApiCall;
             rhsReferencePriceApiCall = that.getReferencePriceApiCall();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "referencePriceApiCall", lhsReferencePriceApiCall), LocatorUtils.property(thatLocator, "referencePriceApiCall", rhsReferencePriceApiCall), lhsReferencePriceApiCall, rhsReferencePriceApiCall)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "referencePriceApiCall", lhsReferencePriceApiCall), LocatorUtils.property(thatLocator, "referencePriceApiCall", rhsReferencePriceApiCall), lhsReferencePriceApiCall, rhsReferencePriceApiCall, (this.referencePriceApiCall!= null), (that.referencePriceApiCall!= null))) {
                 return false;
             }
         }
@@ -587,7 +632,7 @@ public abstract class AbstractRealEstate
             lhsRealEstateProjectId = this.getRealEstateProjectId();
             Long rhsRealEstateProjectId;
             rhsRealEstateProjectId = that.getRealEstateProjectId();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "realEstateProjectId", lhsRealEstateProjectId), LocatorUtils.property(thatLocator, "realEstateProjectId", rhsRealEstateProjectId), lhsRealEstateProjectId, rhsRealEstateProjectId)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "realEstateProjectId", lhsRealEstateProjectId), LocatorUtils.property(thatLocator, "realEstateProjectId", rhsRealEstateProjectId), lhsRealEstateProjectId, rhsRealEstateProjectId, (this.realEstateProjectId!= null), (that.realEstateProjectId!= null))) {
                 return false;
             }
         }
@@ -595,7 +640,7 @@ public abstract class AbstractRealEstate
     }
 
     public boolean equals(Object object) {
-        final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
     }
 

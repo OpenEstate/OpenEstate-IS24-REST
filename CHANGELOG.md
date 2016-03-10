@@ -2,6 +2,16 @@ Changelog for OpenEstate-IS24-REST
 ==================================
 
 
+0.3.1 (10 Mar 2016)
+-------------------
+
+### updates
+
+-   Updated `slf4j` library to version 1.7.18.
+-   Updated `jaxb2-basics` libraries to version 0.11.0
+    and regenerated JAXB classes.
+
+
 0.3 (12 Dec 2015)
 -----------------
 

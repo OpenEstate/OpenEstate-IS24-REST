@@ -6,15 +6,15 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import org.jvnet.jaxb2_commons.lang.CopyStrategy;
-import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Equals;
-import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
+import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
+import org.jvnet.jaxb2_commons.lang.CopyTo2;
+import org.jvnet.jaxb2_commons.lang.Equals2;
+import org.jvnet.jaxb2_commons.lang.EqualsStrategy2;
 import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBEqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy;
-import org.jvnet.jaxb2_commons.lang.ToString;
-import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
+import org.jvnet.jaxb2_commons.lang.ToString2;
+import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 
@@ -79,8 +79,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 @XmlSeeAlso({
     Wgs84Address.class
 })
-public class Address
-    implements Cloneable, CopyTo, Equals, ToString
+public class Address implements Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlJavaTypeAdapter(Adapter36 .class)
@@ -214,44 +213,44 @@ public class Address
     }
 
     public String toString() {
-        final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
         append(null, buffer, strategy);
         return buffer.toString();
     }
 
-    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
         strategy.appendEnd(locator, this, buffer);
         return buffer;
     }
 
-    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             String theStreet;
             theStreet = this.getStreet();
-            strategy.appendField(locator, this, "street", buffer, theStreet);
+            strategy.appendField(locator, this, "street", buffer, theStreet, (this.street!= null));
         }
         {
             String theHouseNumber;
             theHouseNumber = this.getHouseNumber();
-            strategy.appendField(locator, this, "houseNumber", buffer, theHouseNumber);
+            strategy.appendField(locator, this, "houseNumber", buffer, theHouseNumber, (this.houseNumber!= null));
         }
         {
             String thePostcode;
             thePostcode = this.getPostcode();
-            strategy.appendField(locator, this, "postcode", buffer, thePostcode);
+            strategy.appendField(locator, this, "postcode", buffer, thePostcode, (this.postcode!= null));
         }
         {
             String theCity;
             theCity = this.getCity();
-            strategy.appendField(locator, this, "city", buffer, theCity);
+            strategy.appendField(locator, this, "city", buffer, theCity, (this.city!= null));
         }
         {
             CountryRegion theInternationalCountryRegion;
             theInternationalCountryRegion = this.getInternationalCountryRegion();
-            strategy.appendField(locator, this, "internationalCountryRegion", buffer, theInternationalCountryRegion);
+            strategy.appendField(locator, this, "internationalCountryRegion", buffer, theInternationalCountryRegion, (this.internationalCountryRegion!= null));
         }
         return buffer;
     }
@@ -261,53 +260,78 @@ public class Address
     }
 
     public Object copyTo(Object target) {
-        final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof Address) {
             final Address copy = ((Address) draftCopy);
-            if (this.street!= null) {
-                String sourceStreet;
-                sourceStreet = this.getStreet();
-                String copyStreet = ((String) strategy.copy(LocatorUtils.property(locator, "street", sourceStreet), sourceStreet));
-                copy.setStreet(copyStreet);
-            } else {
-                copy.street = null;
+            {
+                Boolean streetShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.street!= null));
+                if (streetShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceStreet;
+                    sourceStreet = this.getStreet();
+                    String copyStreet = ((String) strategy.copy(LocatorUtils.property(locator, "street", sourceStreet), sourceStreet, (this.street!= null)));
+                    copy.setStreet(copyStreet);
+                } else {
+                    if (streetShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.street = null;
+                    }
+                }
             }
-            if (this.houseNumber!= null) {
-                String sourceHouseNumber;
-                sourceHouseNumber = this.getHouseNumber();
-                String copyHouseNumber = ((String) strategy.copy(LocatorUtils.property(locator, "houseNumber", sourceHouseNumber), sourceHouseNumber));
-                copy.setHouseNumber(copyHouseNumber);
-            } else {
-                copy.houseNumber = null;
+            {
+                Boolean houseNumberShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.houseNumber!= null));
+                if (houseNumberShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceHouseNumber;
+                    sourceHouseNumber = this.getHouseNumber();
+                    String copyHouseNumber = ((String) strategy.copy(LocatorUtils.property(locator, "houseNumber", sourceHouseNumber), sourceHouseNumber, (this.houseNumber!= null)));
+                    copy.setHouseNumber(copyHouseNumber);
+                } else {
+                    if (houseNumberShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.houseNumber = null;
+                    }
+                }
             }
-            if (this.postcode!= null) {
-                String sourcePostcode;
-                sourcePostcode = this.getPostcode();
-                String copyPostcode = ((String) strategy.copy(LocatorUtils.property(locator, "postcode", sourcePostcode), sourcePostcode));
-                copy.setPostcode(copyPostcode);
-            } else {
-                copy.postcode = null;
+            {
+                Boolean postcodeShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.postcode!= null));
+                if (postcodeShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourcePostcode;
+                    sourcePostcode = this.getPostcode();
+                    String copyPostcode = ((String) strategy.copy(LocatorUtils.property(locator, "postcode", sourcePostcode), sourcePostcode, (this.postcode!= null)));
+                    copy.setPostcode(copyPostcode);
+                } else {
+                    if (postcodeShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.postcode = null;
+                    }
+                }
             }
-            if (this.city!= null) {
-                String sourceCity;
-                sourceCity = this.getCity();
-                String copyCity = ((String) strategy.copy(LocatorUtils.property(locator, "city", sourceCity), sourceCity));
-                copy.setCity(copyCity);
-            } else {
-                copy.city = null;
+            {
+                Boolean cityShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.city!= null));
+                if (cityShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceCity;
+                    sourceCity = this.getCity();
+                    String copyCity = ((String) strategy.copy(LocatorUtils.property(locator, "city", sourceCity), sourceCity, (this.city!= null)));
+                    copy.setCity(copyCity);
+                } else {
+                    if (cityShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.city = null;
+                    }
+                }
             }
-            if (this.internationalCountryRegion!= null) {
-                CountryRegion sourceInternationalCountryRegion;
-                sourceInternationalCountryRegion = this.getInternationalCountryRegion();
-                CountryRegion copyInternationalCountryRegion = ((CountryRegion) strategy.copy(LocatorUtils.property(locator, "internationalCountryRegion", sourceInternationalCountryRegion), sourceInternationalCountryRegion));
-                copy.setInternationalCountryRegion(copyInternationalCountryRegion);
-            } else {
-                copy.internationalCountryRegion = null;
+            {
+                Boolean internationalCountryRegionShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.internationalCountryRegion!= null));
+                if (internationalCountryRegionShouldBeCopiedAndSet == Boolean.TRUE) {
+                    CountryRegion sourceInternationalCountryRegion;
+                    sourceInternationalCountryRegion = this.getInternationalCountryRegion();
+                    CountryRegion copyInternationalCountryRegion = ((CountryRegion) strategy.copy(LocatorUtils.property(locator, "internationalCountryRegion", sourceInternationalCountryRegion), sourceInternationalCountryRegion, (this.internationalCountryRegion!= null)));
+                    copy.setInternationalCountryRegion(copyInternationalCountryRegion);
+                } else {
+                    if (internationalCountryRegionShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.internationalCountryRegion = null;
+                    }
+                }
             }
         }
         return draftCopy;
@@ -317,7 +341,7 @@ public class Address
         return new Address();
     }
 
-    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
@@ -330,7 +354,7 @@ public class Address
             lhsStreet = this.getStreet();
             String rhsStreet;
             rhsStreet = that.getStreet();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "street", lhsStreet), LocatorUtils.property(thatLocator, "street", rhsStreet), lhsStreet, rhsStreet)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "street", lhsStreet), LocatorUtils.property(thatLocator, "street", rhsStreet), lhsStreet, rhsStreet, (this.street!= null), (that.street!= null))) {
                 return false;
             }
         }
@@ -339,7 +363,7 @@ public class Address
             lhsHouseNumber = this.getHouseNumber();
             String rhsHouseNumber;
             rhsHouseNumber = that.getHouseNumber();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "houseNumber", lhsHouseNumber), LocatorUtils.property(thatLocator, "houseNumber", rhsHouseNumber), lhsHouseNumber, rhsHouseNumber)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "houseNumber", lhsHouseNumber), LocatorUtils.property(thatLocator, "houseNumber", rhsHouseNumber), lhsHouseNumber, rhsHouseNumber, (this.houseNumber!= null), (that.houseNumber!= null))) {
                 return false;
             }
         }
@@ -348,7 +372,7 @@ public class Address
             lhsPostcode = this.getPostcode();
             String rhsPostcode;
             rhsPostcode = that.getPostcode();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "postcode", lhsPostcode), LocatorUtils.property(thatLocator, "postcode", rhsPostcode), lhsPostcode, rhsPostcode)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "postcode", lhsPostcode), LocatorUtils.property(thatLocator, "postcode", rhsPostcode), lhsPostcode, rhsPostcode, (this.postcode!= null), (that.postcode!= null))) {
                 return false;
             }
         }
@@ -357,7 +381,7 @@ public class Address
             lhsCity = this.getCity();
             String rhsCity;
             rhsCity = that.getCity();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "city", lhsCity), LocatorUtils.property(thatLocator, "city", rhsCity), lhsCity, rhsCity)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "city", lhsCity), LocatorUtils.property(thatLocator, "city", rhsCity), lhsCity, rhsCity, (this.city!= null), (that.city!= null))) {
                 return false;
             }
         }
@@ -366,7 +390,7 @@ public class Address
             lhsInternationalCountryRegion = this.getInternationalCountryRegion();
             CountryRegion rhsInternationalCountryRegion;
             rhsInternationalCountryRegion = that.getInternationalCountryRegion();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "internationalCountryRegion", lhsInternationalCountryRegion), LocatorUtils.property(thatLocator, "internationalCountryRegion", rhsInternationalCountryRegion), lhsInternationalCountryRegion, rhsInternationalCountryRegion)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "internationalCountryRegion", lhsInternationalCountryRegion), LocatorUtils.property(thatLocator, "internationalCountryRegion", rhsInternationalCountryRegion), lhsInternationalCountryRegion, rhsInternationalCountryRegion, (this.internationalCountryRegion!= null), (that.internationalCountryRegion!= null))) {
                 return false;
             }
         }
@@ -374,7 +398,7 @@ public class Address
     }
 
     public boolean equals(Object object) {
-        final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
     }
 

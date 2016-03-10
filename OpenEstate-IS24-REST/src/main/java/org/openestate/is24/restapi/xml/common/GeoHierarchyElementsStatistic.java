@@ -6,15 +6,15 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-import org.jvnet.jaxb2_commons.lang.CopyStrategy;
-import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Equals;
-import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
+import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
+import org.jvnet.jaxb2_commons.lang.CopyTo2;
+import org.jvnet.jaxb2_commons.lang.Equals2;
+import org.jvnet.jaxb2_commons.lang.EqualsStrategy2;
 import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBEqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy;
-import org.jvnet.jaxb2_commons.lang.ToString;
-import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
+import org.jvnet.jaxb2_commons.lang.ToString2;
+import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 
@@ -45,8 +45,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
     "children"
 })
 @XmlRootElement(name = "geoHierarchyElementsStatistic")
-public class GeoHierarchyElementsStatistic
-    implements Cloneable, CopyTo, Equals, ToString
+public class GeoHierarchyElementsStatistic implements Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(required = true)
@@ -103,29 +102,29 @@ public class GeoHierarchyElementsStatistic
     }
 
     public String toString() {
-        final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
         append(null, buffer, strategy);
         return buffer.toString();
     }
 
-    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
         strategy.appendEnd(locator, this, buffer);
         return buffer;
     }
 
-    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             GeoHierarchyElement theParent;
             theParent = this.getParent();
-            strategy.appendField(locator, this, "parent", buffer, theParent);
+            strategy.appendField(locator, this, "parent", buffer, theParent, (this.parent!= null));
         }
         {
             GeoHierarchyElements theChildren;
             theChildren = this.getChildren();
-            strategy.appendField(locator, this, "children", buffer, theChildren);
+            strategy.appendField(locator, this, "children", buffer, theChildren, (this.children!= null));
         }
         return buffer;
     }
@@ -135,29 +134,39 @@ public class GeoHierarchyElementsStatistic
     }
 
     public Object copyTo(Object target) {
-        final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof GeoHierarchyElementsStatistic) {
             final GeoHierarchyElementsStatistic copy = ((GeoHierarchyElementsStatistic) draftCopy);
-            if (this.parent!= null) {
-                GeoHierarchyElement sourceParent;
-                sourceParent = this.getParent();
-                GeoHierarchyElement copyParent = ((GeoHierarchyElement) strategy.copy(LocatorUtils.property(locator, "parent", sourceParent), sourceParent));
-                copy.setParent(copyParent);
-            } else {
-                copy.parent = null;
+            {
+                Boolean parentShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.parent!= null));
+                if (parentShouldBeCopiedAndSet == Boolean.TRUE) {
+                    GeoHierarchyElement sourceParent;
+                    sourceParent = this.getParent();
+                    GeoHierarchyElement copyParent = ((GeoHierarchyElement) strategy.copy(LocatorUtils.property(locator, "parent", sourceParent), sourceParent, (this.parent!= null)));
+                    copy.setParent(copyParent);
+                } else {
+                    if (parentShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.parent = null;
+                    }
+                }
             }
-            if (this.children!= null) {
-                GeoHierarchyElements sourceChildren;
-                sourceChildren = this.getChildren();
-                GeoHierarchyElements copyChildren = ((GeoHierarchyElements) strategy.copy(LocatorUtils.property(locator, "children", sourceChildren), sourceChildren));
-                copy.setChildren(copyChildren);
-            } else {
-                copy.children = null;
+            {
+                Boolean childrenShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.children!= null));
+                if (childrenShouldBeCopiedAndSet == Boolean.TRUE) {
+                    GeoHierarchyElements sourceChildren;
+                    sourceChildren = this.getChildren();
+                    GeoHierarchyElements copyChildren = ((GeoHierarchyElements) strategy.copy(LocatorUtils.property(locator, "children", sourceChildren), sourceChildren, (this.children!= null)));
+                    copy.setChildren(copyChildren);
+                } else {
+                    if (childrenShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.children = null;
+                    }
+                }
             }
         }
         return draftCopy;
@@ -167,7 +176,7 @@ public class GeoHierarchyElementsStatistic
         return new GeoHierarchyElementsStatistic();
     }
 
-    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
@@ -180,7 +189,7 @@ public class GeoHierarchyElementsStatistic
             lhsParent = this.getParent();
             GeoHierarchyElement rhsParent;
             rhsParent = that.getParent();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "parent", lhsParent), LocatorUtils.property(thatLocator, "parent", rhsParent), lhsParent, rhsParent)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "parent", lhsParent), LocatorUtils.property(thatLocator, "parent", rhsParent), lhsParent, rhsParent, (this.parent!= null), (that.parent!= null))) {
                 return false;
             }
         }
@@ -189,7 +198,7 @@ public class GeoHierarchyElementsStatistic
             lhsChildren = this.getChildren();
             GeoHierarchyElements rhsChildren;
             rhsChildren = that.getChildren();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "children", lhsChildren), LocatorUtils.property(thatLocator, "children", rhsChildren), lhsChildren, rhsChildren)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "children", lhsChildren), LocatorUtils.property(thatLocator, "children", rhsChildren), lhsChildren, rhsChildren, (this.children!= null), (that.children!= null))) {
                 return false;
             }
         }
@@ -197,7 +206,7 @@ public class GeoHierarchyElementsStatistic
     }
 
     public boolean equals(Object object) {
-        final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
     }
 

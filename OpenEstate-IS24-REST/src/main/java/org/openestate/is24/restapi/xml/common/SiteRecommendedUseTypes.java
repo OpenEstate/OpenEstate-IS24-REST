@@ -7,15 +7,15 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import org.jvnet.jaxb2_commons.lang.CopyStrategy;
-import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Equals;
-import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
+import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
+import org.jvnet.jaxb2_commons.lang.CopyTo2;
+import org.jvnet.jaxb2_commons.lang.Equals2;
+import org.jvnet.jaxb2_commons.lang.EqualsStrategy2;
 import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBEqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy;
-import org.jvnet.jaxb2_commons.lang.ToString;
-import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
+import org.jvnet.jaxb2_commons.lang.ToString2;
+import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 
@@ -45,8 +45,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 @XmlType(name = "SiteRecommendedUseTypes", propOrder = {
     "siteRecommendedUseType"
 })
-public class SiteRecommendedUseTypes
-    implements Cloneable, CopyTo, Equals, ToString
+public class SiteRecommendedUseTypes implements Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlSchemaType(name = "string")
@@ -82,24 +81,24 @@ public class SiteRecommendedUseTypes
     }
 
     public String toString() {
-        final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
         append(null, buffer, strategy);
         return buffer.toString();
     }
 
-    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
         strategy.appendEnd(locator, this, buffer);
         return buffer;
     }
 
-    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             List<SiteRecommendedUseType> theSiteRecommendedUseType;
             theSiteRecommendedUseType = (((this.siteRecommendedUseType!= null)&&(!this.siteRecommendedUseType.isEmpty()))?this.getSiteRecommendedUseType():null);
-            strategy.appendField(locator, this, "siteRecommendedUseType", buffer, theSiteRecommendedUseType);
+            strategy.appendField(locator, this, "siteRecommendedUseType", buffer, theSiteRecommendedUseType, ((this.siteRecommendedUseType!= null)&&(!this.siteRecommendedUseType.isEmpty())));
         }
         return buffer;
     }
@@ -109,26 +108,31 @@ public class SiteRecommendedUseTypes
     }
 
     public Object copyTo(Object target) {
-        final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof SiteRecommendedUseTypes) {
             final SiteRecommendedUseTypes copy = ((SiteRecommendedUseTypes) draftCopy);
-            if ((this.siteRecommendedUseType!= null)&&(!this.siteRecommendedUseType.isEmpty())) {
-                List<SiteRecommendedUseType> sourceSiteRecommendedUseType;
-                sourceSiteRecommendedUseType = (((this.siteRecommendedUseType!= null)&&(!this.siteRecommendedUseType.isEmpty()))?this.getSiteRecommendedUseType():null);
-                @SuppressWarnings("unchecked")
-                List<SiteRecommendedUseType> copySiteRecommendedUseType = ((List<SiteRecommendedUseType> ) strategy.copy(LocatorUtils.property(locator, "siteRecommendedUseType", sourceSiteRecommendedUseType), sourceSiteRecommendedUseType));
-                copy.siteRecommendedUseType = null;
-                if (copySiteRecommendedUseType!= null) {
-                    List<SiteRecommendedUseType> uniqueSiteRecommendedUseTypel = copy.getSiteRecommendedUseType();
-                    uniqueSiteRecommendedUseTypel.addAll(copySiteRecommendedUseType);
+            {
+                Boolean siteRecommendedUseTypeShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, ((this.siteRecommendedUseType!= null)&&(!this.siteRecommendedUseType.isEmpty())));
+                if (siteRecommendedUseTypeShouldBeCopiedAndSet == Boolean.TRUE) {
+                    List<SiteRecommendedUseType> sourceSiteRecommendedUseType;
+                    sourceSiteRecommendedUseType = (((this.siteRecommendedUseType!= null)&&(!this.siteRecommendedUseType.isEmpty()))?this.getSiteRecommendedUseType():null);
+                    @SuppressWarnings("unchecked")
+                    List<SiteRecommendedUseType> copySiteRecommendedUseType = ((List<SiteRecommendedUseType> ) strategy.copy(LocatorUtils.property(locator, "siteRecommendedUseType", sourceSiteRecommendedUseType), sourceSiteRecommendedUseType, ((this.siteRecommendedUseType!= null)&&(!this.siteRecommendedUseType.isEmpty()))));
+                    copy.siteRecommendedUseType = null;
+                    if (copySiteRecommendedUseType!= null) {
+                        List<SiteRecommendedUseType> uniqueSiteRecommendedUseTypel = copy.getSiteRecommendedUseType();
+                        uniqueSiteRecommendedUseTypel.addAll(copySiteRecommendedUseType);
+                    }
+                } else {
+                    if (siteRecommendedUseTypeShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.siteRecommendedUseType = null;
+                    }
                 }
-            } else {
-                copy.siteRecommendedUseType = null;
             }
         }
         return draftCopy;
@@ -138,7 +142,7 @@ public class SiteRecommendedUseTypes
         return new SiteRecommendedUseTypes();
     }
 
-    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
@@ -151,7 +155,7 @@ public class SiteRecommendedUseTypes
             lhsSiteRecommendedUseType = (((this.siteRecommendedUseType!= null)&&(!this.siteRecommendedUseType.isEmpty()))?this.getSiteRecommendedUseType():null);
             List<SiteRecommendedUseType> rhsSiteRecommendedUseType;
             rhsSiteRecommendedUseType = (((that.siteRecommendedUseType!= null)&&(!that.siteRecommendedUseType.isEmpty()))?that.getSiteRecommendedUseType():null);
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "siteRecommendedUseType", lhsSiteRecommendedUseType), LocatorUtils.property(thatLocator, "siteRecommendedUseType", rhsSiteRecommendedUseType), lhsSiteRecommendedUseType, rhsSiteRecommendedUseType)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "siteRecommendedUseType", lhsSiteRecommendedUseType), LocatorUtils.property(thatLocator, "siteRecommendedUseType", rhsSiteRecommendedUseType), lhsSiteRecommendedUseType, rhsSiteRecommendedUseType, ((this.siteRecommendedUseType!= null)&&(!this.siteRecommendedUseType.isEmpty())), ((that.siteRecommendedUseType!= null)&&(!that.siteRecommendedUseType.isEmpty())))) {
                 return false;
             }
         }
@@ -159,7 +163,7 @@ public class SiteRecommendedUseTypes
     }
 
     public boolean equals(Object object) {
-        final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
     }
 

@@ -4,15 +4,15 @@ package org.openestate.is24.restapi.xml.common;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
-import org.jvnet.jaxb2_commons.lang.CopyStrategy;
-import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Equals;
-import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
+import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
+import org.jvnet.jaxb2_commons.lang.CopyTo2;
+import org.jvnet.jaxb2_commons.lang.Equals2;
+import org.jvnet.jaxb2_commons.lang.EqualsStrategy2;
 import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBEqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy;
-import org.jvnet.jaxb2_commons.lang.ToString;
-import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
+import org.jvnet.jaxb2_commons.lang.ToString2;
+import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 
@@ -54,7 +54,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 })
 public class RealtorContactDetails
     extends ContactDetails
-    implements Cloneable, CopyTo, Equals, ToString
+    implements Cloneable, CopyTo2, Equals2, ToString2
 {
 
     protected Boolean defaultContact;
@@ -209,50 +209,50 @@ public class RealtorContactDetails
     }
 
     public String toString() {
-        final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
         append(null, buffer, strategy);
         return buffer.toString();
     }
 
-    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
         strategy.appendEnd(locator, this, buffer);
         return buffer;
     }
 
-    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         super.appendFields(locator, buffer, strategy);
         {
             Boolean theDefaultContact;
             theDefaultContact = this.isDefaultContact();
-            strategy.appendField(locator, this, "defaultContact", buffer, theDefaultContact);
+            strategy.appendField(locator, this, "defaultContact", buffer, theDefaultContact, (this.defaultContact!= null));
         }
         {
             Boolean theLocalPartnerContact;
             theLocalPartnerContact = this.isLocalPartnerContact();
-            strategy.appendField(locator, this, "localPartnerContact", buffer, theLocalPartnerContact);
+            strategy.appendField(locator, this, "localPartnerContact", buffer, theLocalPartnerContact, (this.localPartnerContact!= null));
         }
         {
             Boolean theBusinessCardContact;
             theBusinessCardContact = this.isBusinessCardContact();
-            strategy.appendField(locator, this, "businessCardContact", buffer, theBusinessCardContact);
+            strategy.appendField(locator, this, "businessCardContact", buffer, theBusinessCardContact, (this.businessCardContact!= null));
         }
         {
             Long theRealEstateReferenceCount;
             theRealEstateReferenceCount = this.getRealEstateReferenceCount();
-            strategy.appendField(locator, this, "realEstateReferenceCount", buffer, theRealEstateReferenceCount);
+            strategy.appendField(locator, this, "realEstateReferenceCount", buffer, theRealEstateReferenceCount, (this.realEstateReferenceCount!= null));
         }
         {
             String theExternalId;
             theExternalId = this.getExternalId();
-            strategy.appendField(locator, this, "externalId", buffer, theExternalId);
+            strategy.appendField(locator, this, "externalId", buffer, theExternalId, (this.externalId!= null));
         }
         {
             Boolean theShowOnProfilePage;
             theShowOnProfilePage = this.isShowOnProfilePage();
-            strategy.appendField(locator, this, "showOnProfilePage", buffer, theShowOnProfilePage);
+            strategy.appendField(locator, this, "showOnProfilePage", buffer, theShowOnProfilePage, (this.showOnProfilePage!= null));
         }
         return buffer;
     }
@@ -262,62 +262,92 @@ public class RealtorContactDetails
     }
 
     public Object copyTo(Object target) {
-        final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         super.copyTo(locator, draftCopy, strategy);
         if (draftCopy instanceof RealtorContactDetails) {
             final RealtorContactDetails copy = ((RealtorContactDetails) draftCopy);
-            if (this.defaultContact!= null) {
-                Boolean sourceDefaultContact;
-                sourceDefaultContact = this.isDefaultContact();
-                Boolean copyDefaultContact = ((Boolean) strategy.copy(LocatorUtils.property(locator, "defaultContact", sourceDefaultContact), sourceDefaultContact));
-                copy.setDefaultContact(copyDefaultContact);
-            } else {
-                copy.defaultContact = null;
+            {
+                Boolean defaultContactShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.defaultContact!= null));
+                if (defaultContactShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Boolean sourceDefaultContact;
+                    sourceDefaultContact = this.isDefaultContact();
+                    Boolean copyDefaultContact = ((Boolean) strategy.copy(LocatorUtils.property(locator, "defaultContact", sourceDefaultContact), sourceDefaultContact, (this.defaultContact!= null)));
+                    copy.setDefaultContact(copyDefaultContact);
+                } else {
+                    if (defaultContactShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.defaultContact = null;
+                    }
+                }
             }
-            if (this.localPartnerContact!= null) {
-                Boolean sourceLocalPartnerContact;
-                sourceLocalPartnerContact = this.isLocalPartnerContact();
-                Boolean copyLocalPartnerContact = ((Boolean) strategy.copy(LocatorUtils.property(locator, "localPartnerContact", sourceLocalPartnerContact), sourceLocalPartnerContact));
-                copy.setLocalPartnerContact(copyLocalPartnerContact);
-            } else {
-                copy.localPartnerContact = null;
+            {
+                Boolean localPartnerContactShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.localPartnerContact!= null));
+                if (localPartnerContactShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Boolean sourceLocalPartnerContact;
+                    sourceLocalPartnerContact = this.isLocalPartnerContact();
+                    Boolean copyLocalPartnerContact = ((Boolean) strategy.copy(LocatorUtils.property(locator, "localPartnerContact", sourceLocalPartnerContact), sourceLocalPartnerContact, (this.localPartnerContact!= null)));
+                    copy.setLocalPartnerContact(copyLocalPartnerContact);
+                } else {
+                    if (localPartnerContactShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.localPartnerContact = null;
+                    }
+                }
             }
-            if (this.businessCardContact!= null) {
-                Boolean sourceBusinessCardContact;
-                sourceBusinessCardContact = this.isBusinessCardContact();
-                Boolean copyBusinessCardContact = ((Boolean) strategy.copy(LocatorUtils.property(locator, "businessCardContact", sourceBusinessCardContact), sourceBusinessCardContact));
-                copy.setBusinessCardContact(copyBusinessCardContact);
-            } else {
-                copy.businessCardContact = null;
+            {
+                Boolean businessCardContactShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.businessCardContact!= null));
+                if (businessCardContactShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Boolean sourceBusinessCardContact;
+                    sourceBusinessCardContact = this.isBusinessCardContact();
+                    Boolean copyBusinessCardContact = ((Boolean) strategy.copy(LocatorUtils.property(locator, "businessCardContact", sourceBusinessCardContact), sourceBusinessCardContact, (this.businessCardContact!= null)));
+                    copy.setBusinessCardContact(copyBusinessCardContact);
+                } else {
+                    if (businessCardContactShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.businessCardContact = null;
+                    }
+                }
             }
-            if (this.realEstateReferenceCount!= null) {
-                Long sourceRealEstateReferenceCount;
-                sourceRealEstateReferenceCount = this.getRealEstateReferenceCount();
-                Long copyRealEstateReferenceCount = ((Long) strategy.copy(LocatorUtils.property(locator, "realEstateReferenceCount", sourceRealEstateReferenceCount), sourceRealEstateReferenceCount));
-                copy.setRealEstateReferenceCount(copyRealEstateReferenceCount);
-            } else {
-                copy.realEstateReferenceCount = null;
+            {
+                Boolean realEstateReferenceCountShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.realEstateReferenceCount!= null));
+                if (realEstateReferenceCountShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Long sourceRealEstateReferenceCount;
+                    sourceRealEstateReferenceCount = this.getRealEstateReferenceCount();
+                    Long copyRealEstateReferenceCount = ((Long) strategy.copy(LocatorUtils.property(locator, "realEstateReferenceCount", sourceRealEstateReferenceCount), sourceRealEstateReferenceCount, (this.realEstateReferenceCount!= null)));
+                    copy.setRealEstateReferenceCount(copyRealEstateReferenceCount);
+                } else {
+                    if (realEstateReferenceCountShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.realEstateReferenceCount = null;
+                    }
+                }
             }
-            if (this.externalId!= null) {
-                String sourceExternalId;
-                sourceExternalId = this.getExternalId();
-                String copyExternalId = ((String) strategy.copy(LocatorUtils.property(locator, "externalId", sourceExternalId), sourceExternalId));
-                copy.setExternalId(copyExternalId);
-            } else {
-                copy.externalId = null;
+            {
+                Boolean externalIdShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.externalId!= null));
+                if (externalIdShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceExternalId;
+                    sourceExternalId = this.getExternalId();
+                    String copyExternalId = ((String) strategy.copy(LocatorUtils.property(locator, "externalId", sourceExternalId), sourceExternalId, (this.externalId!= null)));
+                    copy.setExternalId(copyExternalId);
+                } else {
+                    if (externalIdShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.externalId = null;
+                    }
+                }
             }
-            if (this.showOnProfilePage!= null) {
-                Boolean sourceShowOnProfilePage;
-                sourceShowOnProfilePage = this.isShowOnProfilePage();
-                Boolean copyShowOnProfilePage = ((Boolean) strategy.copy(LocatorUtils.property(locator, "showOnProfilePage", sourceShowOnProfilePage), sourceShowOnProfilePage));
-                copy.setShowOnProfilePage(copyShowOnProfilePage);
-            } else {
-                copy.showOnProfilePage = null;
+            {
+                Boolean showOnProfilePageShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.showOnProfilePage!= null));
+                if (showOnProfilePageShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Boolean sourceShowOnProfilePage;
+                    sourceShowOnProfilePage = this.isShowOnProfilePage();
+                    Boolean copyShowOnProfilePage = ((Boolean) strategy.copy(LocatorUtils.property(locator, "showOnProfilePage", sourceShowOnProfilePage), sourceShowOnProfilePage, (this.showOnProfilePage!= null)));
+                    copy.setShowOnProfilePage(copyShowOnProfilePage);
+                } else {
+                    if (showOnProfilePageShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.showOnProfilePage = null;
+                    }
+                }
             }
         }
         return draftCopy;
@@ -327,7 +357,7 @@ public class RealtorContactDetails
         return new RealtorContactDetails();
     }
 
-    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
@@ -343,7 +373,7 @@ public class RealtorContactDetails
             lhsDefaultContact = this.isDefaultContact();
             Boolean rhsDefaultContact;
             rhsDefaultContact = that.isDefaultContact();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "defaultContact", lhsDefaultContact), LocatorUtils.property(thatLocator, "defaultContact", rhsDefaultContact), lhsDefaultContact, rhsDefaultContact)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "defaultContact", lhsDefaultContact), LocatorUtils.property(thatLocator, "defaultContact", rhsDefaultContact), lhsDefaultContact, rhsDefaultContact, (this.defaultContact!= null), (that.defaultContact!= null))) {
                 return false;
             }
         }
@@ -352,7 +382,7 @@ public class RealtorContactDetails
             lhsLocalPartnerContact = this.isLocalPartnerContact();
             Boolean rhsLocalPartnerContact;
             rhsLocalPartnerContact = that.isLocalPartnerContact();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "localPartnerContact", lhsLocalPartnerContact), LocatorUtils.property(thatLocator, "localPartnerContact", rhsLocalPartnerContact), lhsLocalPartnerContact, rhsLocalPartnerContact)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "localPartnerContact", lhsLocalPartnerContact), LocatorUtils.property(thatLocator, "localPartnerContact", rhsLocalPartnerContact), lhsLocalPartnerContact, rhsLocalPartnerContact, (this.localPartnerContact!= null), (that.localPartnerContact!= null))) {
                 return false;
             }
         }
@@ -361,7 +391,7 @@ public class RealtorContactDetails
             lhsBusinessCardContact = this.isBusinessCardContact();
             Boolean rhsBusinessCardContact;
             rhsBusinessCardContact = that.isBusinessCardContact();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "businessCardContact", lhsBusinessCardContact), LocatorUtils.property(thatLocator, "businessCardContact", rhsBusinessCardContact), lhsBusinessCardContact, rhsBusinessCardContact)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "businessCardContact", lhsBusinessCardContact), LocatorUtils.property(thatLocator, "businessCardContact", rhsBusinessCardContact), lhsBusinessCardContact, rhsBusinessCardContact, (this.businessCardContact!= null), (that.businessCardContact!= null))) {
                 return false;
             }
         }
@@ -370,7 +400,7 @@ public class RealtorContactDetails
             lhsRealEstateReferenceCount = this.getRealEstateReferenceCount();
             Long rhsRealEstateReferenceCount;
             rhsRealEstateReferenceCount = that.getRealEstateReferenceCount();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "realEstateReferenceCount", lhsRealEstateReferenceCount), LocatorUtils.property(thatLocator, "realEstateReferenceCount", rhsRealEstateReferenceCount), lhsRealEstateReferenceCount, rhsRealEstateReferenceCount)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "realEstateReferenceCount", lhsRealEstateReferenceCount), LocatorUtils.property(thatLocator, "realEstateReferenceCount", rhsRealEstateReferenceCount), lhsRealEstateReferenceCount, rhsRealEstateReferenceCount, (this.realEstateReferenceCount!= null), (that.realEstateReferenceCount!= null))) {
                 return false;
             }
         }
@@ -379,7 +409,7 @@ public class RealtorContactDetails
             lhsExternalId = this.getExternalId();
             String rhsExternalId;
             rhsExternalId = that.getExternalId();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "externalId", lhsExternalId), LocatorUtils.property(thatLocator, "externalId", rhsExternalId), lhsExternalId, rhsExternalId)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "externalId", lhsExternalId), LocatorUtils.property(thatLocator, "externalId", rhsExternalId), lhsExternalId, rhsExternalId, (this.externalId!= null), (that.externalId!= null))) {
                 return false;
             }
         }
@@ -388,7 +418,7 @@ public class RealtorContactDetails
             lhsShowOnProfilePage = this.isShowOnProfilePage();
             Boolean rhsShowOnProfilePage;
             rhsShowOnProfilePage = that.isShowOnProfilePage();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "showOnProfilePage", lhsShowOnProfilePage), LocatorUtils.property(thatLocator, "showOnProfilePage", rhsShowOnProfilePage), lhsShowOnProfilePage, rhsShowOnProfilePage)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "showOnProfilePage", lhsShowOnProfilePage), LocatorUtils.property(thatLocator, "showOnProfilePage", rhsShowOnProfilePage), lhsShowOnProfilePage, rhsShowOnProfilePage, (this.showOnProfilePage!= null), (that.showOnProfilePage!= null))) {
                 return false;
             }
         }
@@ -396,7 +426,7 @@ public class RealtorContactDetails
     }
 
     public boolean equals(Object object) {
-        final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
     }
 

@@ -7,15 +7,15 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import org.jvnet.jaxb2_commons.lang.CopyStrategy;
-import org.jvnet.jaxb2_commons.lang.CopyTo;
-import org.jvnet.jaxb2_commons.lang.Equals;
-import org.jvnet.jaxb2_commons.lang.EqualsStrategy;
+import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
+import org.jvnet.jaxb2_commons.lang.CopyTo2;
+import org.jvnet.jaxb2_commons.lang.Equals2;
+import org.jvnet.jaxb2_commons.lang.EqualsStrategy2;
 import org.jvnet.jaxb2_commons.lang.JAXBCopyStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBEqualsStrategy;
 import org.jvnet.jaxb2_commons.lang.JAXBToStringStrategy;
-import org.jvnet.jaxb2_commons.lang.ToString;
-import org.jvnet.jaxb2_commons.lang.ToStringStrategy;
+import org.jvnet.jaxb2_commons.lang.ToString2;
+import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 
@@ -51,8 +51,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
     "country",
     "region"
 })
-public class CountryRegion
-    implements Cloneable, CopyTo, Equals, ToString
+public class CountryRegion implements Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(required = true)
@@ -111,29 +110,29 @@ public class CountryRegion
     }
 
     public String toString() {
-        final ToStringStrategy strategy = JAXBToStringStrategy.INSTANCE;
+        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
         append(null, buffer, strategy);
         return buffer.toString();
     }
 
-    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
         strategy.appendEnd(locator, this, buffer);
         return buffer;
     }
 
-    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy strategy) {
+    public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             CountryCode theCountry;
             theCountry = this.getCountry();
-            strategy.appendField(locator, this, "country", buffer, theCountry);
+            strategy.appendField(locator, this, "country", buffer, theCountry, (this.country!= null));
         }
         {
             String theRegion;
             theRegion = this.getRegion();
-            strategy.appendField(locator, this, "region", buffer, theRegion);
+            strategy.appendField(locator, this, "region", buffer, theRegion, (this.region!= null));
         }
         return buffer;
     }
@@ -143,29 +142,39 @@ public class CountryRegion
     }
 
     public Object copyTo(Object target) {
-        final CopyStrategy strategy = JAXBCopyStrategy.INSTANCE;
+        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy strategy) {
+    public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof CountryRegion) {
             final CountryRegion copy = ((CountryRegion) draftCopy);
-            if (this.country!= null) {
-                CountryCode sourceCountry;
-                sourceCountry = this.getCountry();
-                CountryCode copyCountry = ((CountryCode) strategy.copy(LocatorUtils.property(locator, "country", sourceCountry), sourceCountry));
-                copy.setCountry(copyCountry);
-            } else {
-                copy.country = null;
+            {
+                Boolean countryShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.country!= null));
+                if (countryShouldBeCopiedAndSet == Boolean.TRUE) {
+                    CountryCode sourceCountry;
+                    sourceCountry = this.getCountry();
+                    CountryCode copyCountry = ((CountryCode) strategy.copy(LocatorUtils.property(locator, "country", sourceCountry), sourceCountry, (this.country!= null)));
+                    copy.setCountry(copyCountry);
+                } else {
+                    if (countryShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.country = null;
+                    }
+                }
             }
-            if (this.region!= null) {
-                String sourceRegion;
-                sourceRegion = this.getRegion();
-                String copyRegion = ((String) strategy.copy(LocatorUtils.property(locator, "region", sourceRegion), sourceRegion));
-                copy.setRegion(copyRegion);
-            } else {
-                copy.region = null;
+            {
+                Boolean regionShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.region!= null));
+                if (regionShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceRegion;
+                    sourceRegion = this.getRegion();
+                    String copyRegion = ((String) strategy.copy(LocatorUtils.property(locator, "region", sourceRegion), sourceRegion, (this.region!= null)));
+                    copy.setRegion(copyRegion);
+                } else {
+                    if (regionShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.region = null;
+                    }
+                }
             }
         }
         return draftCopy;
@@ -175,7 +184,7 @@ public class CountryRegion
         return new CountryRegion();
     }
 
-    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy strategy) {
+    public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
         }
@@ -188,7 +197,7 @@ public class CountryRegion
             lhsCountry = this.getCountry();
             CountryCode rhsCountry;
             rhsCountry = that.getCountry();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "country", lhsCountry), LocatorUtils.property(thatLocator, "country", rhsCountry), lhsCountry, rhsCountry)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "country", lhsCountry), LocatorUtils.property(thatLocator, "country", rhsCountry), lhsCountry, rhsCountry, (this.country!= null), (that.country!= null))) {
                 return false;
             }
         }
@@ -197,7 +206,7 @@ public class CountryRegion
             lhsRegion = this.getRegion();
             String rhsRegion;
             rhsRegion = that.getRegion();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "region", lhsRegion), LocatorUtils.property(thatLocator, "region", rhsRegion), lhsRegion, rhsRegion)) {
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "region", lhsRegion), LocatorUtils.property(thatLocator, "region", rhsRegion), lhsRegion, rhsRegion, (this.region!= null), (that.region!= null))) {
                 return false;
             }
         }
@@ -205,7 +214,7 @@ public class CountryRegion
     }
 
     public boolean equals(Object object) {
-        final EqualsStrategy strategy = JAXBEqualsStrategy.INSTANCE;
+        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
     }
 
