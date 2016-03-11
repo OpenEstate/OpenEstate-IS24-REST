@@ -45,7 +45,6 @@ import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.SystemUtils;
 import org.apache.commons.lang3.time.DateUtils;
-import org.openestate.is24.restapi.utils.validator.EmailValidator;
 import org.openestate.is24.restapi.xml.common.Attachment;
 import org.openestate.is24.restapi.xml.common.City;
 import org.openestate.is24.restapi.xml.common.Continent;
@@ -107,6 +106,8 @@ public final class XmlUtils
     "<[^<>\\n]*>", Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE );
   private final static Pattern BR_TAG_PATTERN = Pattern.compile(
     "<\\s*br[^<>\\n]*>", Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE );
+  private final static Pattern EMAIL_PATTERN = Pattern.compile(
+    ".+@.+\\..+", Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE );
 
   private XmlUtils()
   {
@@ -430,7 +431,7 @@ public final class XmlUtils
   {
     String val = parseText( value, 5, 300 );
     if (val==null) return null;
-    return (EmailValidator.getInstance().isValid( val ))? val: null;
+    return (EMAIL_PATTERN.matcher( val ).matches())? val: null;
   }
 
   /**
@@ -1193,7 +1194,7 @@ public final class XmlUtils
   public static String printEmail( String value )
   {
     String val = printText( value, 5, 300 );
-    if (val==null || !EmailValidator.getInstance().isValid( val ))
+    if (val==null || !EMAIL_PATTERN.matcher( val ).matches())
     {
       throw new IllegalArgumentException(
         "The provided email '" + value + "' is invalid!" );

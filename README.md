@@ -1,4 +1,4 @@
-OpenEstate-IS24-REST 0.3.1
+OpenEstate-IS24-REST 0.3.2
 ==========================
 
 OpenEstate-IS24-REST is a client library for the REST-Webservice of
@@ -77,19 +77,19 @@ requirements):
 <dependency>
   <groupId>org.openestate.is24</groupId>
   <artifactId>OpenEstate-IS24-REST</artifactId>
-  <version>0.3.1</version>
+  <version>0.3.2</version>
 </dependency>
 
 <dependency>
   <groupId>org.openestate.is24</groupId>
   <artifactId>OpenEstate-IS24-REST-hc42</artifactId>
-  <version>0.3.1</version>
+  <version>0.3.2</version>
 </dependency>
 
 <dependency>
   <groupId>org.openestate.is24</groupId>
   <artifactId>OpenEstate-IS24-REST-hc43</artifactId>
-  <version>0.3.1</version>
+  <version>0.3.2</version>
 </dependency>
 ```
 

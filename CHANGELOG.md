@@ -2,6 +2,26 @@ Changelog for OpenEstate-IS24-REST
 ==================================
 
 
+0.3.2 (11 Mar 2016)
+-------------------
+
+### bugfixes
+
+-   Less strict validation of e-mail addresses.
+    E-mail addresses are currently validated with classes provided by
+    [commons-validator](https://commons.apache.org/validator/) when XML is read
+    or written. This validator does not handle new top level domains (nTLD)
+    properly. Therefore the validation is replaced by a more simple approach,
+    that validates the e-mail address against the pattern, that is specified by
+    IS24 in `common-1.0.xsd`.
+
+### updates
+
+-   The package `org.openestate.is24.restapi.utils.validator`, that contains
+    some classes of [commons-validator](https://commons.apache.org/validator/),
+    was removed from source code.
+
+
 0.3.1 (10 Mar 2016)
 -------------------
 

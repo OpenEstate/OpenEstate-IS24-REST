@@ -34,6 +34,54 @@ public class XmlUtilsTest
   //private final static Logger LOGGER = LoggerFactory.getLogger( XmlUtilsTest.class );
 
   @Test
+  public void testPrintEmail()
+  {
+    String[] validEmails = new String[]{
+      "example@example.com",
+      "example@example.de",
+      "example@example.net",
+      "example@example.biz",
+      "example@example.immobilien",
+    };
+
+    String[] invalidEmails = new String[]{
+      "",
+      "@",
+      "@example.com",
+      ".@.com",
+      ".@localhost",
+      "example@.com",
+      "example@",
+    };
+
+    for (String email : validEmails)
+    {
+      try
+      {
+        Assert.assertEquals( "print valid " + email,
+          email, XmlUtils.printEmail( email ) );
+      }
+      catch (IllegalArgumentException ex)
+      {
+        Assert.fail( "valid email '" + email + "' is not printed" );
+      }
+    }
+
+    for (String email : invalidEmails)
+    {
+      try
+      {
+        String m = XmlUtils.printEmail( email );
+        Assert.fail( "invalid email '" + email + "' was printed as '" + m + "'" );
+      }
+      catch (IllegalArgumentException ex)
+      {
+        Assert.assertTrue( "print invalid " + email, true );
+      }
+    }
+  }
+
+  @Test
   public void testPrintText()
   {
     String test = "test<br>"
