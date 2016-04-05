@@ -5,6 +5,10 @@ Changelog for OpenEstate-IS24-REST
 0.4-SNAPSHOT (not released yet)
 -------------------------------
 
+### updates
+
+-   Updated `slf4j` libraries to version 1.7.21.
+
 
 0.3.2 (11 Mar 2016)
 -------------------
