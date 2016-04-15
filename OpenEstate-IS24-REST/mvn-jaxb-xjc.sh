@@ -22,5 +22,5 @@ set -e
 
 cd $PROJECT_DIR
 #rm -f jaxb.timestamp
-#rm -f src/main/java/com/openindex/openestate/impl/is24/xml/*.*
+rm -fR src/main/java/org/openestate/is24/restapi/xml
 $MVN jaxb2:xjc

@@ -205,6 +205,18 @@
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>jaxb2-maven-plugin</artifactId>
           <version>2.2</version>
+          <dependencies>
+            <dependency>
+              <groupId>org.jvnet.jaxb2_commons</groupId>
+              <artifactId>jaxb2-basics</artifactId>
+              <version>0.11.0</version>
+            </dependency>
+            <dependency>
+              <groupId>org.jvnet.jaxb2_commons</groupId>
+              <artifactId>jaxb2-basics-annotate</artifactId>
+              <version>1.0.2</version>
+            </dependency>
+          </dependencies>
         </plugin>
 
         <plugin>
@@ -216,7 +228,7 @@
         <plugin>
           <groupId>org.sonatype.plugins</groupId>
           <artifactId>nexus-staging-maven-plugin</artifactId>
-          <version>1.6.6</version>
+          <version>1.6.7</version>
         </plugin>
       </plugins>
     </pluginManagement>
