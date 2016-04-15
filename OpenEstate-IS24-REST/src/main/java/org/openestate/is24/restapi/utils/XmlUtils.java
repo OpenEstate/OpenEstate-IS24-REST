@@ -963,7 +963,7 @@ public final class XmlUtils
 
   /**
    * Read a {@link String} value from XML
-   * with maximal 2000 characters.
+   * with maximal 3999 characters.
    *
    * @param value
    * XML string
@@ -971,9 +971,9 @@ public final class XmlUtils
    * @return
    * parsed value or null, if the value is invalid
    */
-  public static String parseText2000( String value )
+  public static String parseText3999( String value )
   {
-    return parseText( value, null, 2000 );
+    return parseText( value, null, 3999 );
   }
 
   /**
@@ -1931,7 +1931,7 @@ public final class XmlUtils
 
   /**
    * Write a {@link String} value into XML output
-   * with maximal 2000 characters.
+   * with maximal 3999 characters.
    *
    * @param value
    * value to write
@@ -1942,9 +1942,9 @@ public final class XmlUtils
    * @throws IllegalArgumentException
    * if a validation error occured
    */
-  public static String printText2000( String value )
+  public static String printText3999( String value )
   {
-    return printText( value, null, 2000 );
+    return printText( value, null, 3999 );
   }
 
   /**

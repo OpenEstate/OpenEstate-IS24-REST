@@ -70,8 +70,8 @@
     <jaxb:bindings node="//xsd:simpleType/xsd:restriction[@base='TextField']/xsd:maxLength[@value='1800']/../.." multiple="true">
       <jaxb:javaType name="java.lang.String" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseText1800" printMethod="org.openestate.is24.restapi.utils.XmlUtils.printText1800" />
     </jaxb:bindings>
-    <jaxb:bindings node="//xsd:simpleType/xsd:restriction[@base='TextField']/xsd:maxLength[@value='2000']/../.." multiple="true">
-      <jaxb:javaType name="java.lang.String" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseText2000" printMethod="org.openestate.is24.restapi.utils.XmlUtils.printText2000" />
+    <jaxb:bindings node="//xsd:simpleType/xsd:restriction[@base='TextField']/xsd:maxLength[@value='3999']/../.." multiple="true">
+      <jaxb:javaType name="java.lang.String" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseText3999" printMethod="org.openestate.is24.restapi.utils.XmlUtils.printText3999" />
     </jaxb:bindings>
     <jaxb:bindings node="//xsd:complexType[@name='CountryRegion']//xsd:element[@name='region']/xsd:simpleType" multiple="false">
       <jaxb:javaType name="java.lang.String" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseNonEmptyText" printMethod="org.openestate.is24.restapi.utils.XmlUtils.printNonEmptyText" />

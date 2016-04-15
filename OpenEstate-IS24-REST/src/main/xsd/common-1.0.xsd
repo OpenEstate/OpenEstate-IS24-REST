@@ -223,7 +223,7 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
             </xs:annotation>
             <xs:simpleType>
               <xs:restriction base="TextField">
-                <xs:maxLength value="2000"/>
+                <xs:maxLength value="3999"/>
               </xs:restriction>
             </xs:simpleType>
           </xs:element>
@@ -234,7 +234,7 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
             </xs:annotation>
             <xs:simpleType>
               <xs:restriction base="TextField">
-                <xs:maxLength value="2000"/>
+                <xs:maxLength value="3999"/>
               </xs:restriction>
             </xs:simpleType>
           </xs:element>
@@ -245,7 +245,7 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
             </xs:annotation>
             <xs:simpleType>
               <xs:restriction base="TextField">
-                <xs:maxLength value="2000"/>
+                <xs:maxLength value="3999"/>
               </xs:restriction>
             </xs:simpleType>
           </xs:element>
@@ -256,7 +256,7 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
             </xs:annotation>
             <xs:simpleType>
               <xs:restriction base="TextField">
-                <xs:maxLength value="2000"/>
+                <xs:maxLength value="3999"/>
               </xs:restriction>
             </xs:simpleType>
           </xs:element>
@@ -1059,7 +1059,7 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
                         <xs:documentation xml:lang="de-DE">Bildergröße</xs:documentation>
                       </xs:annotation>
                     </xs:attribute>
-                    <xs:attribute name="href" type="xs:anyURI">
+                    <xs:attribute name="href" type="xs:string">
                       <xs:annotation>
                         <xs:documentation xml:lang="en">URL to scaled picture</xs:documentation>
                         <xs:documentation xml:lang="de-DE">URL zum skaliertem Bild
@@ -1737,6 +1737,12 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
         <xs:annotation>
           <xs:documentation xml:lang="en">Number of the hits.</xs:documentation>
           <xs:documentation xml:lang="de-DE">Anzahl der Suchergebnisse.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="numberOfListings" type="xs:int" default="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Number of the listingss.</xs:documentation>
+          <xs:documentation xml:lang="de-DE">Anzahl der Sucheinträge.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -5819,6 +5825,12 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
           <xs:documentation xml:lang="de-DE">Zimbabwe</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
+      <xs:enumeration value="XKO">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Kosovo</xs:documentation>
+          <xs:documentation xml:lang="de-DE">Kosovo</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
 
@@ -7434,6 +7446,24 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
     </xs:annotation>
     <xs:sequence>
       <xs:group ref="BaseHouse"/>
+      <xs:element name="guestToilet" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">has a guest toilet</xs:documentation>
+          <xs:documentation xml:lang="de-DE">Gäste WC</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="cellar" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">has a cellar</xs:documentation>
+          <xs:documentation xml:lang="de-DE">Keller</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="isBarrierFree" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">is barrier free</xs:documentation>
+          <xs:documentation xml:lang="de-DE">Barrierefrei</xs:documentation>
+        </xs:annotation>
+      </xs:element>
     </xs:sequence>
   </xs:group>
 
@@ -7491,6 +7521,30 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
     </xs:annotation>
     <xs:sequence>
       <xs:group ref="BaseApartment"/>
+      <xs:element name="lift" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">has a lift</xs:documentation>
+          <xs:documentation xml:lang="de-DE">Aufzug</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="guestToilet" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">has a guest toilet</xs:documentation>
+          <xs:documentation xml:lang="de-DE">Gäste WC</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="cellar" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">has a cellar</xs:documentation>
+          <xs:documentation xml:lang="de-DE">Keller</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="isBarrierFree" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">is barrier free</xs:documentation>
+          <xs:documentation xml:lang="de-DE">Barrierefrei</xs:documentation>
+        </xs:annotation>
+      </xs:element>
     </xs:sequence>
   </xs:group>
 

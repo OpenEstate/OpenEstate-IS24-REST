@@ -48,8 +48,6 @@
     </xs:complexType>
   </xs:element>
 
-
-
   <xs:complexType name="RealEstate" abstract="true">
     <xs:annotation>
       <xs:documentation xml:lang="en">General elements for all
@@ -86,7 +84,6 @@
                   <xs:documentation xml:lang="de-DE">Id des Elements im Kundensystem.</xs:documentation>
                 </xs:annotation>
               </xs:attribute>
-
             </xs:complexType>
           </xs:element>
           <xs:element ref="common:publishChannels" minOccurs="0"/>
@@ -141,7 +138,6 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-
 
   <xs:complexType name="GarageRent">
     <xs:annotation>

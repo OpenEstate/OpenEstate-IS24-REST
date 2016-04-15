@@ -40,6 +40,7 @@ import org.openestate.is24.restapi.xml.Adapter5;
  *         &lt;element name="pageSize" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *         &lt;element name="numberOfPages" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *         &lt;element name="numberOfHits" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
+ *         &lt;element name="numberOfListings" type="{http://www.w3.org/2001/XMLSchema}int"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -55,7 +56,8 @@ import org.openestate.is24.restapi.xml.Adapter5;
     "pageNumber",
     "pageSize",
     "numberOfPages",
-    "numberOfHits"
+    "numberOfHits",
+    "numberOfListings"
 })
 public class Paging implements Cloneable, CopyTo2, Equals2, ToString2
 {
@@ -78,6 +80,10 @@ public class Paging implements Cloneable, CopyTo2, Equals2, ToString2
     @XmlJavaTypeAdapter(Adapter5 .class)
     @XmlSchemaType(name = "int")
     protected Long numberOfHits;
+    @XmlElement(required = true, type = String.class, defaultValue = "0")
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlSchemaType(name = "int")
+    protected Long numberOfListings;
 
     /**
      * Gets the value of the next property.
@@ -223,6 +229,30 @@ public class Paging implements Cloneable, CopyTo2, Equals2, ToString2
         this.numberOfHits = value;
     }
 
+    /**
+     * Gets the value of the numberOfListings property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public Long getNumberOfListings() {
+        return numberOfListings;
+    }
+
+    /**
+     * Sets the value of the numberOfListings property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setNumberOfListings(Long value) {
+        this.numberOfListings = value;
+    }
+
     public String toString() {
         final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
@@ -267,6 +297,11 @@ public class Paging implements Cloneable, CopyTo2, Equals2, ToString2
             Long theNumberOfHits;
             theNumberOfHits = this.getNumberOfHits();
             strategy.appendField(locator, this, "numberOfHits", buffer, theNumberOfHits, (this.numberOfHits!= null));
+        }
+        {
+            Long theNumberOfListings;
+            theNumberOfListings = this.getNumberOfListings();
+            strategy.appendField(locator, this, "numberOfListings", buffer, theNumberOfListings, (this.numberOfListings!= null));
         }
         return buffer;
     }
@@ -362,6 +397,19 @@ public class Paging implements Cloneable, CopyTo2, Equals2, ToString2
                     }
                 }
             }
+            {
+                Boolean numberOfListingsShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.numberOfListings!= null));
+                if (numberOfListingsShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Long sourceNumberOfListings;
+                    sourceNumberOfListings = this.getNumberOfListings();
+                    Long copyNumberOfListings = ((Long) strategy.copy(LocatorUtils.property(locator, "numberOfListings", sourceNumberOfListings), sourceNumberOfListings, (this.numberOfListings!= null)));
+                    copy.setNumberOfListings(copyNumberOfListings);
+                } else {
+                    if (numberOfListingsShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.numberOfListings = null;
+                    }
+                }
+            }
         }
         return draftCopy;
     }
@@ -429,6 +477,15 @@ public class Paging implements Cloneable, CopyTo2, Equals2, ToString2
             Long rhsNumberOfHits;
             rhsNumberOfHits = that.getNumberOfHits();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "numberOfHits", lhsNumberOfHits), LocatorUtils.property(thatLocator, "numberOfHits", rhsNumberOfHits), lhsNumberOfHits, rhsNumberOfHits, (this.numberOfHits!= null), (that.numberOfHits!= null))) {
+                return false;
+            }
+        }
+        {
+            Long lhsNumberOfListings;
+            lhsNumberOfListings = this.getNumberOfListings();
+            Long rhsNumberOfListings;
+            rhsNumberOfListings = that.getNumberOfListings();
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "numberOfListings", lhsNumberOfListings), LocatorUtils.property(thatLocator, "numberOfListings", rhsNumberOfListings), lhsNumberOfListings, rhsNumberOfListings, (this.numberOfListings!= null), (that.numberOfListings!= null))) {
                 return false;
             }
         }

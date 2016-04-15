@@ -1,16 +1,13 @@
 
 package org.openestate.is24.restapi.xml.common;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
 import org.jvnet.jaxb2_commons.lang.CopyTo2;
 import org.jvnet.jaxb2_commons.lang.Equals2;
@@ -22,7 +19,6 @@ import org.jvnet.jaxb2_commons.lang.ToString2;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
-import org.openestate.is24.restapi.xml.Adapter4;
 
 
 /**
@@ -49,7 +45,7 @@ import org.openestate.is24.restapi.xml.Adapter4;
  *                       &lt;complexContent&gt;
  *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *                           &lt;attribute name="scale" type="{http://rest.immobilienscout24.de/schema/common/1.0}PictureScaleType" /&gt;
- *                           &lt;attribute name="href" type="{http://www.w3.org/2001/XMLSchema}anyURI" /&gt;
+ *                           &lt;attribute name="href" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *                         &lt;/restriction&gt;
  *                       &lt;/complexContent&gt;
  *                     &lt;/complexType&gt;
@@ -295,7 +291,7 @@ public class Picture
      *             &lt;complexContent&gt;
      *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
      *                 &lt;attribute name="scale" type="{http://rest.immobilienscout24.de/schema/common/1.0}PictureScaleType" /&gt;
-     *                 &lt;attribute name="href" type="{http://www.w3.org/2001/XMLSchema}anyURI" /&gt;
+     *                 &lt;attribute name="href" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
      *               &lt;/restriction&gt;
      *             &lt;/complexContent&gt;
      *           &lt;/complexType&gt;
@@ -445,7 +441,7 @@ public class Picture
          *   &lt;complexContent&gt;
          *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
          *       &lt;attribute name="scale" type="{http://rest.immobilienscout24.de/schema/common/1.0}PictureScaleType" /&gt;
-         *       &lt;attribute name="href" type="{http://www.w3.org/2001/XMLSchema}anyURI" /&gt;
+         *       &lt;attribute name="href" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
          *     &lt;/restriction&gt;
          *   &lt;/complexContent&gt;
          * &lt;/complexType&gt;
@@ -461,9 +457,7 @@ public class Picture
             @XmlAttribute(name = "scale")
             protected PictureScaleType scale;
             @XmlAttribute(name = "href")
-            @XmlJavaTypeAdapter(Adapter4 .class)
-            @XmlSchemaType(name = "anyURI")
-            protected URL href;
+            protected String href;
 
             /**
              * Gets the value of the scale property.
@@ -497,7 +491,7 @@ public class Picture
              *     {@link String }
              *     
              */
-            public URL getHref() {
+            public String getHref() {
                 return href;
             }
 
@@ -509,7 +503,7 @@ public class Picture
              *     {@link String }
              *     
              */
-            public void setHref(URL value) {
+            public void setHref(String value) {
                 this.href = value;
             }
 
@@ -534,7 +528,7 @@ public class Picture
                     strategy.appendField(locator, this, "scale", buffer, theScale, (this.scale!= null));
                 }
                 {
-                    URL theHref;
+                    String theHref;
                     theHref = this.getHref();
                     strategy.appendField(locator, this, "href", buffer, theHref, (this.href!= null));
                 }
@@ -570,9 +564,9 @@ public class Picture
                     {
                         Boolean hrefShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.href!= null));
                         if (hrefShouldBeCopiedAndSet == Boolean.TRUE) {
-                            URL sourceHref;
+                            String sourceHref;
                             sourceHref = this.getHref();
-                            URL copyHref = ((URL) strategy.copy(LocatorUtils.property(locator, "href", sourceHref), sourceHref, (this.href!= null)));
+                            String copyHref = ((String) strategy.copy(LocatorUtils.property(locator, "href", sourceHref), sourceHref, (this.href!= null)));
                             copy.setHref(copyHref);
                         } else {
                             if (hrefShouldBeCopiedAndSet == Boolean.FALSE) {
@@ -606,9 +600,9 @@ public class Picture
                     }
                 }
                 {
-                    URL lhsHref;
+                    String lhsHref;
                     lhsHref = this.getHref();
-                    URL rhsHref;
+                    String rhsHref;
                     rhsHref = that.getHref();
                     if (!strategy.equals(LocatorUtils.property(thisLocator, "href", lhsHref), LocatorUtils.property(thatLocator, "href", rhsHref), lhsHref, rhsHref, (this.href!= null), (that.href!= null))) {
                         return false;

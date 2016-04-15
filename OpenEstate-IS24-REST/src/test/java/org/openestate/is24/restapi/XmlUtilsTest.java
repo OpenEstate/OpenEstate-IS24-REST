@@ -102,7 +102,7 @@ public class XmlUtilsTest
       + "« test7" + SystemUtils.LINE_SEPARATOR
       + "» test8" + SystemUtils.LINE_SEPARATOR
       + "« test9";
-    String result = XmlUtils.printText2000( test );
+    String result = XmlUtils.printText3999( test );
     //LOGGER.info( "TEST VALUE: " + SystemUtils.LINE_SEPARATOR + test );
     //LOGGER.info( "EXPECTED RESULT: " + SystemUtils.LINE_SEPARATOR + expectedResult );
     //LOGGER.info( "ACTUAL RESULT: " + SystemUtils.LINE_SEPARATOR + result );

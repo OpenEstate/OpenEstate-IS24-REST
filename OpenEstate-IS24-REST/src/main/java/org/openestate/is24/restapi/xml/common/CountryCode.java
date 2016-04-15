@@ -248,6 +248,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="ZAF"/&gt;
  *     &lt;enumeration value="ZMB"/&gt;
  *     &lt;enumeration value="ZWE"/&gt;
+ *     &lt;enumeration value="XKO"/&gt;
  *   &lt;/restriction&gt;
  * &lt;/simpleType&gt;
  * </pre>
@@ -1668,7 +1669,13 @@ public enum CountryCode {
      * Zimbabwe
      * 
      */
-    ZWE;
+    ZWE,
+
+    /**
+     * Kosovo
+     * 
+     */
+    XKO;
 
     public String value() {
         return name();
