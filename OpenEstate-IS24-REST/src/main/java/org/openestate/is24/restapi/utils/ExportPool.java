@@ -406,6 +406,20 @@ public class ExportPool
   /**
    * Return the URL of a pooled attachment for a real estate.
    *
+   * @param attachment
+   * attachment to lookup
+   *
+   * @return
+   * file
+   */
+  public URL getObjectAttachmentURL( Attachment attachment )
+  {
+    return (attachment!=null)? attachment.getHref(): null;
+  }
+
+  /**
+   * Return the URL of a pooled attachment for a real estate.
+   *
    * @param pooledObjectId
    * ID of the real estate within the pool
    *
@@ -420,8 +434,7 @@ public class ExportPool
    */
   public URL getObjectAttachmentURL( String pooledObjectId, String attachmentId ) throws IOException
   {
-    Attachment attachment = this.getObjectAttachment( pooledObjectId, attachmentId );
-    return (attachment!=null)? attachment.getHref(): null;
+    return this.getObjectAttachmentURL( this.getObjectAttachment( pooledObjectId, attachmentId ) );
   }
 
   /**

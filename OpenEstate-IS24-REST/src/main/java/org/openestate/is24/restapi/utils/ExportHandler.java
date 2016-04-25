@@ -34,6 +34,7 @@ import org.apache.commons.io.IOExceptionWithCause;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.openestate.is24.restapi.AbstractClient;
 import org.openestate.is24.restapi.ImportExport;
 import org.openestate.is24.restapi.xml.common.Attachment;
@@ -1144,13 +1145,27 @@ public class ExportHandler
         Map<String,File> attachmentFiles = new HashMap<String, File>();
         for (String attachmentKey : this.pool.getObjectAttachmentIds( poolObjectId ))
         {
-          Attachment is24Attachment = this.pool.getObjectAttachment( poolObjectId, attachmentKey );
+          Attachment is24Attachment;
+          String parserError = null;
+          try
+          {
+            is24Attachment = this.pool.getObjectAttachment( poolObjectId, attachmentKey );
+          }
+          catch (Exception ex)
+          {
+            LOGGER.error( "Can't read XML for attachment '" + attachmentKey + "' of object '" + poolObjectId + "'!" );
+            LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
+            is24Attachment = null;
+            parserError = StringUtils.trimToNull( ExceptionUtils.getRootCauseMessage( ex ) );
+          }
           if (is24Attachment==null)
           {
-            LOGGER.error( "Can't read the XML file for attachment!" );
+            LOGGER.error( "Can't read the XML for attachment!" );
+
+            String msg = "Can't read the XML for attachment!";
+            if (parserError!=null) msg += " (" + parserError + ")";
             this.putObjectMessage(
-              externalObjectId, ExportMessage.Code.OBJECT_ATTACHMENT_NOT_SAVED,
-              "Can't read the XML file for attachment!" );
+              externalObjectId, ExportMessage.Code.OBJECT_ATTACHMENT_NOT_SAVED, msg );
 
             // Fortschritt protokollieren
             this.addProgress(
@@ -1185,7 +1200,7 @@ public class ExportHandler
             // ggf. Datei herunterladen, wenn noch nicht im Pool hinterlegt
             if (attachFile==null)
             {
-              URL attachUrl = this.pool.getObjectAttachmentURL( poolObjectId, attachmentKey );
+              URL attachUrl = this.pool.getObjectAttachmentURL( is24Attachment );
               if (attachUrl!=null)
               {
                 try
@@ -1579,16 +1594,28 @@ public class ExportHandler
         counter++;
 
         // Ansprechpartner ermitteln
-        final RealtorContactDetails contact = this.pool.getContact( poolContactId );
+        RealtorContactDetails contact;
+        String parserError = null;
+        try
+        {
+          contact = this.pool.getContact( poolContactId );
+        }
+        catch (Exception ex)
+        {
+          LOGGER.error( "Can't read XML for contact '" + poolContactId + "'!" );
+          LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
+          contact = null;
+          parserError = StringUtils.trimToNull( ExceptionUtils.getRootCauseMessage( ex ) );
+        }
         if (contact==null)
         {
           // Fortschritt protokollieren
           this.addProgress(
             this.pool.getContactSize( poolContactId, true ) );
 
-          this.putGeneralMessage(
-            ExportMessage.Code.XML_NOT_READABLE,
-            "Can't read XML file for contact '" + poolContactId + "'!" );
+          String msg = "Can't read XML for contact '" + poolContactId + "'!";
+          if (parserError!=null) msg += " (" + parserError + ")";
+          this.putGeneralMessage( ExportMessage.Code.XML_NOT_READABLE, msg );
         }
         else if (this.canIgnoreContact( contact, poolContactId ))
         {
@@ -1620,16 +1647,28 @@ public class ExportHandler
         counter++;
 
         // Immobilie  aus ExportPool ermitteln
-        RealEstate object = this.pool.getObject( poolObjectId );
+        RealEstate object;
+        String parserError = null;
+        try
+        {
+          object = this.pool.getObject( poolObjectId );
+        }
+        catch (Exception ex)
+        {
+          LOGGER.error( "Can't read XML for property '" + poolObjectId + "'!" );
+          LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
+          object = null;
+          parserError = StringUtils.trimToNull( ExceptionUtils.getRootCauseMessage( ex ) );
+        }
         if (object==null)
         {
           // Fortschritt protokollieren
           this.addProgress(
             this.pool.getObjectSize( poolObjectId, true ) );
 
-          this.putGeneralMessage(
-            ExportMessage.Code.XML_NOT_READABLE,
-            "Can't read XML file for property '" + poolObjectId + "'!" );
+          String msg = "Can't read XML for property '" + poolObjectId + "'!";
+          if (parserError!=null) msg += " (" + parserError + ")";
+          this.putGeneralMessage( ExportMessage.Code.XML_NOT_READABLE, msg );
         }
         else if (this.canIgnoreObject( object, poolObjectId ))
         {
