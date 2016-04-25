@@ -30,7 +30,6 @@ import java.util.TreeMap;
 import javax.xml.bind.JAXBException;
 import oauth.signpost.exception.OAuthException;
 import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.commons.io.IOExceptionWithCause;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -167,12 +166,12 @@ public class ExportHandler
     }
     catch (JAXBException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Can't read / write XML while communicating with the Webservice!", ex );
     }
     catch (OAuthException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Authorization failed!", ex );
     }
     catch (RequestFailedException ex)
@@ -227,12 +226,12 @@ public class ExportHandler
     }
     catch (JAXBException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Can't read / write XML while communicating with the Webservice!", ex );
     }
     catch (OAuthException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Authorization failed!", ex );
     }
     catch (RequestFailedException ex)
@@ -361,17 +360,17 @@ public class ExportHandler
     }
     catch (JAXBException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Can't read / write XML while communicating with the Webservice!", ex );
     }
     catch (OAuthException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Authorization failed!", ex );
     }
     catch (IOException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Communication failed!", ex );
     }
   }
@@ -490,17 +489,17 @@ public class ExportHandler
     }
     catch (JAXBException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Can't read / write XML while communicating with the Webservice!", ex );
     }
     catch (OAuthException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Authorization failed!", ex );
     }
     catch (IOException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Communication failed!", ex );
     }
   }
@@ -534,21 +533,21 @@ public class ExportHandler
     {
       //LOGGER.error( "Can't read / write XML while communicating with the Webservice!" );
       //LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Can't read / write XML while communicating with the Webservice!", ex );
     }
     catch (OAuthException ex)
     {
       //LOGGER.error( "Can't authorize at the Webservice!" );
       //LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Authorization failed!", ex );
     }
     catch (IOException ex)
     {
       //LOGGER.error( "Can't communicate with the Webservice!" );
       //LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Communication failed!", ex );
     }
   }
@@ -640,21 +639,21 @@ public class ExportHandler
     {
       //LOGGER.error( "Can't read / write XML while communicating with the Webservice!" );
       //LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Can't read / write XML while communicating with the Webservice!", ex );
     }
     catch (OAuthException ex)
     {
       //LOGGER.error( "Can't authorize at the Webservice!" );
       //LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Authorization failed!", ex );
     }
     catch (IOException ex)
     {
       //LOGGER.error( "Can't communicate with the Webservice!" );
       //LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Communication failed!", ex );
     }
   }
@@ -690,17 +689,17 @@ public class ExportHandler
     }
     catch (JAXBException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Can't read / write XML while communicating with the Webservice!", ex );
     }
     catch (OAuthException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Authorization failed!", ex );
     }
     catch (IOException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Communication failed!", ex );
     }
   }
@@ -751,17 +750,17 @@ public class ExportHandler
     }
     catch (JAXBException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Can't read / write XML while communicating with the Webservice!", ex );
     }
     catch (OAuthException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Authorization failed!", ex );
     }
     catch (IOException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Communication failed!", ex );
     }
   }
@@ -880,17 +879,17 @@ public class ExportHandler
     }
     catch (JAXBException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Can't read / write XML while communicating with the Webservice!", ex );
     }
     catch (OAuthException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Authorization failed!", ex );
     }
     catch (IOException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Communication failed!", ex );
     }
     finally
@@ -1529,21 +1528,21 @@ public class ExportHandler
     {
       //LOGGER.error( "Can't read / write XML while communicating with the Webservice!" );
       //LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Can't read / write XML while communicating with the Webservice!", ex );
     }
     catch (OAuthException ex)
     {
       //LOGGER.error( "Can't authorize at the Webservice!" );
       //LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Authorization failed!", ex );
     }
     catch (IOException ex)
     {
       //LOGGER.error( "Can't communicate with the Webservice!" );
       //LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Communication failed!", ex );
     }
   }
