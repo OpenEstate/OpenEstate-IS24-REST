@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.common;
 
+import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -44,7 +45,7 @@ import org.openestate.is24.restapi.xml.Adapter5;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "MatchCount")
-public class MatchCount implements Cloneable, CopyTo2, Equals2, ToString2
+public class MatchCount implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlAttribute(name = "name")

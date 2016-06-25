@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.realestateproject;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.net.URL;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -81,7 +82,7 @@ import org.openestate.is24.restapi.xml.common.PriceRangeMandatory;
     "relaEstateProjectEntries",
     "homepageUrl"
 })
-public class RealEstateProject implements Cloneable, CopyTo2, Equals2, ToString2
+public class RealEstateProject implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(required = true)

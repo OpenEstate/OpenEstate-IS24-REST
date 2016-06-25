@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.realestateproject;
 
+import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -48,7 +49,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
     "realEstateId",
     "realEstateExternalId"
 })
-public class RealEstateProjectEntry implements Cloneable, CopyTo2, Equals2, ToString2
+public class RealEstateProjectEntry implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     protected Long realEstateId;

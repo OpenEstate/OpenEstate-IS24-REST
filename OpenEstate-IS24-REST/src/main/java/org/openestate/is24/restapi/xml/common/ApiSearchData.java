@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.common;
 
+import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
@@ -48,7 +49,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
     "searchField2",
     "searchField3"
 })
-public class ApiSearchData implements Cloneable, CopyTo2, Equals2, ToString2
+public class ApiSearchData implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlJavaTypeAdapter(Adapter1 .class)

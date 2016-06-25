@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.realestates;
 
+import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -47,7 +48,7 @@ import org.openestate.is24.restapi.xml.offerlistelement.RealEstateList;
     "realEstateList"
 })
 @XmlRootElement(name = "realEstates")
-public class RealEstates implements Cloneable, CopyTo2, Equals2, ToString2
+public class RealEstates implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(name = "Paging", required = true)

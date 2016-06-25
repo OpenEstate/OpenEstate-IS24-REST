@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.common;
 
+import java.io.Serializable;
 import java.net.URL;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -216,7 +217,7 @@ import org.openestate.is24.restapi.xml.Adapter4;
     MasterDataContactDetailsType.class,
     ContactDetails.class
 })
-public class BaseContactDetails implements Cloneable, CopyTo2, Equals2, ToString2
+public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlJavaTypeAdapter(Adapter5 .class)

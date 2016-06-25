@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.common;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -96,7 +97,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 @XmlType(name = "EnergyPerformanceCertificate", propOrder = {
 
 })
-public class EnergyPerformanceCertificate implements Cloneable, CopyTo2, Equals2, ToString2
+public class EnergyPerformanceCertificate implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlSchemaType(name = "string")

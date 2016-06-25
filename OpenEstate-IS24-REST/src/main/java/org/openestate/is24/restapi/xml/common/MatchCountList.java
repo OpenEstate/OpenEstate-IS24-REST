@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.common;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -44,7 +45,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 @XmlType(name = "MatchCountList", propOrder = {
     "matchCount"
 })
-public class MatchCountList implements Cloneable, CopyTo2, Equals2, ToString2
+public class MatchCountList implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     protected List<MatchCount> matchCount;

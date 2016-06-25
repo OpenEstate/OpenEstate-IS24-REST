@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.common;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -48,7 +49,7 @@ import org.openestate.is24.restapi.xml.Adapter2;
 @XmlType(name = "DateRange", propOrder = {
 
 })
-public class DateRange implements Cloneable, CopyTo2, Equals2, ToString2
+public class DateRange implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(type = String.class)

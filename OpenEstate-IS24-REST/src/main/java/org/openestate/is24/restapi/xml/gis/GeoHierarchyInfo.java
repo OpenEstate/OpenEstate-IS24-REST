@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.gis;
 
+import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -56,7 +57,7 @@ import org.openestate.is24.restapi.xml.Adapter5;
     "gkz"
 })
 @XmlRootElement(name = "geoHierarchyInfo")
-public class GeoHierarchyInfo implements Cloneable, CopyTo2, Equals2, ToString2
+public class GeoHierarchyInfo implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(type = String.class)

@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.realestates;
 
+import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -86,7 +87,7 @@ import org.openestate.is24.restapi.xml.common.PublishChannels;
 })
 public abstract class RealEstate
     extends AbstractRealEstate
-    implements Cloneable, CopyTo2, Equals2, ToString2
+    implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(defaultValue = "false")
@@ -320,7 +321,7 @@ public abstract class RealEstate
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "")
-    public static class Contact implements Cloneable, CopyTo2, Equals2, ToString2
+    public static class Contact implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
     {
 
         @XmlAttribute(name = "id")

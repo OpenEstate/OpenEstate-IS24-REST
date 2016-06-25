@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.offerlistelement;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Calendar;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -61,7 +62,7 @@ import org.openestate.is24.restapi.xml.common.ShortTermAccommodationType;
 })
 public class OfferShortTermAccommodation
     extends OfferRealEstateForList
-    implements Cloneable, CopyTo2, Equals2, ToString2
+    implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(required = true)

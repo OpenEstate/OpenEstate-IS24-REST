@@ -5,6 +5,7 @@
                jaxb:extensionBindingPrefixes="xjc"
                version="2.0">
   <jaxb:globalBindings>
+    <jaxb:serializable />
     <jaxb:javaType name="java.util.Calendar" xmlType="xsd:date" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseDate" printMethod="org.openestate.is24.restapi.utils.XmlUtils.printDate" />
     <jaxb:javaType name="java.util.Calendar" xmlType="xsd:dateTime" parseMethod="javax.xml.bind.DatatypeConverter.parseDateTime" printMethod="javax.xml.bind.DatatypeConverter.printDateTime" />
     <jaxb:javaType name="java.net.URL" xmlType="xsd:anyURI" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseUrl" printMethod="org.openestate.is24.restapi.utils.XmlUtils.printUrl" />

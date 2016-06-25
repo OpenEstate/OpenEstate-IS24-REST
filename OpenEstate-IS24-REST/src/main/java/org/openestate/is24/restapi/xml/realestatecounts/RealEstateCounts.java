@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.realestatecounts;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -61,7 +62,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
     "marketPlacePublishedRealEstatesCount"
 })
 @XmlRootElement(name = "realEstateCounts")
-public class RealEstateCounts implements Cloneable, CopyTo2, Equals2, ToString2
+public class RealEstateCounts implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(name = "is24publishedRealEstatesCount")
@@ -344,7 +345,7 @@ public class RealEstateCounts implements Cloneable, CopyTo2, Equals2, ToString2
     @XmlType(name = "", propOrder = {
         "value"
     })
-    public static class MarketPlacePublishedRealEstatesCount implements Cloneable, CopyTo2, Equals2, ToString2
+    public static class MarketPlacePublishedRealEstatesCount implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
     {
 
         @XmlValue

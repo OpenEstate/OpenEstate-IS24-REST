@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.realtorbadges;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -53,7 +54,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 @XmlType(name = "RealtorBadges", propOrder = {
 
 })
-public class RealtorBadges implements Cloneable, CopyTo2, Equals2, ToString2
+public class RealtorBadges implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(required = true)
@@ -189,7 +190,7 @@ public class RealtorBadges implements Cloneable, CopyTo2, Equals2, ToString2
     @XmlType(name = "", propOrder = {
         "badge"
     })
-    public static class Badges implements Cloneable, CopyTo2, Equals2, ToString2
+    public static class Badges implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
     {
 
         protected List<Badge> badge;

@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.common;
 
+import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -59,7 +60,7 @@ import org.openestate.is24.restapi.xml.Adapter5;
     "numberOfHits",
     "numberOfListings"
 })
-public class Paging implements Cloneable, CopyTo2, Equals2, ToString2
+public class Paging implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     protected ReferenceLink next;

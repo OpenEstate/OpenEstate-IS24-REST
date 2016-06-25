@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.common;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -71,7 +72,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 })
 public class Picture
     extends Attachment
-    implements Cloneable, CopyTo2, Equals2, ToString2
+    implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(defaultValue = "false")
@@ -308,7 +309,7 @@ public class Picture
     @XmlType(name = "", propOrder = {
         "url"
     })
-    public static class Urls implements Cloneable, CopyTo2, Equals2, ToString2
+    public static class Urls implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
     {
 
         @XmlElement(required = true)
@@ -451,7 +452,7 @@ public class Picture
          */
         @XmlAccessorType(XmlAccessType.FIELD)
         @XmlType(name = "")
-        public static class Url implements Cloneable, CopyTo2, Equals2, ToString2
+        public static class Url implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
         {
 
             @XmlAttribute(name = "scale")

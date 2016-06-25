@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.offerlistelement;
 
+import java.io.Serializable;
 import java.net.URL;
 import java.util.Calendar;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -89,7 +90,7 @@ import org.openestate.is24.restapi.xml.common.RealEstateState;
 })
 public abstract class OfferRealEstateForList
     extends AbstractRealEstateForList
-    implements Cloneable, CopyTo2, Equals2, ToString2
+    implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(required = true)

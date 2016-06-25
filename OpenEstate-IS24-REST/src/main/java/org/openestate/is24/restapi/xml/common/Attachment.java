@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.common;
 
+import java.io.Serializable;
 import java.net.URL;
 import java.util.Calendar;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -75,7 +76,7 @@ import org.openestate.is24.restapi.xml.Adapter4;
     ExtendedAttachment.class,
     Link.class
 })
-public abstract class Attachment implements Cloneable, CopyTo2, Equals2, ToString2
+public abstract class Attachment implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlJavaTypeAdapter(Adapter34 .class)

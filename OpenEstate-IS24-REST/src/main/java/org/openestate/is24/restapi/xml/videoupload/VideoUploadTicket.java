@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.videoupload;
 
+import java.io.Serializable;
 import java.net.URL;
 import java.util.Calendar;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -50,7 +51,7 @@ import org.openestate.is24.restapi.xml.Adapter4;
 @XmlType(name = "VideoUploadTicket", propOrder = {
 
 })
-public class VideoUploadTicket implements Cloneable, CopyTo2, Equals2, ToString2
+public class VideoUploadTicket implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(required = true, type = String.class)

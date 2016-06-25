@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.common;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -46,7 +47,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
     "amount",
     "currency"
 })
-public class Money132 implements Cloneable, CopyTo2, Equals2, ToString2
+public class Money132 implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(required = true, type = String.class)

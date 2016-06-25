@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.common;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -48,7 +49,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
     "strictEntry"
 })
 @XmlRootElement(name = "strictList")
-public class StrictList implements Cloneable, CopyTo2, Equals2, ToString2
+public class StrictList implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     protected Paging paging;

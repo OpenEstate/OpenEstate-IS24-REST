@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.common;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -45,7 +46,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
     "message"
 })
 @XmlRootElement(name = "messages")
-public class Messages implements Cloneable, CopyTo2, Equals2, ToString2
+public class Messages implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(required = true)

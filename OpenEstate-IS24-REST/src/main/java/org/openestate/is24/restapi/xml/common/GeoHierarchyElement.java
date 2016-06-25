@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.common;
 
+import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlSeeAlso;
@@ -58,7 +59,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
     Quarter.class,
     Neighbourhood.class
 })
-public class GeoHierarchyElement implements Cloneable, CopyTo2, Equals2, ToString2
+public class GeoHierarchyElement implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     protected String name;
