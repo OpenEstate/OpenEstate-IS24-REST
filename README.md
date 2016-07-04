@@ -114,7 +114,7 @@ Dependencies
 -   [commons-codec 1.10](http://commons.apache.org/proper/commons-codec/)
 -   [commons-io 2.5](http://commons.apache.org/proper/commons-io/)
 -   [commons-lang 3.4](http://commons.apache.org/proper/commons-lang/)
--   [jaxb2-basics-runtime 0.11.0](https://github.com/highsource/jaxb2-basics)
+-   [jaxb2-basics-runtime 0.11.1](https://github.com/highsource/jaxb2-basics)
 -   [oauth-signpost 1.2.1.2](https://code.google.com/p/oauth-signpost/)
 -   [SLF4J 1.7.21](http://www.slf4j.org/)
 -   [Lorem 2.0](https://github.com/mdeanda/lorem) (only required by
