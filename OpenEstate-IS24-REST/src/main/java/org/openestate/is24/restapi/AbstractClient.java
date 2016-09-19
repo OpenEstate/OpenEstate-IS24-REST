@@ -15,11 +15,6 @@
  */
 package org.openestate.is24.restapi;
 
-import org.openestate.is24.restapi.utils.Verification;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.URL;
 import oauth.signpost.OAuthConsumer;
 import oauth.signpost.OAuthProvider;
 import oauth.signpost.basic.DefaultOAuthConsumer;
@@ -31,9 +26,15 @@ import org.apache.commons.lang3.StringUtils;
 import org.openestate.is24.restapi.utils.Authorization;
 import org.openestate.is24.restapi.utils.RequestMethod;
 import org.openestate.is24.restapi.utils.Response;
+import org.openestate.is24.restapi.utils.Verification;
 import org.openestate.is24.restapi.utils.XmlUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URL;
 
 /**
  * A basic client for communication with the IS24-Webservice.
@@ -464,4 +465,31 @@ public abstract class AbstractClient
    * if authorization failed
    */
   protected abstract Response sendVideoUploadRequest( URL url, RequestMethod method, String auth, InputStream input, String fileName, long fileSize ) throws IOException, OAuthException;
+
+  /**
+   * Send a JSON string to the IS24-Webservice.
+   * <p>
+   * This function must be implemendet by specific implementations of
+   * {@link AbstractClient}.
+   *
+   * @param url
+   * URL of the IS24-Webservice, where the request is sent to
+   *
+   * @param method
+   * HTTP method of the outgoing request
+   *
+   * @param json
+   * JSON string, that is sent to the IS24-Webservice
+   *
+   * @return
+   * response, that was received from the IS24-Webservice
+   *
+   * @throws IOException
+   * if communication with IS24-Webservice failed
+   *
+   * @throws OAuthException
+   * if authorization failed
+   */
+  protected abstract Response sendJsonRequest( URL url, RequestMethod method, String json ) throws IOException, OAuthException;
+
 }
