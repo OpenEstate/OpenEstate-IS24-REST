@@ -58,9 +58,9 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 public class CountyCourt implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
-    @XmlJavaTypeAdapter(Adapter30 .class)
+    @XmlJavaTypeAdapter(Adapter32 .class)
     protected String courtNumber;
-    @XmlJavaTypeAdapter(Adapter31 .class)
+    @XmlJavaTypeAdapter(Adapter33 .class)
     protected String name;
 
     /**

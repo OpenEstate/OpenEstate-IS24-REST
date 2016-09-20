@@ -64,9 +64,9 @@ public class CourtageInfo implements Serializable, Cloneable, CopyTo2, Equals2, 
     @XmlElement(required = true)
     @XmlSchemaType(name = "string")
     protected YesNoNotApplicableType hasCourtage;
-    @XmlJavaTypeAdapter(Adapter32 .class)
+    @XmlJavaTypeAdapter(Adapter34 .class)
     protected String courtage;
-    @XmlJavaTypeAdapter(Adapter33 .class)
+    @XmlJavaTypeAdapter(Adapter35 .class)
     protected String courtageNote;
 
     /**

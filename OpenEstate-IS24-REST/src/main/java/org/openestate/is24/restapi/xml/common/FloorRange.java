@@ -64,10 +64,10 @@ public class FloorRange implements Serializable, Cloneable, CopyTo2, Equals2, To
 {
 
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter28 .class)
+    @XmlJavaTypeAdapter(Adapter30 .class)
     protected Integer minimal;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter29 .class)
+    @XmlJavaTypeAdapter(Adapter31 .class)
     protected Integer maximal;
 
     /**

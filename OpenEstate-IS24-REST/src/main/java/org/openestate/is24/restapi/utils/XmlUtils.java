@@ -90,6 +90,8 @@ public final class XmlUtils
   private final static String JAXB_PACKAGES = ""
     + "org.openestate.is24.restapi.xml.attachmentsorder"
     + ":org.openestate.is24.restapi.xml.common"
+    + ":org.openestate.is24.restapi.xml.commonsearch"
+    + ":org.openestate.is24.restapi.xml.expose"
     + ":org.openestate.is24.restapi.xml.gis"
     + ":org.openestate.is24.restapi.xml.offerlistelement"
     + ":org.openestate.is24.restapi.xml.offeruser"
@@ -959,6 +961,21 @@ public final class XmlUtils
   public static String parseText1800( String value )
   {
     return parseText( value, null, 1800 );
+  }
+
+  /**
+   * Read a {@link String} value from XML
+   * with maximal 2000 characters.
+   *
+   * @param value
+   * XML string
+   *
+   * @return
+   * parsed value or null, if the value is invalid
+   */
+  public static String parseText2000( String value )
+  {
+    return parseText( value, null, 2000 );
   }
 
   /**
@@ -1927,6 +1944,24 @@ public final class XmlUtils
   public static String printText1800( String value )
   {
     return printText( value, null, 1800 );
+  }
+
+  /**
+   * Write a {@link String} value into XML output
+   * with maximal 2000 characters.
+   *
+   * @param value
+   * value to write
+   *
+   * @return
+   * XML string
+   *
+   * @throws IllegalArgumentException
+   * if a validation error occured
+   */
+  public static String printText2000( String value )
+  {
+    return printText( value, null, 2000 );
   }
 
   /**

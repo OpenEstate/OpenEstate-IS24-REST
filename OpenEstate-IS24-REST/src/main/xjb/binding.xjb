@@ -211,6 +211,25 @@
     </jaxb:bindings>
   </jaxb:bindings>
 
+  <jaxb:bindings schemaLocation="../xsd/expose-1.0.xsd">
+    <jaxb:schemaBindings>
+      <jaxb:package name="org.openestate.is24.restapi.xml.expose"/>
+    </jaxb:schemaBindings>
+
+    <jaxb:bindings node="//xsd:simpleType/xsd:restriction[@base='common:TextField']/xsd:maxLength[@value='40']/../.." multiple="true">
+      <jaxb:javaType name="java.lang.String" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseText40" printMethod="org.openestate.is24.restapi.utils.XmlUtils.printText40" />
+    </jaxb:bindings>
+    <jaxb:bindings node="//xsd:simpleType/xsd:restriction[@base='common:TextField']/xsd:maxLength[@value='50']/../.." multiple="true">
+      <jaxb:javaType name="java.lang.String" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseText50" printMethod="org.openestate.is24.restapi.utils.XmlUtils.printText50" />
+    </jaxb:bindings>
+    <jaxb:bindings node="//xsd:simpleType/xsd:restriction[@base='common:TextField']/xsd:maxLength[@value='100']/../.." multiple="true">
+      <jaxb:javaType name="java.lang.String" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseText100" printMethod="org.openestate.is24.restapi.utils.XmlUtils.printText100" />
+    </jaxb:bindings>
+    <jaxb:bindings node="//xsd:simpleType/xsd:restriction[@base='common:TextField']/xsd:maxLength[@value='2000']/../.." multiple="true">
+      <jaxb:javaType name="java.lang.String" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseText2000" printMethod="org.openestate.is24.restapi.utils.XmlUtils.printText2000" />
+    </jaxb:bindings>
+  </jaxb:bindings>
+
   <jaxb:bindings schemaLocation="../xsd/gis-1.0.xsd">
     <jaxb:schemaBindings>
       <jaxb:package name="org.openestate.is24.restapi.xml.gis"/>
@@ -262,6 +281,12 @@
   <jaxb:bindings schemaLocation="../xsd/realtorbadges-1.0.xsd">
     <jaxb:schemaBindings>
       <jaxb:package name="org.openestate.is24.restapi.xml.realtorbadges"/>
+    </jaxb:schemaBindings>
+  </jaxb:bindings>
+
+  <jaxb:bindings schemaLocation="../xsd/search-common-1.0.xsd">
+    <jaxb:schemaBindings>
+      <jaxb:package name="org.openestate.is24.restapi.xml.commonsearch"/>
     </jaxb:schemaBindings>
   </jaxb:bindings>
 

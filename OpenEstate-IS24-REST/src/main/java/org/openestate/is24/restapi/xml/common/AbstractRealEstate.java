@@ -22,6 +22,7 @@ import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 import org.openestate.is24.restapi.xml.Adapter4;
+import org.openestate.is24.restapi.xml.expose.ExposeRealEstate;
 import org.openestate.is24.restapi.xml.realestates.RealEstate;
 
 
@@ -99,6 +100,7 @@ import org.openestate.is24.restapi.xml.realestates.RealEstate;
     "realEstateProjectId"
 })
 @XmlSeeAlso({
+    ExposeRealEstate.class,
     RealEstate.class
 })
 public abstract class AbstractRealEstate

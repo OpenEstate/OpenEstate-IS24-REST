@@ -23,6 +23,7 @@ import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 import org.openestate.is24.restapi.xml.Adapter2;
+import org.openestate.is24.restapi.xml.commonsearch.RealEstateForList;
 import org.openestate.is24.restapi.xml.offerlistelement.OfferRealEstateForList;
 
 
@@ -71,6 +72,7 @@ import org.openestate.is24.restapi.xml.offerlistelement.OfferRealEstateForList;
     "realEstateState"
 })
 @XmlSeeAlso({
+    RealEstateForList.class,
     OfferRealEstateForList.class,
     AbstractRealEstate.class
 })

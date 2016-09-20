@@ -145,6 +145,10 @@ XML specifications for the different webservices are available at:
     -   [XML-Schemas for the *production* system](http://rest.immobilienscout24.de/restapi/api/gis/v1.0/?_wadl&_schema)
     -   [XML-Schemas for the *sandbox* system](http://rest.sandbox-immobilienscout24.de/restapi/api/gis/v1.0/?_wadl&_schema)
 
+-   [**Search API**](http://api.immobilienscout24.de/our-apis/search.html) & [**Exposé API**](http://api.immobilienscout24.de/our-apis/expose.html)
+    -   [XML-Schemas for the *production* system](http://rest.immobilienscout24.de/restapi/api/search/v1.0/?_wadl&_schema)
+    -   [XML-Schemas for the *sandbox* system](http://rest.sandbox-immobilienscout24.de/restapi/api/search/v1.0/?_wadl&_schema)
+
 
 Changelog
 ---------

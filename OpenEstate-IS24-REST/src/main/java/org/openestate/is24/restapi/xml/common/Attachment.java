@@ -24,6 +24,7 @@ import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 import org.openestate.is24.restapi.xml.Adapter2;
 import org.openestate.is24.restapi.xml.Adapter4;
+import org.openestate.is24.restapi.xml.commonsearch.SearchPicture;
 
 
 /**
@@ -74,15 +75,16 @@ import org.openestate.is24.restapi.xml.Adapter4;
     Picture.class,
     StreamingVideo.class,
     ExtendedAttachment.class,
-    Link.class
+    Link.class,
+    SearchPicture.class
 })
 public abstract class Attachment implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
-    @XmlJavaTypeAdapter(Adapter34 .class)
+    @XmlJavaTypeAdapter(Adapter21 .class)
     protected String title;
     protected String checkSum;
-    @XmlJavaTypeAdapter(Adapter35 .class)
+    @XmlJavaTypeAdapter(Adapter22 .class)
     protected String externalId;
     protected String externalCheckSum;
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")
