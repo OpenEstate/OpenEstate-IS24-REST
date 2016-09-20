@@ -101,48 +101,15 @@ public class DefaultClient extends AbstractClient
   }
 
   @Override
+  protected Response sendJsonRequest( URL url, RequestMethod method, String json ) throws IOException, OAuthException
+  {
+    return _sendRequest( url, method, json, JSON_CONTENT_TYPE );
+  }
+
+  @Override
   protected Response sendXmlRequest( URL url, RequestMethod method, String xml ) throws IOException, OAuthException
   {
-    if (method==null) method = RequestMethod.GET;
-    xml = (RequestMethod.POST.equals( method ) || RequestMethod.PUT.equals( method ))?
-      StringUtils.trimToNull( xml ): null;
-
-    HttpURLConnection connection = null;
-    DataOutputStream output = null;
-    try
-    {
-      // create connection
-      connection = (HttpURLConnection) url.openConnection();
-      connection.setRequestMethod( method.name() );
-      if (xml!=null)
-      {
-        connection.setRequestProperty( "Content-Type", "application/xml; charset="+getEncoding().toLowerCase() );
-        connection.setRequestProperty( "Content-Length", String.valueOf( xml.getBytes( getEncoding() ).length ) );
-        connection.setRequestProperty( "Content-Language", "en-US" );
-      }
-      connection.setRequestProperty( "Accept", "application/xml" );
-      connection.setUseCaches( false );
-      connection.setDoInput( true );
-      connection.setDoOutput( true );
-      getAuthConsumer().sign( connection );
-
-      // send request
-      if (xml!=null)
-      {
-        output = new DataOutputStream( connection.getOutputStream() );
-        output.writeBytes( xml );
-        output.flush();
-      }
-      connection.connect();
-
-      // read response into string
-      return createResponse( connection );
-    }
-    finally
-    {
-      IOUtils.closeQuietly( output );
-      IOUtils.close( connection );
-    }
+    return _sendRequest( url, method, xml, XML_CONTENT_TYPE );
   }
 
   @Override
@@ -307,6 +274,50 @@ public class DefaultClient extends AbstractClient
       }
 
       if (output!=null) output.flush();
+      connection.connect();
+
+      // read response into string
+      return createResponse( connection );
+    }
+    finally
+    {
+      IOUtils.closeQuietly( output );
+      IOUtils.close( connection );
+    }
+  }
+
+  private Response _sendRequest( URL url, RequestMethod method, String content, String contentType ) throws IOException, OAuthException
+  {
+    if (method==null) method = RequestMethod.GET;
+    content = (RequestMethod.POST.equals( method ) || RequestMethod.PUT.equals( method ))?
+      StringUtils.trimToNull( content ): null;
+
+    HttpURLConnection connection = null;
+    DataOutputStream output = null;
+    try
+    {
+      // create connection
+      connection = (HttpURLConnection) url.openConnection();
+      connection.setRequestMethod( method.name() );
+      if (content!=null)
+      {
+        connection.setRequestProperty( "Content-Type", contentType + "; charset=" + getEncoding().toLowerCase() );
+        connection.setRequestProperty( "Content-Length", String.valueOf( content.getBytes( getEncoding() ).length ) );
+        connection.setRequestProperty( "Content-Language", "en-US" );
+      }
+      connection.setRequestProperty( "Accept", contentType );
+      connection.setUseCaches( false );
+      connection.setDoInput( true );
+      connection.setDoOutput( true );
+      getAuthConsumer().sign( connection );
+
+      // send request
+      if (content!=null)
+      {
+        output = new DataOutputStream( connection.getOutputStream() );
+        output.writeBytes( content );
+        output.flush();
+      }
       connection.connect();
 
       // read response into string

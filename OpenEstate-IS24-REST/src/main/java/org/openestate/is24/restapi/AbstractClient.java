@@ -90,6 +90,20 @@ public abstract class AbstractClient
    */
   public final static String RESPONSE_HEADER_RESOURCE_ID = "L-IS24-ResourceId";
 
+  /**
+   * Content type for XML requests.
+   *
+   * @since 0.4
+   */
+  public final static String XML_CONTENT_TYPE = "application/xml";
+
+  /**
+   * Content type for JSON requests.
+   *
+   * @since 0.4
+   */
+  public final static String JSON_CONTENT_TYPE = "application/json";
+
   private final String apiBaseUrl;
   private final String consumerToken;
   private final String consumerSecret;
@@ -368,6 +382,34 @@ public abstract class AbstractClient
       return null;
     }
   }
+
+  /**
+   * Send a JSON string to the IS24-Webservice.
+   * <p>
+   * This function must be implemendet by specific implementations of
+   * {@link AbstractClient}.
+   *
+   * @param url
+   * URL of the IS24-Webservice, where the request is sent to
+   *
+   * @param method
+   * HTTP method of the outgoing request
+   *
+   * @param json
+   * JSON string, that is sent to the IS24-Webservice
+   *
+   * @return
+   * response, that was received from the IS24-Webservice
+   *
+   * @throws IOException
+   * if communication with IS24-Webservice failed
+   *
+   * @throws OAuthException
+   * if authorization failed
+   *
+   * @since 0.4
+   */
+  protected abstract Response sendJsonRequest( URL url, RequestMethod method, String json ) throws IOException, OAuthException;
 
   /**
    * Send a XML string to the IS24-Webservice.
