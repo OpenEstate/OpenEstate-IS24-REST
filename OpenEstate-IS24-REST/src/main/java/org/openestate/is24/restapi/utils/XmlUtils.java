@@ -53,6 +53,8 @@ import org.openestate.is24.restapi.xml.common.PublishObject;
 import org.openestate.is24.restapi.xml.common.Quarter;
 import org.openestate.is24.restapi.xml.common.RealtorContactDetails;
 import org.openestate.is24.restapi.xml.common.Region;
+import org.openestate.is24.restapi.xml.expose.ContactForm;
+import org.openestate.is24.restapi.xml.expose.SendAFriendForm;
 import org.openestate.is24.restapi.xml.realestates.ApartmentBuy;
 import org.openestate.is24.restapi.xml.realestates.ApartmentRent;
 import org.openestate.is24.restapi.xml.realestates.AssistedLiving;
@@ -275,6 +277,10 @@ public final class XmlUtils
       {
         writeXml( (City) object, encoding, prettyPrint, output );
       }
+      else if (object instanceof ContactForm)
+      {
+        writeXml( (ContactForm) object, encoding, prettyPrint, output );
+      }
       else if (object instanceof Continent)
       {
         writeXml( (Continent) object, encoding, prettyPrint, output );
@@ -302,6 +308,10 @@ public final class XmlUtils
       else if (object instanceof Region)
       {
         writeXml( (Region) object, encoding, prettyPrint, output );
+      }
+      else if (object instanceof SendAFriendForm)
+      {
+        writeXml( (SendAFriendForm) object, encoding, prettyPrint, output );
       }
       else
       {
@@ -2302,6 +2312,131 @@ public final class XmlUtils
   }
 
   /**
+   * Write a {@link ContactForm} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param contactForm
+   * object to write
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   *
+   * @since 0.4
+   */
+  public static void writeXml( ContactForm contactForm, OutputStream output ) throws JAXBException
+  {
+    writeXml( contactForm, DEFAULT_ENCODING, true, output );
+  }
+
+  /**
+   * Write a {@link ContactForm} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param contactForm
+   * object to write
+   *
+   * @param encoding
+   * encoding of generated XML output
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   *
+   * @since 0.4
+   */
+  public static void writeXml( ContactForm contactForm, String encoding, OutputStream output ) throws JAXBException
+  {
+    writeXml( contactForm, encoding, true, output );
+  }
+
+  /**
+   * Write a {@link ContactForm} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param contactForm
+   * object to write
+   *
+   * @param encoding
+   * encoding of generated XML output
+   *
+   * @param prettyPrint
+   * enable pretty printing for generated XML output
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   *
+   * @since 0.4
+   */
+  public static void writeXml( ContactForm contactForm, String encoding, boolean prettyPrint, OutputStream output ) throws JAXBException
+  {
+    writeXml( contactForm, createMarshaller( encoding, prettyPrint ), output );
+  }
+
+  /**
+   * Write a {@link ContactForm} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param contactForm
+   * object to write
+   *
+   * @param marshaller
+   * marshaller, that is used for XML generation
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   *
+   * @since 0.4
+   */
+  public static void writeXml( ContactForm contactForm, Marshaller marshaller, OutputStream output ) throws JAXBException
+  {
+    final org.openestate.is24.restapi.xml.expose.ObjectFactory factory =
+      new org.openestate.is24.restapi.xml.expose.ObjectFactory();
+
+    marshaller.setEventHandler( new ValidationEventHandler()
+    {
+      @Override
+      public boolean handleEvent( ValidationEvent ve )
+      {
+        return true;
+      }
+    });
+
+    marshaller.marshal(
+      factory.createContactForm( contactForm ), output );
+  }
+
+  /**
    * Write a {@link Continent} as XML into an {@link OutputStream}.
    * <p>
    * The provided object is wrapped into a {@link JAXBElement} before XML
@@ -3226,5 +3361,130 @@ public final class XmlUtils
 
     marshaller.marshal(
       factory.createRegion( region ), output );
+  }
+
+  /**
+   * Write a {@link SendAFriendForm} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param sendAFriendForm
+   * object to write
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   *
+   * @since 0.4
+   */
+  public static void writeXml( SendAFriendForm sendAFriendForm, OutputStream output ) throws JAXBException
+  {
+    writeXml( sendAFriendForm, DEFAULT_ENCODING, true, output );
+  }
+
+  /**
+   * Write a {@link SendAFriendForm} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param sendAFriendForm
+   * object to write
+   *
+   * @param encoding
+   * encoding of generated XML output
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   *
+   * @since 0.4
+   */
+  public static void writeXml( SendAFriendForm sendAFriendForm, String encoding, OutputStream output ) throws JAXBException
+  {
+    writeXml( sendAFriendForm, encoding, true, output );
+  }
+
+  /**
+   * Write a {@link SendAFriendForm} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param sendAFriendForm
+   * object to write
+   *
+   * @param encoding
+   * encoding of generated XML output
+   *
+   * @param prettyPrint
+   * enable pretty printing for generated XML output
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   *
+   * @since 0.4
+   */
+  public static void writeXml( SendAFriendForm sendAFriendForm, String encoding, boolean prettyPrint, OutputStream output ) throws JAXBException
+  {
+    writeXml( sendAFriendForm, createMarshaller( encoding, prettyPrint ), output );
+  }
+
+  /**
+   * Write a {@link SendAFriendForm} as XML into an {@link OutputStream}.
+   * <p>
+   * The provided object is wrapped into a {@link JAXBElement} before XML
+   * creation in order to match the requirements of the schema.
+   * <p>
+   * This method makes sure, that validation errors do not break XML creation.
+   * Invalid entries are not written into XML.
+   *
+   * @param sendAFriendForm
+   * object to write
+   *
+   * @param marshaller
+   * marshaller, that is used for XML generation
+   *
+   * @param output
+   * stream, where the XML is written to
+   *
+   * @throws JAXBException
+   * if an error occured during XML creation
+   *
+   * @since 0.4
+   */
+  public static void writeXml( SendAFriendForm sendAFriendForm, Marshaller marshaller, OutputStream output ) throws JAXBException
+  {
+    final org.openestate.is24.restapi.xml.expose.ObjectFactory factory =
+      new org.openestate.is24.restapi.xml.expose.ObjectFactory();
+
+    marshaller.setEventHandler( new ValidationEventHandler()
+    {
+      @Override
+      public boolean handleEvent( ValidationEvent ve )
+      {
+        return true;
+      }
+    });
+
+    marshaller.marshal(
+      factory.createSendAFriendForm( sendAFriendForm ), output );
   }
 }
