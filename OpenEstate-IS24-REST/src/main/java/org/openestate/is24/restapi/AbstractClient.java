@@ -93,14 +93,14 @@ public abstract class AbstractClient
   /**
    * Content type for XML requests.
    *
-   * @since 0.4
+   * @since 0.3.3
    */
   public final static String XML_CONTENT_TYPE = "application/xml";
 
   /**
    * Content type for JSON requests.
    *
-   * @since 0.4
+   * @since 0.3.3
    */
   public final static String JSON_CONTENT_TYPE = "application/json";
 
@@ -407,7 +407,7 @@ public abstract class AbstractClient
    * @throws OAuthException
    * if authorization failed
    *
-   * @since 0.4
+   * @since 0.3.3
    */
   protected abstract Response sendJsonRequest( URL url, RequestMethod method, String json ) throws IOException, OAuthException;
 
