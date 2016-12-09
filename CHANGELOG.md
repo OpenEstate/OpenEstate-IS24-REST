@@ -8,6 +8,7 @@ Changelog for OpenEstate-IS24-REST
 ### updates
 
 -   Updated `commons-io` library to version 2.5.
+-   Updated `commons-lang` library to version 3.5.
 -   Updated `Lorem` library to version 2.1.
 -   Updated `slf4j` libraries to version 1.7.21.
 -   Generated JAXB classes implement `java.io.Serializable`.
