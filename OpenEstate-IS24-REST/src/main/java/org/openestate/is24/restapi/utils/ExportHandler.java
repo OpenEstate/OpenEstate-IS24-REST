@@ -83,6 +83,7 @@ public class ExportHandler
   private long progress = 0;
   private long totalProgress = 0;
   private boolean useNewEnergySourceEnev2014Values = true;
+  private boolean removeObjectBeforeUpdate = false;
 
   /**
    * Create a new {@link ExportHandler}.
@@ -984,9 +985,9 @@ public class ExportHandler
       final Long is24ObjectId;
 
       // Immobilie im Portal löschen,
-      // wenn diese bereits im Portal existiert
-      // und einer anderen Rubrik zugewiesen ist
-      if (oldIs24Object!=null && !oldIs24Object.getClass().getName().equals( object.getClass().getName() ))
+      // wenn diese bereits in einer anderen Rubrik im Portal existiert
+      // oder wenn dies explizit angefordert wurde
+      if (oldIs24Object!=null && (this.removeObjectBeforeUpdate || !oldIs24Object.getClass().getName().equals( object.getClass().getName() )))
       {
         //LOGGER.debug( "RUBRIK GEÄNDERT" );
         //LOGGER.debug( "> für Immobilie #" + oldIs24Object.getId() );
@@ -1882,6 +1883,17 @@ public class ExportHandler
   }
 
   /**
+   * Check, if objects are removed before update.
+   *
+   * @return
+   * true, if objects are removed before update.
+   */
+  public boolean isRemoveObjectBeforeUpdate()
+  {
+    return this.removeObjectBeforeUpdate;
+  }
+
+  /**
    * Check, if all values for "energySourceEnev2014" are enabled.
    *
    * @return
@@ -1891,7 +1903,7 @@ public class ExportHandler
    */
   public boolean isUseNewEnergySourceEnev2014Values()
   {
-    return useNewEnergySourceEnev2014Values;
+    return this.useNewEnergySourceEnev2014Values;
   }
 
   /**
@@ -2137,6 +2149,17 @@ public class ExportHandler
 
     // launch callback function for progress
     progressUpdated( this.progress, this.totalProgress );
+  }
+
+  /**
+   * Enable / disable removal of objects before update.
+   *
+   * @param removeObjectBeforeUpdate
+   * enabled / disabled
+   */
+  public void setRemoveObjectBeforeUpdate( boolean removeObjectBeforeUpdate )
+  {
+    this.removeObjectBeforeUpdate = removeObjectBeforeUpdate;
   }
 
   /**
