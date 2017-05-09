@@ -44,6 +44,7 @@ import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.entity.mime.content.InputStreamBody;
+import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 import org.openestate.is24.restapi.AbstractClient;
@@ -119,6 +120,16 @@ public class HttpComponents43Client extends AbstractClient
       apiBaseUrl + "/security/oauth/access_token",
       apiBaseUrl + "/security/oauth/confirm_access",
       httpClient );
+  }
+
+  @Override
+  public void close() throws IOException
+  {
+    super.close();
+    if (this.httpClient instanceof CloseableHttpClient)
+    {
+      IOUtils.closeQuietly( (CloseableHttpClient) httpClient );
+    }
   }
 
   /**

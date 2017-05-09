@@ -17,6 +17,7 @@ package org.openestate.is24.restapi.hc42;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
+import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -126,6 +127,16 @@ public class HttpComponents42Client extends AbstractClient
       apiBaseUrl + "/security/oauth/access_token",
       apiBaseUrl + "/security/oauth/confirm_access",
       httpClient );
+  }
+
+  @Override
+  public void close() throws IOException
+  {
+    super.close();
+    if (this.httpClient instanceof Closeable)
+    {
+      IOUtils.closeQuietly( (Closeable) httpClient );
+    }
   }
 
   /**
