@@ -1314,7 +1314,7 @@ public class ExportHandler
                 long is24AttachmentId = oldAttachment.getId();
                 //LOGGER.debug( "> updating attached link #" + is24AttachmentId );
                 //LOGGER.debug( ">> " + externalAttachmentId + " / " + externalAttachmentId.length() );
-                ImportExport.AttachmentService.putById( client,
+                ImportExport.AttachmentService.putById( this.client,
                   is24ObjectId, is24AttachmentId, link );
                 oldIs24Attachments.remove( externalAttachmentId );
               }
@@ -1374,7 +1374,7 @@ public class ExportHandler
               long is24AttachmentId = oldAttachment.getId();
               //LOGGER.debug( "> updating attached file #" + is24AttachmentId );
               //LOGGER.debug( ">> " + externalAttachmentId + " / " + externalAttachmentId.length() );
-              ImportExport.AttachmentService.putById( client,
+              ImportExport.AttachmentService.putById( this.client,
                 is24ObjectId, is24AttachmentId, is24Attachment );
               oldIs24Attachments.remove( externalAttachmentId );
 
