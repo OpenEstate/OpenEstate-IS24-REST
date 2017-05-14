@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.common;
 
+import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -60,7 +61,7 @@ import org.openestate.is24.restapi.xml.Adapter5;
     "processingProgress",
     "processingStatus"
 })
-public class VideoInfo implements Cloneable, CopyTo2, Equals2, ToString2
+public class VideoInfo implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(required = true)

@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.common;
 
+import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
@@ -47,7 +48,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 @XmlType(name = "GeoInfoNodeCriteria", propOrder = {
 
 })
-public class GeoInfoNodeCriteria implements Cloneable, CopyTo2, Equals2, ToString2
+public class GeoInfoNodeCriteria implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     protected long continentId;

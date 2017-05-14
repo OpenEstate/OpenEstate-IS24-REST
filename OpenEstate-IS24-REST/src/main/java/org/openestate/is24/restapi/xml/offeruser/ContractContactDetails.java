@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.offeruser;
 
+import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
@@ -40,7 +41,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 @XmlType(name = "contractContactDetails", propOrder = {
     "companyName"
 })
-public class ContractContactDetails implements Cloneable, CopyTo2, Equals2, ToString2
+public class ContractContactDetails implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     protected String companyName;

@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.common;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -57,7 +58,7 @@ import org.openestate.is24.restapi.xml.Adapter1;
 @XmlSeeAlso({
     BudgetPrice.class
 })
-public class Price implements Cloneable, CopyTo2, Equals2, ToString2
+public class Price implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(required = true, type = String.class)

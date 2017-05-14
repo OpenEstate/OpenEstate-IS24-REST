@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.realestates;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -112,7 +113,7 @@ import org.openestate.is24.restapi.xml.common.YesNotApplicableType;
 })
 public class Office
     extends RealEstate
-    implements Cloneable, CopyTo2, Equals2, ToString2
+    implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(required = true)
@@ -2505,7 +2506,7 @@ public class Office
     @XmlType(name = "", propOrder = {
         "officeRentDuration"
     })
-    public static class OfficeRentDurations implements Cloneable, CopyTo2, Equals2, ToString2
+    public static class OfficeRentDurations implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
     {
 
         @XmlSchemaType(name = "string")

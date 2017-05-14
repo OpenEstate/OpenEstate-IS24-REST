@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.common;
 
+import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +51,7 @@ import org.openestate.is24.restapi.xml.Adapter4;
 @XmlType(name = "Attachments", propOrder = {
     "attachment"
 })
-public class Attachments implements Cloneable, CopyTo2, Equals2, ToString2
+public class Attachments implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     protected List<Attachment> attachment;

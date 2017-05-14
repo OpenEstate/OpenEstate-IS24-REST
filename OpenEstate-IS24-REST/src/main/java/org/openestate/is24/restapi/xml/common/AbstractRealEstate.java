@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.common;
 
+import java.io.Serializable;
 import java.net.URL;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -48,28 +49,28 @@ import org.openestate.is24.restapi.xml.realestates.RealEstate;
  *         &lt;element name="descriptionNote" minOccurs="0"&gt;
  *           &lt;simpleType&gt;
  *             &lt;restriction base="{http://rest.immobilienscout24.de/schema/common/1.0}TextField"&gt;
- *               &lt;maxLength value="2000"/&gt;
+ *               &lt;maxLength value="3999"/&gt;
  *             &lt;/restriction&gt;
  *           &lt;/simpleType&gt;
  *         &lt;/element&gt;
  *         &lt;element name="furnishingNote" minOccurs="0"&gt;
  *           &lt;simpleType&gt;
  *             &lt;restriction base="{http://rest.immobilienscout24.de/schema/common/1.0}TextField"&gt;
- *               &lt;maxLength value="2000"/&gt;
+ *               &lt;maxLength value="3999"/&gt;
  *             &lt;/restriction&gt;
  *           &lt;/simpleType&gt;
  *         &lt;/element&gt;
  *         &lt;element name="locationNote" minOccurs="0"&gt;
  *           &lt;simpleType&gt;
  *             &lt;restriction base="{http://rest.immobilienscout24.de/schema/common/1.0}TextField"&gt;
- *               &lt;maxLength value="2000"/&gt;
+ *               &lt;maxLength value="3999"/&gt;
  *             &lt;/restriction&gt;
  *           &lt;/simpleType&gt;
  *         &lt;/element&gt;
  *         &lt;element name="otherNote" minOccurs="0"&gt;
  *           &lt;simpleType&gt;
  *             &lt;restriction base="{http://rest.immobilienscout24.de/schema/common/1.0}TextField"&gt;
- *               &lt;maxLength value="2000"/&gt;
+ *               &lt;maxLength value="3999"/&gt;
  *             &lt;/restriction&gt;
  *           &lt;/simpleType&gt;
  *         &lt;/element&gt;
@@ -102,7 +103,7 @@ import org.openestate.is24.restapi.xml.realestates.RealEstate;
 })
 public abstract class AbstractRealEstate
     extends AbstractRealEstateForList
-    implements Cloneable, CopyTo2, Equals2, ToString2
+    implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(type = String.class)

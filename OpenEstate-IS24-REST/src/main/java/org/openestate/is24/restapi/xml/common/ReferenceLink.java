@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.common;
 
+import java.io.Serializable;
 import java.net.URL;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -43,7 +44,7 @@ import org.openestate.is24.restapi.xml.Adapter4;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "ReferenceLink")
-public class ReferenceLink implements Cloneable, CopyTo2, Equals2, ToString2
+public class ReferenceLink implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")

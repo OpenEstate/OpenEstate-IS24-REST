@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.common;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -73,7 +74,7 @@ import org.openestate.is24.restapi.xml.offerlistelement.OfferRealEstateForList;
     OfferRealEstateForList.class,
     AbstractRealEstate.class
 })
-public abstract class AbstractRealEstateForList implements Cloneable, CopyTo2, Equals2, ToString2
+public abstract class AbstractRealEstateForList implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     protected String externalId;

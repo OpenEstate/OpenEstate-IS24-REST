@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2016 OpenEstate.org.
+ * Copyright 2014-2017 OpenEstate.org.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ package org.openestate.is24.restapi.hc42;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
+import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -128,6 +129,16 @@ public class HttpComponents42Client extends AbstractClient
       httpClient );
   }
 
+  @Override
+  public void close() throws IOException
+  {
+    super.close();
+    if (this.httpClient instanceof Closeable)
+    {
+      IOUtils.closeQuietly( (Closeable) httpClient );
+    }
+  }
+
   /**
    * Retrieves a {@link Response} from a {@link HttpResponse}.
    *
@@ -185,56 +196,15 @@ public class HttpComponents42Client extends AbstractClient
   }
 
   @Override
+  protected Response sendJsonRequest( URL url, RequestMethod method, String json ) throws IOException, OAuthException
+  {
+    return _sendRequest( url, method, json, JSON_CONTENT_TYPE );
+  }
+
+  @Override
   protected Response sendXmlRequest( URL url, RequestMethod method, String xml ) throws IOException, OAuthException
   {
-    if (httpClient==null) throw new IOException( "No HTTP client was specified!" );
-
-    if (method==null) method = RequestMethod.GET;
-    xml = (RequestMethod.POST.equals( method ) || RequestMethod.PUT.equals( method ))?
-      StringUtils.trimToNull( xml ): null;
-
-    HttpUriRequest request = null;
-    if (RequestMethod.GET.equals( method ))
-    {
-      request = new HttpGet( url.toString() );
-    }
-    else if (RequestMethod.POST.equals( method ))
-    {
-      request = new HttpPost( url.toString() );
-    }
-    else if (RequestMethod.PUT.equals( method ))
-    {
-      request = new HttpPut( url.toString() );
-    }
-    else if (RequestMethod.DELETE.equals( method ))
-    {
-      request = new HttpDelete( url.toString() );
-    }
-    else
-    {
-      throw new IOException( "Unsupported request method '" + method + "'!" );
-    }
-
-    if (xml!=null && request instanceof HttpEntityEnclosingRequest)
-    {
-      ContentType xmlType = ContentType.create( "application/xml", getEncoding() );
-
-      request.setHeader( "Content-Type", xmlType.toString() );
-      request.setHeader( "Content-Language", "en-US" );
-
-      StringEntity xmlEntity = new StringEntity( xml, xmlType );
-      ((HttpEntityEnclosingRequest) request).setEntity( xmlEntity );
-    }
-    request.setHeader( "Accept", "application/xml" );
-
-    // sign request
-    getAuthConsumer().sign( request );
-
-    // send request
-    HttpResponse response = httpClient.execute( request );
-
-    // create response
-    return createResponse( response );
+    return _sendRequest( url, method, xml, XML_CONTENT_TYPE );
   }
 
   @Override
@@ -356,6 +326,58 @@ public class HttpComponents42Client extends AbstractClient
 
     // sign request
     //getAuthConsumer().sign( request );
+
+    // send request
+    HttpResponse response = httpClient.execute( request );
+
+    // create response
+    return createResponse( response );
+  }
+
+  private Response _sendRequest( URL url, RequestMethod method, String content, String contentType ) throws IOException, OAuthException
+  {
+    if (httpClient==null) throw new IOException( "No HTTP client was specified!" );
+
+    if (method==null) method = RequestMethod.GET;
+    content = (RequestMethod.POST.equals( method ) || RequestMethod.PUT.equals( method ))?
+      StringUtils.trimToNull( content ): null;
+
+    HttpUriRequest request = null;
+    if (RequestMethod.GET.equals( method ))
+    {
+      request = new HttpGet( url.toString() );
+    }
+    else if (RequestMethod.POST.equals( method ))
+    {
+      request = new HttpPost( url.toString() );
+    }
+    else if (RequestMethod.PUT.equals( method ))
+    {
+      request = new HttpPut( url.toString() );
+    }
+    else if (RequestMethod.DELETE.equals( method ))
+    {
+      request = new HttpDelete( url.toString() );
+    }
+    else
+    {
+      throw new IOException( "Unsupported request method '" + method + "'!" );
+    }
+
+    if (content!=null && request instanceof HttpEntityEnclosingRequest)
+    {
+      ContentType type = ContentType.create( contentType, getEncoding() );
+
+      request.setHeader( "Content-Type", type.toString() );
+      request.setHeader( "Content-Language", "en-US" );
+
+      StringEntity xmlEntity = new StringEntity( content, type );
+      ((HttpEntityEnclosingRequest) request).setEntity( xmlEntity );
+    }
+    request.setHeader( "Accept", contentType );
+
+    // sign request
+    getAuthConsumer().sign( request );
 
     // send request
     HttpResponse response = httpClient.execute( request );

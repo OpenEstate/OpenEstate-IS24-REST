@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.gis;
 
+import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -60,7 +61,7 @@ import org.openestate.is24.restapi.xml.Adapter4;
     "quarter"
 })
 @XmlRootElement(name = "quarters")
-public class Quarters implements Cloneable, CopyTo2, Equals2, ToString2
+public class Quarters implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(name = "Quarter")
@@ -202,7 +203,7 @@ public class Quarters implements Cloneable, CopyTo2, Equals2, ToString2
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "")
-    public static class Quarter implements Cloneable, CopyTo2, Equals2, ToString2
+    public static class Quarter implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
     {
 
         @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")

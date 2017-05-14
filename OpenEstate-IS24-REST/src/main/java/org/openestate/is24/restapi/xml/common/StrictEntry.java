@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.common;
 
+import java.io.Serializable;
 import java.net.URL;
 import java.util.Calendar;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -55,7 +56,7 @@ import org.openestate.is24.restapi.xml.Adapter4;
     "preciseHouseNumber",
     "publishedAfterRequestedDate"
 })
-public class StrictEntry implements Cloneable, CopyTo2, Equals2, ToString2
+public class StrictEntry implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(required = true)

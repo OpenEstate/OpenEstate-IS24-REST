@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2016 OpenEstate.org.
+ * Copyright 2014-2017 OpenEstate.org.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,7 +30,6 @@ import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOExceptionWithCause;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -142,7 +141,7 @@ public class ExportPool
     }
     catch (JAXBException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Can't init XML parser for IS24-REST!", ex );
     }
 
@@ -160,7 +159,7 @@ public class ExportPool
     }
     catch (JAXBException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Can't read XML file for contact '" + pooledContactId + "'!", ex );
     }
   }
@@ -248,7 +247,7 @@ public class ExportPool
     }
     catch (JAXBException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Can't init XML parser for IS24-REST!", ex );
     }
 
@@ -266,7 +265,7 @@ public class ExportPool
     }
     catch (JAXBException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Can't read XML file for object '" + pooledObjectId + "'!", ex );
     }
   }
@@ -305,7 +304,7 @@ public class ExportPool
     }
     catch (JAXBException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Can't init XML parser for IS24-REST!", ex );
     }
 
@@ -324,7 +323,7 @@ public class ExportPool
     }
     catch (JAXBException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Can't read XML file for object '" + pooledObjectId + "'!", ex );
     }
   }
@@ -406,6 +405,20 @@ public class ExportPool
   /**
    * Return the URL of a pooled attachment for a real estate.
    *
+   * @param attachment
+   * attachment to lookup
+   *
+   * @return
+   * file
+   */
+  public URL getObjectAttachmentURL( Attachment attachment )
+  {
+    return (attachment!=null)? attachment.getHref(): null;
+  }
+
+  /**
+   * Return the URL of a pooled attachment for a real estate.
+   *
    * @param pooledObjectId
    * ID of the real estate within the pool
    *
@@ -420,8 +433,7 @@ public class ExportPool
    */
   public URL getObjectAttachmentURL( String pooledObjectId, String attachmentId ) throws IOException
   {
-    Attachment attachment = this.getObjectAttachment( pooledObjectId, attachmentId );
-    return (attachment!=null)? attachment.getHref(): null;
+    return this.getObjectAttachmentURL( this.getObjectAttachment( pooledObjectId, attachmentId ) );
   }
 
   /**
@@ -671,7 +683,7 @@ public class ExportPool
     }
     catch (JAXBException ex)
     {
-      throw new IOExceptionWithCause( "Can't write XML for contact '" + pooledContactId + "'!", ex );
+      throw new IOException( "Can't write XML for contact '" + pooledContactId + "'!", ex );
     }
     finally
     {
@@ -730,7 +742,7 @@ public class ExportPool
     }
     catch (JAXBException ex)
     {
-      throw new IOExceptionWithCause( "Can't write XML for object '" + pooledObjectId + "'!", ex );
+      throw new IOException( "Can't write XML for object '" + pooledObjectId + "'!", ex );
     }
     finally
     {
@@ -785,7 +797,7 @@ public class ExportPool
     }
     catch (JAXBException ex)
     {
-      throw new IOExceptionWithCause( "Can't write XML for an attachment of object '" + pooledObjectId + "'!", ex );
+      throw new IOException( "Can't write XML for an attachment of object '" + pooledObjectId + "'!", ex );
     }
     finally
     {
@@ -837,7 +849,7 @@ public class ExportPool
     }
     catch (JAXBException ex)
     {
-      throw new IOExceptionWithCause( "Can't write XML for an attachment of object '" + pooledObjectId + "'!", ex );
+      throw new IOException( "Can't write XML for an attachment of object '" + pooledObjectId + "'!", ex );
     }
     finally
     {
@@ -885,7 +897,7 @@ public class ExportPool
     }
     catch (JAXBException ex)
     {
-      throw new IOExceptionWithCause( "Can't write XML for an attachment of object '" + pooledObjectId + "'!", ex );
+      throw new IOException( "Can't write XML for an attachment of object '" + pooledObjectId + "'!", ex );
     }
     finally
     {

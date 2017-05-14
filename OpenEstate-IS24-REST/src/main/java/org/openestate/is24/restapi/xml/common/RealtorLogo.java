@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.common;
 
+import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -69,7 +70,7 @@ import org.openestate.is24.restapi.xml.Adapter4;
     "urls",
     "realtorLogoUrl"
 })
-public class RealtorLogo implements Cloneable, CopyTo2, Equals2, ToString2
+public class RealtorLogo implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     protected RealtorLogo.Urls urls;
@@ -268,7 +269,7 @@ public class RealtorLogo implements Cloneable, CopyTo2, Equals2, ToString2
     @XmlType(name = "", propOrder = {
         "url"
     })
-    public static class Urls implements Cloneable, CopyTo2, Equals2, ToString2
+    public static class Urls implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
     {
 
         @XmlElement(required = true)
@@ -411,7 +412,7 @@ public class RealtorLogo implements Cloneable, CopyTo2, Equals2, ToString2
          */
         @XmlAccessorType(XmlAccessType.FIELD)
         @XmlType(name = "")
-        public static class Url implements Cloneable, CopyTo2, Equals2, ToString2
+        public static class Url implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
         {
 
             @XmlAttribute(name = "scale")

@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.offerlistelement;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -53,11 +54,15 @@ import org.openestate.is24.restapi.xml.common.Price;
     "balcony",
     "certificateOfEligibilityNeeded",
     "garden",
-    "courtage"
+    "courtage",
+    "lift",
+    "guestToilet",
+    "cellar",
+    "isBarrierFree"
 })
 public class OfferApartmentBuy
     extends OfferRealEstateForList
-    implements Cloneable, CopyTo2, Equals2, ToString2
+    implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     protected Price price;
@@ -76,6 +81,10 @@ public class OfferApartmentBuy
     protected Boolean garden;
     @XmlElement(required = true)
     protected CourtageInfo courtage;
+    protected Boolean lift;
+    protected Boolean guestToilet;
+    protected Boolean cellar;
+    protected Boolean isBarrierFree;
 
     /**
      * Gets the value of the price property.
@@ -293,6 +302,102 @@ public class OfferApartmentBuy
         this.courtage = value;
     }
 
+    /**
+     * Gets the value of the lift property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean isLift() {
+        return lift;
+    }
+
+    /**
+     * Sets the value of the lift property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setLift(Boolean value) {
+        this.lift = value;
+    }
+
+    /**
+     * Gets the value of the guestToilet property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean isGuestToilet() {
+        return guestToilet;
+    }
+
+    /**
+     * Sets the value of the guestToilet property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setGuestToilet(Boolean value) {
+        this.guestToilet = value;
+    }
+
+    /**
+     * Gets the value of the cellar property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean isCellar() {
+        return cellar;
+    }
+
+    /**
+     * Sets the value of the cellar property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setCellar(Boolean value) {
+        this.cellar = value;
+    }
+
+    /**
+     * Gets the value of the isBarrierFree property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Boolean }
+     *     
+     */
+    public Boolean isIsBarrierFree() {
+        return isBarrierFree;
+    }
+
+    /**
+     * Sets the value of the isBarrierFree property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Boolean }
+     *     
+     */
+    public void setIsBarrierFree(Boolean value) {
+        this.isBarrierFree = value;
+    }
+
     public String toString() {
         final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
@@ -353,6 +458,26 @@ public class OfferApartmentBuy
             CourtageInfo theCourtage;
             theCourtage = this.getCourtage();
             strategy.appendField(locator, this, "courtage", buffer, theCourtage, (this.courtage!= null));
+        }
+        {
+            Boolean theLift;
+            theLift = this.isLift();
+            strategy.appendField(locator, this, "lift", buffer, theLift, (this.lift!= null));
+        }
+        {
+            Boolean theGuestToilet;
+            theGuestToilet = this.isGuestToilet();
+            strategy.appendField(locator, this, "guestToilet", buffer, theGuestToilet, (this.guestToilet!= null));
+        }
+        {
+            Boolean theCellar;
+            theCellar = this.isCellar();
+            strategy.appendField(locator, this, "cellar", buffer, theCellar, (this.cellar!= null));
+        }
+        {
+            Boolean theIsBarrierFree;
+            theIsBarrierFree = this.isIsBarrierFree();
+            strategy.appendField(locator, this, "isBarrierFree", buffer, theIsBarrierFree, (this.isBarrierFree!= null));
         }
         return buffer;
     }
@@ -488,6 +613,58 @@ public class OfferApartmentBuy
                     }
                 }
             }
+            {
+                Boolean liftShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.lift!= null));
+                if (liftShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Boolean sourceLift;
+                    sourceLift = this.isLift();
+                    Boolean copyLift = ((Boolean) strategy.copy(LocatorUtils.property(locator, "lift", sourceLift), sourceLift, (this.lift!= null)));
+                    copy.setLift(copyLift);
+                } else {
+                    if (liftShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.lift = null;
+                    }
+                }
+            }
+            {
+                Boolean guestToiletShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.guestToilet!= null));
+                if (guestToiletShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Boolean sourceGuestToilet;
+                    sourceGuestToilet = this.isGuestToilet();
+                    Boolean copyGuestToilet = ((Boolean) strategy.copy(LocatorUtils.property(locator, "guestToilet", sourceGuestToilet), sourceGuestToilet, (this.guestToilet!= null)));
+                    copy.setGuestToilet(copyGuestToilet);
+                } else {
+                    if (guestToiletShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.guestToilet = null;
+                    }
+                }
+            }
+            {
+                Boolean cellarShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.cellar!= null));
+                if (cellarShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Boolean sourceCellar;
+                    sourceCellar = this.isCellar();
+                    Boolean copyCellar = ((Boolean) strategy.copy(LocatorUtils.property(locator, "cellar", sourceCellar), sourceCellar, (this.cellar!= null)));
+                    copy.setCellar(copyCellar);
+                } else {
+                    if (cellarShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.cellar = null;
+                    }
+                }
+            }
+            {
+                Boolean isBarrierFreeShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.isBarrierFree!= null));
+                if (isBarrierFreeShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Boolean sourceIsBarrierFree;
+                    sourceIsBarrierFree = this.isIsBarrierFree();
+                    Boolean copyIsBarrierFree = ((Boolean) strategy.copy(LocatorUtils.property(locator, "isBarrierFree", sourceIsBarrierFree), sourceIsBarrierFree, (this.isBarrierFree!= null)));
+                    copy.setIsBarrierFree(copyIsBarrierFree);
+                } else {
+                    if (isBarrierFreeShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.isBarrierFree = null;
+                    }
+                }
+            }
         }
         return draftCopy;
     }
@@ -585,6 +762,42 @@ public class OfferApartmentBuy
             CourtageInfo rhsCourtage;
             rhsCourtage = that.getCourtage();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "courtage", lhsCourtage), LocatorUtils.property(thatLocator, "courtage", rhsCourtage), lhsCourtage, rhsCourtage, (this.courtage!= null), (that.courtage!= null))) {
+                return false;
+            }
+        }
+        {
+            Boolean lhsLift;
+            lhsLift = this.isLift();
+            Boolean rhsLift;
+            rhsLift = that.isLift();
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "lift", lhsLift), LocatorUtils.property(thatLocator, "lift", rhsLift), lhsLift, rhsLift, (this.lift!= null), (that.lift!= null))) {
+                return false;
+            }
+        }
+        {
+            Boolean lhsGuestToilet;
+            lhsGuestToilet = this.isGuestToilet();
+            Boolean rhsGuestToilet;
+            rhsGuestToilet = that.isGuestToilet();
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "guestToilet", lhsGuestToilet), LocatorUtils.property(thatLocator, "guestToilet", rhsGuestToilet), lhsGuestToilet, rhsGuestToilet, (this.guestToilet!= null), (that.guestToilet!= null))) {
+                return false;
+            }
+        }
+        {
+            Boolean lhsCellar;
+            lhsCellar = this.isCellar();
+            Boolean rhsCellar;
+            rhsCellar = that.isCellar();
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "cellar", lhsCellar), LocatorUtils.property(thatLocator, "cellar", rhsCellar), lhsCellar, rhsCellar, (this.cellar!= null), (that.cellar!= null))) {
+                return false;
+            }
+        }
+        {
+            Boolean lhsIsBarrierFree;
+            lhsIsBarrierFree = this.isIsBarrierFree();
+            Boolean rhsIsBarrierFree;
+            rhsIsBarrierFree = that.isIsBarrierFree();
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "isBarrierFree", lhsIsBarrierFree), LocatorUtils.property(thatLocator, "isBarrierFree", rhsIsBarrierFree), lhsIsBarrierFree, rhsIsBarrierFree, (this.isBarrierFree!= null), (that.isBarrierFree!= null))) {
                 return false;
             }
         }

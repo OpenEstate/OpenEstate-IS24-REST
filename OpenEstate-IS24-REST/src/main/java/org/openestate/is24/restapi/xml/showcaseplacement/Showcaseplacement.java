@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.showcaseplacement;
 
+import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -52,7 +53,7 @@ import org.openestate.is24.restapi.xml.common.DateRange;
     "servicePeriod",
     "externalId"
 })
-public class Showcaseplacement implements Cloneable, CopyTo2, Equals2, ToString2
+public class Showcaseplacement implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     protected String messageCode;

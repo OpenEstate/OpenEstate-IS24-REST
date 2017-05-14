@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.offerlistelement;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -42,7 +43,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 @XmlType(name = "realEstateList", propOrder = {
     "realEstateElement"
 })
-public class RealEstateList implements Cloneable, CopyTo2, Equals2, ToString2
+public class RealEstateList implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     protected List<OfferRealEstateForList> realEstateElement;

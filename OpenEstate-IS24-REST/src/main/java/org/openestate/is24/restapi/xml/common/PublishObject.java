@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.common;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -65,7 +66,7 @@ import org.openestate.is24.restapi.xml.Adapter2;
     "realEstate",
     "publishChannel"
 })
-public class PublishObject implements Cloneable, CopyTo2, Equals2, ToString2
+public class PublishObject implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(required = true)
@@ -307,7 +308,7 @@ public class PublishObject implements Cloneable, CopyTo2, Equals2, ToString2
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "")
-    public static class RealEstate implements Cloneable, CopyTo2, Equals2, ToString2
+    public static class RealEstate implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
     {
 
         @XmlAttribute(name = "id")

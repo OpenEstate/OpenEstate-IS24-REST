@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2016 OpenEstate.org.
+ * Copyright 2014-2017 OpenEstate.org.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package org.openestate.is24.restapi;
 
+import java.io.Closeable;
 import org.openestate.is24.restapi.utils.Verification;
 import java.io.IOException;
 import java.io.InputStream;
@@ -44,7 +45,7 @@ import org.slf4j.LoggerFactory;
  * @since 0.1
  * @author Andreas Rudolph <andy@openindex.de>
  */
-public abstract class AbstractClient
+public abstract class AbstractClient implements Closeable
 {
   private final static Logger LOGGER = LoggerFactory.getLogger( AbstractClient.class );
 
@@ -89,6 +90,20 @@ public abstract class AbstractClient
    * @since 0.2.2
    */
   public final static String RESPONSE_HEADER_RESOURCE_ID = "L-IS24-ResourceId";
+
+  /**
+   * Content type for XML requests.
+   *
+   * @since 0.3.3
+   */
+  public final static String XML_CONTENT_TYPE = "application/xml";
+
+  /**
+   * Content type for JSON requests.
+   *
+   * @since 0.3.3
+   */
+  public final static String JSON_CONTENT_TYPE = "application/json";
 
   private final String apiBaseUrl;
   private final String consumerToken;
@@ -253,6 +268,11 @@ public abstract class AbstractClient
       apiBaseUrl + "/security/oauth/confirm_access" );
   }
 
+  @Override
+  public void close() throws IOException
+  {
+  }
+
   /**
    * Initiate a verification process.
    *
@@ -368,6 +388,34 @@ public abstract class AbstractClient
       return null;
     }
   }
+
+  /**
+   * Send a JSON string to the IS24-Webservice.
+   * <p>
+   * This function must be implemendet by specific implementations of
+   * {@link AbstractClient}.
+   *
+   * @param url
+   * URL of the IS24-Webservice, where the request is sent to
+   *
+   * @param method
+   * HTTP method of the outgoing request
+   *
+   * @param json
+   * JSON string, that is sent to the IS24-Webservice
+   *
+   * @return
+   * response, that was received from the IS24-Webservice
+   *
+   * @throws IOException
+   * if communication with IS24-Webservice failed
+   *
+   * @throws OAuthException
+   * if authorization failed
+   *
+   * @since 0.3.3
+   */
+  protected abstract Response sendJsonRequest( URL url, RequestMethod method, String json ) throws IOException, OAuthException;
 
   /**
    * Send a XML string to the IS24-Webservice.

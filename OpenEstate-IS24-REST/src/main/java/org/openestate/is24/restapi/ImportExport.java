@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2016 OpenEstate.org.
+ * Copyright 2014-2017 OpenEstate.org.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -58,11 +58,35 @@ import org.slf4j.LoggerFactory;
 public final class ImportExport
 {
   private final static Logger LOGGER = LoggerFactory.getLogger( ImportExport.class );
+
+  /**
+   * ID for the publishing channel of ImmobilienScout24.
+   */
   public final static int PUBLISH_CHANNEL_IS24_ID = 10000;
+
+  /**
+   * Name for the publishing channel of ImmobilienScout24.
+   */
   public final static String PUBLISH_CHANNEL_IS24_TITLE = "Immobilienscout24";
+
+  /**
+   * ID for the publishing channel of the agency website.
+   */
   public final static int PUBLISH_CHANNEL_HOMEPAGE_ID = 10001;
+
+  /**
+   * Name for the publishing channel of the agency website.
+   */
   public final static String PUBLISH_CHANNEL_HOMEPAGE_TITLE = "Homepage";
+
+  /**
+   * Maximal number of supported files per real estate.
+   */
   public final static int MAXIMAL_FILES_PER_PROPERTY = 30;
+
+  /**
+   * Maximal number of supported videos per real estate.
+   */
   public final static int MAXIMAL_VIDEOS_PER_PROPERTY = 1;
 
   private ImportExport()

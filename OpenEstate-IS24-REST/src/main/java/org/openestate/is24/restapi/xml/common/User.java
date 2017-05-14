@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.common;
 
+import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -49,7 +50,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
     "password",
     "sharedShortlistGroupId"
 })
-public class User implements Cloneable, CopyTo2, Equals2, ToString2
+public class User implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(required = true)

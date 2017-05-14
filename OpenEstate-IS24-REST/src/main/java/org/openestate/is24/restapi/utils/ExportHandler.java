@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2016 OpenEstate.org.
+ * Copyright 2014-2017 OpenEstate.org.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,10 +30,10 @@ import java.util.TreeMap;
 import javax.xml.bind.JAXBException;
 import oauth.signpost.exception.OAuthException;
 import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.commons.io.IOExceptionWithCause;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.openestate.is24.restapi.AbstractClient;
 import org.openestate.is24.restapi.ImportExport;
 import org.openestate.is24.restapi.xml.common.Attachment;
@@ -83,6 +83,7 @@ public class ExportHandler
   private long progress = 0;
   private long totalProgress = 0;
   private boolean useNewEnergySourceEnev2014Values = true;
+  private boolean removeObjectBeforeUpdate = false;
 
   /**
    * Create a new {@link ExportHandler}.
@@ -166,12 +167,12 @@ public class ExportHandler
     }
     catch (JAXBException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Can't read / write XML while communicating with the Webservice!", ex );
     }
     catch (OAuthException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Authorization failed!", ex );
     }
     catch (RequestFailedException ex)
@@ -226,12 +227,12 @@ public class ExportHandler
     }
     catch (JAXBException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Can't read / write XML while communicating with the Webservice!", ex );
     }
     catch (OAuthException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Authorization failed!", ex );
     }
     catch (RequestFailedException ex)
@@ -360,17 +361,17 @@ public class ExportHandler
     }
     catch (JAXBException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Can't read / write XML while communicating with the Webservice!", ex );
     }
     catch (OAuthException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Authorization failed!", ex );
     }
     catch (IOException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Communication failed!", ex );
     }
   }
@@ -489,17 +490,17 @@ public class ExportHandler
     }
     catch (JAXBException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Can't read / write XML while communicating with the Webservice!", ex );
     }
     catch (OAuthException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Authorization failed!", ex );
     }
     catch (IOException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Communication failed!", ex );
     }
   }
@@ -533,21 +534,21 @@ public class ExportHandler
     {
       //LOGGER.error( "Can't read / write XML while communicating with the Webservice!" );
       //LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Can't read / write XML while communicating with the Webservice!", ex );
     }
     catch (OAuthException ex)
     {
       //LOGGER.error( "Can't authorize at the Webservice!" );
       //LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Authorization failed!", ex );
     }
     catch (IOException ex)
     {
       //LOGGER.error( "Can't communicate with the Webservice!" );
       //LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Communication failed!", ex );
     }
   }
@@ -639,21 +640,21 @@ public class ExportHandler
     {
       //LOGGER.error( "Can't read / write XML while communicating with the Webservice!" );
       //LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Can't read / write XML while communicating with the Webservice!", ex );
     }
     catch (OAuthException ex)
     {
       //LOGGER.error( "Can't authorize at the Webservice!" );
       //LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Authorization failed!", ex );
     }
     catch (IOException ex)
     {
       //LOGGER.error( "Can't communicate with the Webservice!" );
       //LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Communication failed!", ex );
     }
   }
@@ -689,17 +690,17 @@ public class ExportHandler
     }
     catch (JAXBException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Can't read / write XML while communicating with the Webservice!", ex );
     }
     catch (OAuthException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Authorization failed!", ex );
     }
     catch (IOException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Communication failed!", ex );
     }
   }
@@ -750,17 +751,17 @@ public class ExportHandler
     }
     catch (JAXBException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Can't read / write XML while communicating with the Webservice!", ex );
     }
     catch (OAuthException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Authorization failed!", ex );
     }
     catch (IOException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Communication failed!", ex );
     }
   }
@@ -879,17 +880,17 @@ public class ExportHandler
     }
     catch (JAXBException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Can't read / write XML while communicating with the Webservice!", ex );
     }
     catch (OAuthException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Authorization failed!", ex );
     }
     catch (IOException ex)
     {
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Communication failed!", ex );
     }
     finally
@@ -984,9 +985,9 @@ public class ExportHandler
       final Long is24ObjectId;
 
       // Immobilie im Portal löschen,
-      // wenn diese bereits im Portal existiert
-      // und einer anderen Rubrik zugewiesen ist
-      if (oldIs24Object!=null && !oldIs24Object.getClass().getName().equals( object.getClass().getName() ))
+      // wenn diese bereits in einer anderen Rubrik im Portal existiert
+      // oder wenn dies explizit angefordert wurde
+      if (oldIs24Object!=null && (this.removeObjectBeforeUpdate || !oldIs24Object.getClass().getName().equals( object.getClass().getName() )))
       {
         //LOGGER.debug( "RUBRIK GEÄNDERT" );
         //LOGGER.debug( "> für Immobilie #" + oldIs24Object.getId() );
@@ -1144,13 +1145,27 @@ public class ExportHandler
         Map<String,File> attachmentFiles = new HashMap<String, File>();
         for (String attachmentKey : this.pool.getObjectAttachmentIds( poolObjectId ))
         {
-          Attachment is24Attachment = this.pool.getObjectAttachment( poolObjectId, attachmentKey );
+          Attachment is24Attachment;
+          String parserError = null;
+          try
+          {
+            is24Attachment = this.pool.getObjectAttachment( poolObjectId, attachmentKey );
+          }
+          catch (Exception ex)
+          {
+            LOGGER.error( "Can't read XML for attachment '" + attachmentKey + "' of object '" + poolObjectId + "'!" );
+            LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
+            is24Attachment = null;
+            parserError = StringUtils.trimToNull( ExceptionUtils.getRootCauseMessage( ex ) );
+          }
           if (is24Attachment==null)
           {
-            LOGGER.error( "Can't read the XML file for attachment!" );
+            LOGGER.error( "Can't read the XML for attachment!" );
+
+            String msg = "Can't read the XML for attachment!";
+            if (parserError!=null) msg += " (" + parserError + ")";
             this.putObjectMessage(
-              externalObjectId, ExportMessage.Code.OBJECT_ATTACHMENT_NOT_SAVED,
-              "Can't read the XML file for attachment!" );
+              externalObjectId, ExportMessage.Code.OBJECT_ATTACHMENT_NOT_SAVED, msg );
 
             // Fortschritt protokollieren
             this.addProgress(
@@ -1185,7 +1200,7 @@ public class ExportHandler
             // ggf. Datei herunterladen, wenn noch nicht im Pool hinterlegt
             if (attachFile==null)
             {
-              URL attachUrl = this.pool.getObjectAttachmentURL( poolObjectId, attachmentKey );
+              URL attachUrl = this.pool.getObjectAttachmentURL( is24Attachment );
               if (attachUrl!=null)
               {
                 try
@@ -1299,7 +1314,7 @@ public class ExportHandler
                 long is24AttachmentId = oldAttachment.getId();
                 //LOGGER.debug( "> updating attached link #" + is24AttachmentId );
                 //LOGGER.debug( ">> " + externalAttachmentId + " / " + externalAttachmentId.length() );
-                ImportExport.AttachmentService.putById( client,
+                ImportExport.AttachmentService.putById( this.client,
                   is24ObjectId, is24AttachmentId, link );
                 oldIs24Attachments.remove( externalAttachmentId );
               }
@@ -1359,7 +1374,7 @@ public class ExportHandler
               long is24AttachmentId = oldAttachment.getId();
               //LOGGER.debug( "> updating attached file #" + is24AttachmentId );
               //LOGGER.debug( ">> " + externalAttachmentId + " / " + externalAttachmentId.length() );
-              ImportExport.AttachmentService.putById( client,
+              ImportExport.AttachmentService.putById( this.client,
                 is24ObjectId, is24AttachmentId, is24Attachment );
               oldIs24Attachments.remove( externalAttachmentId );
 
@@ -1514,21 +1529,21 @@ public class ExportHandler
     {
       //LOGGER.error( "Can't read / write XML while communicating with the Webservice!" );
       //LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Can't read / write XML while communicating with the Webservice!", ex );
     }
     catch (OAuthException ex)
     {
       //LOGGER.error( "Can't authorize at the Webservice!" );
       //LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Authorization failed!", ex );
     }
     catch (IOException ex)
     {
       //LOGGER.error( "Can't communicate with the Webservice!" );
       //LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
-      throw new IOExceptionWithCause(
+      throw new IOException(
         "Communication failed!", ex );
     }
   }
@@ -1579,16 +1594,28 @@ public class ExportHandler
         counter++;
 
         // Ansprechpartner ermitteln
-        final RealtorContactDetails contact = this.pool.getContact( poolContactId );
+        RealtorContactDetails contact;
+        String parserError = null;
+        try
+        {
+          contact = this.pool.getContact( poolContactId );
+        }
+        catch (Exception ex)
+        {
+          LOGGER.error( "Can't read XML for contact '" + poolContactId + "'!" );
+          LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
+          contact = null;
+          parserError = StringUtils.trimToNull( ExceptionUtils.getRootCauseMessage( ex ) );
+        }
         if (contact==null)
         {
           // Fortschritt protokollieren
           this.addProgress(
             this.pool.getContactSize( poolContactId, true ) );
 
-          this.putGeneralMessage(
-            ExportMessage.Code.XML_NOT_READABLE,
-            "Can't read XML file for contact '" + poolContactId + "'!" );
+          String msg = "Can't read XML for contact '" + poolContactId + "'!";
+          if (parserError!=null) msg += " (" + parserError + ")";
+          this.putGeneralMessage( ExportMessage.Code.XML_NOT_READABLE, msg );
         }
         else if (this.canIgnoreContact( contact, poolContactId ))
         {
@@ -1620,16 +1647,28 @@ public class ExportHandler
         counter++;
 
         // Immobilie  aus ExportPool ermitteln
-        RealEstate object = this.pool.getObject( poolObjectId );
+        RealEstate object;
+        String parserError = null;
+        try
+        {
+          object = this.pool.getObject( poolObjectId );
+        }
+        catch (Exception ex)
+        {
+          LOGGER.error( "Can't read XML for property '" + poolObjectId + "'!" );
+          LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
+          object = null;
+          parserError = StringUtils.trimToNull( ExceptionUtils.getRootCauseMessage( ex ) );
+        }
         if (object==null)
         {
           // Fortschritt protokollieren
           this.addProgress(
             this.pool.getObjectSize( poolObjectId, true ) );
 
-          this.putGeneralMessage(
-            ExportMessage.Code.XML_NOT_READABLE,
-            "Can't read XML file for property '" + poolObjectId + "'!" );
+          String msg = "Can't read XML for property '" + poolObjectId + "'!";
+          if (parserError!=null) msg += " (" + parserError + ")";
+          this.putGeneralMessage( ExportMessage.Code.XML_NOT_READABLE, msg );
         }
         else if (this.canIgnoreObject( object, poolObjectId ))
         {
@@ -1844,6 +1883,17 @@ public class ExportHandler
   }
 
   /**
+   * Check, if objects are removed before update.
+   *
+   * @return
+   * true, if objects are removed before update.
+   */
+  public boolean isRemoveObjectBeforeUpdate()
+  {
+    return this.removeObjectBeforeUpdate;
+  }
+
+  /**
    * Check, if all values for "energySourceEnev2014" are enabled.
    *
    * @return
@@ -1853,7 +1903,7 @@ public class ExportHandler
    */
   public boolean isUseNewEnergySourceEnev2014Values()
   {
-    return useNewEnergySourceEnev2014Values;
+    return this.useNewEnergySourceEnev2014Values;
   }
 
   /**
@@ -2099,6 +2149,17 @@ public class ExportHandler
 
     // launch callback function for progress
     progressUpdated( this.progress, this.totalProgress );
+  }
+
+  /**
+   * Enable / disable removal of objects before update.
+   *
+   * @param removeObjectBeforeUpdate
+   * enabled / disabled
+   */
+  public void setRemoveObjectBeforeUpdate( boolean removeObjectBeforeUpdate )
+  {
+    this.removeObjectBeforeUpdate = removeObjectBeforeUpdate;
   }
 
   /**

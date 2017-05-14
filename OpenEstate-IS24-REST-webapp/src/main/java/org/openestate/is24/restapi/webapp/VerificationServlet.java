@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2016 OpenEstate.org.
+ * Copyright 2014-2017 OpenEstate.org.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import oauth.signpost.exception.OAuthException;
-import org.apache.commons.io.IOExceptionWithCause;
 import org.apache.commons.lang3.StringUtils;
 import org.openestate.is24.restapi.AbstractClient;
 import org.openestate.is24.restapi.DefaultClient;
@@ -113,7 +112,7 @@ public class VerificationServlet extends HttpServlet
     }
     catch (OAuthException ex)
     {
-      throw new IOExceptionWithCause( "Can't fetch verification!", ex );
+      throw new IOException( "Can't fetch verification!", ex );
     }
 
     // store verification informations
@@ -175,7 +174,7 @@ public class VerificationServlet extends HttpServlet
           }
           catch (OAuthException ex)
           {
-            throw new IOExceptionWithCause( "Can't fetch authorization!", ex );
+            throw new IOException( "Can't fetch authorization!", ex );
           }
           req.setAttribute( "valid", true );
           req.setAttribute( "token", authorization.accessToken );

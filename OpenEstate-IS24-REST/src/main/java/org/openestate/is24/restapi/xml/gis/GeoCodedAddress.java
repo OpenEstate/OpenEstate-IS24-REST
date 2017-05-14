@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.gis;
 
+import java.io.Serializable;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -54,7 +55,7 @@ import org.openestate.is24.restapi.xml.common.Wgs84Coordinate;
     "geoCodingPrecision",
     "geoCodingHierarchy"
 })
-public class GeoCodedAddress implements Cloneable, CopyTo2, Equals2, ToString2
+public class GeoCodedAddress implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(required = true)
