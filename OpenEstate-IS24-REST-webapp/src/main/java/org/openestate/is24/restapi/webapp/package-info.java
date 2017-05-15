@@ -13,4 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+/**
+ * Classes for the example web application.
+ */
 package org.openestate.is24.restapi.webapp;
