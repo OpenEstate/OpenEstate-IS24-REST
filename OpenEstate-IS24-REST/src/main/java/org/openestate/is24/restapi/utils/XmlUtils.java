@@ -75,6 +75,8 @@ import org.openestate.is24.restapi.xml.realestates.ShortTermAccommodation;
 import org.openestate.is24.restapi.xml.realestates.SpecialPurpose;
 import org.openestate.is24.restapi.xml.realestates.Store;
 import org.openestate.is24.restapi.xml.realestates.TradeSite;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * XML helper methods.
@@ -84,7 +86,7 @@ import org.openestate.is24.restapi.xml.realestates.TradeSite;
  */
 public final class XmlUtils
 {
-  //private final static Logger LOGGER = LoggerFactory.getLogger( XmlUtils.class );
+  private final static Logger LOGGER = LoggerFactory.getLogger( XmlUtils.class );
   public final static String DEFAULT_ENCODING = "UTF-8";
   private static JAXBContext JAXB = null;
   private final static String JAXB_PACKAGES = ""

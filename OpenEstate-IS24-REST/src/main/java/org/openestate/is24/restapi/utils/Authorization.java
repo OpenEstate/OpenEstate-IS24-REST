@@ -16,6 +16,8 @@
 package org.openestate.is24.restapi.utils;
 
 import java.io.Serializable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Token for authentication at the Webservice.
@@ -26,7 +28,7 @@ import java.io.Serializable;
 public class Authorization implements Serializable
 {
   private final static long serialVersionUID = -9192150555289246368L;
-  //private final static Logger LOGGER = LoggerFactory.getLogger( Authorization.class );
+  private final static Logger LOGGER = LoggerFactory.getLogger( Authorization.class );
   public final String accessToken;
   public final String accessTokenSecret;
 

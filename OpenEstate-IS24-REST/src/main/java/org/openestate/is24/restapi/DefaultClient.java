@@ -29,6 +29,8 @@ import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.openestate.is24.restapi.utils.RequestMethod;
 import org.openestate.is24.restapi.utils.Response;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * An implementation of {@link AbstractClient}, that makes use of
@@ -39,7 +41,7 @@ import org.openestate.is24.restapi.utils.Response;
  */
 public class DefaultClient extends AbstractClient
 {
-  //private final static Logger LOGGER = LoggerFactory.getLogger( DefaultClient.class );
+  private final static Logger LOGGER = LoggerFactory.getLogger( DefaultClient.class );
 
   /**
    * Create an instance of {@link DefaultClient}.

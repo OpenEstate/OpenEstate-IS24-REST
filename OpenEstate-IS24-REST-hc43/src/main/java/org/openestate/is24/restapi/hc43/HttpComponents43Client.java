@@ -50,6 +50,8 @@ import org.apache.http.util.EntityUtils;
 import org.openestate.is24.restapi.AbstractClient;
 import org.openestate.is24.restapi.utils.RequestMethod;
 import org.openestate.is24.restapi.utils.Response;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * An implementation of {@link AbstractClient}, that makes use of
@@ -62,7 +64,7 @@ import org.openestate.is24.restapi.utils.Response;
  */
 public class HttpComponents43Client extends AbstractClient
 {
-  //private final static Logger LOGGER = LoggerFactory.getLogger( HttpComponents43Client.class );
+  private final static Logger LOGGER = LoggerFactory.getLogger( HttpComponents43Client.class );
   private transient HttpClient httpClient = null;
 
   /**

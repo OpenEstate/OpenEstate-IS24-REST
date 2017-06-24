@@ -1204,7 +1204,7 @@ public final class ImportExport
         + "/ext-" + AbstractClient.getUrlEncodedValue( externalContactId );
 
       // init URL parameters
-      List<String> params = new ArrayList<String>();
+      List<String> params = new ArrayList<>();
 
       assignToExternalContactId = StringUtils.trimToNull( assignToExternalContactId );
       if (assignToExternalContactId!=null) params.add( "assigntocontactid=" + AbstractClient.getUrlEncodedValue( assignToExternalContactId ) );
@@ -1297,7 +1297,7 @@ public final class ImportExport
         + "/api/offer/v1.0/user/me/contact/" + is24ContactId;
 
       // init URL parameters
-      List<String> params = new ArrayList<String>();
+      List<String> params = new ArrayList<>();
 
       if (assignToIs24ContactId>0) params.add( "assigntocontactid=" + assignToIs24ContactId );
 
@@ -1833,9 +1833,9 @@ public final class ImportExport
         + "/list";
 
       // init URL parameters
-      List<String> params = new ArrayList<String>();
+      List<String> params = new ArrayList<>();
 
-      List<String> ids = new ArrayList<String>();
+      List<String> ids = new ArrayList<>();
       if (!ArrayUtils.isEmpty( is24PublishIds ))
       {
         for (String id : is24PublishIds)
@@ -1917,7 +1917,7 @@ public final class ImportExport
         + "/api/offer/v1.0/publish";
 
       // init URL parameters
-      List<String> params = new ArrayList<String>();
+      List<String> params = new ArrayList<>();
 
       if (is24RealEstateIdId>0) params.add( "realestate=" + is24RealEstateIdId );
       if (is24PublishChannelId>0) params.add( "publishchannel=" + is24PublishChannelId );
@@ -2409,7 +2409,7 @@ public final class ImportExport
         + "/api/offer/v1.0/user/me/realestate";
 
       // init URL parameters
-      List<String> params = new ArrayList<String>();
+      List<String> params = new ArrayList<>();
 
       inPublishChannel = AbstractClient.getUrlEncodedValue( inPublishChannel );
       if (inPublishChannel!=null) params.add( "publishchannel=" + inPublishChannel );
@@ -2633,7 +2633,7 @@ public final class ImportExport
         + "/api/offer/v1.0/user/me/realestate";
 
       // init URL parameters
-      List<String> params = new ArrayList<String>();
+      List<String> params = new ArrayList<>();
       if (useNewEnergySourceEnev2014Values) params.add( "usenewenergysourceenev2014values=true" );
 
       // append URL parameters
@@ -2772,7 +2772,7 @@ public final class ImportExport
         + "/ext-" + AbstractClient.getUrlEncodedValue( externalRealEstateId );
 
       // init URL parameters
-      List<String> params = new ArrayList<String>();
+      List<String> params = new ArrayList<>();
       if (useNewEnergySourceEnev2014Values) params.add( "usenewenergysourceenev2014values=true" );
 
       // append URL parameters
@@ -2866,7 +2866,7 @@ public final class ImportExport
         + "/api/offer/v1.0/user/me/realestate/" + is24RealEstateId;
 
       // init URL parameters
-      List<String> params = new ArrayList<String>();
+      List<String> params = new ArrayList<>();
       if (useNewEnergySourceEnev2014Values) params.add( "usenewenergysourceenev2014values=true" );
 
       // append URL parameters

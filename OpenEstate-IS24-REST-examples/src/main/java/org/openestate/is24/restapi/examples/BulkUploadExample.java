@@ -62,7 +62,7 @@ public class BulkUploadExample
       try
       {
         // create some random contact persons
-        List<String> contactIds = new ArrayList<String>();
+        List<String> contactIds = new ArrayList<>();
         int contactCount = RandomUtils.nextInt( 1, 5 );
         for (int i=0; i<contactCount; i++)
         {

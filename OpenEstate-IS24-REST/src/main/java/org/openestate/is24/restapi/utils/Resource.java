@@ -21,6 +21,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.openestate.is24.restapi.xml.common.Message;
 import org.openestate.is24.restapi.xml.common.MessageCode;
 import org.openestate.is24.restapi.xml.common.Messages;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Informations about a modified resource.
@@ -30,7 +32,7 @@ import org.openestate.is24.restapi.xml.common.Messages;
  */
 public class Resource
 {
-  //private final static Logger LOGGER = LoggerFactory.getLogger( Resource.class );
+  private final static Logger LOGGER = LoggerFactory.getLogger( Resource.class );
   private static Pattern CREATED_PATTERN = null;
   private static Pattern MESSAGE_PATTERN = null;
 

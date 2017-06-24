@@ -17,6 +17,8 @@ package org.openestate.is24.restapi.hc43;
 
 import java.io.InputStream;
 import org.apache.http.entity.mime.content.InputStreamBody;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * An extended {@link InputStreamBody}, that holds the total streamed size.
@@ -26,7 +28,7 @@ import org.apache.http.entity.mime.content.InputStreamBody;
  */
 public class InputStreamBodyWithLength extends InputStreamBody
 {
-  //private final static Logger LOGGER = LoggerFactory.getLogger( InputStreamBodyWithLength.class );
+  private final static Logger LOGGER = LoggerFactory.getLogger( InputStreamBodyWithLength.class );
   private final long length;
 
   /**

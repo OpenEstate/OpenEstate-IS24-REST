@@ -95,12 +95,7 @@ public class XmlReadingExample
         System.out.println( "processed content of " + file.getAbsolutePath() );
         System.out.println( xml );
       }
-      catch (JAXBException ex)
-      {
-        throw new RuntimeException(
-          "Can't process XML file '" + file.getAbsolutePath() + "'!", ex );
-      }
-      catch (IOException ex)
+      catch (JAXBException | IOException ex)
       {
         throw new RuntimeException(
           "Can't process XML file '" + file.getAbsolutePath() + "'!", ex );

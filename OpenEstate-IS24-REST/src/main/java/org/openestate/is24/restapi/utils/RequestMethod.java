@@ -15,6 +15,9 @@
  */
 package org.openestate.is24.restapi.utils;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * HTTP request methods.
  * <p>
@@ -26,4 +29,6 @@ package org.openestate.is24.restapi.utils;
 public enum RequestMethod
 {
   GET, POST, PUT, DELETE;
+
+  private final static Logger LOGGER = LoggerFactory.getLogger( RequestMethod.class );
 }

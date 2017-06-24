@@ -158,7 +158,7 @@ public class RandomRealEstateFactory
   public EnergySourcesEnev2014 createRandomEnergySourcesEnev2014()
   {
     EnergySourcesEnev2014 output = commonFactory.createEnergySourcesEnev2014();
-    ArrayList<EnergySourceEnev2014> pool = new ArrayList<EnergySourceEnev2014>();
+    ArrayList<EnergySourceEnev2014> pool = new ArrayList<>();
     pool.addAll( Arrays.asList( EnergySourceEnev2014.values() ) );
     int limit = getRandomInt( pool.size() ) + 1;
     int i = 0;
@@ -281,7 +281,7 @@ public class RandomRealEstateFactory
   public SiteRecommendedUseForTradeTypes createRandomSiteRecommendedUseForTradeTypes()
   {
     SiteRecommendedUseForTradeTypes output = commonFactory.createSiteRecommendedUseForTradeTypes();
-    ArrayList<SiteRecommendedUseForTradeType> pool = new ArrayList<SiteRecommendedUseForTradeType>();
+    ArrayList<SiteRecommendedUseForTradeType> pool = new ArrayList<>();
     pool.addAll( Arrays.asList( SiteRecommendedUseForTradeType.values() ) );
     int limit = getRandomInt( pool.size() ) + 1;
     int i = 0;
@@ -309,7 +309,7 @@ public class RandomRealEstateFactory
   public SiteRecommendedUseTypes createRandomSiteRecommendedUseTypes()
   {
     SiteRecommendedUseTypes output = commonFactory.createSiteRecommendedUseTypes();
-    ArrayList<SiteRecommendedUseType> pool = new ArrayList<SiteRecommendedUseType>();
+    ArrayList<SiteRecommendedUseType> pool = new ArrayList<>();
     pool.addAll( Arrays.asList( SiteRecommendedUseType.values() ) );
     int limit = getRandomInt( pool.size() ) + 1;
     int i = 0;

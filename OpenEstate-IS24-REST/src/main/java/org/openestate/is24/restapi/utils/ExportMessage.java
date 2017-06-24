@@ -17,6 +17,8 @@ package org.openestate.is24.restapi.utils;
 
 import java.io.Serializable;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * A message, that was returned during a bulk export.
@@ -30,6 +32,7 @@ import org.apache.commons.lang3.StringUtils;
 public class ExportMessage implements Serializable
 {
   private final static long serialVersionUID = -390150486485853025L;
+  private final static Logger LOGGER = LoggerFactory.getLogger( ExportMessage.class );
   private final Code code;
   private final String message;
   private final String objectId;

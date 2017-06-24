@@ -16,6 +16,8 @@
 package org.openestate.is24.restapi.utils;
 
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Informations about a Webservice response.
@@ -25,7 +27,7 @@ import org.apache.commons.lang3.StringUtils;
  */
 public final class Response
 {
-  //private final static Logger LOGGER = LoggerFactory.getLogger( Response.class );
+  private final static Logger LOGGER = LoggerFactory.getLogger( Response.class );
   public final static int OK = 200;
   public final static int CREATED = 201;
   public final static int AUTHENTICATION_REQUIRED = 401;
