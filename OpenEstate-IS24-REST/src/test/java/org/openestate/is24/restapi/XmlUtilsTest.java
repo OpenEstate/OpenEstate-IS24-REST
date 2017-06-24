@@ -15,9 +15,7 @@
  */
 package org.openestate.is24.restapi;
 
-import org.apache.commons.lang3.SystemUtils;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -93,19 +91,19 @@ public class XmlUtilsTest
       + "< test7<Br / >"
       + "> test8< BR / >"
       + "< test9 < test10 >";
-    String expectedResult = "test" + SystemUtils.LINE_SEPARATOR
-      + "» test2" + SystemUtils.LINE_SEPARATOR
-      + "« test3" + SystemUtils.LINE_SEPARATOR
-      + "» test4" + SystemUtils.LINE_SEPARATOR
-      + "« test5" + SystemUtils.LINE_SEPARATOR
-      + "» test6" + SystemUtils.LINE_SEPARATOR
-      + "« test7" + SystemUtils.LINE_SEPARATOR
-      + "» test8" + SystemUtils.LINE_SEPARATOR
+    String expectedResult = "test" + System.lineSeparator()
+      + "» test2" + System.lineSeparator()
+      + "« test3" + System.lineSeparator()
+      + "» test4" + System.lineSeparator()
+      + "« test5" + System.lineSeparator()
+      + "» test6" + System.lineSeparator()
+      + "« test7" + System.lineSeparator()
+      + "» test8" + System.lineSeparator()
       + "« test9";
     String result = XmlUtils.printText3999( test );
-    //LOGGER.info( "TEST VALUE: " + SystemUtils.LINE_SEPARATOR + test );
-    //LOGGER.info( "EXPECTED RESULT: " + SystemUtils.LINE_SEPARATOR + expectedResult );
-    //LOGGER.info( "ACTUAL RESULT: " + SystemUtils.LINE_SEPARATOR + result );
+    //LOGGER.info( "TEST VALUE: " + System.lineSeparator() + test );
+    //LOGGER.info( "EXPECTED RESULT: " + System.lineSeparator() + expectedResult );
+    //LOGGER.info( "ACTUAL RESULT: " + System.lineSeparator() + result );
     Assert.assertEquals( expectedResult, result );
   }
 }

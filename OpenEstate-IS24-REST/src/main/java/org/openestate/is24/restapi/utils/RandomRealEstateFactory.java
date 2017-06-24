@@ -23,10 +23,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.text.CharacterPredicates;
+import org.apache.commons.text.RandomStringGenerator;
 import org.openestate.is24.restapi.xml.common.Address;
 import org.openestate.is24.restapi.xml.common.AirConditioningType;
 import org.openestate.is24.restapi.xml.common.ApartmentType;
@@ -926,6 +928,29 @@ public class RandomRealEstateFactory
     return (RoomType) getRandomValue( RoomType.values() );
   }
 
+  private static String getRandomString( int length )
+  {
+    final RandomStringGenerator generator = new RandomStringGenerator.Builder()
+      .filteredBy( CharacterPredicates.DIGITS, CharacterPredicates.LETTERS )
+      .build();
+
+    StringBuilder random = new StringBuilder();
+    while (random.length()<length)
+    {
+      random.append( DigestUtils.sha512Hex( generator.generate( length ) ) );
+    }
+    return random.substring( 0, length );
+  }
+
+  private static String getRandomStringNumeric( int length )
+  {
+    final RandomStringGenerator generator = new RandomStringGenerator.Builder()
+      .filteredBy( CharacterPredicates.DIGITS )
+      .build();
+
+    return generator.generate( length );
+  }
+
   /**
    * Create a random {@link ShortTermAccommodationType} value.
    *
@@ -1543,7 +1568,7 @@ public class RandomRealEstateFactory
     realEstate.setCancellationDate( getRandomCalendar() );
     realEstate.setDateOfAuction( getRandomCalendar() );
     realEstate.setEnergySourcesEnev2014( createRandomEnergySourcesEnev2014() );
-    realEstate.setFileReferenceAtCountyCourt( RandomStringUtils.randomAlphanumeric( 8 ) );
+    realEstate.setFileReferenceAtCountyCourt( getRandomString( 8 ) );
     realEstate.setHeatingTypeEnev2014( getRandomHeatingTypeEnev2014() );
     realEstate.setLastChangeDate( getRandomCalendar() );
     realEstate.setNumberOfFolio( String.valueOf( getRandomInt( 1, 10 ) ) );
@@ -1565,7 +1590,7 @@ public class RandomRealEstateFactory
 
     // country court
     realEstate.setCountyCourt( commonFactory.createCountyCourt() );
-    realEstate.getCountyCourt().setCourtNumber( RandomStringUtils.randomNumeric( 5 ) );
+    realEstate.getCountyCourt().setCourtNumber( getRandomStringNumeric( 5 ) );
     realEstate.getCountyCourt().setName( LOREM.getWords( 3 ) );
 
     // energy certificate for habitation and business

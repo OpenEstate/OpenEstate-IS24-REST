@@ -23,8 +23,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.zip.GZIPInputStream;
 import oauth.signpost.exception.OAuthException;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.openestate.is24.restapi.utils.RequestMethod;
 import org.openestate.is24.restapi.utils.Response;
@@ -100,6 +101,11 @@ public class DefaultClient extends AbstractClient
     }
   }
 
+  private static String getRandomBoundary()
+  {
+    return StringUtils.substring( DigestUtils.sha1Hex( System.currentTimeMillis() + "/" + RandomUtils.nextLong() ), 0, 25 );
+  }
+
   @Override
   protected Response sendJsonRequest( URL url, RequestMethod method, String json ) throws IOException, OAuthException
   {
@@ -123,7 +129,7 @@ public class DefaultClient extends AbstractClient
 
     final String twoHyphens = "--";
     final String lineEnd = "\r\n";
-    final String boundary =  "*****" + RandomStringUtils.random( 25, true, true ) + "*****";
+    final String boundary =  "*****" + getRandomBoundary() + "*****";
 
     HttpURLConnection connection = null;
     DataOutputStream output = null;
@@ -210,7 +216,7 @@ public class DefaultClient extends AbstractClient
 
     final String twoHyphens = "--";
     final String lineEnd = "\r\n";
-    final String boundary =  "*****" + RandomStringUtils.random( 25, true, true ) + "*****";
+    final String boundary =  "*****" + getRandomBoundary() + "*****";
 
     HttpURLConnection connection = null;
     DataOutputStream output = null;
