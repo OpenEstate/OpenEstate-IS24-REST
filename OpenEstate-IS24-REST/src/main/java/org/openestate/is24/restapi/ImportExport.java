@@ -53,7 +53,7 @@ import org.slf4j.LoggerFactory;
  *
  * @see <a href="http://api.immobilienscout24.de/our-apis/import-export.html">Import-/Export-API</a>
  * @since 0.1
- * @author Andreas Rudolph <andy@openindex.de>
+ * @author Andreas Rudolph
  */
 public final class ImportExport
 {
@@ -102,7 +102,7 @@ public final class ImportExport
    * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments.html">Attachment Webservice</a>
    * @see <a href="http://api.immobilienscout24.de/our-apis/import-export.html">Import-/Export-API</a>
    * @since 0.1
-   * @author Andreas Rudolph <andy@openindex.de>
+   * @author Andreas Rudolph
    */
   public final static class AttachmentService
   {
@@ -872,7 +872,7 @@ public final class ImportExport
    * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments.html">Attachment Webservice</a>
    * @see <a href="http://api.immobilienscout24.de/our-apis/import-export.html">Import-/Export-API</a>
    * @since 0.1
-   * @author Andreas Rudolph <andy@openindex.de>
+   * @author Andreas Rudolph
    */
   public final static class AttachmentsOrderService
   {
@@ -1119,7 +1119,7 @@ public final class ImportExport
    * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/contact.html">Contact Webservice</a>
    * @see <a href="http://api.immobilienscout24.de/our-apis/import-export.html">Import-/Export-API</a>
    * @since 0.1
-   * @author Andreas Rudolph <andy@openindex.de>
+   * @author Andreas Rudolph
    */
   public final static class ContactAddressService
   {
@@ -1714,7 +1714,7 @@ public final class ImportExport
    * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/publish.html">Publish Webservice</a>
    * @see <a href="http://api.immobilienscout24.de/our-apis/import-export.html">Import-/Export-API</a>
    * @since 0.1
-   * @author Andreas Rudolph <andy@openindex.de>
+   * @author Andreas Rudolph
    */
   public final static class PublishService
   {
@@ -2167,7 +2167,7 @@ public final class ImportExport
    * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/publish.html">PublishChannel Webservice</a>
    * @see <a href="http://api.immobilienscout24.de/our-apis/import-export.html">Import-/Export-API</a>
    * @since 0.1
-   * @author Andreas Rudolph <andy@openindex.de>
+   * @author Andreas Rudolph
    */
   public final static class PublishChannelService
   {
@@ -2241,7 +2241,7 @@ public final class ImportExport
    * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/realestate.html">RealEstate Webservice</a>
    * @see <a href="http://api.immobilienscout24.de/our-apis/import-export.html">Import-/Export-API</a>
    * @since 0.1
-   * @author Andreas Rudolph <andy@openindex.de>
+   * @author Andreas Rudolph
    */
   public final static class RealEstateService
   {
@@ -2915,7 +2915,7 @@ public final class ImportExport
    * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/realestate/realestates-counts.html">RealEstatesCounts Webservice</a>
    * @see <a href="http://api.immobilienscout24.de/our-apis/import-export.html">Import-/Export-API</a>
    * @since 0.2
-   * @author Andreas Rudolph <andy@openindex.de>
+   * @author Andreas Rudolph
    */
   public final static class RealEstatesCountsService
   {
@@ -2979,7 +2979,7 @@ public final class ImportExport
    * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments/post.html">description for video uploads</a>
    * @see <a href="http://api.immobilienscout24.de/our-apis/import-export.html">Import-/Export-API</a>
    * @since 0.1
-   * @author Andreas Rudolph <andy@openindex.de>
+   * @author Andreas Rudolph
    */
   public final static class VideoUploadService
   {

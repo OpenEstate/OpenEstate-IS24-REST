@@ -67,7 +67,7 @@ import org.slf4j.LoggerFactory;
  *
  * @since 0.1
  * @see <a href="http://hc.apache.org/httpcomponents-client-4.2.x/">Apache HttpComponents 4.2</a>
- * @author Andreas Rudolph <andy@openindex.de>
+ * @author Andreas Rudolph
  */
 public class HttpComponents42Client extends AbstractClient
 {

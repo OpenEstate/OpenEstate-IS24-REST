@@ -39,7 +39,7 @@ import org.slf4j.LoggerFactory;
 /**
  * A servlet for verification at the REST-Webservice of ImmobilienScout24.de.
  *
- * @author Andreas Rudolph <andy@openindex.de>
+ * @author Andreas Rudolph
  */
 public class VerificationServlet extends HttpServlet
 {

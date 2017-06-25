@@ -29,7 +29,7 @@ import org.openestate.is24.restapi.xml.realestates.RealEstate;
 /**
  * This example illustrates writing of XML, that is used by the Webservice.
  *
- * @author Andreas Rudolph <andy@openindex.de>
+ * @author Andreas Rudolph
  */
 public class XmlWritingExample
 {

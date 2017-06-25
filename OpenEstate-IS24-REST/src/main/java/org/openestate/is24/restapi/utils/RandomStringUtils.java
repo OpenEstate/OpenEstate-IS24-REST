@@ -24,7 +24,7 @@ import org.slf4j.LoggerFactory;
  * Helper methods to generate random strings.
  *
  * @since 0.3.4
- * @author Andreas Rudolph <andy@openindex.de>
+ * @author Andreas Rudolph
  */
 public class RandomStringUtils
 {

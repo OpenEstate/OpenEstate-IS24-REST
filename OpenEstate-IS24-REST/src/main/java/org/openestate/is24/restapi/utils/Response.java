@@ -23,7 +23,7 @@ import org.slf4j.LoggerFactory;
  * Informations about a Webservice response.
  *
  * @since 0.1
- * @author Andreas Rudolph <andy@openindex.de>
+ * @author Andreas Rudolph
  */
 public final class Response
 {

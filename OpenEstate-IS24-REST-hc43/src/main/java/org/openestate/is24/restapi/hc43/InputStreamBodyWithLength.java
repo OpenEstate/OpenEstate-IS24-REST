@@ -24,7 +24,7 @@ import org.slf4j.LoggerFactory;
  * An extended {@link InputStreamBody}, that holds the total streamed size.
  *
  * @since 0.1
- * @author Andreas Rudolph <andy@openindex.de>
+ * @author Andreas Rudolph
  */
 public class InputStreamBodyWithLength extends InputStreamBody
 {

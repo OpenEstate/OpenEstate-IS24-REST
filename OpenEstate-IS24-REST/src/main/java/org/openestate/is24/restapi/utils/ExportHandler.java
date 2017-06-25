@@ -70,7 +70,7 @@ import org.slf4j.LoggerFactory;
  * operations of the {@link ImportExport}-API for each pooled object.
  *
  * @since 0.2
- * @author Andreas Rudolph <andy@openindex.de>
+ * @author Andreas Rudolph
  */
 public class ExportHandler
 {

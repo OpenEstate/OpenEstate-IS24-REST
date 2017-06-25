@@ -53,7 +53,7 @@ import org.slf4j.LoggerFactory;
  * {@link ExportHandler}.
  *
  * @since 0.2
- * @author Andreas Rudolph <andy@openindex.de>
+ * @author Andreas Rudolph
  */
 public class ExportPool
 {

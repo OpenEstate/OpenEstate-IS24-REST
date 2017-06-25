@@ -35,7 +35,7 @@ import org.openestate.is24.restapi.xml.realestates.RealEstate;
  * This example illustrates a bulk upload of multiple real estates and contact
  * persons.
  *
- * @author Andreas Rudolph <andy@openindex.de>
+ * @author Andreas Rudolph
  */
 public class BulkUploadExample
 {

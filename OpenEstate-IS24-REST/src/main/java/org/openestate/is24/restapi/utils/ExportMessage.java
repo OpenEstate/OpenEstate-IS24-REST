@@ -27,7 +27,7 @@ import org.slf4j.LoggerFactory;
  * real estate data.
  *
  * @since 0.2
- * @author Andreas Rudolph <andy@openindex.de>
+ * @author Andreas Rudolph
  */
 public class ExportMessage implements Serializable
 {

@@ -22,7 +22,7 @@ import org.openestate.is24.restapi.DefaultClient;
 /**
  * This example illustrates the authorization of the client at the Webservice.
  *
- * @author Andreas Rudolph <andy@openindex.de>
+ * @author Andreas Rudolph
  */
 public class AuthorizationExample
 {

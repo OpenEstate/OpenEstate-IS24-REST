@@ -23,7 +23,7 @@ import org.openestate.is24.restapi.hc42.HttpComponents42Client;
  * This example illustrates the creation of a {@link HttpComponents42Client} for
  * HTTP transfers via Apache HttpComponents 4.2.
  *
- * @author Andreas Rudolph <andy@openindex.de>
+ * @author Andreas Rudolph
  */
 @SuppressFBWarnings
 public class HttpComponents42ClientExample

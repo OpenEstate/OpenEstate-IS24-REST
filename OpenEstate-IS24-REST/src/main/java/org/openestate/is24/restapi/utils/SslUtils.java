@@ -31,7 +31,7 @@ import org.slf4j.LoggerFactory;
  * SSL helper methods.
  *
  * @since 0.2
- * @author Andreas Rudolph <andy@openindex.de>
+ * @author Andreas Rudolph
  */
 public final class SslUtils
 {

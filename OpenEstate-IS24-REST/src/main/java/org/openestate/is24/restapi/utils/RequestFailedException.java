@@ -28,7 +28,7 @@ import org.slf4j.LoggerFactory;
  * exception holds further informations about the failed request.
  *
  * @since 0.1
- * @author Andreas Rudolph <andy@openindex.de>
+ * @author Andreas Rudolph
  */
 public class RequestFailedException extends Exception
 {

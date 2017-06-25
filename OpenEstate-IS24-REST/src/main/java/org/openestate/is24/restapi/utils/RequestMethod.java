@@ -24,7 +24,7 @@ import org.slf4j.LoggerFactory;
  * These methods are used by the client to communicate with the Webservice.
  *
  * @since 0.1
- * @author Andreas Rudolph <andy@openindex.de>
+ * @author Andreas Rudolph
  */
 public enum RequestMethod
 {

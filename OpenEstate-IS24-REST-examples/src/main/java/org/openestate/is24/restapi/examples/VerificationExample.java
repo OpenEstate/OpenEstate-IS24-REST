@@ -28,7 +28,7 @@ import org.openestate.is24.restapi.utils.Verification;
 /**
  * This example illustrates the verification process at the Webservice.
  *
- * @author Andreas Rudolph <andy@openindex.de>
+ * @author Andreas Rudolph
  */
 public class VerificationExample
 {

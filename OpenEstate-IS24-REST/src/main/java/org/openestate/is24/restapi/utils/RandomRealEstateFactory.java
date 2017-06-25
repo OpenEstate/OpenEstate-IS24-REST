@@ -122,7 +122,7 @@ import org.slf4j.LoggerFactory;
  * specifications of the Webservice.
  *
  * @since 0.2
- * @author Andreas Rudolph <andy@openindex.de>
+ * @author Andreas Rudolph
  */
 public class RandomRealEstateFactory
 {

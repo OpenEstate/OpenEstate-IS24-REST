@@ -28,7 +28,7 @@ import org.slf4j.LoggerFactory;
  * Informations about a modified resource.
  *
  * @since 0.1
- * @author Andreas Rudolph <andy@openindex.de>
+ * @author Andreas Rudolph
  */
 public class Resource
 {

@@ -43,7 +43,7 @@ import org.slf4j.LoggerFactory;
  * communication with the IS24-Webservice.
  *
  * @since 0.1
- * @author Andreas Rudolph <andy@openindex.de>
+ * @author Andreas Rudolph
  */
 public abstract class AbstractClient implements Closeable
 {
