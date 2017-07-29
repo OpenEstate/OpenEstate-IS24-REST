@@ -37,7 +37,7 @@ import org.openestate.is24.restapi.xml.gis.Regions;
 /**
  * This example illustrates access to the Geo Information Service API.
  *
- * @author Andreas Rudolph <andy@openindex.de>
+ * @author Andreas Rudolph
  */
 public class GISExample
 {

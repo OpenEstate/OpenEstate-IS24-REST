@@ -27,7 +27,7 @@ import org.openestate.is24.restapi.xml.realestates.RealEstate;
 /**
  * This example illustrates the creation of random real estate data.
  *
- * @author Andreas Rudolph <andy@openindex.de>
+ * @author Andreas Rudolph
  */
 public class RandomRealEstateExample
 {

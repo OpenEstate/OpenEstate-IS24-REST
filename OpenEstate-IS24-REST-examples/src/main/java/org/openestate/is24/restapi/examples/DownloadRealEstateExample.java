@@ -29,7 +29,7 @@ import org.openestate.is24.restapi.xml.realestates.RealEstate;
  * This example illustrates the export of a single real estate from the
  * Webservice.
  *
- * @author Andreas Rudolph <andy@openindex.de>
+ * @author Andreas Rudolph
  */
 public class DownloadRealEstateExample
 {

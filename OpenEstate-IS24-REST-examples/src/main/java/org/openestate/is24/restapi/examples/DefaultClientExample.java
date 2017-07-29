@@ -23,7 +23,7 @@ import org.openestate.is24.restapi.DefaultClient;
  * This example illustrates the creation of a {@link DefaultClient} for
  * HTTP transfers via {@link java.net.HttpURLConnection}.
  *
- * @author Andreas Rudolph <andy@openindex.de>
+ * @author Andreas Rudolph
  */
 @SuppressFBWarnings
 public class DefaultClientExample

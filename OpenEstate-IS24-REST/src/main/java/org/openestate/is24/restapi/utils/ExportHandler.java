@@ -70,14 +70,14 @@ import org.slf4j.LoggerFactory;
  * operations of the {@link ImportExport}-API for each pooled object.
  *
  * @since 0.2
- * @author Andreas Rudolph <andy@openindex.de>
+ * @author Andreas Rudolph
  */
 public class ExportHandler
 {
   private final static Logger LOGGER = LoggerFactory.getLogger( ExportHandler.class );
-  private final List<ExportMessage> messages = new ArrayList<ExportMessage>();
-  private final List<String> savedContactIds = new ArrayList<String>();
-  private final Map<String,Long> duplicatedContactIds = new HashMap<String, Long>();
+  private final List<ExportMessage> messages = new ArrayList<>();
+  private final List<String> savedContactIds = new ArrayList<>();
+  private final Map<String,Long> duplicatedContactIds = new HashMap<>();
   private AbstractClient client = null;
   private ExportPool pool = null;
   private long progress = 0;
@@ -425,7 +425,7 @@ public class ExportHandler
   {
     try
     {
-      final Map<Long,String> ids = new TreeMap<Long,String>();
+      final Map<Long,String> ids = new TreeMap<>();
 
       // Immobilien im Bestand ermitteln
       int page = 1;
@@ -441,7 +441,7 @@ public class ExportHandler
             this.putGeneralMessage(
               ExportMessage.Code.OBJECTS_NOT_FOUND,
               "Can't get available properties from the Webservice!" );
-            return new HashMap<Long,String>();
+            return new HashMap<>();
           }
         }
         catch (RequestFailedException ex)
@@ -452,7 +452,7 @@ public class ExportHandler
           LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
           this.putGeneralMessage(
             ExportMessage.Code.OBJECTS_NOT_FOUND, ex );
-          return new HashMap<Long,String>();
+          return new HashMap<>();
         }
 
         Long totalPages = is24Objects.getPaging().getNumberOfPages();
@@ -576,7 +576,7 @@ public class ExportHandler
     try
     {
       // derzeitige Veröffentlichungen zur Immobilie ermitteln
-      final List<Long> is24PublishedChannels = new ArrayList<Long>();
+      final List<Long> is24PublishedChannels = new ArrayList<>();
       try
       {
         PublishObjects is24Publishings = ImportExport.PublishService.get( this.client, is24ObjectId, 0 );
@@ -1076,7 +1076,7 @@ public class ExportHandler
         this.pool.getObjectSize( poolObjectId, false ) );
 
       // bestehende Anhänge / Web-Links ermitteln
-      final Map<String,Attachment> oldIs24Attachments = new HashMap<String,Attachment>();
+      final Map<String,Attachment> oldIs24Attachments = new HashMap<>();
       boolean ignoreAttachments = false;
       try
       {
@@ -1140,9 +1140,9 @@ public class ExportHandler
       else
       {
         // Anhänge zur Übertragung ermitteln und zugehörige Hash-Werte berechnen
-        List<String> attachmentHashes = new ArrayList<String>();
-        Map<String,Attachment> attachments = new TreeMap<String, Attachment>( new AlphanumComparator() );
-        Map<String,File> attachmentFiles = new HashMap<String, File>();
+        List<String> attachmentHashes = new ArrayList<>();
+        Map<String,Attachment> attachments = new TreeMap<>( new AlphanumComparator() );
+        Map<String,File> attachmentFiles = new HashMap<>();
         for (String attachmentKey : this.pool.getObjectAttachmentIds( poolObjectId ))
         {
           Attachment is24Attachment;
@@ -1282,7 +1282,7 @@ public class ExportHandler
         }
 
         // Anhänge aus dem Exportverzeichnis der Immobilie ermitteln
-        Map<Integer,Long> attachmentsOrder = new TreeMap<Integer,Long>();
+        Map<Integer,Long> attachmentsOrder = new TreeMap<>();
         for (Map.Entry<String,Attachment> entry : attachments.entrySet())
         {
           final String attachmentKey = entry.getKey();
@@ -1583,7 +1583,7 @@ public class ExportHandler
     this.setProgress( 0 );
 
     // updating contacts
-    Map<Long,String> is24ObjectIds = new HashMap<Long,String>();
+    Map<Long,String> is24ObjectIds = new HashMap<>();
     String[] ids = this.pool.getContactIds();
     if (!ArrayUtils.isEmpty( ids ))
     {
@@ -1803,7 +1803,7 @@ public class ExportHandler
   {
     externalContactId = StringUtils.trimToNull( externalContactId );
     if (externalContactId==null) return new ExportMessage[]{};
-    List<ExportMessage> msgs = new ArrayList<ExportMessage>();
+    List<ExportMessage> msgs = new ArrayList<>();
     for (ExportMessage msg : this.messages)
     {
       if (externalContactId.equals( msg.getContactId() )) msgs.add( msg );
@@ -1825,7 +1825,7 @@ public class ExportHandler
   {
     externalObjectId = StringUtils.trimToNull( externalObjectId );
     if (externalObjectId==null) return new ExportMessage[]{};
-    List<ExportMessage> msgs = new ArrayList<ExportMessage>();
+    List<ExportMessage> msgs = new ArrayList<>();
     for (ExportMessage msg : this.messages)
     {
       if (externalObjectId.equals( msg.getObjectId() )) msgs.add( msg );
@@ -1841,7 +1841,7 @@ public class ExportHandler
    */
   public final ExportMessage[] getMessagesGeneral()
   {
-    List<ExportMessage> msgs = new ArrayList<ExportMessage>();
+    List<ExportMessage> msgs = new ArrayList<>();
     for (ExportMessage msg : this.messages)
     {
       if (msg.isGeneral()) msgs.add( msg );

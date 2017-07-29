@@ -1,5 +1,5 @@
-OpenEstate-IS24-REST 0.3.3
-==========================
+OpenEstate-IS24-REST 0.4
+========================
 
 OpenEstate-IS24-REST is a client library for the REST-Webservice of
 [ImmobilienScout24.de](http://www.immobilienscout24.de/) written in Java. This
@@ -77,19 +77,19 @@ requirements):
 <dependency>
   <groupId>org.openestate.is24</groupId>
   <artifactId>OpenEstate-IS24-REST</artifactId>
-  <version>0.3.3</version>
+  <version>0.4</version>
 </dependency>
 
 <dependency>
   <groupId>org.openestate.is24</groupId>
   <artifactId>OpenEstate-IS24-REST-hc42</artifactId>
-  <version>0.3.3</version>
+  <version>0.4</version>
 </dependency>
 
 <dependency>
   <groupId>org.openestate.is24</groupId>
   <artifactId>OpenEstate-IS24-REST-hc43</artifactId>
-  <version>0.3.3</version>
+  <version>0.4</version>
 </dependency>
 ```
 
@@ -110,10 +110,11 @@ Requirements
 Dependencies
 ------------
 
--   Java 6 or newer
+-   Java 7 or newer
 -   [commons-codec 1.10](http://commons.apache.org/proper/commons-codec/)
 -   [commons-io 2.5](http://commons.apache.org/proper/commons-io/)
--   [commons-lang 3.5](http://commons.apache.org/proper/commons-lang/)
+-   [commons-lang 3.6](http://commons.apache.org/proper/commons-lang/)
+-   [commons-text 1.1](http://commons.apache.org/proper/commons-text/)
 -   [jaxb2-basics-runtime 0.11.1](https://github.com/highsource/jaxb2-basics)
 -   [oauth-signpost 1.2.1.2](https://code.google.com/p/oauth-signpost/)
 -   [SLF4J 1.7.25](http://www.slf4j.org/)

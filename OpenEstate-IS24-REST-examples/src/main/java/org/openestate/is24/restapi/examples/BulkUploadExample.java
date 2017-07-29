@@ -35,7 +35,7 @@ import org.openestate.is24.restapi.xml.realestates.RealEstate;
  * This example illustrates a bulk upload of multiple real estates and contact
  * persons.
  *
- * @author Andreas Rudolph <andy@openindex.de>
+ * @author Andreas Rudolph
  */
 public class BulkUploadExample
 {
@@ -62,7 +62,7 @@ public class BulkUploadExample
       try
       {
         // create some random contact persons
-        List<String> contactIds = new ArrayList<String>();
+        List<String> contactIds = new ArrayList<>();
         int contactCount = RandomUtils.nextInt( 1, 5 );
         for (int i=0; i<contactCount; i++)
         {

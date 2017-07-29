@@ -16,17 +16,19 @@
 package org.openestate.is24.restapi.utils;
 
 import java.io.Serializable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Token for access verification at the Webservice.
  *
  * @since 0.1
- * @author Andreas Rudolph <andy@openindex.de>
+ * @author Andreas Rudolph
  */
 public final class Verification implements Serializable
 {
   private final static long serialVersionUID = -4565664511140680767L;
-  //private final static Logger LOGGER = LoggerFactory.getLogger( Verification.class );
+  private final static Logger LOGGER = LoggerFactory.getLogger( Verification.class );
   public final String verificationUrl;
   public final String requestToken;
   public final String requestTokenSecret;

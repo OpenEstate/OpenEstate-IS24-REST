@@ -24,7 +24,7 @@ import org.junit.runners.JUnit4;
 /**
  * AbstractClientTest.
  *
- * @author Andreas Rudolph <andy@openindex.de>
+ * @author Andreas Rudolph
  */
 @RunWith( JUnit4.class )
 public class AbstractClientTest

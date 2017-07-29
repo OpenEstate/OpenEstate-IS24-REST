@@ -42,7 +42,7 @@ import org.slf4j.LoggerFactory;
  * @see <a href="http://api.immobilienscout24.de/useful/tutorials-sdks-plugins/tutorial-java-signpost.html">Java-Signpost Tutorial</a>
  * @since 0.1
  * @author ImmobilienScout24
- * @author Andreas Rudolph <andy@openindex.de>
+ * @author Andreas Rudolph
  */
 @SuppressFBWarnings(
   value = {"NP_DEREFERENCE_OF_READLINE_VALUE", "DM_DEFAULT_ENCODING"},

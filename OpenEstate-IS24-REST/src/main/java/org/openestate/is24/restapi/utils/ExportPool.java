@@ -53,7 +53,7 @@ import org.slf4j.LoggerFactory;
  * {@link ExportHandler}.
  *
  * @since 0.2
- * @author Andreas Rudolph <andy@openindex.de>
+ * @author Andreas Rudolph
  */
 public class ExportPool
 {
@@ -173,7 +173,7 @@ public class ExportPool
   public String[] getContactIds()
   {
     if (!this.contactsDir.isDirectory()) return new String[]{};
-    List<String> ids = new ArrayList<String>();
+    List<String> ids = new ArrayList<>();
     File[] files = this.contactsDir.listFiles();
     if (ArrayUtils.isNotEmpty( files ))
     {
@@ -449,7 +449,7 @@ public class ExportPool
   {
     final File objectDir = new File( this.objectsDir, pooledObjectId );
     if (!objectDir.isDirectory()) return new String[]{};
-    List<String> ids = new ArrayList<String>();
+    List<String> ids = new ArrayList<>();
     File[] files = objectDir.listFiles();
     if (ArrayUtils.isNotEmpty( files ))
     {
@@ -480,7 +480,7 @@ public class ExportPool
   public String[] getObjectIds()
   {
     if (!this.objectsDir.isDirectory()) return new String[]{};
-    List<String> ids = new ArrayList<String>();
+    List<String> ids = new ArrayList<>();
     File[] files = this.objectsDir.listFiles();
     if (ArrayUtils.isNotEmpty( files ))
     {
@@ -500,7 +500,7 @@ public class ExportPool
    */
   public String[] getObjectIdsForRemoval()
   {
-    List<String> ids = new ArrayList<String>();
+    List<String> ids = new ArrayList<>();
     for (Enumeration e=this.settings.propertyNames(); e.hasMoreElements();)
     {
       String key = (String) e.nextElement();

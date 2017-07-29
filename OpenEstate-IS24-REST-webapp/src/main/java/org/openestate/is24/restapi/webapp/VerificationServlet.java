@@ -33,15 +33,18 @@ import org.openestate.is24.restapi.DefaultClient;
 import org.openestate.is24.restapi.utils.Authorization;
 import org.openestate.is24.restapi.utils.SslUtils;
 import org.openestate.is24.restapi.utils.Verification;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * A servlet for verification at the REST-Webservice of ImmobilienScout24.de.
  *
- * @author Andreas Rudolph <andy@openindex.de>
+ * @author Andreas Rudolph
  */
 public class VerificationServlet extends HttpServlet
 {
   private final static long serialVersionUID = 4320407955026600846L;
+  private final static Logger LOGGER = LoggerFactory.getLogger( VerificationServlet.class );
 
   /**
    * A mapping that holds currently started verifications in memory.
@@ -258,7 +261,7 @@ public class VerificationServlet extends HttpServlet
   {
     super.init();
     final ServletContext context = this.getServletContext();
-    List<String> errors = new ArrayList<String>();
+    List<String> errors = new ArrayList<>();
 
     this.webserviceUrl = StringUtils.trimToNull( context.getInitParameter( "WebserviceUrl" ) );
     if (this.webserviceUrl==null)

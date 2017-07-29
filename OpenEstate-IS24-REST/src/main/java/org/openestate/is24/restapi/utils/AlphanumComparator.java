@@ -17,6 +17,8 @@ package org.openestate.is24.restapi.utils;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.util.Comparator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This is an updated version with enhancements made by Daniel Migowski,
@@ -36,7 +38,7 @@ import java.util.Comparator;
   justification = "Serializable is not required for this class.")
 public class AlphanumComparator implements Comparator<String>
 {
-    //private final static Logger LOGGER = LoggerFactory.getLogger( AlphanumComparator.class );
+    private final static Logger LOGGER = LoggerFactory.getLogger( AlphanumComparator.class );
 
     private final boolean isDigit(char ch)
     {

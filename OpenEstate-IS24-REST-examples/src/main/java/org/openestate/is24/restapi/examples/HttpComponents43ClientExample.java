@@ -23,7 +23,7 @@ import org.openestate.is24.restapi.hc43.HttpComponents43Client;
  * This example illustrates the creation of a {@link HttpComponents43Client} for
  * HTTP transfers via Apache HttpComponents 4.3.
  *
- * @author Andreas Rudolph <andy@openindex.de>
+ * @author Andreas Rudolph
  */
 @SuppressFBWarnings
 public class HttpComponents43ClientExample
