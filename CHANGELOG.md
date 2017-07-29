@@ -2,8 +2,8 @@ Changelog for OpenEstate-IS24-REST
 ==================================
 
 
-0.4-SNAPSHOT (not released yet)
--------------------------------
+0.4 (29 Jul 2017)
+-----------------
 
 -   Updated to Java 7.
 -   Updated `commons-lang` library to version 3.6.
