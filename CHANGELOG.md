@@ -1,19 +1,48 @@
 Changelog for OpenEstate-IS24-REST
 ==================================
 
-
-0.4-SNAPSHOT (not released yet)
+0.5-SNAPSHOT (not released yet)
 -------------------------------
+
+...
+
+
+
+0.4 (29 Jul 2017)
+-----------------
+
+-   Updated to Java 7.
+-   Updated `commons-lang` library to version 3.6.
+-   Add dependency to `commons-text` library in version 1.1.
+
+
+0.3.3 (14 May 2017)
+-------------------
+
+### bugfixes
+
+-   Bulk exports stop immediately, when invalid XML is provided.
+    ([issue #6](https://github.com/OpenEstate/OpenEstate-IS24-REST/issues/6))
 
 ### updates
 
+-   Allow object descriptions with maximal 3999 characters.
+    ([issue #4](https://github.com/OpenEstate/OpenEstate-IS24-REST/issues/4))
+-   Support XKO country code for Kosovo.
+    ([issue #5](https://github.com/OpenEstate/OpenEstate-IS24-REST/issues/5))
+-   Add option to remove objects before update in bulk exports.
+-   `org.openestate.is24.restapi.AbstractClient` implements `java.io.Closeable`.
+-   Generated JAXB classes implement `java.io.Serializable`.
+-   Replaced deprecated `org.apache.commons.io.IOExceptionWithCause` with
+    `java.io.IOException`.
+-   Support simple JSON requests within
+    `org.openestate.is24.restapi.AbstractClient` via `sendJsonRequest()`.
+    ([issue #7](https://github.com/OpenEstate/OpenEstate-IS24-REST/pull/7))
 -   Updated `commons-io` library to version 2.5.
 -   Updated `commons-lang` library to version 3.5.
+-   Updated `jaxb2-basics` library to version 0.11.1.
 -   Updated `Lorem` library to version 2.1.
--   Updated `slf4j` libraries to version 1.7.21.
--   Generated JAXB classes implement `java.io.Serializable`.
--   Support simple JSON requests within `AbstractClient` via
-    `org.openestate.is24.restapi.AbstractClient#sendJsonRequest()`.
+-   Updated `slf4j` libraries to version 1.7.25.
 
 
 0.3.2 (11 Mar 2016)

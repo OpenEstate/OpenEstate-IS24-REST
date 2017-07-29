@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2016 OpenEstate.org.
+ * Copyright 2014-2017 OpenEstate.org.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,16 +17,18 @@ package org.openestate.is24.restapi.hc42;
 
 import java.io.InputStream;
 import org.apache.http.entity.mime.content.InputStreamBody;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * An extended {@link InputStreamBody}, that holds the total streamed size.
  *
  * @since 0.1
- * @author Andreas Rudolph <andy@openindex.de>
+ * @author Andreas Rudolph
  */
 public class InputStreamBodyWithLength extends InputStreamBody
 {
-  //private final static Logger LOGGER = LoggerFactory.getLogger( InputStreamBodyWithLength.class );
+  private final static Logger LOGGER = LoggerFactory.getLogger( InputStreamBodyWithLength.class );
   private final long length;
 
   /**

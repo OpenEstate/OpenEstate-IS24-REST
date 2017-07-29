@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2016 OpenEstate.org.
+ * Copyright 2014-2017 OpenEstate.org.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,6 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.openestate.is24.restapi.xml.common.Address;
@@ -122,7 +121,7 @@ import org.slf4j.LoggerFactory;
  * specifications of the Webservice.
  *
  * @since 0.2
- * @author Andreas Rudolph <andy@openindex.de>
+ * @author Andreas Rudolph
  */
 public class RandomRealEstateFactory
 {
@@ -156,7 +155,7 @@ public class RandomRealEstateFactory
   public EnergySourcesEnev2014 createRandomEnergySourcesEnev2014()
   {
     EnergySourcesEnev2014 output = commonFactory.createEnergySourcesEnev2014();
-    ArrayList<EnergySourceEnev2014> pool = new ArrayList<EnergySourceEnev2014>();
+    ArrayList<EnergySourceEnev2014> pool = new ArrayList<>();
     pool.addAll( Arrays.asList( EnergySourceEnev2014.values() ) );
     int limit = getRandomInt( pool.size() ) + 1;
     int i = 0;
@@ -279,7 +278,7 @@ public class RandomRealEstateFactory
   public SiteRecommendedUseForTradeTypes createRandomSiteRecommendedUseForTradeTypes()
   {
     SiteRecommendedUseForTradeTypes output = commonFactory.createSiteRecommendedUseForTradeTypes();
-    ArrayList<SiteRecommendedUseForTradeType> pool = new ArrayList<SiteRecommendedUseForTradeType>();
+    ArrayList<SiteRecommendedUseForTradeType> pool = new ArrayList<>();
     pool.addAll( Arrays.asList( SiteRecommendedUseForTradeType.values() ) );
     int limit = getRandomInt( pool.size() ) + 1;
     int i = 0;
@@ -307,7 +306,7 @@ public class RandomRealEstateFactory
   public SiteRecommendedUseTypes createRandomSiteRecommendedUseTypes()
   {
     SiteRecommendedUseTypes output = commonFactory.createSiteRecommendedUseTypes();
-    ArrayList<SiteRecommendedUseType> pool = new ArrayList<SiteRecommendedUseType>();
+    ArrayList<SiteRecommendedUseType> pool = new ArrayList<>();
     pool.addAll( Arrays.asList( SiteRecommendedUseType.values() ) );
     int limit = getRandomInt( pool.size() ) + 1;
     int i = 0;
@@ -1543,7 +1542,7 @@ public class RandomRealEstateFactory
     realEstate.setCancellationDate( getRandomCalendar() );
     realEstate.setDateOfAuction( getRandomCalendar() );
     realEstate.setEnergySourcesEnev2014( createRandomEnergySourcesEnev2014() );
-    realEstate.setFileReferenceAtCountyCourt( RandomStringUtils.randomAlphanumeric( 8 ) );
+    realEstate.setFileReferenceAtCountyCourt( RandomStringUtils.randomLetters( 8 ) );
     realEstate.setHeatingTypeEnev2014( getRandomHeatingTypeEnev2014() );
     realEstate.setLastChangeDate( getRandomCalendar() );
     realEstate.setNumberOfFolio( String.valueOf( getRandomInt( 1, 10 ) ) );

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2016 OpenEstate.org.
+ * Copyright 2014-2017 OpenEstate.org.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,7 +45,7 @@ import org.slf4j.LoggerFactory;
  *
  * @see <a href="http://api.immobilienscout24.de/our-apis/gis.html">Geo Information Service API</a>
  * @since 0.3
- * @author Andreas Rudolph <andy@openindex.de>
+ * @author Andreas Rudolph
  */
 public class GIS
 {
@@ -93,7 +93,7 @@ public class GIS
    *
    * @see <a href="http://api.immobilienscout24.de/our-apis/gis.html">Geo Information Service API</a>
    * @since 0.3
-   * @author Andreas Rudolph <andy@openindex.de>
+   * @author Andreas Rudolph
    */
   public final static class CityService
   {
@@ -259,7 +259,7 @@ public class GIS
    *
    * @see <a href="http://api.immobilienscout24.de/our-apis/gis.html">Geo Information Service API</a>
    * @since 0.3
-   * @author Andreas Rudolph <andy@openindex.de>
+   * @author Andreas Rudolph
    */
   public final static class ContinentService
   {
@@ -395,7 +395,7 @@ public class GIS
    *
    * @see <a href="http://api.immobilienscout24.de/our-apis/gis.html">Geo Information Service API</a>
    * @since 0.3
-   * @author Andreas Rudolph <andy@openindex.de>
+   * @author Andreas Rudolph
    */
   public final static class CountryService
   {
@@ -541,7 +541,7 @@ public class GIS
    *
    * @see <a href="http://api.immobilienscout24.de/our-apis/gis.html">Geo Information Service API</a>
    * @since 0.3
-   * @author Andreas Rudolph <andy@openindex.de>
+   * @author Andreas Rudolph
    */
   public final static class QuarterService
   {
@@ -717,7 +717,7 @@ public class GIS
    *
    * @see <a href="http://api.immobilienscout24.de/our-apis/gis.html">Geo Information Service API</a>
    * @since 0.3
-   * @author Andreas Rudolph <andy@openindex.de>
+   * @author Andreas Rudolph
    */
   public final static class RegionService
   {

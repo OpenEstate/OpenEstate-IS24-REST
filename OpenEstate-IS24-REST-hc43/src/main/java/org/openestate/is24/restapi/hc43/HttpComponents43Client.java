@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2016 OpenEstate.org.
+ * Copyright 2014-2017 OpenEstate.org.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,11 +44,14 @@ import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.entity.mime.content.InputStreamBody;
+import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 import org.openestate.is24.restapi.AbstractClient;
 import org.openestate.is24.restapi.utils.RequestMethod;
 import org.openestate.is24.restapi.utils.Response;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * An implementation of {@link AbstractClient}, that makes use of
@@ -57,11 +60,11 @@ import org.openestate.is24.restapi.utils.Response;
  *
  * @since 0.1
  * @see <a href="http://hc.apache.org/httpcomponents-client-4.3.x/">Apache HttpComponents 4.3</a>
- * @author Andreas Rudolph <andy@openindex.de>
+ * @author Andreas Rudolph
  */
 public class HttpComponents43Client extends AbstractClient
 {
-  //private final static Logger LOGGER = LoggerFactory.getLogger( HttpComponents43Client.class );
+  private final static Logger LOGGER = LoggerFactory.getLogger( HttpComponents43Client.class );
   private transient HttpClient httpClient = null;
 
   /**
@@ -119,6 +122,16 @@ public class HttpComponents43Client extends AbstractClient
       apiBaseUrl + "/security/oauth/access_token",
       apiBaseUrl + "/security/oauth/confirm_access",
       httpClient );
+  }
+
+  @Override
+  public void close() throws IOException
+  {
+    super.close();
+    if (this.httpClient instanceof CloseableHttpClient)
+    {
+      IOUtils.closeQuietly( (CloseableHttpClient) httpClient );
+    }
   }
 
   /**

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2016 OpenEstate.org.
+ * Copyright 2014-2017 OpenEstate.org.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,7 +53,7 @@ import org.slf4j.LoggerFactory;
  *
  * @see <a href="http://api.immobilienscout24.de/our-apis/import-export.html">Import-/Export-API</a>
  * @since 0.1
- * @author Andreas Rudolph <andy@openindex.de>
+ * @author Andreas Rudolph
  */
 public final class ImportExport
 {
@@ -102,7 +102,7 @@ public final class ImportExport
    * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments.html">Attachment Webservice</a>
    * @see <a href="http://api.immobilienscout24.de/our-apis/import-export.html">Import-/Export-API</a>
    * @since 0.1
-   * @author Andreas Rudolph <andy@openindex.de>
+   * @author Andreas Rudolph
    */
   public final static class AttachmentService
   {
@@ -872,7 +872,7 @@ public final class ImportExport
    * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments.html">Attachment Webservice</a>
    * @see <a href="http://api.immobilienscout24.de/our-apis/import-export.html">Import-/Export-API</a>
    * @since 0.1
-   * @author Andreas Rudolph <andy@openindex.de>
+   * @author Andreas Rudolph
    */
   public final static class AttachmentsOrderService
   {
@@ -1119,7 +1119,7 @@ public final class ImportExport
    * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/contact.html">Contact Webservice</a>
    * @see <a href="http://api.immobilienscout24.de/our-apis/import-export.html">Import-/Export-API</a>
    * @since 0.1
-   * @author Andreas Rudolph <andy@openindex.de>
+   * @author Andreas Rudolph
    */
   public final static class ContactAddressService
   {
@@ -1204,7 +1204,7 @@ public final class ImportExport
         + "/ext-" + AbstractClient.getUrlEncodedValue( externalContactId );
 
       // init URL parameters
-      List<String> params = new ArrayList<String>();
+      List<String> params = new ArrayList<>();
 
       assignToExternalContactId = StringUtils.trimToNull( assignToExternalContactId );
       if (assignToExternalContactId!=null) params.add( "assigntocontactid=" + AbstractClient.getUrlEncodedValue( assignToExternalContactId ) );
@@ -1297,7 +1297,7 @@ public final class ImportExport
         + "/api/offer/v1.0/user/me/contact/" + is24ContactId;
 
       // init URL parameters
-      List<String> params = new ArrayList<String>();
+      List<String> params = new ArrayList<>();
 
       if (assignToIs24ContactId>0) params.add( "assigntocontactid=" + assignToIs24ContactId );
 
@@ -1714,7 +1714,7 @@ public final class ImportExport
    * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/publish.html">Publish Webservice</a>
    * @see <a href="http://api.immobilienscout24.de/our-apis/import-export.html">Import-/Export-API</a>
    * @since 0.1
-   * @author Andreas Rudolph <andy@openindex.de>
+   * @author Andreas Rudolph
    */
   public final static class PublishService
   {
@@ -1833,9 +1833,9 @@ public final class ImportExport
         + "/list";
 
       // init URL parameters
-      List<String> params = new ArrayList<String>();
+      List<String> params = new ArrayList<>();
 
-      List<String> ids = new ArrayList<String>();
+      List<String> ids = new ArrayList<>();
       if (!ArrayUtils.isEmpty( is24PublishIds ))
       {
         for (String id : is24PublishIds)
@@ -1917,7 +1917,7 @@ public final class ImportExport
         + "/api/offer/v1.0/publish";
 
       // init URL parameters
-      List<String> params = new ArrayList<String>();
+      List<String> params = new ArrayList<>();
 
       if (is24RealEstateIdId>0) params.add( "realestate=" + is24RealEstateIdId );
       if (is24PublishChannelId>0) params.add( "publishchannel=" + is24PublishChannelId );
@@ -2167,7 +2167,7 @@ public final class ImportExport
    * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/publish.html">PublishChannel Webservice</a>
    * @see <a href="http://api.immobilienscout24.de/our-apis/import-export.html">Import-/Export-API</a>
    * @since 0.1
-   * @author Andreas Rudolph <andy@openindex.de>
+   * @author Andreas Rudolph
    */
   public final static class PublishChannelService
   {
@@ -2241,7 +2241,7 @@ public final class ImportExport
    * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/realestate.html">RealEstate Webservice</a>
    * @see <a href="http://api.immobilienscout24.de/our-apis/import-export.html">Import-/Export-API</a>
    * @since 0.1
-   * @author Andreas Rudolph <andy@openindex.de>
+   * @author Andreas Rudolph
    */
   public final static class RealEstateService
   {
@@ -2409,7 +2409,7 @@ public final class ImportExport
         + "/api/offer/v1.0/user/me/realestate";
 
       // init URL parameters
-      List<String> params = new ArrayList<String>();
+      List<String> params = new ArrayList<>();
 
       inPublishChannel = AbstractClient.getUrlEncodedValue( inPublishChannel );
       if (inPublishChannel!=null) params.add( "publishchannel=" + inPublishChannel );
@@ -2633,7 +2633,7 @@ public final class ImportExport
         + "/api/offer/v1.0/user/me/realestate";
 
       // init URL parameters
-      List<String> params = new ArrayList<String>();
+      List<String> params = new ArrayList<>();
       if (useNewEnergySourceEnev2014Values) params.add( "usenewenergysourceenev2014values=true" );
 
       // append URL parameters
@@ -2772,7 +2772,7 @@ public final class ImportExport
         + "/ext-" + AbstractClient.getUrlEncodedValue( externalRealEstateId );
 
       // init URL parameters
-      List<String> params = new ArrayList<String>();
+      List<String> params = new ArrayList<>();
       if (useNewEnergySourceEnev2014Values) params.add( "usenewenergysourceenev2014values=true" );
 
       // append URL parameters
@@ -2866,7 +2866,7 @@ public final class ImportExport
         + "/api/offer/v1.0/user/me/realestate/" + is24RealEstateId;
 
       // init URL parameters
-      List<String> params = new ArrayList<String>();
+      List<String> params = new ArrayList<>();
       if (useNewEnergySourceEnev2014Values) params.add( "usenewenergysourceenev2014values=true" );
 
       // append URL parameters
@@ -2915,7 +2915,7 @@ public final class ImportExport
    * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/realestate/realestates-counts.html">RealEstatesCounts Webservice</a>
    * @see <a href="http://api.immobilienscout24.de/our-apis/import-export.html">Import-/Export-API</a>
    * @since 0.2
-   * @author Andreas Rudolph <andy@openindex.de>
+   * @author Andreas Rudolph
    */
   public final static class RealEstatesCountsService
   {
@@ -2979,7 +2979,7 @@ public final class ImportExport
    * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments/post.html">description for video uploads</a>
    * @see <a href="http://api.immobilienscout24.de/our-apis/import-export.html">Import-/Export-API</a>
    * @since 0.1
-   * @author Andreas Rudolph <andy@openindex.de>
+   * @author Andreas Rudolph
    */
   public final static class VideoUploadService
   {

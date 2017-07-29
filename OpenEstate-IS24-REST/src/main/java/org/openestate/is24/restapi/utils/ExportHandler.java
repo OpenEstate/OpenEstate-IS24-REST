@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2016 OpenEstate.org.
+ * Copyright 2014-2017 OpenEstate.org.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -70,19 +70,20 @@ import org.slf4j.LoggerFactory;
  * operations of the {@link ImportExport}-API for each pooled object.
  *
  * @since 0.2
- * @author Andreas Rudolph <andy@openindex.de>
+ * @author Andreas Rudolph
  */
 public class ExportHandler
 {
   private final static Logger LOGGER = LoggerFactory.getLogger( ExportHandler.class );
-  private final List<ExportMessage> messages = new ArrayList<ExportMessage>();
-  private final List<String> savedContactIds = new ArrayList<String>();
-  private final Map<String,Long> duplicatedContactIds = new HashMap<String, Long>();
+  private final List<ExportMessage> messages = new ArrayList<>();
+  private final List<String> savedContactIds = new ArrayList<>();
+  private final Map<String,Long> duplicatedContactIds = new HashMap<>();
   private AbstractClient client = null;
   private ExportPool pool = null;
   private long progress = 0;
   private long totalProgress = 0;
   private boolean useNewEnergySourceEnev2014Values = true;
+  private boolean removeObjectBeforeUpdate = false;
 
   /**
    * Create a new {@link ExportHandler}.
@@ -424,7 +425,7 @@ public class ExportHandler
   {
     try
     {
-      final Map<Long,String> ids = new TreeMap<Long,String>();
+      final Map<Long,String> ids = new TreeMap<>();
 
       // Immobilien im Bestand ermitteln
       int page = 1;
@@ -440,7 +441,7 @@ public class ExportHandler
             this.putGeneralMessage(
               ExportMessage.Code.OBJECTS_NOT_FOUND,
               "Can't get available properties from the Webservice!" );
-            return new HashMap<Long,String>();
+            return new HashMap<>();
           }
         }
         catch (RequestFailedException ex)
@@ -451,7 +452,7 @@ public class ExportHandler
           LOGGER.error( "> " + ex.getLocalizedMessage(), ex );
           this.putGeneralMessage(
             ExportMessage.Code.OBJECTS_NOT_FOUND, ex );
-          return new HashMap<Long,String>();
+          return new HashMap<>();
         }
 
         Long totalPages = is24Objects.getPaging().getNumberOfPages();
@@ -575,7 +576,7 @@ public class ExportHandler
     try
     {
       // derzeitige Veröffentlichungen zur Immobilie ermitteln
-      final List<Long> is24PublishedChannels = new ArrayList<Long>();
+      final List<Long> is24PublishedChannels = new ArrayList<>();
       try
       {
         PublishObjects is24Publishings = ImportExport.PublishService.get( this.client, is24ObjectId, 0 );
@@ -984,9 +985,9 @@ public class ExportHandler
       final Long is24ObjectId;
 
       // Immobilie im Portal löschen,
-      // wenn diese bereits im Portal existiert
-      // und einer anderen Rubrik zugewiesen ist
-      if (oldIs24Object!=null && !oldIs24Object.getClass().getName().equals( object.getClass().getName() ))
+      // wenn diese bereits in einer anderen Rubrik im Portal existiert
+      // oder wenn dies explizit angefordert wurde
+      if (oldIs24Object!=null && (this.removeObjectBeforeUpdate || !oldIs24Object.getClass().getName().equals( object.getClass().getName() )))
       {
         //LOGGER.debug( "RUBRIK GEÄNDERT" );
         //LOGGER.debug( "> für Immobilie #" + oldIs24Object.getId() );
@@ -1075,7 +1076,7 @@ public class ExportHandler
         this.pool.getObjectSize( poolObjectId, false ) );
 
       // bestehende Anhänge / Web-Links ermitteln
-      final Map<String,Attachment> oldIs24Attachments = new HashMap<String,Attachment>();
+      final Map<String,Attachment> oldIs24Attachments = new HashMap<>();
       boolean ignoreAttachments = false;
       try
       {
@@ -1139,9 +1140,9 @@ public class ExportHandler
       else
       {
         // Anhänge zur Übertragung ermitteln und zugehörige Hash-Werte berechnen
-        List<String> attachmentHashes = new ArrayList<String>();
-        Map<String,Attachment> attachments = new TreeMap<String, Attachment>( new AlphanumComparator() );
-        Map<String,File> attachmentFiles = new HashMap<String, File>();
+        List<String> attachmentHashes = new ArrayList<>();
+        Map<String,Attachment> attachments = new TreeMap<>( new AlphanumComparator() );
+        Map<String,File> attachmentFiles = new HashMap<>();
         for (String attachmentKey : this.pool.getObjectAttachmentIds( poolObjectId ))
         {
           Attachment is24Attachment;
@@ -1281,7 +1282,7 @@ public class ExportHandler
         }
 
         // Anhänge aus dem Exportverzeichnis der Immobilie ermitteln
-        Map<Integer,Long> attachmentsOrder = new TreeMap<Integer,Long>();
+        Map<Integer,Long> attachmentsOrder = new TreeMap<>();
         for (Map.Entry<String,Attachment> entry : attachments.entrySet())
         {
           final String attachmentKey = entry.getKey();
@@ -1313,7 +1314,7 @@ public class ExportHandler
                 long is24AttachmentId = oldAttachment.getId();
                 //LOGGER.debug( "> updating attached link #" + is24AttachmentId );
                 //LOGGER.debug( ">> " + externalAttachmentId + " / " + externalAttachmentId.length() );
-                ImportExport.AttachmentService.putById( client,
+                ImportExport.AttachmentService.putById( this.client,
                   is24ObjectId, is24AttachmentId, link );
                 oldIs24Attachments.remove( externalAttachmentId );
               }
@@ -1373,7 +1374,7 @@ public class ExportHandler
               long is24AttachmentId = oldAttachment.getId();
               //LOGGER.debug( "> updating attached file #" + is24AttachmentId );
               //LOGGER.debug( ">> " + externalAttachmentId + " / " + externalAttachmentId.length() );
-              ImportExport.AttachmentService.putById( client,
+              ImportExport.AttachmentService.putById( this.client,
                 is24ObjectId, is24AttachmentId, is24Attachment );
               oldIs24Attachments.remove( externalAttachmentId );
 
@@ -1582,7 +1583,7 @@ public class ExportHandler
     this.setProgress( 0 );
 
     // updating contacts
-    Map<Long,String> is24ObjectIds = new HashMap<Long,String>();
+    Map<Long,String> is24ObjectIds = new HashMap<>();
     String[] ids = this.pool.getContactIds();
     if (!ArrayUtils.isEmpty( ids ))
     {
@@ -1802,7 +1803,7 @@ public class ExportHandler
   {
     externalContactId = StringUtils.trimToNull( externalContactId );
     if (externalContactId==null) return new ExportMessage[]{};
-    List<ExportMessage> msgs = new ArrayList<ExportMessage>();
+    List<ExportMessage> msgs = new ArrayList<>();
     for (ExportMessage msg : this.messages)
     {
       if (externalContactId.equals( msg.getContactId() )) msgs.add( msg );
@@ -1824,7 +1825,7 @@ public class ExportHandler
   {
     externalObjectId = StringUtils.trimToNull( externalObjectId );
     if (externalObjectId==null) return new ExportMessage[]{};
-    List<ExportMessage> msgs = new ArrayList<ExportMessage>();
+    List<ExportMessage> msgs = new ArrayList<>();
     for (ExportMessage msg : this.messages)
     {
       if (externalObjectId.equals( msg.getObjectId() )) msgs.add( msg );
@@ -1840,7 +1841,7 @@ public class ExportHandler
    */
   public final ExportMessage[] getMessagesGeneral()
   {
-    List<ExportMessage> msgs = new ArrayList<ExportMessage>();
+    List<ExportMessage> msgs = new ArrayList<>();
     for (ExportMessage msg : this.messages)
     {
       if (msg.isGeneral()) msgs.add( msg );
@@ -1882,6 +1883,17 @@ public class ExportHandler
   }
 
   /**
+   * Check, if objects are removed before update.
+   *
+   * @return
+   * true, if objects are removed before update.
+   */
+  public boolean isRemoveObjectBeforeUpdate()
+  {
+    return this.removeObjectBeforeUpdate;
+  }
+
+  /**
    * Check, if all values for "energySourceEnev2014" are enabled.
    *
    * @return
@@ -1891,7 +1903,7 @@ public class ExportHandler
    */
   public boolean isUseNewEnergySourceEnev2014Values()
   {
-    return useNewEnergySourceEnev2014Values;
+    return this.useNewEnergySourceEnev2014Values;
   }
 
   /**
@@ -2137,6 +2149,17 @@ public class ExportHandler
 
     // launch callback function for progress
     progressUpdated( this.progress, this.totalProgress );
+  }
+
+  /**
+   * Enable / disable removal of objects before update.
+   *
+   * @param removeObjectBeforeUpdate
+   * enabled / disabled
+   */
+  public void setRemoveObjectBeforeUpdate( boolean removeObjectBeforeUpdate )
+  {
+    this.removeObjectBeforeUpdate = removeObjectBeforeUpdate;
   }
 
   /**

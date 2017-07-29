@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2016 OpenEstate.org.
+ * Copyright 2014-2017 OpenEstate.org.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package org.openestate.is24.restapi;
 
+import java.io.Closeable;
 import org.openestate.is24.restapi.utils.Verification;
 import java.io.IOException;
 import java.io.InputStream;
@@ -42,9 +43,9 @@ import org.slf4j.LoggerFactory;
  * communication with the IS24-Webservice.
  *
  * @since 0.1
- * @author Andreas Rudolph <andy@openindex.de>
+ * @author Andreas Rudolph
  */
-public abstract class AbstractClient
+public abstract class AbstractClient implements Closeable
 {
   private final static Logger LOGGER = LoggerFactory.getLogger( AbstractClient.class );
 
@@ -265,6 +266,11 @@ public abstract class AbstractClient
       apiBaseUrl + "/security/oauth/request_token",
       apiBaseUrl + "/security/oauth/access_token",
       apiBaseUrl + "/security/oauth/confirm_access" );
+  }
+
+  @Override
+  public void close() throws IOException
+  {
   }
 
   /**
