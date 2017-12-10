@@ -4,8 +4,7 @@ Changelog for OpenEstate-IS24-REST
 0.5-SNAPSHOT (not released yet)
 -------------------------------
 
-...
-
+-   Updated `commons-codec` library to version 1.11.
 
 
 0.4 (29 Jul 2017)
