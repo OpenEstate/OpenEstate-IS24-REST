@@ -21,6 +21,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -380,7 +381,7 @@ public class ExportHandler
    * Download an {@link URL} into a {@link File}.
    *
    * @param url
-   * URL to download
+   * URI to download
    *
    * @return
    * downloaded file
@@ -388,11 +389,11 @@ public class ExportHandler
    * @throws IOException
    * if the operation failed
    */
-  protected File doDownloadFile( URL url ) throws IOException
+  protected File doDownloadFile( URI url ) throws IOException
   {
     if (url==null) return null;
     LOGGER.info( "downloading " + url );
-    try (InputStream input = url.openStream())
+    try (InputStream input = url.toURL().openStream())
     {
       File tempFile = File.createTempFile( "is24-export-attachment-", ".bin" );
       tempFile.deleteOnExit();
@@ -1173,7 +1174,7 @@ public class ExportHandler
             Link link = (Link) is24Attachment;
 
             // Hashwert zur Identifizierung des Anhangs errechnen
-            URL url = link.getUrl();
+            URI url = link.getUrl();
             String externalAttachmentId = (url!=null)?
               DigestUtils.sha1Hex( is24ObjectId + "-" + url.toString() ):
               DigestUtils.sha1Hex( is24ObjectId + "-" + attachmentKey );
@@ -1194,7 +1195,7 @@ public class ExportHandler
             // ggf. Datei herunterladen, wenn noch nicht im Pool hinterlegt
             if (attachFile==null)
             {
-              URL attachUrl = this.pool.getObjectAttachmentURL( is24Attachment );
+              URI attachUrl = this.pool.getObjectAttachmentURI( is24Attachment );
               if (attachUrl!=null)
               {
                 try

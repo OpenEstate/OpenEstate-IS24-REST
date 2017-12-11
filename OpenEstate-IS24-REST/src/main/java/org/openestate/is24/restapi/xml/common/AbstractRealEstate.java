@@ -2,7 +2,7 @@
 package org.openestate.is24.restapi.xml.common;
 
 import java.io.Serializable;
-import java.net.URL;
+import java.net.URI;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -121,11 +121,11 @@ public abstract class AbstractRealEstate
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter4 .class)
     @XmlSchemaType(name = "anyURI")
-    protected URL referencePriceServiceCall;
+    protected URI referencePriceServiceCall;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter4 .class)
     @XmlSchemaType(name = "anyURI")
-    protected URL referencePriceApiCall;
+    protected URI referencePriceApiCall;
     protected Long realEstateProjectId;
 
     /**
@@ -280,7 +280,7 @@ public abstract class AbstractRealEstate
      *     {@link String }
      *     
      */
-    public URL getReferencePriceServiceCall() {
+    public URI getReferencePriceServiceCall() {
         return referencePriceServiceCall;
     }
 
@@ -292,7 +292,7 @@ public abstract class AbstractRealEstate
      *     {@link String }
      *     
      */
-    public void setReferencePriceServiceCall(URL value) {
+    public void setReferencePriceServiceCall(URI value) {
         this.referencePriceServiceCall = value;
     }
 
@@ -304,7 +304,7 @@ public abstract class AbstractRealEstate
      *     {@link String }
      *     
      */
-    public URL getReferencePriceApiCall() {
+    public URI getReferencePriceApiCall() {
         return referencePriceApiCall;
     }
 
@@ -316,7 +316,7 @@ public abstract class AbstractRealEstate
      *     {@link String }
      *     
      */
-    public void setReferencePriceApiCall(URL value) {
+    public void setReferencePriceApiCall(URI value) {
         this.referencePriceApiCall = value;
     }
 
@@ -391,12 +391,12 @@ public abstract class AbstractRealEstate
             strategy.appendField(locator, this, "attachments", buffer, theAttachments, (this.attachments!= null));
         }
         {
-            URL theReferencePriceServiceCall;
+            URI theReferencePriceServiceCall;
             theReferencePriceServiceCall = this.getReferencePriceServiceCall();
             strategy.appendField(locator, this, "referencePriceServiceCall", buffer, theReferencePriceServiceCall, (this.referencePriceServiceCall!= null));
         }
         {
-            URL theReferencePriceApiCall;
+            URI theReferencePriceApiCall;
             theReferencePriceApiCall = this.getReferencePriceApiCall();
             strategy.appendField(locator, this, "referencePriceApiCall", buffer, theReferencePriceApiCall, (this.referencePriceApiCall!= null));
         }
@@ -505,9 +505,9 @@ public abstract class AbstractRealEstate
             {
                 Boolean referencePriceServiceCallShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.referencePriceServiceCall!= null));
                 if (referencePriceServiceCallShouldBeCopiedAndSet == Boolean.TRUE) {
-                    URL sourceReferencePriceServiceCall;
+                    URI sourceReferencePriceServiceCall;
                     sourceReferencePriceServiceCall = this.getReferencePriceServiceCall();
-                    URL copyReferencePriceServiceCall = ((URL) strategy.copy(LocatorUtils.property(locator, "referencePriceServiceCall", sourceReferencePriceServiceCall), sourceReferencePriceServiceCall, (this.referencePriceServiceCall!= null)));
+                    URI copyReferencePriceServiceCall = ((URI) strategy.copy(LocatorUtils.property(locator, "referencePriceServiceCall", sourceReferencePriceServiceCall), sourceReferencePriceServiceCall, (this.referencePriceServiceCall!= null)));
                     copy.setReferencePriceServiceCall(copyReferencePriceServiceCall);
                 } else {
                     if (referencePriceServiceCallShouldBeCopiedAndSet == Boolean.FALSE) {
@@ -518,9 +518,9 @@ public abstract class AbstractRealEstate
             {
                 Boolean referencePriceApiCallShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.referencePriceApiCall!= null));
                 if (referencePriceApiCallShouldBeCopiedAndSet == Boolean.TRUE) {
-                    URL sourceReferencePriceApiCall;
+                    URI sourceReferencePriceApiCall;
                     sourceReferencePriceApiCall = this.getReferencePriceApiCall();
-                    URL copyReferencePriceApiCall = ((URL) strategy.copy(LocatorUtils.property(locator, "referencePriceApiCall", sourceReferencePriceApiCall), sourceReferencePriceApiCall, (this.referencePriceApiCall!= null)));
+                    URI copyReferencePriceApiCall = ((URI) strategy.copy(LocatorUtils.property(locator, "referencePriceApiCall", sourceReferencePriceApiCall), sourceReferencePriceApiCall, (this.referencePriceApiCall!= null)));
                     copy.setReferencePriceApiCall(copyReferencePriceApiCall);
                 } else {
                     if (referencePriceApiCallShouldBeCopiedAndSet == Boolean.FALSE) {
@@ -611,18 +611,18 @@ public abstract class AbstractRealEstate
             }
         }
         {
-            URL lhsReferencePriceServiceCall;
+            URI lhsReferencePriceServiceCall;
             lhsReferencePriceServiceCall = this.getReferencePriceServiceCall();
-            URL rhsReferencePriceServiceCall;
+            URI rhsReferencePriceServiceCall;
             rhsReferencePriceServiceCall = that.getReferencePriceServiceCall();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "referencePriceServiceCall", lhsReferencePriceServiceCall), LocatorUtils.property(thatLocator, "referencePriceServiceCall", rhsReferencePriceServiceCall), lhsReferencePriceServiceCall, rhsReferencePriceServiceCall, (this.referencePriceServiceCall!= null), (that.referencePriceServiceCall!= null))) {
                 return false;
             }
         }
         {
-            URL lhsReferencePriceApiCall;
+            URI lhsReferencePriceApiCall;
             lhsReferencePriceApiCall = this.getReferencePriceApiCall();
-            URL rhsReferencePriceApiCall;
+            URI rhsReferencePriceApiCall;
             rhsReferencePriceApiCall = that.getReferencePriceApiCall();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "referencePriceApiCall", lhsReferencePriceApiCall), LocatorUtils.property(thatLocator, "referencePriceApiCall", rhsReferencePriceApiCall), lhsReferencePriceApiCall, rhsReferencePriceApiCall, (this.referencePriceApiCall!= null), (that.referencePriceApiCall!= null))) {
                 return false;

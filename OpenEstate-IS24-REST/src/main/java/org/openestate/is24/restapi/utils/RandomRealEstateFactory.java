@@ -18,6 +18,8 @@ package org.openestate.is24.restapi.utils;
 import com.thedeanda.lorem.LoremIpsum;
 import java.math.BigDecimal;
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -215,10 +217,10 @@ public class RandomRealEstateFactory
 
     try
     {
-      contact.setHomepageUrl( new URL( "http://test.org" ) );
-      contact.setPortraitUrl( new URL( "http://test.org/portrait.jpg" ) );
+      contact.setHomepageUrl( new URI( "http://test.org" ) );
+      contact.setPortraitUrl( new URI( "http://test.org/portrait.jpg" ) );
     }
-    catch (MalformedURLException ex)
+    catch (URISyntaxException ex)
     {
       LOGGER.warn( "Can't write URL!" );
       LOGGER.warn( "> " + ex.getLocalizedMessage(), ex );

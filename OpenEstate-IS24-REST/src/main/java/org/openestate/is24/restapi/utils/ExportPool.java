@@ -21,6 +21,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -357,9 +359,9 @@ public class ExportPool
    * @return
    * file
    */
-  public File getObjectAttachmentFile( String pooledObjectId, URL href )
+  public File getObjectAttachmentFile( String pooledObjectId, URI href )
   {
-    return (href!=null && href.getProtocol().equalsIgnoreCase( "file" ))?
+    return (href!=null && href.getScheme().equalsIgnoreCase( "file" ))?
       getObjectAttachmentFile( pooledObjectId, StringUtils.trimToNull( href.getHost() ) ): null;
   }
 
@@ -410,7 +412,7 @@ public class ExportPool
    * @return
    * file
    */
-  public URL getObjectAttachmentURL( Attachment attachment )
+  public URI getObjectAttachmentURI( Attachment attachment )
   {
     return (attachment!=null)? attachment.getHref(): null;
   }
@@ -430,9 +432,9 @@ public class ExportPool
    * @throws IOException
    * if object is not readable from local directory
    */
-  public URL getObjectAttachmentURL( String pooledObjectId, String attachmentId ) throws IOException
+  public URI getObjectAttachmentURI( String pooledObjectId, String attachmentId ) throws IOException
   {
-    return this.getObjectAttachmentURL( this.getObjectAttachment( pooledObjectId, attachmentId ) );
+    return this.getObjectAttachmentURI( this.getObjectAttachment( pooledObjectId, attachmentId ) );
   }
 
   /**
@@ -774,7 +776,14 @@ public class ExportPool
 
     final File destFile = new File( objectDir, file.getName() );
     FileUtils.copyFile( file, destFile );
-    attachment.setHref( new URL( "file://" + destFile.getName() ) );
+    try
+    {
+      attachment.setHref( new URI( "file://" + destFile.getName() ) );
+    }
+    catch (URISyntaxException ex)
+    {
+      throw new IOException( "Can't create URI for an attachment of object '" + pooledObjectId + "'!", ex );
+    }
 
     try (OutputStream output = new FileOutputStream( new File( objectDir, "attachment."+(attachmentCount+1)+".xml" ) ))
     {
@@ -796,12 +805,12 @@ public class ExportPool
    * attachment informations
    *
    * @param file
-   * URL, that points to the attached file
+   * URI, that points to the attached file
    *
    * @throws IOException
    * if pooling failed
    */
-  public synchronized void putObjectAttachedFile( String pooledObjectId, Attachment attachment, URL file ) throws IOException
+  public synchronized void putObjectAttachedFile( String pooledObjectId, Attachment attachment, URI file ) throws IOException
   {
     if (StringUtils.isBlank( pooledObjectId ) || attachment==null || file==null) return;
 

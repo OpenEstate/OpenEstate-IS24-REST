@@ -8,7 +8,7 @@
     <jaxb:serializable />
     <jaxb:javaType name="java.util.Calendar" xmlType="xsd:date" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseDate" printMethod="org.openestate.is24.restapi.utils.XmlUtils.printDate" />
     <jaxb:javaType name="java.util.Calendar" xmlType="xsd:dateTime" parseMethod="javax.xml.bind.DatatypeConverter.parseDateTime" printMethod="javax.xml.bind.DatatypeConverter.printDateTime" />
-    <jaxb:javaType name="java.net.URL" xmlType="xsd:anyURI" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseUrl" printMethod="org.openestate.is24.restapi.utils.XmlUtils.printUrl" />
+    <jaxb:javaType name="java.net.URI" xmlType="xsd:anyURI" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseUri" printMethod="org.openestate.is24.restapi.utils.XmlUtils.printUri" />
     <jaxb:javaType name="java.lang.String" xmlType="is24common:Email" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseEmail" printMethod="org.openestate.is24.restapi.utils.XmlUtils.printEmail" />
     <jaxb:javaType name="java.lang.Integer" xmlType="is24common:FlatShareRentDuration" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseInteger99" printMethod="org.openestate.is24.restapi.utils.XmlUtils.printInteger99" />
     <jaxb:javaType name="java.lang.Integer" xmlType="is24common:FlatShareSearchSize" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseFlatShareSearchSize" printMethod="org.openestate.is24.restapi.utils.XmlUtils.printFlatShareSearchSize" />

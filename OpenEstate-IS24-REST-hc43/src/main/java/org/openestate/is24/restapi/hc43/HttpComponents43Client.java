@@ -18,6 +18,7 @@ package org.openestate.is24.restapi.hc43;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
 import java.net.URL;
 import java.util.zip.GZIPInputStream;
 import oauth.signpost.OAuthConsumer;
@@ -272,7 +273,7 @@ public class HttpComponents43Client extends AbstractClient
   }
 
   @Override
-  protected Response sendVideoUploadRequest( URL url, RequestMethod method, String auth, InputStream input, String fileName, final long fileSize ) throws IOException, OAuthException
+  protected Response sendVideoUploadRequest( URI url, RequestMethod method, String auth, InputStream input, String fileName, final long fileSize ) throws IOException, OAuthException
   {
     if (method==null) method = RequestMethod.POST;
     if (!RequestMethod.POST.equals( method ) && !RequestMethod.PUT.equals( method ))

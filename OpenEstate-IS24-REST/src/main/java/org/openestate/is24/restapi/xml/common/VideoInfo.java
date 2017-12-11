@@ -2,7 +2,7 @@
 package org.openestate.is24.restapi.xml.common;
 
 import java.io.Serializable;
-import java.net.URL;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -73,7 +73,7 @@ public class VideoInfo implements Serializable, Cloneable, CopyTo2, Equals2, ToS
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter4 .class)
     @XmlSchemaType(name = "anyURI")
-    protected URL teaserUrl;
+    protected URI teaserUrl;
     protected String title;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter3 .class)
@@ -143,7 +143,7 @@ public class VideoInfo implements Serializable, Cloneable, CopyTo2, Equals2, ToS
      *     {@link String }
      *     
      */
-    public URL getTeaserUrl() {
+    public URI getTeaserUrl() {
         return teaserUrl;
     }
 
@@ -155,7 +155,7 @@ public class VideoInfo implements Serializable, Cloneable, CopyTo2, Equals2, ToS
      *     {@link String }
      *     
      */
-    public void setTeaserUrl(URL value) {
+    public void setTeaserUrl(URI value) {
         this.teaserUrl = value;
     }
 
@@ -257,7 +257,7 @@ public class VideoInfo implements Serializable, Cloneable, CopyTo2, Equals2, ToS
             strategy.appendField(locator, this, "duration", buffer, theDuration, (this.duration!= null));
         }
         {
-            URL theTeaserUrl;
+            URI theTeaserUrl;
             theTeaserUrl = this.getTeaserUrl();
             strategy.appendField(locator, this, "teaserUrl", buffer, theTeaserUrl, (this.teaserUrl!= null));
         }
@@ -326,9 +326,9 @@ public class VideoInfo implements Serializable, Cloneable, CopyTo2, Equals2, ToS
             {
                 Boolean teaserUrlShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.teaserUrl!= null));
                 if (teaserUrlShouldBeCopiedAndSet == Boolean.TRUE) {
-                    URL sourceTeaserUrl;
+                    URI sourceTeaserUrl;
                     sourceTeaserUrl = this.getTeaserUrl();
-                    URL copyTeaserUrl = ((URL) strategy.copy(LocatorUtils.property(locator, "teaserUrl", sourceTeaserUrl), sourceTeaserUrl, (this.teaserUrl!= null)));
+                    URI copyTeaserUrl = ((URI) strategy.copy(LocatorUtils.property(locator, "teaserUrl", sourceTeaserUrl), sourceTeaserUrl, (this.teaserUrl!= null)));
                     copy.setTeaserUrl(copyTeaserUrl);
                 } else {
                     if (teaserUrlShouldBeCopiedAndSet == Boolean.FALSE) {
@@ -410,9 +410,9 @@ public class VideoInfo implements Serializable, Cloneable, CopyTo2, Equals2, ToS
             }
         }
         {
-            URL lhsTeaserUrl;
+            URI lhsTeaserUrl;
             lhsTeaserUrl = this.getTeaserUrl();
-            URL rhsTeaserUrl;
+            URI rhsTeaserUrl;
             rhsTeaserUrl = that.getTeaserUrl();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "teaserUrl", lhsTeaserUrl), LocatorUtils.property(thatLocator, "teaserUrl", rhsTeaserUrl), lhsTeaserUrl, rhsTeaserUrl, (this.teaserUrl!= null), (that.teaserUrl!= null))) {
                 return false;

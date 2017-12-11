@@ -3,7 +3,7 @@ package org.openestate.is24.restapi.xml.realestateproject;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.net.URL;
+import java.net.URI;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -113,7 +113,7 @@ public class RealEstateProject implements Serializable, Cloneable, CopyTo2, Equa
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter4 .class)
     @XmlSchemaType(name = "anyURI")
-    protected URL homepageUrl;
+    protected URI homepageUrl;
     @XmlAttribute(name = "id")
     protected Long id;
 
@@ -365,7 +365,7 @@ public class RealEstateProject implements Serializable, Cloneable, CopyTo2, Equa
      *     {@link String }
      *     
      */
-    public URL getHomepageUrl() {
+    public URI getHomepageUrl() {
         return homepageUrl;
     }
 
@@ -377,7 +377,7 @@ public class RealEstateProject implements Serializable, Cloneable, CopyTo2, Equa
      *     {@link String }
      *     
      */
-    public void setHomepageUrl(URL value) {
+    public void setHomepageUrl(URI value) {
         this.homepageUrl = value;
     }
 
@@ -471,7 +471,7 @@ public class RealEstateProject implements Serializable, Cloneable, CopyTo2, Equa
             strategy.appendField(locator, this, "relaEstateProjectEntries", buffer, theRelaEstateProjectEntries, (this.relaEstateProjectEntries!= null));
         }
         {
-            URL theHomepageUrl;
+            URI theHomepageUrl;
             theHomepageUrl = this.getHomepageUrl();
             strategy.appendField(locator, this, "homepageUrl", buffer, theHomepageUrl, (this.homepageUrl!= null));
         }
@@ -629,9 +629,9 @@ public class RealEstateProject implements Serializable, Cloneable, CopyTo2, Equa
             {
                 Boolean homepageUrlShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.homepageUrl!= null));
                 if (homepageUrlShouldBeCopiedAndSet == Boolean.TRUE) {
-                    URL sourceHomepageUrl;
+                    URI sourceHomepageUrl;
                     sourceHomepageUrl = this.getHomepageUrl();
-                    URL copyHomepageUrl = ((URL) strategy.copy(LocatorUtils.property(locator, "homepageUrl", sourceHomepageUrl), sourceHomepageUrl, (this.homepageUrl!= null)));
+                    URI copyHomepageUrl = ((URI) strategy.copy(LocatorUtils.property(locator, "homepageUrl", sourceHomepageUrl), sourceHomepageUrl, (this.homepageUrl!= null)));
                     copy.setHomepageUrl(copyHomepageUrl);
                 } else {
                     if (homepageUrlShouldBeCopiedAndSet == Boolean.FALSE) {
@@ -759,9 +759,9 @@ public class RealEstateProject implements Serializable, Cloneable, CopyTo2, Equa
             }
         }
         {
-            URL lhsHomepageUrl;
+            URI lhsHomepageUrl;
             lhsHomepageUrl = this.getHomepageUrl();
-            URL rhsHomepageUrl;
+            URI rhsHomepageUrl;
             rhsHomepageUrl = that.getHomepageUrl();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "homepageUrl", lhsHomepageUrl), LocatorUtils.property(thatLocator, "homepageUrl", rhsHomepageUrl), lhsHomepageUrl, rhsHomepageUrl, (this.homepageUrl!= null), (that.homepageUrl!= null))) {
                 return false;

@@ -22,8 +22,8 @@ import java.io.OutputStream;
 import java.io.Reader;
 import java.io.StringReader;
 import java.math.BigDecimal;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 import java.text.DateFormat;
@@ -987,7 +987,7 @@ public final class XmlUtils
   }
 
   /**
-   * Read an {@link URL} value from XML.
+   * Read an {@link URI} value from XML.
    *
    * @param value
    * XML string
@@ -995,16 +995,16 @@ public final class XmlUtils
    * @return
    * parsed value or null, if the value is invalid
    */
-  public static URL parseUrl( String value )
+  public static URI parseUri( String value )
   {
     String val = StringUtils.trimToNull( value );
     try
     {
-      return (val!=null)? new URL( val ): null;
+      return (val!=null)? new URI( val ): null;
     }
-    catch (MalformedURLException ex)
+    catch (URISyntaxException ex)
     {
-      throw new IllegalArgumentException( "Can't parse URL '" + value + "'!", ex );
+      throw new IllegalArgumentException( "Can't parse URI '" + value + "'!", ex );
     }
   }
 
@@ -1960,7 +1960,7 @@ public final class XmlUtils
   }
 
   /**
-   * Write an {@link URL} value into XML output.
+   * Write an {@link URI} value into XML output.
    *
    * @param value
    * value to write
@@ -1971,12 +1971,12 @@ public final class XmlUtils
    * @throws IllegalArgumentException
    * if a validation error occured
    */
-  public static String printUrl( URL value )
+  public static String printUri( URI value )
   {
     if (value==null)
     {
       throw new IllegalArgumentException(
-        "The provided URL NULL is invalid!" );
+        "The provided URI is NULL!" );
     }
     return value.toString();
   }

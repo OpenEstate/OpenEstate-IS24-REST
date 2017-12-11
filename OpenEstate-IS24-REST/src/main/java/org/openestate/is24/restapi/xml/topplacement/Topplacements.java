@@ -2,7 +2,7 @@
 package org.openestate.is24.restapi.xml.topplacement;
 
 import java.io.Serializable;
-import java.net.URL;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -58,7 +58,7 @@ public class Topplacements implements Serializable, Cloneable, CopyTo2, Equals2,
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")
     @XmlJavaTypeAdapter(Adapter4 .class)
     @XmlSchemaType(name = "anyURI")
-    protected URL href;
+    protected URI href;
 
     /**
      * Gets the value of the topplacement property.
@@ -97,7 +97,7 @@ public class Topplacements implements Serializable, Cloneable, CopyTo2, Equals2,
      *     {@link String }
      *     
      */
-    public URL getHref() {
+    public URI getHref() {
         return href;
     }
 
@@ -109,7 +109,7 @@ public class Topplacements implements Serializable, Cloneable, CopyTo2, Equals2,
      *     {@link String }
      *     
      */
-    public void setHref(URL value) {
+    public void setHref(URI value) {
         this.href = value;
     }
 
@@ -134,7 +134,7 @@ public class Topplacements implements Serializable, Cloneable, CopyTo2, Equals2,
             strategy.appendField(locator, this, "topplacement", buffer, theTopplacement, ((this.topplacement!= null)&&(!this.topplacement.isEmpty())));
         }
         {
-            URL theHref;
+            URI theHref;
             theHref = this.getHref();
             strategy.appendField(locator, this, "href", buffer, theHref, (this.href!= null));
         }
@@ -175,9 +175,9 @@ public class Topplacements implements Serializable, Cloneable, CopyTo2, Equals2,
             {
                 Boolean hrefShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.href!= null));
                 if (hrefShouldBeCopiedAndSet == Boolean.TRUE) {
-                    URL sourceHref;
+                    URI sourceHref;
                     sourceHref = this.getHref();
-                    URL copyHref = ((URL) strategy.copy(LocatorUtils.property(locator, "href", sourceHref), sourceHref, (this.href!= null)));
+                    URI copyHref = ((URI) strategy.copy(LocatorUtils.property(locator, "href", sourceHref), sourceHref, (this.href!= null)));
                     copy.setHref(copyHref);
                 } else {
                     if (hrefShouldBeCopiedAndSet == Boolean.FALSE) {
@@ -211,9 +211,9 @@ public class Topplacements implements Serializable, Cloneable, CopyTo2, Equals2,
             }
         }
         {
-            URL lhsHref;
+            URI lhsHref;
             lhsHref = this.getHref();
-            URL rhsHref;
+            URI rhsHref;
             rhsHref = that.getHref();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "href", lhsHref), LocatorUtils.property(thatLocator, "href", rhsHref), lhsHref, rhsHref, (this.href!= null), (that.href!= null))) {
                 return false;

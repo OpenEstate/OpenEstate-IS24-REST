@@ -16,10 +16,10 @@
 package org.openestate.is24.restapi;
 
 import java.io.Closeable;
-import org.openestate.is24.restapi.utils.Verification;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.net.URI;
 import java.net.URL;
 import oauth.signpost.OAuthConsumer;
 import oauth.signpost.OAuthProvider;
@@ -32,6 +32,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.openestate.is24.restapi.utils.Authorization;
 import org.openestate.is24.restapi.utils.RequestMethod;
 import org.openestate.is24.restapi.utils.Response;
+import org.openestate.is24.restapi.utils.Verification;
 import org.openestate.is24.restapi.utils.XmlUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -511,5 +512,5 @@ public abstract class AbstractClient implements Closeable
    * @throws OAuthException
    * if authorization failed
    */
-  protected abstract Response sendVideoUploadRequest( URL url, RequestMethod method, String auth, InputStream input, String fileName, long fileSize ) throws IOException, OAuthException;
+  protected abstract Response sendVideoUploadRequest( URI url, RequestMethod method, String auth, InputStream input, String fileName, long fileSize ) throws IOException, OAuthException;
 }

@@ -2,7 +2,7 @@
 package org.openestate.is24.restapi.xml.common;
 
 import java.io.Serializable;
-import java.net.URL;
+import java.net.URI;
 import java.util.Calendar;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -88,7 +88,7 @@ public abstract class Attachment implements Serializable, Cloneable, CopyTo2, Eq
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")
     @XmlJavaTypeAdapter(Adapter4 .class)
     @XmlSchemaType(name = "anyURI")
-    protected URL href;
+    protected URI href;
     @XmlAttribute(name = "id")
     protected Long id;
     @XmlAttribute(name = "label")
@@ -210,7 +210,7 @@ public abstract class Attachment implements Serializable, Cloneable, CopyTo2, Eq
      *     {@link String }
      *     
      */
-    public URL getHref() {
+    public URI getHref() {
         return href;
     }
 
@@ -222,7 +222,7 @@ public abstract class Attachment implements Serializable, Cloneable, CopyTo2, Eq
      *     {@link String }
      *     
      */
-    public void setHref(URL value) {
+    public void setHref(URI value) {
         this.href = value;
     }
 
@@ -382,7 +382,7 @@ public abstract class Attachment implements Serializable, Cloneable, CopyTo2, Eq
             strategy.appendField(locator, this, "externalCheckSum", buffer, theExternalCheckSum, (this.externalCheckSum!= null));
         }
         {
-            URL theHref;
+            URI theHref;
             theHref = this.getHref();
             strategy.appendField(locator, this, "href", buffer, theHref, (this.href!= null));
         }
@@ -484,9 +484,9 @@ public abstract class Attachment implements Serializable, Cloneable, CopyTo2, Eq
             {
                 Boolean hrefShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.href!= null));
                 if (hrefShouldBeCopiedAndSet == Boolean.TRUE) {
-                    URL sourceHref;
+                    URI sourceHref;
                     sourceHref = this.getHref();
-                    URL copyHref = ((URL) strategy.copy(LocatorUtils.property(locator, "href", sourceHref), sourceHref, (this.href!= null)));
+                    URI copyHref = ((URI) strategy.copy(LocatorUtils.property(locator, "href", sourceHref), sourceHref, (this.href!= null)));
                     copy.setHref(copyHref);
                 } else {
                     if (hrefShouldBeCopiedAndSet == Boolean.FALSE) {
@@ -608,9 +608,9 @@ public abstract class Attachment implements Serializable, Cloneable, CopyTo2, Eq
             }
         }
         {
-            URL lhsHref;
+            URI lhsHref;
             lhsHref = this.getHref();
-            URL rhsHref;
+            URI rhsHref;
             rhsHref = that.getHref();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "href", lhsHref), LocatorUtils.property(thatLocator, "href", rhsHref), lhsHref, rhsHref, (this.href!= null), (that.href!= null))) {
                 return false;

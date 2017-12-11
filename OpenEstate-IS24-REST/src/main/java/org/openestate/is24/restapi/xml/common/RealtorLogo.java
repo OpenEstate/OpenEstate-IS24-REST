@@ -2,7 +2,7 @@
 package org.openestate.is24.restapi.xml.common;
 
 import java.io.Serializable;
-import java.net.URL;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -77,7 +77,7 @@ public class RealtorLogo implements Serializable, Cloneable, CopyTo2, Equals2, T
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter4 .class)
     @XmlSchemaType(name = "anyURI")
-    protected URL realtorLogoUrl;
+    protected URI realtorLogoUrl;
 
     /**
      * Gets the value of the urls property.
@@ -111,7 +111,7 @@ public class RealtorLogo implements Serializable, Cloneable, CopyTo2, Equals2, T
      *     {@link String }
      *     
      */
-    public URL getRealtorLogoUrl() {
+    public URI getRealtorLogoUrl() {
         return realtorLogoUrl;
     }
 
@@ -123,7 +123,7 @@ public class RealtorLogo implements Serializable, Cloneable, CopyTo2, Equals2, T
      *     {@link String }
      *     
      */
-    public void setRealtorLogoUrl(URL value) {
+    public void setRealtorLogoUrl(URI value) {
         this.realtorLogoUrl = value;
     }
 
@@ -148,7 +148,7 @@ public class RealtorLogo implements Serializable, Cloneable, CopyTo2, Equals2, T
             strategy.appendField(locator, this, "urls", buffer, theUrls, (this.urls!= null));
         }
         {
-            URL theRealtorLogoUrl;
+            URI theRealtorLogoUrl;
             theRealtorLogoUrl = this.getRealtorLogoUrl();
             strategy.appendField(locator, this, "realtorLogoUrl", buffer, theRealtorLogoUrl, (this.realtorLogoUrl!= null));
         }
@@ -184,9 +184,9 @@ public class RealtorLogo implements Serializable, Cloneable, CopyTo2, Equals2, T
             {
                 Boolean realtorLogoUrlShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.realtorLogoUrl!= null));
                 if (realtorLogoUrlShouldBeCopiedAndSet == Boolean.TRUE) {
-                    URL sourceRealtorLogoUrl;
+                    URI sourceRealtorLogoUrl;
                     sourceRealtorLogoUrl = this.getRealtorLogoUrl();
-                    URL copyRealtorLogoUrl = ((URL) strategy.copy(LocatorUtils.property(locator, "realtorLogoUrl", sourceRealtorLogoUrl), sourceRealtorLogoUrl, (this.realtorLogoUrl!= null)));
+                    URI copyRealtorLogoUrl = ((URI) strategy.copy(LocatorUtils.property(locator, "realtorLogoUrl", sourceRealtorLogoUrl), sourceRealtorLogoUrl, (this.realtorLogoUrl!= null)));
                     copy.setRealtorLogoUrl(copyRealtorLogoUrl);
                 } else {
                     if (realtorLogoUrlShouldBeCopiedAndSet == Boolean.FALSE) {
@@ -220,9 +220,9 @@ public class RealtorLogo implements Serializable, Cloneable, CopyTo2, Equals2, T
             }
         }
         {
-            URL lhsRealtorLogoUrl;
+            URI lhsRealtorLogoUrl;
             lhsRealtorLogoUrl = this.getRealtorLogoUrl();
-            URL rhsRealtorLogoUrl;
+            URI rhsRealtorLogoUrl;
             rhsRealtorLogoUrl = that.getRealtorLogoUrl();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "realtorLogoUrl", lhsRealtorLogoUrl), LocatorUtils.property(thatLocator, "realtorLogoUrl", rhsRealtorLogoUrl), lhsRealtorLogoUrl, rhsRealtorLogoUrl, (this.realtorLogoUrl!= null), (that.realtorLogoUrl!= null))) {
                 return false;
@@ -420,7 +420,7 @@ public class RealtorLogo implements Serializable, Cloneable, CopyTo2, Equals2, T
             @XmlAttribute(name = "href")
             @XmlJavaTypeAdapter(Adapter4 .class)
             @XmlSchemaType(name = "anyURI")
-            protected URL href;
+            protected URI href;
 
             /**
              * Gets the value of the scale property.
@@ -454,7 +454,7 @@ public class RealtorLogo implements Serializable, Cloneable, CopyTo2, Equals2, T
              *     {@link String }
              *     
              */
-            public URL getHref() {
+            public URI getHref() {
                 return href;
             }
 
@@ -466,7 +466,7 @@ public class RealtorLogo implements Serializable, Cloneable, CopyTo2, Equals2, T
              *     {@link String }
              *     
              */
-            public void setHref(URL value) {
+            public void setHref(URI value) {
                 this.href = value;
             }
 
@@ -491,7 +491,7 @@ public class RealtorLogo implements Serializable, Cloneable, CopyTo2, Equals2, T
                     strategy.appendField(locator, this, "scale", buffer, theScale, (this.scale!= null));
                 }
                 {
-                    URL theHref;
+                    URI theHref;
                     theHref = this.getHref();
                     strategy.appendField(locator, this, "href", buffer, theHref, (this.href!= null));
                 }
@@ -527,9 +527,9 @@ public class RealtorLogo implements Serializable, Cloneable, CopyTo2, Equals2, T
                     {
                         Boolean hrefShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.href!= null));
                         if (hrefShouldBeCopiedAndSet == Boolean.TRUE) {
-                            URL sourceHref;
+                            URI sourceHref;
                             sourceHref = this.getHref();
-                            URL copyHref = ((URL) strategy.copy(LocatorUtils.property(locator, "href", sourceHref), sourceHref, (this.href!= null)));
+                            URI copyHref = ((URI) strategy.copy(LocatorUtils.property(locator, "href", sourceHref), sourceHref, (this.href!= null)));
                             copy.setHref(copyHref);
                         } else {
                             if (hrefShouldBeCopiedAndSet == Boolean.FALSE) {
@@ -563,9 +563,9 @@ public class RealtorLogo implements Serializable, Cloneable, CopyTo2, Equals2, T
                     }
                 }
                 {
-                    URL lhsHref;
+                    URI lhsHref;
                     lhsHref = this.getHref();
-                    URL rhsHref;
+                    URI rhsHref;
                     rhsHref = that.getHref();
                     if (!strategy.equals(LocatorUtils.property(thisLocator, "href", lhsHref), LocatorUtils.property(thatLocator, "href", rhsHref), lhsHref, rhsHref, (this.href!= null), (that.href!= null))) {
                         return false;

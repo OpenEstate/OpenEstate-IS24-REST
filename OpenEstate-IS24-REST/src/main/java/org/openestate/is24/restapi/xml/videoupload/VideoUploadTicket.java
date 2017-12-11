@@ -2,7 +2,7 @@
 package org.openestate.is24.restapi.xml.videoupload;
 
 import java.io.Serializable;
-import java.net.URL;
+import java.net.URI;
 import java.util.Calendar;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -57,7 +57,7 @@ public class VideoUploadTicket implements Serializable, Cloneable, CopyTo2, Equa
     @XmlElement(required = true, type = String.class)
     @XmlJavaTypeAdapter(Adapter4 .class)
     @XmlSchemaType(name = "anyURI")
-    protected URL uploadUrl;
+    protected URI uploadUrl;
     @XmlElement(required = true, type = String.class)
     @XmlJavaTypeAdapter(Adapter2 .class)
     @XmlSchemaType(name = "dateTime")
@@ -75,7 +75,7 @@ public class VideoUploadTicket implements Serializable, Cloneable, CopyTo2, Equa
      *     {@link String }
      *     
      */
-    public URL getUploadUrl() {
+    public URI getUploadUrl() {
         return uploadUrl;
     }
 
@@ -87,7 +87,7 @@ public class VideoUploadTicket implements Serializable, Cloneable, CopyTo2, Equa
      *     {@link String }
      *     
      */
-    public void setUploadUrl(URL value) {
+    public void setUploadUrl(URI value) {
         this.uploadUrl = value;
     }
 
@@ -179,7 +179,7 @@ public class VideoUploadTicket implements Serializable, Cloneable, CopyTo2, Equa
 
     public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
-            URL theUploadUrl;
+            URI theUploadUrl;
             theUploadUrl = this.getUploadUrl();
             strategy.appendField(locator, this, "uploadUrl", buffer, theUploadUrl, (this.uploadUrl!= null));
         }
@@ -217,9 +217,9 @@ public class VideoUploadTicket implements Serializable, Cloneable, CopyTo2, Equa
             {
                 Boolean uploadUrlShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.uploadUrl!= null));
                 if (uploadUrlShouldBeCopiedAndSet == Boolean.TRUE) {
-                    URL sourceUploadUrl;
+                    URI sourceUploadUrl;
                     sourceUploadUrl = this.getUploadUrl();
-                    URL copyUploadUrl = ((URL) strategy.copy(LocatorUtils.property(locator, "uploadUrl", sourceUploadUrl), sourceUploadUrl, (this.uploadUrl!= null)));
+                    URI copyUploadUrl = ((URI) strategy.copy(LocatorUtils.property(locator, "uploadUrl", sourceUploadUrl), sourceUploadUrl, (this.uploadUrl!= null)));
                     copy.setUploadUrl(copyUploadUrl);
                 } else {
                     if (uploadUrlShouldBeCopiedAndSet == Boolean.FALSE) {
@@ -283,9 +283,9 @@ public class VideoUploadTicket implements Serializable, Cloneable, CopyTo2, Equa
         }
         final VideoUploadTicket that = ((VideoUploadTicket) object);
         {
-            URL lhsUploadUrl;
+            URI lhsUploadUrl;
             lhsUploadUrl = this.getUploadUrl();
-            URL rhsUploadUrl;
+            URI rhsUploadUrl;
             rhsUploadUrl = that.getUploadUrl();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "uploadUrl", lhsUploadUrl), LocatorUtils.property(thatLocator, "uploadUrl", rhsUploadUrl), lhsUploadUrl, rhsUploadUrl, (this.uploadUrl!= null), (that.uploadUrl!= null))) {
                 return false;

@@ -20,6 +20,7 @@ import java.io.ByteArrayInputStream;
 import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.zip.GZIPInputStream;
@@ -274,7 +275,7 @@ public class HttpComponents42Client extends AbstractClient
   }
 
   @Override
-  protected Response sendVideoUploadRequest( URL url, RequestMethod method, String auth, InputStream input, String fileName, final long fileSize ) throws IOException, OAuthException
+  protected Response sendVideoUploadRequest( URI url, RequestMethod method, String auth, InputStream input, String fileName, final long fileSize ) throws IOException, OAuthException
   {
     if (method==null) method = RequestMethod.POST;
     if (!RequestMethod.POST.equals( method ) && !RequestMethod.PUT.equals( method ))

@@ -20,6 +20,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
 import java.util.zip.GZIPInputStream;
 import oauth.signpost.exception.OAuthException;
@@ -202,7 +203,7 @@ public class DefaultClient extends AbstractClient
   }
 
   @Override
-  protected Response sendVideoUploadRequest( URL url, RequestMethod method, String auth, InputStream input, String fileName, long fileSize ) throws IOException, OAuthException
+  protected Response sendVideoUploadRequest( URI url, RequestMethod method, String auth, InputStream input, String fileName, long fileSize ) throws IOException, OAuthException
   {
     if (method==null) method = RequestMethod.POST;
     if (!RequestMethod.POST.equals( method ) && !RequestMethod.PUT.equals( method ))
@@ -217,7 +218,7 @@ public class DefaultClient extends AbstractClient
     try
     {
       // create connection
-      connection = (HttpURLConnection) url.openConnection();
+      connection = (HttpURLConnection) url.toURL().openConnection();
       connection.setRequestMethod( method.name() );
       connection.setRequestProperty( "MIME-Version", "1.0" );
       connection.setRequestProperty( "Content-Type", "multipart/form-data; boundary=" + boundary );

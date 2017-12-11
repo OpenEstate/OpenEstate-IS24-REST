@@ -2,7 +2,7 @@
 package org.openestate.is24.restapi.xml.common;
 
 import java.io.Serializable;
-import java.net.URL;
+import java.net.URI;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -263,10 +263,10 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
     protected String company;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter4 .class)
-    protected URL homepageUrl;
+    protected URI homepageUrl;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter4 .class)
-    protected URL portraitUrl;
+    protected URI portraitUrl;
     @XmlJavaTypeAdapter(Adapter57 .class)
     protected String position;
 
@@ -782,7 +782,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    public URL getHomepageUrl() {
+    public URI getHomepageUrl() {
         return homepageUrl;
     }
 
@@ -794,7 +794,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    public void setHomepageUrl(URL value) {
+    public void setHomepageUrl(URI value) {
         this.homepageUrl = value;
     }
 
@@ -806,7 +806,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    public URL getPortraitUrl() {
+    public URI getPortraitUrl() {
         return portraitUrl;
     }
 
@@ -818,7 +818,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    public void setPortraitUrl(URL value) {
+    public void setPortraitUrl(URI value) {
         this.portraitUrl = value;
     }
 
@@ -967,12 +967,12 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
             strategy.appendField(locator, this, "company", buffer, theCompany, (this.company!= null));
         }
         {
-            URL theHomepageUrl;
+            URI theHomepageUrl;
             theHomepageUrl = this.getHomepageUrl();
             strategy.appendField(locator, this, "homepageUrl", buffer, theHomepageUrl, (this.homepageUrl!= null));
         }
         {
-            URL thePortraitUrl;
+            URI thePortraitUrl;
             thePortraitUrl = this.getPortraitUrl();
             strategy.appendField(locator, this, "portraitUrl", buffer, thePortraitUrl, (this.portraitUrl!= null));
         }
@@ -1273,9 +1273,9 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
             {
                 Boolean homepageUrlShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.homepageUrl!= null));
                 if (homepageUrlShouldBeCopiedAndSet == Boolean.TRUE) {
-                    URL sourceHomepageUrl;
+                    URI sourceHomepageUrl;
                     sourceHomepageUrl = this.getHomepageUrl();
-                    URL copyHomepageUrl = ((URL) strategy.copy(LocatorUtils.property(locator, "homepageUrl", sourceHomepageUrl), sourceHomepageUrl, (this.homepageUrl!= null)));
+                    URI copyHomepageUrl = ((URI) strategy.copy(LocatorUtils.property(locator, "homepageUrl", sourceHomepageUrl), sourceHomepageUrl, (this.homepageUrl!= null)));
                     copy.setHomepageUrl(copyHomepageUrl);
                 } else {
                     if (homepageUrlShouldBeCopiedAndSet == Boolean.FALSE) {
@@ -1286,9 +1286,9 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
             {
                 Boolean portraitUrlShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.portraitUrl!= null));
                 if (portraitUrlShouldBeCopiedAndSet == Boolean.TRUE) {
-                    URL sourcePortraitUrl;
+                    URI sourcePortraitUrl;
                     sourcePortraitUrl = this.getPortraitUrl();
-                    URL copyPortraitUrl = ((URL) strategy.copy(LocatorUtils.property(locator, "portraitUrl", sourcePortraitUrl), sourcePortraitUrl, (this.portraitUrl!= null)));
+                    URI copyPortraitUrl = ((URI) strategy.copy(LocatorUtils.property(locator, "portraitUrl", sourcePortraitUrl), sourcePortraitUrl, (this.portraitUrl!= null)));
                     copy.setPortraitUrl(copyPortraitUrl);
                 } else {
                     if (portraitUrlShouldBeCopiedAndSet == Boolean.FALSE) {
@@ -1515,18 +1515,18 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
             }
         }
         {
-            URL lhsHomepageUrl;
+            URI lhsHomepageUrl;
             lhsHomepageUrl = this.getHomepageUrl();
-            URL rhsHomepageUrl;
+            URI rhsHomepageUrl;
             rhsHomepageUrl = that.getHomepageUrl();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "homepageUrl", lhsHomepageUrl), LocatorUtils.property(thatLocator, "homepageUrl", rhsHomepageUrl), lhsHomepageUrl, rhsHomepageUrl, (this.homepageUrl!= null), (that.homepageUrl!= null))) {
                 return false;
             }
         }
         {
-            URL lhsPortraitUrl;
+            URI lhsPortraitUrl;
             lhsPortraitUrl = this.getPortraitUrl();
-            URL rhsPortraitUrl;
+            URI rhsPortraitUrl;
             rhsPortraitUrl = that.getPortraitUrl();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "portraitUrl", lhsPortraitUrl), LocatorUtils.property(thatLocator, "portraitUrl", rhsPortraitUrl), lhsPortraitUrl, rhsPortraitUrl, (this.portraitUrl!= null), (that.portraitUrl!= null))) {
                 return false;

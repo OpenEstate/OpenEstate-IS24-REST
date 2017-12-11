@@ -2,7 +2,7 @@
 package org.openestate.is24.restapi.xml.offerlistelement;
 
 import java.io.Serializable;
-import java.net.URL;
+import java.net.URI;
 import java.util.Calendar;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -104,7 +104,7 @@ public abstract class OfferRealEstateForList
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")
     @XmlJavaTypeAdapter(Adapter4 .class)
     @XmlSchemaType(name = "anyURI")
-    protected URL href;
+    protected URI href;
     @XmlAttribute(name = "modification")
     @XmlJavaTypeAdapter(Adapter2 .class)
     @XmlSchemaType(name = "dateTime")
@@ -222,7 +222,7 @@ public abstract class OfferRealEstateForList
      *     {@link String }
      *     
      */
-    public URL getHref() {
+    public URI getHref() {
         return href;
     }
 
@@ -234,7 +234,7 @@ public abstract class OfferRealEstateForList
      *     {@link String }
      *     
      */
-    public void setHref(URL value) {
+    public void setHref(URI value) {
         this.href = value;
     }
 
@@ -347,7 +347,7 @@ public abstract class OfferRealEstateForList
             strategy.appendField(locator, this, "publishChannels", buffer, thePublishChannels, (this.publishChannels!= null));
         }
         {
-            URL theHref;
+            URI theHref;
             theHref = this.getHref();
             strategy.appendField(locator, this, "href", buffer, theHref, (this.href!= null));
         }
@@ -440,9 +440,9 @@ public abstract class OfferRealEstateForList
             {
                 Boolean hrefShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.href!= null));
                 if (hrefShouldBeCopiedAndSet == Boolean.TRUE) {
-                    URL sourceHref;
+                    URI sourceHref;
                     sourceHref = this.getHref();
-                    URL copyHref = ((URL) strategy.copy(LocatorUtils.property(locator, "href", sourceHref), sourceHref, (this.href!= null)));
+                    URI copyHref = ((URI) strategy.copy(LocatorUtils.property(locator, "href", sourceHref), sourceHref, (this.href!= null)));
                     copy.setHref(copyHref);
                 } else {
                     if (hrefShouldBeCopiedAndSet == Boolean.FALSE) {
@@ -541,9 +541,9 @@ public abstract class OfferRealEstateForList
             }
         }
         {
-            URL lhsHref;
+            URI lhsHref;
             lhsHref = this.getHref();
-            URL rhsHref;
+            URI rhsHref;
             rhsHref = that.getHref();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "href", lhsHref), LocatorUtils.property(thatLocator, "href", rhsHref), lhsHref, rhsHref, (this.href!= null), (that.href!= null))) {
                 return false;

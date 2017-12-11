@@ -2,7 +2,7 @@
 package org.openestate.is24.restapi.xml.common;
 
 import java.io.Serializable;
-import java.net.URL;
+import java.net.URI;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -61,7 +61,7 @@ public abstract class ExtendedAttachment
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter4 .class)
     @XmlSchemaType(name = "anyURI")
-    protected URL url;
+    protected URI url;
 
     /**
      * Gets the value of the url property.
@@ -71,7 +71,7 @@ public abstract class ExtendedAttachment
      *     {@link String }
      *     
      */
-    public URL getUrl() {
+    public URI getUrl() {
         return url;
     }
 
@@ -83,7 +83,7 @@ public abstract class ExtendedAttachment
      *     {@link String }
      *     
      */
-    public void setUrl(URL value) {
+    public void setUrl(URI value) {
         this.url = value;
     }
 
@@ -104,7 +104,7 @@ public abstract class ExtendedAttachment
     public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         super.appendFields(locator, buffer, strategy);
         {
-            URL theUrl;
+            URI theUrl;
             theUrl = this.getUrl();
             strategy.appendField(locator, this, "url", buffer, theUrl, (this.url!= null));
         }
@@ -130,9 +130,9 @@ public abstract class ExtendedAttachment
             {
                 Boolean urlShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.url!= null));
                 if (urlShouldBeCopiedAndSet == Boolean.TRUE) {
-                    URL sourceUrl;
+                    URI sourceUrl;
                     sourceUrl = this.getUrl();
-                    URL copyUrl = ((URL) strategy.copy(LocatorUtils.property(locator, "url", sourceUrl), sourceUrl, (this.url!= null)));
+                    URI copyUrl = ((URI) strategy.copy(LocatorUtils.property(locator, "url", sourceUrl), sourceUrl, (this.url!= null)));
                     copy.setUrl(copyUrl);
                 } else {
                     if (urlShouldBeCopiedAndSet == Boolean.FALSE) {
@@ -156,9 +156,9 @@ public abstract class ExtendedAttachment
         }
         final ExtendedAttachment that = ((ExtendedAttachment) object);
         {
-            URL lhsUrl;
+            URI lhsUrl;
             lhsUrl = this.getUrl();
-            URL rhsUrl;
+            URI rhsUrl;
             rhsUrl = that.getUrl();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "url", lhsUrl), LocatorUtils.property(thatLocator, "url", rhsUrl), lhsUrl, rhsUrl, (this.url!= null), (that.url!= null))) {
                 return false;

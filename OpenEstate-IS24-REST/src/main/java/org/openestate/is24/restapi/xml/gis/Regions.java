@@ -2,7 +2,7 @@
 package org.openestate.is24.restapi.xml.gis;
 
 import java.io.Serializable;
-import java.net.URL;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -209,7 +209,7 @@ public class Regions implements Serializable, Cloneable, CopyTo2, Equals2, ToStr
         @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")
         @XmlJavaTypeAdapter(Adapter4 .class)
         @XmlSchemaType(name = "anyURI")
-        protected URL href;
+        protected URI href;
         @XmlAttribute(name = "id")
         protected Long id;
         @XmlAttribute(name = "label")
@@ -235,7 +235,7 @@ public class Regions implements Serializable, Cloneable, CopyTo2, Equals2, ToStr
          *     {@link String }
          *     
          */
-        public URL getHref() {
+        public URI getHref() {
             return href;
         }
 
@@ -247,7 +247,7 @@ public class Regions implements Serializable, Cloneable, CopyTo2, Equals2, ToStr
          *     {@link String }
          *     
          */
-        public void setHref(URL value) {
+        public void setHref(URI value) {
             this.href = value;
         }
 
@@ -387,7 +387,7 @@ public class Regions implements Serializable, Cloneable, CopyTo2, Equals2, ToStr
 
         public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
             {
-                URL theHref;
+                URI theHref;
                 theHref = this.getHref();
                 strategy.appendField(locator, this, "href", buffer, theHref, (this.href!= null));
             }
@@ -435,9 +435,9 @@ public class Regions implements Serializable, Cloneable, CopyTo2, Equals2, ToStr
                 {
                     Boolean hrefShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.href!= null));
                     if (hrefShouldBeCopiedAndSet == Boolean.TRUE) {
-                        URL sourceHref;
+                        URI sourceHref;
                         sourceHref = this.getHref();
-                        URL copyHref = ((URL) strategy.copy(LocatorUtils.property(locator, "href", sourceHref), sourceHref, (this.href!= null)));
+                        URI copyHref = ((URI) strategy.copy(LocatorUtils.property(locator, "href", sourceHref), sourceHref, (this.href!= null)));
                         copy.setHref(copyHref);
                     } else {
                         if (hrefShouldBeCopiedAndSet == Boolean.FALSE) {
@@ -527,9 +527,9 @@ public class Regions implements Serializable, Cloneable, CopyTo2, Equals2, ToStr
             }
             final Regions.Region that = ((Regions.Region) object);
             {
-                URL lhsHref;
+                URI lhsHref;
                 lhsHref = this.getHref();
-                URL rhsHref;
+                URI rhsHref;
                 rhsHref = that.getHref();
                 if (!strategy.equals(LocatorUtils.property(thisLocator, "href", lhsHref), LocatorUtils.property(thatLocator, "href", rhsHref), lhsHref, rhsHref, (this.href!= null), (that.href!= null))) {
                     return false;
