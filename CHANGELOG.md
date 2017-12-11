@@ -6,6 +6,7 @@ Changelog for OpenEstate-IS24-REST
 
 -   Updated `commons-codec` library to version 1.11.
 -   Updated `commons-io` library to version 2.6.
+-   Updated `commons-lang` library to version 3.7.
 
 
 0.4 (29 Jul 2017)
