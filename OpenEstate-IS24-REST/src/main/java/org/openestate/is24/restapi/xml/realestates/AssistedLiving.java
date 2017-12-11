@@ -189,7 +189,7 @@ public class AssistedLiving
     @XmlSchemaType(name = "string")
     protected BuildingEnergyRatingType buildingEnergyRatingType;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter18 .class)
+    @XmlJavaTypeAdapter(Adapter20 .class)
     protected BigDecimal thermalCharacteristic;
     @XmlSchemaType(name = "string")
     protected YesNotApplicableType energyConsumptionContainsWarmWater;

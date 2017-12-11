@@ -191,8 +191,7 @@ public class Office
     protected FiringTypes firingTypes;
     protected EnergySourcesEnev2014 energySourcesEnev2014;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter1 .class)
-    @XmlSchemaType(name = "double")
+    @XmlJavaTypeAdapter(Adapter4 .class)
     protected BigDecimal thermalCharacteristic;
     @XmlSchemaType(name = "string")
     protected YesNotApplicableType energyConsumptionContainsWarmWater;

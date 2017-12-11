@@ -43,6 +43,7 @@ import org.openestate.is24.restapi.xml.common.PriceRangeMandatory;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
+ *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="title" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="price" type="{http://rest.immobilienscout24.de/schema/common/1.0}PriceRangeMandatory"/&gt;
  *         &lt;element name="space" type="{http://rest.immobilienscout24.de/schema/common/1.0}AreaRangeMandatory"/&gt;
@@ -71,6 +72,7 @@ import org.openestate.is24.restapi.xml.common.PriceRangeMandatory;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "RealEstateProject", propOrder = {
+    "name",
     "title",
     "price",
     "space",
@@ -85,6 +87,8 @@ import org.openestate.is24.restapi.xml.common.PriceRangeMandatory;
 public class RealEstateProject implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
+    @XmlElement(required = true)
+    protected String name;
     @XmlElement(required = true)
     protected String title;
     @XmlElement(required = true)
@@ -112,6 +116,30 @@ public class RealEstateProject implements Serializable, Cloneable, CopyTo2, Equa
     protected URL homepageUrl;
     @XmlAttribute(name = "id")
     protected Long id;
+
+    /**
+     * Gets the value of the name property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Sets the value of the name property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setName(String value) {
+        this.name = value;
+    }
 
     /**
      * Gets the value of the title property.
@@ -393,6 +421,11 @@ public class RealEstateProject implements Serializable, Cloneable, CopyTo2, Equa
 
     public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
+            String theName;
+            theName = this.getName();
+            strategy.appendField(locator, this, "name", buffer, theName, (this.name!= null));
+        }
+        {
             String theTitle;
             theTitle = this.getTitle();
             strategy.appendField(locator, this, "title", buffer, theTitle, (this.title!= null));
@@ -463,6 +496,19 @@ public class RealEstateProject implements Serializable, Cloneable, CopyTo2, Equa
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof RealEstateProject) {
             final RealEstateProject copy = ((RealEstateProject) draftCopy);
+            {
+                Boolean nameShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.name!= null));
+                if (nameShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceName;
+                    sourceName = this.getName();
+                    String copyName = ((String) strategy.copy(LocatorUtils.property(locator, "name", sourceName), sourceName, (this.name!= null)));
+                    copy.setName(copyName);
+                } else {
+                    if (nameShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.name = null;
+                    }
+                }
+            }
             {
                 Boolean titleShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.title!= null));
                 if (titleShouldBeCopiedAndSet == Boolean.TRUE) {
@@ -622,6 +668,15 @@ public class RealEstateProject implements Serializable, Cloneable, CopyTo2, Equa
             return true;
         }
         final RealEstateProject that = ((RealEstateProject) object);
+        {
+            String lhsName;
+            lhsName = this.getName();
+            String rhsName;
+            rhsName = that.getName();
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "name", lhsName), LocatorUtils.property(thatLocator, "name", rhsName), lhsName, rhsName, (this.name!= null), (that.name!= null))) {
+                return false;
+            }
+        }
         {
             String lhsTitle;
             lhsTitle = this.getTitle();

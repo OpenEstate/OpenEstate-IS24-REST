@@ -40,7 +40,6 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.ValidationEvent;
 import javax.xml.bind.ValidationEventHandler;
-import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.SystemUtils;
 import org.apache.commons.lang3.time.DateUtils;
@@ -1957,7 +1956,7 @@ public final class XmlUtils
    */
   public static String printThermalCharacteristic( BigDecimal value )
   {
-    return printDecimal( value, BigDecimal.ZERO, new BigDecimal( "2000" ), 3, false );
+    return printDecimal( value, BigDecimal.ZERO, new BigDecimal( "2000" ), 2, false );
   }
 
   /**

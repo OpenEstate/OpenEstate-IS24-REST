@@ -23,7 +23,6 @@ import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 import org.openestate.is24.restapi.xml.Adapter1;
 import org.openestate.is24.restapi.xml.Adapter3;
-import org.openestate.is24.restapi.xml.Adapter5;
 import org.openestate.is24.restapi.xml.common.BuildingEnergyRatingType;
 import org.openestate.is24.restapi.xml.common.CourtageInfo;
 import org.openestate.is24.restapi.xml.common.EnergyPerformanceCertificate;
@@ -143,7 +142,7 @@ public class ShortTermAccommodation
     protected HeatingTypeEnev2014 heatingTypeEnev2014;
     protected Boolean lift;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlJavaTypeAdapter(org.openestate.is24.restapi.xml.Adapter5 .class)
     @XmlSchemaType(name = "int")
     protected Long maxNumberOfPersons;
     @XmlElement(type = String.class)
@@ -155,11 +154,11 @@ public class ShortTermAccommodation
     @XmlSchemaType(name = "double")
     protected BigDecimal minRentalTime;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlJavaTypeAdapter(org.openestate.is24.restapi.xml.Adapter5 .class)
     @XmlSchemaType(name = "int")
     protected Long numberOfFloors;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlJavaTypeAdapter(org.openestate.is24.restapi.xml.Adapter5 .class)
     @XmlSchemaType(name = "int")
     protected Long numberOfParkingSpaces;
     @XmlElement(type = String.class)
@@ -175,8 +174,7 @@ public class ShortTermAccommodation
     @XmlSchemaType(name = "double")
     protected BigDecimal serviceCharge;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter1 .class)
-    @XmlSchemaType(name = "double")
+    @XmlJavaTypeAdapter(org.openestate.is24.restapi.xml.realestates.Adapter5 .class)
     protected BigDecimal thermalCharacteristic;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter1 .class)
@@ -184,7 +182,7 @@ public class ShortTermAccommodation
     @Deprecated
     protected BigDecimal totalRent;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlJavaTypeAdapter(org.openestate.is24.restapi.xml.Adapter5 .class)
     @XmlSchemaType(name = "int")
     protected Long constructionYear;
     protected Boolean constructionYearUnknown;

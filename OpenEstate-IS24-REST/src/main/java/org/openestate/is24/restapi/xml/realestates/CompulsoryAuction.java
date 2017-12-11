@@ -46,6 +46,7 @@ import org.openestate.is24.restapi.xml.common.YesNotApplicableType;
  *     &lt;extension base="{http://rest.immobilienscout24.de/schema/offer/realestates/1.0}RealEstate"&gt;
  *       &lt;sequence&gt;
  *         &lt;group ref="{http://rest.immobilienscout24.de/schema/common/1.0}ExtendedCompulsoryAuctionGroup"/&gt;
+ *         &lt;element name="customLowestBid" type="{http://rest.immobilienscout24.de/schema/common/1.0}Price" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
@@ -77,7 +78,8 @@ import org.openestate.is24.restapi.xml.common.YesNotApplicableType;
     "thermalCharacteristic",
     "energyConsumptionContainsWarmWater",
     "constructionYear",
-    "constructionYearUnknown"
+    "constructionYearUnknown",
+    "customLowestBid"
 })
 public class CompulsoryAuction
     extends RealEstate
@@ -113,13 +115,13 @@ public class CompulsoryAuction
     @XmlSchemaType(name = "string")
     protected CompulsoryAuctionType auctionObjectType;
     protected CountyCourt countyCourt;
-    @XmlJavaTypeAdapter(Adapter4 .class)
+    @XmlJavaTypeAdapter(Adapter6 .class)
     protected String fileReferenceAtCountyCourt;
-    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlJavaTypeAdapter(Adapter7 .class)
     protected String numberOfFolio;
     @XmlElement(defaultValue = "false")
     protected Boolean splittingAuction;
-    @XmlJavaTypeAdapter(Adapter6 .class)
+    @XmlJavaTypeAdapter(Adapter8 .class)
     protected String owner;
     protected EnergyPerformanceCertificate energyCertificate;
     @XmlSchemaType(name = "string")
@@ -128,14 +130,15 @@ public class CompulsoryAuction
     @XmlSchemaType(name = "string")
     protected BuildingEnergyRatingType buildingEnergyRatingType;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter7 .class)
+    @XmlJavaTypeAdapter(Adapter9 .class)
     protected BigDecimal thermalCharacteristic;
     @XmlSchemaType(name = "string")
     protected YesNotApplicableType energyConsumptionContainsWarmWater;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter8 .class)
+    @XmlJavaTypeAdapter(Adapter10 .class)
     protected Integer constructionYear;
     protected Boolean constructionYearUnknown;
+    protected Price customLowestBid;
 
     /**
      * Gets the value of the marketValue property.
@@ -665,6 +668,30 @@ public class CompulsoryAuction
         this.constructionYearUnknown = value;
     }
 
+    /**
+     * Gets the value of the customLowestBid property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Price }
+     *     
+     */
+    public Price getCustomLowestBid() {
+        return customLowestBid;
+    }
+
+    /**
+     * Sets the value of the customLowestBid property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Price }
+     *     
+     */
+    public void setCustomLowestBid(Price value) {
+        this.customLowestBid = value;
+    }
+
     public String toString() {
         final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
@@ -790,6 +817,11 @@ public class CompulsoryAuction
             Boolean theConstructionYearUnknown;
             theConstructionYearUnknown = this.isConstructionYearUnknown();
             strategy.appendField(locator, this, "constructionYearUnknown", buffer, theConstructionYearUnknown, (this.constructionYearUnknown!= null));
+        }
+        {
+            Price theCustomLowestBid;
+            theCustomLowestBid = this.getCustomLowestBid();
+            strategy.appendField(locator, this, "customLowestBid", buffer, theCustomLowestBid, (this.customLowestBid!= null));
         }
         return buffer;
     }
@@ -1094,6 +1126,19 @@ public class CompulsoryAuction
                     }
                 }
             }
+            {
+                Boolean customLowestBidShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.customLowestBid!= null));
+                if (customLowestBidShouldBeCopiedAndSet == Boolean.TRUE) {
+                    Price sourceCustomLowestBid;
+                    sourceCustomLowestBid = this.getCustomLowestBid();
+                    Price copyCustomLowestBid = ((Price) strategy.copy(LocatorUtils.property(locator, "customLowestBid", sourceCustomLowestBid), sourceCustomLowestBid, (this.customLowestBid!= null)));
+                    copy.setCustomLowestBid(copyCustomLowestBid);
+                } else {
+                    if (customLowestBidShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.customLowestBid = null;
+                    }
+                }
+            }
         }
         return draftCopy;
     }
@@ -1308,6 +1353,15 @@ public class CompulsoryAuction
             Boolean rhsConstructionYearUnknown;
             rhsConstructionYearUnknown = that.isConstructionYearUnknown();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "constructionYearUnknown", lhsConstructionYearUnknown), LocatorUtils.property(thatLocator, "constructionYearUnknown", rhsConstructionYearUnknown), lhsConstructionYearUnknown, rhsConstructionYearUnknown, (this.constructionYearUnknown!= null), (that.constructionYearUnknown!= null))) {
+                return false;
+            }
+        }
+        {
+            Price lhsCustomLowestBid;
+            lhsCustomLowestBid = this.getCustomLowestBid();
+            Price rhsCustomLowestBid;
+            rhsCustomLowestBid = that.getCustomLowestBid();
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "customLowestBid", lhsCustomLowestBid), LocatorUtils.property(thatLocator, "customLowestBid", rhsCustomLowestBid), lhsCustomLowestBid, rhsCustomLowestBid, (this.customLowestBid!= null), (that.customLowestBid!= null))) {
                 return false;
             }
         }

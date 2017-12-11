@@ -32,6 +32,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
  *         &lt;element name="type" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="pictureUrl" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="imageUrl" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="active" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
  *       &lt;/all&gt;
  *     &lt;/restriction&gt;
@@ -54,6 +55,8 @@ public class Badge implements Serializable, Cloneable, CopyTo2, Equals2, ToStrin
     protected String description;
     @XmlElement(required = true)
     protected String pictureUrl;
+    @XmlElement(required = true)
+    protected String imageUrl;
     protected boolean active;
 
     /**
@@ -129,6 +132,30 @@ public class Badge implements Serializable, Cloneable, CopyTo2, Equals2, ToStrin
     }
 
     /**
+     * Gets the value of the imageUrl property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    /**
+     * Sets the value of the imageUrl property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setImageUrl(String value) {
+        this.imageUrl = value;
+    }
+
+    /**
      * Gets the value of the active property.
      * 
      */
@@ -173,6 +200,11 @@ public class Badge implements Serializable, Cloneable, CopyTo2, Equals2, ToStrin
             String thePictureUrl;
             thePictureUrl = this.getPictureUrl();
             strategy.appendField(locator, this, "pictureUrl", buffer, thePictureUrl, (this.pictureUrl!= null));
+        }
+        {
+            String theImageUrl;
+            theImageUrl = this.getImageUrl();
+            strategy.appendField(locator, this, "imageUrl", buffer, theImageUrl, (this.imageUrl!= null));
         }
         {
             boolean theActive;
@@ -235,6 +267,19 @@ public class Badge implements Serializable, Cloneable, CopyTo2, Equals2, ToStrin
                 }
             }
             {
+                Boolean imageUrlShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.imageUrl!= null));
+                if (imageUrlShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceImageUrl;
+                    sourceImageUrl = this.getImageUrl();
+                    String copyImageUrl = ((String) strategy.copy(LocatorUtils.property(locator, "imageUrl", sourceImageUrl), sourceImageUrl, (this.imageUrl!= null)));
+                    copy.setImageUrl(copyImageUrl);
+                } else {
+                    if (imageUrlShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.imageUrl = null;
+                    }
+                }
+            }
+            {
                 Boolean activeShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, true);
                 if (activeShouldBeCopiedAndSet == Boolean.TRUE) {
                     boolean sourceActive;
@@ -286,6 +331,15 @@ public class Badge implements Serializable, Cloneable, CopyTo2, Equals2, ToStrin
             String rhsPictureUrl;
             rhsPictureUrl = that.getPictureUrl();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "pictureUrl", lhsPictureUrl), LocatorUtils.property(thatLocator, "pictureUrl", rhsPictureUrl), lhsPictureUrl, rhsPictureUrl, (this.pictureUrl!= null), (that.pictureUrl!= null))) {
+                return false;
+            }
+        }
+        {
+            String lhsImageUrl;
+            lhsImageUrl = this.getImageUrl();
+            String rhsImageUrl;
+            rhsImageUrl = that.getImageUrl();
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "imageUrl", lhsImageUrl), LocatorUtils.property(thatLocator, "imageUrl", rhsImageUrl), lhsImageUrl, rhsImageUrl, (this.imageUrl!= null), (that.imageUrl!= null))) {
                 return false;
             }
         }

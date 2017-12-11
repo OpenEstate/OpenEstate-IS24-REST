@@ -9,11 +9,11 @@ public class Adapter10
 
 
     public Integer unmarshal(String value) {
-        return (org.openestate.is24.restapi.utils.XmlUtils.parseInteger99999(value));
+        return (org.openestate.is24.restapi.utils.XmlUtils.parseInteger9999(value));
     }
 
     public String marshal(Integer value) {
-        return (org.openestate.is24.restapi.utils.XmlUtils.printInteger99999(value));
+        return (org.openestate.is24.restapi.utils.XmlUtils.printInteger9999(value));
     }
 
 }

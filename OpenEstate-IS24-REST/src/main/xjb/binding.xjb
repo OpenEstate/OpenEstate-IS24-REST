@@ -77,6 +77,9 @@
     <jaxb:bindings node="//xsd:complexType[@name='CountryRegion']//xsd:element[@name='region']/xsd:simpleType" multiple="false">
       <jaxb:javaType name="java.lang.String" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseNonEmptyText" printMethod="org.openestate.is24.restapi.utils.XmlUtils.printNonEmptyText" />
     </jaxb:bindings>
+    <jaxb:bindings node="//xsd:group[@name='CommercialInformation']//xsd:element[@name='thermalCharacteristic']/xsd:simpleType" multiple="false">
+      <jaxb:javaType name="java.math.BigDecimal" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseThermalCharacteristic" printMethod="org.openestate.is24.restapi.utils.XmlUtils.printThermalCharacteristic" />
+    </jaxb:bindings>
     <jaxb:bindings node="//xsd:complexType[@name='EnergyPerformanceCertificate']//xsd:element[@name='electricityConsumption']/xsd:simpleType" multiple="false">
       <jaxb:javaType name="java.math.BigDecimal" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseThermalCharacteristic" printMethod="org.openestate.is24.restapi.utils.XmlUtils.printThermalCharacteristic" />
     </jaxb:bindings>
@@ -93,6 +96,9 @@
       <jaxb:javaType name="java.math.BigDecimal" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseThermalCharacteristic" printMethod="org.openestate.is24.restapi.utils.XmlUtils.printThermalCharacteristic" />
     </jaxb:bindings>
     <jaxb:bindings node="//xsd:complexType[@name='EnergyPerformanceCertificate']//xsd:element[@name='thermalCharacteristicHeating']/xsd:simpleType" multiple="false">
+      <jaxb:javaType name="java.math.BigDecimal" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseThermalCharacteristic" printMethod="org.openestate.is24.restapi.utils.XmlUtils.printThermalCharacteristic" />
+    </jaxb:bindings>
+    <jaxb:bindings node="//xsd:group[@name='ExtendedShortTermAccommodation']//xsd:element[@name='thermalCharacteristic']/xsd:simpleType" multiple="false">
       <jaxb:javaType name="java.math.BigDecimal" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseThermalCharacteristic" printMethod="org.openestate.is24.restapi.utils.XmlUtils.printThermalCharacteristic" />
     </jaxb:bindings>
     <jaxb:bindings node="//xsd:element[@name='groupNumber']/xsd:simpleType" multiple="false">

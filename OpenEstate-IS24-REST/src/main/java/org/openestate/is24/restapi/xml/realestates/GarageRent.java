@@ -92,7 +92,7 @@ public class GarageRent
     @XmlSchemaType(name = "string")
     protected GarageType garageType;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter19 .class)
+    @XmlJavaTypeAdapter(Adapter21 .class)
     protected Integer constructionYear;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter1 .class)
