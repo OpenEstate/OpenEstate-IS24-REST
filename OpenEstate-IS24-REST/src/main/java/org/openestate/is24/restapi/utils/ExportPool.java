@@ -30,7 +30,6 @@ import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.SystemUtils;
@@ -675,19 +674,13 @@ public class ExportPool
     if (!contactDir.mkdirs())
       throw new IOException( "Can't create folder at '" + contactDir.getAbsolutePath() + "'!" );
 
-    OutputStream output = null;
-    try
+    try (OutputStream output = new FileOutputStream( new File( contactDir, "contact.xml" ) ))
     {
-      output = new FileOutputStream( new File( contactDir, "contact.xml" ) );
       XmlUtils.writeXml( contact, output );
     }
     catch (JAXBException ex)
     {
       throw new IOException( "Can't write XML for contact '" + pooledContactId + "'!", ex );
-    }
-    finally
-    {
-      IOUtils.closeQuietly( output );
     }
   }
 
@@ -733,20 +726,14 @@ public class ExportPool
     if (!objectDir.mkdirs())
       throw new IOException( "Can't create folder at '" + objectDir.getAbsolutePath() + "'!" );
 
-    OutputStream output = null;
-    try
+    try (OutputStream output = new FileOutputStream( new File( objectDir, "object.xml" ) ))
     {
-      output = new FileOutputStream( new File( objectDir, "object.xml" ) );
       XmlUtils.writeXml( object, output );
       this.putSetting( "object." + object.getExternalId(), UPDATE );
     }
     catch (JAXBException ex)
     {
       throw new IOException( "Can't write XML for object '" + pooledObjectId + "'!", ex );
-    }
-    finally
-    {
-      IOUtils.closeQuietly( output );
     }
   }
 
@@ -789,19 +776,13 @@ public class ExportPool
     FileUtils.copyFile( file, destFile );
     attachment.setHref( new URL( "file://" + destFile.getName() ) );
 
-    OutputStream output = null;
-    try
+    try (OutputStream output = new FileOutputStream( new File( objectDir, "attachment."+(attachmentCount+1)+".xml" ) ))
     {
-      output = new FileOutputStream( new File( objectDir, "attachment."+(attachmentCount+1)+".xml" ) );
       XmlUtils.writeXml( attachment, output );
     }
     catch (JAXBException ex)
     {
       throw new IOException( "Can't write XML for an attachment of object '" + pooledObjectId + "'!", ex );
-    }
-    finally
-    {
-      IOUtils.closeQuietly( output );
     }
   }
 
@@ -841,19 +822,13 @@ public class ExportPool
     }
     attachment.setHref( file );
 
-    OutputStream output = null;
-    try
+    try (OutputStream output = new FileOutputStream( new File( objectDir, "attachment."+(attachmentCount+1)+".xml" ) ))
     {
-      output = new FileOutputStream( new File( objectDir, "attachment."+(attachmentCount+1)+".xml" ) );
       XmlUtils.writeXml( attachment, output );
     }
     catch (JAXBException ex)
     {
       throw new IOException( "Can't write XML for an attachment of object '" + pooledObjectId + "'!", ex );
-    }
-    finally
-    {
-      IOUtils.closeQuietly( output );
     }
   }
 
@@ -889,19 +864,13 @@ public class ExportPool
       }
     }
 
-    OutputStream output = null;
-    try
+    try (OutputStream output = new FileOutputStream( new File( objectDir, "attachment."+(attachmentCount+1)+".xml" ) ))
     {
-      output = new FileOutputStream( new File( objectDir, "attachment."+(attachmentCount+1)+".xml" ) );
       XmlUtils.writeXml( link, output );
     }
     catch (JAXBException ex)
     {
       throw new IOException( "Can't write XML for an attachment of object '" + pooledObjectId + "'!", ex );
-    }
-    finally
-    {
-      IOUtils.closeQuietly( output );
     }
   }
 
@@ -951,15 +920,9 @@ public class ExportPool
     File file = new File( this.baseDir, "settings.xml" );
     if (!file.isFile()) return;
 
-    InputStream input = null;
-    try
+    try (InputStream input = new FileInputStream( file ))
     {
-      input = new FileInputStream( file );
       this.settings.loadFromXML( input );
-    }
-    finally
-    {
-      IOUtils.closeQuietly( input );
     }
   }
 
@@ -978,15 +941,9 @@ public class ExportPool
     if (file.exists() && !file.delete())
       throw new IOException( "Can't remove file at '" + file.getAbsolutePath() + "'!" );
 
-    OutputStream output = null;
-    try
+    try (OutputStream output = new FileOutputStream( file ))
     {
-      output = new FileOutputStream( file );
       this.settings.storeToXML( output, "ExportPool settings", "UTF-8" );
-    }
-    finally
-    {
-      IOUtils.closeQuietly( output );
     }
   }
 }

@@ -20,7 +20,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import javax.xml.bind.JAXBException;
-import org.apache.commons.io.IOUtils;
 import org.openestate.is24.restapi.utils.RandomRealEstateFactory;
 import org.openestate.is24.restapi.utils.XmlUtils;
 import org.openestate.is24.restapi.xml.common.RealtorContactDetails;
@@ -45,7 +44,6 @@ public class XmlWritingExample
   public static void main( String[] args )
   {
     final RandomRealEstateFactory factory = new RandomRealEstateFactory();
-    OutputStream output = null;
 
     // writing an example contact person
     try
@@ -55,8 +53,10 @@ public class XmlWritingExample
 
       // write contact person into a temporary file
       File file = File.createTempFile( "example-contact-", ".xml" );
-      output = new FileOutputStream( file );
-      XmlUtils.writeXml( contact, ENCODING, PRETTY_PRINT, output );
+      try (OutputStream output = new FileOutputStream( file ))
+      {
+        XmlUtils.writeXml( contact, ENCODING, PRETTY_PRINT, output );
+      }
     }
     catch (JAXBException ex)
     {
@@ -65,10 +65,6 @@ public class XmlWritingExample
     catch (IOException ex)
     {
       throw new RuntimeException( "Can't write XML file!", ex );
-    }
-    finally
-    {
-      IOUtils.closeQuietly( output );
     }
 
     // writing an example real estate
@@ -79,8 +75,10 @@ public class XmlWritingExample
 
       // write real estate into a temporary file
       File file = File.createTempFile( "example-object-", ".xml" );
-      output = new FileOutputStream( file );
-      XmlUtils.writeXml( object, ENCODING, PRETTY_PRINT, output );
+      try (OutputStream output = new FileOutputStream( file ))
+      {
+        XmlUtils.writeXml( object, ENCODING, PRETTY_PRINT, output );
+      }
     }
     catch (JAXBException ex)
     {
@@ -89,10 +87,6 @@ public class XmlWritingExample
     catch (IOException ex)
     {
       throw new RuntimeException( "Can't write XML file!", ex );
-    }
-    finally
-    {
-      IOUtils.closeQuietly( output );
     }
   }
 }

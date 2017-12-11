@@ -392,22 +392,16 @@ public class ExportHandler
   {
     if (url==null) return null;
     LOGGER.info( "downloading " + url );
-    InputStream input = null;
-    OutputStream output = null;
-    try
+    try (InputStream input = url.openStream())
     {
-      input = url.openStream();
       File tempFile = File.createTempFile( "is24-export-attachment-", ".bin" );
       tempFile.deleteOnExit();
-      output = new FileOutputStream( tempFile );
-      IOUtils.copy( input, output );
-      output.flush();
-      return tempFile;
-    }
-    finally
-    {
-      IOUtils.closeQuietly( output );
-      IOUtils.closeQuietly( input );
+      try (OutputStream output = new FileOutputStream( tempFile ))
+      {
+        IOUtils.copy( input, output );
+        output.flush();
+        return tempFile;
+      }
     }
   }
 
@@ -1234,10 +1228,8 @@ public class ExportHandler
 
             // Hashwert zur Identifizierung des Anhangs errechnen
             final String externalAttachmentId;
-            InputStream input = null;
-            try
+            try (InputStream input = new FileInputStream( attachFile ))
             {
-              input = new FileInputStream( attachFile );
               String attachFileHash = DigestUtils.sha1Hex( input );
               externalAttachmentId = DigestUtils.sha1Hex( is24ObjectId + "-" + attachFileHash );
 
@@ -1246,10 +1238,6 @@ public class ExportHandler
               attachmentHashes.add( externalAttachmentId );
 
               is24Attachment.setExternalId( externalAttachmentId );
-            }
-            finally
-            {
-              IOUtils.closeQuietly( input );
             }
           }
 
@@ -1364,7 +1352,6 @@ public class ExportHandler
           final String attachFileName = attachFile.getName();
           final long attachFileSize = attachFile.length();
 
-          InputStream attachFileInput = null;
           try
           {
             // zuvor gespeicherten Anhang mit gleichem Hashwert aktualisieren
@@ -1420,37 +1407,38 @@ public class ExportHandler
                 attachFileMimeType = null;
               }
 
-              attachFileInput = new FileInputStream( attachFile );
-
-              // Video auf separaten Webservice übertragen
-              if (is24Attachment instanceof StreamingVideo)
+              try (InputStream attachFileInput = new FileInputStream( attachFile ))
               {
-                // Videodatei via UploadService übertragen
-                //LOGGER.debug( "UPLOAD STREAMING VIDEO '" + attachFileName + "'" );
-                String videoId = ImportExport.VideoUploadService.doVideoUpload(
-                  this.client, attachFileInput, attachFileName, attachFileSize );
-
-                // Anhang mit ID des übertragenen Videos zum Webservice senden
-                //LOGGER.debug( "POST STREAMING VIDEO WITH ID '" + videoId + "'" );
-                StreamingVideo streamingVideo = (StreamingVideo) is24Attachment;
-                streamingVideo.setVideoId( videoId );
-                ImportExport.AttachmentService.post(
-                  this.client, externalObjectId, streamingVideo, null, null, null );
-              }
-
-              // Anhang direkt übertragen
-              else
-              {
-                long is24AttachmentId = ImportExport.AttachmentService.post(
-                  this.client, externalObjectId, is24Attachment, attachFileInput, attachFileName, attachFileMimeType );
-
-                // Sortierung des Anhangs vormerken
-                while (attachmentsOrder.containsKey( pos ))
+                // Video auf separaten Webservice übertragen
+                if (is24Attachment instanceof StreamingVideo)
                 {
-                  pos++;
+                  // Videodatei via UploadService übertragen
+                  //LOGGER.debug( "UPLOAD STREAMING VIDEO '" + attachFileName + "'" );
+                  String videoId = ImportExport.VideoUploadService.doVideoUpload(
+                    this.client, attachFileInput, attachFileName, attachFileSize );
+
+                  // Anhang mit ID des übertragenen Videos zum Webservice senden
+                  //LOGGER.debug( "POST STREAMING VIDEO WITH ID '" + videoId + "'" );
+                  StreamingVideo streamingVideo = (StreamingVideo) is24Attachment;
+                  streamingVideo.setVideoId( videoId );
+                  ImportExport.AttachmentService.post(
+                    this.client, externalObjectId, streamingVideo, null, null, null );
                 }
-                attachmentsOrder.put( pos, is24AttachmentId );
-                //LOGGER.debug( "new attachment #" + is24AttachmentId + " (" + StringUtils.trimToEmpty( is24Attachment.getTitle() ) + ") at " + pos );
+
+                // Anhang direkt übertragen
+                else
+                {
+                  long is24AttachmentId = ImportExport.AttachmentService.post(
+                    this.client, externalObjectId, is24Attachment, attachFileInput, attachFileName, attachFileMimeType );
+
+                  // Sortierung des Anhangs vormerken
+                  while (attachmentsOrder.containsKey( pos ))
+                  {
+                    pos++;
+                  }
+                  attachmentsOrder.put( pos, is24AttachmentId );
+                  //LOGGER.debug( "new attachment #" + is24AttachmentId + " (" + StringUtils.trimToEmpty( is24Attachment.getTitle() ) + ") at " + pos );
+                }
               }
             }
           }
@@ -1465,8 +1453,6 @@ public class ExportHandler
           }
           finally
           {
-            IOUtils.closeQuietly( attachFileInput );
-
             // Fortschritt protokollieren
             this.addProgress(
               this.pool.getObjectAttachmentSize( poolObjectId, attachmentKey ) + attachFileSize );

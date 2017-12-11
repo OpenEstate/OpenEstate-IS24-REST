@@ -262,11 +262,8 @@ public final class XmlUtils
   public static String marshal( Object object, String encoding, boolean prettyPrint ) throws JAXBException, IOException
   {
     if (object==null) return null;
-    ByteArrayOutputStream output = null;
-    try
+    try (ByteArrayOutputStream output = new ByteArrayOutputStream())
     {
-      output = new ByteArrayOutputStream();
-
       if (object instanceof Attachment)
       {
         writeXml( (Attachment) object, encoding, prettyPrint, output );
@@ -311,10 +308,6 @@ public final class XmlUtils
       output.flush();
 
       return Charset.forName( encoding ).decode( ByteBuffer.wrap( output.toByteArray() ) ).toString();
-    }
-    finally
-    {
-      IOUtils.closeQuietly( output );
     }
   }
 
@@ -2017,20 +2010,17 @@ public final class XmlUtils
    * JAXB object
    *
    * @throws JAXBException
+   * if XML can't be parsed
+   *
+   * @throws IOException
    * if XML can't be read
    */
-  public static Object unmarshal( String xml ) throws JAXBException
+  public static Object unmarshal( String xml ) throws JAXBException, IOException
   {
     if (StringUtils.isBlank( xml )) return null;
-    Reader reader = null;
-    try
+    try (Reader reader = new StringReader( xml ))
     {
-      reader = new StringReader( xml );
       return createUnmarshaller().unmarshal( reader );
-    }
-    finally
-    {
-      IOUtils.closeQuietly( reader );
     }
   }
 

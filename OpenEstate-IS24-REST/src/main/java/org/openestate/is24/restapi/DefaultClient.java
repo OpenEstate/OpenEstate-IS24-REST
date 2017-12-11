@@ -75,30 +75,22 @@ public class DefaultClient extends AbstractClient
    */
   protected Response createResponse( HttpURLConnection connection ) throws IOException
   {
-    InputStream responseInput = null;
-    try
+    //final String encoding = StringUtils.defaultIfBlank( StringUtils.trimToNull( connection.getContentEncoding() ), getEncoding() );
+    final String encoding = getEncoding();
+
+    try (InputStream input = ("gzip".equalsIgnoreCase( connection.getContentEncoding() ))?
+      new GZIPInputStream( new BufferedInputStream( connection.getInputStream() ) ):
+      new BufferedInputStream( connection.getInputStream() ) )
     {
-      //String encoding = StringUtils.trimToNull( connection.getContentEncoding() );
-      //if (encoding==null) encoding = getEncoding();
-      String encoding = getEncoding();
-
-      // read response body
-      responseInput = new BufferedInputStream( connection.getInputStream() );
-
-      // possibly decompress response body from gzip
-      if ("gzip".equalsIgnoreCase( connection.getContentEncoding() ))
-        responseInput = new GZIPInputStream( responseInput );
-
       // create response
       return new Response(
         connection.getResponseCode(),
         connection.getResponseMessage(),
         connection.getHeaderField( RESPONSE_HEADER_REQUEST_REFNUM ),
-        IOUtils.toString( responseInput, encoding ) );
+        IOUtils.toString( input, encoding ) );
     }
     finally
     {
-      IOUtils.closeQuietly( responseInput );
       IOUtils.close( connection );
     }
   }
@@ -134,7 +126,6 @@ public class DefaultClient extends AbstractClient
     final String boundary =  "*****" + getRandomBoundary() + "*****";
 
     HttpURLConnection connection = null;
-    DataOutputStream output = null;
     try
     {
       // create connection
@@ -148,62 +139,64 @@ public class DefaultClient extends AbstractClient
       connection.setDoOutput( true );
       getAuthConsumer().sign( connection );
 
-      output = (xml!=null || input!=null)?
-        new DataOutputStream( connection.getOutputStream() ): null;
-
-      // send xml part
-      if (xml!=null && output!=null)
+      if (xml==null && input==null)
       {
-        output.writeBytes( twoHyphens + boundary + lineEnd );
-        output.writeBytes( "Content-Type: application/xml; name=body.xml" + lineEnd );
-        output.writeBytes( "Content-Transfer-Encoding: binary" + lineEnd );
-        output.writeBytes( "Content-Disposition: form-data; name=\"metadata\"; filename=\"body.xml\"" + lineEnd );
-        output.writeBytes( lineEnd );
-        output.writeBytes( xml );
-        output.writeBytes( lineEnd );
-        output.flush();
+        connection.connect();
       }
-
-      // send file part
-      if (input!=null && output!=null)
+      else
       {
-        mimeType = StringUtils.trimToNull( mimeType );
-        if (mimeType!=null) mimeType = "application/octet-stream";
-
-        fileName = StringUtils.trimToNull( fileName );
-        if (fileName==null) fileName = "upload.bin";
-
-
-        output.writeBytes( twoHyphens + boundary + lineEnd );
-        output.writeBytes( "Content-Type: " + mimeType + "; name=\"" + fileName + "\"" + lineEnd );
-        output.writeBytes( "Content-Transfer-Encoding: binary" + lineEnd );
-        output.writeBytes( "Content-Disposition: form-data; name=\"attachment\"; filename=\"" + fileName + "\"" + lineEnd );
-        output.writeBytes( lineEnd );
-
-        byte[] buffer = new byte[4096];
-        int i = input.read( buffer, 0, buffer.length );
-        while (i>0)
+        try (DataOutputStream output = new DataOutputStream( connection.getOutputStream() ))
         {
-          output.write( buffer, 0, i );
-          i = input.read( buffer, 0, buffer.length );
+          // send xml part
+          if (xml!=null)
+          {
+            output.writeBytes( twoHyphens + boundary + lineEnd );
+            output.writeBytes( "Content-Type: application/xml; name=body.xml" + lineEnd );
+            output.writeBytes( "Content-Transfer-Encoding: binary" + lineEnd );
+            output.writeBytes( "Content-Disposition: form-data; name=\"metadata\"; filename=\"body.xml\"" + lineEnd );
+            output.writeBytes( lineEnd );
+            output.writeBytes( xml );
+            output.writeBytes( lineEnd );
+            output.flush();
+          }
+
+          // send file part
+          if (input!=null)
+          {
+            mimeType = StringUtils.trimToNull( mimeType );
+            if (mimeType!=null) mimeType = "application/octet-stream";
+
+            fileName = StringUtils.trimToNull( fileName );
+            if (fileName==null) fileName = "upload.bin";
+
+
+            output.writeBytes( twoHyphens + boundary + lineEnd );
+            output.writeBytes( "Content-Type: " + mimeType + "; name=\"" + fileName + "\"" + lineEnd );
+            output.writeBytes( "Content-Transfer-Encoding: binary" + lineEnd );
+            output.writeBytes( "Content-Disposition: form-data; name=\"attachment\"; filename=\"" + fileName + "\"" + lineEnd );
+            output.writeBytes( lineEnd );
+
+            byte[] buffer = new byte[4096];
+            int i = input.read( buffer, 0, buffer.length );
+            while (i>0)
+            {
+              output.write( buffer, 0, i );
+              i = input.read( buffer, 0, buffer.length );
+            }
+            output.writeBytes( lineEnd );
+          }
+
+          output.writeBytes( twoHyphens + boundary + lineEnd );
+          output.flush();
+          connection.connect();
         }
-        output.writeBytes( lineEnd );
       }
-
-      if (output!=null)
-      {
-        output.writeBytes( twoHyphens + boundary + lineEnd );
-      }
-
-      if (output!=null) output.flush();
-      connection.connect();
 
       // read response into string
       return createResponse( connection );
     }
     finally
     {
-      IOUtils.closeQuietly( output );
       IOUtils.close( connection );
     }
   }
@@ -221,7 +214,6 @@ public class DefaultClient extends AbstractClient
     final String boundary =  "*****" + getRandomBoundary() + "*****";
 
     HttpURLConnection connection = null;
-    DataOutputStream output = null;
     try
     {
       // create connection
@@ -237,59 +229,61 @@ public class DefaultClient extends AbstractClient
       connection.setDoOutput( true );
       //getAuthConsumer().sign( connection );
 
-      output = (auth!=null || input!=null)?
-        new DataOutputStream( connection.getOutputStream() ): null;
-
-      // send auth part
-      if (auth!=null && output!=null)
+      if (auth==null && input==null)
       {
-        output.writeBytes( twoHyphens + boundary + lineEnd );
-        output.writeBytes( "Content-Type: text/plain; charset=" + getEncoding() + lineEnd );
-        output.writeBytes( "Content-Transfer-Encoding: binary" + lineEnd );
-        output.writeBytes( "Content-Disposition: form-data; name=\"auth\"" + lineEnd );
-        output.writeBytes( lineEnd );
-        output.writeBytes( auth );
-        output.writeBytes( lineEnd );
-        output.flush();
+        connection.connect();
       }
-
-      // send file part
-      if (input!=null && output!=null)
+      else
       {
-        fileName = StringUtils.trimToNull( fileName );
-        if (fileName==null) fileName = "upload.bin";
-
-        output.writeBytes( twoHyphens + boundary + lineEnd );
-        output.writeBytes( "Content-Type: application/octet-stream; name=\"" + fileName + "\"" + lineEnd );
-        output.writeBytes( "Content-Transfer-Encoding: binary" + lineEnd );
-        output.writeBytes( "Content-Length: " + String.valueOf( fileSize ) + lineEnd );
-        output.writeBytes( "Content-Disposition: form-data; name=\"videofile\"; filename=\"" + fileName + "\"" + lineEnd );
-        output.writeBytes( lineEnd );
-
-        byte[] buffer = new byte[4096];
-        int i = input.read( buffer, 0, buffer.length );
-        while (i>0)
+        try (DataOutputStream output = new DataOutputStream( connection.getOutputStream() ))
         {
-          output.write( buffer, 0, i );
-          i = input.read( buffer, 0, buffer.length );
+          // send auth part
+          if (auth!=null)
+          {
+            output.writeBytes( twoHyphens + boundary + lineEnd );
+            output.writeBytes( "Content-Type: text/plain; charset=" + getEncoding() + lineEnd );
+            output.writeBytes( "Content-Transfer-Encoding: binary" + lineEnd );
+            output.writeBytes( "Content-Disposition: form-data; name=\"auth\"" + lineEnd );
+            output.writeBytes( lineEnd );
+            output.writeBytes( auth );
+            output.writeBytes( lineEnd );
+            output.flush();
+          }
+
+          // send file part
+          if (input!=null)
+          {
+            fileName = StringUtils.trimToNull( fileName );
+            if (fileName==null) fileName = "upload.bin";
+
+            output.writeBytes( twoHyphens + boundary + lineEnd );
+            output.writeBytes( "Content-Type: application/octet-stream; name=\"" + fileName + "\"" + lineEnd );
+            output.writeBytes( "Content-Transfer-Encoding: binary" + lineEnd );
+            output.writeBytes( "Content-Length: " + String.valueOf( fileSize ) + lineEnd );
+            output.writeBytes( "Content-Disposition: form-data; name=\"videofile\"; filename=\"" + fileName + "\"" + lineEnd );
+            output.writeBytes( lineEnd );
+
+            byte[] buffer = new byte[4096];
+            int i = input.read( buffer, 0, buffer.length );
+            while (i>0)
+            {
+              output.write( buffer, 0, i );
+              i = input.read( buffer, 0, buffer.length );
+            }
+            output.writeBytes( lineEnd );
+          }
+
+          output.writeBytes( twoHyphens + boundary + lineEnd );
+          output.flush();
+          connection.connect();
         }
-        output.writeBytes( lineEnd );
       }
-
-      if (output!=null)
-      {
-        output.writeBytes( twoHyphens + boundary + lineEnd );
-      }
-
-      if (output!=null) output.flush();
-      connection.connect();
 
       // read response into string
       return createResponse( connection );
     }
     finally
     {
-      IOUtils.closeQuietly( output );
       IOUtils.close( connection );
     }
   }
@@ -301,7 +295,6 @@ public class DefaultClient extends AbstractClient
       StringUtils.trimToNull( content ): null;
 
     HttpURLConnection connection = null;
-    DataOutputStream output = null;
     try
     {
       // create connection
@@ -320,20 +313,25 @@ public class DefaultClient extends AbstractClient
       getAuthConsumer().sign( connection );
 
       // send request
-      if (content!=null)
+      if (content==null)
       {
-        output = new DataOutputStream( connection.getOutputStream() );
-        output.writeBytes( content );
-        output.flush();
+        connection.connect();
       }
-      connection.connect();
+      else
+      {
+        try (DataOutputStream output = new DataOutputStream( connection.getOutputStream() ))
+        {
+          output.writeBytes( content );
+          output.flush();
+          connection.connect();
+        }
+      }
 
       // read response into string
       return createResponse( connection );
     }
     finally
     {
-      IOUtils.closeQuietly( output );
       IOUtils.close( connection );
     }
   }

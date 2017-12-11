@@ -16,10 +16,10 @@
 package org.openestate.is24.restapi.examples;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 import javax.xml.bind.JAXBException;
-import org.apache.commons.io.IOUtils;
 import org.openestate.is24.restapi.utils.RandomRealEstateFactory;
 import org.openestate.is24.restapi.utils.XmlUtils;
 import org.openestate.is24.restapi.xml.realestates.RealEstate;
@@ -48,22 +48,16 @@ public class RandomRealEstateExample
         System.out.println( "----------------------------------------" );
         System.out.println( "example for " + type + ":" );
         RealEstate realEstate = factory.createRandomObject( type );
-        ByteArrayOutputStream output = null;
-        try
+        try (ByteArrayOutputStream output = new ByteArrayOutputStream())
         {
-          output = new ByteArrayOutputStream();
           XmlUtils.writeXml( realEstate, charset.name(), true, output );
           ByteBuffer buffer = ByteBuffer.wrap( output.toByteArray() );
           String xml = charset.decode( buffer ).toString();
           System.out.println( xml.trim() );
         }
-        finally
-        {
-          IOUtils.closeQuietly( output );
-        }
       }
     }
-    catch (JAXBException ex)
+    catch (IOException | JAXBException ex)
     {
       System.err.println( "XML error!" );
       ex.printStackTrace( System.err );

@@ -112,7 +112,7 @@ Dependencies
 
 -   Java 7 or newer
 -   [commons-codec 1.11](http://commons.apache.org/proper/commons-codec/)
--   [commons-io 2.5](http://commons.apache.org/proper/commons-io/)
+-   [commons-io 2.6](http://commons.apache.org/proper/commons-io/)
 -   [commons-lang 3.6](http://commons.apache.org/proper/commons-lang/)
 -   [commons-text 1.1](http://commons.apache.org/proper/commons-text/)
 -   [jaxb2-basics-runtime 0.11.1](https://github.com/highsource/jaxb2-basics)

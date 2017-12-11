@@ -130,7 +130,7 @@ public class HttpComponents43Client extends AbstractClient
     super.close();
     if (this.httpClient instanceof CloseableHttpClient)
     {
-      IOUtils.closeQuietly( (CloseableHttpClient) httpClient );
+      ((CloseableHttpClient) httpClient).close();
     }
   }
 
@@ -149,7 +149,6 @@ public class HttpComponents43Client extends AbstractClient
   protected Response createResponse( HttpResponse response ) throws IOException
   {
     HttpEntity responseEntity = null;
-    InputStream responseInput = null;
     try
     {
       StatusLine responseStatus = response.getStatusLine();
@@ -164,28 +163,28 @@ public class HttpComponents43Client extends AbstractClient
         contentType.getCharset().name(): null;
       if (charset==null) charset = getEncoding();
 
-      // read response body
-      responseInput = new BufferedInputStream( responseEntity.getContent() );
-
-      // possibly decompress response body from gzip
+      // get encoding of the response
       String encoding = (responseEntity.getContentEncoding()!=null)?
         responseEntity.getContentEncoding().getValue(): null;
-      if ("gzip".equalsIgnoreCase( encoding ))
-        responseInput = new GZIPInputStream( responseInput );
 
       // get L-IS24-RequestRefnum header of the response
       Header requestRefNum = response.getFirstHeader( RESPONSE_HEADER_REQUEST_REFNUM );
 
-      // create response
-      return new Response(
-        responseStatus.getStatusCode(),
-        responseStatus.getReasonPhrase(),
-        (requestRefNum!=null)? requestRefNum.getValue(): null,
-        IOUtils.toString( responseInput, charset ) );
+      // read response body and possibly decompress response body from gzip
+      try (InputStream responseInput = ("gzip".equalsIgnoreCase( encoding ))?
+        new GZIPInputStream( new BufferedInputStream( responseEntity.getContent() ) ):
+        new BufferedInputStream( responseEntity.getContent() ) )
+      {
+        // create response
+        return new Response(
+          responseStatus.getStatusCode(),
+          responseStatus.getReasonPhrase(),
+          (requestRefNum!=null)? requestRefNum.getValue(): null,
+          IOUtils.toString( responseInput, charset ) );
+      }
     }
     finally
     {
-      IOUtils.closeQuietly( responseInput );
       EntityUtils.consume( responseEntity );
     }
   }
