@@ -7,15 +7,14 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
 <xs:schema xmlns="http://rest.immobilienscout24.de/schema/common/1.0"
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
            xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
-           jaxb:version="2.0"
-           xmlns:annox="http://annox.dev.java.net"
-           jaxb:extensionBindingPrefixes="annox"
-           xmlns:jl="http://annox.dev.java.net/java.lang"
            xmlns:xlink="http://www.w3.org/1999/xlink"
+           xmlns:annox="http://annox.dev.java.net"
            targetNamespace="http://rest.immobilienscout24.de/schema/common/1.0"
            elementFormDefault="unqualified"
            attributeFormDefault="unqualified"
-           version="1.0">
+           version="1.0"
+           jaxb:version="2.0"
+           jaxb:extensionBindingPrefixes="annox">
 
   <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="includes/xlink.xsd"/>
   <xs:include schemaLocation="includes/messages-1.0.xsd"/>
@@ -1537,9 +1536,7 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
 
       <!-- MODIFICATION BY OPENESTATE.ORG: ADD ANNOTATION @Deprecated -->
       <xs:appinfo>
-        <annox:annotate>
-          <jl:Deprecated/>
-        </annox:annotate>
+        <annox:annotateClass>@java.lang.Deprecated</annox:annotateClass>
       </xs:appinfo>
 
     </xs:annotation>
@@ -1548,17 +1545,6 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
         <xs:annotation>
           <xs:documentation xml:lang="en">firing type</xs:documentation>
           <xs:documentation xml:lang="de-DE">Befeuerungsart</xs:documentation>
-
-          <!-- MODIFICATION BY OPENESTATE.ORG: ADD ANNOTATION @Deprecated -->
-          <xs:appinfo>
-            <annox:annotate target="field">
-              <jl:Deprecated/>
-            </annox:annotate>
-            <annox:annotate target="getter">
-              <jl:Deprecated/>
-            </annox:annotate>
-          </xs:appinfo>
-
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -2157,9 +2143,7 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
           <xs:documentation xml:lang="de-DE">Keine Angabe (wird zusammen mit OTHER verwendet)
           </xs:documentation>
           <xs:appinfo>
-            <annox:annotate target="field">
-              <jl:Deprecated/>
-            </annox:annotate>
+            <annox:annotateEnumConstant>@java.lang.Deprecated</annox:annotateEnumConstant>
           </xs:appinfo>
         </xs:annotation>
       </xs:enumeration>
@@ -2177,9 +2161,7 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
           <xs:documentation xml:lang="de-DE">Keine Angabe (wird zusammen mit OTHER verwendet)
           </xs:documentation>
           <xs:appinfo>
-            <annox:annotate target="field">
-              <jl:Deprecated/>
-            </annox:annotate>
+            <annox:annotateEnumConstant>@java.lang.Deprecated</annox:annotateEnumConstant>
           </xs:appinfo>
         </xs:annotation>
       </xs:enumeration>
@@ -2913,9 +2895,7 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
 
       <!-- MODIFICATION BY OPENESTATE.ORG: ADD ANNOTATION @Deprecated -->
       <xs:appinfo>
-        <annox:annotate>
-          <jl:Deprecated/>
-        </annox:annotate>
+        <annox:annotateEnum>@java.lang.Deprecated</annox:annotateEnum>
       </xs:appinfo>
 
     </xs:annotation>
@@ -3881,9 +3861,7 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
 
       <!-- MODIFICATION BY OPENESTATE.ORG: ADD ANNOTATION @Deprecated -->
       <xs:appinfo>
-        <annox:annotate>
-          <jl:Deprecated/>
-        </annox:annotate>
+        <annox:annotateEnum>@java.lang.Deprecated</annox:annotateEnum>
       </xs:appinfo>
 
     </xs:annotation>
@@ -5926,15 +5904,10 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
 
           <!-- MODIFICATION BY OPENESTATE.ORG: ADD ANNOTATION @Deprecated -->
           <xs:appinfo>
-            <annox:annotate target="field">
-              <jl:Deprecated/>
-            </annox:annotate>
-            <annox:annotate target="getter">
-              <jl:Deprecated/>
-            </annox:annotate>
-            <annox:annotate target="setter">
-              <jl:Deprecated/>
-            </annox:annotate>
+            <annox:annotateProperty>@java.lang.Deprecated</annox:annotateProperty>
+            <annox:annotatePropertyField>@java.lang.Deprecated</annox:annotatePropertyField>
+            <annox:annotatePropertyGetter>@java.lang.Deprecated</annox:annotatePropertyGetter>
+            <annox:annotatePropertySetter>@java.lang.Deprecated</annox:annotatePropertySetter>
           </xs:appinfo>
 
         </xs:annotation>
@@ -6132,15 +6105,10 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
 
           <!-- MODIFICATION BY OPENESTATE.ORG: ADD ANNOTATION @Deprecated -->
           <xs:appinfo>
-            <annox:annotate target="field">
-              <jl:Deprecated/>
-            </annox:annotate>
-            <annox:annotate target="getter">
-              <jl:Deprecated/>
-            </annox:annotate>
-            <annox:annotate target="setter">
-              <jl:Deprecated/>
-            </annox:annotate>
+            <annox:annotateProperty>@java.lang.Deprecated</annox:annotateProperty>
+            <annox:annotatePropertyField>@java.lang.Deprecated</annox:annotatePropertyField>
+            <annox:annotatePropertyGetter>@java.lang.Deprecated</annox:annotatePropertyGetter>
+            <annox:annotatePropertySetter>@java.lang.Deprecated</annox:annotatePropertySetter>
           </xs:appinfo>
 
         </xs:annotation>
@@ -6152,15 +6120,10 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
 
           <!-- MODIFICATION BY OPENESTATE.ORG: ADD ANNOTATION @Deprecated -->
           <xs:appinfo>
-            <annox:annotate target="field">
-              <jl:Deprecated/>
-            </annox:annotate>
-            <annox:annotate target="getter">
-              <jl:Deprecated/>
-            </annox:annotate>
-            <annox:annotate target="setter">
-              <jl:Deprecated/>
-            </annox:annotate>
+            <annox:annotateProperty>@java.lang.Deprecated</annox:annotateProperty>
+            <annox:annotatePropertyField>@java.lang.Deprecated</annox:annotatePropertyField>
+            <annox:annotatePropertyGetter>@java.lang.Deprecated</annox:annotatePropertyGetter>
+            <annox:annotatePropertySetter>@java.lang.Deprecated</annox:annotatePropertySetter>
           </xs:appinfo>
 
         </xs:annotation>
@@ -6172,15 +6135,10 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
 
           <!-- MODIFICATION BY OPENESTATE.ORG: ADD ANNOTATION @Deprecated -->
           <xs:appinfo>
-            <annox:annotate target="field">
-              <jl:Deprecated/>
-            </annox:annotate>
-            <annox:annotate target="getter">
-              <jl:Deprecated/>
-            </annox:annotate>
-            <annox:annotate target="setter">
-              <jl:Deprecated/>
-            </annox:annotate>
+            <annox:annotateProperty>@java.lang.Deprecated</annox:annotateProperty>
+            <annox:annotatePropertyField>@java.lang.Deprecated</annox:annotatePropertyField>
+            <annox:annotatePropertyGetter>@java.lang.Deprecated</annox:annotatePropertyGetter>
+            <annox:annotatePropertySetter>@java.lang.Deprecated</annox:annotatePropertySetter>
           </xs:appinfo>
 
         </xs:annotation>
@@ -6712,15 +6670,10 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
 
           <!-- MODIFICATION BY OPENESTATE.ORG: ADD ANNOTATION @Deprecated -->
           <xs:appinfo>
-            <annox:annotate target="field">
-              <jl:Deprecated/>
-            </annox:annotate>
-            <annox:annotate target="getter">
-              <jl:Deprecated/>
-            </annox:annotate>
-            <annox:annotate target="setter">
-              <jl:Deprecated/>
-            </annox:annotate>
+            <annox:annotateProperty>@java.lang.Deprecated</annox:annotateProperty>
+            <annox:annotatePropertyField>@java.lang.Deprecated</annox:annotatePropertyField>
+            <annox:annotatePropertyGetter>@java.lang.Deprecated</annox:annotatePropertyGetter>
+            <annox:annotatePropertySetter>@java.lang.Deprecated</annox:annotatePropertySetter>
           </xs:appinfo>
 
         </xs:annotation>
@@ -6738,15 +6691,10 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
 
           <!-- MODIFICATION BY OPENESTATE.ORG: ADD ANNOTATION @Deprecated -->
           <xs:appinfo>
-            <annox:annotate target="field">
-              <jl:Deprecated/>
-            </annox:annotate>
-            <annox:annotate target="getter">
-              <jl:Deprecated/>
-            </annox:annotate>
-            <annox:annotate target="setter">
-              <jl:Deprecated/>
-            </annox:annotate>
+            <annox:annotateProperty>@java.lang.Deprecated</annox:annotateProperty>
+            <annox:annotatePropertyField>@java.lang.Deprecated</annox:annotatePropertyField>
+            <annox:annotatePropertyGetter>@java.lang.Deprecated</annox:annotatePropertyGetter>
+            <annox:annotatePropertySetter>@java.lang.Deprecated</annox:annotatePropertySetter>
           </xs:appinfo>
 
         </xs:annotation>
@@ -8390,15 +8338,10 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
 
           <!-- MODIFICATION BY OPENESTATE.ORG: ADD ANNOTATION @Deprecated -->
           <xs:appinfo>
-            <annox:annotate target="field">
-              <jl:Deprecated/>
-            </annox:annotate>
-            <annox:annotate target="getter">
-              <jl:Deprecated/>
-            </annox:annotate>
-            <annox:annotate target="setter">
-              <jl:Deprecated/>
-            </annox:annotate>
+            <annox:annotateProperty>@java.lang.Deprecated</annox:annotateProperty>
+            <annox:annotatePropertyField>@java.lang.Deprecated</annox:annotatePropertyField>
+            <annox:annotatePropertyGetter>@java.lang.Deprecated</annox:annotatePropertyGetter>
+            <annox:annotatePropertySetter>@java.lang.Deprecated</annox:annotatePropertySetter>
           </xs:appinfo>
 
         </xs:annotation>
@@ -8417,15 +8360,10 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
 
           <!-- MODIFICATION BY OPENESTATE.ORG: ADD ANNOTATION @Deprecated -->
           <xs:appinfo>
-            <annox:annotate target="field">
-              <jl:Deprecated/>
-            </annox:annotate>
-            <annox:annotate target="getter">
-              <jl:Deprecated/>
-            </annox:annotate>
-            <annox:annotate target="setter">
-              <jl:Deprecated/>
-            </annox:annotate>
+            <annox:annotateProperty>@java.lang.Deprecated</annox:annotateProperty>
+            <annox:annotatePropertyField>@java.lang.Deprecated</annox:annotatePropertyField>
+            <annox:annotatePropertyGetter>@java.lang.Deprecated</annox:annotatePropertyGetter>
+            <annox:annotatePropertySetter>@java.lang.Deprecated</annox:annotatePropertySetter>
           </xs:appinfo>
 
         </xs:annotation>
@@ -9764,15 +9702,10 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
 
           <!-- MODIFICATION BY OPENESTATE.ORG: ADD ANNOTATION @Deprecated -->
           <xs:appinfo>
-            <annox:annotate target="field">
-              <jl:Deprecated/>
-            </annox:annotate>
-            <annox:annotate target="getter">
-              <jl:Deprecated/>
-            </annox:annotate>
-            <annox:annotate target="setter">
-              <jl:Deprecated/>
-            </annox:annotate>
+            <annox:annotateProperty>@java.lang.Deprecated</annox:annotateProperty>
+            <annox:annotatePropertyField>@java.lang.Deprecated</annox:annotatePropertyField>
+            <annox:annotatePropertyGetter>@java.lang.Deprecated</annox:annotatePropertyGetter>
+            <annox:annotatePropertySetter>@java.lang.Deprecated</annox:annotatePropertySetter>
           </xs:appinfo>
 
         </xs:annotation>
@@ -9948,15 +9881,10 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
 
           <!-- MODIFICATION BY OPENESTATE.ORG: ADD ANNOTATION @Deprecated -->
           <xs:appinfo>
-            <annox:annotate target="field">
-              <jl:Deprecated/>
-            </annox:annotate>
-            <annox:annotate target="getter">
-              <jl:Deprecated/>
-            </annox:annotate>
-            <annox:annotate target="setter">
-              <jl:Deprecated/>
-            </annox:annotate>
+            <annox:annotateProperty>@java.lang.Deprecated</annox:annotateProperty>
+            <annox:annotatePropertyField>@java.lang.Deprecated</annox:annotatePropertyField>
+            <annox:annotatePropertyGetter>@java.lang.Deprecated</annox:annotatePropertyGetter>
+            <annox:annotatePropertySetter>@java.lang.Deprecated</annox:annotatePropertySetter>
           </xs:appinfo>
 
         </xs:annotation>
@@ -10062,15 +9990,10 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
 
           <!-- MODIFICATION BY OPENESTATE.ORG: ADD ANNOTATION @Deprecated -->
           <xs:appinfo>
-            <annox:annotate target="field">
-              <jl:Deprecated/>
-            </annox:annotate>
-            <annox:annotate target="getter">
-              <jl:Deprecated/>
-            </annox:annotate>
-            <annox:annotate target="setter">
-              <jl:Deprecated/>
-            </annox:annotate>
+            <annox:annotateProperty>@java.lang.Deprecated</annox:annotateProperty>
+            <annox:annotatePropertyField>@java.lang.Deprecated</annox:annotatePropertyField>
+            <annox:annotatePropertyGetter>@java.lang.Deprecated</annox:annotatePropertyGetter>
+            <annox:annotatePropertySetter>@java.lang.Deprecated</annox:annotatePropertySetter>
           </xs:appinfo>
 
         </xs:annotation>
@@ -10237,15 +10160,10 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
 
           <!-- MODIFICATION BY OPENESTATE.ORG: ADD ANNOTATION @Deprecated -->
           <xs:appinfo>
-            <annox:annotate target="field">
-              <jl:Deprecated/>
-            </annox:annotate>
-            <annox:annotate target="getter">
-              <jl:Deprecated/>
-            </annox:annotate>
-            <annox:annotate target="setter">
-              <jl:Deprecated/>
-            </annox:annotate>
+            <annox:annotateProperty>@java.lang.Deprecated</annox:annotateProperty>
+            <annox:annotatePropertyField>@java.lang.Deprecated</annox:annotatePropertyField>
+            <annox:annotatePropertyGetter>@java.lang.Deprecated</annox:annotatePropertyGetter>
+            <annox:annotatePropertySetter>@java.lang.Deprecated</annox:annotatePropertySetter>
           </xs:appinfo>
 
         </xs:annotation>
@@ -10295,15 +10213,10 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
 
           <!-- MODIFICATION BY OPENESTATE.ORG: ADD ANNOTATION @Deprecated -->
           <xs:appinfo>
-            <annox:annotate target="field">
-              <jl:Deprecated/>
-            </annox:annotate>
-            <annox:annotate target="getter">
-              <jl:Deprecated/>
-            </annox:annotate>
-            <annox:annotate target="setter">
-              <jl:Deprecated/>
-            </annox:annotate>
+            <annox:annotateProperty>@java.lang.Deprecated</annox:annotateProperty>
+            <annox:annotatePropertyField>@java.lang.Deprecated</annox:annotatePropertyField>
+            <annox:annotatePropertyGetter>@java.lang.Deprecated</annox:annotatePropertyGetter>
+            <annox:annotatePropertySetter>@java.lang.Deprecated</annox:annotatePropertySetter>
           </xs:appinfo>
 
         </xs:annotation>
@@ -10388,15 +10301,10 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
 
           <!-- MODIFICATION BY OPENESTATE.ORG: ADD ANNOTATION @Deprecated -->
           <xs:appinfo>
-            <annox:annotate target="field">
-              <jl:Deprecated/>
-            </annox:annotate>
-            <annox:annotate target="getter">
-              <jl:Deprecated/>
-            </annox:annotate>
-            <annox:annotate target="setter">
-              <jl:Deprecated/>
-            </annox:annotate>
+            <annox:annotateProperty>@java.lang.Deprecated</annox:annotateProperty>
+            <annox:annotatePropertyField>@java.lang.Deprecated</annox:annotatePropertyField>
+            <annox:annotatePropertyGetter>@java.lang.Deprecated</annox:annotatePropertyGetter>
+            <annox:annotatePropertySetter>@java.lang.Deprecated</annox:annotatePropertySetter>
           </xs:appinfo>
 
         </xs:annotation>
@@ -10523,15 +10431,10 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
 
           <!-- MODIFICATION BY OPENESTATE.ORG: ADD ANNOTATION @Deprecated -->
           <xs:appinfo>
-            <annox:annotate target="field">
-              <jl:Deprecated/>
-            </annox:annotate>
-            <annox:annotate target="getter">
-              <jl:Deprecated/>
-            </annox:annotate>
-            <annox:annotate target="setter">
-              <jl:Deprecated/>
-            </annox:annotate>
+            <annox:annotateProperty>@java.lang.Deprecated</annox:annotateProperty>
+            <annox:annotatePropertyField>@java.lang.Deprecated</annox:annotatePropertyField>
+            <annox:annotatePropertyGetter>@java.lang.Deprecated</annox:annotatePropertyGetter>
+            <annox:annotatePropertySetter>@java.lang.Deprecated</annox:annotatePropertySetter>
           </xs:appinfo>
 
         </xs:annotation>

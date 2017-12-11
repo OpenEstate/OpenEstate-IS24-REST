@@ -51,7 +51,6 @@ public class FiringTypes implements Serializable, Cloneable, CopyTo2, Equals2, T
 {
 
     @XmlSchemaType(name = "string")
-    @Deprecated
     protected List<FiringType> firingType;
 
     /**
@@ -76,7 +75,6 @@ public class FiringTypes implements Serializable, Cloneable, CopyTo2, Equals2, T
      * 
      * 
      */
-    @Deprecated
     public List<FiringType> getFiringType() {
         if (firingType == null) {
             firingType = new ArrayList<FiringType>();
