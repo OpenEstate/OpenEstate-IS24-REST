@@ -131,7 +131,7 @@
               <overWriteSnapshots>false</overWriteSnapshots>
               <overWriteIfNewer>true</overWriteIfNewer>
               <includeScope>runtime</includeScope>
-              <excludeGroupIds>org.openestate.is24,com.google.code.findbugs</excludeGroupIds>
+              <excludeGroupIds>${project.groupId},com.google.code.findbugs,net.jcip,net.jcip</excludeGroupIds>
               <excludeTransitive>true</excludeTransitive>
               <classifier>sources</classifier>
             </configuration>
@@ -149,7 +149,7 @@
               <overWriteSnapshots>false</overWriteSnapshots>
               <overWriteIfNewer>true</overWriteIfNewer>
               <includeScope>runtime</includeScope>
-              <excludeGroupIds>org.openestate.is24,com.google.code.findbugs</excludeGroupIds>
+              <excludeGroupIds>${project.groupId},com.google.code.findbugs,net.jcip,net.jcip</excludeGroupIds>
               <excludeTransitive>true</excludeTransitive>
               <classifier>javadoc</classifier>
             </configuration>

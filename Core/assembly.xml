@@ -25,12 +25,13 @@
     </dependencySet>
 
     <dependencySet>
-      <outputDirectory>lib</outputDirectory>
+      <outputDirectory>3rdparty</outputDirectory>
       <outputFileNameMapping>${artifact.artifactId}-${artifact.version}${dashClassifier?}.${artifact.extension}</outputFileNameMapping>
       <useProjectArtifact>false</useProjectArtifact>
       <excludes>
         <exclude>${groupId}:*</exclude>
         <exclude>com.google.code.findbugs:*</exclude>
+        <exclude>net.jcip:*</exclude>
       </excludes>
     </dependencySet>
   </dependencySets>
@@ -38,7 +39,7 @@
   <fileSets>
     <fileSet>
       <directory>${basedir}/target/3rdparty</directory>
-      <outputDirectory>lib</outputDirectory>
+      <outputDirectory>3rdparty</outputDirectory>
       <directoryMode>0755</directoryMode>
       <fileMode>0644</fileMode>
       <filtered>false</filtered>

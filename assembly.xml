@@ -39,57 +39,57 @@
       </excludes>
     </fileSet>
     <fileSet>
-      <directory>${basedir}/misc/licenses</directory>
-      <outputDirectory>docs/licenses</outputDirectory>
+      <directory>${basedir}/target/javadoc</directory>
+      <outputDirectory>docs/javadoc</outputDirectory>
       <directoryMode>0755</directoryMode>
       <fileMode>0644</fileMode>
       <filtered>false</filtered>
     </fileSet>
     <fileSet>
       <directory>${basedir}/Core/src/main/xsd</directory>
-      <outputDirectory>docs/xsd</outputDirectory>
+      <outputDirectory>docs/specs</outputDirectory>
       <directoryMode>0755</directoryMode>
       <fileMode>0644</fileMode>
       <filtered>false</filtered>
     </fileSet>
     <fileSet>
       <directory>${basedir}/Core/release</directory>
-      <outputDirectory>OpenEstate-IS24-REST-Core</outputDirectory>
+      <outputDirectory>lib</outputDirectory>
       <directoryMode>0755</directoryMode>
       <fileMode>0644</fileMode>
       <filtered>false</filtered>
     </fileSet>
     <fileSet>
       <directory>${basedir}/Examples/release</directory>
-      <outputDirectory>OpenEstate-IS24-REST-Examples</outputDirectory>
+      <outputDirectory>lib</outputDirectory>
       <directoryMode>0755</directoryMode>
       <fileMode>0644</fileMode>
       <filtered>false</filtered>
     </fileSet>
     <fileSet>
       <directory>${basedir}/HC42/release</directory>
-      <outputDirectory>OpenEstate-IS24-REST-HC42</outputDirectory>
+      <outputDirectory>lib</outputDirectory>
       <directoryMode>0755</directoryMode>
       <fileMode>0644</fileMode>
       <filtered>false</filtered>
     </fileSet>
     <fileSet>
       <directory>${basedir}/HC43/release</directory>
-      <outputDirectory>OpenEstate-IS24-REST-HC43</outputDirectory>
+      <outputDirectory>lib</outputDirectory>
       <directoryMode>0755</directoryMode>
       <fileMode>0644</fileMode>
       <filtered>false</filtered>
     </fileSet>
     <fileSet>
       <directory>${basedir}/WebApp/release</directory>
-      <outputDirectory>OpenEstate-IS24-REST-WebApp</outputDirectory>
+      <outputDirectory>lib</outputDirectory>
       <directoryMode>0755</directoryMode>
       <fileMode>0644</fileMode>
       <filtered>false</filtered>
     </fileSet>
     <fileSet>
-      <directory>${basedir}/target/javadoc</directory>
-      <outputDirectory>docs/javadoc</outputDirectory>
+      <directory>${basedir}/misc/licenses</directory>
+      <outputDirectory>lib/3rdparty</outputDirectory>
       <directoryMode>0755</directoryMode>
       <fileMode>0644</fileMode>
       <filtered>false</filtered>
