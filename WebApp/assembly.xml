@@ -15,7 +15,6 @@
       <outputFileNameMapping>${artifact.artifactId}-${artifact.version}${dashClassifier?}.${artifact.extension}</outputFileNameMapping>
       <useProjectArtifact>true</useProjectArtifact>
       <useProjectAttachments>true</useProjectAttachments>
-      <useTransitiveDependencies>false</useTransitiveDependencies> <!-- http://jira.codehaus.org/browse/MASSEMBLY-559?page=com.atlassian.jira.plugin.system.issuetabpanels:all-tabpanel -->
       <includes>
         <include>${groupId}:${artifactId}</include>
         <include>${groupId}:${artifactId}:jar:*</include>
@@ -24,17 +23,18 @@
         <exclude>${project.groupId}:${project.artifactId}:pom.asc</exclude>
       </excludes>
     </dependencySet>
-
-    <dependencySet>
-      <outputDirectory>lib</outputDirectory>
-      <outputFileNameMapping>${artifact.artifactId}-${artifact.version}${dashClassifier?}.${artifact.extension}</outputFileNameMapping>
-      <useProjectArtifact>false</useProjectArtifact>
-      <useTransitiveDependencies>false</useTransitiveDependencies>
-      <excludes>
-        <exclude>${groupId}:*</exclude>
-        <exclude>com.google.code.findbugs:*</exclude>
-      </excludes>
-    </dependencySet>
   </dependencySets>
+
+  <!--
+  <fileSets>
+    <fileSet>
+      <directory>${basedir}/target/3rdparty</directory>
+      <outputDirectory>lib</outputDirectory>
+      <directoryMode>0755</directoryMode>
+      <fileMode>0644</fileMode>
+      <filtered>false</filtered>
+    </fileSet>
+  </fileSets>
+  -->
 
 </assembly>

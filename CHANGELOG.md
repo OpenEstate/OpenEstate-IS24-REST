@@ -4,6 +4,10 @@ Changelog for OpenEstate-IS24-REST
 0.5-SNAPSHOT (not released yet)
 -------------------------------
 
+-   Artifacts of the project were renamed to `OpenEstate-IS24-REST-Core`,
+    `OpenEstate-IS24-REST-HC42`, `OpenEstate-IS24-REST-HC43`,
+    `OpenEstate-IS24-REST-Examples` and `OpenEstate-IS24-REST-WebApp`. Please
+    make sure to rename the dependencies in your Maven project.
 -   Regenerated JAXB classes against the latest XSD schemas from IS24.
 -   Updated `commons-codec` library to version 1.11.
 -   Updated `commons-io` library to version 2.6.

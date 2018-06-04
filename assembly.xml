@@ -25,13 +25,6 @@
       </includes>
     </fileSet>
     <fileSet>
-      <directory>${basedir}/misc/licenses</directory>
-      <outputDirectory>3rdparty</outputDirectory>
-      <directoryMode>0755</directoryMode>
-      <fileMode>0644</fileMode>
-      <filtered>false</filtered>
-    </fileSet>
-    <fileSet>
       <directory>${basedir}/docs</directory>
       <outputDirectory>docs</outputDirectory>
       <directoryMode>0755</directoryMode>
@@ -47,77 +40,56 @@
     </fileSet>
     <fileSet>
       <directory>${basedir}/misc/licenses</directory>
-      <outputDirectory>3rdparty</outputDirectory>
+      <outputDirectory>docs/licenses</outputDirectory>
       <directoryMode>0755</directoryMode>
       <fileMode>0644</fileMode>
       <filtered>false</filtered>
     </fileSet>
     <fileSet>
-      <directory>${basedir}/OpenEstate-IS24-REST/src/main/xsd</directory>
-      <outputDirectory>xsd</outputDirectory>
+      <directory>${basedir}/Core/src/main/xsd</directory>
+      <outputDirectory>docs/xsd</outputDirectory>
       <directoryMode>0755</directoryMode>
       <fileMode>0644</fileMode>
       <filtered>false</filtered>
     </fileSet>
     <fileSet>
-      <directory>${basedir}/OpenEstate-IS24-REST/release</directory>
-      <outputDirectory>OpenEstate-IS24-REST</outputDirectory>
+      <directory>${basedir}/Core/release</directory>
+      <outputDirectory>OpenEstate-IS24-REST-Core</outputDirectory>
       <directoryMode>0755</directoryMode>
       <fileMode>0644</fileMode>
       <filtered>false</filtered>
     </fileSet>
     <fileSet>
-      <directory>${basedir}/OpenEstate-IS24-REST/target/3rdparty</directory>
-      <outputDirectory>3rdparty</outputDirectory>
+      <directory>${basedir}/Examples/release</directory>
+      <outputDirectory>OpenEstate-IS24-REST-Examples</outputDirectory>
       <directoryMode>0755</directoryMode>
       <fileMode>0644</fileMode>
       <filtered>false</filtered>
     </fileSet>
     <fileSet>
-      <directory>${basedir}/OpenEstate-IS24-REST-examples/release</directory>
-      <outputDirectory>OpenEstate-IS24-REST-examples</outputDirectory>
+      <directory>${basedir}/HC42/release</directory>
+      <outputDirectory>OpenEstate-IS24-REST-HC42</outputDirectory>
       <directoryMode>0755</directoryMode>
       <fileMode>0644</fileMode>
       <filtered>false</filtered>
     </fileSet>
     <fileSet>
-      <directory>${basedir}/OpenEstate-IS24-REST-hc42/release</directory>
-      <outputDirectory>OpenEstate-IS24-REST-hc42</outputDirectory>
+      <directory>${basedir}/HC43/release</directory>
+      <outputDirectory>OpenEstate-IS24-REST-HC43</outputDirectory>
       <directoryMode>0755</directoryMode>
       <fileMode>0644</fileMode>
       <filtered>false</filtered>
     </fileSet>
     <fileSet>
-      <directory>${basedir}/OpenEstate-IS24-REST-hc42/target/3rdparty</directory>
-      <outputDirectory>3rdparty</outputDirectory>
-      <directoryMode>0755</directoryMode>
-      <fileMode>0644</fileMode>
-      <filtered>false</filtered>
-    </fileSet>
-    <fileSet>
-      <directory>${basedir}/OpenEstate-IS24-REST-hc43/release</directory>
-      <outputDirectory>OpenEstate-IS24-REST-hc43</outputDirectory>
-      <directoryMode>0755</directoryMode>
-      <fileMode>0644</fileMode>
-      <filtered>false</filtered>
-    </fileSet>
-    <fileSet>
-      <directory>${basedir}/OpenEstate-IS24-REST-hc43/target/3rdparty</directory>
-      <outputDirectory>3rdparty</outputDirectory>
-      <directoryMode>0755</directoryMode>
-      <fileMode>0644</fileMode>
-      <filtered>false</filtered>
-    </fileSet>
-    <fileSet>
-      <directory>${basedir}/OpenEstate-IS24-REST-webapp/release</directory>
-      <outputDirectory>OpenEstate-IS24-REST-webapp</outputDirectory>
+      <directory>${basedir}/WebApp/release</directory>
+      <outputDirectory>OpenEstate-IS24-REST-WebApp</outputDirectory>
       <directoryMode>0755</directoryMode>
       <fileMode>0644</fileMode>
       <filtered>false</filtered>
     </fileSet>
     <fileSet>
       <directory>${basedir}/target/javadoc</directory>
-      <outputDirectory>javadoc</outputDirectory>
+      <outputDirectory>docs/javadoc</outputDirectory>
       <directoryMode>0755</directoryMode>
       <fileMode>0644</fileMode>
       <filtered>false</filtered>

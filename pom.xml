@@ -4,16 +4,16 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.openestate.is24</groupId>
-  <artifactId>ALL</artifactId>
+  <artifactId>OpenEstate-IS24-REST</artifactId>
   <version>0.5-SNAPSHOT</version>
   <packaging>pom</packaging>
 
-  <name>ALL-OpenEstate-IS24-REST</name>
+  <name>OpenEstate-IS24-REST</name>
   <description>OpenEstate-IS24-REST is a client library for the REST-Webservice of ImmobilienScout24.de written in Java.</description>
-  <url>http://openestate.org</url>
+  <url>https://openestate.org</url>
   <organization>
     <name>OpenEstate</name>
-    <url>http://openestate.org/</url>
+    <url>https://openestate.org/</url>
   </organization>
   <licenses>
     <license>
@@ -30,23 +30,23 @@
       <name>Andreas Rudolph</name>
       <email>andy@openindex.de</email>
       <organization>OpenIndex</organization>
-      <organizationUrl>http://www.openindex.de/</organizationUrl>
+      <organizationUrl>https://openindex.de/</organizationUrl>
     </developer>
     <developer>
       <id>walter</id>
       <name>Walter Wagner</name>
       <email>walter@openindex.de</email>
       <organization>OpenIndex</organization>
-      <organizationUrl>http://www.openindex.de/</organizationUrl>
+      <organizationUrl>https://openindex.de/</organizationUrl>
     </developer>
   </developers>
 
   <modules>
-    <module>OpenEstate-IS24-REST</module>
-    <module>OpenEstate-IS24-REST-hc42</module>
-    <module>OpenEstate-IS24-REST-hc43</module>
-    <module>OpenEstate-IS24-REST-examples</module>
-    <module>OpenEstate-IS24-REST-webapp</module>
+    <module>Core</module>
+    <module>HC42</module>
+    <module>HC43</module>
+    <module>Examples</module>
+    <module>WebApp</module>
   </modules>
 
   <scm>
@@ -54,12 +54,6 @@
     <developerConnection>scm:git:[fetch=]https://github.com/OpenEstate/OpenEstate-IS24-REST.git[push=]ssh://git@github.com:OpenEstate/OpenEstate-IS24-REST.git</developerConnection>
     <url>https://github.com/OpenEstate/OpenEstate-IS24-REST</url>
   </scm>
-  <distributionManagement>
-    <snapshotRepository>
-      <id>ossrh</id>
-      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-    </snapshotRepository>
-  </distributionManagement>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -71,17 +65,17 @@
     <dependencies>
       <dependency>
         <groupId>org.openestate.is24</groupId>
-        <artifactId>OpenEstate-IS24-REST</artifactId>
+        <artifactId>OpenEstate-IS24-REST-Core</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>org.openestate.is24</groupId>
-        <artifactId>OpenEstate-IS24-REST-hc42</artifactId>
+        <artifactId>OpenEstate-IS24-REST-HC42</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
         <groupId>org.openestate.is24</groupId>
-        <artifactId>OpenEstate-IS24-REST-hc43</artifactId>
+        <artifactId>OpenEstate-IS24-REST-HC43</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
@@ -366,9 +360,9 @@
       </properties>
     </profile>
 
-    <!-- release profile -->
+    <!-- release profile for oss.sonatype.org -->
     <profile>
-      <id>release</id>
+      <id>ossrh-release</id>
       <properties>
         <createChecksum>true</createChecksum>
         <maven.javadoc.skip>false</maven.javadoc.skip>
@@ -376,6 +370,12 @@
         <source.skip>false</source.skip>
         <staging.skip>false</staging.skip>
       </properties>
+      <distributionManagement>
+        <snapshotRepository>
+          <id>openestate-ossrh</id>
+          <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+      </distributionManagement>
     </profile>
 
   </profiles>

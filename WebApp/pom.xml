@@ -5,21 +5,21 @@
 
   <parent>
     <groupId>org.openestate.is24</groupId>
-    <artifactId>ALL</artifactId>
+    <artifactId>OpenEstate-IS24-REST</artifactId>
     <version>0.5-SNAPSHOT</version>
   </parent>
 
   <groupId>org.openestate.is24</groupId>
-  <artifactId>OpenEstate-IS24-REST-webapp</artifactId>
+  <artifactId>OpenEstate-IS24-REST-WebApp</artifactId>
   <version>0.5-SNAPSHOT</version>
   <packaging>war</packaging>
 
-  <name>OpenEstate-IS24-REST-webapp</name>
+  <name>OpenEstate-IS24-REST-WebApp</name>
   <description>OpenEstate-IS24-REST is a client library for the REST-Webservice of ImmobilienScout24.de written in Java.</description>
-  <url>http://openestate.org</url>
+  <url>https://openestate.org</url>
   <organization>
     <name>OpenEstate</name>
-    <url>http://openestate.org/</url>
+    <url>https://openestate.org/</url>
   </organization>
   <licenses>
     <license>
@@ -36,14 +36,14 @@
       <name>Andreas Rudolph</name>
       <email>andy@openindex.de</email>
       <organization>OpenIndex</organization>
-      <organizationUrl>http://www.openindex.de/</organizationUrl>
+      <organizationUrl>https://openindex.de/</organizationUrl>
     </developer>
     <developer>
       <id>walter</id>
       <name>Walter Wagner</name>
       <email>walter@openindex.de</email>
       <organization>OpenIndex</organization>
-      <organizationUrl>http://www.openindex.de/</organizationUrl>
+      <organizationUrl>https://openindex.de/</organizationUrl>
     </developer>
   </developers>
 
@@ -55,7 +55,7 @@
   <dependencies>
     <dependency>
       <groupId>org.openestate.is24</groupId>
-      <artifactId>OpenEstate-IS24-REST</artifactId>
+      <artifactId>OpenEstate-IS24-REST-Core</artifactId>
       <scope>compile</scope>
     </dependency>
     <dependency>
