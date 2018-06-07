@@ -23,7 +23,7 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 import org.openestate.is24.restapi.xml.Adapter1;
 import org.openestate.is24.restapi.xml.common.CourtageInfo;
 import org.openestate.is24.restapi.xml.common.Price;
-import org.openestate.is24.restapi.xml.realestates.Adapter20;
+import org.openestate.is24.restapi.xml.realestates.Adapter22;
 
 
 /**
@@ -74,7 +74,7 @@ public class HouseBuy
     @XmlSchemaType(name = "double")
     protected BigDecimal plotArea;
     @XmlElement(required = true, type = String.class)
-    @XmlJavaTypeAdapter(Adapter20 .class)
+    @XmlJavaTypeAdapter(Adapter22 .class)
     protected BigDecimal numberOfRooms;
     protected Boolean energyPerformanceCertificate;
     @XmlElement(required = true)

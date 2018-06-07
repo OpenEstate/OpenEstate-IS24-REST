@@ -33,7 +33,7 @@ import org.openestate.is24.restapi.xml.common.MarketingType;
 import org.openestate.is24.restapi.xml.common.PetsAllowedType;
 import org.openestate.is24.restapi.xml.common.Price;
 import org.openestate.is24.restapi.xml.common.YesNotApplicableType;
-import org.openestate.is24.restapi.xml.realestates.Adapter18;
+import org.openestate.is24.restapi.xml.realestates.Adapter20;
 
 
 /**
@@ -190,7 +190,7 @@ public class AssistedLiving
     @XmlSchemaType(name = "string")
     protected BuildingEnergyRatingType buildingEnergyRatingType;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter18 .class)
+    @XmlJavaTypeAdapter(Adapter20 .class)
     protected BigDecimal thermalCharacteristic;
     @XmlSchemaType(name = "string")
     protected YesNotApplicableType energyConsumptionContainsWarmWater;

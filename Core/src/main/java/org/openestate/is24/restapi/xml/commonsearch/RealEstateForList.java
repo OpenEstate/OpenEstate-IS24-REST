@@ -2,7 +2,7 @@
 package org.openestate.is24.restapi.xml.commonsearch;
 
 import java.io.Serializable;
-import java.net.URL;
+import java.net.URI;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -121,7 +121,7 @@ public abstract class RealEstateForList
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter4 .class)
     @XmlSchemaType(name = "anyURI")
-    protected URL realtorLogo;
+    protected URI realtorLogo;
     protected Attachment realtorLogoForResultList;
     protected Attachments additionalPictures;
 
@@ -349,7 +349,7 @@ public abstract class RealEstateForList
      *     {@link String }
      *     
      */
-    public URL getRealtorLogo() {
+    public URI getRealtorLogo() {
         return realtorLogo;
     }
 
@@ -361,7 +361,7 @@ public abstract class RealEstateForList
      *     {@link String }
      *     
      */
-    public void setRealtorLogo(URL value) {
+    public void setRealtorLogo(URI value) {
         this.realtorLogo = value;
     }
 
@@ -475,7 +475,7 @@ public abstract class RealEstateForList
             strategy.appendField(locator, this, "projectId", buffer, theProjectId, (this.projectId!= null));
         }
         {
-            URL theRealtorLogo;
+            URI theRealtorLogo;
             theRealtorLogo = this.getRealtorLogo();
             strategy.appendField(locator, this, "realtorLogo", buffer, theRealtorLogo, (this.realtorLogo!= null));
         }
@@ -628,9 +628,9 @@ public abstract class RealEstateForList
             {
                 Boolean realtorLogoShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.realtorLogo!= null));
                 if (realtorLogoShouldBeCopiedAndSet == Boolean.TRUE) {
-                    URL sourceRealtorLogo;
+                    URI sourceRealtorLogo;
                     sourceRealtorLogo = this.getRealtorLogo();
-                    URL copyRealtorLogo = ((URL) strategy.copy(LocatorUtils.property(locator, "realtorLogo", sourceRealtorLogo), sourceRealtorLogo, (this.realtorLogo!= null)));
+                    URI copyRealtorLogo = ((URI) strategy.copy(LocatorUtils.property(locator, "realtorLogo", sourceRealtorLogo), sourceRealtorLogo, (this.realtorLogo!= null)));
                     copy.setRealtorLogo(copyRealtorLogo);
                 } else {
                     if (realtorLogoShouldBeCopiedAndSet == Boolean.FALSE) {
@@ -761,9 +761,9 @@ public abstract class RealEstateForList
             }
         }
         {
-            URL lhsRealtorLogo;
+            URI lhsRealtorLogo;
             lhsRealtorLogo = this.getRealtorLogo();
-            URL rhsRealtorLogo;
+            URI rhsRealtorLogo;
             rhsRealtorLogo = that.getRealtorLogo();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "realtorLogo", lhsRealtorLogo), LocatorUtils.property(thatLocator, "realtorLogo", rhsRealtorLogo), lhsRealtorLogo, rhsRealtorLogo, (this.realtorLogo!= null), (that.realtorLogo!= null))) {
                 return false;

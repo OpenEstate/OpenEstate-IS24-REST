@@ -28,7 +28,7 @@ import org.openestate.is24.restapi.xml.common.CourtageInfo;
 import org.openestate.is24.restapi.xml.common.GarageType;
 import org.openestate.is24.restapi.xml.common.Price;
 import org.openestate.is24.restapi.xml.common.RealEstateCondition;
-import org.openestate.is24.restapi.xml.realestates.Adapter19;
+import org.openestate.is24.restapi.xml.realestates.Adapter21;
 
 
 /**
@@ -92,7 +92,7 @@ public class GarageRent
     @XmlSchemaType(name = "string")
     protected GarageType garageType;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter19 .class)
+    @XmlJavaTypeAdapter(Adapter21 .class)
     protected Integer constructionYear;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter1 .class)

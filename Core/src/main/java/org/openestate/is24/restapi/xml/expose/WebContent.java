@@ -2,7 +2,7 @@
 package org.openestate.is24.restapi.xml.expose;
 
 import java.io.Serializable;
-import java.net.URL;
+import java.net.URI;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -66,10 +66,10 @@ public class WebContent implements Serializable, Cloneable, CopyTo2, Equals2, To
 
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter4 .class)
-    protected URL reportAFraudURL;
+    protected URI reportAFraudURL;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter4 .class)
-    protected URL exposePrintUrl;
+    protected URI exposePrintUrl;
 
     /**
      * Gets the value of the reportAFraudURL property.
@@ -79,7 +79,7 @@ public class WebContent implements Serializable, Cloneable, CopyTo2, Equals2, To
      *     {@link String }
      *     
      */
-    public URL getReportAFraudURL() {
+    public URI getReportAFraudURL() {
         return reportAFraudURL;
     }
 
@@ -91,7 +91,7 @@ public class WebContent implements Serializable, Cloneable, CopyTo2, Equals2, To
      *     {@link String }
      *     
      */
-    public void setReportAFraudURL(URL value) {
+    public void setReportAFraudURL(URI value) {
         this.reportAFraudURL = value;
     }
 
@@ -103,7 +103,7 @@ public class WebContent implements Serializable, Cloneable, CopyTo2, Equals2, To
      *     {@link String }
      *     
      */
-    public URL getExposePrintUrl() {
+    public URI getExposePrintUrl() {
         return exposePrintUrl;
     }
 
@@ -115,7 +115,7 @@ public class WebContent implements Serializable, Cloneable, CopyTo2, Equals2, To
      *     {@link String }
      *     
      */
-    public void setExposePrintUrl(URL value) {
+    public void setExposePrintUrl(URI value) {
         this.exposePrintUrl = value;
     }
 
@@ -135,12 +135,12 @@ public class WebContent implements Serializable, Cloneable, CopyTo2, Equals2, To
 
     public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
-            URL theReportAFraudURL;
+            URI theReportAFraudURL;
             theReportAFraudURL = this.getReportAFraudURL();
             strategy.appendField(locator, this, "reportAFraudURL", buffer, theReportAFraudURL, (this.reportAFraudURL!= null));
         }
         {
-            URL theExposePrintUrl;
+            URI theExposePrintUrl;
             theExposePrintUrl = this.getExposePrintUrl();
             strategy.appendField(locator, this, "exposePrintUrl", buffer, theExposePrintUrl, (this.exposePrintUrl!= null));
         }
@@ -163,9 +163,9 @@ public class WebContent implements Serializable, Cloneable, CopyTo2, Equals2, To
             {
                 Boolean reportAFraudURLShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.reportAFraudURL!= null));
                 if (reportAFraudURLShouldBeCopiedAndSet == Boolean.TRUE) {
-                    URL sourceReportAFraudURL;
+                    URI sourceReportAFraudURL;
                     sourceReportAFraudURL = this.getReportAFraudURL();
-                    URL copyReportAFraudURL = ((URL) strategy.copy(LocatorUtils.property(locator, "reportAFraudURL", sourceReportAFraudURL), sourceReportAFraudURL, (this.reportAFraudURL!= null)));
+                    URI copyReportAFraudURL = ((URI) strategy.copy(LocatorUtils.property(locator, "reportAFraudURL", sourceReportAFraudURL), sourceReportAFraudURL, (this.reportAFraudURL!= null)));
                     copy.setReportAFraudURL(copyReportAFraudURL);
                 } else {
                     if (reportAFraudURLShouldBeCopiedAndSet == Boolean.FALSE) {
@@ -176,9 +176,9 @@ public class WebContent implements Serializable, Cloneable, CopyTo2, Equals2, To
             {
                 Boolean exposePrintUrlShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.exposePrintUrl!= null));
                 if (exposePrintUrlShouldBeCopiedAndSet == Boolean.TRUE) {
-                    URL sourceExposePrintUrl;
+                    URI sourceExposePrintUrl;
                     sourceExposePrintUrl = this.getExposePrintUrl();
-                    URL copyExposePrintUrl = ((URL) strategy.copy(LocatorUtils.property(locator, "exposePrintUrl", sourceExposePrintUrl), sourceExposePrintUrl, (this.exposePrintUrl!= null)));
+                    URI copyExposePrintUrl = ((URI) strategy.copy(LocatorUtils.property(locator, "exposePrintUrl", sourceExposePrintUrl), sourceExposePrintUrl, (this.exposePrintUrl!= null)));
                     copy.setExposePrintUrl(copyExposePrintUrl);
                 } else {
                     if (exposePrintUrlShouldBeCopiedAndSet == Boolean.FALSE) {
@@ -203,18 +203,18 @@ public class WebContent implements Serializable, Cloneable, CopyTo2, Equals2, To
         }
         final WebContent that = ((WebContent) object);
         {
-            URL lhsReportAFraudURL;
+            URI lhsReportAFraudURL;
             lhsReportAFraudURL = this.getReportAFraudURL();
-            URL rhsReportAFraudURL;
+            URI rhsReportAFraudURL;
             rhsReportAFraudURL = that.getReportAFraudURL();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "reportAFraudURL", lhsReportAFraudURL), LocatorUtils.property(thatLocator, "reportAFraudURL", rhsReportAFraudURL), lhsReportAFraudURL, rhsReportAFraudURL, (this.reportAFraudURL!= null), (that.reportAFraudURL!= null))) {
                 return false;
             }
         }
         {
-            URL lhsExposePrintUrl;
+            URI lhsExposePrintUrl;
             lhsExposePrintUrl = this.getExposePrintUrl();
-            URL rhsExposePrintUrl;
+            URI rhsExposePrintUrl;
             rhsExposePrintUrl = that.getExposePrintUrl();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "exposePrintUrl", lhsExposePrintUrl), LocatorUtils.property(thatLocator, "exposePrintUrl", rhsExposePrintUrl), lhsExposePrintUrl, rhsExposePrintUrl, (this.exposePrintUrl!= null), (that.exposePrintUrl!= null))) {
                 return false;

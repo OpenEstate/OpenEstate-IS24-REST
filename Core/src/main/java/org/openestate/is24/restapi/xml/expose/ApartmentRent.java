@@ -37,7 +37,6 @@ import org.openestate.is24.restapi.xml.common.Price;
 import org.openestate.is24.restapi.xml.common.RealEstateCondition;
 import org.openestate.is24.restapi.xml.common.YesNoNotApplicableType;
 import org.openestate.is24.restapi.xml.common.YesNotApplicableType;
-import org.openestate.is24.restapi.xml.realestates.Adapter10;
 import org.openestate.is24.restapi.xml.realestates.Adapter11;
 import org.openestate.is24.restapi.xml.realestates.Adapter12;
 import org.openestate.is24.restapi.xml.realestates.Adapter13;
@@ -45,7 +44,8 @@ import org.openestate.is24.restapi.xml.realestates.Adapter14;
 import org.openestate.is24.restapi.xml.realestates.Adapter15;
 import org.openestate.is24.restapi.xml.realestates.Adapter16;
 import org.openestate.is24.restapi.xml.realestates.Adapter17;
-import org.openestate.is24.restapi.xml.realestates.Adapter9;
+import org.openestate.is24.restapi.xml.realestates.Adapter18;
+import org.openestate.is24.restapi.xml.realestates.Adapter19;
 
 
 /**
@@ -125,7 +125,7 @@ public class ApartmentRent
     @XmlSchemaType(name = "string")
     protected ApartmentType apartmentType;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter9 .class)
+    @XmlJavaTypeAdapter(Adapter11 .class)
     protected Integer floor;
     protected Boolean lift;
     @Deprecated
@@ -136,20 +136,20 @@ public class ApartmentRent
     @XmlSchemaType(name = "string")
     protected YesNotApplicableType handicappedAccessible;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter10 .class)
+    @XmlJavaTypeAdapter(Adapter12 .class)
     protected Integer numberOfParkingSpaces;
     @XmlSchemaType(name = "string")
     protected RealEstateCondition condition;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter11 .class)
+    @XmlJavaTypeAdapter(Adapter13 .class)
     protected Integer lastRefurbishment;
     @XmlSchemaType(name = "string")
     protected InteriorQuality interiorQuality;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter12 .class)
+    @XmlJavaTypeAdapter(Adapter14 .class)
     protected Integer constructionYear;
     protected Boolean constructionYearUnknown;
-    @XmlJavaTypeAdapter(Adapter13 .class)
+    @XmlJavaTypeAdapter(Adapter15 .class)
     protected String freeFrom;
     @XmlSchemaType(name = "string")
     @Deprecated
@@ -162,22 +162,22 @@ public class ApartmentRent
     @XmlSchemaType(name = "string")
     protected BuildingEnergyRatingType buildingEnergyRatingType;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter14 .class)
+    @XmlJavaTypeAdapter(Adapter16 .class)
     protected BigDecimal thermalCharacteristic;
     @XmlSchemaType(name = "string")
     protected YesNotApplicableType energyConsumptionContainsWarmWater;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter15 .class)
+    @XmlJavaTypeAdapter(Adapter17 .class)
     protected Integer numberOfFloors;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "double")
     protected BigDecimal usableFloorSpace;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter16 .class)
+    @XmlJavaTypeAdapter(Adapter18 .class)
     protected Integer numberOfBedRooms;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter17 .class)
+    @XmlJavaTypeAdapter(Adapter19 .class)
     protected Integer numberOfBathRooms;
     @XmlSchemaType(name = "string")
     protected YesNotApplicableType guestToilet;

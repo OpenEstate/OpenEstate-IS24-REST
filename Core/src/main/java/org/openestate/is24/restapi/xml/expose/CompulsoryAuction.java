@@ -31,11 +31,11 @@ import org.openestate.is24.restapi.xml.common.EnergySourcesEnev2014;
 import org.openestate.is24.restapi.xml.common.HeatingTypeEnev2014;
 import org.openestate.is24.restapi.xml.common.Price;
 import org.openestate.is24.restapi.xml.common.YesNotApplicableType;
-import org.openestate.is24.restapi.xml.realestates.Adapter4;
-import org.openestate.is24.restapi.xml.realestates.Adapter5;
+import org.openestate.is24.restapi.xml.realestates.Adapter10;
 import org.openestate.is24.restapi.xml.realestates.Adapter6;
 import org.openestate.is24.restapi.xml.realestates.Adapter7;
 import org.openestate.is24.restapi.xml.realestates.Adapter8;
+import org.openestate.is24.restapi.xml.realestates.Adapter9;
 
 
 /**
@@ -118,13 +118,13 @@ public class CompulsoryAuction
     @XmlSchemaType(name = "string")
     protected CompulsoryAuctionType auctionObjectType;
     protected CountyCourt countyCourt;
-    @XmlJavaTypeAdapter(Adapter4 .class)
+    @XmlJavaTypeAdapter(Adapter6 .class)
     protected String fileReferenceAtCountyCourt;
-    @XmlJavaTypeAdapter(Adapter5 .class)
+    @XmlJavaTypeAdapter(Adapter7 .class)
     protected String numberOfFolio;
     @XmlElement(defaultValue = "false")
     protected Boolean splittingAuction;
-    @XmlJavaTypeAdapter(Adapter6 .class)
+    @XmlJavaTypeAdapter(Adapter8 .class)
     protected String owner;
     protected EnergyPerformanceCertificate energyCertificate;
     @XmlSchemaType(name = "string")
@@ -133,12 +133,12 @@ public class CompulsoryAuction
     @XmlSchemaType(name = "string")
     protected BuildingEnergyRatingType buildingEnergyRatingType;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter7 .class)
+    @XmlJavaTypeAdapter(Adapter9 .class)
     protected BigDecimal thermalCharacteristic;
     @XmlSchemaType(name = "string")
     protected YesNotApplicableType energyConsumptionContainsWarmWater;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter8 .class)
+    @XmlJavaTypeAdapter(Adapter10 .class)
     protected Integer constructionYear;
     protected Boolean constructionYearUnknown;
 

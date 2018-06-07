@@ -38,6 +38,7 @@ import org.openestate.is24.restapi.xml.common.RealEstateCondition;
 import org.openestate.is24.restapi.xml.common.StoreType;
 import org.openestate.is24.restapi.xml.common.SupplyType;
 import org.openestate.is24.restapi.xml.common.YesNotApplicableType;
+import org.openestate.is24.restapi.xml.realestates.Adapter4;
 
 
 /**
@@ -219,8 +220,7 @@ public class Store
     protected FiringTypes firingTypes;
     protected EnergySourcesEnev2014 energySourcesEnev2014;
     @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter1 .class)
-    @XmlSchemaType(name = "double")
+    @XmlJavaTypeAdapter(Adapter4 .class)
     protected BigDecimal thermalCharacteristic;
     @XmlSchemaType(name = "string")
     protected YesNotApplicableType energyConsumptionContainsWarmWater;
