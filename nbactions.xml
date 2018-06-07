@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>javadoc</actionName>
+            <packagings>
+                <packaging>*</packaging>
+            </packagings>
+            <goals>
+                <goal>javadoc:aggregate@aggregate-javadocs</goal>
+            </goals>
+            <properties>
+                <skipTests>true</skipTests>
+            </properties>
+            <activatedProfiles>
+                <activatedProfile>ossrh-release</activatedProfile>
+            </activatedProfiles>
+        </action>
+    </actions>
