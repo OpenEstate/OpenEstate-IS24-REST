@@ -118,7 +118,7 @@
         <artifactId>jaxb2-maven-plugin</artifactId>
         <configuration>
           <bindingFiles>binding.xjb</bindingFiles>
-          <outputDirectory>${basedir}/src/main/java</outputDirectory>
+          <outputDirectory>${project.basedir}/src/main/java</outputDirectory>
           <clearOutputDir>false</clearOutputDir>
           <target>2.1</target>
           <extension>true</extension>
@@ -139,7 +139,7 @@
         <artifactId>findbugs-maven-plugin</artifactId>
         <configuration>
           <failOnError>false</failOnError>
-          <excludeFilterFile>${basedir}/findbugs-exclude.xml</excludeFilterFile>
+          <excludeFilterFile>${project.basedir}/findbugs-exclude.xml</excludeFilterFile>
         </configuration>
       </plugin>
 
