@@ -4,8 +4,19 @@ Changelog for OpenEstate-IS24-REST
 0.5-SNAPSHOT (not released yet)
 -------------------------------
 
-...
-
+-   Artifacts of the project were renamed to `OpenEstate-IS24-REST-Core`,
+    `OpenEstate-IS24-REST-HC42`, `OpenEstate-IS24-REST-HC43`,
+    `OpenEstate-IS24-REST-Examples` and `OpenEstate-IS24-REST-WebApp`. Please
+    make sure to rename the dependencies in your Maven project.
+-   Regenerated JAXB classes against the latest XSD schemas from IS24.
+-   Updated `commons-codec` library to version 1.11.
+-   Updated `commons-io` library to version 2.6.
+-   Updated `commons-lang` library to version 3.7.
+-   Updated `commons-text` library to version 1.2.
+-   **API change:** We're using `java.net.URI` instead of `java.net.URL`
+    whenever possible. See
+    [Always read the documentation/code – a.k.a. java.net.URL is evil](https://sworddance.com/blog/2007/09/09/code-review-4-always-read-the-documentationcode-aka-javaneturl-is-evil/)
+    for more information.
 
 
 0.4 (29 Jul 2017)

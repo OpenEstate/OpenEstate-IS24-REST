@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.openestate.is24</groupId>
+    <artifactId>OpenEstate-IS24-REST</artifactId>
+    <version>0.5-SNAPSHOT</version>
+  </parent>
+
+  <groupId>org.openestate.is24</groupId>
+  <artifactId>OpenEstate-IS24-REST-Examples</artifactId>
+  <version>0.5-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>OpenEstate-IS24-REST-Examples</name>
+  <description>OpenEstate-IS24-REST is a client library for the REST-Webservice of ImmobilienScout24.de written in Java.</description>
+  <url>https://openestate.org</url>
+  <organization>
+    <name>OpenEstate</name>
+    <url>https://openestate.org/</url>
+  </organization>
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+      <comments>A business-friendly OSS license</comments>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <id>andy</id>
+      <name>Andreas Rudolph</name>
+      <email>andy@openindex.de</email>
+      <organization>OpenIndex</organization>
+      <organizationUrl>https://openindex.de/</organizationUrl>
+    </developer>
+  </developers>
+
+  <dependencies>
+
+    <!-- OpenEstate-IS24-REST -->
+    <dependency>
+      <groupId>org.openestate.is24</groupId>
+      <artifactId>OpenEstate-IS24-REST-Core</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.openestate.is24</groupId>
+      <artifactId>OpenEstate-IS24-REST-HC42</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.openestate.is24</groupId>
+      <artifactId>OpenEstate-IS24-REST-HC43</artifactId>
+      <scope>compile</scope>
+    </dependency>
+
+    <!-- further compile dependencies -->
+    <dependency>
+      <groupId>com.google.code.findbugs</groupId>
+      <artifactId>annotations</artifactId>
+      <scope>compile</scope>
+      <optional>true</optional>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <plugins>
+
+      <!-- findbugs -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>findbugs-maven-plugin</artifactId>
+        <configuration>
+          <failOnError>false</failOnError>
+          <excludeFilterFile>${basedir}/findbugs-exclude.xml</excludeFilterFile>
+        </configuration>
+      </plugin>
+
+    </plugins>
+  </build>
+</project>

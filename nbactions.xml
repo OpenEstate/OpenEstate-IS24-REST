@@ -1,69 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <actions>
         <action>
-            <actionName>build</actionName>
+            <actionName>javadoc</actionName>
             <packagings>
                 <packaging>*</packaging>
             </packagings>
             <goals>
-                <goal>install</goal>
-            </goals>
-            <activatedProfiles>
-                <activatedProfile>development</activatedProfile>
-            </activatedProfiles>
-        </action>
-        <action>
-            <actionName>rebuild</actionName>
-            <packagings>
-                <packaging>*</packaging>
-            </packagings>
-            <goals>
-                <goal>clean</goal>
-                <goal>install</goal>
-            </goals>
-            <activatedProfiles>
-                <activatedProfile>development</activatedProfile>
-            </activatedProfiles>
-        </action>
-        <action>
-            <actionName>build-with-dependencies</actionName>
-            <reactor>also-make</reactor>
-            <packagings>
-                <packaging>*</packaging>
-            </packagings>
-            <goals>
-                <goal>install</goal>
-            </goals>
-            <activatedProfiles>
-                <activatedProfile>development</activatedProfile>
-            </activatedProfiles>
-        </action>
-        <action>
-            <actionName>test</actionName>
-            <packagings>
-                <packaging>*</packaging>
-            </packagings>
-            <goals>
-                <goal>test</goal>
-            </goals>
-            <activatedProfiles>
-                <activatedProfile>development</activatedProfile>
-            </activatedProfiles>
-        </action>
-        <action>
-            <actionName>test.single</actionName>
-            <packagings>
-                <packaging>*</packaging>
-            </packagings>
-            <goals>
-                <goal>test-compile</goal>
-                <goal>surefire:test</goal>
+                <goal>javadoc:aggregate@aggregate-javadocs</goal>
             </goals>
             <properties>
-                <test>${packageClassName}</test>
+                <skipTests>true</skipTests>
             </properties>
             <activatedProfiles>
-                <activatedProfile>development</activatedProfile>
+                <activatedProfile>ossrh-release</activatedProfile>
             </activatedProfiles>
         </action>
     </actions>

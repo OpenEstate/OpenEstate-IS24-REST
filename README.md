@@ -27,37 +27,37 @@ Components
 
 The library is splitted into different components:
 
--   **OpenEstate-IS24-REST**
+-   **OpenEstate-IS24-REST-Core**
 
-    -   Java classes, that represent the [XML schemas](OpenEstate-IS24-REST/src/main/xsd) of the Webservice
-    -   XML reading and writing according to the [XML schemas](OpenEstate-IS24-REST/src/main/xsd) of the Webservice
+    -   Java classes, that represent the [XML schemas](Core/src/main/xsd) of the Webservice
+    -   XML reading and writing according to the [XML schemas](Core/src/main/xsd) of the Webservice
     -   low level methods to access the Webservice
-        (see [`ImportExport.java`](OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/ImportExport.java)
-        and [`GIS.java`](OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/GIS.java))
+        (see [`ImportExport.java`](Core/src/main/java/org/openestate/is24/restapi/ImportExport.java)
+        and [`GIS.java`](Core/src/main/java/org/openestate/is24/restapi/GIS.java))
     -   high level methods for a straightforward export of real estates
-        (see [`ExportPool.java`](OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/utils/ExportPool.java)
-        and [`ExportHandler.java`](OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/utils/ExportHandler.java))
+        (see [`ExportPool.java`](Core/src/main/java/org/openestate/is24/restapi/utils/ExportPool.java)
+        and [`ExportHandler.java`](Core/src/main/java/org/openestate/is24/restapi/utils/ExportHandler.java))
     -   communicate with the Webservice through [`java.net.HttpURLConnection`](http://docs.oracle.com/javase/6/docs/api/java/net/HttpURLConnection.html)
-        (see [`DefaultClient.java`](OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/DefaultClient.java))
+        (see [`DefaultClient.java`](Core/src/main/java/org/openestate/is24/restapi/DefaultClient.java))
 
--   **OpenEstate-IS24-REST-hc42**
+-   **OpenEstate-IS24-REST-HC42**
 
     -   communicate with the Webservice through [Apache HttpComponents 4.2](http://hc.apache.org/httpcomponents-client-4.2.x/)
-        (see [`HttpComponents42Client.java`](OpenEstate-IS24-REST-hc42/src/main/java/org/openestate/is24/restapi/hc42/HttpComponents42Client.java))
+        (see [`HttpComponents42Client.java`](HC42/src/main/java/org/openestate/is24/restapi/hc42/HttpComponents42Client.java))
 
--   **OpenEstate-IS24-REST-hc43**
+-   **OpenEstate-IS24-REST-HC43**
 
     -   communicate with the Webservice through [Apache HttpComponents 4.3](http://hc.apache.org/httpcomponents-client-4.3.x/)
-        (see [`HttpComponents43Client.java`](OpenEstate-IS24-REST-hc43/src/main/java/org/openestate/is24/restapi/hc43/HttpComponents43Client.java))
+        (see [`HttpComponents43Client.java`](HC43/src/main/java/org/openestate/is24/restapi/hc43/HttpComponents43Client.java))
 
--   **OpenEstate-IS24-REST-examples**
+-   **OpenEstate-IS24-REST-Examples**
 
     -   some example classes to illustrate library usage
 
--   **OpenEstate-IS24-REST-webapp**
+-   **OpenEstate-IS24-REST-WebApp**
 
     -   an example web application to illustrate the [OAuth](http://api.immobilienscout24.de/useful/authentication.html) verification process
-        (see [`VerificationServlet.java`](OpenEstate-IS24-REST-webapp/src/main/java/org/openestate/is24/restapi/webapp/VerificationServlet.java))
+        (see [`VerificationServlet.java`](WebApp/src/main/java/org/openestate/is24/restapi/webapp/VerificationServlet.java))
 
 
 How to use
@@ -76,19 +76,19 @@ requirements):
 ```xml
 <dependency>
   <groupId>org.openestate.is24</groupId>
-  <artifactId>OpenEstate-IS24-REST</artifactId>
+  <artifactId>OpenEstate-IS24-REST-Core</artifactId>
   <version>0.5-SNAPSHOT</version>
 </dependency>
 
 <dependency>
   <groupId>org.openestate.is24</groupId>
-  <artifactId>OpenEstate-IS24-REST-hc42</artifactId>
+  <artifactId>OpenEstate-IS24-REST-HC42</artifactId>
   <version>0.5-SNAPSHOT</version>
 </dependency>
 
 <dependency>
   <groupId>org.openestate.is24</groupId>
-  <artifactId>OpenEstate-IS24-REST-hc43</artifactId>
+  <artifactId>OpenEstate-IS24-REST-HC43</artifactId>
   <version>0.5-SNAPSHOT</version>
 </dependency>
 ```
@@ -111,15 +111,15 @@ Dependencies
 ------------
 
 -   Java 7 or newer
--   [commons-codec 1.10](http://commons.apache.org/proper/commons-codec/)
--   [commons-io 2.5](http://commons.apache.org/proper/commons-io/)
--   [commons-lang 3.6](http://commons.apache.org/proper/commons-lang/)
--   [commons-text 1.1](http://commons.apache.org/proper/commons-text/)
+-   [commons-codec 1.11](http://commons.apache.org/proper/commons-codec/)
+-   [commons-io 2.6](http://commons.apache.org/proper/commons-io/)
+-   [commons-lang 3.7](http://commons.apache.org/proper/commons-lang/)
+-   [commons-text 1.2](http://commons.apache.org/proper/commons-text/)
 -   [jaxb2-basics-runtime 0.11.1](https://github.com/highsource/jaxb2-basics)
 -   [oauth-signpost 1.2.1.2](https://code.google.com/p/oauth-signpost/)
 -   [SLF4J 1.7.25](http://www.slf4j.org/)
 -   [Lorem 2.1](https://github.com/mdeanda/lorem) (only required by
-    [`RandomRealEstateFactory.java`](OpenEstate-IS24-REST/src/main/java/org/openestate/is24/restapi/utils/RandomRealEstateFactory.java))
+    [`RandomRealEstateFactory.java`](Core/src/main/java/org/openestate/is24/restapi/utils/RandomRealEstateFactory.java))
 -   [Apache HttpComponents 4.2](http://hc.apache.org/httpcomponents-client-4.2.x/) or
     [Apache HttpComponents 4.3](http://hc.apache.org/httpcomponents-client-4.3.x/)
     (optional, 4.4 and 4.5 also seem to work)
