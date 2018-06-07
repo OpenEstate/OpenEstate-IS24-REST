@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Copyright 2014-2017 OpenEstate.org
+# Copyright 2014-2018 OpenEstate.org
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,12 +15,11 @@
 # limitations under the License.
 #
 
-MVN=mvn
+MVN="mvn"
 PROJECT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-export LANG=en
-set -e
 
+set -e
+export LANG=en
 cd $PROJECT_DIR
-#rm -f jaxb.timestamp
 rm -fR src/main/java/org/openestate/is24/restapi/xml
 $MVN jaxb2:xjc
