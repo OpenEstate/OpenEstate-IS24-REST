@@ -370,6 +370,9 @@
                   <docencoding>${project.build.sourceEncoding}</docencoding>
                   <keywords>true</keywords>
                   <quiet>true</quiet>
+                  <links>
+                    <link>https://docs.oracle.com/javase/7/docs/api/</link>
+                  </links>
                   <groups>
                     <group>
                       <title>core library</title>
