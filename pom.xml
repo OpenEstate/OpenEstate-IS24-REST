@@ -379,6 +379,14 @@
                                     <docencoding>${project.build.sourceEncoding}</docencoding>
                                     <keywords>true</keywords>
                                     <quiet>true</quiet>
+                                    <sourcepath>
+                                        ${project.basedir}/Core/src/main/java;
+                                        ${project.basedir}/Core/src/main/jaxb;
+                                        ${project.basedir}/Examples/src/main/java;
+                                        ${project.basedir}/HC42/src/main/java;
+                                        ${project.basedir}/HC43/src/main/java;
+                                        ${project.basedir}/WebApp/src/main/java
+                                    </sourcepath>
                                     <links>
                                         <link>https://docs.oracle.com/javase/7/docs/api/</link>
                                     </links>
