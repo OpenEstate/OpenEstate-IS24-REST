@@ -37,125 +37,99 @@ import org.openestate.is24.restapi.xml.realestates.RealEstate;
  *
  * @author Andreas Rudolph
  */
-public class BulkUploadExample
-{
-  private final static String WEBSERVICE_URL = AbstractClient.LIVE_API;
-  private final static String CONSUMER_KEY = "my consumer key";
-  private final static String CONSUMER_SECRET = "my consumer secret";
-  private final static String ACCESS_KEY = "user's access key";
-  private final static String ACCESS_SECRET = "user's access secret";
+public class BulkUploadExample {
+    private final static String WEBSERVICE_URL = AbstractClient.LIVE_API;
+    private final static String CONSUMER_KEY = "my consumer key";
+    private final static String CONSUMER_SECRET = "my consumer secret";
+    private final static String ACCESS_KEY = "user's access key";
+    private final static String ACCESS_SECRET = "user's access secret";
 
-  /**
-   * Main function.
-   *
-   * @param args
-   * command line arguments
-   */
-  public static void main( String[] args )
-  {
-    RandomRealEstateFactory factory = new RandomRealEstateFactory();
+    /**
+     * Main function.
+     *
+     * @param args command line arguments
+     */
+    public static void main(String[] args) {
+        RandomRealEstateFactory factory = new RandomRealEstateFactory();
 
-    // create an export pool, that holds the objects for export
-    ExportPool pool = new ExportPool();
-    try
-    {
-      try
-      {
-        // create some random contact persons
-        List<String> contactIds = new ArrayList<>();
-        int contactCount = RandomUtils.nextInt( 1, 5 );
-        for (int i=0; i<contactCount; i++)
-        {
-          RealtorContactDetails contact = factory.createRandomContact();
-          contact.setExternalId( "TEST_" + i );
-          contactIds.add( contact.getExternalId() );
+        // create an export pool, that holds the objects for export
+        ExportPool pool = new ExportPool();
+        try {
+            try {
+                // create some random contact persons
+                List<String> contactIds = new ArrayList<>();
+                int contactCount = RandomUtils.nextInt(1, 5);
+                for (int i = 0; i < contactCount; i++) {
+                    RealtorContactDetails contact = factory.createRandomContact();
+                    contact.setExternalId("TEST_" + i);
+                    contactIds.add(contact.getExternalId());
 
-          // add randomly created contact person to the export pool
-          pool.putContact( contact );
-        }
+                    // add randomly created contact person to the export pool
+                    pool.putContact(contact);
+                }
 
-        // create some random real estates
-        for (RandomRealEstateFactory.Type type : RandomRealEstateFactory.Type.values())
-        {
-          RealEstate object = factory.createRandomObject( type );
-          object.setExternalId( "TEST_" + type.name() );
+                // create some random real estates
+                for (RandomRealEstateFactory.Type type : RandomRealEstateFactory.Type.values()) {
+                    RealEstate object = factory.createRandomObject(type);
+                    object.setExternalId("TEST_" + type.name());
 
-          // assign one of the randomly created contacts to the real estate
-          object.setContact( new RealEstate.Contact() );
-          object.getContact().setExternalId( contactIds.get(
-            RandomUtils.nextInt( 0, contactIds.size() ) ) );
+                    // assign one of the randomly created contacts to the real estate
+                    object.setContact(new RealEstate.Contact());
+                    object.getContact().setExternalId(contactIds.get(
+                            RandomUtils.nextInt(0, contactIds.size())));
 
-          // add randomly created real estate to the export pool
-          pool.putObject( object );
-        }
-      }
-      catch (IOException ex)
-      {
-        throw new RuntimeException( "Can't build export pool!", ex );
-      }
-
-      // create a client, that communicates with the Webservice
-      AbstractClient client = new DefaultClient(
-        WEBSERVICE_URL, CONSUMER_KEY, CONSUMER_SECRET );
-
-      // authorize the client with the access token
-      try
-      {
-        client.authorize( ACCESS_KEY, ACCESS_SECRET );
-      }
-      catch (OAuthException ex)
-      {
-        throw new RuntimeException( "Authorization failed!", ex );
-      }
-
-      // send export pool to the Webservice
-      try
-      {
-        ExportHandler handler = new ExportHandler();
-
-        // start the export process
-        ExportMessage[] messages = handler.export( client, pool, true, false );
-
-        // process messages, that occured during the export process
-        if (ArrayUtils.isEmpty( messages ))
-        {
-          System.out.println( "No messages were received." );
-        }
-        else
-        {
-          // print messages to console
-          System.out.println( messages.length + " messages received." );
-          for (ExportMessage message : messages)
-          {
-            String level = message.getLevel().name();
-            String code = message.getCode().name();
-            if (!StringUtils.isBlank( message.getObjectId() ))
-            {
-              System.out.println( level + " for real estate "
-                + "'" + message.getObjectId() + "'" );
+                    // add randomly created real estate to the export pool
+                    pool.putObject(object);
+                }
+            } catch (IOException ex) {
+                throw new RuntimeException("Can't build export pool!", ex);
             }
-            else if (!StringUtils.isBlank( message.getContactId() ))
-            {
-              System.out.println( level + " for contact person "
-                + "'" + message.getContactId() + "'" );
+
+            // create a client, that communicates with the Webservice
+            AbstractClient client = new DefaultClient(
+                    WEBSERVICE_URL, CONSUMER_KEY, CONSUMER_SECRET);
+
+            // authorize the client with the access token
+            try {
+                client.authorize(ACCESS_KEY, ACCESS_SECRET);
+            } catch (OAuthException ex) {
+                throw new RuntimeException("Authorization failed!", ex);
             }
-            else
-            {
-              System.out.println( "general " + level );
+
+            // send export pool to the Webservice
+            try {
+                ExportHandler handler = new ExportHandler();
+
+                // start the export process
+                ExportMessage[] messages = handler.export(client, pool, true, false);
+
+                // process messages, that occured during the export process
+                if (ArrayUtils.isEmpty(messages)) {
+                    System.out.println("No messages were received.");
+                } else {
+                    // print messages to console
+                    System.out.println(messages.length + " messages received.");
+                    for (ExportMessage message : messages) {
+                        String level = message.getLevel().name();
+                        String code = message.getCode().name();
+                        if (!StringUtils.isBlank(message.getObjectId())) {
+                            System.out.println(level + " for real estate "
+                                    + "'" + message.getObjectId() + "'");
+                        } else if (!StringUtils.isBlank(message.getContactId())) {
+                            System.out.println(level + " for contact person "
+                                    + "'" + message.getContactId() + "'");
+                        } else {
+                            System.out.println("general " + level);
+                        }
+                        System.out.println("> " + code);
+                        System.out.println("> " + message.getMessage());
+                    }
+                }
+            } catch (IOException ex) {
+                throw new RuntimeException("Can't send export pool to the Webservice!", ex);
             }
-            System.out.println( "> " + code );
-            System.out.println( "> " + message.getMessage() );
-          }
+        } finally {
+            pool.cleanup();
         }
-      }
-      catch (IOException ex)
-      {
-        throw new RuntimeException( "Can't send export pool to the Webservice!", ex );
-      }
     }
-    finally
-    {
-      pool.cleanup();
-    }
-  }
 }

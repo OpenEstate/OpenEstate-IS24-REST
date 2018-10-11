@@ -29,38 +29,30 @@ import org.openestate.is24.restapi.xml.realestates.RealEstate;
  *
  * @author Andreas Rudolph
  */
-public class RandomRealEstateExample
-{
-  /**
-   * Main function.
-   *
-   * @param args
-   * command line arguments
-   */
-  public static void main( String[] args )
-  {
-    try
-    {
-      final RandomRealEstateFactory factory = new RandomRealEstateFactory();
-      final Charset charset = Charset.forName( "UTF-8" );
-      for (RandomRealEstateFactory.Type type : RandomRealEstateFactory.Type.values())
-      {
-        System.out.println( "----------------------------------------" );
-        System.out.println( "example for " + type + ":" );
-        RealEstate realEstate = factory.createRandomObject( type );
-        try (ByteArrayOutputStream output = new ByteArrayOutputStream())
-        {
-          XmlUtils.writeXml( realEstate, charset.name(), true, output );
-          ByteBuffer buffer = ByteBuffer.wrap( output.toByteArray() );
-          String xml = charset.decode( buffer ).toString();
-          System.out.println( xml.trim() );
+public class RandomRealEstateExample {
+    /**
+     * Main function.
+     *
+     * @param args command line arguments
+     */
+    public static void main(String[] args) {
+        try {
+            final RandomRealEstateFactory factory = new RandomRealEstateFactory();
+            final Charset charset = Charset.forName("UTF-8");
+            for (RandomRealEstateFactory.Type type : RandomRealEstateFactory.Type.values()) {
+                System.out.println("----------------------------------------");
+                System.out.println("example for " + type + ":");
+                RealEstate realEstate = factory.createRandomObject(type);
+                try (ByteArrayOutputStream output = new ByteArrayOutputStream()) {
+                    XmlUtils.writeXml(realEstate, charset.name(), true, output);
+                    ByteBuffer buffer = ByteBuffer.wrap(output.toByteArray());
+                    String xml = charset.decode(buffer).toString();
+                    System.out.println(xml.trim());
+                }
+            }
+        } catch (IOException | JAXBException ex) {
+            System.err.println("XML error!");
+            ex.printStackTrace(System.err);
         }
-      }
     }
-    catch (IOException | JAXBException ex)
-    {
-      System.err.println( "XML error!" );
-      ex.printStackTrace( System.err );
-    }
-  }
 }

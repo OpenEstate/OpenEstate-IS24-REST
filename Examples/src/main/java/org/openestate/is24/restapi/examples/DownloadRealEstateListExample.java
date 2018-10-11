@@ -32,71 +32,54 @@ import org.openestate.is24.restapi.xml.realestates.RealEstates;
  *
  * @author Andreas Rudolph
  */
-public class DownloadRealEstateListExample
-{
-  private final static String WEBSERVICE_URL = AbstractClient.LIVE_API;
-  private final static String CONSUMER_KEY = "my consumer key";
-  private final static String CONSUMER_SECRET = "my consumer secret";
-  private final static String ACCESS_KEY = "user's access key";
-  private final static String ACCESS_SECRET = "user's access secret";
+public class DownloadRealEstateListExample {
+    private final static String WEBSERVICE_URL = AbstractClient.LIVE_API;
+    private final static String CONSUMER_KEY = "my consumer key";
+    private final static String CONSUMER_SECRET = "my consumer secret";
+    private final static String ACCESS_KEY = "user's access key";
+    private final static String ACCESS_SECRET = "user's access secret";
 
-  /**
-   * Main function.
-   *
-   * @param args
-   * command line arguments
-   */
-  public static void main( String[] args )
-  {
-    AbstractClient client = new DefaultClient(
-      WEBSERVICE_URL, CONSUMER_KEY, CONSUMER_SECRET );
+    /**
+     * Main function.
+     *
+     * @param args command line arguments
+     */
+    public static void main(String[] args) {
+        AbstractClient client = new DefaultClient(
+                WEBSERVICE_URL, CONSUMER_KEY, CONSUMER_SECRET);
 
-    // authorize at the webservice with the access token
-    try
-    {
-      client.authorize( ACCESS_KEY, ACCESS_SECRET );
-    }
-    catch (OAuthException ex)
-    {
-      throw new RuntimeException( "Authorization failed!", ex );
-    }
-
-    // get list of real estates for a certain agent
-    int page = 0;
-    RealEstates result = null;
-    do
-    {
-      page++;
-      try
-      {
-        result = RealEstateService.getAll( client, null, null, 10, page, true );
-        for (OfferRealEstateForList object : result.getRealEstateList().getRealEstateElement())
-        {
-          String xml = XmlUtils.marshal( object, "UTF-8", true );
-          System.out.println( "object #" + object.getId() + "" );
-          System.out.println( "title '" + object.getTitle() +  "'" );
-          System.out.println( xml );
-          System.out.println( "------------------" );
+        // authorize at the webservice with the access token
+        try {
+            client.authorize(ACCESS_KEY, ACCESS_SECRET);
+        } catch (OAuthException ex) {
+            throw new RuntimeException("Authorization failed!", ex);
         }
-      }
-      catch (RequestFailedException ex)
-      {
-        throw new RuntimeException( "Request failed with "
-          + "'" + ex.statusMessage+"' (" + ex.statusCode + ")!", ex );
-      }
-      catch (OAuthException ex)
-      {
-        throw new RuntimeException( "Authorization failed!", ex );
-      }
-      catch (JAXBException ex)
-      {
-        throw new RuntimeException( "XML processing failed!", ex );
-      }
-      catch (IOException ex)
-      {
-        throw new RuntimeException( "Communication failed!", ex );
-      }
+
+        // get list of real estates for a certain agent
+        int page = 0;
+        RealEstates result = null;
+        do {
+            page++;
+            try {
+                result = RealEstateService.getAll(client, null, null, 10, page, true);
+                for (OfferRealEstateForList object : result.getRealEstateList().getRealEstateElement()) {
+                    String xml = XmlUtils.marshal(object, "UTF-8", true);
+                    System.out.println("object #" + object.getId() + "");
+                    System.out.println("title '" + object.getTitle() + "'");
+                    System.out.println(xml);
+                    System.out.println("------------------");
+                }
+            } catch (RequestFailedException ex) {
+                throw new RuntimeException("Request failed with "
+                        + "'" + ex.statusMessage + "' (" + ex.statusCode + ")!", ex);
+            } catch (OAuthException ex) {
+                throw new RuntimeException("Authorization failed!", ex);
+            } catch (JAXBException ex) {
+                throw new RuntimeException("XML processing failed!", ex);
+            } catch (IOException ex) {
+                throw new RuntimeException("Communication failed!", ex);
+            }
+        }
+        while (result.getPaging().getNumberOfPages() > page);
     }
-    while (result.getPaging().getNumberOfPages()>page);
-  }
 }

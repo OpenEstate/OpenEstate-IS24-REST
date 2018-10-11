@@ -26,23 +26,20 @@ import org.openestate.is24.restapi.hc42.HttpComponents42Client;
  * @author Andreas Rudolph
  */
 @SuppressFBWarnings
-public class HttpComponents42ClientExample
-{
-  private final static String WEBSERVICE_URL = AbstractClient.LIVE_API;
-  private final static String CONSUMER_KEY = "my consumer key";
-  private final static String CONSUMER_SECRET = "my consumer secret";
+public class HttpComponents42ClientExample {
+    private final static String WEBSERVICE_URL = AbstractClient.LIVE_API;
+    private final static String CONSUMER_KEY = "my consumer key";
+    private final static String CONSUMER_SECRET = "my consumer secret";
 
-  /**
-   * Main function.
-   *
-   * @param args
-   * command line arguments
-   */
-  public static void main( String[] args )
-  {
-    AbstractClient client = new HttpComponents42Client(
-      WEBSERVICE_URL, CONSUMER_KEY, CONSUMER_SECRET );
+    /**
+     * Main function.
+     *
+     * @param args command line arguments
+     */
+    public static void main(String[] args) {
+        AbstractClient client = new HttpComponents42Client(
+                WEBSERVICE_URL, CONSUMER_KEY, CONSUMER_SECRET);
 
-    // do something useful with the client
-  }
+        // do something useful with the client
+    }
 }

@@ -23,62 +23,46 @@ import org.slf4j.LoggerFactory;
 /**
  * An extended {@link InputStreamBody}, that holds the total streamed size.
  *
- * @since 0.1
  * @author Andreas Rudolph
+ * @since 0.1
  */
-public class InputStreamBodyWithLength extends InputStreamBody
-{
-  private final static Logger LOGGER = LoggerFactory.getLogger( InputStreamBodyWithLength.class );
-  private final long length;
+public class InputStreamBodyWithLength extends InputStreamBody {
+    @SuppressWarnings("unused")
+    private final static Logger LOGGER = LoggerFactory.getLogger(InputStreamBodyWithLength.class);
+    private final long length;
 
-  /**
-   * Creates an instance of {@link InputStreamBodyWithLength}.
-   *
-   * @param in
-   * inputstream
-   *
-   * @param filename
-   * file name
-   *
-   * @param length
-   * file size
-   */
-  public InputStreamBodyWithLength( InputStream in, String filename, long length )
-  {
-    super( in, filename );
-    this.length = length;
-  }
+    /**
+     * Creates an instance of {@link InputStreamBodyWithLength}.
+     *
+     * @param in       inputstream
+     * @param filename file name
+     * @param length   file size
+     */
+    public InputStreamBodyWithLength(InputStream in, String filename, long length) {
+        super(in, filename);
+        this.length = length;
+    }
 
-  /**
-   * Creates an instance of {@link InputStreamBodyWithLength}.
-   *
-   * @param in
-   * inputstream
-   *
-   * @param mimeType
-   * file mime type
-   *
-   * @param filename
-   * file name
-   *
-   * @param length
-   * file size
-   */
-  public InputStreamBodyWithLength( InputStream in, String mimeType, String filename, long length )
-  {
-    super( in, mimeType, filename );
-    this.length = length;
-  }
+    /**
+     * Creates an instance of {@link InputStreamBodyWithLength}.
+     *
+     * @param in       inputstream
+     * @param mimeType file mime type
+     * @param filename file name
+     * @param length   file size
+     */
+    public InputStreamBodyWithLength(InputStream in, String mimeType, String filename, long length) {
+        super(in, mimeType, filename);
+        this.length = length;
+    }
 
-  /**
-   * Returns size of the streamed content.
-   *
-   * @return
-   * size in bytes
-   */
-  @Override
-  public long getContentLength()
-  {
-    return this.length;
-  }
+    /**
+     * Returns size of the streamed content.
+     *
+     * @return size in bytes
+     */
+    @Override
+    public long getContentLength() {
+        return this.length;
+    }
 }

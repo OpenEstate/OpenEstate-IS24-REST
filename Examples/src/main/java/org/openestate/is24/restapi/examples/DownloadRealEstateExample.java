@@ -31,105 +31,75 @@ import org.openestate.is24.restapi.xml.realestates.RealEstate;
  *
  * @author Andreas Rudolph
  */
-public class DownloadRealEstateExample
-{
-  private final static String WEBSERVICE_URL = AbstractClient.LIVE_API;
-  private final static String CONSUMER_KEY = "my consumer key";
-  private final static String CONSUMER_SECRET = "my consumer secret";
-  private final static String ACCESS_KEY = "user's access key";
-  private final static String ACCESS_SECRET = "user's access secret";
-  private final static long is24ObjectId = 123;
-  private final static String externalObjectId = "123";
+public class DownloadRealEstateExample {
+    private final static String WEBSERVICE_URL = AbstractClient.LIVE_API;
+    private final static String CONSUMER_KEY = "my consumer key";
+    private final static String CONSUMER_SECRET = "my consumer secret";
+    private final static String ACCESS_KEY = "user's access key";
+    private final static String ACCESS_SECRET = "user's access secret";
+    private final static long is24ObjectId = 123;
+    private final static String externalObjectId = "123";
 
-  /**
-   * Main function.
-   *
-   * @param args
-   * command line arguments
-   */
-  public static void main( String[] args )
-  {
-    AbstractClient client = new DefaultClient(
-      WEBSERVICE_URL, CONSUMER_KEY, CONSUMER_SECRET );
+    /**
+     * Main function.
+     *
+     * @param args command line arguments
+     */
+    public static void main(String[] args) {
+        AbstractClient client = new DefaultClient(
+                WEBSERVICE_URL, CONSUMER_KEY, CONSUMER_SECRET);
 
-    // authorize at the webservice with the access token
-    try
-    {
-      client.authorize( ACCESS_KEY, ACCESS_SECRET );
-    }
-    catch (OAuthException ex)
-    {
-      throw new RuntimeException( "Authorization failed!", ex );
-    }
+        // authorize at the webservice with the access token
+        try {
+            client.authorize(ACCESS_KEY, ACCESS_SECRET);
+        } catch (OAuthException ex) {
+            throw new RuntimeException("Authorization failed!", ex);
+        }
 
-    // get a single real estate object, by the internal ID of IS24
-    try
-    {
-      System.out.println( "------------------" );
-      System.out.println( "Get object with IS24-ID " + is24ObjectId );
-      RealEstate object = RealEstateService.getByIs24Id( client, is24ObjectId );
-      if (object==null)
-      {
-        System.out.println( "Can't find object for IS24-ID " + is24ObjectId + "!" );
-      }
-      else
-      {
-        String xml = XmlUtils.marshal( object, "UTF-8", true );
-        System.out.println( "title '" + object.getTitle() +  "'" );
-        System.out.println( xml );
-      }
-    }
-    catch (RequestFailedException ex)
-    {
-      throw new RuntimeException( "Request failed with "
-        + "'" + ex.statusMessage+"' (" + ex.statusCode + ")!", ex );
-    }
-    catch (OAuthException ex)
-    {
-      throw new RuntimeException( "Authorization failed!", ex );
-    }
-    catch (JAXBException ex)
-    {
-      throw new RuntimeException( "XML processing failed!", ex );
-    }
-    catch (IOException ex)
-    {
-      throw new RuntimeException( "Communication failed!", ex );
-    }
+        // get a single real estate object, by the internal ID of IS24
+        try {
+            System.out.println("------------------");
+            System.out.println("Get object with IS24-ID " + is24ObjectId);
+            RealEstate object = RealEstateService.getByIs24Id(client, is24ObjectId);
+            if (object == null) {
+                System.out.println("Can't find object for IS24-ID " + is24ObjectId + "!");
+            } else {
+                String xml = XmlUtils.marshal(object, "UTF-8", true);
+                System.out.println("title '" + object.getTitle() + "'");
+                System.out.println(xml);
+            }
+        } catch (RequestFailedException ex) {
+            throw new RuntimeException("Request failed with "
+                    + "'" + ex.statusMessage + "' (" + ex.statusCode + ")!", ex);
+        } catch (OAuthException ex) {
+            throw new RuntimeException("Authorization failed!", ex);
+        } catch (JAXBException ex) {
+            throw new RuntimeException("XML processing failed!", ex);
+        } catch (IOException ex) {
+            throw new RuntimeException("Communication failed!", ex);
+        }
 
-    // get a single real estate object, by the external ID of the user / software
-    try
-    {
-      System.out.println( "------------------" );
-      System.out.println( "Get object with external ID " + externalObjectId );
-      RealEstate object = RealEstateService.getByExternalId( client, externalObjectId );
-      if (object==null)
-      {
-        System.out.println( "Can't find object for external ID " + externalObjectId + "!" );
-      }
-      else
-      {
-        String xml = XmlUtils.marshal( object, "UTF-8", true );
-        System.out.println( "title '" + object.getTitle() +  "'" );
-        System.out.println( xml );
-      }
+        // get a single real estate object, by the external ID of the user / software
+        try {
+            System.out.println("------------------");
+            System.out.println("Get object with external ID " + externalObjectId);
+            RealEstate object = RealEstateService.getByExternalId(client, externalObjectId);
+            if (object == null) {
+                System.out.println("Can't find object for external ID " + externalObjectId + "!");
+            } else {
+                String xml = XmlUtils.marshal(object, "UTF-8", true);
+                System.out.println("title '" + object.getTitle() + "'");
+                System.out.println(xml);
+            }
+        } catch (RequestFailedException ex) {
+            throw new RuntimeException("Request failed with "
+                    + "'" + ex.statusMessage + "' (" + ex.statusCode + ")!", ex);
+        } catch (OAuthException ex) {
+            throw new RuntimeException("Authorization failed!", ex);
+        } catch (JAXBException ex) {
+            throw new RuntimeException("XML processing failed!", ex);
+        } catch (IOException ex) {
+            throw new RuntimeException("Communication failed!", ex);
+        }
     }
-    catch (RequestFailedException ex)
-    {
-      throw new RuntimeException( "Request failed with "
-        + "'" + ex.statusMessage+"' (" + ex.statusCode + ")!", ex );
-    }
-    catch (OAuthException ex)
-    {
-      throw new RuntimeException( "Authorization failed!", ex );
-    }
-    catch (JAXBException ex)
-    {
-      throw new RuntimeException( "XML processing failed!", ex );
-    }
-    catch (IOException ex)
-    {
-      throw new RuntimeException( "Communication failed!", ex );
-    }
-  }
 }

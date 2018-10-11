@@ -16,24 +16,26 @@
 package org.openestate.is24.restapi;
 
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * AbstractClientTest.
  *
  * @author Andreas Rudolph
  */
-@RunWith( JUnit4.class )
-public class AbstractClientTest
-{
-  @Test
-  public void testGetUrlEncodedValue() throws Exception
-  {
-    Assert.assertEquals(
-      "1%2B2%3D3%20%C3%A4%C3%B6%C3%BC%C3%9F%20%2F%20%E2%82%AC%20%26",
-      AbstractClient.getUrlEncodedValue( "1+2=3 äöüß / € &" ) );
-  }
+@RunWith(JUnit4.class)
+public class AbstractClientTest {
+    @SuppressWarnings("unused")
+    private final static Logger LOGGER = LoggerFactory.getLogger(AbstractClientTest.class);
+
+    @Test
+    public void testGetUrlEncodedValue() throws Exception {
+        Assert.assertEquals(
+                "1%2B2%3D3%20%C3%A4%C3%B6%C3%BC%C3%9F%20%2F%20%E2%82%AC%20%26",
+                AbstractClient.getUrlEncodedValue("1+2=3 äöüß / € &"));
+    }
 }

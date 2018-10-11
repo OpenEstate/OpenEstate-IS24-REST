@@ -30,78 +30,71 @@ import org.slf4j.LoggerFactory;
 /**
  * SSL helper methods.
  *
- * @since 0.2
  * @author Andreas Rudolph
+ * @since 0.2
  */
-public final class SslUtils
-{
-  private final static Logger LOGGER = LoggerFactory.getLogger( SslUtils.class );
+public final class SslUtils {
+    @SuppressWarnings("unused")
+    private final static Logger LOGGER = LoggerFactory.getLogger(SslUtils.class);
 
-  private SslUtils()
-  {
-  }
-
-  /**
-   * Disable checking of SSL certificates in the application environment.
-   *
-   * @throws NoSuchAlgorithmException
-   * @throws KeyManagementException
-   */
-  public static void disableCertificateChecks() throws NoSuchAlgorithmException, KeyManagementException
-  {
-    // Create a trust manager that does not validate certificate chains
-    TrustManager[] trustAllCerts = new TrustManager[]{ new InsecureTrustManager() };
-
-    // Install the all-trusting trust manager
-    SSLContext sc = SSLContext.getInstance( "SSL" );
-    sc.init( null, trustAllCerts, new java.security.SecureRandom() );
-    HttpsURLConnection.setDefaultSSLSocketFactory( sc.getSocketFactory() );
-  }
-
-  /**
-   * Disable hostname verification for SSL connections in the application
-   * environment.
-   */
-  public static void disableHostnameVerification()
-  {
-    HttpsURLConnection.setDefaultHostnameVerifier( new InsecureHostnameVerifier() );
-  }
-
-  /**
-   * A {@link HostnameVerifier} that accepts all hostnames.
-   * <p>
-   * This class disables certificate checks for encrypted connections. You
-   * should not use this feature in a productive system.
-   */
-  public final static class InsecureHostnameVerifier implements HostnameVerifier
-  {
-    @Override
-    public boolean verify(String hostname, SSLSession session)
-    {
-      return true;
+    private SslUtils() {
     }
-  }
 
-  /**
-   * A {@link X509TrustManager} that accepts all certificates.
-   * <p>
-   * This class disables certificate checks for encrypted connections. You
-   * should not use this feature in a productive system.
-   */
-  public final static class InsecureTrustManager implements X509TrustManager
-  {
-    @Override
-    public java.security.cert.X509Certificate[] getAcceptedIssuers()
-    {
-      return null;
+    /**
+     * Disable checking of SSL certificates in the application environment.
+     *
+     * @throws NoSuchAlgorithmException
+     * @throws KeyManagementException
+     */
+    public static void disableCertificateChecks() throws NoSuchAlgorithmException, KeyManagementException {
+        // Create a trust manager that does not validate certificate chains
+        TrustManager[] trustAllCerts = new TrustManager[]{new InsecureTrustManager()};
+
+        // Install the all-trusting trust manager
+        SSLContext sc = SSLContext.getInstance("SSL");
+        sc.init(null, trustAllCerts, new java.security.SecureRandom());
+        HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
     }
-    @Override
-    public void checkClientTrusted(X509Certificate[] certs, String authType)
-    {
+
+    /**
+     * Disable hostname verification for SSL connections in the application
+     * environment.
+     */
+    public static void disableHostnameVerification() {
+        HttpsURLConnection.setDefaultHostnameVerifier(new InsecureHostnameVerifier());
     }
-    @Override
-    public void checkServerTrusted(X509Certificate[] certs, String authType)
-    {
+
+    /**
+     * A {@link HostnameVerifier} that accepts all hostnames.
+     * <p>
+     * This class disables certificate checks for encrypted connections. You
+     * should not use this feature in a productive system.
+     */
+    public final static class InsecureHostnameVerifier implements HostnameVerifier {
+        @Override
+        public boolean verify(String hostname, SSLSession session) {
+            return true;
+        }
     }
-  }
+
+    /**
+     * A {@link X509TrustManager} that accepts all certificates.
+     * <p>
+     * This class disables certificate checks for encrypted connections. You
+     * should not use this feature in a productive system.
+     */
+    public final static class InsecureTrustManager implements X509TrustManager {
+        @Override
+        public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+            return null;
+        }
+
+        @Override
+        public void checkClientTrusted(X509Certificate[] certs, String authType) {
+        }
+
+        @Override
+        public void checkServerTrusted(X509Certificate[] certs, String authType) {
+        }
+    }
 }

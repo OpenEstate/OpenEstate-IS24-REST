@@ -22,19 +22,18 @@ import org.slf4j.LoggerFactory;
 /**
  * Token for authentication at the Webservice.
  *
- * @since 0.1
  * @author Andreas Rudolph
+ * @since 0.1
  */
-public class Authorization implements Serializable
-{
-  private final static long serialVersionUID = -9192150555289246368L;
-  private final static Logger LOGGER = LoggerFactory.getLogger( Authorization.class );
-  public final String accessToken;
-  public final String accessTokenSecret;
+public class Authorization implements Serializable {
+    private final static long serialVersionUID = -9192150555289246368L;
+    @SuppressWarnings("unused")
+    private final static Logger LOGGER = LoggerFactory.getLogger(Authorization.class);
+    public final String accessToken;
+    public final String accessTokenSecret;
 
-  public Authorization( String accessToken, String accessTokenSecret )
-  {
-    this.accessToken = accessToken;
-    this.accessTokenSecret = accessTokenSecret;
-  }
+    public Authorization(String accessToken, String accessTokenSecret) {
+        this.accessToken = accessToken;
+        this.accessTokenSecret = accessTokenSecret;
+    }
 }

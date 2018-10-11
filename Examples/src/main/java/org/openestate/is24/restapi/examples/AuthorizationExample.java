@@ -24,35 +24,29 @@ import org.openestate.is24.restapi.DefaultClient;
  *
  * @author Andreas Rudolph
  */
-public class AuthorizationExample
-{
-  private final static String WEBSERVICE_URL = AbstractClient.LIVE_API;
-  private final static String CONSUMER_KEY = "my consumer key";
-  private final static String CONSUMER_SECRET = "my consumer secret";
-  private final static String ACCESS_KEY = "user's access key";
-  private final static String ACCESS_SECRET = "user's access secret";
+public class AuthorizationExample {
+    private final static String WEBSERVICE_URL = AbstractClient.LIVE_API;
+    private final static String CONSUMER_KEY = "my consumer key";
+    private final static String CONSUMER_SECRET = "my consumer secret";
+    private final static String ACCESS_KEY = "user's access key";
+    private final static String ACCESS_SECRET = "user's access secret";
 
-  /**
-   * Main function.
-   *
-   * @param args
-   * command line arguments
-   */
-  public static void main( String[] args )
-  {
-    AbstractClient client = new DefaultClient(
-      WEBSERVICE_URL, CONSUMER_KEY, CONSUMER_SECRET );
+    /**
+     * Main function.
+     *
+     * @param args command line arguments
+     */
+    public static void main(String[] args) {
+        AbstractClient client = new DefaultClient(
+                WEBSERVICE_URL, CONSUMER_KEY, CONSUMER_SECRET);
 
-    // authorize at the webservice with the access token
-    try
-    {
-      client.authorize( ACCESS_KEY, ACCESS_SECRET );
+        // authorize at the webservice with the access token
+        try {
+            client.authorize(ACCESS_KEY, ACCESS_SECRET);
+        } catch (OAuthException ex) {
+            throw new RuntimeException("Authorization failed!", ex);
+        }
+
+        // from now on the webservice is accessible for the client
     }
-    catch (OAuthException ex)
-    {
-      throw new RuntimeException( "Authorization failed!", ex );
-    }
-
-    // from now on the webservice is accessible for the client
-  }
 }

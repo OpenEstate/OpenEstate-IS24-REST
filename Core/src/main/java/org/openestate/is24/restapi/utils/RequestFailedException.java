@@ -27,153 +27,131 @@ import org.slf4j.LoggerFactory;
  * This exception is thrown, when a request to the Webservice failed. The
  * exception holds further informations about the failed request.
  *
- * @since 0.1
  * @author Andreas Rudolph
+ * @since 0.1
  */
-public class RequestFailedException extends Exception
-{
-  private final static long serialVersionUID = -5913145712963169005L;
-  private final static Logger LOGGER = LoggerFactory.getLogger( RequestFailedException.class );
+public class RequestFailedException extends Exception {
+    private final static long serialVersionUID = -5913145712963169005L;
+    @SuppressWarnings("unused")
+    private final static Logger LOGGER = LoggerFactory.getLogger(RequestFailedException.class);
 
-  /**
-   * Status code of the failed HTTP request.
-   */
-  public final int statusCode;
+    /**
+     * Status code of the failed HTTP request.
+     */
+    public final int statusCode;
 
-  /**
-   * Status message of the failed HTTP request.
-   */
-  public final String statusMessage;
+    /**
+     * Status message of the failed HTTP request.
+     */
+    public final String statusMessage;
 
-  /**
-   * Unique identifier of the failed HTTP request.
-   *
-   * @since 0.2.2
-   */
-  public final String requestRefNumber;
+    /**
+     * Unique identifier of the failed HTTP request.
+     *
+     * @since 0.2.2
+     */
+    public final String requestRefNumber;
 
-  /**
-   * {@link Messages}, that were received in the body of the HTTP response.
-   */
-  public final Messages responseMessages;
+    /**
+     * {@link Messages}, that were received in the body of the HTTP response.
+     */
+    public final Messages responseMessages;
 
-  public RequestFailedException( Response response, String message )
-  {
-    super( message );
-    this.statusCode = response.statusCode;
-    this.statusMessage = StringUtils.trimToNull( response.statusMessage );
-    this.requestRefNumber = StringUtils.trimToNull( response.requestRefNumber );
+    public RequestFailedException(Response response, String message) {
+        super(message);
+        this.statusCode = response.statusCode;
+        this.statusMessage = StringUtils.trimToNull(response.statusMessage);
+        this.requestRefNumber = StringUtils.trimToNull(response.requestRefNumber);
 
-    Messages messages = null;
-    String body = StringUtils.trimToNull( response.body );
+        Messages messages = null;
+        String body = StringUtils.trimToNull(response.body);
 
-    // parse messages from XML response
-    if (body!=null && body.startsWith( "<?xml" ))
-    {
-      try
-      {
-        messages = (Messages) XmlUtils.unmarshal( body );
-      }
-      catch (Exception ex)
-      {
-        LOGGER.error( "WARNING: Can't read error messages from response body!" );
-        LOGGER.error( StringUtils.repeat( "-", 40 ) );
-        LOGGER.error( body );
-        LOGGER.error( StringUtils.repeat( "-", 40 ) );
-        LOGGER.error( ex.getLocalizedMessage(), ex );
-      }
+        // parse messages from XML response
+        if (body != null && body.startsWith("<?xml")) {
+            try {
+                messages = (Messages) XmlUtils.unmarshal(body);
+            } catch (Exception ex) {
+                LOGGER.error("WARNING: Can't read error messages from response body!");
+                LOGGER.error(StringUtils.repeat("-", 40));
+                LOGGER.error(body);
+                LOGGER.error(StringUtils.repeat("-", 40));
+                LOGGER.error(ex.getLocalizedMessage(), ex);
+            }
+        }
+
+        // create messages from plain text response
+        if (messages == null) {
+            final org.openestate.is24.restapi.xml.common.ObjectFactory factory =
+                    new org.openestate.is24.restapi.xml.common.ObjectFactory();
+
+            Message msg = factory.createMessage();
+            msg.setMessage((body != null) ? body : this.statusMessage);
+            msg.setMessageCode(null);
+            messages = factory.createMessages();
+            messages.getMessage().add(msg);
+        }
+
+        this.responseMessages = messages;
     }
 
-    // create messages from plain text response
-    if (messages==null)
-    {
-      final org.openestate.is24.restapi.xml.common.ObjectFactory factory =
-        new org.openestate.is24.restapi.xml.common.ObjectFactory();
+    public RequestFailedException(Response response, String message, Throwable cause) {
+        super(message, cause);
+        this.statusCode = response.statusCode;
+        this.statusMessage = StringUtils.trimToNull(response.statusMessage);
+        this.requestRefNumber = StringUtils.trimToNull(response.requestRefNumber);
 
-      Message msg = factory.createMessage();
-      msg.setMessage( (body!=null)? body: this.statusMessage );
-      msg.setMessageCode( null );
-      messages = factory.createMessages();
-      messages.getMessage().add( msg );
+        // parse messages from response body
+        Messages messages = null;
+        try {
+            messages = (!StringUtils.isBlank(response.body)) ?
+                    (Messages) XmlUtils.unmarshal(response.body) : null;
+        } catch (Exception ex) {
+            LOGGER.error("Can't parse response messages!", ex);
+        }
+        this.responseMessages = messages;
     }
 
-    this.responseMessages = messages;
-  }
-
-  public RequestFailedException( Response response, String message, Throwable cause )
-  {
-    super( message, cause );
-    this.statusCode = response.statusCode;
-    this.statusMessage = StringUtils.trimToNull( response.statusMessage );
-    this.requestRefNumber = StringUtils.trimToNull( response.requestRefNumber );
-
-    // parse messages from response body
-    Messages messages = null;
-    try
-    {
-      messages = (!StringUtils.isBlank( response.body ))?
-        (Messages) XmlUtils.unmarshal( response.body ): null;
+    /**
+     * Return the unique identifier of the failed HTTP request.
+     * <p>
+     * This values was passed through the <em>L-IS24-RequestRefnum</em> header
+     * of the HTTP response.
+     *
+     * @return unique identifier
+     * @since 0.2.2
+     */
+    public String getRequestRefNumber() {
+        return requestRefNumber;
     }
-    catch (Exception ex)
-    {
-      LOGGER.error( "Can't parse response messages!", ex );
+
+    /**
+     * Return the {@link Messages}, that were received in the body of the HTTP
+     * response.
+     *
+     * @return messages
+     * @since 0.2.2
+     */
+    public Messages getResponseMessages() {
+        return responseMessages;
     }
-    this.responseMessages = messages;
-  }
 
-  /**
-   * Return the unique identifier of the failed HTTP request.
-   * <p>
-   * This values was passed through the <em>L-IS24-RequestRefnum</em> header
-   * of the HTTP response.
-   *
-   * @return
-   * unique identifier
-   *
-   * @since 0.2.2
-   */
-  public String getRequestRefNumber()
-  {
-    return requestRefNumber;
-  }
+    /**
+     * Return the status code of the HTTP response.
+     *
+     * @return status code
+     * @since 0.2.2
+     */
+    public int getStatusCode() {
+        return statusCode;
+    }
 
-  /**
-   * Return the {@link Messages}, that were received in the body of the HTTP
-   * response.
-   *
-   * @return
-   * messages
-   *
-   * @since 0.2.2
-   */
-  public Messages getResponseMessages()
-  {
-    return responseMessages;
-  }
-
-  /**
-   * Return the status code of the HTTP response.
-   *
-   * @return
-   * status code
-   *
-   * @since 0.2.2
-   */
-  public int getStatusCode()
-  {
-    return statusCode;
-  }
-
-  /**
-   * Return the status message of the HTTP response.
-   *
-   * @return
-   * status message
-   *
-   * @since 0.2.2
-   */
-  public String getStatusMessage()
-  {
-    return statusMessage;
-  }
+    /**
+     * Return the status message of the HTTP response.
+     *
+     * @return status message
+     * @since 0.2.2
+     */
+    public String getStatusMessage() {
+        return statusMessage;
+    }
 }

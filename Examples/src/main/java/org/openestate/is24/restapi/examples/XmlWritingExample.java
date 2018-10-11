@@ -30,63 +30,48 @@ import org.openestate.is24.restapi.xml.realestates.RealEstate;
  *
  * @author Andreas Rudolph
  */
-public class XmlWritingExample
-{
-  private final static String ENCODING = "UTF-8";
-  private final static boolean PRETTY_PRINT = true;
+public class XmlWritingExample {
+    private final static String ENCODING = "UTF-8";
+    private final static boolean PRETTY_PRINT = true;
 
-  /**
-   * Main function.
-   *
-   * @param args
-   * command line arguments
-   */
-  public static void main( String[] args )
-  {
-    final RandomRealEstateFactory factory = new RandomRealEstateFactory();
+    /**
+     * Main function.
+     *
+     * @param args command line arguments
+     */
+    public static void main(String[] args) {
+        final RandomRealEstateFactory factory = new RandomRealEstateFactory();
 
-    // writing an example contact person
-    try
-    {
-      // generate random contact person
-      RealtorContactDetails contact = factory.createRandomContact();
+        // writing an example contact person
+        try {
+            // generate random contact person
+            RealtorContactDetails contact = factory.createRandomContact();
 
-      // write contact person into a temporary file
-      File file = File.createTempFile( "example-contact-", ".xml" );
-      try (OutputStream output = new FileOutputStream( file ))
-      {
-        XmlUtils.writeXml( contact, ENCODING, PRETTY_PRINT, output );
-      }
-    }
-    catch (JAXBException ex)
-    {
-      throw new RuntimeException( "Can't build XML file!", ex );
-    }
-    catch (IOException ex)
-    {
-      throw new RuntimeException( "Can't write XML file!", ex );
-    }
+            // write contact person into a temporary file
+            File file = File.createTempFile("example-contact-", ".xml");
+            try (OutputStream output = new FileOutputStream(file)) {
+                XmlUtils.writeXml(contact, ENCODING, PRETTY_PRINT, output);
+            }
+        } catch (JAXBException ex) {
+            throw new RuntimeException("Can't build XML file!", ex);
+        } catch (IOException ex) {
+            throw new RuntimeException("Can't write XML file!", ex);
+        }
 
-    // writing an example real estate
-    try
-    {
-      // generate random real estate
-      RealEstate object = factory.createRandomObject();
+        // writing an example real estate
+        try {
+            // generate random real estate
+            RealEstate object = factory.createRandomObject();
 
-      // write real estate into a temporary file
-      File file = File.createTempFile( "example-object-", ".xml" );
-      try (OutputStream output = new FileOutputStream( file ))
-      {
-        XmlUtils.writeXml( object, ENCODING, PRETTY_PRINT, output );
-      }
+            // write real estate into a temporary file
+            File file = File.createTempFile("example-object-", ".xml");
+            try (OutputStream output = new FileOutputStream(file)) {
+                XmlUtils.writeXml(object, ENCODING, PRETTY_PRINT, output);
+            }
+        } catch (JAXBException ex) {
+            throw new RuntimeException("Can't build XML file!", ex);
+        } catch (IOException ex) {
+            throw new RuntimeException("Can't write XML file!", ex);
+        }
     }
-    catch (JAXBException ex)
-    {
-      throw new RuntimeException( "Can't build XML file!", ex );
-    }
-    catch (IOException ex)
-    {
-      throw new RuntimeException( "Can't write XML file!", ex );
-    }
-  }
 }

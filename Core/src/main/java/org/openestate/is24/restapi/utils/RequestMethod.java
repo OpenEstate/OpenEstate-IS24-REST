@@ -23,12 +23,12 @@ import org.slf4j.LoggerFactory;
  * <p>
  * These methods are used by the client to communicate with the Webservice.
  *
- * @since 0.1
  * @author Andreas Rudolph
+ * @since 0.1
  */
-public enum RequestMethod
-{
-  GET, POST, PUT, DELETE;
+public enum RequestMethod {
+    GET, POST, PUT, DELETE;
 
-  private final static Logger LOGGER = LoggerFactory.getLogger( RequestMethod.class );
+    @SuppressWarnings("unused")
+    private final static Logger LOGGER = LoggerFactory.getLogger(RequestMethod.class);
 }

@@ -20,90 +20,82 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import org.openestate.is24.restapi.utils.XmlUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * XmlUtilsTest.
  *
  * @author Andreas Rudolph
  */
-@RunWith( JUnit4.class )
-public class XmlUtilsTest
-{
-  //private final static Logger LOGGER = LoggerFactory.getLogger( XmlUtilsTest.class );
+@RunWith(JUnit4.class)
+public class XmlUtilsTest {
+    @SuppressWarnings("unused")
+    private final static Logger LOGGER = LoggerFactory.getLogger(XmlUtilsTest.class);
 
-  @Test
-  public void testPrintEmail()
-  {
-    String[] validEmails = new String[]{
-      "example@example.com",
-      "example@example.de",
-      "example@example.net",
-      "example@example.biz",
-      "example@example.immobilien",
-    };
+    @Test
+    public void testPrintEmail() {
+        String[] validEmails = new String[]{
+                "example@example.com",
+                "example@example.de",
+                "example@example.net",
+                "example@example.biz",
+                "example@example.immobilien",
+        };
 
-    String[] invalidEmails = new String[]{
-      "",
-      "@",
-      "@example.com",
-      ".@.com",
-      ".@localhost",
-      "example@.com",
-      "example@",
-    };
+        String[] invalidEmails = new String[]{
+                "",
+                "@",
+                "@example.com",
+                ".@.com",
+                ".@localhost",
+                "example@.com",
+                "example@",
+        };
 
-    for (String email : validEmails)
-    {
-      try
-      {
-        Assert.assertEquals( "print valid " + email,
-          email, XmlUtils.printEmail( email ) );
-      }
-      catch (IllegalArgumentException ex)
-      {
-        Assert.fail( "valid email '" + email + "' is not printed" );
-      }
+        for (String email : validEmails) {
+            try {
+                Assert.assertEquals("print valid " + email,
+                        email, XmlUtils.printEmail(email));
+            } catch (IllegalArgumentException ex) {
+                Assert.fail("valid email '" + email + "' is not printed");
+            }
+        }
+
+        for (String email : invalidEmails) {
+            try {
+                String m = XmlUtils.printEmail(email);
+                Assert.fail("invalid email '" + email + "' was printed as '" + m + "'");
+            } catch (IllegalArgumentException ex) {
+                Assert.assertTrue("print invalid " + email, true);
+            }
+        }
     }
 
-    for (String email : invalidEmails)
-    {
-      try
-      {
-        String m = XmlUtils.printEmail( email );
-        Assert.fail( "invalid email '" + email + "' was printed as '" + m + "'" );
-      }
-      catch (IllegalArgumentException ex)
-      {
-        Assert.assertTrue( "print invalid " + email, true );
-      }
+    @Test
+    public void testPrintText() {
+        String test = "test<br>"
+                + "> test2<br/>"
+                + "< test3<BR>"
+                + "> test4<BR/>"
+                + "< test5<bR>"
+                + "> test6<Br/>"
+                + "< test7<Br / >"
+                + "> test8< BR / >"
+                + "< test9 < test10 >";
+        String expectedResult = "test" + System.lineSeparator()
+                + "» test2" + System.lineSeparator()
+                + "« test3" + System.lineSeparator()
+                + "» test4" + System.lineSeparator()
+                + "« test5" + System.lineSeparator()
+                + "» test6" + System.lineSeparator()
+                + "« test7" + System.lineSeparator()
+                + "» test8" + System.lineSeparator()
+                + "« test9";
+        String result = XmlUtils.printText3999(test);
+        //LOGGER.info( "TEST VALUE: " + System.lineSeparator() + test );
+        //LOGGER.info( "EXPECTED RESULT: " + System.lineSeparator() + expectedResult );
+        //LOGGER.info( "ACTUAL RESULT: " + System.lineSeparator() + result );
+        Assert.assertEquals(expectedResult, result);
     }
-  }
-
-  @Test
-  public void testPrintText()
-  {
-    String test = "test<br>"
-      + "> test2<br/>"
-      + "< test3<BR>"
-      + "> test4<BR/>"
-      + "< test5<bR>"
-      + "> test6<Br/>"
-      + "< test7<Br / >"
-      + "> test8< BR / >"
-      + "< test9 < test10 >";
-    String expectedResult = "test" + System.lineSeparator()
-      + "» test2" + System.lineSeparator()
-      + "« test3" + System.lineSeparator()
-      + "» test4" + System.lineSeparator()
-      + "« test5" + System.lineSeparator()
-      + "» test6" + System.lineSeparator()
-      + "« test7" + System.lineSeparator()
-      + "» test8" + System.lineSeparator()
-      + "« test9";
-    String result = XmlUtils.printText3999( test );
-    //LOGGER.info( "TEST VALUE: " + System.lineSeparator() + test );
-    //LOGGER.info( "EXPECTED RESULT: " + System.lineSeparator() + expectedResult );
-    //LOGGER.info( "ACTUAL RESULT: " + System.lineSeparator() + result );
-    Assert.assertEquals( expectedResult, result );
-  }
 }

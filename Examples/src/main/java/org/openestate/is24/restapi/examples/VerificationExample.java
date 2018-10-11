@@ -30,65 +30,53 @@ import org.openestate.is24.restapi.utils.Verification;
  *
  * @author Andreas Rudolph
  */
-public class VerificationExample
-{
-  private final static String WEBSERVICE_URL = AbstractClient.LIVE_API;
-  private final static String CONSUMER_KEY = "my consumer key";
-  private final static String CONSUMER_SECRET = "my consumer secret";
-  private final static String CALLBACK_URL = "http://mywebsite.com/is24-callback.php";
+public class VerificationExample {
+    private final static String WEBSERVICE_URL = AbstractClient.LIVE_API;
+    private final static String CONSUMER_KEY = "my consumer key";
+    private final static String CONSUMER_SECRET = "my consumer secret";
+    private final static String CALLBACK_URL = "http://mywebsite.com/is24-callback.php";
 
-  /**
-   * Main function.
-   *
-   * @param args
-   * command line arguments
-   */
-  public static void main( String[] args )
-  {
-    AbstractClient client = new DefaultClient(
-      WEBSERVICE_URL, CONSUMER_KEY, CONSUMER_SECRET );
+    /**
+     * Main function.
+     *
+     * @param args command line arguments
+     */
+    public static void main(String[] args) {
+        AbstractClient client = new DefaultClient(
+                WEBSERVICE_URL, CONSUMER_KEY, CONSUMER_SECRET);
 
-    // request a verification from the webservice
-    Verification v = null;
-    try
-    {
-      v = client.fetchVerification( CALLBACK_URL );
-    }
-    catch (OAuthException ex)
-    {
-      throw new RuntimeException( "Can't fetch verification!", ex );
-    }
-    System.out.println( "Visit the following URL to verify access to an agency account at IS24:" );
-    System.out.println( v.verificationUrl );
+        // request a verification from the webservice
+        Verification v = null;
+        try {
+            v = client.fetchVerification(CALLBACK_URL);
+        } catch (OAuthException ex) {
+            throw new RuntimeException("Can't fetch verification!", ex);
+        }
+        System.out.println("Visit the following URL to verify access to an agency account at IS24:");
+        System.out.println(v.verificationUrl);
 
-    // read verification code from command line
-    String verificationCode = null;
-    System.out.println("Please enter your verification code: ");
-    try
-    {
-      BufferedReader bufferRead = new BufferedReader(
-        new InputStreamReader( System.in, Charset.defaultCharset().name() ) );
-      verificationCode = bufferRead.readLine();
-    }
-    catch(IOException ex)
-    {
-      throw new RuntimeException( "Can't read verification code!", ex );
-    }
+        // read verification code from command line
+        String verificationCode = null;
+        System.out.println("Please enter your verification code: ");
+        try {
+            BufferedReader bufferRead = new BufferedReader(
+                    new InputStreamReader(System.in, Charset.defaultCharset().name()));
+            verificationCode = bufferRead.readLine();
+        } catch (IOException ex) {
+            throw new RuntimeException("Can't read verification code!", ex);
+        }
 
-    // fetch access tokens and authorize at the webservice
-    Authorization a = null;
-    try
-    {
-      a = client.authorizeAfterVerification( v, verificationCode );
-    }
-    catch (OAuthException ex)
-    {
-      throw new RuntimeException( "Can't fetch authorization!", ex );
-    }
-    System.out.println( "The access token was created." );
-    System.out.println( "token  : " + a.accessToken );
-    System.out.println( "secret : " + a.accessTokenSecret );
+        // fetch access tokens and authorize at the webservice
+        Authorization a = null;
+        try {
+            a = client.authorizeAfterVerification(v, verificationCode);
+        } catch (OAuthException ex) {
+            throw new RuntimeException("Can't fetch authorization!", ex);
+        }
+        System.out.println("The access token was created.");
+        System.out.println("token  : " + a.accessToken);
+        System.out.println("secret : " + a.accessTokenSecret);
 
-    // from now on the webservice is accessible for the client
-  }
+        // from now on the webservice is accessible for the client
+    }
 }

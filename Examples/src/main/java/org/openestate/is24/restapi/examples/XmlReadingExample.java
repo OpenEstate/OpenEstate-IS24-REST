@@ -29,77 +29,61 @@ import org.openestate.is24.restapi.xml.realestates.RealEstate;
  *
  * @author Andreas Rudolph
  */
-public class XmlReadingExample
-{
-  private final static String ENCODING = "UTF-8";
-  private final static boolean PRETTY_PRINT = true;
+public class XmlReadingExample {
+    private final static String ENCODING = "UTF-8";
+    private final static boolean PRETTY_PRINT = true;
 
-  /**
-   * Main function.
-   *
-   * @param args
-   * command line arguments with XML files to read
-   */
-  public static void main( String[] args )
-  {
-    if (ArrayUtils.isEmpty( args ))
-    {
-      System.out.println( "No files were specified for reading." );
+    /**
+     * Main function.
+     *
+     * @param args command line arguments with XML files to read
+     */
+    public static void main(String[] args) {
+        if (ArrayUtils.isEmpty(args)) {
+            System.out.println("No files were specified for reading.");
+        }
+
+        // create an unmarshaller
+        Unmarshaller unmarshaller = null;
+        try {
+            unmarshaller = XmlUtils.createUnmarshaller();
+        } catch (JAXBException ex) {
+            throw new RuntimeException("Can't build unmarshaller!", ex);
+        }
+
+        for (String arg : args) {
+            // get path of the XML file from command line arguments
+            File file = new File(arg);
+            if (!file.isFile()) {
+                System.out.println("The provided file '" + arg + "' does not exist!");
+                continue;
+            }
+
+            // read XML at the provided location into a JAXB object
+            RealEstate object = null;
+            try {
+                JAXBElement<RealEstate> xml = (JAXBElement<RealEstate>)
+                        unmarshaller.unmarshal(file);
+                object = xml.getValue();
+            } catch (JAXBException ex) {
+                throw new RuntimeException(
+                        "Can't read XML file '" + file.getAbsolutePath() + "'!", ex);
+            }
+            if (object == null) {
+                throw new RuntimeException(
+                        "Can't read XML file '" + file.getAbsolutePath() + "'!");
+            }
+
+            // write the parsed JAXB object back into a XML string
+            try {
+                String xml = XmlUtils.marshal(object, ENCODING, PRETTY_PRINT);
+                System.out.println("-----------------------------------");
+                System.out.println("processed content of " + file.getAbsolutePath());
+                System.out.println(xml);
+            } catch (JAXBException | IOException ex) {
+                throw new RuntimeException(
+                        "Can't process XML file '" + file.getAbsolutePath() + "'!", ex);
+            }
+        }
     }
-
-    // create an unmarshaller
-    Unmarshaller unmarshaller = null;
-    try
-    {
-      unmarshaller = XmlUtils.createUnmarshaller();
-    }
-    catch (JAXBException ex)
-    {
-      throw new RuntimeException( "Can't build unmarshaller!", ex );
-    }
-
-    for (String arg : args)
-    {
-      // get path of the XML file from command line arguments
-      File file = new File( arg );
-      if (!file.isFile())
-      {
-        System.out.println( "The provided file '" + arg + "' does not exist!" );
-        continue;
-      }
-
-      // read XML at the provided location into a JAXB object
-      RealEstate object = null;
-      try
-      {
-        JAXBElement<RealEstate> xml = (JAXBElement<RealEstate>)
-          unmarshaller.unmarshal( file );
-        object = xml.getValue();
-      }
-      catch (JAXBException ex)
-      {
-        throw new RuntimeException(
-          "Can't read XML file '" + file.getAbsolutePath() + "'!", ex );
-      }
-      if (object==null)
-      {
-        throw new RuntimeException(
-          "Can't read XML file '" + file.getAbsolutePath() + "'!" );
-      }
-
-      // write the parsed JAXB object back into a XML string
-      try
-      {
-        String xml = XmlUtils.marshal( object, ENCODING, PRETTY_PRINT );
-        System.out.println( "-----------------------------------" );
-        System.out.println( "processed content of " + file.getAbsolutePath() );
-        System.out.println( xml );
-      }
-      catch (JAXBException | IOException ex)
-      {
-        throw new RuntimeException(
-          "Can't process XML file '" + file.getAbsolutePath() + "'!", ex );
-      }
-    }
-  }
 }

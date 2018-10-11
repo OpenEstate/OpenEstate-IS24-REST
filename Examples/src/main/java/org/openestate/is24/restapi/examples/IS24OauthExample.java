@@ -39,104 +39,100 @@ import org.slf4j.LoggerFactory;
  * Some small adjustments were made to the tutorial in order to integrate better
  * into this library.
  *
- * @see <a href="http://api.immobilienscout24.de/useful/tutorials-sdks-plugins/tutorial-java-signpost.html">Java-Signpost Tutorial</a>
- * @since 0.1
  * @author ImmobilienScout24
  * @author Andreas Rudolph
+ * @see <a href="http://api.immobilienscout24.de/useful/tutorials-sdks-plugins/tutorial-java-signpost.html">Java-Signpost Tutorial</a>
+ * @since 0.1
  */
 @SuppressFBWarnings(
-  value = {"NP_DEREFERENCE_OF_READLINE_VALUE", "DM_DEFAULT_ENCODING"},
-  justification = "Keep example code untouched." )
-public class IS24OauthExample
-{
-  private final static Logger LOGGER = LoggerFactory.getLogger( IS24OauthExample.class );
+        value = {"NP_DEREFERENCE_OF_READLINE_VALUE", "DM_DEFAULT_ENCODING"},
+        justification = "Keep example code untouched.")
+public class IS24OauthExample {
+    @SuppressWarnings("unused") private final static Logger LOGGER = LoggerFactory.getLogger(IS24OauthExample.class);
 
-  /**
-   * Main function.
-   *
-   * @param args
-   * command line arguments
-   */
-  public static void main( String[] args ) throws Exception
-  {
+    /**
+     * Main function.
+     *
+     * @param args command line arguments
+     */
+    public static void main(String[] args) throws Exception {
 
-    OAuthConsumer consumer =
-      new DefaultOAuthConsumer( "testzugang-import-api-maklermanagerKey", "VXyCmVpjR4GQVCVBf33T" );
+        OAuthConsumer consumer =
+                new DefaultOAuthConsumer("testzugang-import-api-maklermanagerKey", "VXyCmVpjR4GQVCVBf33T");
 
-    OAuthProvider provider =
-      new DefaultOAuthProvider( "http://sandbox.immobilienscout24.de/restapi/security/oauth/request_token",
-      "http://sandbox.immobilienscout24.de/restapi/security/oauth/access_token",
-      "http://sandbox.immobilienscout24.de/restapi/security/oauth/confirm_access" );
+        OAuthProvider provider =
+                new DefaultOAuthProvider("http://sandbox.immobilienscout24.de/restapi/security/oauth/request_token",
+                        "http://sandbox.immobilienscout24.de/restapi/security/oauth/access_token",
+                        "http://sandbox.immobilienscout24.de/restapi/security/oauth/confirm_access");
 
 
-    LOGGER.info( "Fetching request token..." );
+        LOGGER.info("Fetching request token...");
 
-    String authUrl =
-      provider.retrieveRequestToken( consumer, "http://www.google.de" );
+        String authUrl =
+                provider.retrieveRequestToken(consumer, "http://www.google.de");
 
-    String requestToken = consumer.getToken();
-    String requestTokenSecret = consumer.getTokenSecret();
+        String requestToken = consumer.getToken();
+        String requestTokenSecret = consumer.getTokenSecret();
 
-    LOGGER.info( "Request token: "+requestToken );
-    LOGGER.info( "Token secret: "+requestTokenSecret );
+        LOGGER.info("Request token: " + requestToken);
+        LOGGER.info("Token secret: " + requestTokenSecret);
 
-    LOGGER.info( "Now visit:\n"+authUrl
-      +"\n... and grant this app authorization" );
-    LOGGER.info( "Enter the verification code and hit ENTER when you're done:" );
+        LOGGER.info("Now visit:\n" + authUrl
+                + "\n... and grant this app authorization");
+        LOGGER.info("Enter the verification code and hit ENTER when you're done:");
 
-    BufferedReader br = new BufferedReader( new InputStreamReader( System.in ) );
-    String verificationCode = br.readLine();
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String verificationCode = br.readLine();
 
-    LOGGER.info( "Fetching access token..." );
+        LOGGER.info("Fetching access token...");
 
-    provider.retrieveAccessToken( consumer, verificationCode.trim() );
+        provider.retrieveAccessToken(consumer, verificationCode.trim());
 
-    String accessToken = consumer.getToken();
-    String accessTokenSecret = consumer.getTokenSecret();
-    LOGGER.info( "Access token: "+accessToken );
-    LOGGER.info( "Token secret: "+accessTokenSecret );
+        String accessToken = consumer.getToken();
+        String accessTokenSecret = consumer.getTokenSecret();
+        LOGGER.info("Access token: " + accessToken);
+        LOGGER.info("Token secret: " + accessTokenSecret);
 
-    //LOGGER.debug( "first call" );
+        //LOGGER.debug( "first call" );
 
-    requestObjectApi( consumer );
+        requestObjectApi(consumer);
 
-    //LOGGER.debug( "second call" );
+        //LOGGER.debug( "second call" );
 
-    requestObjectApi( consumer );
+        requestObjectApi(consumer);
 
-    //LOGGER.debug( "third call" );
+        //LOGGER.debug( "third call" );
 
-    OAuthConsumer consumer2 =
-      new DefaultOAuthConsumer( "testzugang-import-api-maklermanagerKey", "VXyCmVpjR4GQVCVBf33T" );
+        OAuthConsumer consumer2 =
+                new DefaultOAuthConsumer("testzugang-import-api-maklermanagerKey", "VXyCmVpjR4GQVCVBf33T");
 
-    consumer2.setTokenWithSecret( accessToken, accessTokenSecret );
+        consumer2.setTokenWithSecret(accessToken, accessTokenSecret);
 
-    requestObjectApi( consumer2 );
-  }
+        requestObjectApi(consumer2);
+    }
 
-  private static void requestObjectApi( OAuthConsumer consumer ) throws MalformedURLException, IOException, OAuthMessageSignerException,
-    OAuthExpectationFailedException, OAuthCommunicationException, UnsupportedEncodingException
-  {
+    private static void requestObjectApi(OAuthConsumer consumer) throws MalformedURLException, IOException, OAuthMessageSignerException,
+            OAuthExpectationFailedException, OAuthCommunicationException, UnsupportedEncodingException {
 
-    LOGGER.info( "#################################################################################################" );
+        LOGGER.info("#################################################################################################");
 
-    URL url =
-      new URL( "http://sandbox.immobilienscout24.de/restapi/api/search/v1.0/searcher/abc" );
+        URL url =
+                new URL("http://sandbox.immobilienscout24.de/restapi/api/search/v1.0/searcher/abc");
 
-    HttpURLConnection apiRequest = (HttpURLConnection) url.openConnection();
+        HttpURLConnection apiRequest = (HttpURLConnection) url.openConnection();
 
-    consumer.sign( apiRequest );
-    LOGGER.info( "Sending request..." );
+        consumer.sign(apiRequest);
+        LOGGER.info("Sending request...");
 
-    apiRequest.connect();
-    LOGGER.info( "Expiration "+apiRequest.getExpiration() );
-    LOGGER.info( "Timeout "+apiRequest.getConnectTimeout() );
-    LOGGER.info( "URL "+apiRequest.getURL() );
-    LOGGER.info( "Method "+apiRequest.getRequestMethod() );
+        apiRequest.connect();
+        LOGGER.info("Expiration " + apiRequest.getExpiration());
+        LOGGER.info("Timeout " + apiRequest.getConnectTimeout());
+        LOGGER.info("URL " + apiRequest.getURL());
+        LOGGER.info("Method " + apiRequest.getRequestMethod());
 
-    LOGGER.info( "Response: "+apiRequest.getResponseCode()+" "
-      +apiRequest.getResponseMessage() );
+        LOGGER.info("Response: " + apiRequest.getResponseCode() + " "
+                + apiRequest.getResponseMessage());
 
-    LOGGER.info( "#################################################################################################" );
-  }
+        LOGGER.info("#################################################################################################");
+    }
 }

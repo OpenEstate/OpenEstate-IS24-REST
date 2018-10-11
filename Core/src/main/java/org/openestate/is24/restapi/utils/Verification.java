@@ -22,21 +22,20 @@ import org.slf4j.LoggerFactory;
 /**
  * Token for access verification at the Webservice.
  *
- * @since 0.1
  * @author Andreas Rudolph
+ * @since 0.1
  */
-public final class Verification implements Serializable
-{
-  private final static long serialVersionUID = -4565664511140680767L;
-  private final static Logger LOGGER = LoggerFactory.getLogger( Verification.class );
-  public final String verificationUrl;
-  public final String requestToken;
-  public final String requestTokenSecret;
+public final class Verification implements Serializable {
+    private final static long serialVersionUID = -4565664511140680767L;
+    @SuppressWarnings("unused")
+    private final static Logger LOGGER = LoggerFactory.getLogger(Verification.class);
+    public final String verificationUrl;
+    public final String requestToken;
+    public final String requestTokenSecret;
 
-  public Verification( String verificationUrl, String requestToken, String requestTokenSecret )
-  {
-    this.verificationUrl = verificationUrl;
-    this.requestToken = requestToken;
-    this.requestTokenSecret = requestTokenSecret;
-  }
+    public Verification(String verificationUrl, String requestToken, String requestTokenSecret) {
+        this.verificationUrl = verificationUrl;
+        this.requestToken = requestToken;
+        this.requestTokenSecret = requestTokenSecret;
+    }
 }
