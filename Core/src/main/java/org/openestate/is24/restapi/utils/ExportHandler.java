@@ -73,6 +73,7 @@ import org.slf4j.LoggerFactory;
  * @author Andreas Rudolph
  * @since 0.2
  */
+@SuppressWarnings("WeakerAccess")
 public class ExportHandler {
     @SuppressWarnings("unused")
     private final static Logger LOGGER = LoggerFactory.getLogger(ExportHandler.class);
@@ -93,7 +94,7 @@ public class ExportHandler {
     }
 
     /**
-     * Calback method to track progress during the export process.
+     * Callback method to track progress during the export process.
      * <p>
      * This method may be overridden by inheriting classes in order to track the
      * progress of the export process.
@@ -111,6 +112,7 @@ public class ExportHandler {
      * @param poolContactId id of the contact person within export pool
      * @return true, if the contact person can be ignored in the export process
      */
+    @SuppressWarnings("unused")
     protected boolean canIgnoreContact(RealtorContactDetails contact, String poolContactId) {
         return false;
     }
@@ -122,12 +124,13 @@ public class ExportHandler {
      * @param poolObjectId id of the real estate within export pool
      * @return true, if the real estate can be ignored in the export process
      */
+    @SuppressWarnings("unused")
     protected boolean canIgnoreObject(RealEstate object, String poolObjectId) {
         return false;
     }
 
     /**
-     * Archivate a real estate object at the Webservice.
+     * Archiving a real estate object at the Webservice.
      *
      * @param externalObjectId external real estate ID
      * @throws IOException if the operation failed
@@ -163,7 +166,7 @@ public class ExportHandler {
     }
 
     /**
-     * Archivate a real estate object at the Webservice.
+     * Archiving a real estate object at the Webservice.
      *
      * @param is24ObjectId     real estate ID by IS24
      * @param externalObjectId external real estate ID
@@ -215,11 +218,12 @@ public class ExportHandler {
     }
 
     /**
-     * Archivate a real estate object at the Webservice.
+     * Archiving a real estate object at the Webservice.
      *
-     * @param is24Object real estate to archivate
+     * @param is24Object real estate for archival
      * @throws IOException if the operation failed
      */
+    @SuppressWarnings("Duplicates")
     protected void doArchiveObject(RealEstate is24Object) throws IOException {
         try {
             final Long is24ObjectId = is24Object.getId();
@@ -232,14 +236,14 @@ public class ExportHandler {
                         this.client, is24ObjectId, 0);
             } catch (RequestFailedException ex) {
                 if (!StringUtils.isBlank(externalObjectId)) {
-                    LOGGER.error("Can't get publishings of property '" + externalObjectId + "' (" + is24ObjectId + ") from the Webservice!");
+                    LOGGER.error("Can't get publishing of property '" + externalObjectId + "' (" + is24ObjectId + ") from the Webservice!");
                     if (ex.requestRefNumber != null) LOGGER.error("> referring request: " + ex.requestRefNumber);
                     logMessagesAsError(ex.responseMessages);
                     LOGGER.error("> " + ex.getLocalizedMessage(), ex);
                     this.putObjectMessage(
                             externalObjectId, ExportMessage.Code.OBJECT_PUBLISHINGS_NOT_FOUND, ex);
                 } else {
-                    LOGGER.error("Can't get publishings of property (" + is24ObjectId + ") from the Webservice!");
+                    LOGGER.error("Can't get publishing of property (" + is24ObjectId + ") from the Webservice!");
                     if (ex.requestRefNumber != null) LOGGER.error("> referring request: " + ex.requestRefNumber);
                     logMessagesAsError(ex.responseMessages);
                     LOGGER.error("> " + ex.getLocalizedMessage(), ex);
@@ -253,11 +257,11 @@ public class ExportHandler {
                 if (!StringUtils.isBlank(externalObjectId)) {
                     this.putObjectMessage(
                             externalObjectId, ExportMessage.Code.OBJECT_PUBLISHINGS_NOT_FOUND,
-                            "Can't get publishings of property '" + externalObjectId + "' (" + is24ObjectId + ") from the Webservice!");
+                            "Can't get publishing of property '" + externalObjectId + "' (" + is24ObjectId + ") from the Webservice!");
                 } else {
                     this.putGeneralMessage(
                             ExportMessage.Code.OBJECT_PUBLISHINGS_NOT_FOUND,
-                            "Can't get publishings of property (" + is24ObjectId + ") from the Webservice!");
+                            "Can't get publishing of property (" + is24ObjectId + ") from the Webservice!");
                 }
             }
 
@@ -441,6 +445,7 @@ public class ExportHandler {
      * @param is24PublishChannels channels, where the real estate should be published
      * @throws IOException if the operation failed
      */
+    @SuppressWarnings("Duplicates")
     protected void doPublishObject(long is24ObjectId, String externalObjectId, PublishChannels is24PublishChannels) throws IOException {
         final org.openestate.is24.restapi.xml.common.ObjectFactory commonFactory =
                 new org.openestate.is24.restapi.xml.common.ObjectFactory();
@@ -456,7 +461,7 @@ public class ExportHandler {
                     }
                 }
             } catch (RequestFailedException ex) {
-                LOGGER.error("Can't get publishings of property '" + externalObjectId + "' (" + is24ObjectId + ") from the Webservice!");
+                LOGGER.error("Can't get publishing of property '" + externalObjectId + "' (" + is24ObjectId + ") from the Webservice!");
                 if (ex.requestRefNumber != null) LOGGER.error("> referring request: " + ex.requestRefNumber);
                 logMessagesAsError(ex.responseMessages);
                 LOGGER.error("> " + ex.getLocalizedMessage(), ex);
@@ -595,6 +600,7 @@ public class ExportHandler {
      * was not updated
      * @throws IOException if the operation failed
      */
+    @SuppressWarnings("UnusedReturnValue")
     protected Long doUpdateContact(RealtorContactDetails contact, String poolContactId) throws IOException {
         final String externalContactId = contact.getExternalId();
         try {
@@ -696,6 +702,7 @@ public class ExportHandler {
      * was not updated
      * @throws IOException if the operation failed
      */
+    @SuppressWarnings("Duplicates")
     protected Long doUpdateObject(RealEstate object, String poolObjectId) throws IOException {
         final String externalObjectId = object.getExternalId();
         final org.openestate.is24.restapi.xml.realestates.ObjectFactory realEstatesFactory =
@@ -984,7 +991,7 @@ public class ExportHandler {
                 }
 
                 // alte Anhänge entfernen
-                String[] oldIs24AttachmentIds = oldIs24Attachments.keySet().toArray(new String[oldIs24Attachments.size()]);
+                String[] oldIs24AttachmentIds = oldIs24Attachments.keySet().toArray(new String[0]);
                 for (String oldIs24AttachmentId : oldIs24AttachmentIds) {
                     if (attachmentHashes.contains(oldIs24AttachmentId)) continue;
                     Attachment is24Attachment = oldIs24Attachments.remove(oldIs24AttachmentId);
@@ -1089,7 +1096,7 @@ public class ExportHandler {
                             oldIs24Attachments.remove(externalAttachmentId);
 
                             // Sortierung des Anhangs vormerken
-                            if (!StreamingVideo.class.isInstance(is24Attachment)) {
+                            if (!(is24Attachment instanceof StreamingVideo)) {
                                 while (attachmentsOrder.containsKey(pos)) {
                                     pos++;
                                 }
@@ -1233,9 +1240,9 @@ public class ExportHandler {
      * @param client                    client, that is used for transfers
      * @param pool                      pool with exportable data
      * @param disableUnpublishedObjects disable old real estates instead of removal
-     * @param unpublishUntouchedObjects archivate or remove untouched real estates (means full transfer instead of
+     * @param unpublishUntouchedObjects archive or remove untouched real estates (means full transfer instead of
      *                                  incremental)
-     * @return messages, that occured during the export process
+     * @return messages, that occurred during the export process
      * @throws IOException if the operation failed
      */
     public ExportMessage[] export(AbstractClient client, ExportPool pool, boolean disableUnpublishedObjects, boolean unpublishUntouchedObjects) throws IOException {
@@ -1411,21 +1418,22 @@ public class ExportHandler {
     }
 
     /**
-     * Return messages, that occured during the last export process.
+     * Return messages, that occurred during the last export process.
      *
      * @return messages
      */
     public final ExportMessage[] getMessages() {
-        return this.messages.toArray(new ExportMessage[this.messages.size()]);
+        return this.messages.toArray(new ExportMessage[0]);
     }
 
     /**
-     * Return messages for a certain contact person, that occured during the last
+     * Return messages for a certain contact person, that occurred during the last
      * export process.
      *
      * @param externalContactId external contact ID
      * @return messages
      */
+    @SuppressWarnings("unused")
     public final ExportMessage[] getMessagesForContact(String externalContactId) {
         externalContactId = StringUtils.trimToNull(externalContactId);
         if (externalContactId == null) return new ExportMessage[]{};
@@ -1433,16 +1441,17 @@ public class ExportHandler {
         for (ExportMessage msg : this.messages) {
             if (externalContactId.equals(msg.getContactId())) msgs.add(msg);
         }
-        return msgs.toArray(new ExportMessage[msgs.size()]);
+        return msgs.toArray(new ExportMessage[0]);
     }
 
     /**
-     * Return messages for a certain real estate, that occured during the last
+     * Return messages for a certain real estate, that occurred during the last
      * export process.
      *
      * @param externalObjectId real estate ID
      * @return messages
      */
+    @SuppressWarnings("unused")
     public final ExportMessage[] getMessagesForObject(String externalObjectId) {
         externalObjectId = StringUtils.trimToNull(externalObjectId);
         if (externalObjectId == null) return new ExportMessage[]{};
@@ -1450,20 +1459,21 @@ public class ExportHandler {
         for (ExportMessage msg : this.messages) {
             if (externalObjectId.equals(msg.getObjectId())) msgs.add(msg);
         }
-        return msgs.toArray(new ExportMessage[msgs.size()]);
+        return msgs.toArray(new ExportMessage[0]);
     }
 
     /**
-     * Return general messages, that occured during the last export process.
+     * Return general messages, that occurred during the last export process.
      *
      * @return messages
      */
+    @SuppressWarnings("unused")
     public final ExportMessage[] getMessagesGeneral() {
         List<ExportMessage> msgs = new ArrayList<>();
         for (ExportMessage msg : this.messages) {
             if (msg.isGeneral()) msgs.add(msg);
         }
-        return msgs.toArray(new ExportMessage[msgs.size()]);
+        return msgs.toArray(new ExportMessage[0]);
     }
 
     /**
@@ -1489,6 +1499,7 @@ public class ExportHandler {
      *
      * @return total progress value
      */
+    @SuppressWarnings("unused")
     protected final long getTotalProgress() {
         return totalProgress;
     }
@@ -1498,6 +1509,7 @@ public class ExportHandler {
      *
      * @return true, if objects are removed before update.
      */
+    @SuppressWarnings("unused")
     public boolean isRemoveObjectBeforeUpdate() {
         return this.removeObjectBeforeUpdate;
     }
@@ -1525,7 +1537,7 @@ public class ExportHandler {
     }
 
     /**
-     * Calback method, that is called after the progress has changed.
+     * Callback method, that is called after the progress has changed.
      * <p>
      * This method may be overridden by inheriting classes in order to track the
      * progress of the export process.
@@ -1533,6 +1545,7 @@ public class ExportHandler {
      * @param progress      current progress value
      * @param totalProgress total progress value
      */
+    @SuppressWarnings("unused")
     protected void progressUpdated(long progress, long totalProgress) {
     }
 
@@ -1543,6 +1556,7 @@ public class ExportHandler {
      * @param code              message code
      * @param msg               message text
      */
+    @SuppressWarnings("unused")
     protected final void putContactMessage(String externalContactId, ExportMessage.Code code, String msg) {
         this.putContactMessage(externalContactId, code, msg, null);
     }
@@ -1693,6 +1707,7 @@ public class ExportHandler {
      *
      * @param removeObjectBeforeUpdate enabled / disabled
      */
+    @SuppressWarnings("unused")
     public void setRemoveObjectBeforeUpdate(boolean removeObjectBeforeUpdate) {
         this.removeObjectBeforeUpdate = removeObjectBeforeUpdate;
     }
@@ -1703,6 +1718,7 @@ public class ExportHandler {
      * @param useNewEnergySourceEnev2014Values enabled / disabled
      * @see <a href="http://api.immobilienscout24.de/useful/energy-certificate-2014.html">notes about Energy Certificate 2014</a>
      */
+    @SuppressWarnings("unused")
     public void setUseNewEnergySourceEnev2014Values(boolean useNewEnergySourceEnev2014Values) {
         this.useNewEnergySourceEnev2014Values = useNewEnergySourceEnev2014Values;
     }

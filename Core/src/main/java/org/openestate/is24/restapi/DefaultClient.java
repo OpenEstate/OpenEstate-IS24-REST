@@ -40,6 +40,7 @@ import org.slf4j.LoggerFactory;
  * @author Andreas Rudolph
  * @since 0.1
  */
+@SuppressWarnings("WeakerAccess")
 public class DefaultClient extends AbstractClient {
     @SuppressWarnings("unused")
     private final static Logger LOGGER = LoggerFactory.getLogger(DefaultClient.class);
@@ -174,7 +175,7 @@ public class DefaultClient extends AbstractClient {
     }
 
     @Override
-    protected Response sendVideoUploadRequest(URI url, RequestMethod method, String auth, InputStream input, String fileName, long fileSize) throws IOException, OAuthException {
+    protected Response sendVideoUploadRequest(URI url, RequestMethod method, String auth, InputStream input, String fileName, long fileSize) throws IOException {
         if (method == null) method = RequestMethod.POST;
         if (!RequestMethod.POST.equals(method) && !RequestMethod.PUT.equals(method))
             throw new IllegalArgumentException("Invalid request method!");

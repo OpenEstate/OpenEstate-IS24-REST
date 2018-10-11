@@ -30,6 +30,8 @@ import org.openestate.is24.restapi.utils.ExportPool;
 import org.openestate.is24.restapi.utils.RandomRealEstateFactory;
 import org.openestate.is24.restapi.xml.common.RealtorContactDetails;
 import org.openestate.is24.restapi.xml.realestates.RealEstate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This example illustrates a bulk upload of multiple real estates and contact
@@ -38,6 +40,8 @@ import org.openestate.is24.restapi.xml.realestates.RealEstate;
  * @author Andreas Rudolph
  */
 public class BulkUploadExample {
+    @SuppressWarnings("unused")
+    private final static Logger LOGGER = LoggerFactory.getLogger(BulkUploadExample.class);
     private final static String WEBSERVICE_URL = AbstractClient.LIVE_API;
     private final static String CONSUMER_KEY = "my consumer key";
     private final static String CONSUMER_SECRET = "my consumer secret";
@@ -103,7 +107,7 @@ public class BulkUploadExample {
                 // start the export process
                 ExportMessage[] messages = handler.export(client, pool, true, false);
 
-                // process messages, that occured during the export process
+                // process messages, that occurred during the export process
                 if (ArrayUtils.isEmpty(messages)) {
                     System.out.println("No messages were received.");
                 } else {

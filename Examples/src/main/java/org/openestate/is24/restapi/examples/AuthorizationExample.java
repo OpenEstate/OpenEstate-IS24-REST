@@ -18,6 +18,8 @@ package org.openestate.is24.restapi.examples;
 import oauth.signpost.exception.OAuthException;
 import org.openestate.is24.restapi.AbstractClient;
 import org.openestate.is24.restapi.DefaultClient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This example illustrates the authorization of the client at the Webservice.
@@ -25,6 +27,8 @@ import org.openestate.is24.restapi.DefaultClient;
  * @author Andreas Rudolph
  */
 public class AuthorizationExample {
+    @SuppressWarnings("unused")
+    private final static Logger LOGGER = LoggerFactory.getLogger(AuthorizationExample.class);
     private final static String WEBSERVICE_URL = AbstractClient.LIVE_API;
     private final static String CONSUMER_KEY = "my consumer key";
     private final static String CONSUMER_SECRET = "my consumer secret";

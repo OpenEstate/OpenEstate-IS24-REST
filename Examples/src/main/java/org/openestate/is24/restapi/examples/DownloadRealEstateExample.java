@@ -24,6 +24,8 @@ import org.openestate.is24.restapi.ImportExport.RealEstateService;
 import org.openestate.is24.restapi.utils.RequestFailedException;
 import org.openestate.is24.restapi.utils.XmlUtils;
 import org.openestate.is24.restapi.xml.realestates.RealEstate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This example illustrates the export of a single real estate from the
@@ -32,6 +34,8 @@ import org.openestate.is24.restapi.xml.realestates.RealEstate;
  * @author Andreas Rudolph
  */
 public class DownloadRealEstateExample {
+    @SuppressWarnings("unused")
+    private final static Logger LOGGER = LoggerFactory.getLogger(DownloadRealEstateExample.class);
     private final static String WEBSERVICE_URL = AbstractClient.LIVE_API;
     private final static String CONSUMER_KEY = "my consumer key";
     private final static String CONSUMER_SECRET = "my consumer secret";

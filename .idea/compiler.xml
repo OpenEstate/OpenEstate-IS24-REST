@@ -19,4 +19,16 @@
       </profile>
     </annotationProcessing>
   </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_STRING" value="-Xlint:unchecked" />
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="OpenEstate-IS24-REST" options="" />
+      <module name="OpenEstate-IS24-REST-Core" options="-Xlint:unchecked" />
+      <module name="OpenEstate-IS24-REST-Examples" options="-Xlint:unchecked" />
+      <module name="OpenEstate-IS24-REST-HC42" options="-Xlint:unchecked" />
+      <module name="OpenEstate-IS24-REST-HC43" options="-Xlint:unchecked" />
+      <module name="OpenEstate-IS24-REST-WebApp" options="-Xlint:unchecked" />
+      <module name="release" options="" />
+    </option>
+  </component>
 </project>

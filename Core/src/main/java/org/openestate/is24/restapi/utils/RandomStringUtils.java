@@ -26,13 +26,14 @@ import org.slf4j.LoggerFactory;
  * @author Andreas Rudolph
  * @since 0.3.4
  */
+@SuppressWarnings("WeakerAccess")
 public class RandomStringUtils {
     @SuppressWarnings("unused")
     private final static Logger LOGGER = LoggerFactory.getLogger(RandomStringUtils.class);
     private final static CharacterPredicate NUMBERS = new CharacterPredicate() {
         @Override
         public boolean test(int codePoint) {
-            // Accept codepoint from 0x30 to 0x39,
+            // Accept code point from 0x30 to 0x39,
             // which represents a decimal digit in Unicode.
             return codePoint >= 0x30 && codePoint <= 0x39;
         }
@@ -40,7 +41,7 @@ public class RandomStringUtils {
     private final static CharacterPredicate LETTERS = new CharacterPredicate() {
         @Override
         public boolean test(int codePoint) {
-            // Accept codepoint from 0x41 to 0x5a or 0x61 to 0x7a,
+            // Accept code point from 0x41 to 0x5a or 0x61 to 0x7a,
             // which represents latin-1 characters in Unicode.
             return (codePoint >= 0x41 && codePoint <= 0x5a)
                     || (codePoint >= 0x61 && codePoint <= 0x7a);

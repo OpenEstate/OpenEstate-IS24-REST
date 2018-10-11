@@ -48,13 +48,14 @@ import org.slf4j.LoggerFactory;
  * <p>
  * Multiple real estates and contacts (including attachments) can be collected
  * in the {@link ExportPool}. The corresponding data is stored into a temporary
- * folder on the local harddisk. After the {@link ExportPool} was created and
+ * folder on the local disk. After the {@link ExportPool} was created and
  * initialized with some data, the bulk export can be started via
  * {@link ExportHandler}.
  *
  * @author Andreas Rudolph
  * @since 0.2
  */
+@SuppressWarnings("WeakerAccess")
 public class ExportPool {
     @SuppressWarnings("unused")
     private final static Logger LOGGER = LoggerFactory.getLogger(ExportPool.class);
@@ -100,6 +101,7 @@ public class ExportPool {
      *
      * @return directory
      */
+    @SuppressWarnings("unused")
     public final File getBaseDir() {
         return baseDir;
     }
@@ -111,6 +113,7 @@ public class ExportPool {
      * @return contact
      * @throws IOException if object is not readable from local directory
      */
+    @SuppressWarnings("Duplicates")
     public RealtorContactDetails getContact(String pooledContactId) throws IOException {
         if (StringUtils.isBlank(pooledContactId)) return null;
 
@@ -153,12 +156,12 @@ public class ExportPool {
         if (!this.contactsDir.isDirectory()) return new String[]{};
         List<String> ids = new ArrayList<>();
         File[] files = this.contactsDir.listFiles();
-        if (ArrayUtils.isNotEmpty(files)) {
+        if (files!=null && ArrayUtils.isNotEmpty(files)) {
             for (File f : files) {
                 if (f.isDirectory()) ids.add(f.getName());
             }
         }
-        return ids.toArray(new String[ids.size()]);
+        return ids.toArray(new String[0]);
     }
 
     /**
@@ -180,6 +183,7 @@ public class ExportPool {
      *
      * @return directory
      */
+    @SuppressWarnings("unused")
     public final File getContactsDir() {
         return contactsDir;
     }
@@ -191,6 +195,7 @@ public class ExportPool {
      * @return real estate
      * @throws IOException if object is not readable from local directory
      */
+    @SuppressWarnings("Duplicates")
     public RealEstate getObject(String pooledObjectId) throws IOException {
         if (StringUtils.isBlank(pooledObjectId)) return null;
 
@@ -232,6 +237,7 @@ public class ExportPool {
      * @return attachment
      * @throws IOException if object is not readable from local directory
      */
+    @SuppressWarnings("Duplicates")
     public Attachment getObjectAttachment(String pooledObjectId, String attachmentId) throws IOException {
         if (StringUtils.isBlank(pooledObjectId) || StringUtils.isBlank(attachmentId)) return null;
 
@@ -334,6 +340,7 @@ public class ExportPool {
      * @return file
      * @throws IOException if object is not readable from local directory
      */
+    @SuppressWarnings("unused")
     public URI getObjectAttachmentURI(String pooledObjectId, String attachmentId) throws IOException {
         return this.getObjectAttachmentURI(this.getObjectAttachment(pooledObjectId, attachmentId));
     }
@@ -349,7 +356,7 @@ public class ExportPool {
         if (!objectDir.isDirectory()) return new String[]{};
         List<String> ids = new ArrayList<>();
         File[] files = objectDir.listFiles();
-        if (ArrayUtils.isNotEmpty(files)) {
+        if (files!=null && ArrayUtils.isNotEmpty(files)) {
             for (File f : files) {
                 String n = f.getName();
                 if (!n.startsWith("attachment.") || !n.endsWith(".xml")) continue;
@@ -361,7 +368,7 @@ public class ExportPool {
                 }
             }
         }
-        return ids.toArray(new String[ids.size()]);
+        return ids.toArray(new String[0]);
     }
 
     /**
@@ -373,12 +380,12 @@ public class ExportPool {
         if (!this.objectsDir.isDirectory()) return new String[]{};
         List<String> ids = new ArrayList<>();
         File[] files = this.objectsDir.listFiles();
-        if (ArrayUtils.isNotEmpty(files)) {
+        if (files!=null && ArrayUtils.isNotEmpty(files)) {
             for (File f : files) {
                 if (f.isDirectory()) ids.add(f.getName());
             }
         }
-        return ids.toArray(new String[ids.size()]);
+        return ids.toArray(new String[0]);
     }
 
     /**
@@ -396,7 +403,7 @@ public class ExportPool {
             String[] k = StringUtils.split(key, ".", 2);
             ids.add(k[1]);
         }
-        return ids.toArray(new String[ids.size()]);
+        return ids.toArray(new String[0]);
     }
 
     /**
@@ -418,6 +425,7 @@ public class ExportPool {
      *
      * @return directory
      */
+    @SuppressWarnings("unused")
     public final File getObjectsDir() {
         return objectsDir;
     }
@@ -459,6 +467,7 @@ public class ExportPool {
      * @param pooledContactId ID of the contact within the pool
      * @return true, if the object with the provided ID is already pooled
      */
+    @SuppressWarnings("unused")
     public boolean hasContactForExport(String pooledContactId) {
         if (StringUtils.isBlank(pooledContactId)) return false;
         final File xmlFile = new File(new File(this.contactsDir, pooledContactId), "contact.xml");
@@ -482,6 +491,7 @@ public class ExportPool {
      * @param externalObjectId real estate ID
      * @return true, if the object with the provided ID is already pooled for removal
      */
+    @SuppressWarnings("unused")
     public boolean hasObjectForRemoval(String externalObjectId) {
         if (StringUtils.isBlank(externalObjectId)) return false;
         return REMOVE.equalsIgnoreCase(this.getSetting("object." + externalObjectId));
@@ -570,10 +580,11 @@ public class ExportPool {
      * Add an attachment for a real estate to export pool.
      *
      * @param pooledObjectId ID of the real estate within the pool
-     * @param attachment     attachment informations
+     * @param attachment     attachment information
      * @param file           attached file
      * @throws IOException if pooling failed
      */
+    @SuppressWarnings({"unused", "Duplicates"})
     public synchronized void putObjectAttachedFile(String pooledObjectId, Attachment attachment, File file) throws IOException {
         if (StringUtils.isBlank(pooledObjectId) || attachment == null || file == null || !file.isFile()) return;
 
@@ -583,7 +594,7 @@ public class ExportPool {
 
         int attachmentCount = 0;
         File[] files = objectDir.listFiles();
-        if (ArrayUtils.isNotEmpty(files)) {
+        if (files!=null && ArrayUtils.isNotEmpty(files)) {
             for (File f : files) {
                 String n = f.getName();
                 if (n.startsWith("attachment.") && n.endsWith(".xml"))
@@ -610,10 +621,11 @@ public class ExportPool {
      * Add an attachment for a real estate to export pool.
      *
      * @param pooledObjectId ID of the real estate within the pool
-     * @param attachment     attachment informations
+     * @param attachment     attachment information
      * @param file           URI, that points to the attached file
      * @throws IOException if pooling failed
      */
+    @SuppressWarnings({"unused", "Duplicates"})
     public synchronized void putObjectAttachedFile(String pooledObjectId, Attachment attachment, URI file) throws IOException {
         if (StringUtils.isBlank(pooledObjectId) || attachment == null || file == null) return;
 
@@ -623,7 +635,7 @@ public class ExportPool {
 
         int attachmentCount = 0;
         File[] files = objectDir.listFiles();
-        if (ArrayUtils.isNotEmpty(files)) {
+        if (files!=null && ArrayUtils.isNotEmpty(files)) {
             for (File f : files) {
                 String n = f.getName();
                 if (n.startsWith("attachment.") && n.endsWith(".xml"))
@@ -646,6 +658,7 @@ public class ExportPool {
      * @param link           web link
      * @throws IOException if pooling failed
      */
+    @SuppressWarnings({"unused", "Duplicates"})
     public synchronized void putObjectAttachedLink(String pooledObjectId, Attachment link) throws IOException {
         if (StringUtils.isBlank(pooledObjectId) || link == null) return;
 
@@ -655,7 +668,7 @@ public class ExportPool {
 
         int attachmentCount = 0;
         File[] files = objectDir.listFiles();
-        if (ArrayUtils.isNotEmpty(files)) {
+        if (files!=null && ArrayUtils.isNotEmpty(files)) {
             for (File f : files) {
                 String n = f.getName();
                 if (n.startsWith("attachment.") && n.endsWith(".xml"))
@@ -675,6 +688,7 @@ public class ExportPool {
      *
      * @param externalObjectId real estate ID
      */
+    @SuppressWarnings("unused")
     public synchronized void putObjectForRemoval(String externalObjectId) {
         externalObjectId = StringUtils.trimToNull(externalObjectId);
         if (externalObjectId != null)
@@ -702,6 +716,7 @@ public class ExportPool {
      *
      * @throws IOException if settings are not loadable
      */
+    @SuppressWarnings("unused")
     public void readSettings() throws IOException {
         this.settings.clear();
 
@@ -716,8 +731,9 @@ public class ExportPool {
     /**
      * Write export pool settings to local directory.
      *
-     * @throws IOException if settings are not wriable
+     * @throws IOException if settings are not writable
      */
+    @SuppressWarnings("unused")
     public void writeSettings() throws IOException {
         if (!this.baseDir.exists() && !this.baseDir.mkdirs())
             throw new IOException("Can't create folder at '" + this.baseDir.getAbsolutePath() + "'!");

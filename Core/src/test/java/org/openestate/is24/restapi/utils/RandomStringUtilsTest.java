@@ -59,7 +59,7 @@ public class RandomStringUtilsTest {
     }
 
     @Test
-    public void testRandom() throws Exception {
+    public void testRandom() {
         for (int length = 1; length < 10; length++) {
             String value = RandomStringUtils.random(length);
             //LOGGER.debug( "random alphanumeric string: " + value );
@@ -68,14 +68,14 @@ public class RandomStringUtilsTest {
                     "random string has a length of " + length,
                     length, value.length());
 
-            Assert.assertEquals(
+            Assert.assertTrue(
                     "random string is alphanumeric",
-                    true, isAsciiAlphanumeric(value));
+                    isAsciiAlphanumeric(value));
         }
     }
 
     @Test
-    public void testRandomLetters() throws Exception {
+    public void testRandomLetters() {
         for (int length = 1; length < 10; length++) {
             String value = RandomStringUtils.randomLetters(length);
             //LOGGER.debug( "random alpha string: " + value );
@@ -84,14 +84,14 @@ public class RandomStringUtilsTest {
                     "random string has a length of " + length,
                     length, value.length());
 
-            Assert.assertEquals(
+            Assert.assertTrue(
                     "random string is alpha",
-                    true, isAsciiAlpha(value));
+                    isAsciiAlpha(value));
         }
     }
 
     @Test
-    public void testRandomNumbers() throws Exception {
+    public void testRandomNumbers() {
         for (int length = 1; length < 10; length++) {
             String value = RandomStringUtils.randomNumeric(length);
             //LOGGER.debug( "random numeric string: " + value );
@@ -100,9 +100,9 @@ public class RandomStringUtilsTest {
                     "random string has a length of " + length,
                     length, value.length());
 
-            Assert.assertEquals(
+            Assert.assertTrue(
                     "random string is numeric",
-                    true, isAsciiNumeric(value));
+                    isAsciiNumeric(value));
         }
     }
 }

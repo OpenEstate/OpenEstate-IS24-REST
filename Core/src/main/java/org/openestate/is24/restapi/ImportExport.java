@@ -62,31 +62,37 @@ public final class ImportExport {
     /**
      * ID for the publishing channel of ImmobilienScout24.
      */
+    @SuppressWarnings("unused")
     public final static int PUBLISH_CHANNEL_IS24_ID = 10000;
 
     /**
      * Name for the publishing channel of ImmobilienScout24.
      */
+    @SuppressWarnings("unused")
     public final static String PUBLISH_CHANNEL_IS24_TITLE = "Immobilienscout24";
 
     /**
      * ID for the publishing channel of the agency website.
      */
+    @SuppressWarnings("unused")
     public final static int PUBLISH_CHANNEL_HOMEPAGE_ID = 10001;
 
     /**
      * Name for the publishing channel of the agency website.
      */
+    @SuppressWarnings("unused")
     public final static String PUBLISH_CHANNEL_HOMEPAGE_TITLE = "Homepage";
 
     /**
      * Maximal number of supported files per real estate.
      */
+    @SuppressWarnings("unused")
     public final static int MAXIMAL_FILES_PER_PROPERTY = 30;
 
     /**
      * Maximal number of supported videos per real estate.
      */
+    @SuppressWarnings("unused")
     public final static int MAXIMAL_VIDEOS_PER_PROPERTY = 1;
 
     private ImportExport() {
@@ -125,6 +131,7 @@ public final class ImportExport {
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments/delete-by-id.html">DELETEbyID method</a>
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments.html">Attachment Webservice</a>
          */
+        @SuppressWarnings("UnusedReturnValue")
         public static Messages deleteById(AbstractClient client, String externalRealEstateId, long is24AttachmentId) throws IOException, OAuthException, JAXBException, RequestFailedException {
             // build request URL
             String url = client.getApiBaseUrl()
@@ -155,6 +162,7 @@ public final class ImportExport {
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments/delete-by-id.html">DELETEbyID method</a>
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments.html">Attachment Webservice</a>
          */
+        @SuppressWarnings("unused")
         public static Messages deleteById(AbstractClient client, long is24RealEstateIdId, long is24AttachmentId) throws IOException, OAuthException, JAXBException, RequestFailedException {
             // build request URL
             String url = client.getApiBaseUrl()
@@ -165,6 +173,7 @@ public final class ImportExport {
             return _deleteById(client, url);
         }
 
+        @SuppressWarnings("Duplicates")
         private static Messages _deleteById(AbstractClient client, String url) throws IOException, OAuthException, JAXBException, RequestFailedException {
             // send request
             Response response = client.sendXmlRequest(new URL(url), RequestMethod.DELETE, null);
@@ -237,6 +246,7 @@ public final class ImportExport {
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments/get-all.html">GETall method</a>
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments.html">Attachment Webservice</a>
          */
+        @SuppressWarnings("unused")
         public static Attachments getAll(AbstractClient client, long is24RealEstateIdId) throws IOException, OAuthException, JAXBException, RequestFailedException {
             // build request URL
             String url = client.getApiBaseUrl()
@@ -247,6 +257,7 @@ public final class ImportExport {
             return _getAll(client, url);
         }
 
+        @SuppressWarnings("Duplicates")
         private static Attachments _getAll(AbstractClient client, String url) throws IOException, OAuthException, JAXBException, RequestFailedException {
             // send request
             Response response = client.sendXmlRequest(new URL(url), RequestMethod.GET, null);
@@ -289,6 +300,7 @@ public final class ImportExport {
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments/get-by-id.html">GETbyID method</a>
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments.html">Attachment Webservice</a>
          */
+        @SuppressWarnings("unused")
         public static Attachment getById(AbstractClient client, String externalRealEstateId, long is24AttachmentId) throws IOException, OAuthException, JAXBException, RequestFailedException {
             // build request URL
             String url = client.getApiBaseUrl()
@@ -318,6 +330,7 @@ public final class ImportExport {
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments.html">Attachment Webservice</a>
          * @since 0.2
          */
+        @SuppressWarnings("unused")
         public static Attachment getById(AbstractClient client, String externalRealEstateId, String externalAttachmentId) throws IOException, OAuthException, JAXBException, RequestFailedException {
             // build request URL
             String url = client.getApiBaseUrl()
@@ -348,6 +361,7 @@ public final class ImportExport {
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments/get-by-id.html">GETbyID method</a>
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments.html">Attachment Webservice</a>
          */
+        @SuppressWarnings("unused")
         public static Attachment getById(AbstractClient client, long is24RealEstateIdId, long is24AttachmentId) throws IOException, OAuthException, JAXBException, RequestFailedException {
             // build request URL
             String url = client.getApiBaseUrl()
@@ -377,6 +391,7 @@ public final class ImportExport {
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments.html">Attachment Webservice</a>
          * @since 0.2
          */
+        @SuppressWarnings("unused")
         public static Attachment getById(AbstractClient client, long is24RealEstateIdId, String externalAttachmentId) throws IOException, OAuthException, JAXBException, RequestFailedException {
             // build request URL
             String url = client.getApiBaseUrl()
@@ -387,6 +402,7 @@ public final class ImportExport {
             return _getById(client, url);
         }
 
+        @SuppressWarnings("Duplicates")
         private static Attachment _getById(AbstractClient client, String url) throws IOException, OAuthException, JAXBException, RequestFailedException {
             // send request
             Response response = client.sendXmlRequest(new URL(url), RequestMethod.GET, null);
@@ -549,6 +565,7 @@ public final class ImportExport {
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments/put-by-id.html">PUTbyID method</a>
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments.html">Attachment Webservice</a>
          */
+        @SuppressWarnings("unused")
         public static Messages putById(AbstractClient client, String externalRealEstateId, long is24AttachmentId, Attachment attachment) throws IOException, OAuthException, JAXBException, RequestFailedException {
             // build request URL
             String url = client.getApiBaseUrl()
@@ -584,6 +601,7 @@ public final class ImportExport {
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments/put-by-id.html">PUTbyID method</a>
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments.html">Attachment Webservice</a>
          */
+        @SuppressWarnings("UnusedReturnValue")
         public static Messages putById(AbstractClient client, long is24RealEstateIdId, long is24AttachmentId, Attachment attachment) throws IOException, OAuthException, JAXBException, RequestFailedException {
             // build request URL
             String url = client.getApiBaseUrl()
@@ -594,6 +612,7 @@ public final class ImportExport {
             return _putById(client, url, attachment);
         }
 
+        @SuppressWarnings("Duplicates")
         private static Messages _putById(AbstractClient client, String url, Attachment attachment) throws IOException, OAuthException, JAXBException, RequestFailedException {
             // write object into xml
             String xml = XmlUtils.marshal(attachment, AbstractClient.getEncoding());
@@ -726,6 +745,7 @@ public final class ImportExport {
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments/attachmentsorder-put.html">PUT method</a>
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments.html">Attachment Webservice</a>
          */
+        @SuppressWarnings("UnusedReturnValue")
         public static Messages put(AbstractClient client, String externalRealEstateId, org.openestate.is24.restapi.xml.attachmentsorder.List list) throws IOException, OAuthException, JAXBException, RequestFailedException {
             if (list == null) throw new NullPointerException("No object was provided for publishing!");
 
@@ -758,6 +778,7 @@ public final class ImportExport {
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments/attachmentsorder-put.html">PUT method</a>
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/attachments.html">Attachment Webservice</a>
          */
+        @SuppressWarnings("unused")
         public static Messages put(AbstractClient client, long is24RealEstateIdId, org.openestate.is24.restapi.xml.attachmentsorder.List list) throws IOException, OAuthException, JAXBException, RequestFailedException {
             if (list == null) throw new NullPointerException("No object was provided for publishing!");
 
@@ -770,6 +791,7 @@ public final class ImportExport {
             return _put(client, url, list);
         }
 
+        @SuppressWarnings("Duplicates")
         private static Messages _put(AbstractClient client, String url, org.openestate.is24.restapi.xml.attachmentsorder.List list) throws IOException, OAuthException, JAXBException, RequestFailedException {
             // write object into xml
             String xml = XmlUtils.marshal(new org.openestate.is24.restapi.xml.attachmentsorder.ObjectFactory().createAttachmentsorder(list), AbstractClient.getEncoding());
@@ -808,6 +830,7 @@ public final class ImportExport {
      * @see <a href="http://api.immobilienscout24.de/our-apis/import-export.html">Import-/Export-API</a>
      * @since 0.1
      */
+    @SuppressWarnings("WeakerAccess")
     public final static class ContactAddressService {
         private ContactAddressService() {
         }
@@ -828,6 +851,7 @@ public final class ImportExport {
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/contact.html">Contact Webservice</a>
          * @since 0.2
          */
+        @SuppressWarnings("unused")
         public static Messages deleteByExternalId(AbstractClient client, String externalContactId) throws IOException, OAuthException, JAXBException, RequestFailedException {
             return deleteByExternalId(client, externalContactId, null);
         }
@@ -888,6 +912,7 @@ public final class ImportExport {
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/contact.html">Contact Webservice</a>
          * @since 0.2
          */
+        @SuppressWarnings("unused")
         public static Messages deleteByIs24Id(AbstractClient client, long is24ContactId) throws IOException, OAuthException, JAXBException, RequestFailedException {
             return deleteByIs24Id(client, is24ContactId, 0);
         }
@@ -930,6 +955,7 @@ public final class ImportExport {
             return _delete(client, url);
         }
 
+        @SuppressWarnings("Duplicates")
         private static Messages _delete(AbstractClient client, String url) throws IOException, OAuthException, JAXBException, RequestFailedException {
             // send request
             Response response = client.sendXmlRequest(new URL(url), RequestMethod.DELETE, null);
@@ -972,6 +998,7 @@ public final class ImportExport {
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/contact/get-all.html">GETall method</a>
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/contact.html">Contact Webservice</a>
          */
+        @SuppressWarnings("unused")
         public static RealtorContactDetailsList getAll(AbstractClient client) throws IOException, OAuthException, JAXBException, RequestFailedException {
             // build request URL
             String url = client.getApiBaseUrl()
@@ -1036,6 +1063,7 @@ public final class ImportExport {
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/contact/get-by-id.html">GETbyID method</a>
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/contact.html">Contact Webservice</a>
          */
+        @SuppressWarnings("unused")
         public static RealtorContactDetails getByIs24Id(AbstractClient client, long is24ContactId) throws IOException, OAuthException, JAXBException, RequestFailedException {
             // build request URL
             String url = client.getApiBaseUrl()
@@ -1045,6 +1073,7 @@ public final class ImportExport {
             return _get(client, url);
         }
 
+        @SuppressWarnings("Duplicates")
         private static RealtorContactDetails _get(AbstractClient client, String url) throws IOException, OAuthException, JAXBException, RequestFailedException {
             // send request
             Response response = client.sendXmlRequest(new URL(url), RequestMethod.GET, null);
@@ -1085,6 +1114,7 @@ public final class ImportExport {
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/contact/post.html">POST method</a>
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/contact.html">Contact Webservice</a>
          */
+        @SuppressWarnings("Duplicates")
         public static long post(AbstractClient client, RealtorContactDetails contact) throws IOException, OAuthException, JAXBException, RequestFailedException {
             if (contact == null) throw new NullPointerException("No contact was provided!");
 
@@ -1151,6 +1181,7 @@ public final class ImportExport {
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/contact/put-by-id.html">PUTbyID method</a>
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/contact.html">Contact Webservice</a>
          */
+        @SuppressWarnings("unused")
         public static Messages putByExternalId(AbstractClient client, RealtorContactDetails contact, String externalContactId) throws IOException, OAuthException, JAXBException, RequestFailedException {
             // build request URL
             String url = client.getApiBaseUrl()
@@ -1179,6 +1210,7 @@ public final class ImportExport {
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/contact/put-by-id.html">PUTbyID method</a>
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/contact.html">Contact Webservice</a>
          */
+        @SuppressWarnings("UnusedReturnValue")
         public static Messages putByIs24Id(AbstractClient client, RealtorContactDetails contact, long is24ContactId) throws IOException, OAuthException, JAXBException, RequestFailedException {
             // build request URL
             String url = client.getApiBaseUrl()
@@ -1188,6 +1220,7 @@ public final class ImportExport {
             return _put(client, url, contact);
         }
 
+        @SuppressWarnings("Duplicates")
         private static Messages _put(AbstractClient client, String url, RealtorContactDetails contact) throws IOException, OAuthException, JAXBException, RequestFailedException {
             // write object into xml
             String xml = XmlUtils.marshal(contact, AbstractClient.getEncoding());
@@ -1249,6 +1282,7 @@ public final class ImportExport {
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/publish.html">Publish Webservice</a>
          * @since 0.2
          */
+        @SuppressWarnings({"UnusedReturnValue", "Duplicates"})
         public static Messages delete(AbstractClient client, String is24PublishId) throws IOException, OAuthException, JAXBException, RequestFailedException {
             // build request URL
             String url = client.getApiBaseUrl()
@@ -1301,6 +1335,7 @@ public final class ImportExport {
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/publish.html">Publish Webservice</a>
          * @since 0.2
          */
+        @SuppressWarnings({"unused", "Duplicates"})
         public static PublishObjects delete(AbstractClient client, String[] is24PublishIds) throws IOException, OAuthException, JAXBException, RequestFailedException {
             // build request URL
             String url = client.getApiBaseUrl()
@@ -1365,6 +1400,7 @@ public final class ImportExport {
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/publish/get.html">GET method</a>
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/publish.html">Publish Webservice</a>
          */
+        @SuppressWarnings("Duplicates")
         public static PublishObjects get(AbstractClient client, long is24RealEstateIdId, long is24PublishChannelId) throws IOException, OAuthException, JAXBException, RequestFailedException {
             // build request URL
             String url = client.getApiBaseUrl()
@@ -1414,6 +1450,7 @@ public final class ImportExport {
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/publish/get-by-id.html">GETbyID method</a>
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/publish.html">Publish Webservice</a>
          */
+        @SuppressWarnings({"unused", "Duplicates"})
         public static PublishObject getById(AbstractClient client, String is24PublishId) throws IOException, OAuthException, JAXBException, RequestFailedException {
             // build request URL
             String url = client.getApiBaseUrl()
@@ -1624,6 +1661,7 @@ public final class ImportExport {
      * @see <a href="http://api.immobilienscout24.de/our-apis/import-export.html">Import-/Export-API</a>
      * @since 0.1
      */
+    @SuppressWarnings("WeakerAccess")
     public final static class RealEstateService {
         private RealEstateService() {
         }
@@ -1643,6 +1681,7 @@ public final class ImportExport {
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/realestate/delete-by-id.html">DELETEbyID method</a>
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/realestate.html">RealEstate Webservice</a>
          */
+        @SuppressWarnings("UnusedReturnValue")
         public static Messages deleteByExternalId(AbstractClient client, String externalRealEstateId) throws IOException, OAuthException, JAXBException, RequestFailedException {
             // build request URL
             String url = client.getApiBaseUrl()
@@ -1669,6 +1708,7 @@ public final class ImportExport {
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/realestate/delete-by-id.html">DELETEbyID method</a>
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/realestate.html">RealEstate Webservice</a>
          */
+        @SuppressWarnings("UnusedReturnValue")
         public static Messages deleteByIs24Id(AbstractClient client, long is24RealEstateId) throws IOException, OAuthException, JAXBException, RequestFailedException {
             // build request URL
             String url = client.getApiBaseUrl()
@@ -1678,6 +1718,7 @@ public final class ImportExport {
             return _delete(client, url);
         }
 
+        @SuppressWarnings("Duplicates")
         private static Messages _delete(AbstractClient client, String url) throws IOException, OAuthException, JAXBException, RequestFailedException {
             // send request
             Response response = client.sendXmlRequest(new URL(url), RequestMethod.DELETE, null);
@@ -1815,6 +1856,7 @@ public final class ImportExport {
             return _get(client, url);
         }
 
+        @SuppressWarnings("Duplicates")
         private static RealEstate _get(AbstractClient client, String url) throws IOException, OAuthException, JAXBException, RequestFailedException {
             // send request
             Response response = client.sendXmlRequest(new URL(url), RequestMethod.GET, null);
@@ -1879,6 +1921,7 @@ public final class ImportExport {
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/realestate.html">RealEstate Webservice</a>
          * @since 0.2
          */
+        @SuppressWarnings("Duplicates")
         public static long post(AbstractClient client, RealEstate realEstate, boolean useNewEnergySourceEnev2014Values) throws IOException, OAuthException, JAXBException, RequestFailedException {
             if (realEstate == null) throw new NullPointerException("No property was provided!");
 
@@ -1952,6 +1995,7 @@ public final class ImportExport {
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/realestate/put-by-id.html">PUTbyID method</a>
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/realestate.html">RealEstate Webservice</a>
          */
+        @SuppressWarnings("unused")
         public static Messages putByExternalId(AbstractClient client, RealEstate realEstate, String externalRealEstateId) throws IOException, OAuthException, JAXBException, RequestFailedException {
             return putByExternalId(client, realEstate, externalRealEstateId, true);
         }
@@ -2010,6 +2054,7 @@ public final class ImportExport {
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/realestate/put-by-id.html">PUTbyID method</a>
          * @see <a href="http://api.immobilienscout24.de/our-apis/import-export/realestate.html">RealEstate Webservice</a>
          */
+        @SuppressWarnings("UnusedReturnValue")
         public static Messages putByIs24Id(AbstractClient client, RealEstate realEstate, long is24RealEstateId) throws IOException, OAuthException, JAXBException, RequestFailedException {
             return putByIs24Id(client, realEstate, is24RealEstateId, true);
         }
@@ -2051,6 +2096,7 @@ public final class ImportExport {
             return _put(client, url, realEstate);
         }
 
+        @SuppressWarnings("Duplicates")
         private static Messages _put(AbstractClient client, String url, RealEstate realEstate) throws IOException, OAuthException, JAXBException, RequestFailedException {
             // write object into xml
             String xml = XmlUtils.marshal(realEstate, AbstractClient.getEncoding());

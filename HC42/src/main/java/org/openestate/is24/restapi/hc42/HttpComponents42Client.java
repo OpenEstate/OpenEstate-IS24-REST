@@ -70,10 +70,11 @@ import org.slf4j.LoggerFactory;
  * @see <a href="http://hc.apache.org/httpcomponents-client-4.2.x/">Apache HttpComponents 4.2</a>
  * @since 0.1
  */
+@SuppressWarnings("WeakerAccess")
 public class HttpComponents42Client extends AbstractClient {
     @SuppressWarnings("unused")
     private final static Logger LOGGER = LoggerFactory.getLogger(HttpComponents42Client.class);
-    private transient HttpClient httpClient = null;
+    private transient HttpClient httpClient;
 
     /**
      * Creates an instance of {@link HttpComponents42Client}.
@@ -131,6 +132,7 @@ public class HttpComponents42Client extends AbstractClient {
      * @return {@link Response} of the request
      * @throws IOException if the {@link Response} can't be obtained
      */
+    @SuppressWarnings("Duplicates")
     protected Response createResponse(HttpResponse response) throws IOException {
         HttpEntity responseEntity = null;
         try {
@@ -180,6 +182,7 @@ public class HttpComponents42Client extends AbstractClient {
     }
 
     @Override
+    @SuppressWarnings("Duplicates")
     protected Response sendXmlAttachmentRequest(URL url, RequestMethod method, String xml, InputStream input, String fileName, String mimeType) throws IOException, OAuthException {
         if (method == null) method = RequestMethod.POST;
         if (!RequestMethod.POST.equals(method) && !RequestMethod.PUT.equals(method))
@@ -187,7 +190,7 @@ public class HttpComponents42Client extends AbstractClient {
         xml = (RequestMethod.POST.equals(method) || RequestMethod.PUT.equals(method)) ?
                 StringUtils.trimToNull(xml) : null;
 
-        HttpUriRequest request = null;
+        HttpUriRequest request;
         if (RequestMethod.POST.equals(method)) {
             request = new HttpPost(url.toString());
         } else if (RequestMethod.PUT.equals(method)) {
@@ -237,12 +240,13 @@ public class HttpComponents42Client extends AbstractClient {
     }
 
     @Override
-    protected Response sendVideoUploadRequest(URI url, RequestMethod method, String auth, InputStream input, String fileName, final long fileSize) throws IOException, OAuthException {
+    @SuppressWarnings("Duplicates")
+    protected Response sendVideoUploadRequest(URI url, RequestMethod method, String auth, InputStream input, String fileName, final long fileSize) throws IOException {
         if (method == null) method = RequestMethod.POST;
         if (!RequestMethod.POST.equals(method) && !RequestMethod.PUT.equals(method))
             throw new IllegalArgumentException("Invalid request method!");
 
-        HttpUriRequest request = null;
+        HttpUriRequest request;
         if (RequestMethod.POST.equals(method)) {
             request = new HttpPost(url.toString());
         } else if (RequestMethod.PUT.equals(method)) {
@@ -290,6 +294,7 @@ public class HttpComponents42Client extends AbstractClient {
         return createResponse(response);
     }
 
+    @SuppressWarnings("Duplicates")
     private Response _sendRequest(URL url, RequestMethod method, String content, String contentType) throws IOException, OAuthException {
         if (httpClient == null) throw new IOException("No HTTP client was specified!");
 
@@ -297,7 +302,7 @@ public class HttpComponents42Client extends AbstractClient {
         content = (RequestMethod.POST.equals(method) || RequestMethod.PUT.equals(method)) ?
                 StringUtils.trimToNull(content) : null;
 
-        HttpUriRequest request = null;
+        HttpUriRequest request;
         if (RequestMethod.GET.equals(method)) {
             request = new HttpGet(url.toString());
         } else if (RequestMethod.POST.equals(method)) {

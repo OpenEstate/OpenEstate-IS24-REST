@@ -16,6 +16,7 @@
 package org.openestate.is24.restapi.hc43;
 
 import java.io.InputStream;
+import org.apache.http.entity.ContentType;
 import org.apache.http.entity.mime.content.InputStreamBody;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,6 +27,7 @@ import org.slf4j.LoggerFactory;
  * @author Andreas Rudolph
  * @since 0.1
  */
+@SuppressWarnings("WeakerAccess")
 public class InputStreamBodyWithLength extends InputStreamBody {
     @SuppressWarnings("unused")
     private final static Logger LOGGER = LoggerFactory.getLogger(InputStreamBodyWithLength.class);
@@ -34,7 +36,7 @@ public class InputStreamBodyWithLength extends InputStreamBody {
     /**
      * Creates an instance of {@link InputStreamBodyWithLength}.
      *
-     * @param in       inputstream
+     * @param in       input stream
      * @param filename file name
      * @param length   file size
      */
@@ -46,13 +48,14 @@ public class InputStreamBodyWithLength extends InputStreamBody {
     /**
      * Creates an instance of {@link InputStreamBodyWithLength}.
      *
-     * @param in       inputstream
+     * @param in       input stream
      * @param mimeType file mime type
      * @param filename file name
      * @param length   file size
      */
+    @SuppressWarnings("unused")
     public InputStreamBodyWithLength(InputStream in, String mimeType, String filename, long length) {
-        super(in, mimeType, filename);
+        super(in, ContentType.create(mimeType), filename);
         this.length = length;
     }
 

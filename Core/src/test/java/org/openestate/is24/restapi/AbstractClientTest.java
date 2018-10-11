@@ -33,7 +33,7 @@ public class AbstractClientTest {
     private final static Logger LOGGER = LoggerFactory.getLogger(AbstractClientTest.class);
 
     @Test
-    public void testGetUrlEncodedValue() throws Exception {
+    public void testGetUrlEncodedValue() {
         Assert.assertEquals(
                 "1%2B2%3D3%20%C3%A4%C3%B6%C3%BC%C3%9F%20%2F%20%E2%82%AC%20%26",
                 AbstractClient.getUrlEncodedValue("1+2=3 äöüß / € &"));

@@ -46,6 +46,7 @@ import org.slf4j.LoggerFactory;
  * @author Andreas Rudolph
  * @since 0.1
  */
+@SuppressWarnings("WeakerAccess")
 public abstract class AbstractClient implements Closeable {
     @SuppressWarnings("unused")
     private final static Logger LOGGER = LoggerFactory.getLogger(AbstractClient.class);
@@ -53,11 +54,13 @@ public abstract class AbstractClient implements Closeable {
     /**
      * URL, that points to the webservice in live environment.
      */
+    @SuppressWarnings("unused")
     public final static String LIVE_API = "https://rest.immobilienscout24.de/restapi";
 
     /**
      * URL, that points to the webservice in sandbox environment.
      */
+    @SuppressWarnings("unused")
     public final static String SANDBOX_API = "https://rest.sandbox-immobilienscout24.de/restapi";
 
     /**
@@ -66,6 +69,7 @@ public abstract class AbstractClient implements Closeable {
      *
      * @since 0.2.2
      */
+    @SuppressWarnings("unused")
     public final static String RESPONSE_HEADER_API_CLIENT = "L-IS24-ApiClient";
 
     /**
@@ -74,6 +78,7 @@ public abstract class AbstractClient implements Closeable {
      *
      * @since 0.2.2
      */
+    @SuppressWarnings("unused")
     public final static String RESPONSE_HEADER_CAUSER_ID = "L-IS24-CauserId";
 
     /**
@@ -82,6 +87,7 @@ public abstract class AbstractClient implements Closeable {
      *
      * @since 0.2.2
      */
+    @SuppressWarnings("unused")
     public final static String RESPONSE_HEADER_REQUEST_REFNUM = "L-IS24-RequestRefnum";
 
     /**
@@ -90,6 +96,7 @@ public abstract class AbstractClient implements Closeable {
      *
      * @since 0.2.2
      */
+    @SuppressWarnings("unused")
     public final static String RESPONSE_HEADER_RESOURCE_ID = "L-IS24-ResourceId";
 
     /**
@@ -97,6 +104,7 @@ public abstract class AbstractClient implements Closeable {
      *
      * @since 0.3.3
      */
+    @SuppressWarnings("unused")
     public final static String XML_CONTENT_TYPE = "application/xml";
 
     /**
@@ -104,6 +112,7 @@ public abstract class AbstractClient implements Closeable {
      *
      * @since 0.3.3
      */
+    @SuppressWarnings("unused")
     public final static String JSON_CONTENT_TYPE = "application/json";
 
     private final String apiBaseUrl;
@@ -133,8 +142,9 @@ public abstract class AbstractClient implements Closeable {
      *
      * @param authorization {@link Authorization} object, that contains the credentials for permanent
      *                      access to the IS24-Webservice
-     * @throws OAuthException if intitalization of the authorization failed
+     * @throws OAuthException if initialization of the authorization failed
      */
+    @SuppressWarnings("unused")
     public final void authorize(Authorization authorization) throws OAuthException {
         authorize(authorization.accessToken, authorization.accessTokenSecret);
     }
@@ -144,8 +154,9 @@ public abstract class AbstractClient implements Closeable {
      *
      * @param accessToken  token for permanent access to the IS24-Webservice
      * @param accessSecret secret for permanent access to the IS24-Webservice
-     * @throws OAuthException if intitalization of the authorization failed
+     * @throws OAuthException if initialization of the authorization failed
      */
+    @SuppressWarnings("RedundantThrows")
     public final void authorize(String accessToken, String accessSecret) throws OAuthException {
         this.oAuthConsumer = buildOAuthConsumer(this.consumerToken, this.consumerSecret);
         this.oAuthConsumer.setTokenWithSecret(accessToken, accessSecret);
@@ -155,28 +166,28 @@ public abstract class AbstractClient implements Closeable {
     }
 
     /**
-     * Initializes client after a succesful verification.
+     * Initializes client after a successful verification.
      *
      * @param verification     {@link Verification} object, that contains the credentials for temporary
      *                         access to the IS24-Webservice during verification
      * @param verificationCode verification code, that was received after the verification was finished
      * @return {@link Authorization} object, that contains the access credentials for
      * future use
-     * @throws OAuthException if intitalization of the authorization failed
+     * @throws OAuthException if initialization of the authorization failed
      */
     public final Authorization authorizeAfterVerification(Verification verification, String verificationCode) throws OAuthException {
         return authorizeAfterVerification(verification.requestToken, verification.requestTokenSecret, verificationCode);
     }
 
     /**
-     * Initializes client after a succesful verification.
+     * Initializes client after a successful verification.
      *
      * @param verificationToken  token for temporary access to the IS24-Webservice during verification
      * @param verificationSecret secret for temporary access to the IS24-Webservice during verification
      * @param verificationCode   verification code, that was received after the verification was finished
      * @return {@link Authorization} object, that contains the access credentials for
      * future use
-     * @throws OAuthException if intitalization of the authorization failed
+     * @throws OAuthException if initialization of the authorization failed
      */
     public final Authorization authorizeAfterVerification(String verificationToken, String verificationSecret, String verificationCode) throws OAuthException {
         this.oAuthConsumer = buildOAuthConsumer(this.consumerToken, this.consumerSecret);
@@ -232,10 +243,11 @@ public abstract class AbstractClient implements Closeable {
     /**
      * Initiate a verification process.
      *
-     * @return an instance of {@link Verification} that contains informations about the
+     * @return an instance of {@link Verification} that contains information about the
      * initiated verification process
      * @throws OAuthException if initiation failed
      */
+    @SuppressWarnings("unused")
     public final Verification fetchVerification() throws OAuthException {
         return fetchVerification(null);
     }
@@ -245,7 +257,7 @@ public abstract class AbstractClient implements Closeable {
      *
      * @param callbackUrl the URL, where the user is redirected to, after the verification was
      *                    finished / cancelled
-     * @return an instance of {@link Verification} that contains informations about the
+     * @return an instance of {@link Verification} that contains information about the
      * initiated verification process
      * @throws OAuthException if initiation failed
      */
@@ -319,7 +331,7 @@ public abstract class AbstractClient implements Closeable {
     /**
      * Send a JSON string to the IS24-Webservice.
      * <p>
-     * This function must be implemendet by specific implementations of
+     * This function must be implemented by specific implementations of
      * {@link AbstractClient}.
      *
      * @param url    URL of the IS24-Webservice, where the request is sent to
@@ -330,12 +342,13 @@ public abstract class AbstractClient implements Closeable {
      * @throws OAuthException if authorization failed
      * @since 0.3.3
      */
+    @SuppressWarnings("unused")
     protected abstract Response sendJsonRequest(URL url, RequestMethod method, String json) throws IOException, OAuthException;
 
     /**
      * Send a XML string to the IS24-Webservice.
      * <p>
-     * This function must be implemendet by specific implementations of
+     * This function must be implemented by specific implementations of
      * {@link AbstractClient}.
      *
      * @param url    URL of the IS24-Webservice, where the request is sent to
@@ -350,7 +363,7 @@ public abstract class AbstractClient implements Closeable {
     /**
      * Send a XML string together with a file to the IS24-Webservice.
      * <p>
-     * This function must be implemendet by specific implementations of
+     * This function must be implemented by specific implementations of
      * {@link AbstractClient}.
      *
      * @param url      URL of the IS24-Webservice, where the request is sent to
@@ -363,12 +376,13 @@ public abstract class AbstractClient implements Closeable {
      * @throws IOException    if communication with IS24-Webservice failed
      * @throws OAuthException if authorization failed
      */
+    @SuppressWarnings("SameParameterValue")
     protected abstract Response sendXmlAttachmentRequest(URL url, RequestMethod method, String xml, InputStream input, String fileName, String mimeType) throws IOException, OAuthException;
 
     /**
      * Send a video with an authentication value to the IS24-Webservice.
      * <p>
-     * This function must be implemendet by specific implementations of
+     * This function must be implemented by specific implementations of
      * {@link AbstractClient}.
      *
      * @param url      URL of the IS24-Webservice, where the request is sent to
@@ -381,5 +395,6 @@ public abstract class AbstractClient implements Closeable {
      * @throws IOException    if communication with IS24-Webservice failed
      * @throws OAuthException if authorization failed
      */
+    @SuppressWarnings("SameParameterValue")
     protected abstract Response sendVideoUploadRequest(URI url, RequestMethod method, String auth, InputStream input, String fileName, long fileSize) throws IOException, OAuthException;
 }

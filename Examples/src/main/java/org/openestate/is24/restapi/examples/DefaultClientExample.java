@@ -18,6 +18,8 @@ package org.openestate.is24.restapi.examples;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.openestate.is24.restapi.AbstractClient;
 import org.openestate.is24.restapi.DefaultClient;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This example illustrates the creation of a {@link DefaultClient} for
@@ -27,6 +29,8 @@ import org.openestate.is24.restapi.DefaultClient;
  */
 @SuppressFBWarnings
 public class DefaultClientExample {
+    @SuppressWarnings("unused")
+    private final static Logger LOGGER = LoggerFactory.getLogger(DefaultClientExample.class);
     private final static String WEBSERVICE_URL = AbstractClient.LIVE_API;
     private final static String CONSUMER_KEY = "my consumer key";
     private final static String CONSUMER_SECRET = "my consumer secret";
@@ -37,6 +41,7 @@ public class DefaultClientExample {
      * @param args command line arguments
      */
     public static void main(String[] args) {
+        //noinspection unused
         AbstractClient client = new DefaultClient(
                 WEBSERVICE_URL, CONSUMER_KEY, CONSUMER_SECRET);
 

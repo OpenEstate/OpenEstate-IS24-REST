@@ -123,6 +123,7 @@ import org.slf4j.LoggerFactory;
  * @author Andreas Rudolph
  * @since 0.2
  */
+@SuppressWarnings("WeakerAccess")
 public class RandomRealEstateFactory {
     @SuppressWarnings("unused")
     private final static Logger LOGGER = LoggerFactory.getLogger(RandomRealEstateFactory.class);
@@ -151,8 +152,7 @@ public class RandomRealEstateFactory {
      */
     public EnergySourcesEnev2014 createRandomEnergySourcesEnev2014() {
         EnergySourcesEnev2014 output = commonFactory.createEnergySourcesEnev2014();
-        ArrayList<EnergySourceEnev2014> pool = new ArrayList<>();
-        pool.addAll(Arrays.asList(EnergySourceEnev2014.values()));
+        ArrayList<EnergySourceEnev2014> pool = new ArrayList<>(Arrays.asList(EnergySourceEnev2014.values()));
         int limit = getRandomInt(pool.size()) + 1;
         int i = 0;
         while (i < limit && !pool.isEmpty()) {
@@ -257,8 +257,7 @@ public class RandomRealEstateFactory {
      */
     public SiteRecommendedUseForTradeTypes createRandomSiteRecommendedUseForTradeTypes() {
         SiteRecommendedUseForTradeTypes output = commonFactory.createSiteRecommendedUseForTradeTypes();
-        ArrayList<SiteRecommendedUseForTradeType> pool = new ArrayList<>();
-        pool.addAll(Arrays.asList(SiteRecommendedUseForTradeType.values()));
+        ArrayList<SiteRecommendedUseForTradeType> pool = new ArrayList<>(Arrays.asList(SiteRecommendedUseForTradeType.values()));
         int limit = getRandomInt(pool.size()) + 1;
         int i = 0;
         while (i < limit && !pool.isEmpty()) {
@@ -281,8 +280,7 @@ public class RandomRealEstateFactory {
      */
     public SiteRecommendedUseTypes createRandomSiteRecommendedUseTypes() {
         SiteRecommendedUseTypes output = commonFactory.createSiteRecommendedUseTypes();
-        ArrayList<SiteRecommendedUseType> pool = new ArrayList<>();
-        pool.addAll(Arrays.asList(SiteRecommendedUseType.values()));
+        ArrayList<SiteRecommendedUseType> pool = new ArrayList<>(Arrays.asList(SiteRecommendedUseType.values()));
         int limit = getRandomInt(pool.size()) + 1;
         int i = 0;
         while (i < limit && !pool.isEmpty()) {
@@ -363,7 +361,7 @@ public class RandomRealEstateFactory {
     }
 
     /**
-     * Create a random {@link Calendar} value in a specific timeframe.
+     * Create a random {@link Calendar} value in a specific time frame.
      *
      * @param minYear minimal calendar year
      * @param maxYear maximal calendar year
@@ -421,17 +419,19 @@ public class RandomRealEstateFactory {
      *
      * @return random {@link Date} value
      */
+    @SuppressWarnings("unused")
     public static Date getRandomDate() {
         return getRandomCalendar().getTime();
     }
 
     /**
-     * Create a random {@link Date} value in a specific timeframe.
+     * Create a random {@link Date} value in a specific time frame.
      *
      * @param minYear minimal calendar year
      * @param maxYear maximal calendar year
      * @return random {@link Date} value
      */
+    @SuppressWarnings("unused")
     public static Date getRandomDate(int minYear, int maxYear) {
         return getRandomCalendar(minYear, maxYear).getTime();
     }
@@ -452,6 +452,7 @@ public class RandomRealEstateFactory {
      * @param max maximum value
      * @return random {@link Double} value
      */
+    @SuppressWarnings("unused")
     public static BigDecimal getRandomDecimal(BigDecimal max) {
         return getRandomDecimal(BigDecimal.ZERO, max);
     }
@@ -475,7 +476,7 @@ public class RandomRealEstateFactory {
      * @return random {@link Double} value
      */
     public static BigDecimal getRandomDecimal(BigDecimal min, BigDecimal max) {
-        if (min.compareTo(max) == 1) {
+        if (min.compareTo(max) > 0) {
             throw new IllegalArgumentException(
                     "Minimum value is bigger than maximum value!");
         }
@@ -1014,6 +1015,7 @@ public class RandomRealEstateFactory {
      *
      * @param realEstate object to initialize
      */
+    @SuppressWarnings("Duplicates")
     protected void initRealEstate(ApartmentBuy realEstate) {
         realEstate.setApartmentType(getRandomApartmentType());
         realEstate.setBalcony(getRandomBoolean());
@@ -1103,6 +1105,7 @@ public class RandomRealEstateFactory {
      *
      * @param realEstate object to initialize
      */
+    @SuppressWarnings("Duplicates")
     protected void initRealEstate(ApartmentRent realEstate) {
         realEstate.setApartmentType(getRandomApartmentType());
         realEstate.setBalcony(getRandomBoolean());
@@ -1195,6 +1198,7 @@ public class RandomRealEstateFactory {
      *
      * @param realEstate object to initialize
      */
+    @SuppressWarnings("Duplicates")
     protected void initRealEstate(AssistedLiving realEstate) {
         realEstate.setAmbulantNursingServiceAvailable(getRandomYesNotApplicableType());
         realEstate.setBalconyAvailable(getRandomBalconyAvailableType());
@@ -1298,6 +1302,7 @@ public class RandomRealEstateFactory {
      *
      * @param realEstate object to initialize
      */
+    @SuppressWarnings("Duplicates")
     protected void initRealEstate(CompulsoryAuction realEstate) {
         realEstate.setArea(getRandomDecimal(50, 500));
         realEstate.setAuctionObjectType(getRandomCompulsoryAuctionType());
@@ -1380,6 +1385,7 @@ public class RandomRealEstateFactory {
      *
      * @param realEstate object to initialize
      */
+    @SuppressWarnings("Duplicates")
     protected void initRealEstate(FlatShareRoom realEstate) {
         realEstate.setAgeOfFlatMatesFrom(getRandomLong(16, 30));
         realEstate.setAgeOfFlatMatesTo(getRandomLong(30, 50));
@@ -1539,6 +1545,7 @@ public class RandomRealEstateFactory {
      *
      * @param realEstate object to initialize
      */
+    @SuppressWarnings("Duplicates")
     protected void initRealEstate(Gastronomy realEstate) {
         realEstate.setAdditionalArea(getRandomDecimal(10, 500));
         realEstate.setCellar(getRandomYesNotApplicableType());
@@ -1649,6 +1656,7 @@ public class RandomRealEstateFactory {
      *
      * @param realEstate object to initialize
      */
+    @SuppressWarnings("Duplicates")
     protected void initRealEstate(HouseBuy realEstate) {
         realEstate.setBuildingType(getRandomBuildingType());
         realEstate.setCellar(getRandomYesNotApplicableType());
@@ -1734,6 +1742,7 @@ public class RandomRealEstateFactory {
      *
      * @param realEstate object to initialize
      */
+    @SuppressWarnings("Duplicates")
     protected void initRealEstate(HouseRent realEstate) {
         realEstate.setBaseRent(getRandomDecimal(500, 5000));
         realEstate.setBuildingType(getRandomBuildingType());
@@ -1861,6 +1870,7 @@ public class RandomRealEstateFactory {
      *
      * @param realEstate object to initialize
      */
+    @SuppressWarnings("Duplicates")
     protected void initRealEstate(Industry realEstate) {
         realEstate.setAdditionalArea(getRandomDecimal(250, 5000));
         realEstate.setAutoLift(getRandomYesNotApplicableType());
@@ -1977,6 +1987,7 @@ public class RandomRealEstateFactory {
      *
      * @param realEstate object to initialize
      */
+    @SuppressWarnings("Duplicates")
     protected void initRealEstate(Investment realEstate) {
         realEstate.setAdditionalArea(getRandomDecimal(250, 5000));
         realEstate.setCondition(getRandomRealEstateCondition());
@@ -2146,6 +2157,7 @@ public class RandomRealEstateFactory {
      *
      * @param realEstate object to initialize
      */
+    @SuppressWarnings("Duplicates")
     protected void initRealEstate(Office realEstate) {
         realEstate.setAdditionalArea(getRandomDecimal(250, 5000));
         realEstate.setAirConditioning(getRandomAirConditioningType());
@@ -2316,6 +2328,7 @@ public class RandomRealEstateFactory {
      *
      * @param realEstate object to initialize
      */
+    @SuppressWarnings("Duplicates")
     protected void initRealEstate(ShortTermAccommodation realEstate) {
         realEstate.setBalcony(getRandomBoolean());
         realEstate.setBaseRent(getRandomDecimal(200, 1500));
@@ -2403,6 +2416,7 @@ public class RandomRealEstateFactory {
      *
      * @param realEstate object to initialize
      */
+    @SuppressWarnings("Duplicates")
     protected void initRealEstate(SpecialPurpose realEstate) {
         realEstate.setAdditionalArea(getRandomDecimal(250, 5000));
         realEstate.setBasement(getRandomYesNotApplicableType());
@@ -2512,6 +2526,7 @@ public class RandomRealEstateFactory {
      *
      * @param realEstate object to initialize
      */
+    @SuppressWarnings("Duplicates")
     protected void initRealEstate(Store realEstate) {
         realEstate.setAdditionalArea(getRandomDecimal(250, 5000));
         realEstate.setCellar(getRandomYesNotApplicableType());
@@ -2627,6 +2642,7 @@ public class RandomRealEstateFactory {
      *
      * @param realEstate object to initialize
      */
+    @SuppressWarnings("Duplicates")
     protected void initRealEstate(TradeSite realEstate) {
         realEstate.setBuildingPermission(getRandomBoolean());
         realEstate.setDemolition(getRandomBoolean());
@@ -2673,7 +2689,7 @@ public class RandomRealEstateFactory {
      * These real estate types are supported by the
      * {@link RandomRealEstateFactory}.
      */
-    public static enum Type {
+    public enum Type {
         APARTMENT_BUY(ApartmentBuy.class),
         APARTMENT_RENT(ApartmentRent.class),
         ASSISTED_LIVING(AssistedLiving.class),
@@ -2691,14 +2707,14 @@ public class RandomRealEstateFactory {
         LIVING_RENT_SITE(LivingRentSite.class),
         OFFICE(Office.class),
         SENIOR_CARE(SeniorCare.class),
-        SHORT_TERM_ACCOMODATION(ShortTermAccommodation.class),
+        SHORT_TERM_ACCOMMODATION(ShortTermAccommodation.class),
         SPECIAL_PURPOSE(SpecialPurpose.class),
         STORE(Store.class),
         TRADE_SITE(TradeSite.class);
 
         private final Class typeClass;
 
-        private Type(Class typeClass) {
+        Type(Class typeClass) {
             this.typeClass = typeClass;
         }
 
@@ -2723,6 +2739,7 @@ public class RandomRealEstateFactory {
          *
          * @return JAXB class of this type
          */
+        @SuppressWarnings("unused")
         public Class getTypeClass() {
             return typeClass;
         }

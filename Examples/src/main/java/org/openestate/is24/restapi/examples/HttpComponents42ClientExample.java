@@ -18,6 +18,8 @@ package org.openestate.is24.restapi.examples;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.openestate.is24.restapi.AbstractClient;
 import org.openestate.is24.restapi.hc42.HttpComponents42Client;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This example illustrates the creation of a {@link HttpComponents42Client} for
@@ -27,6 +29,8 @@ import org.openestate.is24.restapi.hc42.HttpComponents42Client;
  */
 @SuppressFBWarnings
 public class HttpComponents42ClientExample {
+    @SuppressWarnings("unused")
+    private final static Logger LOGGER = LoggerFactory.getLogger(HttpComponents42ClientExample.class);
     private final static String WEBSERVICE_URL = AbstractClient.LIVE_API;
     private final static String CONSUMER_KEY = "my consumer key";
     private final static String CONSUMER_SECRET = "my consumer secret";
@@ -37,6 +41,7 @@ public class HttpComponents42ClientExample {
      * @param args command line arguments
      */
     public static void main(String[] args) {
+        //noinspection unused
         AbstractClient client = new HttpComponents42Client(
                 WEBSERVICE_URL, CONSUMER_KEY, CONSUMER_SECRET);
 

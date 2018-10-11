@@ -23,6 +23,8 @@ import javax.xml.bind.JAXBException;
 import org.openestate.is24.restapi.utils.RandomRealEstateFactory;
 import org.openestate.is24.restapi.utils.XmlUtils;
 import org.openestate.is24.restapi.xml.realestates.RealEstate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This example illustrates the creation of random real estate data.
@@ -30,6 +32,9 @@ import org.openestate.is24.restapi.xml.realestates.RealEstate;
  * @author Andreas Rudolph
  */
 public class RandomRealEstateExample {
+    @SuppressWarnings("unused")
+    private final static Logger LOGGER = LoggerFactory.getLogger(RandomRealEstateExample.class);
+
     /**
      * Main function.
      *

@@ -24,6 +24,8 @@ import org.openestate.is24.restapi.AbstractClient;
 import org.openestate.is24.restapi.DefaultClient;
 import org.openestate.is24.restapi.utils.Authorization;
 import org.openestate.is24.restapi.utils.Verification;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This example illustrates the verification process at the Webservice.
@@ -31,6 +33,8 @@ import org.openestate.is24.restapi.utils.Verification;
  * @author Andreas Rudolph
  */
 public class VerificationExample {
+    @SuppressWarnings("unused")
+    private final static Logger LOGGER = LoggerFactory.getLogger(VerificationExample.class);
     private final static String WEBSERVICE_URL = AbstractClient.LIVE_API;
     private final static String CONSUMER_KEY = "my consumer key";
     private final static String CONSUMER_SECRET = "my consumer secret";
@@ -46,7 +50,7 @@ public class VerificationExample {
                 WEBSERVICE_URL, CONSUMER_KEY, CONSUMER_SECRET);
 
         // request a verification from the webservice
-        Verification v = null;
+        Verification v;
         try {
             v = client.fetchVerification(CALLBACK_URL);
         } catch (OAuthException ex) {
@@ -56,7 +60,7 @@ public class VerificationExample {
         System.out.println(v.verificationUrl);
 
         // read verification code from command line
-        String verificationCode = null;
+        String verificationCode;
         System.out.println("Please enter your verification code: ");
         try {
             BufferedReader bufferRead = new BufferedReader(
@@ -67,7 +71,7 @@ public class VerificationExample {
         }
 
         // fetch access tokens and authorize at the webservice
-        Authorization a = null;
+        Authorization a;
         try {
             a = client.authorizeAfterVerification(v, verificationCode);
         } catch (OAuthException ex) {

@@ -19,9 +19,7 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import oauth.signpost.OAuthConsumer;
 import oauth.signpost.OAuthProvider;
@@ -48,7 +46,8 @@ import org.slf4j.LoggerFactory;
         value = {"NP_DEREFERENCE_OF_READLINE_VALUE", "DM_DEFAULT_ENCODING"},
         justification = "Keep example code untouched.")
 public class IS24OauthExample {
-    @SuppressWarnings("unused") private final static Logger LOGGER = LoggerFactory.getLogger(IS24OauthExample.class);
+    @SuppressWarnings("unused")
+    private final static Logger LOGGER = LoggerFactory.getLogger(IS24OauthExample.class);
 
     /**
      * Main function.
@@ -111,8 +110,7 @@ public class IS24OauthExample {
         requestObjectApi(consumer2);
     }
 
-    private static void requestObjectApi(OAuthConsumer consumer) throws MalformedURLException, IOException, OAuthMessageSignerException,
-            OAuthExpectationFailedException, OAuthCommunicationException, UnsupportedEncodingException {
+    private static void requestObjectApi(OAuthConsumer consumer) throws IOException, OAuthMessageSignerException, OAuthExpectationFailedException, OAuthCommunicationException {
 
         LOGGER.info("#################################################################################################");
 

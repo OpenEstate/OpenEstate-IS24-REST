@@ -25,6 +25,8 @@ import org.openestate.is24.restapi.utils.RequestFailedException;
 import org.openestate.is24.restapi.utils.XmlUtils;
 import org.openestate.is24.restapi.xml.offerlistelement.OfferRealEstateForList;
 import org.openestate.is24.restapi.xml.realestates.RealEstates;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This example illustrates the export of all real estates, that are available
@@ -33,6 +35,8 @@ import org.openestate.is24.restapi.xml.realestates.RealEstates;
  * @author Andreas Rudolph
  */
 public class DownloadRealEstateListExample {
+    @SuppressWarnings("unused")
+    private final static Logger LOGGER = LoggerFactory.getLogger(DownloadRealEstateListExample.class);
     private final static String WEBSERVICE_URL = AbstractClient.LIVE_API;
     private final static String CONSUMER_KEY = "my consumer key";
     private final static String CONSUMER_SECRET = "my consumer secret";
@@ -57,7 +61,7 @@ public class DownloadRealEstateListExample {
 
         // get list of real estates for a certain agent
         int page = 0;
-        RealEstates result = null;
+        RealEstates result;
         do {
             page++;
             try {

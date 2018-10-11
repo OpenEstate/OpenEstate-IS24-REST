@@ -20,26 +20,40 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Informations about a Webservice response.
+ * Information about a Webservice response.
  *
  * @author Andreas Rudolph
  * @since 0.1
  */
+@SuppressWarnings("WeakerAccess")
 public final class Response {
     @SuppressWarnings("unused")
     private final static Logger LOGGER = LoggerFactory.getLogger(Response.class);
+    @SuppressWarnings("unused")
     public final static int OK = 200;
+    @SuppressWarnings("unused")
     public final static int CREATED = 201;
+    @SuppressWarnings("unused")
     public final static int AUTHENTICATION_REQUIRED = 401;
+    @SuppressWarnings("unused")
     public final static int ACCESS_DENIED = 403;
+    @SuppressWarnings("unused")
     public final static int NOT_FOUND = 404;
+    @SuppressWarnings("unused")
     public final static int METHOD_NOT_ALLOWED = 405;
+    @SuppressWarnings("unused")
     public final static int NOT_ACCEPTABLE = 406;
+    @SuppressWarnings("unused")
     public final static int CONFLICT = 409;
+    @SuppressWarnings("unused")
     public final static int PRECONDITION = 412;
+    @SuppressWarnings("unused")
     public final static int UNSUPPORTED_MEDIA_TYPE = 415;
+    @SuppressWarnings("unused")
     public final static int INTERNAL_SERVER_ERROR = 500;
+    @SuppressWarnings("unused")
     public final static int NOT_IMPLEMENTED = 501;
+    @SuppressWarnings("unused")
     public final static int TEMPORARILY_NOT_AVAILABLE = 503;
 
     /**
@@ -99,6 +113,7 @@ public final class Response {
      * @return unique identifier
      * @since 0.2.2
      */
+    @SuppressWarnings("unused")
     public String getRequestRefNumber() {
         return requestRefNumber;
     }
@@ -109,6 +124,7 @@ public final class Response {
      * @return status code
      * @since 0.2.2
      */
+    @SuppressWarnings("unused")
     public int getStatusCode() {
         return statusCode;
     }
@@ -119,6 +135,7 @@ public final class Response {
      * @return status message
      * @since 0.2.2
      */
+    @SuppressWarnings("unused")
     public String getStatusMessage() {
         return statusMessage;
     }

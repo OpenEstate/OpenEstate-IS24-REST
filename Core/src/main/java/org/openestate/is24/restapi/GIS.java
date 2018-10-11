@@ -59,26 +59,31 @@ public class GIS {
     /**
      * IS24 continent ID for Asia.
      */
+    @SuppressWarnings("unused")
     public final static int ASIA = 2;
 
     /**
      * IS24 continent ID for Africa.
      */
+    @SuppressWarnings("unused")
     public final static int AFRICA = 3;
 
     /**
      * IS24 continent ID for America.
      */
+    @SuppressWarnings("unused")
     public final static int AMERICA = 4;
 
     /**
      * IS24 continent ID for Australia.
      */
+    @SuppressWarnings("unused")
     public final static int AUSTRALIA = 5;
 
     /**
      * IS24 continent ID for Antarctica.
      */
+    @SuppressWarnings("unused")
     public final static int ANTARCTICA = 6;
 
     private GIS() {
@@ -119,6 +124,7 @@ public class GIS {
          * @throws RequestFailedException if the Webservice did not respond with a success message
          * @see <a href="http://api.immobilienscout24.de/our-apis/gis.html">Geo Information Service API</a>
          */
+        @SuppressWarnings("Duplicates")
         public static City get(AbstractClient client, long is24ContinentId, long is24CountryId, long is24RegionId, long is24CityId) throws IOException, OAuthException, JAXBException, RequestFailedException {
             // build request URL
             String url = client.getApiBaseUrl()
@@ -170,6 +176,7 @@ public class GIS {
          * @throws RequestFailedException if the Webservice did not respond with a success message
          * @see <a href="http://api.immobilienscout24.de/our-apis/gis.html">Geo Information Service API</a>
          */
+        @SuppressWarnings("Duplicates")
         public static Cities getAll(AbstractClient client, long is24ContinentId, long is24CountryId, long is24RegionId) throws IOException, OAuthException, JAXBException, RequestFailedException {
             // build request URL
             String url = client.getApiBaseUrl()
@@ -231,6 +238,7 @@ public class GIS {
          * @throws RequestFailedException if the Webservice did not respond with a success message
          * @see <a href="http://api.immobilienscout24.de/our-apis/gis.html">Geo Information Service API</a>
          */
+        @SuppressWarnings("Duplicates")
         public static Continent get(AbstractClient client, long is24ContinentId) throws IOException, OAuthException, JAXBException, RequestFailedException {
             // build request URL
             String url = client.getApiBaseUrl()
@@ -273,6 +281,7 @@ public class GIS {
          * @throws RequestFailedException if the Webservice did not respond with a success message
          * @see <a href="http://api.immobilienscout24.de/our-apis/gis.html">Geo Information Service API</a>
          */
+        @SuppressWarnings("Duplicates")
         public static Continents getAll(AbstractClient client) throws IOException, OAuthException, JAXBException, RequestFailedException {
             // build request URL
             String url = client.getApiBaseUrl()
@@ -333,6 +342,7 @@ public class GIS {
          * @throws RequestFailedException if the Webservice did not respond with a success message
          * @see <a href="http://api.immobilienscout24.de/our-apis/gis.html">Geo Information Service API</a>
          */
+        @SuppressWarnings("Duplicates")
         public static Country get(AbstractClient client, long is24ContinentId, long is24CountryId) throws IOException, OAuthException, JAXBException, RequestFailedException {
             // build request URL
             String url = client.getApiBaseUrl()
@@ -378,6 +388,7 @@ public class GIS {
          * @throws RequestFailedException if the Webservice did not respond with a success message
          * @see <a href="http://api.immobilienscout24.de/our-apis/gis.html">Geo Information Service API</a>
          */
+        @SuppressWarnings("Duplicates")
         public static Countries getAll(AbstractClient client, long is24ContinentId) throws IOException, OAuthException, JAXBException, RequestFailedException {
             // build request URL
             String url = client.getApiBaseUrl()
@@ -445,6 +456,7 @@ public class GIS {
          * @throws RequestFailedException if the Webservice did not respond with a success message
          * @see <a href="http://api.immobilienscout24.de/our-apis/gis.html">Geo Information Service API</a>
          */
+        @SuppressWarnings("Duplicates")
         public static Quarter get(AbstractClient client, long is24ContinentId, long is24CountryId, long is24RegionId, long is24CityId, long is24QuarterId) throws IOException, OAuthException, JAXBException, RequestFailedException {
             // build request URL
             String url = client.getApiBaseUrl()
@@ -499,6 +511,7 @@ public class GIS {
          * @throws RequestFailedException if the Webservice did not respond with a success message
          * @see <a href="http://api.immobilienscout24.de/our-apis/gis.html">Geo Information Service API</a>
          */
+        @SuppressWarnings("Duplicates")
         public static Quarters getAll(AbstractClient client, long is24ContinentId, long is24CountryId, long is24RegionId, long is24CityId) throws IOException, OAuthException, JAXBException, RequestFailedException {
             // build request URL
             String url = client.getApiBaseUrl()
@@ -565,6 +578,7 @@ public class GIS {
          * @throws RequestFailedException if the Webservice did not respond with a success message
          * @see <a href="http://api.immobilienscout24.de/our-apis/gis.html">Geo Information Service API</a>
          */
+        @SuppressWarnings("Duplicates")
         public static Region get(AbstractClient client, long is24ContinentId, long is24CountryId, long is24RegionId) throws IOException, OAuthException, JAXBException, RequestFailedException {
             // build request URL
             String url = client.getApiBaseUrl()
@@ -613,6 +627,7 @@ public class GIS {
          * @throws RequestFailedException if the Webservice did not respond with a success message
          * @see <a href="http://api.immobilienscout24.de/our-apis/gis.html">Geo Information Service API</a>
          */
+        @SuppressWarnings("Duplicates")
         public static Regions getAll(AbstractClient client, long is24ContinentId, long is24CountryId) throws IOException, OAuthException, JAXBException, RequestFailedException {
             // build request URL
             String url = client.getApiBaseUrl()

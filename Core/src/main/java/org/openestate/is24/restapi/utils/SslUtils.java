@@ -43,8 +43,8 @@ public final class SslUtils {
     /**
      * Disable checking of SSL certificates in the application environment.
      *
-     * @throws NoSuchAlgorithmException
-     * @throws KeyManagementException
+     * @throws NoSuchAlgorithmException this should not occur
+     * @throws KeyManagementException   this should not occur
      */
     public static void disableCertificateChecks() throws NoSuchAlgorithmException, KeyManagementException {
         // Create a trust manager that does not validate certificate chains
@@ -65,7 +65,7 @@ public final class SslUtils {
     }
 
     /**
-     * A {@link HostnameVerifier} that accepts all hostnames.
+     * A {@link HostnameVerifier} that accepts all host names.
      * <p>
      * This class disables certificate checks for encrypted connections. You
      * should not use this feature in a productive system.

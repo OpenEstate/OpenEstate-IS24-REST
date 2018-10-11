@@ -23,6 +23,8 @@ import javax.xml.bind.Unmarshaller;
 import org.apache.commons.lang3.ArrayUtils;
 import org.openestate.is24.restapi.utils.XmlUtils;
 import org.openestate.is24.restapi.xml.realestates.RealEstate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This example illustrates reading of XML, that is used by the Webservice.
@@ -30,6 +32,8 @@ import org.openestate.is24.restapi.xml.realestates.RealEstate;
  * @author Andreas Rudolph
  */
 public class XmlReadingExample {
+    @SuppressWarnings("unused")
+    private final static Logger LOGGER = LoggerFactory.getLogger(XmlReadingExample.class);
     private final static String ENCODING = "UTF-8";
     private final static boolean PRETTY_PRINT = true;
 
@@ -44,7 +48,7 @@ public class XmlReadingExample {
         }
 
         // create an unmarshaller
-        Unmarshaller unmarshaller = null;
+        Unmarshaller unmarshaller;
         try {
             unmarshaller = XmlUtils.createUnmarshaller();
         } catch (JAXBException ex) {
@@ -60,7 +64,7 @@ public class XmlReadingExample {
             }
 
             // read XML at the provided location into a JAXB object
-            RealEstate object = null;
+            RealEstate object;
             try {
                 JAXBElement<RealEstate> xml = (JAXBElement<RealEstate>)
                         unmarshaller.unmarshal(file);

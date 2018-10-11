@@ -25,11 +25,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Informations about a modified resource.
+ * Information about a modified resource.
  *
  * @author Andreas Rudolph
  * @since 0.1
  */
+@SuppressWarnings("WeakerAccess")
 public class Resource {
     @SuppressWarnings("unused")
     private final static Logger LOGGER = LoggerFactory.getLogger(Resource.class);
@@ -52,23 +53,24 @@ public class Resource {
     }
 
     /**
-     * Load resource informations from the response {@link Messages} of a created
+     * Load resource information from the response {@link Messages} of a created
      * object.
      *
      * @param messages messages from the body of the HTTP response
-     * @return resource informations
+     * @return resource information
      */
+    @SuppressWarnings("unused")
     public static Resource getCreatedResource(Messages messages) {
         return (messages != null && !messages.getMessage().isEmpty()) ?
                 getCreatedResource(messages.getMessage().get(0)) : null;
     }
 
     /**
-     * Load resource informations from the response {@link Message} of a created
+     * Load resource information from the response {@link Message} of a created
      * object.
      *
      * @param message message from the body of the HTTP response
-     * @return resource informations
+     * @return resource information
      */
     public static Resource getCreatedResource(Message message) {
         if (message == null)
@@ -96,10 +98,10 @@ public class Resource {
     }
 
     /**
-     * Load resource informations from the response {@link Messages}.
+     * Load resource information from the response {@link Messages}.
      *
      * @param messages messages from the body of the HTTP response
-     * @return resource informations
+     * @return resource information
      */
     public static Resource getMessageResource(Messages messages) {
         return (messages != null && !messages.getMessage().isEmpty()) ?
@@ -108,10 +110,10 @@ public class Resource {
     }
 
     /**
-     * Load resource informations from the response {@link Message}.
+     * Load resource information from the response {@link Message}.
      *
      * @param message message from the body of the HTTP response
-     * @return resource informations
+     * @return resource information
      */
     public static Resource getMessageResource(Message message) {
         if (message == null)

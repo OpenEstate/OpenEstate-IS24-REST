@@ -29,6 +29,7 @@ import org.slf4j.LoggerFactory;
  * @author Andreas Rudolph
  * @since 0.2
  */
+@SuppressWarnings("WeakerAccess")
 public class ExportMessage implements Serializable {
     private final static long serialVersionUID = -390150486485853025L;
     @SuppressWarnings("unused")
@@ -74,6 +75,7 @@ public class ExportMessage implements Serializable {
      * @return unique identifier
      * @since 0.2.2
      */
+    @SuppressWarnings("unused")
     public String getErrorRequestRefNumber() {
         return this.errorRequestRefNumber;
     }
@@ -129,6 +131,7 @@ public class ExportMessage implements Serializable {
      *
      * @return true, if the message is a notice
      */
+    @SuppressWarnings("unused")
     public boolean isNotice() {
         return Level.NOTICE.equals(this.getLevel());
     }
@@ -138,6 +141,7 @@ public class ExportMessage implements Serializable {
      *
      * @return true, if the message is a warning
      */
+    @SuppressWarnings("unused")
     public boolean isWarning() {
         return Level.WARNING.equals(this.getLevel());
     }
@@ -150,6 +154,7 @@ public class ExportMessage implements Serializable {
      * @param message   message text
      * @return message
      */
+    @SuppressWarnings("unused")
     public static ExportMessage newContactMessage(String contactId, Code code, String message) {
         return newContactMessage(contactId, code, message, null);
     }
@@ -175,6 +180,7 @@ public class ExportMessage implements Serializable {
      * @param message message text
      * @return message
      */
+    @SuppressWarnings("unused")
     public static ExportMessage newGeneralMessage(String message, Code code) {
         return newGeneralMessage(message, code, null);
     }
@@ -200,6 +206,7 @@ public class ExportMessage implements Serializable {
      * @param message  message text
      * @return message
      */
+    @SuppressWarnings("unused")
     public static ExportMessage newObjectMessage(String objectId, Code code, String message) {
         return newObjectMessage(objectId, code, message, null);
     }
@@ -221,7 +228,7 @@ public class ExportMessage implements Serializable {
     /**
      * Supported message codes.
      */
-    public static enum Code {
+    public enum Code {
         // error codes for contacts
         CONTACT_NOT_FOUND(Level.ERROR),
         CONTACT_NOT_SAVED(Level.ERROR),
@@ -245,12 +252,11 @@ public class ExportMessage implements Serializable {
 
         // further error codes
         PUBLISH_CHANNELS_NOT_FOUND(Level.WARNING),
-        XML_NOT_READABLE(Level.ERROR),
-        ;
+        XML_NOT_READABLE(Level.ERROR);
 
         private final Level level;
 
-        private Code(Level level) {
+        Code(Level level) {
             this.level = level;
         }
 
@@ -268,6 +274,7 @@ public class ExportMessage implements Serializable {
          *
          * @return true, if the current code is an error
          */
+        @SuppressWarnings("unused")
         public boolean isError() {
             return Level.ERROR.equals(this.level);
         }
@@ -277,6 +284,7 @@ public class ExportMessage implements Serializable {
          *
          * @return true, if the current code is a notice
          */
+        @SuppressWarnings("unused")
         public boolean isNotice() {
             return Level.NOTICE.equals(this.level);
         }
@@ -286,6 +294,7 @@ public class ExportMessage implements Serializable {
          *
          * @return true, if the current code is a warning
          */
+        @SuppressWarnings("unused")
         public boolean isWarning() {
             return Level.WARNING.equals(this.level);
         }
@@ -294,7 +303,7 @@ public class ExportMessage implements Serializable {
     /**
      * Supported message levels.
      */
-    public static enum Level {
-        NOTICE, WARNING, ERROR;
+    public enum Level {
+        NOTICE, WARNING, ERROR
     }
 }

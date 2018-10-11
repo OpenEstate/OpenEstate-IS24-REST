@@ -35,6 +35,8 @@ import org.openestate.is24.restapi.xml.common.RealEstateCondition;
 import org.openestate.is24.restapi.xml.common.YesNoNotApplicableType;
 import org.openestate.is24.restapi.xml.common.YesNotApplicableType;
 import org.openestate.is24.restapi.xml.realestates.HouseBuy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This example illustrates the upload of a single real estate to the
@@ -43,6 +45,8 @@ import org.openestate.is24.restapi.xml.realestates.HouseBuy;
  * @author Andreas Rudolph
  */
 public class UploadRealEstateExample {
+    @SuppressWarnings("unused")
+    private final static Logger LOGGER = LoggerFactory.getLogger(UploadRealEstateExample.class);
     private final static String WEBSERVICE_URL = AbstractClient.LIVE_API;
     private final static String CONSUMER_KEY = "my consumer key";
     private final static String CONSUMER_SECRET = "my consumer secret";
@@ -91,9 +95,9 @@ public class UploadRealEstateExample {
 
         // set object's notes
         object.setTitle("a descriptive title for the object");
-        object.setFurnishingNote("somes notes about furnishing");
-        object.setLocationNote("somes notes about the location");
-        object.setOtherNote("somes more notes");
+        object.setFurnishingNote("some notes about furnishing");
+        object.setLocationNote("some notes about the location");
+        object.setOtherNote("some more notes");
 
         // set price attributes
         object.setPrice(commonFactory.createPrice());
@@ -110,7 +114,7 @@ public class UploadRealEstateExample {
 
         // set contact attributes
         object.setContact(realEstatesFactory.createRealEstateContact());
-        object.getContact().setExternalId("mycontact-123");
+        object.getContact().setExternalId("example-contact-123");
 
         // set some more attributes
         object.setBuildingEnergyRatingType(BuildingEnergyRatingType.NO_INFORMATION);

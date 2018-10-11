@@ -41,7 +41,6 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.ValidationEvent;
 import javax.xml.bind.ValidationEventHandler;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.SystemUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.apache.commons.text.StringEscapeUtils;
 import org.openestate.is24.restapi.xml.common.Attachment;
@@ -83,6 +82,7 @@ import org.slf4j.LoggerFactory;
  * @author Andreas Rudolph
  * @since 0.2
  */
+@SuppressWarnings("WeakerAccess")
 public final class XmlUtils {
     @SuppressWarnings("unused")
     private final static Logger LOGGER = LoggerFactory.getLogger(XmlUtils.class);
@@ -119,6 +119,7 @@ public final class XmlUtils {
      * @return marshaller
      * @throws JAXBException if the marshaller is not creatable
      */
+    @SuppressWarnings("unused")
     public static Marshaller createMarshaller() throws JAXBException {
         return createMarshaller(Charset.defaultCharset().name(), true);
     }
@@ -264,8 +265,7 @@ public final class XmlUtils {
             //LOGGER.debug( "Invalid xsd:date value '" + value + "'!" );
             try {
                 Date date = DateUtils.parseDateStrictly(value,
-                        new String[]{"dd.MM.yyyy", "dd.MM.yy", "dd/MM/yyyy", "dd/MM/yy", "dd-MM-yyyy", "dd-MMM-yyyy", "yyyy-MM-dd", "yyyy/MM/dd", "yyyy-D", "MM/yyyy", "MMM yyyy", "MMMMM yyyy", "yyyy"}
-                );
+                        "dd.MM.yyyy", "dd.MM.yy", "dd/MM/yyyy", "dd/MM/yy", "dd-MM-yyyy", "dd-MMM-yyyy", "yyyy-MM-dd", "yyyy/MM/dd", "yyyy-D", "MM/yyyy", "MMM yyyy", "MMMMM yyyy", "yyyy");
                 Calendar cal = Calendar.getInstance();
                 cal.setTime(date);
                 return cal;
@@ -364,9 +364,10 @@ public final class XmlUtils {
      * @param max   maximal value
      * @return parsed value or null, if the value is invalid
      */
+    @SuppressWarnings("unused")
     private static Integer parseInteger(String value, Integer min, Integer max) {
         String val = StringUtils.trimToNull(value);
-        return (val != null && StringUtils.isNumeric(val)) ?
+        return (StringUtils.isNumeric(val)) ?
                 Integer.valueOf(val) : null;
     }
 
@@ -581,6 +582,7 @@ public final class XmlUtils {
      * @param maxLength maximal length
      * @return parsed value or null, if the value is invalid
      */
+    @SuppressWarnings("unused")
     private static String parseText(String value, Integer minLength, Integer maxLength) {
         return StringUtils.trimToNull(value);
     }
@@ -760,7 +762,7 @@ public final class XmlUtils {
      *
      * @param value value to write
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     public static String printColor(Color value) {
         if (value == null) {
@@ -782,7 +784,7 @@ public final class XmlUtils {
      *
      * @param value value to write
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     public static String printDate(Calendar value) {
         //return (value!=null)? DatatypeConverter.printDate( value ): null;
@@ -799,7 +801,7 @@ public final class XmlUtils {
      * @param max       maximal value
      * @param precision number of decimal places
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     private static String printDecimal(BigDecimal value, BigDecimal min, BigDecimal max, int precision, boolean zeroIncluded) {
         if (value == null) {
@@ -828,7 +830,7 @@ public final class XmlUtils {
      *
      * @param value value to write
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     public static String printDecimal8_2(BigDecimal value) {
         return printDecimal(value, BigDecimal.ZERO, BigDecimal.TEN.pow(8), 2, false);
@@ -840,7 +842,7 @@ public final class XmlUtils {
      *
      * @param value value to write
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     public static String printDecimal13_2(BigDecimal value) {
         return printDecimal(value, BigDecimal.ZERO, BigDecimal.TEN.pow(13), 2, false);
@@ -852,7 +854,7 @@ public final class XmlUtils {
      *
      * @param value value to write
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     public static String printDecimalPositive(BigDecimal value) {
         return printDecimal(value, BigDecimal.ZERO, null, 3, false);
@@ -863,7 +865,7 @@ public final class XmlUtils {
      *
      * @param value value to write
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     public static String printEmail(String value) {
         String val = printText(value, 5, 300);
@@ -880,7 +882,7 @@ public final class XmlUtils {
      *
      * @param value value to write
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     public static String printFlatShareSearchSize(Integer value) {
         return printInteger(value, 2, 11);
@@ -892,7 +894,7 @@ public final class XmlUtils {
      *
      * @param value value to write
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     public static String printFloorNr(Integer value) {
         return printInteger(value, -1, null);
@@ -904,7 +906,7 @@ public final class XmlUtils {
      *
      * @param value value to write
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     public static String printGroupNr(Integer value) {
         return printInteger(value, 0, 2147483647);
@@ -917,7 +919,7 @@ public final class XmlUtils {
      * @param min   minimal value
      * @param max   maximal value
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     private static String printInteger(Integer value, Integer min, Integer max) {
         if (value == null) {
@@ -941,7 +943,7 @@ public final class XmlUtils {
      *
      * @param value value to write
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     public static String printInteger9Positive(Integer value) {
         return printInteger(value, 1, 9);
@@ -953,7 +955,7 @@ public final class XmlUtils {
      *
      * @param value value to write
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     public static String printInteger99(Integer value) {
         return printInteger(value, 0, 99);
@@ -965,7 +967,7 @@ public final class XmlUtils {
      *
      * @param value value to write
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     public static String printInteger999(Integer value) {
         return printInteger(value, 0, 999);
@@ -977,7 +979,7 @@ public final class XmlUtils {
      *
      * @param value value to write
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     public static String printInteger9999(Integer value) {
         return printInteger(value, 0, 9999);
@@ -989,7 +991,7 @@ public final class XmlUtils {
      *
      * @param value value to write
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     public static String printInteger9999Positive(Integer value) {
         return printInteger(value, 1, 9999);
@@ -1001,7 +1003,7 @@ public final class XmlUtils {
      *
      * @param value value to write
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     public static String printInteger99999(Integer value) {
         return printInteger(value, 0, 99999);
@@ -1013,7 +1015,7 @@ public final class XmlUtils {
      *
      * @param value value to write
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     public static String printLatitude(BigDecimal value) {
         return printDecimal(value, new BigDecimal("-90"), new BigDecimal("90"), 10, false);
@@ -1025,7 +1027,7 @@ public final class XmlUtils {
      *
      * @param value value to write
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     public static String printLongitude(BigDecimal value) {
         return printDecimal(value, new BigDecimal("-180"), new BigDecimal("180"), 10, false);
@@ -1037,7 +1039,7 @@ public final class XmlUtils {
      *
      * @param value value to write
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     public static String printNonEmptyText(String value) {
         return printText(value, 1, null);
@@ -1049,7 +1051,7 @@ public final class XmlUtils {
      *
      * @param value value to write
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     public static String printPassword(String value) {
         return printText(value, 5, 40);
@@ -1061,7 +1063,7 @@ public final class XmlUtils {
      *
      * @param value value to write
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     public static String printPercent(Integer value) {
         return printInteger(value, 0, 99);
@@ -1073,7 +1075,7 @@ public final class XmlUtils {
      *
      * @param value value to write
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     public static String printPhoneNumber(String value) {
         String val = StringUtils.trimToNull(value);
@@ -1092,11 +1094,11 @@ public final class XmlUtils {
      *
      * @param value value to write
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     public static String printPhoneNumberAreaCode(String value) {
         String val = StringUtils.trimToNull(value);
-        if (val == null || !StringUtils.isNumericSpace(val)) {
+        if (!StringUtils.isNumericSpace(val)) {
             throw new IllegalArgumentException(
                     "The provided area phone code '" + value + "' is invalid!");
         }
@@ -1116,7 +1118,7 @@ public final class XmlUtils {
      *
      * @param value value to write
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     public static String printPhoneNumberCountryCode(String value) {
         String val = StringUtils.trimToNull(value);
@@ -1143,7 +1145,7 @@ public final class XmlUtils {
      *
      * @param value value to write
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     public static String printPhoneNumberSubscriber(String value) {
         String val = StringUtils.trimToNull(value);
@@ -1178,7 +1180,7 @@ public final class XmlUtils {
      *
      * @param value value to write
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     public static String printPriceMultiplier(BigDecimal value) {
         return printDecimal(value, BigDecimal.ZERO, BigDecimal.TEN.pow(2), 1, true);
@@ -1190,7 +1192,7 @@ public final class XmlUtils {
      *
      * @param value value to write
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     public static String printRoomNr(BigDecimal value) {
         return printDecimal(value, new BigDecimal("0.49"), BigDecimal.TEN.pow(4), 2, false);
@@ -1202,7 +1204,7 @@ public final class XmlUtils {
      *
      * @param value value to write
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     public static String printRoomNrForBaseHouse(BigDecimal value) {
         return printDecimal(value, BigDecimal.ZERO, BigDecimal.TEN.pow(3), 1, true);
@@ -1215,7 +1217,7 @@ public final class XmlUtils {
      * @param minLength minimal length
      * @param maxLength maximal length
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     private static String printText(String value, Integer minLength, Integer maxLength) {
         String val = StringUtils.trimToNull(value);
@@ -1231,7 +1233,7 @@ public final class XmlUtils {
 
         // replace <br> with line breaks
         Matcher m = BR_TAG_PATTERN.matcher(val);
-        val = StringUtils.trimToEmpty(m.replaceAll(SystemUtils.LINE_SEPARATOR));
+        val = StringUtils.trimToEmpty(m.replaceAll(System.lineSeparator()));
 
         // strip any other html code
         m = ANY_TAG_PATTERN.matcher(val);
@@ -1249,7 +1251,7 @@ public final class XmlUtils {
      *
      * @param value value to write
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     public static String printText15(String value) {
         return printText(value, null, 15);
@@ -1261,7 +1263,7 @@ public final class XmlUtils {
      *
      * @param value value to write
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     public static String printText16(String value) {
         return printText(value, null, 16);
@@ -1273,7 +1275,7 @@ public final class XmlUtils {
      *
      * @param value value to write
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     public static String printText18(String value) {
         return printText(value, null, 18);
@@ -1285,7 +1287,7 @@ public final class XmlUtils {
      *
      * @param value value to write
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     public static String printText20(String value) {
         return printText(value, null, 20);
@@ -1297,7 +1299,7 @@ public final class XmlUtils {
      *
      * @param value value to write
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     public static String printText30(String value) {
         return printText(value, null, 30);
@@ -1309,7 +1311,7 @@ public final class XmlUtils {
      *
      * @param value value to write
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     public static String printText40(String value) {
         return printText(value, null, 40);
@@ -1321,7 +1323,7 @@ public final class XmlUtils {
      *
      * @param value value to write
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     public static String printText50(String value) {
         return printText(value, null, 50);
@@ -1333,7 +1335,7 @@ public final class XmlUtils {
      *
      * @param value value to write
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     public static String printText80(String value) {
         return printText(value, null, 80);
@@ -1345,7 +1347,7 @@ public final class XmlUtils {
      *
      * @param value value to write
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     public static String printText100(String value) {
         return printText(value, null, 100);
@@ -1357,7 +1359,7 @@ public final class XmlUtils {
      *
      * @param value value to write
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     public static String printText1000(String value) {
         return printText(value, null, 1000);
@@ -1369,7 +1371,7 @@ public final class XmlUtils {
      *
      * @param value value to write
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     public static String printText1800(String value) {
         return printText(value, null, 1800);
@@ -1381,7 +1383,7 @@ public final class XmlUtils {
      *
      * @param value value to write
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     public static String printText3999(String value) {
         return printText(value, null, 3999);
@@ -1393,7 +1395,7 @@ public final class XmlUtils {
      *
      * @param value value to write
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     public static String printThermalCharacteristic(BigDecimal value) {
         return printDecimal(value, BigDecimal.ZERO, new BigDecimal("2000"), 2, false);
@@ -1404,7 +1406,7 @@ public final class XmlUtils {
      *
      * @param value value to write
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     public static String printUri(URI value) {
         if (value == null) {
@@ -1420,7 +1422,7 @@ public final class XmlUtils {
      *
      * @param value value to write
      * @return XML string
-     * @throws IllegalArgumentException if a validation error occured
+     * @throws IllegalArgumentException if a validation error occurred
      */
     public static String printYear(Integer value) {
         return printInteger(value, 1000, 9999);
@@ -1452,7 +1454,7 @@ public final class XmlUtils {
      *
      * @param attachment object to write
      * @param output     stream, where the XML is written to
-     * @throws JAXBException if an error occured during XML creation
+     * @throws JAXBException if an error occurred during XML creation
      */
     public static void writeXml(Attachment attachment, OutputStream output) throws JAXBException {
         writeXml(attachment, DEFAULT_ENCODING, true, output);
@@ -1470,8 +1472,9 @@ public final class XmlUtils {
      * @param attachment object to write
      * @param encoding   encoding of generated XML output
      * @param output     stream, where the XML is written to
-     * @throws JAXBException if an error occured during XML creation
+     * @throws JAXBException if an error occurred during XML creation
      */
+    @SuppressWarnings("unused")
     public static void writeXml(Attachment attachment, String encoding, OutputStream output) throws JAXBException {
         writeXml(attachment, encoding, true, output);
     }
@@ -1489,7 +1492,7 @@ public final class XmlUtils {
      * @param encoding    encoding of generated XML output
      * @param prettyPrint enable pretty printing for generated XML output
      * @param output      stream, where the XML is written to
-     * @throws JAXBException if an error occured during XML creation
+     * @throws JAXBException if an error occurred during XML creation
      */
     public static void writeXml(Attachment attachment, String encoding, boolean prettyPrint, OutputStream output) throws JAXBException {
         writeXml(attachment, createMarshaller(encoding, prettyPrint), output);
@@ -1507,7 +1510,7 @@ public final class XmlUtils {
      * @param attachment object to write
      * @param marshaller marshaller, that is used for XML generation
      * @param output     stream, where the XML is written to
-     * @throws JAXBException if an error occured during XML creation
+     * @throws JAXBException if an error occurred during XML creation
      */
     public static void writeXml(Attachment attachment, Marshaller marshaller, OutputStream output) throws JAXBException {
         final org.openestate.is24.restapi.xml.common.ObjectFactory factory =
@@ -1535,8 +1538,9 @@ public final class XmlUtils {
      *
      * @param city   object to write
      * @param output stream, where the XML is written to
-     * @throws JAXBException if an error occured during XML creation
+     * @throws JAXBException if an error occurred during XML creation
      */
+    @SuppressWarnings("unused")
     public static void writeXml(City city, OutputStream output) throws JAXBException {
         writeXml(city, DEFAULT_ENCODING, true, output);
     }
@@ -1553,8 +1557,9 @@ public final class XmlUtils {
      * @param city     object to write
      * @param encoding encoding of generated XML output
      * @param output   stream, where the XML is written to
-     * @throws JAXBException if an error occured during XML creation
+     * @throws JAXBException if an error occurred during XML creation
      */
+    @SuppressWarnings("unused")
     public static void writeXml(City city, String encoding, OutputStream output) throws JAXBException {
         writeXml(city, encoding, true, output);
     }
@@ -1572,7 +1577,7 @@ public final class XmlUtils {
      * @param encoding    encoding of generated XML output
      * @param prettyPrint enable pretty printing for generated XML output
      * @param output      stream, where the XML is written to
-     * @throws JAXBException if an error occured during XML creation
+     * @throws JAXBException if an error occurred during XML creation
      */
     public static void writeXml(City city, String encoding, boolean prettyPrint, OutputStream output) throws JAXBException {
         writeXml(city, createMarshaller(encoding, prettyPrint), output);
@@ -1590,7 +1595,7 @@ public final class XmlUtils {
      * @param city       object to write
      * @param marshaller marshaller, that is used for XML generation
      * @param output     stream, where the XML is written to
-     * @throws JAXBException if an error occured during XML creation
+     * @throws JAXBException if an error occurred during XML creation
      */
     public static void writeXml(City city, Marshaller marshaller, OutputStream output) throws JAXBException {
         final org.openestate.is24.restapi.xml.gis.ObjectFactory factory =
@@ -1618,8 +1623,9 @@ public final class XmlUtils {
      *
      * @param continent object to write
      * @param output    stream, where the XML is written to
-     * @throws JAXBException if an error occured during XML creation
+     * @throws JAXBException if an error occurred during XML creation
      */
+    @SuppressWarnings("unused")
     public static void writeXml(Continent continent, OutputStream output) throws JAXBException {
         writeXml(continent, DEFAULT_ENCODING, true, output);
     }
@@ -1636,8 +1642,9 @@ public final class XmlUtils {
      * @param continent object to write
      * @param encoding  encoding of generated XML output
      * @param output    stream, where the XML is written to
-     * @throws JAXBException if an error occured during XML creation
+     * @throws JAXBException if an error occurred during XML creation
      */
+    @SuppressWarnings("unused")
     public static void writeXml(Continent continent, String encoding, OutputStream output) throws JAXBException {
         writeXml(continent, encoding, true, output);
     }
@@ -1655,7 +1662,7 @@ public final class XmlUtils {
      * @param encoding    encoding of generated XML output
      * @param prettyPrint enable pretty printing for generated XML output
      * @param output      stream, where the XML is written to
-     * @throws JAXBException if an error occured during XML creation
+     * @throws JAXBException if an error occurred during XML creation
      */
     public static void writeXml(Continent continent, String encoding, boolean prettyPrint, OutputStream output) throws JAXBException {
         writeXml(continent, createMarshaller(encoding, prettyPrint), output);
@@ -1673,7 +1680,7 @@ public final class XmlUtils {
      * @param continent  object to write
      * @param marshaller marshaller, that is used for XML generation
      * @param output     stream, where the XML is written to
-     * @throws JAXBException if an error occured during XML creation
+     * @throws JAXBException if an error occurred during XML creation
      */
     public static void writeXml(Continent continent, Marshaller marshaller, OutputStream output) throws JAXBException {
         final org.openestate.is24.restapi.xml.gis.ObjectFactory factory =
@@ -1701,8 +1708,9 @@ public final class XmlUtils {
      *
      * @param country object to write
      * @param output  stream, where the XML is written to
-     * @throws JAXBException if an error occured during XML creation
+     * @throws JAXBException if an error occurred during XML creation
      */
+    @SuppressWarnings("unused")
     public static void writeXml(Country country, OutputStream output) throws JAXBException {
         writeXml(country, DEFAULT_ENCODING, true, output);
     }
@@ -1719,8 +1727,9 @@ public final class XmlUtils {
      * @param country  object to write
      * @param encoding encoding of generated XML output
      * @param output   stream, where the XML is written to
-     * @throws JAXBException if an error occured during XML creation
+     * @throws JAXBException if an error occurred during XML creation
      */
+    @SuppressWarnings("unused")
     public static void writeXml(Country country, String encoding, OutputStream output) throws JAXBException {
         writeXml(country, encoding, true, output);
     }
@@ -1738,7 +1747,7 @@ public final class XmlUtils {
      * @param encoding    encoding of generated XML output
      * @param prettyPrint enable pretty printing for generated XML output
      * @param output      stream, where the XML is written to
-     * @throws JAXBException if an error occured during XML creation
+     * @throws JAXBException if an error occurred during XML creation
      */
     public static void writeXml(Country country, String encoding, boolean prettyPrint, OutputStream output) throws JAXBException {
         writeXml(country, createMarshaller(encoding, prettyPrint), output);
@@ -1756,7 +1765,7 @@ public final class XmlUtils {
      * @param country    object to write
      * @param marshaller marshaller, that is used for XML generation
      * @param output     stream, where the XML is written to
-     * @throws JAXBException if an error occured during XML creation
+     * @throws JAXBException if an error occurred during XML creation
      */
     public static void writeXml(Country country, Marshaller marshaller, OutputStream output) throws JAXBException {
         final org.openestate.is24.restapi.xml.gis.ObjectFactory factory =
@@ -1784,8 +1793,9 @@ public final class XmlUtils {
      *
      * @param publishing object to write
      * @param output     stream, where the XML is written to
-     * @throws JAXBException if an error occured during XML creation
+     * @throws JAXBException if an error occurred during XML creation
      */
+    @SuppressWarnings("unused")
     public static void writeXml(PublishObject publishing, OutputStream output) throws JAXBException {
         writeXml(publishing, DEFAULT_ENCODING, true, output);
     }
@@ -1802,8 +1812,9 @@ public final class XmlUtils {
      * @param publishing object to write
      * @param encoding   encoding of generated XML output
      * @param output     stream, where the XML is written to
-     * @throws JAXBException if an error occured during XML creation
+     * @throws JAXBException if an error occurred during XML creation
      */
+    @SuppressWarnings("unused")
     public static void writeXml(PublishObject publishing, String encoding, OutputStream output) throws JAXBException {
         writeXml(publishing, encoding, true, output);
     }
@@ -1821,7 +1832,7 @@ public final class XmlUtils {
      * @param encoding    encoding of generated XML output
      * @param prettyPrint enable pretty printing for generated XML output
      * @param output      stream, where the XML is written to
-     * @throws JAXBException if an error occured during XML creation
+     * @throws JAXBException if an error occurred during XML creation
      */
     public static void writeXml(PublishObject publishing, String encoding, boolean prettyPrint, OutputStream output) throws JAXBException {
         writeXml(publishing, createMarshaller(encoding, prettyPrint), output);
@@ -1839,7 +1850,7 @@ public final class XmlUtils {
      * @param publishing object to write
      * @param marshaller marshaller, that is used for XML generation
      * @param output     stream, where the XML is written to
-     * @throws JAXBException if an error occured during XML creation
+     * @throws JAXBException if an error occurred during XML creation
      */
     public static void writeXml(PublishObject publishing, Marshaller marshaller, OutputStream output) throws JAXBException {
         final org.openestate.is24.restapi.xml.common.ObjectFactory factory =
@@ -1867,8 +1878,9 @@ public final class XmlUtils {
      *
      * @param quarter object to write
      * @param output  stream, where the XML is written to
-     * @throws JAXBException if an error occured during XML creation
+     * @throws JAXBException if an error occurred during XML creation
      */
+    @SuppressWarnings("unused")
     public static void writeXml(Quarter quarter, OutputStream output) throws JAXBException {
         writeXml(quarter, DEFAULT_ENCODING, true, output);
     }
@@ -1885,8 +1897,9 @@ public final class XmlUtils {
      * @param quarter  object to write
      * @param encoding encoding of generated XML output
      * @param output   stream, where the XML is written to
-     * @throws JAXBException if an error occured during XML creation
+     * @throws JAXBException if an error occurred during XML creation
      */
+    @SuppressWarnings("unused")
     public static void writeXml(Quarter quarter, String encoding, OutputStream output) throws JAXBException {
         writeXml(quarter, encoding, true, output);
     }
@@ -1904,7 +1917,7 @@ public final class XmlUtils {
      * @param encoding    encoding of generated XML output
      * @param prettyPrint enable pretty printing for generated XML output
      * @param output      stream, where the XML is written to
-     * @throws JAXBException if an error occured during XML creation
+     * @throws JAXBException if an error occurred during XML creation
      */
     public static void writeXml(Quarter quarter, String encoding, boolean prettyPrint, OutputStream output) throws JAXBException {
         writeXml(quarter, createMarshaller(encoding, prettyPrint), output);
@@ -1922,7 +1935,7 @@ public final class XmlUtils {
      * @param quarter    object to write
      * @param marshaller marshaller, that is used for XML generation
      * @param output     stream, where the XML is written to
-     * @throws JAXBException if an error occured during XML creation
+     * @throws JAXBException if an error occurred during XML creation
      */
     public static void writeXml(Quarter quarter, Marshaller marshaller, OutputStream output) throws JAXBException {
         final org.openestate.is24.restapi.xml.gis.ObjectFactory factory =
@@ -1950,7 +1963,7 @@ public final class XmlUtils {
      *
      * @param contact object to write
      * @param output  stream, where the XML is written to
-     * @throws JAXBException if an error occured during XML creation
+     * @throws JAXBException if an error occurred during XML creation
      */
     public static void writeXml(RealtorContactDetails contact, OutputStream output) throws JAXBException {
         writeXml(contact, DEFAULT_ENCODING, true, output);
@@ -1968,8 +1981,9 @@ public final class XmlUtils {
      * @param contact  object to write
      * @param encoding encoding of generated XML output
      * @param output   stream, where the XML is written to
-     * @throws JAXBException if an error occured during XML creation
+     * @throws JAXBException if an error occurred during XML creation
      */
+    @SuppressWarnings("unused")
     public static void writeXml(RealtorContactDetails contact, String encoding, OutputStream output) throws JAXBException {
         writeXml(contact, encoding, true, output);
     }
@@ -1987,7 +2001,7 @@ public final class XmlUtils {
      * @param encoding    encoding of generated XML output
      * @param prettyPrint enable pretty printing for generated XML output
      * @param output      stream, where the XML is written to
-     * @throws JAXBException if an error occured during XML creation
+     * @throws JAXBException if an error occurred during XML creation
      */
     public static void writeXml(RealtorContactDetails contact, String encoding, boolean prettyPrint, OutputStream output) throws JAXBException {
         writeXml(contact, createMarshaller(encoding, prettyPrint), output);
@@ -2005,7 +2019,7 @@ public final class XmlUtils {
      * @param contact    object to write
      * @param marshaller marshaller, that is used for XML generation
      * @param output     stream, where the XML is written to
-     * @throws JAXBException if an error occured during XML creation
+     * @throws JAXBException if an error occurred during XML creation
      */
     public static void writeXml(RealtorContactDetails contact, Marshaller marshaller, OutputStream output) throws JAXBException {
         final org.openestate.is24.restapi.xml.common.ObjectFactory factory =
@@ -2033,7 +2047,7 @@ public final class XmlUtils {
      *
      * @param realEstate object to write
      * @param output     stream, where the XML is written to
-     * @throws JAXBException if an error occured during XML creation
+     * @throws JAXBException if an error occurred during XML creation
      */
     public static void writeXml(RealEstate realEstate, OutputStream output) throws JAXBException {
         writeXml(realEstate, DEFAULT_ENCODING, true, output);
@@ -2051,8 +2065,9 @@ public final class XmlUtils {
      * @param realEstate object to write
      * @param encoding   encoding of generated XML output
      * @param output     stream, where the XML is written to
-     * @throws JAXBException if an error occured during XML creation
+     * @throws JAXBException if an error occurred during XML creation
      */
+    @SuppressWarnings("unused")
     public static void writeXml(RealEstate realEstate, String encoding, OutputStream output) throws JAXBException {
         writeXml(realEstate, encoding, true, output);
     }
@@ -2070,7 +2085,7 @@ public final class XmlUtils {
      * @param encoding    encoding of generated XML output
      * @param prettyPrint enable pretty printing for generated XML output
      * @param output      stream, where the XML is written to
-     * @throws JAXBException if an error occured during XML creation
+     * @throws JAXBException if an error occurred during XML creation
      */
     public static void writeXml(RealEstate realEstate, String encoding, boolean prettyPrint, OutputStream output) throws JAXBException {
         writeXml(realEstate, createMarshaller(encoding, prettyPrint), output);
@@ -2088,7 +2103,7 @@ public final class XmlUtils {
      * @param realEstate object to write
      * @param marshaller marshaller, that is used for XML generation
      * @param output     stream, where the XML is written to
-     * @throws JAXBException if an error occured during XML creation
+     * @throws JAXBException if an error occurred during XML creation
      */
     public static void writeXml(RealEstate realEstate, Marshaller marshaller, OutputStream output) throws JAXBException {
         final org.openestate.is24.restapi.xml.realestates.ObjectFactory factory =
@@ -2181,8 +2196,9 @@ public final class XmlUtils {
      *
      * @param region object to write
      * @param output stream, where the XML is written to
-     * @throws JAXBException if an error occured during XML creation
+     * @throws JAXBException if an error occurred during XML creation
      */
+    @SuppressWarnings("unused")
     public static void writeXml(Region region, OutputStream output) throws JAXBException {
         writeXml(region, DEFAULT_ENCODING, true, output);
     }
@@ -2199,8 +2215,9 @@ public final class XmlUtils {
      * @param region   object to write
      * @param encoding encoding of generated XML output
      * @param output   stream, where the XML is written to
-     * @throws JAXBException if an error occured during XML creation
+     * @throws JAXBException if an error occurred during XML creation
      */
+    @SuppressWarnings("unused")
     public static void writeXml(Region region, String encoding, OutputStream output) throws JAXBException {
         writeXml(region, encoding, true, output);
     }
@@ -2218,7 +2235,7 @@ public final class XmlUtils {
      * @param encoding    encoding of generated XML output
      * @param prettyPrint enable pretty printing for generated XML output
      * @param output      stream, where the XML is written to
-     * @throws JAXBException if an error occured during XML creation
+     * @throws JAXBException if an error occurred during XML creation
      */
     public static void writeXml(Region region, String encoding, boolean prettyPrint, OutputStream output) throws JAXBException {
         writeXml(region, createMarshaller(encoding, prettyPrint), output);
@@ -2236,7 +2253,7 @@ public final class XmlUtils {
      * @param region     object to write
      * @param marshaller marshaller, that is used for XML generation
      * @param output     stream, where the XML is written to
-     * @throws JAXBException if an error occured during XML creation
+     * @throws JAXBException if an error occurred during XML creation
      */
     public static void writeXml(Region region, Marshaller marshaller, OutputStream output) throws JAXBException {
         final org.openestate.is24.restapi.xml.gis.ObjectFactory factory =

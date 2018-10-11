@@ -25,11 +25,12 @@ import org.slf4j.LoggerFactory;
  * Exception for failed Webservice requests.
  * <p>
  * This exception is thrown, when a request to the Webservice failed. The
- * exception holds further informations about the failed request.
+ * exception holds further information about the failed request.
  *
  * @author Andreas Rudolph
  * @since 0.1
  */
+@SuppressWarnings("WeakerAccess")
 public class RequestFailedException extends Exception {
     private final static long serialVersionUID = -5913145712963169005L;
     @SuppressWarnings("unused")
@@ -94,6 +95,7 @@ public class RequestFailedException extends Exception {
         this.responseMessages = messages;
     }
 
+    @SuppressWarnings("unused")
     public RequestFailedException(Response response, String message, Throwable cause) {
         super(message, cause);
         this.statusCode = response.statusCode;
@@ -120,6 +122,7 @@ public class RequestFailedException extends Exception {
      * @return unique identifier
      * @since 0.2.2
      */
+    @SuppressWarnings("unused")
     public String getRequestRefNumber() {
         return requestRefNumber;
     }
@@ -131,6 +134,7 @@ public class RequestFailedException extends Exception {
      * @return messages
      * @since 0.2.2
      */
+    @SuppressWarnings("unused")
     public Messages getResponseMessages() {
         return responseMessages;
     }
@@ -141,6 +145,7 @@ public class RequestFailedException extends Exception {
      * @return status code
      * @since 0.2.2
      */
+    @SuppressWarnings("unused")
     public int getStatusCode() {
         return statusCode;
     }
@@ -151,6 +156,7 @@ public class RequestFailedException extends Exception {
      * @return status message
      * @since 0.2.2
      */
+    @SuppressWarnings("unused")
     public String getStatusMessage() {
         return statusMessage;
     }

@@ -33,6 +33,8 @@ import org.openestate.is24.restapi.xml.gis.Continents;
 import org.openestate.is24.restapi.xml.gis.Countries;
 import org.openestate.is24.restapi.xml.gis.Quarters;
 import org.openestate.is24.restapi.xml.gis.Regions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This example illustrates access to the Geo Information Service API.
@@ -40,6 +42,8 @@ import org.openestate.is24.restapi.xml.gis.Regions;
  * @author Andreas Rudolph
  */
 public class GISExample {
+    @SuppressWarnings("unused")
+    private final static Logger LOGGER = LoggerFactory.getLogger(GISExample.class);
     private final static String WEBSERVICE_URL = AbstractClient.LIVE_API;
     private final static String CONSUMER_KEY = "my consumer key";
     private final static String CONSUMER_SECRET = "my consumer secret";
