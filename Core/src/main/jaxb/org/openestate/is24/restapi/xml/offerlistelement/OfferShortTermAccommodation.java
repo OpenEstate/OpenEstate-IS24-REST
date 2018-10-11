@@ -4,6 +4,7 @@ package org.openestate.is24.restapi.xml.offerlistelement;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Calendar;
+import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -30,7 +31,7 @@ import org.openestate.is24.restapi.xml.common.ShortTermAccommodationType;
 
 /**
  * Eigenschaften f\u00fcr den Wohnen auf Zeit Immobilientyp.
- *       
+ *             
  * 
  * <p>Java class for OfferShortTermAccommodation complex type.
  * 
@@ -60,32 +61,42 @@ import org.openestate.is24.restapi.xml.common.ShortTermAccommodationType;
     "shortTermAccomodationType",
     "courtage"
 })
+@Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
 public class OfferShortTermAccommodation
     extends OfferRealEstateForList
     implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(required = true)
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Price price;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "double")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected BigDecimal livingSpace;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "double")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected BigDecimal numberOfRooms;
     @XmlElement(required = true, type = String.class)
     @XmlJavaTypeAdapter(Adapter3 .class)
     @XmlSchemaType(name = "date")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Calendar startRentalDate;
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Boolean balcony;
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Boolean garden;
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Boolean nonSmoker;
     @XmlElement(required = true)
     @XmlSchemaType(name = "string")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected ShortTermAccommodationType shortTermAccomodationType;
     @XmlElement(required = true)
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected CourtageInfo courtage;
 
     /**
@@ -96,6 +107,7 @@ public class OfferShortTermAccommodation
      *     {@link Price }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Price getPrice() {
         return price;
     }
@@ -108,6 +120,7 @@ public class OfferShortTermAccommodation
      *     {@link Price }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setPrice(Price value) {
         this.price = value;
     }
@@ -120,6 +133,7 @@ public class OfferShortTermAccommodation
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public BigDecimal getLivingSpace() {
         return livingSpace;
     }
@@ -132,6 +146,7 @@ public class OfferShortTermAccommodation
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setLivingSpace(BigDecimal value) {
         this.livingSpace = value;
     }
@@ -144,6 +159,7 @@ public class OfferShortTermAccommodation
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public BigDecimal getNumberOfRooms() {
         return numberOfRooms;
     }
@@ -156,6 +172,7 @@ public class OfferShortTermAccommodation
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setNumberOfRooms(BigDecimal value) {
         this.numberOfRooms = value;
     }
@@ -168,6 +185,7 @@ public class OfferShortTermAccommodation
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Calendar getStartRentalDate() {
         return startRentalDate;
     }
@@ -180,6 +198,7 @@ public class OfferShortTermAccommodation
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setStartRentalDate(Calendar value) {
         this.startRentalDate = value;
     }
@@ -192,7 +211,8 @@ public class OfferShortTermAccommodation
      *     {@link Boolean }
      *     
      */
-    public Boolean isBalcony() {
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    public Boolean getBalcony() {
         return balcony;
     }
 
@@ -204,6 +224,7 @@ public class OfferShortTermAccommodation
      *     {@link Boolean }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setBalcony(Boolean value) {
         this.balcony = value;
     }
@@ -216,7 +237,8 @@ public class OfferShortTermAccommodation
      *     {@link Boolean }
      *     
      */
-    public Boolean isGarden() {
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    public Boolean getGarden() {
         return garden;
     }
 
@@ -228,6 +250,7 @@ public class OfferShortTermAccommodation
      *     {@link Boolean }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setGarden(Boolean value) {
         this.garden = value;
     }
@@ -240,7 +263,8 @@ public class OfferShortTermAccommodation
      *     {@link Boolean }
      *     
      */
-    public Boolean isNonSmoker() {
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    public Boolean getNonSmoker() {
         return nonSmoker;
     }
 
@@ -252,6 +276,7 @@ public class OfferShortTermAccommodation
      *     {@link Boolean }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setNonSmoker(Boolean value) {
         this.nonSmoker = value;
     }
@@ -264,6 +289,7 @@ public class OfferShortTermAccommodation
      *     {@link ShortTermAccommodationType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public ShortTermAccommodationType getShortTermAccomodationType() {
         return shortTermAccomodationType;
     }
@@ -276,6 +302,7 @@ public class OfferShortTermAccommodation
      *     {@link ShortTermAccommodationType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setShortTermAccomodationType(ShortTermAccommodationType value) {
         this.shortTermAccomodationType = value;
     }
@@ -288,6 +315,7 @@ public class OfferShortTermAccommodation
      *     {@link CourtageInfo }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public CourtageInfo getCourtage() {
         return courtage;
     }
@@ -300,10 +328,12 @@ public class OfferShortTermAccommodation
      *     {@link CourtageInfo }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setCourtage(CourtageInfo value) {
         this.courtage = value;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public String toString() {
         final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
@@ -311,6 +341,7 @@ public class OfferShortTermAccommodation
         return buffer.toString();
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
@@ -318,6 +349,7 @@ public class OfferShortTermAccommodation
         return buffer;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         super.appendFields(locator, buffer, strategy);
         {
@@ -342,17 +374,17 @@ public class OfferShortTermAccommodation
         }
         {
             Boolean theBalcony;
-            theBalcony = this.isBalcony();
+            theBalcony = this.getBalcony();
             strategy.appendField(locator, this, "balcony", buffer, theBalcony, (this.balcony!= null));
         }
         {
             Boolean theGarden;
-            theGarden = this.isGarden();
+            theGarden = this.getGarden();
             strategy.appendField(locator, this, "garden", buffer, theGarden, (this.garden!= null));
         }
         {
             Boolean theNonSmoker;
-            theNonSmoker = this.isNonSmoker();
+            theNonSmoker = this.getNonSmoker();
             strategy.appendField(locator, this, "nonSmoker", buffer, theNonSmoker, (this.nonSmoker!= null));
         }
         {
@@ -368,15 +400,18 @@ public class OfferShortTermAccommodation
         return buffer;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object clone() {
         return copyTo(createNewInstance());
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object copyTo(Object target) {
         final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         super.copyTo(locator, draftCopy, strategy);
@@ -438,7 +473,7 @@ public class OfferShortTermAccommodation
                 Boolean balconyShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.balcony!= null));
                 if (balconyShouldBeCopiedAndSet == Boolean.TRUE) {
                     Boolean sourceBalcony;
-                    sourceBalcony = this.isBalcony();
+                    sourceBalcony = this.getBalcony();
                     Boolean copyBalcony = ((Boolean) strategy.copy(LocatorUtils.property(locator, "balcony", sourceBalcony), sourceBalcony, (this.balcony!= null)));
                     copy.setBalcony(copyBalcony);
                 } else {
@@ -451,7 +486,7 @@ public class OfferShortTermAccommodation
                 Boolean gardenShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.garden!= null));
                 if (gardenShouldBeCopiedAndSet == Boolean.TRUE) {
                     Boolean sourceGarden;
-                    sourceGarden = this.isGarden();
+                    sourceGarden = this.getGarden();
                     Boolean copyGarden = ((Boolean) strategy.copy(LocatorUtils.property(locator, "garden", sourceGarden), sourceGarden, (this.garden!= null)));
                     copy.setGarden(copyGarden);
                 } else {
@@ -464,7 +499,7 @@ public class OfferShortTermAccommodation
                 Boolean nonSmokerShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.nonSmoker!= null));
                 if (nonSmokerShouldBeCopiedAndSet == Boolean.TRUE) {
                     Boolean sourceNonSmoker;
-                    sourceNonSmoker = this.isNonSmoker();
+                    sourceNonSmoker = this.getNonSmoker();
                     Boolean copyNonSmoker = ((Boolean) strategy.copy(LocatorUtils.property(locator, "nonSmoker", sourceNonSmoker), sourceNonSmoker, (this.nonSmoker!= null)));
                     copy.setNonSmoker(copyNonSmoker);
                 } else {
@@ -503,10 +538,12 @@ public class OfferShortTermAccommodation
         return draftCopy;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object createNewInstance() {
         return new OfferShortTermAccommodation();
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
@@ -556,27 +593,27 @@ public class OfferShortTermAccommodation
         }
         {
             Boolean lhsBalcony;
-            lhsBalcony = this.isBalcony();
+            lhsBalcony = this.getBalcony();
             Boolean rhsBalcony;
-            rhsBalcony = that.isBalcony();
+            rhsBalcony = that.getBalcony();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "balcony", lhsBalcony), LocatorUtils.property(thatLocator, "balcony", rhsBalcony), lhsBalcony, rhsBalcony, (this.balcony!= null), (that.balcony!= null))) {
                 return false;
             }
         }
         {
             Boolean lhsGarden;
-            lhsGarden = this.isGarden();
+            lhsGarden = this.getGarden();
             Boolean rhsGarden;
-            rhsGarden = that.isGarden();
+            rhsGarden = that.getGarden();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "garden", lhsGarden), LocatorUtils.property(thatLocator, "garden", rhsGarden), lhsGarden, rhsGarden, (this.garden!= null), (that.garden!= null))) {
                 return false;
             }
         }
         {
             Boolean lhsNonSmoker;
-            lhsNonSmoker = this.isNonSmoker();
+            lhsNonSmoker = this.getNonSmoker();
             Boolean rhsNonSmoker;
-            rhsNonSmoker = that.isNonSmoker();
+            rhsNonSmoker = that.getNonSmoker();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "nonSmoker", lhsNonSmoker), LocatorUtils.property(thatLocator, "nonSmoker", rhsNonSmoker), lhsNonSmoker, rhsNonSmoker, (this.nonSmoker!= null), (that.nonSmoker!= null))) {
                 return false;
             }
@@ -602,6 +639,7 @@ public class OfferShortTermAccommodation
         return true;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public boolean equals(Object object) {
         final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);

@@ -2,6 +2,7 @@
 package org.openestate.is24.restapi.xml.common;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
@@ -48,20 +49,28 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 @XmlType(name = "GeoInfoNodeCriteria", propOrder = {
 
 })
+@Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
 public class GeoInfoNodeCriteria implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected long continentId;
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected long countryId;
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Long regionId;
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Long cityId;
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Long districtId;
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected String label;
 
     /**
      * Gets the value of the continentId property.
      * 
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public long getContinentId() {
         return continentId;
     }
@@ -70,6 +79,7 @@ public class GeoInfoNodeCriteria implements Serializable, Cloneable, CopyTo2, Eq
      * Sets the value of the continentId property.
      * 
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setContinentId(long value) {
         this.continentId = value;
     }
@@ -78,6 +88,7 @@ public class GeoInfoNodeCriteria implements Serializable, Cloneable, CopyTo2, Eq
      * Gets the value of the countryId property.
      * 
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public long getCountryId() {
         return countryId;
     }
@@ -86,6 +97,7 @@ public class GeoInfoNodeCriteria implements Serializable, Cloneable, CopyTo2, Eq
      * Sets the value of the countryId property.
      * 
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setCountryId(long value) {
         this.countryId = value;
     }
@@ -98,6 +110,7 @@ public class GeoInfoNodeCriteria implements Serializable, Cloneable, CopyTo2, Eq
      *     {@link Long }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Long getRegionId() {
         return regionId;
     }
@@ -110,6 +123,7 @@ public class GeoInfoNodeCriteria implements Serializable, Cloneable, CopyTo2, Eq
      *     {@link Long }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setRegionId(Long value) {
         this.regionId = value;
     }
@@ -122,6 +136,7 @@ public class GeoInfoNodeCriteria implements Serializable, Cloneable, CopyTo2, Eq
      *     {@link Long }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Long getCityId() {
         return cityId;
     }
@@ -134,6 +149,7 @@ public class GeoInfoNodeCriteria implements Serializable, Cloneable, CopyTo2, Eq
      *     {@link Long }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setCityId(Long value) {
         this.cityId = value;
     }
@@ -146,6 +162,7 @@ public class GeoInfoNodeCriteria implements Serializable, Cloneable, CopyTo2, Eq
      *     {@link Long }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Long getDistrictId() {
         return districtId;
     }
@@ -158,6 +175,7 @@ public class GeoInfoNodeCriteria implements Serializable, Cloneable, CopyTo2, Eq
      *     {@link Long }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setDistrictId(Long value) {
         this.districtId = value;
     }
@@ -170,6 +188,7 @@ public class GeoInfoNodeCriteria implements Serializable, Cloneable, CopyTo2, Eq
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public String getLabel() {
         return label;
     }
@@ -182,10 +201,12 @@ public class GeoInfoNodeCriteria implements Serializable, Cloneable, CopyTo2, Eq
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setLabel(String value) {
         this.label = value;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public String toString() {
         final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
@@ -193,6 +214,7 @@ public class GeoInfoNodeCriteria implements Serializable, Cloneable, CopyTo2, Eq
         return buffer.toString();
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
@@ -200,6 +222,7 @@ public class GeoInfoNodeCriteria implements Serializable, Cloneable, CopyTo2, Eq
         return buffer;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             long theContinentId;
@@ -234,15 +257,18 @@ public class GeoInfoNodeCriteria implements Serializable, Cloneable, CopyTo2, Eq
         return buffer;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object clone() {
         return copyTo(createNewInstance());
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object copyTo(Object target) {
         final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof GeoInfoNodeCriteria) {
@@ -327,10 +353,12 @@ public class GeoInfoNodeCriteria implements Serializable, Cloneable, CopyTo2, Eq
         return draftCopy;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object createNewInstance() {
         return new GeoInfoNodeCriteria();
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
@@ -396,6 +424,7 @@ public class GeoInfoNodeCriteria implements Serializable, Cloneable, CopyTo2, Eq
         return true;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public boolean equals(Object object) {
         final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);

@@ -4,6 +4,7 @@ package org.openestate.is24.restapi.xml.realestates;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Calendar;
+import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -35,6 +36,7 @@ import org.openestate.is24.restapi.xml.common.YesNotApplicableType;
 
 /**
  * Eigenschaften f\u00fcr den Immobilientyp "Zwangsversteigerungsobjekte"
+ *             
  * 
  * <p>Java class for CompulsoryAuction complex type.
  * 
@@ -81,63 +83,87 @@ import org.openestate.is24.restapi.xml.common.YesNotApplicableType;
     "constructionYearUnknown",
     "customLowestBid"
 })
+@Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
 public class CompulsoryAuction
     extends RealEstate
     implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(required = true)
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Price marketValue;
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Price lowestBid;
     @XmlElement(defaultValue = "false")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Boolean recurrenceAppointment;
     @XmlElement(required = true, type = String.class)
     @XmlJavaTypeAdapter(Adapter3 .class)
     @XmlSchemaType(name = "date")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Calendar dateOfAuction;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter3 .class)
     @XmlSchemaType(name = "date")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Calendar lastChangeDate;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter3 .class)
     @XmlSchemaType(name = "date")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Calendar cancellationDate;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter3 .class)
     @XmlSchemaType(name = "date")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Calendar recordationDate;
     @XmlElement(required = true, type = String.class)
     @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "double")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected BigDecimal area;
     @XmlElement(required = true)
     @XmlSchemaType(name = "string")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected CompulsoryAuctionType auctionObjectType;
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected CountyCourt countyCourt;
     @XmlJavaTypeAdapter(Adapter6 .class)
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected String fileReferenceAtCountyCourt;
     @XmlJavaTypeAdapter(Adapter7 .class)
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected String numberOfFolio;
     @XmlElement(defaultValue = "false")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Boolean splittingAuction;
     @XmlJavaTypeAdapter(Adapter8 .class)
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected String owner;
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected EnergyPerformanceCertificate energyCertificate;
     @XmlSchemaType(name = "string")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected HeatingTypeEnev2014 heatingTypeEnev2014;
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected EnergySourcesEnev2014 energySourcesEnev2014;
     @XmlSchemaType(name = "string")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected BuildingEnergyRatingType buildingEnergyRatingType;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter9 .class)
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected BigDecimal thermalCharacteristic;
     @XmlSchemaType(name = "string")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected YesNotApplicableType energyConsumptionContainsWarmWater;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter10 .class)
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Integer constructionYear;
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Boolean constructionYearUnknown;
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Price customLowestBid;
 
     /**
@@ -148,6 +174,7 @@ public class CompulsoryAuction
      *     {@link Price }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Price getMarketValue() {
         return marketValue;
     }
@@ -160,6 +187,7 @@ public class CompulsoryAuction
      *     {@link Price }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setMarketValue(Price value) {
         this.marketValue = value;
     }
@@ -172,6 +200,7 @@ public class CompulsoryAuction
      *     {@link Price }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Price getLowestBid() {
         return lowestBid;
     }
@@ -184,6 +213,7 @@ public class CompulsoryAuction
      *     {@link Price }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setLowestBid(Price value) {
         this.lowestBid = value;
     }
@@ -196,7 +226,8 @@ public class CompulsoryAuction
      *     {@link Boolean }
      *     
      */
-    public Boolean isRecurrenceAppointment() {
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    public Boolean getRecurrenceAppointment() {
         return recurrenceAppointment;
     }
 
@@ -208,6 +239,7 @@ public class CompulsoryAuction
      *     {@link Boolean }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setRecurrenceAppointment(Boolean value) {
         this.recurrenceAppointment = value;
     }
@@ -220,6 +252,7 @@ public class CompulsoryAuction
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Calendar getDateOfAuction() {
         return dateOfAuction;
     }
@@ -232,6 +265,7 @@ public class CompulsoryAuction
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setDateOfAuction(Calendar value) {
         this.dateOfAuction = value;
     }
@@ -244,6 +278,7 @@ public class CompulsoryAuction
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Calendar getLastChangeDate() {
         return lastChangeDate;
     }
@@ -256,6 +291,7 @@ public class CompulsoryAuction
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setLastChangeDate(Calendar value) {
         this.lastChangeDate = value;
     }
@@ -268,6 +304,7 @@ public class CompulsoryAuction
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Calendar getCancellationDate() {
         return cancellationDate;
     }
@@ -280,6 +317,7 @@ public class CompulsoryAuction
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setCancellationDate(Calendar value) {
         this.cancellationDate = value;
     }
@@ -292,6 +330,7 @@ public class CompulsoryAuction
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Calendar getRecordationDate() {
         return recordationDate;
     }
@@ -304,6 +343,7 @@ public class CompulsoryAuction
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setRecordationDate(Calendar value) {
         this.recordationDate = value;
     }
@@ -316,6 +356,7 @@ public class CompulsoryAuction
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public BigDecimal getArea() {
         return area;
     }
@@ -328,6 +369,7 @@ public class CompulsoryAuction
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setArea(BigDecimal value) {
         this.area = value;
     }
@@ -340,6 +382,7 @@ public class CompulsoryAuction
      *     {@link CompulsoryAuctionType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public CompulsoryAuctionType getAuctionObjectType() {
         return auctionObjectType;
     }
@@ -352,6 +395,7 @@ public class CompulsoryAuction
      *     {@link CompulsoryAuctionType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setAuctionObjectType(CompulsoryAuctionType value) {
         this.auctionObjectType = value;
     }
@@ -364,6 +408,7 @@ public class CompulsoryAuction
      *     {@link CountyCourt }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public CountyCourt getCountyCourt() {
         return countyCourt;
     }
@@ -376,6 +421,7 @@ public class CompulsoryAuction
      *     {@link CountyCourt }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setCountyCourt(CountyCourt value) {
         this.countyCourt = value;
     }
@@ -388,6 +434,7 @@ public class CompulsoryAuction
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public String getFileReferenceAtCountyCourt() {
         return fileReferenceAtCountyCourt;
     }
@@ -400,6 +447,7 @@ public class CompulsoryAuction
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setFileReferenceAtCountyCourt(String value) {
         this.fileReferenceAtCountyCourt = value;
     }
@@ -412,6 +460,7 @@ public class CompulsoryAuction
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public String getNumberOfFolio() {
         return numberOfFolio;
     }
@@ -424,6 +473,7 @@ public class CompulsoryAuction
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setNumberOfFolio(String value) {
         this.numberOfFolio = value;
     }
@@ -436,7 +486,8 @@ public class CompulsoryAuction
      *     {@link Boolean }
      *     
      */
-    public Boolean isSplittingAuction() {
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    public Boolean getSplittingAuction() {
         return splittingAuction;
     }
 
@@ -448,6 +499,7 @@ public class CompulsoryAuction
      *     {@link Boolean }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setSplittingAuction(Boolean value) {
         this.splittingAuction = value;
     }
@@ -460,6 +512,7 @@ public class CompulsoryAuction
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public String getOwner() {
         return owner;
     }
@@ -472,6 +525,7 @@ public class CompulsoryAuction
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setOwner(String value) {
         this.owner = value;
     }
@@ -484,6 +538,7 @@ public class CompulsoryAuction
      *     {@link EnergyPerformanceCertificate }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public EnergyPerformanceCertificate getEnergyCertificate() {
         return energyCertificate;
     }
@@ -496,6 +551,7 @@ public class CompulsoryAuction
      *     {@link EnergyPerformanceCertificate }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setEnergyCertificate(EnergyPerformanceCertificate value) {
         this.energyCertificate = value;
     }
@@ -508,6 +564,7 @@ public class CompulsoryAuction
      *     {@link HeatingTypeEnev2014 }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public HeatingTypeEnev2014 getHeatingTypeEnev2014() {
         return heatingTypeEnev2014;
     }
@@ -520,6 +577,7 @@ public class CompulsoryAuction
      *     {@link HeatingTypeEnev2014 }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setHeatingTypeEnev2014(HeatingTypeEnev2014 value) {
         this.heatingTypeEnev2014 = value;
     }
@@ -532,6 +590,7 @@ public class CompulsoryAuction
      *     {@link EnergySourcesEnev2014 }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public EnergySourcesEnev2014 getEnergySourcesEnev2014() {
         return energySourcesEnev2014;
     }
@@ -544,6 +603,7 @@ public class CompulsoryAuction
      *     {@link EnergySourcesEnev2014 }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setEnergySourcesEnev2014(EnergySourcesEnev2014 value) {
         this.energySourcesEnev2014 = value;
     }
@@ -556,6 +616,7 @@ public class CompulsoryAuction
      *     {@link BuildingEnergyRatingType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public BuildingEnergyRatingType getBuildingEnergyRatingType() {
         return buildingEnergyRatingType;
     }
@@ -568,6 +629,7 @@ public class CompulsoryAuction
      *     {@link BuildingEnergyRatingType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setBuildingEnergyRatingType(BuildingEnergyRatingType value) {
         this.buildingEnergyRatingType = value;
     }
@@ -580,6 +642,7 @@ public class CompulsoryAuction
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public BigDecimal getThermalCharacteristic() {
         return thermalCharacteristic;
     }
@@ -592,6 +655,7 @@ public class CompulsoryAuction
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setThermalCharacteristic(BigDecimal value) {
         this.thermalCharacteristic = value;
     }
@@ -604,6 +668,7 @@ public class CompulsoryAuction
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public YesNotApplicableType getEnergyConsumptionContainsWarmWater() {
         return energyConsumptionContainsWarmWater;
     }
@@ -616,6 +681,7 @@ public class CompulsoryAuction
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setEnergyConsumptionContainsWarmWater(YesNotApplicableType value) {
         this.energyConsumptionContainsWarmWater = value;
     }
@@ -628,6 +694,7 @@ public class CompulsoryAuction
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Integer getConstructionYear() {
         return constructionYear;
     }
@@ -640,6 +707,7 @@ public class CompulsoryAuction
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setConstructionYear(Integer value) {
         this.constructionYear = value;
     }
@@ -652,7 +720,8 @@ public class CompulsoryAuction
      *     {@link Boolean }
      *     
      */
-    public Boolean isConstructionYearUnknown() {
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    public Boolean getConstructionYearUnknown() {
         return constructionYearUnknown;
     }
 
@@ -664,6 +733,7 @@ public class CompulsoryAuction
      *     {@link Boolean }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setConstructionYearUnknown(Boolean value) {
         this.constructionYearUnknown = value;
     }
@@ -676,6 +746,7 @@ public class CompulsoryAuction
      *     {@link Price }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Price getCustomLowestBid() {
         return customLowestBid;
     }
@@ -688,10 +759,12 @@ public class CompulsoryAuction
      *     {@link Price }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setCustomLowestBid(Price value) {
         this.customLowestBid = value;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public String toString() {
         final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
@@ -699,6 +772,7 @@ public class CompulsoryAuction
         return buffer.toString();
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
@@ -706,6 +780,7 @@ public class CompulsoryAuction
         return buffer;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         super.appendFields(locator, buffer, strategy);
         {
@@ -720,7 +795,7 @@ public class CompulsoryAuction
         }
         {
             Boolean theRecurrenceAppointment;
-            theRecurrenceAppointment = this.isRecurrenceAppointment();
+            theRecurrenceAppointment = this.getRecurrenceAppointment();
             strategy.appendField(locator, this, "recurrenceAppointment", buffer, theRecurrenceAppointment, (this.recurrenceAppointment!= null));
         }
         {
@@ -770,7 +845,7 @@ public class CompulsoryAuction
         }
         {
             Boolean theSplittingAuction;
-            theSplittingAuction = this.isSplittingAuction();
+            theSplittingAuction = this.getSplittingAuction();
             strategy.appendField(locator, this, "splittingAuction", buffer, theSplittingAuction, (this.splittingAuction!= null));
         }
         {
@@ -815,7 +890,7 @@ public class CompulsoryAuction
         }
         {
             Boolean theConstructionYearUnknown;
-            theConstructionYearUnknown = this.isConstructionYearUnknown();
+            theConstructionYearUnknown = this.getConstructionYearUnknown();
             strategy.appendField(locator, this, "constructionYearUnknown", buffer, theConstructionYearUnknown, (this.constructionYearUnknown!= null));
         }
         {
@@ -826,15 +901,18 @@ public class CompulsoryAuction
         return buffer;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object clone() {
         return copyTo(createNewInstance());
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object copyTo(Object target) {
         final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         super.copyTo(locator, draftCopy, strategy);
@@ -870,7 +948,7 @@ public class CompulsoryAuction
                 Boolean recurrenceAppointmentShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.recurrenceAppointment!= null));
                 if (recurrenceAppointmentShouldBeCopiedAndSet == Boolean.TRUE) {
                     Boolean sourceRecurrenceAppointment;
-                    sourceRecurrenceAppointment = this.isRecurrenceAppointment();
+                    sourceRecurrenceAppointment = this.getRecurrenceAppointment();
                     Boolean copyRecurrenceAppointment = ((Boolean) strategy.copy(LocatorUtils.property(locator, "recurrenceAppointment", sourceRecurrenceAppointment), sourceRecurrenceAppointment, (this.recurrenceAppointment!= null)));
                     copy.setRecurrenceAppointment(copyRecurrenceAppointment);
                 } else {
@@ -1000,7 +1078,7 @@ public class CompulsoryAuction
                 Boolean splittingAuctionShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.splittingAuction!= null));
                 if (splittingAuctionShouldBeCopiedAndSet == Boolean.TRUE) {
                     Boolean sourceSplittingAuction;
-                    sourceSplittingAuction = this.isSplittingAuction();
+                    sourceSplittingAuction = this.getSplittingAuction();
                     Boolean copySplittingAuction = ((Boolean) strategy.copy(LocatorUtils.property(locator, "splittingAuction", sourceSplittingAuction), sourceSplittingAuction, (this.splittingAuction!= null)));
                     copy.setSplittingAuction(copySplittingAuction);
                 } else {
@@ -1117,7 +1195,7 @@ public class CompulsoryAuction
                 Boolean constructionYearUnknownShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.constructionYearUnknown!= null));
                 if (constructionYearUnknownShouldBeCopiedAndSet == Boolean.TRUE) {
                     Boolean sourceConstructionYearUnknown;
-                    sourceConstructionYearUnknown = this.isConstructionYearUnknown();
+                    sourceConstructionYearUnknown = this.getConstructionYearUnknown();
                     Boolean copyConstructionYearUnknown = ((Boolean) strategy.copy(LocatorUtils.property(locator, "constructionYearUnknown", sourceConstructionYearUnknown), sourceConstructionYearUnknown, (this.constructionYearUnknown!= null)));
                     copy.setConstructionYearUnknown(copyConstructionYearUnknown);
                 } else {
@@ -1143,10 +1221,12 @@ public class CompulsoryAuction
         return draftCopy;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object createNewInstance() {
         return new CompulsoryAuction();
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
@@ -1178,9 +1258,9 @@ public class CompulsoryAuction
         }
         {
             Boolean lhsRecurrenceAppointment;
-            lhsRecurrenceAppointment = this.isRecurrenceAppointment();
+            lhsRecurrenceAppointment = this.getRecurrenceAppointment();
             Boolean rhsRecurrenceAppointment;
-            rhsRecurrenceAppointment = that.isRecurrenceAppointment();
+            rhsRecurrenceAppointment = that.getRecurrenceAppointment();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "recurrenceAppointment", lhsRecurrenceAppointment), LocatorUtils.property(thatLocator, "recurrenceAppointment", rhsRecurrenceAppointment), lhsRecurrenceAppointment, rhsRecurrenceAppointment, (this.recurrenceAppointment!= null), (that.recurrenceAppointment!= null))) {
                 return false;
             }
@@ -1268,9 +1348,9 @@ public class CompulsoryAuction
         }
         {
             Boolean lhsSplittingAuction;
-            lhsSplittingAuction = this.isSplittingAuction();
+            lhsSplittingAuction = this.getSplittingAuction();
             Boolean rhsSplittingAuction;
-            rhsSplittingAuction = that.isSplittingAuction();
+            rhsSplittingAuction = that.getSplittingAuction();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "splittingAuction", lhsSplittingAuction), LocatorUtils.property(thatLocator, "splittingAuction", rhsSplittingAuction), lhsSplittingAuction, rhsSplittingAuction, (this.splittingAuction!= null), (that.splittingAuction!= null))) {
                 return false;
             }
@@ -1349,9 +1429,9 @@ public class CompulsoryAuction
         }
         {
             Boolean lhsConstructionYearUnknown;
-            lhsConstructionYearUnknown = this.isConstructionYearUnknown();
+            lhsConstructionYearUnknown = this.getConstructionYearUnknown();
             Boolean rhsConstructionYearUnknown;
-            rhsConstructionYearUnknown = that.isConstructionYearUnknown();
+            rhsConstructionYearUnknown = that.getConstructionYearUnknown();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "constructionYearUnknown", lhsConstructionYearUnknown), LocatorUtils.property(thatLocator, "constructionYearUnknown", rhsConstructionYearUnknown), lhsConstructionYearUnknown, rhsConstructionYearUnknown, (this.constructionYearUnknown!= null), (that.constructionYearUnknown!= null))) {
                 return false;
             }
@@ -1368,6 +1448,7 @@ public class CompulsoryAuction
         return true;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public boolean equals(Object object) {
         final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);

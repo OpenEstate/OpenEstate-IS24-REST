@@ -2,6 +2,7 @@
 package org.openestate.is24.restapi.xml.common;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
@@ -53,16 +54,23 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
     "externalId",
     "showOnProfilePage"
 })
+@Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
 public class RealtorContactDetails
     extends ContactDetails
     implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Boolean defaultContact;
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Boolean localPartnerContact;
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Boolean businessCardContact;
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Long realEstateReferenceCount;
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected String externalId;
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Boolean showOnProfilePage;
 
     /**
@@ -73,7 +81,8 @@ public class RealtorContactDetails
      *     {@link Boolean }
      *     
      */
-    public Boolean isDefaultContact() {
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    public Boolean getDefaultContact() {
         return defaultContact;
     }
 
@@ -85,6 +94,7 @@ public class RealtorContactDetails
      *     {@link Boolean }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setDefaultContact(Boolean value) {
         this.defaultContact = value;
     }
@@ -97,7 +107,8 @@ public class RealtorContactDetails
      *     {@link Boolean }
      *     
      */
-    public Boolean isLocalPartnerContact() {
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    public Boolean getLocalPartnerContact() {
         return localPartnerContact;
     }
 
@@ -109,6 +120,7 @@ public class RealtorContactDetails
      *     {@link Boolean }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setLocalPartnerContact(Boolean value) {
         this.localPartnerContact = value;
     }
@@ -121,7 +133,8 @@ public class RealtorContactDetails
      *     {@link Boolean }
      *     
      */
-    public Boolean isBusinessCardContact() {
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    public Boolean getBusinessCardContact() {
         return businessCardContact;
     }
 
@@ -133,6 +146,7 @@ public class RealtorContactDetails
      *     {@link Boolean }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setBusinessCardContact(Boolean value) {
         this.businessCardContact = value;
     }
@@ -145,6 +159,7 @@ public class RealtorContactDetails
      *     {@link Long }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Long getRealEstateReferenceCount() {
         return realEstateReferenceCount;
     }
@@ -157,6 +172,7 @@ public class RealtorContactDetails
      *     {@link Long }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setRealEstateReferenceCount(Long value) {
         this.realEstateReferenceCount = value;
     }
@@ -169,6 +185,7 @@ public class RealtorContactDetails
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public String getExternalId() {
         return externalId;
     }
@@ -181,6 +198,7 @@ public class RealtorContactDetails
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setExternalId(String value) {
         this.externalId = value;
     }
@@ -193,7 +211,8 @@ public class RealtorContactDetails
      *     {@link Boolean }
      *     
      */
-    public Boolean isShowOnProfilePage() {
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    public Boolean getShowOnProfilePage() {
         return showOnProfilePage;
     }
 
@@ -205,10 +224,12 @@ public class RealtorContactDetails
      *     {@link Boolean }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setShowOnProfilePage(Boolean value) {
         this.showOnProfilePage = value;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public String toString() {
         final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
@@ -216,6 +237,7 @@ public class RealtorContactDetails
         return buffer.toString();
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
@@ -223,21 +245,22 @@ public class RealtorContactDetails
         return buffer;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         super.appendFields(locator, buffer, strategy);
         {
             Boolean theDefaultContact;
-            theDefaultContact = this.isDefaultContact();
+            theDefaultContact = this.getDefaultContact();
             strategy.appendField(locator, this, "defaultContact", buffer, theDefaultContact, (this.defaultContact!= null));
         }
         {
             Boolean theLocalPartnerContact;
-            theLocalPartnerContact = this.isLocalPartnerContact();
+            theLocalPartnerContact = this.getLocalPartnerContact();
             strategy.appendField(locator, this, "localPartnerContact", buffer, theLocalPartnerContact, (this.localPartnerContact!= null));
         }
         {
             Boolean theBusinessCardContact;
-            theBusinessCardContact = this.isBusinessCardContact();
+            theBusinessCardContact = this.getBusinessCardContact();
             strategy.appendField(locator, this, "businessCardContact", buffer, theBusinessCardContact, (this.businessCardContact!= null));
         }
         {
@@ -252,21 +275,24 @@ public class RealtorContactDetails
         }
         {
             Boolean theShowOnProfilePage;
-            theShowOnProfilePage = this.isShowOnProfilePage();
+            theShowOnProfilePage = this.getShowOnProfilePage();
             strategy.appendField(locator, this, "showOnProfilePage", buffer, theShowOnProfilePage, (this.showOnProfilePage!= null));
         }
         return buffer;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object clone() {
         return copyTo(createNewInstance());
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object copyTo(Object target) {
         final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         super.copyTo(locator, draftCopy, strategy);
@@ -276,7 +302,7 @@ public class RealtorContactDetails
                 Boolean defaultContactShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.defaultContact!= null));
                 if (defaultContactShouldBeCopiedAndSet == Boolean.TRUE) {
                     Boolean sourceDefaultContact;
-                    sourceDefaultContact = this.isDefaultContact();
+                    sourceDefaultContact = this.getDefaultContact();
                     Boolean copyDefaultContact = ((Boolean) strategy.copy(LocatorUtils.property(locator, "defaultContact", sourceDefaultContact), sourceDefaultContact, (this.defaultContact!= null)));
                     copy.setDefaultContact(copyDefaultContact);
                 } else {
@@ -289,7 +315,7 @@ public class RealtorContactDetails
                 Boolean localPartnerContactShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.localPartnerContact!= null));
                 if (localPartnerContactShouldBeCopiedAndSet == Boolean.TRUE) {
                     Boolean sourceLocalPartnerContact;
-                    sourceLocalPartnerContact = this.isLocalPartnerContact();
+                    sourceLocalPartnerContact = this.getLocalPartnerContact();
                     Boolean copyLocalPartnerContact = ((Boolean) strategy.copy(LocatorUtils.property(locator, "localPartnerContact", sourceLocalPartnerContact), sourceLocalPartnerContact, (this.localPartnerContact!= null)));
                     copy.setLocalPartnerContact(copyLocalPartnerContact);
                 } else {
@@ -302,7 +328,7 @@ public class RealtorContactDetails
                 Boolean businessCardContactShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.businessCardContact!= null));
                 if (businessCardContactShouldBeCopiedAndSet == Boolean.TRUE) {
                     Boolean sourceBusinessCardContact;
-                    sourceBusinessCardContact = this.isBusinessCardContact();
+                    sourceBusinessCardContact = this.getBusinessCardContact();
                     Boolean copyBusinessCardContact = ((Boolean) strategy.copy(LocatorUtils.property(locator, "businessCardContact", sourceBusinessCardContact), sourceBusinessCardContact, (this.businessCardContact!= null)));
                     copy.setBusinessCardContact(copyBusinessCardContact);
                 } else {
@@ -341,7 +367,7 @@ public class RealtorContactDetails
                 Boolean showOnProfilePageShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.showOnProfilePage!= null));
                 if (showOnProfilePageShouldBeCopiedAndSet == Boolean.TRUE) {
                     Boolean sourceShowOnProfilePage;
-                    sourceShowOnProfilePage = this.isShowOnProfilePage();
+                    sourceShowOnProfilePage = this.getShowOnProfilePage();
                     Boolean copyShowOnProfilePage = ((Boolean) strategy.copy(LocatorUtils.property(locator, "showOnProfilePage", sourceShowOnProfilePage), sourceShowOnProfilePage, (this.showOnProfilePage!= null)));
                     copy.setShowOnProfilePage(copyShowOnProfilePage);
                 } else {
@@ -354,10 +380,12 @@ public class RealtorContactDetails
         return draftCopy;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object createNewInstance() {
         return new RealtorContactDetails();
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
@@ -371,27 +399,27 @@ public class RealtorContactDetails
         final RealtorContactDetails that = ((RealtorContactDetails) object);
         {
             Boolean lhsDefaultContact;
-            lhsDefaultContact = this.isDefaultContact();
+            lhsDefaultContact = this.getDefaultContact();
             Boolean rhsDefaultContact;
-            rhsDefaultContact = that.isDefaultContact();
+            rhsDefaultContact = that.getDefaultContact();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "defaultContact", lhsDefaultContact), LocatorUtils.property(thatLocator, "defaultContact", rhsDefaultContact), lhsDefaultContact, rhsDefaultContact, (this.defaultContact!= null), (that.defaultContact!= null))) {
                 return false;
             }
         }
         {
             Boolean lhsLocalPartnerContact;
-            lhsLocalPartnerContact = this.isLocalPartnerContact();
+            lhsLocalPartnerContact = this.getLocalPartnerContact();
             Boolean rhsLocalPartnerContact;
-            rhsLocalPartnerContact = that.isLocalPartnerContact();
+            rhsLocalPartnerContact = that.getLocalPartnerContact();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "localPartnerContact", lhsLocalPartnerContact), LocatorUtils.property(thatLocator, "localPartnerContact", rhsLocalPartnerContact), lhsLocalPartnerContact, rhsLocalPartnerContact, (this.localPartnerContact!= null), (that.localPartnerContact!= null))) {
                 return false;
             }
         }
         {
             Boolean lhsBusinessCardContact;
-            lhsBusinessCardContact = this.isBusinessCardContact();
+            lhsBusinessCardContact = this.getBusinessCardContact();
             Boolean rhsBusinessCardContact;
-            rhsBusinessCardContact = that.isBusinessCardContact();
+            rhsBusinessCardContact = that.getBusinessCardContact();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "businessCardContact", lhsBusinessCardContact), LocatorUtils.property(thatLocator, "businessCardContact", rhsBusinessCardContact), lhsBusinessCardContact, rhsBusinessCardContact, (this.businessCardContact!= null), (that.businessCardContact!= null))) {
                 return false;
             }
@@ -416,9 +444,9 @@ public class RealtorContactDetails
         }
         {
             Boolean lhsShowOnProfilePage;
-            lhsShowOnProfilePage = this.isShowOnProfilePage();
+            lhsShowOnProfilePage = this.getShowOnProfilePage();
             Boolean rhsShowOnProfilePage;
-            rhsShowOnProfilePage = that.isShowOnProfilePage();
+            rhsShowOnProfilePage = that.getShowOnProfilePage();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "showOnProfilePage", lhsShowOnProfilePage), LocatorUtils.property(thatLocator, "showOnProfilePage", rhsShowOnProfilePage), lhsShowOnProfilePage, rhsShowOnProfilePage, (this.showOnProfilePage!= null), (that.showOnProfilePage!= null))) {
                 return false;
             }
@@ -426,6 +454,7 @@ public class RealtorContactDetails
         return true;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public boolean equals(Object object) {
         final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);

@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.common;
 
+import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlType;
 
@@ -26,47 +27,48 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlType(name = "CareLevelExpose")
 @XmlEnum
+@Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
 public enum CareLevelExpose {
 
 
     /**
      * Pflegestufe 1
-     *           
+     *                     
      * 
      */
     CARE_LEVEL_1,
 
     /**
      * Pflegestufe 2
-     *           
+     *                     
      * 
      */
     CARE_LEVEL_2,
 
     /**
      * Pflegestufe 3
-     *           
+     *                     
      * 
      */
     CARE_LEVEL_3,
 
     /**
      * Pflegestufen 1 und 2
-     *           
+     *                     
      * 
      */
     CARE_LEVEL_1_AND_2,
 
     /**
      * Pflegestufen 2 und 3
-     *           
+     *                     
      * 
      */
     CARE_LEVEL_2_AND_3,
 
     /**
      * Alle Pflegestufen
-     *           
+     *                     
      * 
      */
     ALL;

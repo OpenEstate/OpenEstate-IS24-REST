@@ -3,6 +3,7 @@ package org.openestate.is24.restapi.xml.common;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -97,32 +98,42 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 @XmlType(name = "EnergyPerformanceCertificate", propOrder = {
 
 })
+@Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
 public class EnergyPerformanceCertificate implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlSchemaType(name = "string")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected EnergyCertificateAvailability energyCertificateAvailability;
     @XmlSchemaType(name = "string")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected EnergyCertificateCreationDate energyCertificateCreationDate;
     @XmlSchemaType(name = "string")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected EnergyEfficiencyClass energyEfficiencyClass;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter21 .class)
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected BigDecimal electricityConsumption;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter22 .class)
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected BigDecimal heatingConsumption;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter23 .class)
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected BigDecimal energyConsumptionElectricity;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter24 .class)
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected BigDecimal energyConsumptionHeating;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter25 .class)
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected BigDecimal thermalCharacteristicElectricity;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter26 .class)
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected BigDecimal thermalCharacteristicHeating;
 
     /**
@@ -133,6 +144,7 @@ public class EnergyPerformanceCertificate implements Serializable, Cloneable, Co
      *     {@link EnergyCertificateAvailability }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public EnergyCertificateAvailability getEnergyCertificateAvailability() {
         return energyCertificateAvailability;
     }
@@ -145,6 +157,7 @@ public class EnergyPerformanceCertificate implements Serializable, Cloneable, Co
      *     {@link EnergyCertificateAvailability }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setEnergyCertificateAvailability(EnergyCertificateAvailability value) {
         this.energyCertificateAvailability = value;
     }
@@ -157,6 +170,7 @@ public class EnergyPerformanceCertificate implements Serializable, Cloneable, Co
      *     {@link EnergyCertificateCreationDate }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public EnergyCertificateCreationDate getEnergyCertificateCreationDate() {
         return energyCertificateCreationDate;
     }
@@ -169,6 +183,7 @@ public class EnergyPerformanceCertificate implements Serializable, Cloneable, Co
      *     {@link EnergyCertificateCreationDate }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setEnergyCertificateCreationDate(EnergyCertificateCreationDate value) {
         this.energyCertificateCreationDate = value;
     }
@@ -181,6 +196,7 @@ public class EnergyPerformanceCertificate implements Serializable, Cloneable, Co
      *     {@link EnergyEfficiencyClass }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public EnergyEfficiencyClass getEnergyEfficiencyClass() {
         return energyEfficiencyClass;
     }
@@ -193,6 +209,7 @@ public class EnergyPerformanceCertificate implements Serializable, Cloneable, Co
      *     {@link EnergyEfficiencyClass }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setEnergyEfficiencyClass(EnergyEfficiencyClass value) {
         this.energyEfficiencyClass = value;
     }
@@ -205,6 +222,7 @@ public class EnergyPerformanceCertificate implements Serializable, Cloneable, Co
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public BigDecimal getElectricityConsumption() {
         return electricityConsumption;
     }
@@ -217,6 +235,7 @@ public class EnergyPerformanceCertificate implements Serializable, Cloneable, Co
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setElectricityConsumption(BigDecimal value) {
         this.electricityConsumption = value;
     }
@@ -229,6 +248,7 @@ public class EnergyPerformanceCertificate implements Serializable, Cloneable, Co
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public BigDecimal getHeatingConsumption() {
         return heatingConsumption;
     }
@@ -241,6 +261,7 @@ public class EnergyPerformanceCertificate implements Serializable, Cloneable, Co
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setHeatingConsumption(BigDecimal value) {
         this.heatingConsumption = value;
     }
@@ -253,6 +274,7 @@ public class EnergyPerformanceCertificate implements Serializable, Cloneable, Co
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public BigDecimal getEnergyConsumptionElectricity() {
         return energyConsumptionElectricity;
     }
@@ -265,6 +287,7 @@ public class EnergyPerformanceCertificate implements Serializable, Cloneable, Co
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setEnergyConsumptionElectricity(BigDecimal value) {
         this.energyConsumptionElectricity = value;
     }
@@ -277,6 +300,7 @@ public class EnergyPerformanceCertificate implements Serializable, Cloneable, Co
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public BigDecimal getEnergyConsumptionHeating() {
         return energyConsumptionHeating;
     }
@@ -289,6 +313,7 @@ public class EnergyPerformanceCertificate implements Serializable, Cloneable, Co
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setEnergyConsumptionHeating(BigDecimal value) {
         this.energyConsumptionHeating = value;
     }
@@ -301,6 +326,7 @@ public class EnergyPerformanceCertificate implements Serializable, Cloneable, Co
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public BigDecimal getThermalCharacteristicElectricity() {
         return thermalCharacteristicElectricity;
     }
@@ -313,6 +339,7 @@ public class EnergyPerformanceCertificate implements Serializable, Cloneable, Co
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setThermalCharacteristicElectricity(BigDecimal value) {
         this.thermalCharacteristicElectricity = value;
     }
@@ -325,6 +352,7 @@ public class EnergyPerformanceCertificate implements Serializable, Cloneable, Co
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public BigDecimal getThermalCharacteristicHeating() {
         return thermalCharacteristicHeating;
     }
@@ -337,10 +365,12 @@ public class EnergyPerformanceCertificate implements Serializable, Cloneable, Co
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setThermalCharacteristicHeating(BigDecimal value) {
         this.thermalCharacteristicHeating = value;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public String toString() {
         final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
@@ -348,6 +378,7 @@ public class EnergyPerformanceCertificate implements Serializable, Cloneable, Co
         return buffer.toString();
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
@@ -355,6 +386,7 @@ public class EnergyPerformanceCertificate implements Serializable, Cloneable, Co
         return buffer;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             EnergyCertificateAvailability theEnergyCertificateAvailability;
@@ -404,15 +436,18 @@ public class EnergyPerformanceCertificate implements Serializable, Cloneable, Co
         return buffer;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object clone() {
         return copyTo(createNewInstance());
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object copyTo(Object target) {
         final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof EnergyPerformanceCertificate) {
@@ -538,10 +573,12 @@ public class EnergyPerformanceCertificate implements Serializable, Cloneable, Co
         return draftCopy;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object createNewInstance() {
         return new EnergyPerformanceCertificate();
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
@@ -634,6 +671,7 @@ public class EnergyPerformanceCertificate implements Serializable, Cloneable, Co
         return true;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public boolean equals(Object object) {
         final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);

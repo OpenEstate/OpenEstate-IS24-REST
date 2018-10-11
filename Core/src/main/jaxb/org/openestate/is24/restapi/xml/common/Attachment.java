@@ -4,6 +4,7 @@ package org.openestate.is24.restapi.xml.common;
 import java.io.Serializable;
 import java.net.URI;
 import java.util.Calendar;
+import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -76,34 +77,45 @@ import org.openestate.is24.restapi.xml.Adapter4;
     ExtendedAttachment.class,
     Link.class
 })
+@Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
 public abstract class Attachment implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlJavaTypeAdapter(Adapter34 .class)
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected String title;
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected String checkSum;
     @XmlJavaTypeAdapter(Adapter35 .class)
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected String externalId;
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected String externalCheckSum;
     @XmlAttribute(name = "href", namespace = "http://www.w3.org/1999/xlink")
     @XmlJavaTypeAdapter(Adapter4 .class)
     @XmlSchemaType(name = "anyURI")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected URI href;
     @XmlAttribute(name = "id")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Long id;
     @XmlAttribute(name = "label")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected String label;
     @XmlAttribute(name = "modification")
     @XmlJavaTypeAdapter(Adapter2 .class)
     @XmlSchemaType(name = "dateTime")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Calendar modification;
     @XmlAttribute(name = "creation")
     @XmlJavaTypeAdapter(Adapter2 .class)
     @XmlSchemaType(name = "dateTime")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Calendar creation;
     @XmlAttribute(name = "publishDate")
     @XmlJavaTypeAdapter(Adapter2 .class)
     @XmlSchemaType(name = "dateTime")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Calendar publishDate;
 
     /**
@@ -114,6 +126,7 @@ public abstract class Attachment implements Serializable, Cloneable, CopyTo2, Eq
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public String getTitle() {
         return title;
     }
@@ -126,6 +139,7 @@ public abstract class Attachment implements Serializable, Cloneable, CopyTo2, Eq
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setTitle(String value) {
         this.title = value;
     }
@@ -138,6 +152,7 @@ public abstract class Attachment implements Serializable, Cloneable, CopyTo2, Eq
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public String getCheckSum() {
         return checkSum;
     }
@@ -150,6 +165,7 @@ public abstract class Attachment implements Serializable, Cloneable, CopyTo2, Eq
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setCheckSum(String value) {
         this.checkSum = value;
     }
@@ -162,6 +178,7 @@ public abstract class Attachment implements Serializable, Cloneable, CopyTo2, Eq
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public String getExternalId() {
         return externalId;
     }
@@ -174,6 +191,7 @@ public abstract class Attachment implements Serializable, Cloneable, CopyTo2, Eq
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setExternalId(String value) {
         this.externalId = value;
     }
@@ -186,6 +204,7 @@ public abstract class Attachment implements Serializable, Cloneable, CopyTo2, Eq
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public String getExternalCheckSum() {
         return externalCheckSum;
     }
@@ -198,6 +217,7 @@ public abstract class Attachment implements Serializable, Cloneable, CopyTo2, Eq
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setExternalCheckSum(String value) {
         this.externalCheckSum = value;
     }
@@ -210,6 +230,7 @@ public abstract class Attachment implements Serializable, Cloneable, CopyTo2, Eq
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public URI getHref() {
         return href;
     }
@@ -222,6 +243,7 @@ public abstract class Attachment implements Serializable, Cloneable, CopyTo2, Eq
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setHref(URI value) {
         this.href = value;
     }
@@ -234,6 +256,7 @@ public abstract class Attachment implements Serializable, Cloneable, CopyTo2, Eq
      *     {@link Long }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Long getId() {
         return id;
     }
@@ -246,6 +269,7 @@ public abstract class Attachment implements Serializable, Cloneable, CopyTo2, Eq
      *     {@link Long }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setId(Long value) {
         this.id = value;
     }
@@ -258,6 +282,7 @@ public abstract class Attachment implements Serializable, Cloneable, CopyTo2, Eq
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public String getLabel() {
         return label;
     }
@@ -270,6 +295,7 @@ public abstract class Attachment implements Serializable, Cloneable, CopyTo2, Eq
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setLabel(String value) {
         this.label = value;
     }
@@ -282,6 +308,7 @@ public abstract class Attachment implements Serializable, Cloneable, CopyTo2, Eq
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Calendar getModification() {
         return modification;
     }
@@ -294,6 +321,7 @@ public abstract class Attachment implements Serializable, Cloneable, CopyTo2, Eq
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setModification(Calendar value) {
         this.modification = value;
     }
@@ -306,6 +334,7 @@ public abstract class Attachment implements Serializable, Cloneable, CopyTo2, Eq
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Calendar getCreation() {
         return creation;
     }
@@ -318,6 +347,7 @@ public abstract class Attachment implements Serializable, Cloneable, CopyTo2, Eq
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setCreation(Calendar value) {
         this.creation = value;
     }
@@ -330,6 +360,7 @@ public abstract class Attachment implements Serializable, Cloneable, CopyTo2, Eq
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Calendar getPublishDate() {
         return publishDate;
     }
@@ -342,10 +373,12 @@ public abstract class Attachment implements Serializable, Cloneable, CopyTo2, Eq
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setPublishDate(Calendar value) {
         this.publishDate = value;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public String toString() {
         final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
@@ -353,6 +386,7 @@ public abstract class Attachment implements Serializable, Cloneable, CopyTo2, Eq
         return buffer.toString();
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
@@ -360,6 +394,7 @@ public abstract class Attachment implements Serializable, Cloneable, CopyTo2, Eq
         return buffer;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             String theTitle;
@@ -414,15 +449,18 @@ public abstract class Attachment implements Serializable, Cloneable, CopyTo2, Eq
         return buffer;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object clone() {
         return copyTo(createNewInstance());
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object copyTo(Object target) {
         final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         if (null == target) {
             throw new IllegalArgumentException("Target argument must not be null for abstract copyable classes.");
@@ -563,6 +601,7 @@ public abstract class Attachment implements Serializable, Cloneable, CopyTo2, Eq
         return target;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
@@ -664,6 +703,7 @@ public abstract class Attachment implements Serializable, Cloneable, CopyTo2, Eq
         return true;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public boolean equals(Object object) {
         final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);

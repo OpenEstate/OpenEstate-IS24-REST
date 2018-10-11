@@ -3,6 +3,7 @@ package org.openestate.is24.restapi.xml.common;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -71,30 +72,39 @@ import org.openestate.is24.restapi.xml.offerlistelement.OfferRealEstateForList;
     "realEstateState"
 })
 @XmlSeeAlso({
-    OfferRealEstateForList.class,
-    AbstractRealEstate.class
+    AbstractRealEstate.class,
+    OfferRealEstateForList.class
 })
+@Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
 public abstract class AbstractRealEstateForList implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected String externalId;
     @XmlElement(required = true)
     @XmlJavaTypeAdapter(Adapter15 .class)
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected String title;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter2 .class)
     @XmlSchemaType(name = "dateTime")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Calendar creationDate;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter2 .class)
     @XmlSchemaType(name = "dateTime")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Calendar lastModificationDate;
     @XmlElement(required = true)
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Wgs84Address address;
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected ApiSearchData apiSearchData;
     @XmlSchemaType(name = "string")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected RealEstateState realEstateState;
     @XmlAttribute(name = "id")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Long id;
 
     /**
@@ -105,6 +115,7 @@ public abstract class AbstractRealEstateForList implements Serializable, Cloneab
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public String getExternalId() {
         return externalId;
     }
@@ -117,6 +128,7 @@ public abstract class AbstractRealEstateForList implements Serializable, Cloneab
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setExternalId(String value) {
         this.externalId = value;
     }
@@ -129,6 +141,7 @@ public abstract class AbstractRealEstateForList implements Serializable, Cloneab
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public String getTitle() {
         return title;
     }
@@ -141,6 +154,7 @@ public abstract class AbstractRealEstateForList implements Serializable, Cloneab
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setTitle(String value) {
         this.title = value;
     }
@@ -153,6 +167,7 @@ public abstract class AbstractRealEstateForList implements Serializable, Cloneab
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Calendar getCreationDate() {
         return creationDate;
     }
@@ -165,6 +180,7 @@ public abstract class AbstractRealEstateForList implements Serializable, Cloneab
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setCreationDate(Calendar value) {
         this.creationDate = value;
     }
@@ -177,6 +193,7 @@ public abstract class AbstractRealEstateForList implements Serializable, Cloneab
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Calendar getLastModificationDate() {
         return lastModificationDate;
     }
@@ -189,6 +206,7 @@ public abstract class AbstractRealEstateForList implements Serializable, Cloneab
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setLastModificationDate(Calendar value) {
         this.lastModificationDate = value;
     }
@@ -201,6 +219,7 @@ public abstract class AbstractRealEstateForList implements Serializable, Cloneab
      *     {@link Wgs84Address }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Wgs84Address getAddress() {
         return address;
     }
@@ -213,6 +232,7 @@ public abstract class AbstractRealEstateForList implements Serializable, Cloneab
      *     {@link Wgs84Address }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setAddress(Wgs84Address value) {
         this.address = value;
     }
@@ -225,6 +245,7 @@ public abstract class AbstractRealEstateForList implements Serializable, Cloneab
      *     {@link ApiSearchData }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public ApiSearchData getApiSearchData() {
         return apiSearchData;
     }
@@ -237,6 +258,7 @@ public abstract class AbstractRealEstateForList implements Serializable, Cloneab
      *     {@link ApiSearchData }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setApiSearchData(ApiSearchData value) {
         this.apiSearchData = value;
     }
@@ -249,6 +271,7 @@ public abstract class AbstractRealEstateForList implements Serializable, Cloneab
      *     {@link RealEstateState }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public RealEstateState getRealEstateState() {
         return realEstateState;
     }
@@ -261,6 +284,7 @@ public abstract class AbstractRealEstateForList implements Serializable, Cloneab
      *     {@link RealEstateState }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setRealEstateState(RealEstateState value) {
         this.realEstateState = value;
     }
@@ -273,6 +297,7 @@ public abstract class AbstractRealEstateForList implements Serializable, Cloneab
      *     {@link Long }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Long getId() {
         return id;
     }
@@ -285,10 +310,12 @@ public abstract class AbstractRealEstateForList implements Serializable, Cloneab
      *     {@link Long }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setId(Long value) {
         this.id = value;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public String toString() {
         final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
@@ -296,6 +323,7 @@ public abstract class AbstractRealEstateForList implements Serializable, Cloneab
         return buffer.toString();
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
@@ -303,6 +331,7 @@ public abstract class AbstractRealEstateForList implements Serializable, Cloneab
         return buffer;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             String theExternalId;
@@ -347,15 +376,18 @@ public abstract class AbstractRealEstateForList implements Serializable, Cloneab
         return buffer;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object clone() {
         return copyTo(createNewInstance());
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object copyTo(Object target) {
         final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         if (null == target) {
             throw new IllegalArgumentException("Target argument must not be null for abstract copyable classes.");
@@ -470,6 +502,7 @@ public abstract class AbstractRealEstateForList implements Serializable, Cloneab
         return target;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
@@ -553,6 +586,7 @@ public abstract class AbstractRealEstateForList implements Serializable, Cloneab
         return true;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public boolean equals(Object object) {
         final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);

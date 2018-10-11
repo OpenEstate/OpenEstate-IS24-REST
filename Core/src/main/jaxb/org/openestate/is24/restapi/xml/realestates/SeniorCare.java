@@ -4,6 +4,7 @@ package org.openestate.is24.restapi.xml.realestates;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Calendar;
+import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -93,95 +94,132 @@ import org.openestate.is24.restapi.xml.common.YesNotApplicableType;
     "balconyAvailable",
     "branchEntry"
 })
+@Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
 public class SeniorCare
     extends RealEstate
     implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected String shortDescription;
     @XmlElement(required = true)
     @XmlSchemaType(name = "string")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected PetsAllowedType petsAllowed;
     @XmlElement(required = true)
     @XmlSchemaType(name = "string")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected YesNotApplicableType trialLivingPossible;
     @XmlElement(required = true)
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected CareTypes careTypes;
     @XmlElement(required = true)
     @XmlSchemaType(name = "string")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected CareLevelExpose careLevel;
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Price price;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter5 .class)
     @XmlSchemaType(name = "int")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Long numberOfBeds;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter3 .class)
     @XmlSchemaType(name = "date")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Calendar opening;
     @XmlSchemaType(name = "string")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected YesNotApplicableType careOfDementia;
     @XmlSchemaType(name = "string")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected YesNotApplicableType careOfArtificialRespiration;
     @XmlSchemaType(name = "string")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected YesNotApplicableType careOfComaVigil;
     @XmlSchemaType(name = "string")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected YesNotApplicableType careOfStroke;
     @XmlSchemaType(name = "string")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected YesNotApplicableType careOfParkinson;
     @XmlSchemaType(name = "string")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected YesNotApplicableType careOfAlzheimer;
     @XmlSchemaType(name = "string")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected YesNotApplicableType careOfMultipleSclerosis;
     @XmlSchemaType(name = "string")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected YesNotApplicableType kitchenAvailable;
     @XmlSchemaType(name = "string")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected RoomType roomType;
     @XmlSchemaType(name = "string")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected YesNotApplicableType therapyOfferingsAvailable;
     @XmlSchemaType(name = "string")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected YesNotApplicableType barrierFree;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter5 .class)
     @XmlSchemaType(name = "int")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Long numberOfLookedAfterApartments;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter5 .class)
     @XmlSchemaType(name = "int")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Long numberOfNursingPlaces;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "double")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected BigDecimal livingSpaceFrom;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "double")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected BigDecimal livingSpaceTo;
     @XmlSchemaType(name = "string")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected YesNotApplicableType handicappedAccessible;
     @XmlSchemaType(name = "string")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected YesNotApplicableType guestApartmentsAvailable;
     @XmlSchemaType(name = "string")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected YesNotApplicableType restaurantAvailable;
     @XmlSchemaType(name = "string")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected YesNotApplicableType cookingFacilitiesAvailable;
     @XmlSchemaType(name = "string")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected YesNotApplicableType ownFurniturePossible;
     @XmlSchemaType(name = "string")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected YesNotApplicableType cleaningServiceAvailable;
     @XmlSchemaType(name = "string")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected YesNotApplicableType shoppingFacilitiesAvailable;
     @XmlSchemaType(name = "string")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected YesNotApplicableType security24Hours;
     @XmlSchemaType(name = "string")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected YesNotApplicableType culturalProgramAvailable;
     @XmlSchemaType(name = "string")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected YesNotApplicableType leisureActivitiesAvailable;
     @XmlSchemaType(name = "string")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected YesNotApplicableType religiousOfferingsAvailable;
     @XmlSchemaType(name = "string")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected BalconyAvailableType balconyAvailable;
     @XmlElement(defaultValue = "false")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Boolean branchEntry;
 
     /**
@@ -192,6 +230,7 @@ public class SeniorCare
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public String getShortDescription() {
         return shortDescription;
     }
@@ -204,6 +243,7 @@ public class SeniorCare
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setShortDescription(String value) {
         this.shortDescription = value;
     }
@@ -216,6 +256,7 @@ public class SeniorCare
      *     {@link PetsAllowedType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public PetsAllowedType getPetsAllowed() {
         return petsAllowed;
     }
@@ -228,6 +269,7 @@ public class SeniorCare
      *     {@link PetsAllowedType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setPetsAllowed(PetsAllowedType value) {
         this.petsAllowed = value;
     }
@@ -240,6 +282,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public YesNotApplicableType getTrialLivingPossible() {
         return trialLivingPossible;
     }
@@ -252,6 +295,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setTrialLivingPossible(YesNotApplicableType value) {
         this.trialLivingPossible = value;
     }
@@ -264,6 +308,7 @@ public class SeniorCare
      *     {@link CareTypes }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public CareTypes getCareTypes() {
         return careTypes;
     }
@@ -276,6 +321,7 @@ public class SeniorCare
      *     {@link CareTypes }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setCareTypes(CareTypes value) {
         this.careTypes = value;
     }
@@ -288,6 +334,7 @@ public class SeniorCare
      *     {@link CareLevelExpose }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public CareLevelExpose getCareLevel() {
         return careLevel;
     }
@@ -300,6 +347,7 @@ public class SeniorCare
      *     {@link CareLevelExpose }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setCareLevel(CareLevelExpose value) {
         this.careLevel = value;
     }
@@ -312,6 +360,7 @@ public class SeniorCare
      *     {@link Price }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Price getPrice() {
         return price;
     }
@@ -324,6 +373,7 @@ public class SeniorCare
      *     {@link Price }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setPrice(Price value) {
         this.price = value;
     }
@@ -336,6 +386,7 @@ public class SeniorCare
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Long getNumberOfBeds() {
         return numberOfBeds;
     }
@@ -348,6 +399,7 @@ public class SeniorCare
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setNumberOfBeds(Long value) {
         this.numberOfBeds = value;
     }
@@ -360,6 +412,7 @@ public class SeniorCare
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Calendar getOpening() {
         return opening;
     }
@@ -372,6 +425,7 @@ public class SeniorCare
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setOpening(Calendar value) {
         this.opening = value;
     }
@@ -384,6 +438,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public YesNotApplicableType getCareOfDementia() {
         return careOfDementia;
     }
@@ -396,6 +451,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setCareOfDementia(YesNotApplicableType value) {
         this.careOfDementia = value;
     }
@@ -408,6 +464,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public YesNotApplicableType getCareOfArtificialRespiration() {
         return careOfArtificialRespiration;
     }
@@ -420,6 +477,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setCareOfArtificialRespiration(YesNotApplicableType value) {
         this.careOfArtificialRespiration = value;
     }
@@ -432,6 +490,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public YesNotApplicableType getCareOfComaVigil() {
         return careOfComaVigil;
     }
@@ -444,6 +503,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setCareOfComaVigil(YesNotApplicableType value) {
         this.careOfComaVigil = value;
     }
@@ -456,6 +516,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public YesNotApplicableType getCareOfStroke() {
         return careOfStroke;
     }
@@ -468,6 +529,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setCareOfStroke(YesNotApplicableType value) {
         this.careOfStroke = value;
     }
@@ -480,6 +542,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public YesNotApplicableType getCareOfParkinson() {
         return careOfParkinson;
     }
@@ -492,6 +555,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setCareOfParkinson(YesNotApplicableType value) {
         this.careOfParkinson = value;
     }
@@ -504,6 +568,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public YesNotApplicableType getCareOfAlzheimer() {
         return careOfAlzheimer;
     }
@@ -516,6 +581,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setCareOfAlzheimer(YesNotApplicableType value) {
         this.careOfAlzheimer = value;
     }
@@ -528,6 +594,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public YesNotApplicableType getCareOfMultipleSclerosis() {
         return careOfMultipleSclerosis;
     }
@@ -540,6 +607,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setCareOfMultipleSclerosis(YesNotApplicableType value) {
         this.careOfMultipleSclerosis = value;
     }
@@ -552,6 +620,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public YesNotApplicableType getKitchenAvailable() {
         return kitchenAvailable;
     }
@@ -564,6 +633,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setKitchenAvailable(YesNotApplicableType value) {
         this.kitchenAvailable = value;
     }
@@ -576,6 +646,7 @@ public class SeniorCare
      *     {@link RoomType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public RoomType getRoomType() {
         return roomType;
     }
@@ -588,6 +659,7 @@ public class SeniorCare
      *     {@link RoomType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setRoomType(RoomType value) {
         this.roomType = value;
     }
@@ -600,6 +672,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public YesNotApplicableType getTherapyOfferingsAvailable() {
         return therapyOfferingsAvailable;
     }
@@ -612,6 +685,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setTherapyOfferingsAvailable(YesNotApplicableType value) {
         this.therapyOfferingsAvailable = value;
     }
@@ -624,6 +698,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public YesNotApplicableType getBarrierFree() {
         return barrierFree;
     }
@@ -636,6 +711,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setBarrierFree(YesNotApplicableType value) {
         this.barrierFree = value;
     }
@@ -648,6 +724,7 @@ public class SeniorCare
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Long getNumberOfLookedAfterApartments() {
         return numberOfLookedAfterApartments;
     }
@@ -660,6 +737,7 @@ public class SeniorCare
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setNumberOfLookedAfterApartments(Long value) {
         this.numberOfLookedAfterApartments = value;
     }
@@ -672,6 +750,7 @@ public class SeniorCare
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Long getNumberOfNursingPlaces() {
         return numberOfNursingPlaces;
     }
@@ -684,6 +763,7 @@ public class SeniorCare
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setNumberOfNursingPlaces(Long value) {
         this.numberOfNursingPlaces = value;
     }
@@ -696,6 +776,7 @@ public class SeniorCare
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public BigDecimal getLivingSpaceFrom() {
         return livingSpaceFrom;
     }
@@ -708,6 +789,7 @@ public class SeniorCare
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setLivingSpaceFrom(BigDecimal value) {
         this.livingSpaceFrom = value;
     }
@@ -720,6 +802,7 @@ public class SeniorCare
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public BigDecimal getLivingSpaceTo() {
         return livingSpaceTo;
     }
@@ -732,6 +815,7 @@ public class SeniorCare
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setLivingSpaceTo(BigDecimal value) {
         this.livingSpaceTo = value;
     }
@@ -744,6 +828,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public YesNotApplicableType getHandicappedAccessible() {
         return handicappedAccessible;
     }
@@ -756,6 +841,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setHandicappedAccessible(YesNotApplicableType value) {
         this.handicappedAccessible = value;
     }
@@ -768,6 +854,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public YesNotApplicableType getGuestApartmentsAvailable() {
         return guestApartmentsAvailable;
     }
@@ -780,6 +867,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setGuestApartmentsAvailable(YesNotApplicableType value) {
         this.guestApartmentsAvailable = value;
     }
@@ -792,6 +880,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public YesNotApplicableType getRestaurantAvailable() {
         return restaurantAvailable;
     }
@@ -804,6 +893,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setRestaurantAvailable(YesNotApplicableType value) {
         this.restaurantAvailable = value;
     }
@@ -816,6 +906,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public YesNotApplicableType getCookingFacilitiesAvailable() {
         return cookingFacilitiesAvailable;
     }
@@ -828,6 +919,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setCookingFacilitiesAvailable(YesNotApplicableType value) {
         this.cookingFacilitiesAvailable = value;
     }
@@ -840,6 +932,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public YesNotApplicableType getOwnFurniturePossible() {
         return ownFurniturePossible;
     }
@@ -852,6 +945,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setOwnFurniturePossible(YesNotApplicableType value) {
         this.ownFurniturePossible = value;
     }
@@ -864,6 +958,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public YesNotApplicableType getCleaningServiceAvailable() {
         return cleaningServiceAvailable;
     }
@@ -876,6 +971,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setCleaningServiceAvailable(YesNotApplicableType value) {
         this.cleaningServiceAvailable = value;
     }
@@ -888,6 +984,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public YesNotApplicableType getShoppingFacilitiesAvailable() {
         return shoppingFacilitiesAvailable;
     }
@@ -900,6 +997,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setShoppingFacilitiesAvailable(YesNotApplicableType value) {
         this.shoppingFacilitiesAvailable = value;
     }
@@ -912,6 +1010,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public YesNotApplicableType getSecurity24Hours() {
         return security24Hours;
     }
@@ -924,6 +1023,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setSecurity24Hours(YesNotApplicableType value) {
         this.security24Hours = value;
     }
@@ -936,6 +1036,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public YesNotApplicableType getCulturalProgramAvailable() {
         return culturalProgramAvailable;
     }
@@ -948,6 +1049,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setCulturalProgramAvailable(YesNotApplicableType value) {
         this.culturalProgramAvailable = value;
     }
@@ -960,6 +1062,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public YesNotApplicableType getLeisureActivitiesAvailable() {
         return leisureActivitiesAvailable;
     }
@@ -972,6 +1075,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setLeisureActivitiesAvailable(YesNotApplicableType value) {
         this.leisureActivitiesAvailable = value;
     }
@@ -984,6 +1088,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public YesNotApplicableType getReligiousOfferingsAvailable() {
         return religiousOfferingsAvailable;
     }
@@ -996,6 +1101,7 @@ public class SeniorCare
      *     {@link YesNotApplicableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setReligiousOfferingsAvailable(YesNotApplicableType value) {
         this.religiousOfferingsAvailable = value;
     }
@@ -1008,6 +1114,7 @@ public class SeniorCare
      *     {@link BalconyAvailableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public BalconyAvailableType getBalconyAvailable() {
         return balconyAvailable;
     }
@@ -1020,6 +1127,7 @@ public class SeniorCare
      *     {@link BalconyAvailableType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setBalconyAvailable(BalconyAvailableType value) {
         this.balconyAvailable = value;
     }
@@ -1032,7 +1140,8 @@ public class SeniorCare
      *     {@link Boolean }
      *     
      */
-    public Boolean isBranchEntry() {
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    public Boolean getBranchEntry() {
         return branchEntry;
     }
 
@@ -1044,10 +1153,12 @@ public class SeniorCare
      *     {@link Boolean }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setBranchEntry(Boolean value) {
         this.branchEntry = value;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public String toString() {
         final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
@@ -1055,6 +1166,7 @@ public class SeniorCare
         return buffer.toString();
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
@@ -1062,6 +1174,7 @@ public class SeniorCare
         return buffer;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         super.appendFields(locator, buffer, strategy);
         {
@@ -1241,21 +1354,24 @@ public class SeniorCare
         }
         {
             Boolean theBranchEntry;
-            theBranchEntry = this.isBranchEntry();
+            theBranchEntry = this.getBranchEntry();
             strategy.appendField(locator, this, "branchEntry", buffer, theBranchEntry, (this.branchEntry!= null));
         }
         return buffer;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object clone() {
         return copyTo(createNewInstance());
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object copyTo(Object target) {
         final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         super.copyTo(locator, draftCopy, strategy);
@@ -1720,7 +1836,7 @@ public class SeniorCare
                 Boolean branchEntryShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.branchEntry!= null));
                 if (branchEntryShouldBeCopiedAndSet == Boolean.TRUE) {
                     Boolean sourceBranchEntry;
-                    sourceBranchEntry = this.isBranchEntry();
+                    sourceBranchEntry = this.getBranchEntry();
                     Boolean copyBranchEntry = ((Boolean) strategy.copy(LocatorUtils.property(locator, "branchEntry", sourceBranchEntry), sourceBranchEntry, (this.branchEntry!= null)));
                     copy.setBranchEntry(copyBranchEntry);
                 } else {
@@ -1733,10 +1849,12 @@ public class SeniorCare
         return draftCopy;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object createNewInstance() {
         return new SeniorCare();
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
@@ -2065,9 +2183,9 @@ public class SeniorCare
         }
         {
             Boolean lhsBranchEntry;
-            lhsBranchEntry = this.isBranchEntry();
+            lhsBranchEntry = this.getBranchEntry();
             Boolean rhsBranchEntry;
-            rhsBranchEntry = that.isBranchEntry();
+            rhsBranchEntry = that.getBranchEntry();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "branchEntry", lhsBranchEntry), LocatorUtils.property(thatLocator, "branchEntry", rhsBranchEntry), lhsBranchEntry, rhsBranchEntry, (this.branchEntry!= null), (that.branchEntry!= null))) {
                 return false;
             }
@@ -2075,6 +2193,7 @@ public class SeniorCare
         return true;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public boolean equals(Object object) {
         final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);

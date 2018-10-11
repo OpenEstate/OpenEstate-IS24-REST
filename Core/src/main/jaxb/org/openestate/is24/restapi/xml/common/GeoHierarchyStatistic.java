@@ -2,6 +2,7 @@
 package org.openestate.is24.restapi.xml.common;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -24,8 +25,8 @@ import org.openestate.is24.restapi.xml.Adapter5;
 
 /**
  * Enth\u00e4lt die Statistik (d.h. Anzahl der Objekte) f\u00fcr einen
- *         Immobilientyp.
- *       
+ *                 Immobilientyp.
+ *             
  * 
  * <p>Java class for GeoHierarchyStatistic complex type.
  * 
@@ -46,14 +47,17 @@ import org.openestate.is24.restapi.xml.Adapter5;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "GeoHierarchyStatistic")
+@Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
 public class GeoHierarchyStatistic implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlAttribute(name = "realEstateType", required = true)
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected RealEstateType realEstateType;
     @XmlAttribute(name = "count", required = true)
     @XmlJavaTypeAdapter(Adapter5 .class)
     @XmlSchemaType(name = "int")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Long count;
 
     /**
@@ -64,6 +68,7 @@ public class GeoHierarchyStatistic implements Serializable, Cloneable, CopyTo2, 
      *     {@link RealEstateType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public RealEstateType getRealEstateType() {
         return realEstateType;
     }
@@ -76,6 +81,7 @@ public class GeoHierarchyStatistic implements Serializable, Cloneable, CopyTo2, 
      *     {@link RealEstateType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setRealEstateType(RealEstateType value) {
         this.realEstateType = value;
     }
@@ -88,6 +94,7 @@ public class GeoHierarchyStatistic implements Serializable, Cloneable, CopyTo2, 
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Long getCount() {
         return count;
     }
@@ -100,10 +107,12 @@ public class GeoHierarchyStatistic implements Serializable, Cloneable, CopyTo2, 
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setCount(Long value) {
         this.count = value;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public String toString() {
         final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
@@ -111,6 +120,7 @@ public class GeoHierarchyStatistic implements Serializable, Cloneable, CopyTo2, 
         return buffer.toString();
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
@@ -118,6 +128,7 @@ public class GeoHierarchyStatistic implements Serializable, Cloneable, CopyTo2, 
         return buffer;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             RealEstateType theRealEstateType;
@@ -132,15 +143,18 @@ public class GeoHierarchyStatistic implements Serializable, Cloneable, CopyTo2, 
         return buffer;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object clone() {
         return copyTo(createNewInstance());
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object copyTo(Object target) {
         final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof GeoHierarchyStatistic) {
@@ -175,10 +189,12 @@ public class GeoHierarchyStatistic implements Serializable, Cloneable, CopyTo2, 
         return draftCopy;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object createNewInstance() {
         return new GeoHierarchyStatistic();
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
@@ -208,6 +224,7 @@ public class GeoHierarchyStatistic implements Serializable, Cloneable, CopyTo2, 
         return true;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public boolean equals(Object object) {
         final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);

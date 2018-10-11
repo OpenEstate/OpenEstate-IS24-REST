@@ -2,6 +2,7 @@
 package org.openestate.is24.restapi.xml.common;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
@@ -53,15 +54,21 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
     "geoHierarchy",
     "description"
 })
+@Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
 public class Wgs84Address
     extends Address
     implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected String quarter;
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Wgs84Coordinate wgs84Coordinate;
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Boolean preciseHouseNumber;
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected GeoHierarchy geoHierarchy;
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Wgs84AddressDescription description;
 
     /**
@@ -72,6 +79,7 @@ public class Wgs84Address
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public String getQuarter() {
         return quarter;
     }
@@ -84,6 +92,7 @@ public class Wgs84Address
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setQuarter(String value) {
         this.quarter = value;
     }
@@ -96,6 +105,7 @@ public class Wgs84Address
      *     {@link Wgs84Coordinate }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Wgs84Coordinate getWgs84Coordinate() {
         return wgs84Coordinate;
     }
@@ -108,6 +118,7 @@ public class Wgs84Address
      *     {@link Wgs84Coordinate }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setWgs84Coordinate(Wgs84Coordinate value) {
         this.wgs84Coordinate = value;
     }
@@ -120,7 +131,8 @@ public class Wgs84Address
      *     {@link Boolean }
      *     
      */
-    public Boolean isPreciseHouseNumber() {
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    public Boolean getPreciseHouseNumber() {
         return preciseHouseNumber;
     }
 
@@ -132,6 +144,7 @@ public class Wgs84Address
      *     {@link Boolean }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setPreciseHouseNumber(Boolean value) {
         this.preciseHouseNumber = value;
     }
@@ -144,6 +157,7 @@ public class Wgs84Address
      *     {@link GeoHierarchy }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public GeoHierarchy getGeoHierarchy() {
         return geoHierarchy;
     }
@@ -156,6 +170,7 @@ public class Wgs84Address
      *     {@link GeoHierarchy }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setGeoHierarchy(GeoHierarchy value) {
         this.geoHierarchy = value;
     }
@@ -168,6 +183,7 @@ public class Wgs84Address
      *     {@link Wgs84AddressDescription }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Wgs84AddressDescription getDescription() {
         return description;
     }
@@ -180,10 +196,12 @@ public class Wgs84Address
      *     {@link Wgs84AddressDescription }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setDescription(Wgs84AddressDescription value) {
         this.description = value;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public String toString() {
         final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
@@ -191,6 +209,7 @@ public class Wgs84Address
         return buffer.toString();
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
@@ -198,6 +217,7 @@ public class Wgs84Address
         return buffer;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         super.appendFields(locator, buffer, strategy);
         {
@@ -212,7 +232,7 @@ public class Wgs84Address
         }
         {
             Boolean thePreciseHouseNumber;
-            thePreciseHouseNumber = this.isPreciseHouseNumber();
+            thePreciseHouseNumber = this.getPreciseHouseNumber();
             strategy.appendField(locator, this, "preciseHouseNumber", buffer, thePreciseHouseNumber, (this.preciseHouseNumber!= null));
         }
         {
@@ -228,15 +248,18 @@ public class Wgs84Address
         return buffer;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object clone() {
         return copyTo(createNewInstance());
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object copyTo(Object target) {
         final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         super.copyTo(locator, draftCopy, strategy);
@@ -272,7 +295,7 @@ public class Wgs84Address
                 Boolean preciseHouseNumberShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.preciseHouseNumber!= null));
                 if (preciseHouseNumberShouldBeCopiedAndSet == Boolean.TRUE) {
                     Boolean sourcePreciseHouseNumber;
-                    sourcePreciseHouseNumber = this.isPreciseHouseNumber();
+                    sourcePreciseHouseNumber = this.getPreciseHouseNumber();
                     Boolean copyPreciseHouseNumber = ((Boolean) strategy.copy(LocatorUtils.property(locator, "preciseHouseNumber", sourcePreciseHouseNumber), sourcePreciseHouseNumber, (this.preciseHouseNumber!= null)));
                     copy.setPreciseHouseNumber(copyPreciseHouseNumber);
                 } else {
@@ -311,10 +334,12 @@ public class Wgs84Address
         return draftCopy;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object createNewInstance() {
         return new Wgs84Address();
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
@@ -346,9 +371,9 @@ public class Wgs84Address
         }
         {
             Boolean lhsPreciseHouseNumber;
-            lhsPreciseHouseNumber = this.isPreciseHouseNumber();
+            lhsPreciseHouseNumber = this.getPreciseHouseNumber();
             Boolean rhsPreciseHouseNumber;
-            rhsPreciseHouseNumber = that.isPreciseHouseNumber();
+            rhsPreciseHouseNumber = that.getPreciseHouseNumber();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "preciseHouseNumber", lhsPreciseHouseNumber), LocatorUtils.property(thatLocator, "preciseHouseNumber", rhsPreciseHouseNumber), lhsPreciseHouseNumber, rhsPreciseHouseNumber, (this.preciseHouseNumber!= null), (that.preciseHouseNumber!= null))) {
                 return false;
             }
@@ -374,6 +399,7 @@ public class Wgs84Address
         return true;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public boolean equals(Object object) {
         final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);

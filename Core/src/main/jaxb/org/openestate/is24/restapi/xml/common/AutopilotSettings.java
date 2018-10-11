@@ -2,6 +2,7 @@
 package org.openestate.is24.restapi.xml.common;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
@@ -43,10 +44,13 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
     "autopilotEnabled",
     "sendEmailWithAutopilotReport"
 })
+@Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
 public class AutopilotSettings implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Boolean autopilotEnabled;
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Boolean sendEmailWithAutopilotReport;
 
     /**
@@ -57,7 +61,8 @@ public class AutopilotSettings implements Serializable, Cloneable, CopyTo2, Equa
      *     {@link Boolean }
      *     
      */
-    public Boolean isAutopilotEnabled() {
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    public Boolean getAutopilotEnabled() {
         return autopilotEnabled;
     }
 
@@ -69,6 +74,7 @@ public class AutopilotSettings implements Serializable, Cloneable, CopyTo2, Equa
      *     {@link Boolean }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setAutopilotEnabled(Boolean value) {
         this.autopilotEnabled = value;
     }
@@ -81,7 +87,8 @@ public class AutopilotSettings implements Serializable, Cloneable, CopyTo2, Equa
      *     {@link Boolean }
      *     
      */
-    public Boolean isSendEmailWithAutopilotReport() {
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    public Boolean getSendEmailWithAutopilotReport() {
         return sendEmailWithAutopilotReport;
     }
 
@@ -93,10 +100,12 @@ public class AutopilotSettings implements Serializable, Cloneable, CopyTo2, Equa
      *     {@link Boolean }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setSendEmailWithAutopilotReport(Boolean value) {
         this.sendEmailWithAutopilotReport = value;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public String toString() {
         final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
@@ -104,6 +113,7 @@ public class AutopilotSettings implements Serializable, Cloneable, CopyTo2, Equa
         return buffer.toString();
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
@@ -111,29 +121,33 @@ public class AutopilotSettings implements Serializable, Cloneable, CopyTo2, Equa
         return buffer;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             Boolean theAutopilotEnabled;
-            theAutopilotEnabled = this.isAutopilotEnabled();
+            theAutopilotEnabled = this.getAutopilotEnabled();
             strategy.appendField(locator, this, "autopilotEnabled", buffer, theAutopilotEnabled, (this.autopilotEnabled!= null));
         }
         {
             Boolean theSendEmailWithAutopilotReport;
-            theSendEmailWithAutopilotReport = this.isSendEmailWithAutopilotReport();
+            theSendEmailWithAutopilotReport = this.getSendEmailWithAutopilotReport();
             strategy.appendField(locator, this, "sendEmailWithAutopilotReport", buffer, theSendEmailWithAutopilotReport, (this.sendEmailWithAutopilotReport!= null));
         }
         return buffer;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object clone() {
         return copyTo(createNewInstance());
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object copyTo(Object target) {
         final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof AutopilotSettings) {
@@ -142,7 +156,7 @@ public class AutopilotSettings implements Serializable, Cloneable, CopyTo2, Equa
                 Boolean autopilotEnabledShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.autopilotEnabled!= null));
                 if (autopilotEnabledShouldBeCopiedAndSet == Boolean.TRUE) {
                     Boolean sourceAutopilotEnabled;
-                    sourceAutopilotEnabled = this.isAutopilotEnabled();
+                    sourceAutopilotEnabled = this.getAutopilotEnabled();
                     Boolean copyAutopilotEnabled = ((Boolean) strategy.copy(LocatorUtils.property(locator, "autopilotEnabled", sourceAutopilotEnabled), sourceAutopilotEnabled, (this.autopilotEnabled!= null)));
                     copy.setAutopilotEnabled(copyAutopilotEnabled);
                 } else {
@@ -155,7 +169,7 @@ public class AutopilotSettings implements Serializable, Cloneable, CopyTo2, Equa
                 Boolean sendEmailWithAutopilotReportShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.sendEmailWithAutopilotReport!= null));
                 if (sendEmailWithAutopilotReportShouldBeCopiedAndSet == Boolean.TRUE) {
                     Boolean sourceSendEmailWithAutopilotReport;
-                    sourceSendEmailWithAutopilotReport = this.isSendEmailWithAutopilotReport();
+                    sourceSendEmailWithAutopilotReport = this.getSendEmailWithAutopilotReport();
                     Boolean copySendEmailWithAutopilotReport = ((Boolean) strategy.copy(LocatorUtils.property(locator, "sendEmailWithAutopilotReport", sourceSendEmailWithAutopilotReport), sourceSendEmailWithAutopilotReport, (this.sendEmailWithAutopilotReport!= null)));
                     copy.setSendEmailWithAutopilotReport(copySendEmailWithAutopilotReport);
                 } else {
@@ -168,10 +182,12 @@ public class AutopilotSettings implements Serializable, Cloneable, CopyTo2, Equa
         return draftCopy;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object createNewInstance() {
         return new AutopilotSettings();
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
@@ -182,18 +198,18 @@ public class AutopilotSettings implements Serializable, Cloneable, CopyTo2, Equa
         final AutopilotSettings that = ((AutopilotSettings) object);
         {
             Boolean lhsAutopilotEnabled;
-            lhsAutopilotEnabled = this.isAutopilotEnabled();
+            lhsAutopilotEnabled = this.getAutopilotEnabled();
             Boolean rhsAutopilotEnabled;
-            rhsAutopilotEnabled = that.isAutopilotEnabled();
+            rhsAutopilotEnabled = that.getAutopilotEnabled();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "autopilotEnabled", lhsAutopilotEnabled), LocatorUtils.property(thatLocator, "autopilotEnabled", rhsAutopilotEnabled), lhsAutopilotEnabled, rhsAutopilotEnabled, (this.autopilotEnabled!= null), (that.autopilotEnabled!= null))) {
                 return false;
             }
         }
         {
             Boolean lhsSendEmailWithAutopilotReport;
-            lhsSendEmailWithAutopilotReport = this.isSendEmailWithAutopilotReport();
+            lhsSendEmailWithAutopilotReport = this.getSendEmailWithAutopilotReport();
             Boolean rhsSendEmailWithAutopilotReport;
-            rhsSendEmailWithAutopilotReport = that.isSendEmailWithAutopilotReport();
+            rhsSendEmailWithAutopilotReport = that.getSendEmailWithAutopilotReport();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "sendEmailWithAutopilotReport", lhsSendEmailWithAutopilotReport), LocatorUtils.property(thatLocator, "sendEmailWithAutopilotReport", rhsSendEmailWithAutopilotReport), lhsSendEmailWithAutopilotReport, rhsSendEmailWithAutopilotReport, (this.sendEmailWithAutopilotReport!= null), (that.sendEmailWithAutopilotReport!= null))) {
                 return false;
             }
@@ -201,6 +217,7 @@ public class AutopilotSettings implements Serializable, Cloneable, CopyTo2, Equa
         return true;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public boolean equals(Object object) {
         final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);

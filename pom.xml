@@ -120,7 +120,7 @@
                 <groupId>org.jvnet.jaxb2_commons</groupId>
                 <artifactId>jaxb2-basics-runtime</artifactId>
                 <version>0.11.1</version>
-                <!-- version 0.12+ requires Java 9 / JAXB 2.3.0 -->
+                <!-- version 0.12+ requires JAXB 2.3.0 -->
             </dependency>
             <dependency>
                 <groupId>javax.servlet.jsp</groupId>
@@ -245,22 +245,27 @@
                     <artifactId>findbugs-maven-plugin</artifactId>
                     <version>3.0.5</version>
                 </plugin>
+
                 <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>jaxb2-maven-plugin</artifactId>
-                    <version>2.3.1</version>
-                    <dependencies>
-                        <dependency>
-                            <groupId>org.jvnet.jaxb2_commons</groupId>
-                            <artifactId>jaxb2-basics</artifactId>
-                            <version>0.11.1</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>org.jvnet.jaxb2_commons</groupId>
-                            <artifactId>jaxb2-basics-annotate</artifactId>
-                            <version>1.0.4</version>
-                        </dependency>
-                    </dependencies>
+                    <groupId>org.jvnet.jaxb2.maven2</groupId>
+                    <artifactId>maven-jaxb22-plugin</artifactId>
+                    <version>0.14.0</version>
+                    <configuration>
+                        <plugins>
+                            <plugin>
+                                <groupId>org.jvnet.jaxb2_commons</groupId>
+                                <artifactId>jaxb2-basics</artifactId>
+                                <version>0.11.1</version>
+                                <!-- version 0.12+ requires JAXB 2.3.0 -->
+                            </plugin>
+                            <plugin>
+                                <groupId>org.jvnet.jaxb2_commons</groupId>
+                                <artifactId>jaxb2-basics-annotate</artifactId>
+                                <version>1.0.4</version>
+                                <!-- version 1.1+ requires JAXB 2.3.0 -->
+                            </plugin>
+                        </plugins>
+                    </configuration>
                 </plugin>
 
                 <plugin>

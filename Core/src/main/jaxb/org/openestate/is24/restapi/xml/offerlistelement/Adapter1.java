@@ -1,10 +1,10 @@
 
-package org.openestate.is24.restapi.xml.realestates;
+package org.openestate.is24.restapi.xml.offerlistelement;
 
 import java.math.BigDecimal;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
-public class Adapter22
+public class Adapter1
     extends XmlAdapter<String, BigDecimal>
 {
 

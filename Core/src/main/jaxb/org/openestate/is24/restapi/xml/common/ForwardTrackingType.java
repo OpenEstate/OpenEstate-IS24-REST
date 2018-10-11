@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.common;
 
+import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlType;
 
@@ -22,21 +23,22 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlType(name = "ForwardTrackingType")
 @XmlEnum
+@Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
 public enum ForwardTrackingType {
 
 
     /**
      * Indicates that the customer was forwarded to us by a
-     *             partner/affiliate within the current session.
-     *           
+     *                         partner/affiliate within the current session.
+     *                     
      * 
      */
     DIRECT,
 
     /**
      * Indicates that the customer was forwarded to us by a
-     *             partner/affiliate previously and has now returned independently of the partner/affiliate.
-     *           
+     *                         partner/affiliate previously and has now returned independently of the partner/affiliate.
+     *                     
      * 
      */
     LATER;

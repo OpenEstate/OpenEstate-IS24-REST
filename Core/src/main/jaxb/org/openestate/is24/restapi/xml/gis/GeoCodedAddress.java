@@ -2,6 +2,7 @@
 package org.openestate.is24.restapi.xml.gis;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -26,6 +27,7 @@ import org.openestate.is24.restapi.xml.common.Wgs84Coordinate;
 
 /**
  * Eine Adresse mit zugeh\u00f6riger Geokodierungs-Information.
+ *             
  * 
  * <p>Java class for GeoCodedAddress complex type.
  * 
@@ -55,17 +57,22 @@ import org.openestate.is24.restapi.xml.common.Wgs84Coordinate;
     "geoCodingPrecision",
     "geoCodingHierarchy"
 })
+@Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
 public class GeoCodedAddress implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(required = true)
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Address address;
     @XmlElement(required = true)
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Wgs84Coordinate wgs84Coordinate;
     @XmlElement(required = true)
     @XmlSchemaType(name = "string")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected GeoCodingPrecisionType geoCodingPrecision;
     @XmlElement(required = true)
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected GeoHierarchy geoCodingHierarchy;
 
     /**
@@ -76,6 +83,7 @@ public class GeoCodedAddress implements Serializable, Cloneable, CopyTo2, Equals
      *     {@link Address }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Address getAddress() {
         return address;
     }
@@ -88,6 +96,7 @@ public class GeoCodedAddress implements Serializable, Cloneable, CopyTo2, Equals
      *     {@link Address }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setAddress(Address value) {
         this.address = value;
     }
@@ -100,6 +109,7 @@ public class GeoCodedAddress implements Serializable, Cloneable, CopyTo2, Equals
      *     {@link Wgs84Coordinate }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Wgs84Coordinate getWgs84Coordinate() {
         return wgs84Coordinate;
     }
@@ -112,6 +122,7 @@ public class GeoCodedAddress implements Serializable, Cloneable, CopyTo2, Equals
      *     {@link Wgs84Coordinate }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setWgs84Coordinate(Wgs84Coordinate value) {
         this.wgs84Coordinate = value;
     }
@@ -124,6 +135,7 @@ public class GeoCodedAddress implements Serializable, Cloneable, CopyTo2, Equals
      *     {@link GeoCodingPrecisionType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public GeoCodingPrecisionType getGeoCodingPrecision() {
         return geoCodingPrecision;
     }
@@ -136,6 +148,7 @@ public class GeoCodedAddress implements Serializable, Cloneable, CopyTo2, Equals
      *     {@link GeoCodingPrecisionType }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setGeoCodingPrecision(GeoCodingPrecisionType value) {
         this.geoCodingPrecision = value;
     }
@@ -148,6 +161,7 @@ public class GeoCodedAddress implements Serializable, Cloneable, CopyTo2, Equals
      *     {@link GeoHierarchy }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public GeoHierarchy getGeoCodingHierarchy() {
         return geoCodingHierarchy;
     }
@@ -160,10 +174,12 @@ public class GeoCodedAddress implements Serializable, Cloneable, CopyTo2, Equals
      *     {@link GeoHierarchy }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setGeoCodingHierarchy(GeoHierarchy value) {
         this.geoCodingHierarchy = value;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public String toString() {
         final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
@@ -171,6 +187,7 @@ public class GeoCodedAddress implements Serializable, Cloneable, CopyTo2, Equals
         return buffer.toString();
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
@@ -178,6 +195,7 @@ public class GeoCodedAddress implements Serializable, Cloneable, CopyTo2, Equals
         return buffer;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             Address theAddress;
@@ -202,15 +220,18 @@ public class GeoCodedAddress implements Serializable, Cloneable, CopyTo2, Equals
         return buffer;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object clone() {
         return copyTo(createNewInstance());
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object copyTo(Object target) {
         final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof GeoCodedAddress) {
@@ -271,10 +292,12 @@ public class GeoCodedAddress implements Serializable, Cloneable, CopyTo2, Equals
         return draftCopy;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object createNewInstance() {
         return new GeoCodedAddress();
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
@@ -322,6 +345,7 @@ public class GeoCodedAddress implements Serializable, Cloneable, CopyTo2, Equals
         return true;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public boolean equals(Object object) {
         final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);

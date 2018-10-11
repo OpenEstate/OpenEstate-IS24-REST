@@ -3,6 +3,7 @@ package org.openestate.is24.restapi.xml.common;
 
 import java.io.Serializable;
 import java.net.URI;
+import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -27,7 +28,7 @@ import org.openestate.is24.restapi.xml.realestates.RealEstate;
 
 /**
  * Allgemeine Elemente f\u00fcr alle Immobilienarten im Expose.
- *       
+ *             
  * 
  * <p>Java class for AbstractRealEstate complex type.
  * 
@@ -101,6 +102,7 @@ import org.openestate.is24.restapi.xml.realestates.RealEstate;
 @XmlSeeAlso({
     RealEstate.class
 })
+@Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
 public abstract class AbstractRealEstate
     extends AbstractRealEstateForList
     implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
@@ -108,24 +110,33 @@ public abstract class AbstractRealEstate
 
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter16 .class)
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Integer groupNumber;
     @XmlJavaTypeAdapter(Adapter17 .class)
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected String descriptionNote;
     @XmlJavaTypeAdapter(Adapter18 .class)
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected String furnishingNote;
     @XmlJavaTypeAdapter(Adapter19 .class)
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected String locationNote;
     @XmlJavaTypeAdapter(Adapter20 .class)
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected String otherNote;
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Attachments attachments;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter4 .class)
     @XmlSchemaType(name = "anyURI")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected URI referencePriceServiceCall;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter4 .class)
     @XmlSchemaType(name = "anyURI")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected URI referencePriceApiCall;
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Long realEstateProjectId;
 
     /**
@@ -136,6 +147,7 @@ public abstract class AbstractRealEstate
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Integer getGroupNumber() {
         return groupNumber;
     }
@@ -148,6 +160,7 @@ public abstract class AbstractRealEstate
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setGroupNumber(Integer value) {
         this.groupNumber = value;
     }
@@ -160,6 +173,7 @@ public abstract class AbstractRealEstate
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public String getDescriptionNote() {
         return descriptionNote;
     }
@@ -172,6 +186,7 @@ public abstract class AbstractRealEstate
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setDescriptionNote(String value) {
         this.descriptionNote = value;
     }
@@ -184,6 +199,7 @@ public abstract class AbstractRealEstate
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public String getFurnishingNote() {
         return furnishingNote;
     }
@@ -196,6 +212,7 @@ public abstract class AbstractRealEstate
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setFurnishingNote(String value) {
         this.furnishingNote = value;
     }
@@ -208,6 +225,7 @@ public abstract class AbstractRealEstate
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public String getLocationNote() {
         return locationNote;
     }
@@ -220,6 +238,7 @@ public abstract class AbstractRealEstate
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setLocationNote(String value) {
         this.locationNote = value;
     }
@@ -232,6 +251,7 @@ public abstract class AbstractRealEstate
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public String getOtherNote() {
         return otherNote;
     }
@@ -244,6 +264,7 @@ public abstract class AbstractRealEstate
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setOtherNote(String value) {
         this.otherNote = value;
     }
@@ -256,6 +277,7 @@ public abstract class AbstractRealEstate
      *     {@link Attachments }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Attachments getAttachments() {
         return attachments;
     }
@@ -268,6 +290,7 @@ public abstract class AbstractRealEstate
      *     {@link Attachments }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setAttachments(Attachments value) {
         this.attachments = value;
     }
@@ -280,6 +303,7 @@ public abstract class AbstractRealEstate
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public URI getReferencePriceServiceCall() {
         return referencePriceServiceCall;
     }
@@ -292,6 +316,7 @@ public abstract class AbstractRealEstate
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setReferencePriceServiceCall(URI value) {
         this.referencePriceServiceCall = value;
     }
@@ -304,6 +329,7 @@ public abstract class AbstractRealEstate
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public URI getReferencePriceApiCall() {
         return referencePriceApiCall;
     }
@@ -316,6 +342,7 @@ public abstract class AbstractRealEstate
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setReferencePriceApiCall(URI value) {
         this.referencePriceApiCall = value;
     }
@@ -328,6 +355,7 @@ public abstract class AbstractRealEstate
      *     {@link Long }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Long getRealEstateProjectId() {
         return realEstateProjectId;
     }
@@ -340,10 +368,12 @@ public abstract class AbstractRealEstate
      *     {@link Long }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setRealEstateProjectId(Long value) {
         this.realEstateProjectId = value;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public String toString() {
         final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
@@ -351,6 +381,7 @@ public abstract class AbstractRealEstate
         return buffer.toString();
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
@@ -358,6 +389,7 @@ public abstract class AbstractRealEstate
         return buffer;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         super.appendFields(locator, buffer, strategy);
         {
@@ -408,15 +440,18 @@ public abstract class AbstractRealEstate
         return buffer;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object clone() {
         return copyTo(createNewInstance());
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object copyTo(Object target) {
         final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         if (null == target) {
             throw new IllegalArgumentException("Target argument must not be null for abstract copyable classes.");
@@ -545,6 +580,7 @@ public abstract class AbstractRealEstate
         return target;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
@@ -640,6 +676,7 @@ public abstract class AbstractRealEstate
         return true;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public boolean equals(Object object) {
         final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);

@@ -3,6 +3,7 @@ package org.openestate.is24.restapi.xml.offerlistelement;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -60,30 +61,44 @@ import org.openestate.is24.restapi.xml.common.Price;
     "cellar",
     "isBarrierFree"
 })
+@Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
 public class OfferApartmentBuy
     extends OfferRealEstateForList
     implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Price price;
     @XmlElement(required = true, type = String.class)
     @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "double")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected BigDecimal livingSpace;
     @XmlElement(required = true, type = String.class)
     @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "double")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected BigDecimal numberOfRooms;
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Boolean energyPerformanceCertificate;
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Boolean builtInKitchen;
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Boolean balcony;
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Boolean certificateOfEligibilityNeeded;
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Boolean garden;
     @XmlElement(required = true)
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected CourtageInfo courtage;
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Boolean lift;
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Boolean guestToilet;
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Boolean cellar;
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Boolean isBarrierFree;
 
     /**
@@ -94,6 +109,7 @@ public class OfferApartmentBuy
      *     {@link Price }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Price getPrice() {
         return price;
     }
@@ -106,6 +122,7 @@ public class OfferApartmentBuy
      *     {@link Price }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setPrice(Price value) {
         this.price = value;
     }
@@ -118,6 +135,7 @@ public class OfferApartmentBuy
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public BigDecimal getLivingSpace() {
         return livingSpace;
     }
@@ -130,6 +148,7 @@ public class OfferApartmentBuy
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setLivingSpace(BigDecimal value) {
         this.livingSpace = value;
     }
@@ -142,6 +161,7 @@ public class OfferApartmentBuy
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public BigDecimal getNumberOfRooms() {
         return numberOfRooms;
     }
@@ -154,6 +174,7 @@ public class OfferApartmentBuy
      *     {@link String }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setNumberOfRooms(BigDecimal value) {
         this.numberOfRooms = value;
     }
@@ -166,7 +187,8 @@ public class OfferApartmentBuy
      *     {@link Boolean }
      *     
      */
-    public Boolean isEnergyPerformanceCertificate() {
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    public Boolean getEnergyPerformanceCertificate() {
         return energyPerformanceCertificate;
     }
 
@@ -178,6 +200,7 @@ public class OfferApartmentBuy
      *     {@link Boolean }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setEnergyPerformanceCertificate(Boolean value) {
         this.energyPerformanceCertificate = value;
     }
@@ -190,7 +213,8 @@ public class OfferApartmentBuy
      *     {@link Boolean }
      *     
      */
-    public Boolean isBuiltInKitchen() {
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    public Boolean getBuiltInKitchen() {
         return builtInKitchen;
     }
 
@@ -202,6 +226,7 @@ public class OfferApartmentBuy
      *     {@link Boolean }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setBuiltInKitchen(Boolean value) {
         this.builtInKitchen = value;
     }
@@ -214,7 +239,8 @@ public class OfferApartmentBuy
      *     {@link Boolean }
      *     
      */
-    public Boolean isBalcony() {
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    public Boolean getBalcony() {
         return balcony;
     }
 
@@ -226,6 +252,7 @@ public class OfferApartmentBuy
      *     {@link Boolean }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setBalcony(Boolean value) {
         this.balcony = value;
     }
@@ -238,7 +265,8 @@ public class OfferApartmentBuy
      *     {@link Boolean }
      *     
      */
-    public Boolean isCertificateOfEligibilityNeeded() {
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    public Boolean getCertificateOfEligibilityNeeded() {
         return certificateOfEligibilityNeeded;
     }
 
@@ -250,6 +278,7 @@ public class OfferApartmentBuy
      *     {@link Boolean }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setCertificateOfEligibilityNeeded(Boolean value) {
         this.certificateOfEligibilityNeeded = value;
     }
@@ -262,7 +291,8 @@ public class OfferApartmentBuy
      *     {@link Boolean }
      *     
      */
-    public Boolean isGarden() {
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    public Boolean getGarden() {
         return garden;
     }
 
@@ -274,6 +304,7 @@ public class OfferApartmentBuy
      *     {@link Boolean }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setGarden(Boolean value) {
         this.garden = value;
     }
@@ -286,6 +317,7 @@ public class OfferApartmentBuy
      *     {@link CourtageInfo }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public CourtageInfo getCourtage() {
         return courtage;
     }
@@ -298,6 +330,7 @@ public class OfferApartmentBuy
      *     {@link CourtageInfo }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setCourtage(CourtageInfo value) {
         this.courtage = value;
     }
@@ -310,7 +343,8 @@ public class OfferApartmentBuy
      *     {@link Boolean }
      *     
      */
-    public Boolean isLift() {
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    public Boolean getLift() {
         return lift;
     }
 
@@ -322,6 +356,7 @@ public class OfferApartmentBuy
      *     {@link Boolean }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setLift(Boolean value) {
         this.lift = value;
     }
@@ -334,7 +369,8 @@ public class OfferApartmentBuy
      *     {@link Boolean }
      *     
      */
-    public Boolean isGuestToilet() {
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    public Boolean getGuestToilet() {
         return guestToilet;
     }
 
@@ -346,6 +382,7 @@ public class OfferApartmentBuy
      *     {@link Boolean }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setGuestToilet(Boolean value) {
         this.guestToilet = value;
     }
@@ -358,7 +395,8 @@ public class OfferApartmentBuy
      *     {@link Boolean }
      *     
      */
-    public Boolean isCellar() {
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    public Boolean getCellar() {
         return cellar;
     }
 
@@ -370,6 +408,7 @@ public class OfferApartmentBuy
      *     {@link Boolean }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setCellar(Boolean value) {
         this.cellar = value;
     }
@@ -382,7 +421,8 @@ public class OfferApartmentBuy
      *     {@link Boolean }
      *     
      */
-    public Boolean isIsBarrierFree() {
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    public Boolean getIsBarrierFree() {
         return isBarrierFree;
     }
 
@@ -394,10 +434,12 @@ public class OfferApartmentBuy
      *     {@link Boolean }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setIsBarrierFree(Boolean value) {
         this.isBarrierFree = value;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public String toString() {
         final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
@@ -405,6 +447,7 @@ public class OfferApartmentBuy
         return buffer.toString();
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
@@ -412,6 +455,7 @@ public class OfferApartmentBuy
         return buffer;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         super.appendFields(locator, buffer, strategy);
         {
@@ -431,27 +475,27 @@ public class OfferApartmentBuy
         }
         {
             Boolean theEnergyPerformanceCertificate;
-            theEnergyPerformanceCertificate = this.isEnergyPerformanceCertificate();
+            theEnergyPerformanceCertificate = this.getEnergyPerformanceCertificate();
             strategy.appendField(locator, this, "energyPerformanceCertificate", buffer, theEnergyPerformanceCertificate, (this.energyPerformanceCertificate!= null));
         }
         {
             Boolean theBuiltInKitchen;
-            theBuiltInKitchen = this.isBuiltInKitchen();
+            theBuiltInKitchen = this.getBuiltInKitchen();
             strategy.appendField(locator, this, "builtInKitchen", buffer, theBuiltInKitchen, (this.builtInKitchen!= null));
         }
         {
             Boolean theBalcony;
-            theBalcony = this.isBalcony();
+            theBalcony = this.getBalcony();
             strategy.appendField(locator, this, "balcony", buffer, theBalcony, (this.balcony!= null));
         }
         {
             Boolean theCertificateOfEligibilityNeeded;
-            theCertificateOfEligibilityNeeded = this.isCertificateOfEligibilityNeeded();
+            theCertificateOfEligibilityNeeded = this.getCertificateOfEligibilityNeeded();
             strategy.appendField(locator, this, "certificateOfEligibilityNeeded", buffer, theCertificateOfEligibilityNeeded, (this.certificateOfEligibilityNeeded!= null));
         }
         {
             Boolean theGarden;
-            theGarden = this.isGarden();
+            theGarden = this.getGarden();
             strategy.appendField(locator, this, "garden", buffer, theGarden, (this.garden!= null));
         }
         {
@@ -461,36 +505,39 @@ public class OfferApartmentBuy
         }
         {
             Boolean theLift;
-            theLift = this.isLift();
+            theLift = this.getLift();
             strategy.appendField(locator, this, "lift", buffer, theLift, (this.lift!= null));
         }
         {
             Boolean theGuestToilet;
-            theGuestToilet = this.isGuestToilet();
+            theGuestToilet = this.getGuestToilet();
             strategy.appendField(locator, this, "guestToilet", buffer, theGuestToilet, (this.guestToilet!= null));
         }
         {
             Boolean theCellar;
-            theCellar = this.isCellar();
+            theCellar = this.getCellar();
             strategy.appendField(locator, this, "cellar", buffer, theCellar, (this.cellar!= null));
         }
         {
             Boolean theIsBarrierFree;
-            theIsBarrierFree = this.isIsBarrierFree();
+            theIsBarrierFree = this.getIsBarrierFree();
             strategy.appendField(locator, this, "isBarrierFree", buffer, theIsBarrierFree, (this.isBarrierFree!= null));
         }
         return buffer;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object clone() {
         return copyTo(createNewInstance());
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object copyTo(Object target) {
         final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         super.copyTo(locator, draftCopy, strategy);
@@ -539,7 +586,7 @@ public class OfferApartmentBuy
                 Boolean energyPerformanceCertificateShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.energyPerformanceCertificate!= null));
                 if (energyPerformanceCertificateShouldBeCopiedAndSet == Boolean.TRUE) {
                     Boolean sourceEnergyPerformanceCertificate;
-                    sourceEnergyPerformanceCertificate = this.isEnergyPerformanceCertificate();
+                    sourceEnergyPerformanceCertificate = this.getEnergyPerformanceCertificate();
                     Boolean copyEnergyPerformanceCertificate = ((Boolean) strategy.copy(LocatorUtils.property(locator, "energyPerformanceCertificate", sourceEnergyPerformanceCertificate), sourceEnergyPerformanceCertificate, (this.energyPerformanceCertificate!= null)));
                     copy.setEnergyPerformanceCertificate(copyEnergyPerformanceCertificate);
                 } else {
@@ -552,7 +599,7 @@ public class OfferApartmentBuy
                 Boolean builtInKitchenShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.builtInKitchen!= null));
                 if (builtInKitchenShouldBeCopiedAndSet == Boolean.TRUE) {
                     Boolean sourceBuiltInKitchen;
-                    sourceBuiltInKitchen = this.isBuiltInKitchen();
+                    sourceBuiltInKitchen = this.getBuiltInKitchen();
                     Boolean copyBuiltInKitchen = ((Boolean) strategy.copy(LocatorUtils.property(locator, "builtInKitchen", sourceBuiltInKitchen), sourceBuiltInKitchen, (this.builtInKitchen!= null)));
                     copy.setBuiltInKitchen(copyBuiltInKitchen);
                 } else {
@@ -565,7 +612,7 @@ public class OfferApartmentBuy
                 Boolean balconyShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.balcony!= null));
                 if (balconyShouldBeCopiedAndSet == Boolean.TRUE) {
                     Boolean sourceBalcony;
-                    sourceBalcony = this.isBalcony();
+                    sourceBalcony = this.getBalcony();
                     Boolean copyBalcony = ((Boolean) strategy.copy(LocatorUtils.property(locator, "balcony", sourceBalcony), sourceBalcony, (this.balcony!= null)));
                     copy.setBalcony(copyBalcony);
                 } else {
@@ -578,7 +625,7 @@ public class OfferApartmentBuy
                 Boolean certificateOfEligibilityNeededShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.certificateOfEligibilityNeeded!= null));
                 if (certificateOfEligibilityNeededShouldBeCopiedAndSet == Boolean.TRUE) {
                     Boolean sourceCertificateOfEligibilityNeeded;
-                    sourceCertificateOfEligibilityNeeded = this.isCertificateOfEligibilityNeeded();
+                    sourceCertificateOfEligibilityNeeded = this.getCertificateOfEligibilityNeeded();
                     Boolean copyCertificateOfEligibilityNeeded = ((Boolean) strategy.copy(LocatorUtils.property(locator, "certificateOfEligibilityNeeded", sourceCertificateOfEligibilityNeeded), sourceCertificateOfEligibilityNeeded, (this.certificateOfEligibilityNeeded!= null)));
                     copy.setCertificateOfEligibilityNeeded(copyCertificateOfEligibilityNeeded);
                 } else {
@@ -591,7 +638,7 @@ public class OfferApartmentBuy
                 Boolean gardenShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.garden!= null));
                 if (gardenShouldBeCopiedAndSet == Boolean.TRUE) {
                     Boolean sourceGarden;
-                    sourceGarden = this.isGarden();
+                    sourceGarden = this.getGarden();
                     Boolean copyGarden = ((Boolean) strategy.copy(LocatorUtils.property(locator, "garden", sourceGarden), sourceGarden, (this.garden!= null)));
                     copy.setGarden(copyGarden);
                 } else {
@@ -617,7 +664,7 @@ public class OfferApartmentBuy
                 Boolean liftShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.lift!= null));
                 if (liftShouldBeCopiedAndSet == Boolean.TRUE) {
                     Boolean sourceLift;
-                    sourceLift = this.isLift();
+                    sourceLift = this.getLift();
                     Boolean copyLift = ((Boolean) strategy.copy(LocatorUtils.property(locator, "lift", sourceLift), sourceLift, (this.lift!= null)));
                     copy.setLift(copyLift);
                 } else {
@@ -630,7 +677,7 @@ public class OfferApartmentBuy
                 Boolean guestToiletShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.guestToilet!= null));
                 if (guestToiletShouldBeCopiedAndSet == Boolean.TRUE) {
                     Boolean sourceGuestToilet;
-                    sourceGuestToilet = this.isGuestToilet();
+                    sourceGuestToilet = this.getGuestToilet();
                     Boolean copyGuestToilet = ((Boolean) strategy.copy(LocatorUtils.property(locator, "guestToilet", sourceGuestToilet), sourceGuestToilet, (this.guestToilet!= null)));
                     copy.setGuestToilet(copyGuestToilet);
                 } else {
@@ -643,7 +690,7 @@ public class OfferApartmentBuy
                 Boolean cellarShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.cellar!= null));
                 if (cellarShouldBeCopiedAndSet == Boolean.TRUE) {
                     Boolean sourceCellar;
-                    sourceCellar = this.isCellar();
+                    sourceCellar = this.getCellar();
                     Boolean copyCellar = ((Boolean) strategy.copy(LocatorUtils.property(locator, "cellar", sourceCellar), sourceCellar, (this.cellar!= null)));
                     copy.setCellar(copyCellar);
                 } else {
@@ -656,7 +703,7 @@ public class OfferApartmentBuy
                 Boolean isBarrierFreeShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.isBarrierFree!= null));
                 if (isBarrierFreeShouldBeCopiedAndSet == Boolean.TRUE) {
                     Boolean sourceIsBarrierFree;
-                    sourceIsBarrierFree = this.isIsBarrierFree();
+                    sourceIsBarrierFree = this.getIsBarrierFree();
                     Boolean copyIsBarrierFree = ((Boolean) strategy.copy(LocatorUtils.property(locator, "isBarrierFree", sourceIsBarrierFree), sourceIsBarrierFree, (this.isBarrierFree!= null)));
                     copy.setIsBarrierFree(copyIsBarrierFree);
                 } else {
@@ -669,10 +716,12 @@ public class OfferApartmentBuy
         return draftCopy;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object createNewInstance() {
         return new OfferApartmentBuy();
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
@@ -713,45 +762,45 @@ public class OfferApartmentBuy
         }
         {
             Boolean lhsEnergyPerformanceCertificate;
-            lhsEnergyPerformanceCertificate = this.isEnergyPerformanceCertificate();
+            lhsEnergyPerformanceCertificate = this.getEnergyPerformanceCertificate();
             Boolean rhsEnergyPerformanceCertificate;
-            rhsEnergyPerformanceCertificate = that.isEnergyPerformanceCertificate();
+            rhsEnergyPerformanceCertificate = that.getEnergyPerformanceCertificate();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "energyPerformanceCertificate", lhsEnergyPerformanceCertificate), LocatorUtils.property(thatLocator, "energyPerformanceCertificate", rhsEnergyPerformanceCertificate), lhsEnergyPerformanceCertificate, rhsEnergyPerformanceCertificate, (this.energyPerformanceCertificate!= null), (that.energyPerformanceCertificate!= null))) {
                 return false;
             }
         }
         {
             Boolean lhsBuiltInKitchen;
-            lhsBuiltInKitchen = this.isBuiltInKitchen();
+            lhsBuiltInKitchen = this.getBuiltInKitchen();
             Boolean rhsBuiltInKitchen;
-            rhsBuiltInKitchen = that.isBuiltInKitchen();
+            rhsBuiltInKitchen = that.getBuiltInKitchen();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "builtInKitchen", lhsBuiltInKitchen), LocatorUtils.property(thatLocator, "builtInKitchen", rhsBuiltInKitchen), lhsBuiltInKitchen, rhsBuiltInKitchen, (this.builtInKitchen!= null), (that.builtInKitchen!= null))) {
                 return false;
             }
         }
         {
             Boolean lhsBalcony;
-            lhsBalcony = this.isBalcony();
+            lhsBalcony = this.getBalcony();
             Boolean rhsBalcony;
-            rhsBalcony = that.isBalcony();
+            rhsBalcony = that.getBalcony();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "balcony", lhsBalcony), LocatorUtils.property(thatLocator, "balcony", rhsBalcony), lhsBalcony, rhsBalcony, (this.balcony!= null), (that.balcony!= null))) {
                 return false;
             }
         }
         {
             Boolean lhsCertificateOfEligibilityNeeded;
-            lhsCertificateOfEligibilityNeeded = this.isCertificateOfEligibilityNeeded();
+            lhsCertificateOfEligibilityNeeded = this.getCertificateOfEligibilityNeeded();
             Boolean rhsCertificateOfEligibilityNeeded;
-            rhsCertificateOfEligibilityNeeded = that.isCertificateOfEligibilityNeeded();
+            rhsCertificateOfEligibilityNeeded = that.getCertificateOfEligibilityNeeded();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "certificateOfEligibilityNeeded", lhsCertificateOfEligibilityNeeded), LocatorUtils.property(thatLocator, "certificateOfEligibilityNeeded", rhsCertificateOfEligibilityNeeded), lhsCertificateOfEligibilityNeeded, rhsCertificateOfEligibilityNeeded, (this.certificateOfEligibilityNeeded!= null), (that.certificateOfEligibilityNeeded!= null))) {
                 return false;
             }
         }
         {
             Boolean lhsGarden;
-            lhsGarden = this.isGarden();
+            lhsGarden = this.getGarden();
             Boolean rhsGarden;
-            rhsGarden = that.isGarden();
+            rhsGarden = that.getGarden();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "garden", lhsGarden), LocatorUtils.property(thatLocator, "garden", rhsGarden), lhsGarden, rhsGarden, (this.garden!= null), (that.garden!= null))) {
                 return false;
             }
@@ -767,36 +816,36 @@ public class OfferApartmentBuy
         }
         {
             Boolean lhsLift;
-            lhsLift = this.isLift();
+            lhsLift = this.getLift();
             Boolean rhsLift;
-            rhsLift = that.isLift();
+            rhsLift = that.getLift();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "lift", lhsLift), LocatorUtils.property(thatLocator, "lift", rhsLift), lhsLift, rhsLift, (this.lift!= null), (that.lift!= null))) {
                 return false;
             }
         }
         {
             Boolean lhsGuestToilet;
-            lhsGuestToilet = this.isGuestToilet();
+            lhsGuestToilet = this.getGuestToilet();
             Boolean rhsGuestToilet;
-            rhsGuestToilet = that.isGuestToilet();
+            rhsGuestToilet = that.getGuestToilet();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "guestToilet", lhsGuestToilet), LocatorUtils.property(thatLocator, "guestToilet", rhsGuestToilet), lhsGuestToilet, rhsGuestToilet, (this.guestToilet!= null), (that.guestToilet!= null))) {
                 return false;
             }
         }
         {
             Boolean lhsCellar;
-            lhsCellar = this.isCellar();
+            lhsCellar = this.getCellar();
             Boolean rhsCellar;
-            rhsCellar = that.isCellar();
+            rhsCellar = that.getCellar();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "cellar", lhsCellar), LocatorUtils.property(thatLocator, "cellar", rhsCellar), lhsCellar, rhsCellar, (this.cellar!= null), (that.cellar!= null))) {
                 return false;
             }
         }
         {
             Boolean lhsIsBarrierFree;
-            lhsIsBarrierFree = this.isIsBarrierFree();
+            lhsIsBarrierFree = this.getIsBarrierFree();
             Boolean rhsIsBarrierFree;
-            rhsIsBarrierFree = that.isIsBarrierFree();
+            rhsIsBarrierFree = that.getIsBarrierFree();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "isBarrierFree", lhsIsBarrierFree), LocatorUtils.property(thatLocator, "isBarrierFree", rhsIsBarrierFree), lhsIsBarrierFree, rhsIsBarrierFree, (this.isBarrierFree!= null), (that.isBarrierFree!= null))) {
                 return false;
             }
@@ -804,6 +853,7 @@ public class OfferApartmentBuy
         return true;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public boolean equals(Object object) {
         final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);

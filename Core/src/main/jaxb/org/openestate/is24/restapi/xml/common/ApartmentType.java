@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.common;
 
+import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlType;
 
@@ -31,6 +32,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlType(name = "ApartmentType")
 @XmlEnum
+@Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
 public enum ApartmentType {
 
 
@@ -96,7 +98,7 @@ public enum ApartmentType {
 
     /**
      * Keine Angabe (wird zusammen mit OTHER verwendet)
-     *           
+     *                     
      * 
      */
     @Deprecated

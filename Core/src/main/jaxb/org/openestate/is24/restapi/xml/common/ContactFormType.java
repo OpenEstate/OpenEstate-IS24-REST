@@ -1,6 +1,7 @@
 
 package org.openestate.is24.restapi.xml.common;
 
+import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlEnum;
 import javax.xml.bind.annotation.XmlType;
 
@@ -24,6 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlType(name = "ContactFormType")
 @XmlEnum
+@Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
 public enum ContactFormType {
 
 
@@ -47,9 +49,9 @@ public enum ContactFormType {
 
     /**
      * Zeigt an, dass kein Kontaktformular sinnvoll angezeigt werden
-     *             kann, z.B. da der Anbieter zwar Kontaktaufnahme per E-Mail wuenscht, aber selbst keine
-     *             E-Mail-Adresse angegeben hat.
-     *           
+     *                         kann, z.B. da der Anbieter zwar Kontaktaufnahme per E-Mail wuenscht, aber selbst keine
+     *                         E-Mail-Adresse angegeben hat.
+     *                     
      * 
      */
     NONE;

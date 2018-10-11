@@ -2,6 +2,7 @@
 package org.openestate.is24.restapi.xml.common;
 
 import java.io.Serializable;
+import javax.annotation.Generated;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -54,18 +55,25 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
     "quarter",
     "neighbourhood"
 })
+@Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
 public class GeoHierarchy implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Continent continent;
     @XmlElement(required = true)
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Country country;
     @XmlElement(required = true)
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Region region;
     @XmlElement(required = true)
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected City city;
     @XmlElement(required = true)
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Quarter quarter;
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     protected Neighbourhood neighbourhood;
 
     /**
@@ -76,6 +84,7 @@ public class GeoHierarchy implements Serializable, Cloneable, CopyTo2, Equals2, 
      *     {@link Continent }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Continent getContinent() {
         return continent;
     }
@@ -88,6 +97,7 @@ public class GeoHierarchy implements Serializable, Cloneable, CopyTo2, Equals2, 
      *     {@link Continent }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setContinent(Continent value) {
         this.continent = value;
     }
@@ -100,6 +110,7 @@ public class GeoHierarchy implements Serializable, Cloneable, CopyTo2, Equals2, 
      *     {@link Country }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Country getCountry() {
         return country;
     }
@@ -112,6 +123,7 @@ public class GeoHierarchy implements Serializable, Cloneable, CopyTo2, Equals2, 
      *     {@link Country }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setCountry(Country value) {
         this.country = value;
     }
@@ -124,6 +136,7 @@ public class GeoHierarchy implements Serializable, Cloneable, CopyTo2, Equals2, 
      *     {@link Region }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Region getRegion() {
         return region;
     }
@@ -136,6 +149,7 @@ public class GeoHierarchy implements Serializable, Cloneable, CopyTo2, Equals2, 
      *     {@link Region }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setRegion(Region value) {
         this.region = value;
     }
@@ -148,6 +162,7 @@ public class GeoHierarchy implements Serializable, Cloneable, CopyTo2, Equals2, 
      *     {@link City }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public City getCity() {
         return city;
     }
@@ -160,6 +175,7 @@ public class GeoHierarchy implements Serializable, Cloneable, CopyTo2, Equals2, 
      *     {@link City }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setCity(City value) {
         this.city = value;
     }
@@ -172,6 +188,7 @@ public class GeoHierarchy implements Serializable, Cloneable, CopyTo2, Equals2, 
      *     {@link Quarter }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Quarter getQuarter() {
         return quarter;
     }
@@ -184,6 +201,7 @@ public class GeoHierarchy implements Serializable, Cloneable, CopyTo2, Equals2, 
      *     {@link Quarter }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setQuarter(Quarter value) {
         this.quarter = value;
     }
@@ -196,6 +214,7 @@ public class GeoHierarchy implements Serializable, Cloneable, CopyTo2, Equals2, 
      *     {@link Neighbourhood }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Neighbourhood getNeighbourhood() {
         return neighbourhood;
     }
@@ -208,10 +227,12 @@ public class GeoHierarchy implements Serializable, Cloneable, CopyTo2, Equals2, 
      *     {@link Neighbourhood }
      *     
      */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public void setNeighbourhood(Neighbourhood value) {
         this.neighbourhood = value;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public String toString() {
         final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
@@ -219,6 +240,7 @@ public class GeoHierarchy implements Serializable, Cloneable, CopyTo2, Equals2, 
         return buffer.toString();
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
@@ -226,6 +248,7 @@ public class GeoHierarchy implements Serializable, Cloneable, CopyTo2, Equals2, 
         return buffer;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             Continent theContinent;
@@ -260,15 +283,18 @@ public class GeoHierarchy implements Serializable, Cloneable, CopyTo2, Equals2, 
         return buffer;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object clone() {
         return copyTo(createNewInstance());
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object copyTo(Object target) {
         final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof GeoHierarchy) {
@@ -355,10 +381,12 @@ public class GeoHierarchy implements Serializable, Cloneable, CopyTo2, Equals2, 
         return draftCopy;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public Object createNewInstance() {
         return new GeoHierarchy();
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
@@ -424,6 +452,7 @@ public class GeoHierarchy implements Serializable, Cloneable, CopyTo2, Equals2, 
         return true;
     }
 
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
     public boolean equals(Object object) {
         final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
