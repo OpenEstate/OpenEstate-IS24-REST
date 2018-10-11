@@ -11,7 +11,7 @@ Changelog for OpenEstate-IS24-REST
 -   Regenerated JAXB classes against the latest XSD schemas from IS24.
 -   Updated `commons-codec` library to version 1.11.
 -   Updated `commons-io` library to version 2.6.
--   Updated `commons-lang` library to version 3.7.
+-   Updated `commons-lang` library to version 3.8.1.
 -   Updated `commons-text` library to version 1.2.
 -   **API change:** We're using `java.net.URI` instead of `java.net.URL`
     whenever possible. See
