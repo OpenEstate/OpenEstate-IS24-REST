@@ -12,7 +12,7 @@ Changelog for OpenEstate-IS24-REST
 -   Updated `commons-codec` library to version 1.11.
 -   Updated `commons-io` library to version 2.6.
 -   Updated `commons-lang` library to version 3.8.1.
--   Updated `commons-text` library to version 1.2.
+-   Updated `commons-text` library to version 1.3.
 -   **API change:** We're using `java.net.URI` instead of `java.net.URL`
     whenever possible. See
     [Always read the documentation/code – a.k.a. java.net.URL is evil](https://sworddance.com/blog/2007/09/09/code-review-4-always-read-the-documentationcode-aka-javaneturl-is-evil/)
