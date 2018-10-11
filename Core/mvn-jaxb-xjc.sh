@@ -16,10 +16,9 @@
 #
 
 MVN="mvn"
-PROJECT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 set -e
 export LANG=en
-cd $PROJECT_DIR
-rm -fR src/main/java/org/openestate/is24/restapi/xml
-$MVN jaxb2:xjc
+cd "$DIR"
+"$MVN" org.codehaus.mojo:jaxb2-maven-plugin:xjc

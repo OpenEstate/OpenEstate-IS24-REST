@@ -113,6 +113,15 @@
     <build>
         <plugins>
 
+            <!-- compiler -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <generatedSourcesDirectory>${project.basedir}/src/main/jaxb</generatedSourcesDirectory>
+                </configuration>
+            </plugin>
+
             <!-- jar -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -131,13 +140,16 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>jaxb2-maven-plugin</artifactId>
                 <configuration>
-                    <bindingFiles>binding.xjb</bindingFiles>
-                    <outputDirectory>${project.basedir}/src/main/java</outputDirectory>
-                    <clearOutputDir>false</clearOutputDir>
-                    <target>2.1</target>
+                    <xjbSources>
+                        <xjbSource>${project.basedir}/src/main/xjb/binding.xjb</xjbSource>
+                    </xjbSources>
+                    <outputDirectory>${project.basedir}/src/main/jaxb</outputDirectory>
+                    <clearOutputDir>true</clearOutputDir>
+                    <target>2.2</target>
                     <extension>true</extension>
-                    <generateEpisode>false</generateEpisode>
+                    <generateEpisode>true</generateEpisode>
                     <noGeneratedHeaderComments>true</noGeneratedHeaderComments>
+                    <locale>en</locale>
                     <arguments>
                         <argument>-Xannotate</argument>
                         <argument>-XtoString</argument>
