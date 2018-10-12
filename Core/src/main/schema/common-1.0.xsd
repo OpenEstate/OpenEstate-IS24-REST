@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <!--
-CHANGE WITH CARE!
-This common schema is used in all API contexts, so be very careful to not introduce incompatible changes.
-In case of doubt please contact team Curiosity or the API-interest group for support.
--->
+    CHANGE WITH CARE!
+    This common schema is used in all API contexts, so be very careful to not introduce incompatible changes.
+    In case of doubt please contact team Curiosity or the API-interest group for support.
+    -->
 <xs:schema xmlns="http://rest.immobilienscout24.de/schema/common/1.0"
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
            xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
-           xmlns:xlink="http://www.w3.org/1999/xlink"
+           jaxb:version="2.0"
            xmlns:annox="http://annox.dev.java.net"
+           jaxb:extensionBindingPrefixes="annox"
+           xmlns:jl="http://annox.dev.java.net/java.lang"
+           xmlns:xlink="http://www.w3.org/1999/xlink"
            targetNamespace="http://rest.immobilienscout24.de/schema/common/1.0"
            elementFormDefault="unqualified"
            attributeFormDefault="unqualified"
-           version="1.0"
-           jaxb:version="2.0"
-           jaxb:extensionBindingPrefixes="annox">
+           version="1.0">
 
     <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="includes/xlink.xsd"/>
     <xs:include schemaLocation="includes/messages-1.0.xsd"/>
@@ -782,35 +783,45 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
     </xs:complexType>
     <xs:complexType name="ContactMailCustomStyle">
         <xs:sequence>
-            <xs:element name="header1Color" type="HexadecimalColorCode" minOccurs="1">
+            <xs:element name="header1Color" type="HexadecimalColorCode" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">color for mail header 1</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="header1FontColor" type="HexadecimalColorCode" minOccurs="1">
+            <xs:element name="header1FontColor" type="HexadecimalColorCode" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">color for font of the mail header 1</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="header2Color" type="HexadecimalColorCode" minOccurs="1">
+            <xs:element name="header2Color" type="HexadecimalColorCode" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">color for mail header 2</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="header2FontColor" type="HexadecimalColorCode" minOccurs="1">
+            <xs:element name="header2FontColor" type="HexadecimalColorCode" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">color for font of the mail header 2</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="header3Color" type="HexadecimalColorCode" minOccurs="1">
+            <xs:element name="header3Color" type="HexadecimalColorCode" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">color for mail header 3</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="header3FontColor" type="HexadecimalColorCode" minOccurs="1">
+            <xs:element name="header3FontColor" type="HexadecimalColorCode" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">color for font of the mail header 3</xs:documentation>
                 </xs:annotation>
+            </xs:element>
+            <xs:element name="identifier" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">idenitifier used in mail templates.</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="TextField">
+                        <xs:maxLength value="100"/>
+                    </xs:restriction>
+                </xs:simpleType>
             </xs:element>
         </xs:sequence>
     </xs:complexType>
@@ -1082,6 +1093,51 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
+    <xs:complexType name="VirtualTour">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">A single virtual tour.</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Eine einzelne virtuelle Tour</xs:documentation>
+        </xs:annotation>
+        <xs:complexContent>
+            <xs:extension base="Attachment">
+                <xs:sequence>
+                    <xs:element name="url" type="xs:string">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="en">URL for the preview picture.</xs:documentation>
+                            <xs:documentation xml:lang="de-DE">URL des Vorschaubildes.</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="previewUrls" minOccurs="1">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="url" minOccurs="1" maxOccurs="unbounded">
+                                    <xs:annotation>
+                                        <xs:documentation xml:lang="en">URL for the preview picture.</xs:documentation>
+                                        <xs:documentation xml:lang="de-DE">URL des Vorschaubildes.</xs:documentation>
+                                    </xs:annotation>
+                                    <xs:complexType>
+                                        <xs:attribute name="scale" type="PictureScaleType">
+                                            <xs:annotation>
+                                                <xs:documentation xml:lang="en">picture scale</xs:documentation>
+                                                <xs:documentation xml:lang="de-DE">Bildergröße</xs:documentation>
+                                            </xs:annotation>
+                                        </xs:attribute>
+                                        <xs:attribute name="href" type="xs:string">
+                                            <xs:annotation>
+                                                <xs:documentation xml:lang="en">URL to scaled picture</xs:documentation>
+                                                <xs:documentation xml:lang="de-DE">URL zum skaliertem Bild
+                                                </xs:documentation>
+                                            </xs:annotation>
+                                        </xs:attribute>
+                                    </xs:complexType>
+                                </xs:element>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
     <xs:complexType name="ExtendedAttachment" abstract="true">
         <xs:annotation>
             <xs:documentation xml:lang="en">A document</xs:documentation>
@@ -1249,11 +1305,17 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
         <xs:complexContent>
             <xs:extension base="Attachment">
                 <xs:sequence>
-                    <xs:element name="url" type="uri">
+                    <xs:element name="url">
                         <xs:annotation>
                             <xs:documentation xml:lang="en">URL of the link</xs:documentation>
                             <xs:documentation xml:lang="de-DE">URL des Verweises</xs:documentation>
                         </xs:annotation>
+                        <xs:simpleType>
+                            <xs:restriction base="xs:anyURI">
+                                <xs:maxLength value="2000"/>
+                                <xs:pattern value="(http|https)://\w.*[.]\w.*"/>
+                            </xs:restriction>
+                        </xs:simpleType>
                     </xs:element>
                 </xs:sequence>
             </xs:extension>
@@ -1556,9 +1618,13 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
             <xs:documentation xml:lang="de-DE">Befeuerungsarten</xs:documentation>
 
             <!-- MODIFICATION BY OPENESTATE.ORG: ADD ANNOTATION @Deprecated -->
+            <!--
             <xs:appinfo>
-                <annox:annotateClass>@java.lang.Deprecated</annox:annotateClass>
+                <annox:annotateClass>
+                    <jl:Deprecated/>
+                </annox:annotateClass>
             </xs:appinfo>
+            -->
 
         </xs:annotation>
         <xs:sequence>
@@ -1719,6 +1785,12 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
                 <xs:annotation>
                     <xs:documentation xml:lang="en">Reference to the previous result page.</xs:documentation>
                     <xs:documentation xml:lang="de-DE">Referenz auf die vorherige Seite.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="current" minOccurs="0" type="ReferenceLink">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Reference to the current result page.</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Referenz auf die aktuelle Seite.</xs:documentation>
                 </xs:annotation>
             </xs:element>
             <xs:element name="pageNumber" minOccurs="0" type="xs:int">
@@ -2166,7 +2238,15 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
                     <xs:documentation xml:lang="de-DE">Keine Angabe (wird zusammen mit OTHER verwendet)
                     </xs:documentation>
                     <xs:appinfo>
-                        <annox:annotateEnumConstant>@java.lang.Deprecated</annox:annotateEnumConstant>
+                        <!-- MODIFICATION BY OPENESTATE.ORG: The annotation by IS24 does not seem to work -->
+                        <!--
+                        <annox:annotate target="field">
+                            <jl:Deprecated/>
+                        </annox:annotate>
+                        -->
+                        <annox:annotateProperty>
+                            <jl:Deprecated/>
+                        </annox:annotateProperty>
                     </xs:appinfo>
                 </xs:annotation>
             </xs:enumeration>
@@ -2184,7 +2264,15 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
                     <xs:documentation xml:lang="de-DE">Keine Angabe (wird zusammen mit OTHER verwendet)
                     </xs:documentation>
                     <xs:appinfo>
-                        <annox:annotateEnumConstant>@java.lang.Deprecated</annox:annotateEnumConstant>
+                        <!-- MODIFICATION BY OPENESTATE.ORG: The annotation by IS24 does not seem to work -->
+                        <!--
+                        <annox:annotate target="field">
+                            <jl:Deprecated/>
+                        </annox:annotate>
+                        -->
+                        <annox:annotateProperty>
+                            <jl:Deprecated/>
+                        </annox:annotateProperty>
                     </xs:appinfo>
                 </xs:annotation>
             </xs:enumeration>
@@ -2921,7 +3009,9 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
 
             <!-- MODIFICATION BY OPENESTATE.ORG: ADD ANNOTATION @Deprecated -->
             <xs:appinfo>
-                <annox:annotateEnum>@java.lang.Deprecated</annox:annotateEnum>
+                <annox:annotateEnum>
+                    <jl:Deprecated/>
+                </annox:annotateEnum>
             </xs:appinfo>
 
         </xs:annotation>
@@ -3891,7 +3981,9 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
 
             <!-- MODIFICATION BY OPENESTATE.ORG: ADD ANNOTATION @Deprecated -->
             <xs:appinfo>
-                <annox:annotateEnum>@java.lang.Deprecated</annox:annotateEnum>
+                <annox:annotateEnum>
+                    <jl:Deprecated/>
+                </annox:annotateEnum>
             </xs:appinfo>
 
         </xs:annotation>
@@ -5935,10 +6027,18 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
 
                     <!-- MODIFICATION BY OPENESTATE.ORG: ADD ANNOTATION @Deprecated -->
                     <xs:appinfo>
-                        <annox:annotateProperty>@java.lang.Deprecated</annox:annotateProperty>
-                        <annox:annotatePropertyField>@java.lang.Deprecated</annox:annotatePropertyField>
-                        <annox:annotatePropertyGetter>@java.lang.Deprecated</annox:annotatePropertyGetter>
-                        <annox:annotatePropertySetter>@java.lang.Deprecated</annox:annotatePropertySetter>
+                        <annox:annotateProperty>
+                            <jl:Deprecated/>
+                        </annox:annotateProperty>
+                        <annox:annotatePropertyField>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertyField>
+                        <annox:annotatePropertyGetter>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertyGetter>
+                        <annox:annotatePropertySetter>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertySetter>
                     </xs:appinfo>
 
                 </xs:annotation>
@@ -6138,10 +6238,18 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
 
                     <!-- MODIFICATION BY OPENESTATE.ORG: ADD ANNOTATION @Deprecated -->
                     <xs:appinfo>
-                        <annox:annotateProperty>@java.lang.Deprecated</annox:annotateProperty>
-                        <annox:annotatePropertyField>@java.lang.Deprecated</annox:annotatePropertyField>
-                        <annox:annotatePropertyGetter>@java.lang.Deprecated</annox:annotatePropertyGetter>
-                        <annox:annotatePropertySetter>@java.lang.Deprecated</annox:annotatePropertySetter>
+                        <annox:annotateProperty>
+                            <jl:Deprecated/>
+                        </annox:annotateProperty>
+                        <annox:annotatePropertyField>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertyField>
+                        <annox:annotatePropertyGetter>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertyGetter>
+                        <annox:annotatePropertySetter>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertySetter>
                     </xs:appinfo>
 
                 </xs:annotation>
@@ -6153,10 +6261,18 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
 
                     <!-- MODIFICATION BY OPENESTATE.ORG: ADD ANNOTATION @Deprecated -->
                     <xs:appinfo>
-                        <annox:annotateProperty>@java.lang.Deprecated</annox:annotateProperty>
-                        <annox:annotatePropertyField>@java.lang.Deprecated</annox:annotatePropertyField>
-                        <annox:annotatePropertyGetter>@java.lang.Deprecated</annox:annotatePropertyGetter>
-                        <annox:annotatePropertySetter>@java.lang.Deprecated</annox:annotatePropertySetter>
+                        <annox:annotateProperty>
+                            <jl:Deprecated/>
+                        </annox:annotateProperty>
+                        <annox:annotatePropertyField>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertyField>
+                        <annox:annotatePropertyGetter>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertyGetter>
+                        <annox:annotatePropertySetter>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertySetter>
                     </xs:appinfo>
 
                 </xs:annotation>
@@ -6168,10 +6284,18 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
 
                     <!-- MODIFICATION BY OPENESTATE.ORG: ADD ANNOTATION @Deprecated -->
                     <xs:appinfo>
-                        <annox:annotateProperty>@java.lang.Deprecated</annox:annotateProperty>
-                        <annox:annotatePropertyField>@java.lang.Deprecated</annox:annotatePropertyField>
-                        <annox:annotatePropertyGetter>@java.lang.Deprecated</annox:annotatePropertyGetter>
-                        <annox:annotatePropertySetter>@java.lang.Deprecated</annox:annotatePropertySetter>
+                        <annox:annotateProperty>
+                            <jl:Deprecated/>
+                        </annox:annotateProperty>
+                        <annox:annotatePropertyField>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertyField>
+                        <annox:annotatePropertyGetter>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertyGetter>
+                        <annox:annotatePropertySetter>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertySetter>
                     </xs:appinfo>
 
                 </xs:annotation>
@@ -6351,6 +6475,18 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
                 <xs:annotation>
                     <xs:documentation xml:lang="en">heating costs in service charge</xs:documentation>
                     <xs:documentation xml:lang="de-DE">Heizkosten in Nebenkosten enthalten</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="calculatedTotalRent" type="xs:double" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">total rent</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Warmmiete</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="calculatedTotalRentScope" type="RentScopeType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">calculation details of total rent</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Berechnungsdetails der Warmmiete</xs:documentation>
                 </xs:annotation>
             </xs:element>
         </xs:sequence>
@@ -6706,10 +6842,18 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
 
                     <!-- MODIFICATION BY OPENESTATE.ORG: ADD ANNOTATION @Deprecated -->
                     <xs:appinfo>
-                        <annox:annotateProperty>@java.lang.Deprecated</annox:annotateProperty>
-                        <annox:annotatePropertyField>@java.lang.Deprecated</annox:annotatePropertyField>
-                        <annox:annotatePropertyGetter>@java.lang.Deprecated</annox:annotatePropertyGetter>
-                        <annox:annotatePropertySetter>@java.lang.Deprecated</annox:annotatePropertySetter>
+                        <annox:annotateProperty>
+                            <jl:Deprecated/>
+                        </annox:annotateProperty>
+                        <annox:annotatePropertyField>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertyField>
+                        <annox:annotatePropertyGetter>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertyGetter>
+                        <annox:annotatePropertySetter>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertySetter>
                     </xs:appinfo>
 
                 </xs:annotation>
@@ -6726,12 +6870,22 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
                     <xs:documentation xml:lang="de-DE">Befeuerungsarten</xs:documentation>
 
                     <!-- MODIFICATION BY OPENESTATE.ORG: ADD ANNOTATION @Deprecated -->
+                    <!--
                     <xs:appinfo>
-                        <annox:annotateProperty>@java.lang.Deprecated</annox:annotateProperty>
-                        <annox:annotatePropertyField>@java.lang.Deprecated</annox:annotatePropertyField>
-                        <annox:annotatePropertyGetter>@java.lang.Deprecated</annox:annotatePropertyGetter>
-                        <annox:annotatePropertySetter>@java.lang.Deprecated</annox:annotatePropertySetter>
+                        <annox:annotateProperty>
+                            <jl:Deprecated/>
+                        </annox:annotateProperty>
+                        <annox:annotatePropertyField>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertyField>
+                        <annox:annotatePropertyGetter>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertyGetter>
+                        <annox:annotatePropertySetter>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertySetter>
                     </xs:appinfo>
+                    -->
 
                 </xs:annotation>
             </xs:element>
@@ -7201,13 +7355,13 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
                 </xs:annotation>
             </xs:element>
             <!--
-           <xs:element name="energyCertificate" type="EnergyPerformanceCertificate" minOccurs="0">
-                 <xs:annotation>
-                     <xs:documentation xml:lang="en">energy performance certificate</xs:documentation>
-                     <xs:documentation xml:lang="de-DE">Energieausweis</xs:documentation>
-                 </xs:annotation>
-             </xs:element>
-      -->
+            <xs:element name="energyCertificate" type="EnergyPerformanceCertificate" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">energy performance certificate</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Energieausweis</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            -->
             <xs:element name="builtInKitchen" type="xs:boolean" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">has a built-in kitchen</xs:documentation>
@@ -7286,13 +7440,13 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
                 </xs:annotation>
             </xs:element>
             <!--
-           <xs:element name="energyCertificate" type="EnergyPerformanceCertificate" minOccurs="0">
-                 <xs:annotation>
-                     <xs:documentation xml:lang="en">energy performance certificate</xs:documentation>
-                     <xs:documentation xml:lang="de-DE">Energieausweis</xs:documentation>
-                 </xs:annotation>
-             </xs:element>
-      -->
+            <xs:element name="energyCertificate" type="EnergyPerformanceCertificate" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">energy performance certificate</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Energieausweis</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            -->
             <xs:element name="courtage" type="CourtageInfo" minOccurs="1">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">courtage elements</xs:documentation>
@@ -7314,6 +7468,24 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
                 <xs:annotation>
                     <xs:documentation xml:lang="en">A price with a scope concerning a budget</xs:documentation>
                     <xs:documentation xml:lang="de-DE">Ein Preis der für Bugets benutzt wird</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="guestToilet" type="xs:boolean" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">has a guest toilet</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Gäste WC</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="cellar" type="xs:boolean" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">has a cellar</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Keller</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="isBarrierFree" type="xs:boolean" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">is barrier free</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Barrierefrei</xs:documentation>
                 </xs:annotation>
             </xs:element>
         </xs:sequence>
@@ -8380,10 +8552,18 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
 
                     <!-- MODIFICATION BY OPENESTATE.ORG: ADD ANNOTATION @Deprecated -->
                     <xs:appinfo>
-                        <annox:annotateProperty>@java.lang.Deprecated</annox:annotateProperty>
-                        <annox:annotatePropertyField>@java.lang.Deprecated</annox:annotatePropertyField>
-                        <annox:annotatePropertyGetter>@java.lang.Deprecated</annox:annotatePropertyGetter>
-                        <annox:annotatePropertySetter>@java.lang.Deprecated</annox:annotatePropertySetter>
+                        <annox:annotateProperty>
+                            <jl:Deprecated/>
+                        </annox:annotateProperty>
+                        <annox:annotatePropertyField>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertyField>
+                        <annox:annotatePropertyGetter>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertyGetter>
+                        <annox:annotatePropertySetter>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertySetter>
                     </xs:appinfo>
 
                 </xs:annotation>
@@ -8401,12 +8581,22 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
                     <xs:documentation xml:lang="de-DE">Befeuerungsarten</xs:documentation>
 
                     <!-- MODIFICATION BY OPENESTATE.ORG: ADD ANNOTATION @Deprecated -->
+                    <!--
                     <xs:appinfo>
-                        <annox:annotateProperty>@java.lang.Deprecated</annox:annotateProperty>
-                        <annox:annotatePropertyField>@java.lang.Deprecated</annox:annotatePropertyField>
-                        <annox:annotatePropertyGetter>@java.lang.Deprecated</annox:annotatePropertyGetter>
-                        <annox:annotatePropertySetter>@java.lang.Deprecated</annox:annotatePropertySetter>
+                        <annox:annotateProperty>
+                            <jl:Deprecated/>
+                        </annox:annotateProperty>
+                        <annox:annotatePropertyField>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertyField>
+                        <annox:annotatePropertyGetter>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertyGetter>
+                        <annox:annotatePropertySetter>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertySetter>
                     </xs:appinfo>
+                    -->
 
                 </xs:annotation>
             </xs:element>
@@ -9731,6 +9921,13 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
                     <xs:documentation xml:lang="de-DE">Energieausweis</xs:documentation>
                 </xs:annotation>
             </xs:element>
+            <xs:element name="additionalServicesIncluded" type="YesNotApplicableType" default="NOT_APPLICABLE"
+                        minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">additional services included</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Preis inkl. Zusatzservices</xs:documentation>
+                </xs:annotation>
+            </xs:element>
         </xs:sequence>
     </xs:group>
     <xs:group name="ExtendedStore">
@@ -9754,10 +9951,18 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
 
                     <!-- MODIFICATION BY OPENESTATE.ORG: ADD ANNOTATION @Deprecated -->
                     <xs:appinfo>
-                        <annox:annotateProperty>@java.lang.Deprecated</annox:annotateProperty>
-                        <annox:annotatePropertyField>@java.lang.Deprecated</annox:annotatePropertyField>
-                        <annox:annotatePropertyGetter>@java.lang.Deprecated</annox:annotatePropertyGetter>
-                        <annox:annotatePropertySetter>@java.lang.Deprecated</annox:annotatePropertySetter>
+                        <annox:annotateProperty>
+                            <jl:Deprecated/>
+                        </annox:annotateProperty>
+                        <annox:annotatePropertyField>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertyField>
+                        <annox:annotatePropertyGetter>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertyGetter>
+                        <annox:annotatePropertySetter>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertySetter>
                     </xs:appinfo>
 
                 </xs:annotation>
@@ -9933,10 +10138,18 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
 
                     <!-- MODIFICATION BY OPENESTATE.ORG: ADD ANNOTATION @Deprecated -->
                     <xs:appinfo>
-                        <annox:annotateProperty>@java.lang.Deprecated</annox:annotateProperty>
-                        <annox:annotatePropertyField>@java.lang.Deprecated</annox:annotatePropertyField>
-                        <annox:annotatePropertyGetter>@java.lang.Deprecated</annox:annotatePropertyGetter>
-                        <annox:annotatePropertySetter>@java.lang.Deprecated</annox:annotatePropertySetter>
+                        <annox:annotateProperty>
+                            <jl:Deprecated/>
+                        </annox:annotateProperty>
+                        <annox:annotatePropertyField>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertyField>
+                        <annox:annotatePropertyGetter>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertyGetter>
+                        <annox:annotatePropertySetter>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertySetter>
                     </xs:appinfo>
 
                 </xs:annotation>
@@ -10042,10 +10255,18 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
 
                     <!-- MODIFICATION BY OPENESTATE.ORG: ADD ANNOTATION @Deprecated -->
                     <xs:appinfo>
-                        <annox:annotateProperty>@java.lang.Deprecated</annox:annotateProperty>
-                        <annox:annotatePropertyField>@java.lang.Deprecated</annox:annotatePropertyField>
-                        <annox:annotatePropertyGetter>@java.lang.Deprecated</annox:annotatePropertyGetter>
-                        <annox:annotatePropertySetter>@java.lang.Deprecated</annox:annotatePropertySetter>
+                        <annox:annotateProperty>
+                            <jl:Deprecated/>
+                        </annox:annotateProperty>
+                        <annox:annotatePropertyField>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertyField>
+                        <annox:annotatePropertyGetter>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertyGetter>
+                        <annox:annotatePropertySetter>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertySetter>
                     </xs:appinfo>
 
                 </xs:annotation>
@@ -10211,12 +10432,22 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
                     <xs:documentation xml:lang="de-DE">Befeuerungsarten</xs:documentation>
 
                     <!-- MODIFICATION BY OPENESTATE.ORG: ADD ANNOTATION @Deprecated -->
+                    <!--
                     <xs:appinfo>
-                        <annox:annotateProperty>@java.lang.Deprecated</annox:annotateProperty>
-                        <annox:annotatePropertyField>@java.lang.Deprecated</annox:annotatePropertyField>
-                        <annox:annotatePropertyGetter>@java.lang.Deprecated</annox:annotatePropertyGetter>
-                        <annox:annotatePropertySetter>@java.lang.Deprecated</annox:annotatePropertySetter>
+                        <annox:annotateProperty>
+                            <jl:Deprecated/>
+                        </annox:annotateProperty>
+                        <annox:annotatePropertyField>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertyField>
+                        <annox:annotatePropertyGetter>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertyGetter>
+                        <annox:annotatePropertySetter>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertySetter>
                     </xs:appinfo>
+                    -->
 
                 </xs:annotation>
             </xs:element>
@@ -10266,10 +10497,18 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
 
                     <!-- MODIFICATION BY OPENESTATE.ORG: ADD ANNOTATION @Deprecated -->
                     <xs:appinfo>
-                        <annox:annotateProperty>@java.lang.Deprecated</annox:annotateProperty>
-                        <annox:annotatePropertyField>@java.lang.Deprecated</annox:annotatePropertyField>
-                        <annox:annotatePropertyGetter>@java.lang.Deprecated</annox:annotatePropertyGetter>
-                        <annox:annotatePropertySetter>@java.lang.Deprecated</annox:annotatePropertySetter>
+                        <annox:annotateProperty>
+                            <jl:Deprecated/>
+                        </annox:annotateProperty>
+                        <annox:annotatePropertyField>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertyField>
+                        <annox:annotatePropertyGetter>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertyGetter>
+                        <annox:annotatePropertySetter>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertySetter>
                     </xs:appinfo>
 
                 </xs:annotation>
@@ -10364,10 +10603,18 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
 
                     <!-- MODIFICATION BY OPENESTATE.ORG: ADD ANNOTATION @Deprecated -->
                     <xs:appinfo>
-                        <annox:annotateProperty>@java.lang.Deprecated</annox:annotateProperty>
-                        <annox:annotatePropertyField>@java.lang.Deprecated</annox:annotatePropertyField>
-                        <annox:annotatePropertyGetter>@java.lang.Deprecated</annox:annotatePropertyGetter>
-                        <annox:annotatePropertySetter>@java.lang.Deprecated</annox:annotatePropertySetter>
+                        <annox:annotateProperty>
+                            <jl:Deprecated/>
+                        </annox:annotateProperty>
+                        <annox:annotatePropertyField>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertyField>
+                        <annox:annotatePropertyGetter>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertyGetter>
+                        <annox:annotatePropertySetter>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertySetter>
                     </xs:appinfo>
 
                 </xs:annotation>
@@ -10497,10 +10744,18 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
 
                     <!-- MODIFICATION BY OPENESTATE.ORG: ADD ANNOTATION @Deprecated -->
                     <xs:appinfo>
-                        <annox:annotateProperty>@java.lang.Deprecated</annox:annotateProperty>
-                        <annox:annotatePropertyField>@java.lang.Deprecated</annox:annotatePropertyField>
-                        <annox:annotatePropertyGetter>@java.lang.Deprecated</annox:annotatePropertyGetter>
-                        <annox:annotatePropertySetter>@java.lang.Deprecated</annox:annotatePropertySetter>
+                        <annox:annotateProperty>
+                            <jl:Deprecated/>
+                        </annox:annotateProperty>
+                        <annox:annotatePropertyField>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertyField>
+                        <annox:annotatePropertyGetter>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertyGetter>
+                        <annox:annotatePropertySetter>
+                            <jl:Deprecated/>
+                        </annox:annotatePropertySetter>
                     </xs:appinfo>
 
                 </xs:annotation>
@@ -10682,13 +10937,16 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
                 </xs:annotation>
             </xs:element>
             <!--
-                  <xs:element name="message" type="Message" minOccurs="0" maxOccurs="1">
-                     <xs:annotation>
-                         <xs:documentation xml:lang="en">Defines an information or error message for publication.</xs:documentation>
-                         <xs:documentation xml:lang="de-DE">Definiert eine Informations- oder Fehlermeldung für die Publizierung.</xs:documentation>
-                     </xs:annotation>
-                 </xs:element>
-      -->
+            <xs:element name="message" type="Message" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Defines an information or error message for publication.
+                    </xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Definiert eine Informations- oder Fehlermeldung für die
+                        Publizierung.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            -->
         </xs:sequence>
         <xs:attribute name="id" type="xs:string"
                       use="optional"><!-- optional because POST for a realestate CANNOT have an id -->
@@ -11248,12 +11506,12 @@ In case of doubt please contact team Curiosity or the API-interest group for sup
             </xs:documentation>
             <!-- MODIFICATION BY OPENESTATE.ORG: JAXB-JAVATYPE DISABLED -->
             <!--
-      <xs:appinfo>
-        <jaxb:javaType name="java.lang.String"
+            <xs:appinfo>
+                <jaxb:javaType name="java.lang.String"
                                parseMethod="de.is24.common.xml.XmlSafeCharacterAdapter.unmarshal"
                                printMethod="de.is24.common.xml.XmlSafeCharacterAdapter.marshal"/>
-      </xs:appinfo>
-      -->
+            </xs:appinfo>
+            -->
         </xs:annotation>
         <xs:restriction base="xs:string"/>
     </xs:simpleType>

@@ -43,6 +43,17 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
  *             &lt;/complexContent&gt;
  *           &lt;/complexType&gt;
  *         &lt;/element&gt;
+ *         &lt;element name="virtualBadges" minOccurs="0"&gt;
+ *           &lt;complexType&gt;
+ *             &lt;complexContent&gt;
+ *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *                 &lt;sequence&gt;
+ *                   &lt;element name="virtualBadge" type="{http://rest.immobilienscout24.de/schema/offer/realtorbadges/1.0}VirtualBadge" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *                 &lt;/sequence&gt;
+ *               &lt;/restriction&gt;
+ *             &lt;/complexContent&gt;
+ *           &lt;/complexType&gt;
+ *         &lt;/element&gt;
  *       &lt;/all&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -55,13 +66,15 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 @XmlType(name = "RealtorBadges", propOrder = {
 
 })
-@Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+@Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
 public class RealtorBadges implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(required = true)
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     protected RealtorBadges.Badges badges;
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    protected RealtorBadges.VirtualBadges virtualBadges;
 
     /**
      * Gets the value of the badges property.
@@ -71,7 +84,7 @@ public class RealtorBadges implements Serializable, Cloneable, CopyTo2, Equals2,
      *     {@link RealtorBadges.Badges }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     public RealtorBadges.Badges getBadges() {
         return badges;
     }
@@ -84,12 +97,38 @@ public class RealtorBadges implements Serializable, Cloneable, CopyTo2, Equals2,
      *     {@link RealtorBadges.Badges }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     public void setBadges(RealtorBadges.Badges value) {
         this.badges = value;
     }
 
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    /**
+     * Gets the value of the virtualBadges property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link RealtorBadges.VirtualBadges }
+     *     
+     */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    public RealtorBadges.VirtualBadges getVirtualBadges() {
+        return virtualBadges;
+    }
+
+    /**
+     * Sets the value of the virtualBadges property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link RealtorBadges.VirtualBadges }
+     *     
+     */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    public void setVirtualBadges(RealtorBadges.VirtualBadges value) {
+        this.virtualBadges = value;
+    }
+
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     public String toString() {
         final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
@@ -97,7 +136,7 @@ public class RealtorBadges implements Serializable, Cloneable, CopyTo2, Equals2,
         return buffer.toString();
     }
 
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
@@ -105,28 +144,33 @@ public class RealtorBadges implements Serializable, Cloneable, CopyTo2, Equals2,
         return buffer;
     }
 
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             RealtorBadges.Badges theBadges;
             theBadges = this.getBadges();
             strategy.appendField(locator, this, "badges", buffer, theBadges, (this.badges!= null));
         }
+        {
+            RealtorBadges.VirtualBadges theVirtualBadges;
+            theVirtualBadges = this.getVirtualBadges();
+            strategy.appendField(locator, this, "virtualBadges", buffer, theVirtualBadges, (this.virtualBadges!= null));
+        }
         return buffer;
     }
 
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     public Object clone() {
         return copyTo(createNewInstance());
     }
 
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     public Object copyTo(Object target) {
         final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof RealtorBadges) {
@@ -144,16 +188,29 @@ public class RealtorBadges implements Serializable, Cloneable, CopyTo2, Equals2,
                     }
                 }
             }
+            {
+                Boolean virtualBadgesShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.virtualBadges!= null));
+                if (virtualBadgesShouldBeCopiedAndSet == Boolean.TRUE) {
+                    RealtorBadges.VirtualBadges sourceVirtualBadges;
+                    sourceVirtualBadges = this.getVirtualBadges();
+                    RealtorBadges.VirtualBadges copyVirtualBadges = ((RealtorBadges.VirtualBadges) strategy.copy(LocatorUtils.property(locator, "virtualBadges", sourceVirtualBadges), sourceVirtualBadges, (this.virtualBadges!= null)));
+                    copy.setVirtualBadges(copyVirtualBadges);
+                } else {
+                    if (virtualBadgesShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.virtualBadges = null;
+                    }
+                }
+            }
         }
         return draftCopy;
     }
 
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     public Object createNewInstance() {
         return new RealtorBadges();
     }
 
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
@@ -171,10 +228,19 @@ public class RealtorBadges implements Serializable, Cloneable, CopyTo2, Equals2,
                 return false;
             }
         }
+        {
+            RealtorBadges.VirtualBadges lhsVirtualBadges;
+            lhsVirtualBadges = this.getVirtualBadges();
+            RealtorBadges.VirtualBadges rhsVirtualBadges;
+            rhsVirtualBadges = that.getVirtualBadges();
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "virtualBadges", lhsVirtualBadges), LocatorUtils.property(thatLocator, "virtualBadges", rhsVirtualBadges), lhsVirtualBadges, rhsVirtualBadges, (this.virtualBadges!= null), (that.virtualBadges!= null))) {
+                return false;
+            }
+        }
         return true;
     }
 
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     public boolean equals(Object object) {
         final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);
@@ -204,11 +270,11 @@ public class RealtorBadges implements Serializable, Cloneable, CopyTo2, Equals2,
     @XmlType(name = "", propOrder = {
         "badge"
     })
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     public static class Badges implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
     {
 
-        @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+        @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
         protected List<Badge> badge;
 
         /**
@@ -233,7 +299,7 @@ public class RealtorBadges implements Serializable, Cloneable, CopyTo2, Equals2,
          * 
          * 
          */
-        @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+        @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
         public List<Badge> getBadge() {
             if (badge == null) {
                 badge = new ArrayList<Badge>();
@@ -241,7 +307,7 @@ public class RealtorBadges implements Serializable, Cloneable, CopyTo2, Equals2,
             return this.badge;
         }
 
-        @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+        @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
         public String toString() {
             final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
             final StringBuilder buffer = new StringBuilder();
@@ -249,7 +315,7 @@ public class RealtorBadges implements Serializable, Cloneable, CopyTo2, Equals2,
             return buffer.toString();
         }
 
-        @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+        @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
         public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
             strategy.appendStart(locator, this, buffer);
             appendFields(locator, buffer, strategy);
@@ -257,7 +323,7 @@ public class RealtorBadges implements Serializable, Cloneable, CopyTo2, Equals2,
             return buffer;
         }
 
-        @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+        @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
         public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
             {
                 List<Badge> theBadge;
@@ -267,18 +333,18 @@ public class RealtorBadges implements Serializable, Cloneable, CopyTo2, Equals2,
             return buffer;
         }
 
-        @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+        @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
         public Object clone() {
             return copyTo(createNewInstance());
         }
 
-        @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+        @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
         public Object copyTo(Object target) {
             final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
             return copyTo(null, target, strategy);
         }
 
-        @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+        @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
         public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
             final Object draftCopy = ((target == null)?createNewInstance():target);
             if (draftCopy instanceof RealtorBadges.Badges) {
@@ -305,12 +371,12 @@ public class RealtorBadges implements Serializable, Cloneable, CopyTo2, Equals2,
             return draftCopy;
         }
 
-        @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+        @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
         public Object createNewInstance() {
             return new RealtorBadges.Badges();
         }
 
-        @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+        @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
         public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
             if ((object == null)||(this.getClass()!= object.getClass())) {
                 return false;
@@ -331,7 +397,166 @@ public class RealtorBadges implements Serializable, Cloneable, CopyTo2, Equals2,
             return true;
         }
 
-        @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+        @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+        public boolean equals(Object object) {
+            final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
+            return equals(null, null, object, strategy);
+        }
+
+    }
+
+
+    /**
+     * <p>Java class for anonymous complex type.
+     * 
+     * <p>The following schema fragment specifies the expected content contained within this class.
+     * 
+     * <pre>
+     * &lt;complexType&gt;
+     *   &lt;complexContent&gt;
+     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+     *       &lt;sequence&gt;
+     *         &lt;element name="virtualBadge" type="{http://rest.immobilienscout24.de/schema/offer/realtorbadges/1.0}VirtualBadge" maxOccurs="unbounded" minOccurs="0"/&gt;
+     *       &lt;/sequence&gt;
+     *     &lt;/restriction&gt;
+     *   &lt;/complexContent&gt;
+     * &lt;/complexType&gt;
+     * </pre>
+     * 
+     * 
+     */
+    @XmlAccessorType(XmlAccessType.FIELD)
+    @XmlType(name = "", propOrder = {
+        "virtualBadge"
+    })
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    public static class VirtualBadges implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
+    {
+
+        @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+        protected List<VirtualBadge> virtualBadge;
+
+        /**
+         * Gets the value of the virtualBadge property.
+         * 
+         * <p>
+         * This accessor method returns a reference to the live list,
+         * not a snapshot. Therefore any modification you make to the
+         * returned list will be present inside the JAXB object.
+         * This is why there is not a <CODE>set</CODE> method for the virtualBadge property.
+         * 
+         * <p>
+         * For example, to add a new item, do as follows:
+         * <pre>
+         *    getVirtualBadge().add(newItem);
+         * </pre>
+         * 
+         * 
+         * <p>
+         * Objects of the following type(s) are allowed in the list
+         * {@link VirtualBadge }
+         * 
+         * 
+         */
+        @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+        public List<VirtualBadge> getVirtualBadge() {
+            if (virtualBadge == null) {
+                virtualBadge = new ArrayList<VirtualBadge>();
+            }
+            return this.virtualBadge;
+        }
+
+        @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+        public String toString() {
+            final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
+            final StringBuilder buffer = new StringBuilder();
+            append(null, buffer, strategy);
+            return buffer.toString();
+        }
+
+        @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+        public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
+            strategy.appendStart(locator, this, buffer);
+            appendFields(locator, buffer, strategy);
+            strategy.appendEnd(locator, this, buffer);
+            return buffer;
+        }
+
+        @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+        public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
+            {
+                List<VirtualBadge> theVirtualBadge;
+                theVirtualBadge = (((this.virtualBadge!= null)&&(!this.virtualBadge.isEmpty()))?this.getVirtualBadge():null);
+                strategy.appendField(locator, this, "virtualBadge", buffer, theVirtualBadge, ((this.virtualBadge!= null)&&(!this.virtualBadge.isEmpty())));
+            }
+            return buffer;
+        }
+
+        @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+        public Object clone() {
+            return copyTo(createNewInstance());
+        }
+
+        @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+        public Object copyTo(Object target) {
+            final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
+            return copyTo(null, target, strategy);
+        }
+
+        @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+        public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
+            final Object draftCopy = ((target == null)?createNewInstance():target);
+            if (draftCopy instanceof RealtorBadges.VirtualBadges) {
+                final RealtorBadges.VirtualBadges copy = ((RealtorBadges.VirtualBadges) draftCopy);
+                {
+                    Boolean virtualBadgeShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, ((this.virtualBadge!= null)&&(!this.virtualBadge.isEmpty())));
+                    if (virtualBadgeShouldBeCopiedAndSet == Boolean.TRUE) {
+                        List<VirtualBadge> sourceVirtualBadge;
+                        sourceVirtualBadge = (((this.virtualBadge!= null)&&(!this.virtualBadge.isEmpty()))?this.getVirtualBadge():null);
+                        @SuppressWarnings("unchecked")
+                        List<VirtualBadge> copyVirtualBadge = ((List<VirtualBadge> ) strategy.copy(LocatorUtils.property(locator, "virtualBadge", sourceVirtualBadge), sourceVirtualBadge, ((this.virtualBadge!= null)&&(!this.virtualBadge.isEmpty()))));
+                        copy.virtualBadge = null;
+                        if (copyVirtualBadge!= null) {
+                            List<VirtualBadge> uniqueVirtualBadgel = copy.getVirtualBadge();
+                            uniqueVirtualBadgel.addAll(copyVirtualBadge);
+                        }
+                    } else {
+                        if (virtualBadgeShouldBeCopiedAndSet == Boolean.FALSE) {
+                            copy.virtualBadge = null;
+                        }
+                    }
+                }
+            }
+            return draftCopy;
+        }
+
+        @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+        public Object createNewInstance() {
+            return new RealtorBadges.VirtualBadges();
+        }
+
+        @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+        public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
+            if ((object == null)||(this.getClass()!= object.getClass())) {
+                return false;
+            }
+            if (this == object) {
+                return true;
+            }
+            final RealtorBadges.VirtualBadges that = ((RealtorBadges.VirtualBadges) object);
+            {
+                List<VirtualBadge> lhsVirtualBadge;
+                lhsVirtualBadge = (((this.virtualBadge!= null)&&(!this.virtualBadge.isEmpty()))?this.getVirtualBadge():null);
+                List<VirtualBadge> rhsVirtualBadge;
+                rhsVirtualBadge = (((that.virtualBadge!= null)&&(!that.virtualBadge.isEmpty()))?that.getVirtualBadge():null);
+                if (!strategy.equals(LocatorUtils.property(thisLocator, "virtualBadge", lhsVirtualBadge), LocatorUtils.property(thatLocator, "virtualBadge", rhsVirtualBadge), lhsVirtualBadge, rhsVirtualBadge, ((this.virtualBadge!= null)&&(!this.virtualBadge.isEmpty())), ((that.virtualBadge!= null)&&(!that.virtualBadge.isEmpty())))) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
         public boolean equals(Object object) {
             final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
             return equals(null, null, object, strategy);

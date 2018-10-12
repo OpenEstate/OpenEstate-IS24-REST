@@ -40,6 +40,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link VirtualTour }
+     * 
+     */
+    public VirtualTour createVirtualTour() {
+        return new VirtualTour();
+    }
+
+    /**
+     * Create an instance of {@link VirtualTour.PreviewUrls }
+     * 
+     */
+    public VirtualTour.PreviewUrls createVirtualTourPreviewUrls() {
+        return new VirtualTour.PreviewUrls();
+    }
+
+    /**
      * Create an instance of {@link Picture }
      * 
      */
@@ -653,6 +669,14 @@ public class ObjectFactory {
      */
     public Contingent createContingent() {
         return new Contingent();
+    }
+
+    /**
+     * Create an instance of {@link VirtualTour.PreviewUrls.Url }
+     * 
+     */
+    public VirtualTour.PreviewUrls.Url createVirtualTourPreviewUrlsUrl() {
+        return new VirtualTour.PreviewUrls.Url();
     }
 
     /**

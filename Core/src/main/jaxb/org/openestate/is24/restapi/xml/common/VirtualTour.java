@@ -2,7 +2,6 @@
 package org.openestate.is24.restapi.xml.common;
 
 import java.io.Serializable;
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Generated;
@@ -10,9 +9,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import org.jvnet.jaxb2_commons.lang.CopyStrategy2;
 import org.jvnet.jaxb2_commons.lang.CopyTo2;
 import org.jvnet.jaxb2_commons.lang.Equals2;
@@ -24,20 +21,22 @@ import org.jvnet.jaxb2_commons.lang.ToString2;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
-import org.openestate.is24.restapi.xml.Adapter4;
 
 
 /**
- * <p>Java class for RealtorLogo complex type.
+ * Eine einzelne virtuelle Tour
+ * 
+ * <p>Java class for VirtualTour complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="RealtorLogo"&gt;
+ * &lt;complexType name="VirtualTour"&gt;
  *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *     &lt;extension base="{http://rest.immobilienscout24.de/schema/common/1.0}Attachment"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="urls" minOccurs="0"&gt;
+ *         &lt;element name="url" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
+ *         &lt;element name="previewUrls"&gt;
  *           &lt;complexType&gt;
  *             &lt;complexContent&gt;
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
@@ -47,7 +46,7 @@ import org.openestate.is24.restapi.xml.Adapter4;
  *                       &lt;complexContent&gt;
  *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *                           &lt;attribute name="scale" type="{http://rest.immobilienscout24.de/schema/common/1.0}PictureScaleType" /&gt;
- *                           &lt;attribute name="href" type="{http://www.w3.org/2001/XMLSchema}anyURI" /&gt;
+ *                           &lt;attribute name="href" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
  *                         &lt;/restriction&gt;
  *                       &lt;/complexContent&gt;
  *                     &lt;/complexType&gt;
@@ -57,9 +56,8 @@ import org.openestate.is24.restapi.xml.Adapter4;
  *             &lt;/complexContent&gt;
  *           &lt;/complexType&gt;
  *         &lt;/element&gt;
- *         &lt;element name="realtorLogoUrl" type="{http://www.w3.org/2001/XMLSchema}anyURI" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
- *     &lt;/restriction&gt;
+ *     &lt;/extension&gt;
  *   &lt;/complexContent&gt;
  * &lt;/complexType&gt;
  * </pre>
@@ -67,50 +65,25 @@ import org.openestate.is24.restapi.xml.Adapter4;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "RealtorLogo", propOrder = {
-    "urls",
-    "realtorLogoUrl"
+@XmlType(name = "VirtualTour", propOrder = {
+    "url",
+    "previewUrls"
 })
 @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
-public class RealtorLogo implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
+public class VirtualTour
+    extends Attachment
+    implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
+    @XmlElement(required = true)
     @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
-    protected RealtorLogo.Urls urls;
-    @XmlElement(type = String.class)
-    @XmlJavaTypeAdapter(Adapter4 .class)
-    @XmlSchemaType(name = "anyURI")
+    protected String url;
+    @XmlElement(required = true)
     @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
-    protected URI realtorLogoUrl;
+    protected VirtualTour.PreviewUrls previewUrls;
 
     /**
-     * Gets the value of the urls property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link RealtorLogo.Urls }
-     *     
-     */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
-    public RealtorLogo.Urls getUrls() {
-        return urls;
-    }
-
-    /**
-     * Sets the value of the urls property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link RealtorLogo.Urls }
-     *     
-     */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
-    public void setUrls(RealtorLogo.Urls value) {
-        this.urls = value;
-    }
-
-    /**
-     * Gets the value of the realtorLogoUrl property.
+     * Gets the value of the url property.
      * 
      * @return
      *     possible object is
@@ -118,12 +91,12 @@ public class RealtorLogo implements Serializable, Cloneable, CopyTo2, Equals2, T
      *     
      */
     @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
-    public URI getRealtorLogoUrl() {
-        return realtorLogoUrl;
+    public String getUrl() {
+        return url;
     }
 
     /**
-     * Sets the value of the realtorLogoUrl property.
+     * Sets the value of the url property.
      * 
      * @param value
      *     allowed object is
@@ -131,8 +104,34 @@ public class RealtorLogo implements Serializable, Cloneable, CopyTo2, Equals2, T
      *     
      */
     @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
-    public void setRealtorLogoUrl(URI value) {
-        this.realtorLogoUrl = value;
+    public void setUrl(String value) {
+        this.url = value;
+    }
+
+    /**
+     * Gets the value of the previewUrls property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link VirtualTour.PreviewUrls }
+     *     
+     */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    public VirtualTour.PreviewUrls getPreviewUrls() {
+        return previewUrls;
+    }
+
+    /**
+     * Sets the value of the previewUrls property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link VirtualTour.PreviewUrls }
+     *     
+     */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    public void setPreviewUrls(VirtualTour.PreviewUrls value) {
+        this.previewUrls = value;
     }
 
     @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
@@ -153,15 +152,16 @@ public class RealtorLogo implements Serializable, Cloneable, CopyTo2, Equals2, T
 
     @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
+        super.appendFields(locator, buffer, strategy);
         {
-            RealtorLogo.Urls theUrls;
-            theUrls = this.getUrls();
-            strategy.appendField(locator, this, "urls", buffer, theUrls, (this.urls!= null));
+            String theUrl;
+            theUrl = this.getUrl();
+            strategy.appendField(locator, this, "url", buffer, theUrl, (this.url!= null));
         }
         {
-            URI theRealtorLogoUrl;
-            theRealtorLogoUrl = this.getRealtorLogoUrl();
-            strategy.appendField(locator, this, "realtorLogoUrl", buffer, theRealtorLogoUrl, (this.realtorLogoUrl!= null));
+            VirtualTour.PreviewUrls thePreviewUrls;
+            thePreviewUrls = this.getPreviewUrls();
+            strategy.appendField(locator, this, "previewUrls", buffer, thePreviewUrls, (this.previewUrls!= null));
         }
         return buffer;
     }
@@ -180,31 +180,32 @@ public class RealtorLogo implements Serializable, Cloneable, CopyTo2, Equals2, T
     @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
-        if (draftCopy instanceof RealtorLogo) {
-            final RealtorLogo copy = ((RealtorLogo) draftCopy);
+        super.copyTo(locator, draftCopy, strategy);
+        if (draftCopy instanceof VirtualTour) {
+            final VirtualTour copy = ((VirtualTour) draftCopy);
             {
-                Boolean urlsShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.urls!= null));
-                if (urlsShouldBeCopiedAndSet == Boolean.TRUE) {
-                    RealtorLogo.Urls sourceUrls;
-                    sourceUrls = this.getUrls();
-                    RealtorLogo.Urls copyUrls = ((RealtorLogo.Urls) strategy.copy(LocatorUtils.property(locator, "urls", sourceUrls), sourceUrls, (this.urls!= null)));
-                    copy.setUrls(copyUrls);
+                Boolean urlShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.url!= null));
+                if (urlShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceUrl;
+                    sourceUrl = this.getUrl();
+                    String copyUrl = ((String) strategy.copy(LocatorUtils.property(locator, "url", sourceUrl), sourceUrl, (this.url!= null)));
+                    copy.setUrl(copyUrl);
                 } else {
-                    if (urlsShouldBeCopiedAndSet == Boolean.FALSE) {
-                        copy.urls = null;
+                    if (urlShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.url = null;
                     }
                 }
             }
             {
-                Boolean realtorLogoUrlShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.realtorLogoUrl!= null));
-                if (realtorLogoUrlShouldBeCopiedAndSet == Boolean.TRUE) {
-                    URI sourceRealtorLogoUrl;
-                    sourceRealtorLogoUrl = this.getRealtorLogoUrl();
-                    URI copyRealtorLogoUrl = ((URI) strategy.copy(LocatorUtils.property(locator, "realtorLogoUrl", sourceRealtorLogoUrl), sourceRealtorLogoUrl, (this.realtorLogoUrl!= null)));
-                    copy.setRealtorLogoUrl(copyRealtorLogoUrl);
+                Boolean previewUrlsShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.previewUrls!= null));
+                if (previewUrlsShouldBeCopiedAndSet == Boolean.TRUE) {
+                    VirtualTour.PreviewUrls sourcePreviewUrls;
+                    sourcePreviewUrls = this.getPreviewUrls();
+                    VirtualTour.PreviewUrls copyPreviewUrls = ((VirtualTour.PreviewUrls) strategy.copy(LocatorUtils.property(locator, "previewUrls", sourcePreviewUrls), sourcePreviewUrls, (this.previewUrls!= null)));
+                    copy.setPreviewUrls(copyPreviewUrls);
                 } else {
-                    if (realtorLogoUrlShouldBeCopiedAndSet == Boolean.FALSE) {
-                        copy.realtorLogoUrl = null;
+                    if (previewUrlsShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.previewUrls = null;
                     }
                 }
             }
@@ -214,7 +215,7 @@ public class RealtorLogo implements Serializable, Cloneable, CopyTo2, Equals2, T
 
     @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     public Object createNewInstance() {
-        return new RealtorLogo();
+        return new VirtualTour();
     }
 
     @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
@@ -225,22 +226,25 @@ public class RealtorLogo implements Serializable, Cloneable, CopyTo2, Equals2, T
         if (this == object) {
             return true;
         }
-        final RealtorLogo that = ((RealtorLogo) object);
+        if (!super.equals(thisLocator, thatLocator, object, strategy)) {
+            return false;
+        }
+        final VirtualTour that = ((VirtualTour) object);
         {
-            RealtorLogo.Urls lhsUrls;
-            lhsUrls = this.getUrls();
-            RealtorLogo.Urls rhsUrls;
-            rhsUrls = that.getUrls();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "urls", lhsUrls), LocatorUtils.property(thatLocator, "urls", rhsUrls), lhsUrls, rhsUrls, (this.urls!= null), (that.urls!= null))) {
+            String lhsUrl;
+            lhsUrl = this.getUrl();
+            String rhsUrl;
+            rhsUrl = that.getUrl();
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "url", lhsUrl), LocatorUtils.property(thatLocator, "url", rhsUrl), lhsUrl, rhsUrl, (this.url!= null), (that.url!= null))) {
                 return false;
             }
         }
         {
-            URI lhsRealtorLogoUrl;
-            lhsRealtorLogoUrl = this.getRealtorLogoUrl();
-            URI rhsRealtorLogoUrl;
-            rhsRealtorLogoUrl = that.getRealtorLogoUrl();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "realtorLogoUrl", lhsRealtorLogoUrl), LocatorUtils.property(thatLocator, "realtorLogoUrl", rhsRealtorLogoUrl), lhsRealtorLogoUrl, rhsRealtorLogoUrl, (this.realtorLogoUrl!= null), (that.realtorLogoUrl!= null))) {
+            VirtualTour.PreviewUrls lhsPreviewUrls;
+            lhsPreviewUrls = this.getPreviewUrls();
+            VirtualTour.PreviewUrls rhsPreviewUrls;
+            rhsPreviewUrls = that.getPreviewUrls();
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "previewUrls", lhsPreviewUrls), LocatorUtils.property(thatLocator, "previewUrls", rhsPreviewUrls), lhsPreviewUrls, rhsPreviewUrls, (this.previewUrls!= null), (that.previewUrls!= null))) {
                 return false;
             }
         }
@@ -269,7 +273,7 @@ public class RealtorLogo implements Serializable, Cloneable, CopyTo2, Equals2, T
      *             &lt;complexContent&gt;
      *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
      *                 &lt;attribute name="scale" type="{http://rest.immobilienscout24.de/schema/common/1.0}PictureScaleType" /&gt;
-     *                 &lt;attribute name="href" type="{http://www.w3.org/2001/XMLSchema}anyURI" /&gt;
+     *                 &lt;attribute name="href" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
      *               &lt;/restriction&gt;
      *             &lt;/complexContent&gt;
      *           &lt;/complexType&gt;
@@ -287,12 +291,12 @@ public class RealtorLogo implements Serializable, Cloneable, CopyTo2, Equals2, T
         "url"
     })
     @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
-    public static class Urls implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
+    public static class PreviewUrls implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
     {
 
         @XmlElement(required = true)
         @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
-        protected List<RealtorLogo.Urls.Url> url;
+        protected List<VirtualTour.PreviewUrls.Url> url;
 
         /**
          * Gets the value of the url property.
@@ -312,14 +316,14 @@ public class RealtorLogo implements Serializable, Cloneable, CopyTo2, Equals2, T
          * 
          * <p>
          * Objects of the following type(s) are allowed in the list
-         * {@link RealtorLogo.Urls.Url }
+         * {@link VirtualTour.PreviewUrls.Url }
          * 
          * 
          */
         @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
-        public List<RealtorLogo.Urls.Url> getUrl() {
+        public List<VirtualTour.PreviewUrls.Url> getUrl() {
             if (url == null) {
-                url = new ArrayList<RealtorLogo.Urls.Url>();
+                url = new ArrayList<VirtualTour.PreviewUrls.Url>();
             }
             return this.url;
         }
@@ -343,7 +347,7 @@ public class RealtorLogo implements Serializable, Cloneable, CopyTo2, Equals2, T
         @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
         public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
             {
-                List<RealtorLogo.Urls.Url> theUrl;
+                List<VirtualTour.PreviewUrls.Url> theUrl;
                 theUrl = (((this.url!= null)&&(!this.url.isEmpty()))?this.getUrl():null);
                 strategy.appendField(locator, this, "url", buffer, theUrl, ((this.url!= null)&&(!this.url.isEmpty())));
             }
@@ -364,18 +368,18 @@ public class RealtorLogo implements Serializable, Cloneable, CopyTo2, Equals2, T
         @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
         public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
             final Object draftCopy = ((target == null)?createNewInstance():target);
-            if (draftCopy instanceof RealtorLogo.Urls) {
-                final RealtorLogo.Urls copy = ((RealtorLogo.Urls) draftCopy);
+            if (draftCopy instanceof VirtualTour.PreviewUrls) {
+                final VirtualTour.PreviewUrls copy = ((VirtualTour.PreviewUrls) draftCopy);
                 {
                     Boolean urlShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, ((this.url!= null)&&(!this.url.isEmpty())));
                     if (urlShouldBeCopiedAndSet == Boolean.TRUE) {
-                        List<RealtorLogo.Urls.Url> sourceUrl;
+                        List<VirtualTour.PreviewUrls.Url> sourceUrl;
                         sourceUrl = (((this.url!= null)&&(!this.url.isEmpty()))?this.getUrl():null);
                         @SuppressWarnings("unchecked")
-                        List<RealtorLogo.Urls.Url> copyUrl = ((List<RealtorLogo.Urls.Url> ) strategy.copy(LocatorUtils.property(locator, "url", sourceUrl), sourceUrl, ((this.url!= null)&&(!this.url.isEmpty()))));
+                        List<VirtualTour.PreviewUrls.Url> copyUrl = ((List<VirtualTour.PreviewUrls.Url> ) strategy.copy(LocatorUtils.property(locator, "url", sourceUrl), sourceUrl, ((this.url!= null)&&(!this.url.isEmpty()))));
                         copy.url = null;
                         if (copyUrl!= null) {
-                            List<RealtorLogo.Urls.Url> uniqueUrll = copy.getUrl();
+                            List<VirtualTour.PreviewUrls.Url> uniqueUrll = copy.getUrl();
                             uniqueUrll.addAll(copyUrl);
                         }
                     } else {
@@ -390,7 +394,7 @@ public class RealtorLogo implements Serializable, Cloneable, CopyTo2, Equals2, T
 
         @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
         public Object createNewInstance() {
-            return new RealtorLogo.Urls();
+            return new VirtualTour.PreviewUrls();
         }
 
         @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
@@ -401,11 +405,11 @@ public class RealtorLogo implements Serializable, Cloneable, CopyTo2, Equals2, T
             if (this == object) {
                 return true;
             }
-            final RealtorLogo.Urls that = ((RealtorLogo.Urls) object);
+            final VirtualTour.PreviewUrls that = ((VirtualTour.PreviewUrls) object);
             {
-                List<RealtorLogo.Urls.Url> lhsUrl;
+                List<VirtualTour.PreviewUrls.Url> lhsUrl;
                 lhsUrl = (((this.url!= null)&&(!this.url.isEmpty()))?this.getUrl():null);
-                List<RealtorLogo.Urls.Url> rhsUrl;
+                List<VirtualTour.PreviewUrls.Url> rhsUrl;
                 rhsUrl = (((that.url!= null)&&(!that.url.isEmpty()))?that.getUrl():null);
                 if (!strategy.equals(LocatorUtils.property(thisLocator, "url", lhsUrl), LocatorUtils.property(thatLocator, "url", rhsUrl), lhsUrl, rhsUrl, ((this.url!= null)&&(!this.url.isEmpty())), ((that.url!= null)&&(!that.url.isEmpty())))) {
                     return false;
@@ -431,7 +435,7 @@ public class RealtorLogo implements Serializable, Cloneable, CopyTo2, Equals2, T
          *   &lt;complexContent&gt;
          *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
          *       &lt;attribute name="scale" type="{http://rest.immobilienscout24.de/schema/common/1.0}PictureScaleType" /&gt;
-         *       &lt;attribute name="href" type="{http://www.w3.org/2001/XMLSchema}anyURI" /&gt;
+         *       &lt;attribute name="href" type="{http://www.w3.org/2001/XMLSchema}string" /&gt;
          *     &lt;/restriction&gt;
          *   &lt;/complexContent&gt;
          * &lt;/complexType&gt;
@@ -449,10 +453,8 @@ public class RealtorLogo implements Serializable, Cloneable, CopyTo2, Equals2, T
             @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
             protected PictureScaleType scale;
             @XmlAttribute(name = "href")
-            @XmlJavaTypeAdapter(Adapter4 .class)
-            @XmlSchemaType(name = "anyURI")
             @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
-            protected URI href;
+            protected String href;
 
             /**
              * Gets the value of the scale property.
@@ -489,7 +491,7 @@ public class RealtorLogo implements Serializable, Cloneable, CopyTo2, Equals2, T
              *     
              */
             @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
-            public URI getHref() {
+            public String getHref() {
                 return href;
             }
 
@@ -502,7 +504,7 @@ public class RealtorLogo implements Serializable, Cloneable, CopyTo2, Equals2, T
              *     
              */
             @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
-            public void setHref(URI value) {
+            public void setHref(String value) {
                 this.href = value;
             }
 
@@ -530,7 +532,7 @@ public class RealtorLogo implements Serializable, Cloneable, CopyTo2, Equals2, T
                     strategy.appendField(locator, this, "scale", buffer, theScale, (this.scale!= null));
                 }
                 {
-                    URI theHref;
+                    String theHref;
                     theHref = this.getHref();
                     strategy.appendField(locator, this, "href", buffer, theHref, (this.href!= null));
                 }
@@ -551,8 +553,8 @@ public class RealtorLogo implements Serializable, Cloneable, CopyTo2, Equals2, T
             @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
             public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
                 final Object draftCopy = ((target == null)?createNewInstance():target);
-                if (draftCopy instanceof RealtorLogo.Urls.Url) {
-                    final RealtorLogo.Urls.Url copy = ((RealtorLogo.Urls.Url) draftCopy);
+                if (draftCopy instanceof VirtualTour.PreviewUrls.Url) {
+                    final VirtualTour.PreviewUrls.Url copy = ((VirtualTour.PreviewUrls.Url) draftCopy);
                     {
                         Boolean scaleShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.scale!= null));
                         if (scaleShouldBeCopiedAndSet == Boolean.TRUE) {
@@ -569,9 +571,9 @@ public class RealtorLogo implements Serializable, Cloneable, CopyTo2, Equals2, T
                     {
                         Boolean hrefShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.href!= null));
                         if (hrefShouldBeCopiedAndSet == Boolean.TRUE) {
-                            URI sourceHref;
+                            String sourceHref;
                             sourceHref = this.getHref();
-                            URI copyHref = ((URI) strategy.copy(LocatorUtils.property(locator, "href", sourceHref), sourceHref, (this.href!= null)));
+                            String copyHref = ((String) strategy.copy(LocatorUtils.property(locator, "href", sourceHref), sourceHref, (this.href!= null)));
                             copy.setHref(copyHref);
                         } else {
                             if (hrefShouldBeCopiedAndSet == Boolean.FALSE) {
@@ -585,7 +587,7 @@ public class RealtorLogo implements Serializable, Cloneable, CopyTo2, Equals2, T
 
             @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
             public Object createNewInstance() {
-                return new RealtorLogo.Urls.Url();
+                return new VirtualTour.PreviewUrls.Url();
             }
 
             @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
@@ -596,7 +598,7 @@ public class RealtorLogo implements Serializable, Cloneable, CopyTo2, Equals2, T
                 if (this == object) {
                     return true;
                 }
-                final RealtorLogo.Urls.Url that = ((RealtorLogo.Urls.Url) object);
+                final VirtualTour.PreviewUrls.Url that = ((VirtualTour.PreviewUrls.Url) object);
                 {
                     PictureScaleType lhsScale;
                     lhsScale = this.getScale();
@@ -607,9 +609,9 @@ public class RealtorLogo implements Serializable, Cloneable, CopyTo2, Equals2, T
                     }
                 }
                 {
-                    URI lhsHref;
+                    String lhsHref;
                     lhsHref = this.getHref();
-                    URI rhsHref;
+                    String rhsHref;
                     rhsHref = that.getHref();
                     if (!strategy.equals(LocatorUtils.property(thisLocator, "href", lhsHref), LocatorUtils.property(thatLocator, "href", rhsHref), lhsHref, rhsHref, (this.href!= null), (that.href!= null))) {
                         return false;

@@ -32,12 +32,19 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="header1Color" type="{http://rest.immobilienscout24.de/schema/common/1.0}HexadecimalColorCode"/&gt;
- *         &lt;element name="header1FontColor" type="{http://rest.immobilienscout24.de/schema/common/1.0}HexadecimalColorCode"/&gt;
- *         &lt;element name="header2Color" type="{http://rest.immobilienscout24.de/schema/common/1.0}HexadecimalColorCode"/&gt;
- *         &lt;element name="header2FontColor" type="{http://rest.immobilienscout24.de/schema/common/1.0}HexadecimalColorCode"/&gt;
- *         &lt;element name="header3Color" type="{http://rest.immobilienscout24.de/schema/common/1.0}HexadecimalColorCode"/&gt;
- *         &lt;element name="header3FontColor" type="{http://rest.immobilienscout24.de/schema/common/1.0}HexadecimalColorCode"/&gt;
+ *         &lt;element name="header1Color" type="{http://rest.immobilienscout24.de/schema/common/1.0}HexadecimalColorCode" minOccurs="0"/&gt;
+ *         &lt;element name="header1FontColor" type="{http://rest.immobilienscout24.de/schema/common/1.0}HexadecimalColorCode" minOccurs="0"/&gt;
+ *         &lt;element name="header2Color" type="{http://rest.immobilienscout24.de/schema/common/1.0}HexadecimalColorCode" minOccurs="0"/&gt;
+ *         &lt;element name="header2FontColor" type="{http://rest.immobilienscout24.de/schema/common/1.0}HexadecimalColorCode" minOccurs="0"/&gt;
+ *         &lt;element name="header3Color" type="{http://rest.immobilienscout24.de/schema/common/1.0}HexadecimalColorCode" minOccurs="0"/&gt;
+ *         &lt;element name="header3FontColor" type="{http://rest.immobilienscout24.de/schema/common/1.0}HexadecimalColorCode" minOccurs="0"/&gt;
+ *         &lt;element name="identifier" minOccurs="0"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://rest.immobilienscout24.de/schema/common/1.0}TextField"&gt;
+ *               &lt;maxLength value="100"/&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -53,36 +60,40 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
     "header2Color",
     "header2FontColor",
     "header3Color",
-    "header3FontColor"
+    "header3FontColor",
+    "identifier"
 })
-@Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+@Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
 public class ContactMailCustomStyle implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
-    @XmlElement(required = true, type = String.class)
+    @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter4 .class)
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     protected Color header1Color;
-    @XmlElement(required = true, type = String.class)
+    @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter4 .class)
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     protected Color header1FontColor;
-    @XmlElement(required = true, type = String.class)
+    @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter4 .class)
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     protected Color header2Color;
-    @XmlElement(required = true, type = String.class)
+    @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter4 .class)
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     protected Color header2FontColor;
-    @XmlElement(required = true, type = String.class)
+    @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter4 .class)
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     protected Color header3Color;
-    @XmlElement(required = true, type = String.class)
+    @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter4 .class)
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     protected Color header3FontColor;
+    @XmlJavaTypeAdapter(Adapter59 .class)
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    protected String identifier;
 
     /**
      * Gets the value of the header1Color property.
@@ -92,7 +103,7 @@ public class ContactMailCustomStyle implements Serializable, Cloneable, CopyTo2,
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     public Color getHeader1Color() {
         return header1Color;
     }
@@ -105,7 +116,7 @@ public class ContactMailCustomStyle implements Serializable, Cloneable, CopyTo2,
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     public void setHeader1Color(Color value) {
         this.header1Color = value;
     }
@@ -118,7 +129,7 @@ public class ContactMailCustomStyle implements Serializable, Cloneable, CopyTo2,
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     public Color getHeader1FontColor() {
         return header1FontColor;
     }
@@ -131,7 +142,7 @@ public class ContactMailCustomStyle implements Serializable, Cloneable, CopyTo2,
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     public void setHeader1FontColor(Color value) {
         this.header1FontColor = value;
     }
@@ -144,7 +155,7 @@ public class ContactMailCustomStyle implements Serializable, Cloneable, CopyTo2,
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     public Color getHeader2Color() {
         return header2Color;
     }
@@ -157,7 +168,7 @@ public class ContactMailCustomStyle implements Serializable, Cloneable, CopyTo2,
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     public void setHeader2Color(Color value) {
         this.header2Color = value;
     }
@@ -170,7 +181,7 @@ public class ContactMailCustomStyle implements Serializable, Cloneable, CopyTo2,
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     public Color getHeader2FontColor() {
         return header2FontColor;
     }
@@ -183,7 +194,7 @@ public class ContactMailCustomStyle implements Serializable, Cloneable, CopyTo2,
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     public void setHeader2FontColor(Color value) {
         this.header2FontColor = value;
     }
@@ -196,7 +207,7 @@ public class ContactMailCustomStyle implements Serializable, Cloneable, CopyTo2,
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     public Color getHeader3Color() {
         return header3Color;
     }
@@ -209,7 +220,7 @@ public class ContactMailCustomStyle implements Serializable, Cloneable, CopyTo2,
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     public void setHeader3Color(Color value) {
         this.header3Color = value;
     }
@@ -222,7 +233,7 @@ public class ContactMailCustomStyle implements Serializable, Cloneable, CopyTo2,
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     public Color getHeader3FontColor() {
         return header3FontColor;
     }
@@ -235,12 +246,38 @@ public class ContactMailCustomStyle implements Serializable, Cloneable, CopyTo2,
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     public void setHeader3FontColor(Color value) {
         this.header3FontColor = value;
     }
 
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    /**
+     * Gets the value of the identifier property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    public String getIdentifier() {
+        return identifier;
+    }
+
+    /**
+     * Sets the value of the identifier property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    public void setIdentifier(String value) {
+        this.identifier = value;
+    }
+
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     public String toString() {
         final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
@@ -248,7 +285,7 @@ public class ContactMailCustomStyle implements Serializable, Cloneable, CopyTo2,
         return buffer.toString();
     }
 
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
@@ -256,7 +293,7 @@ public class ContactMailCustomStyle implements Serializable, Cloneable, CopyTo2,
         return buffer;
     }
 
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             Color theHeader1Color;
@@ -288,21 +325,26 @@ public class ContactMailCustomStyle implements Serializable, Cloneable, CopyTo2,
             theHeader3FontColor = this.getHeader3FontColor();
             strategy.appendField(locator, this, "header3FontColor", buffer, theHeader3FontColor, (this.header3FontColor!= null));
         }
+        {
+            String theIdentifier;
+            theIdentifier = this.getIdentifier();
+            strategy.appendField(locator, this, "identifier", buffer, theIdentifier, (this.identifier!= null));
+        }
         return buffer;
     }
 
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     public Object clone() {
         return copyTo(createNewInstance());
     }
 
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     public Object copyTo(Object target) {
         final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof ContactMailCustomStyle) {
@@ -385,16 +427,29 @@ public class ContactMailCustomStyle implements Serializable, Cloneable, CopyTo2,
                     }
                 }
             }
+            {
+                Boolean identifierShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.identifier!= null));
+                if (identifierShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceIdentifier;
+                    sourceIdentifier = this.getIdentifier();
+                    String copyIdentifier = ((String) strategy.copy(LocatorUtils.property(locator, "identifier", sourceIdentifier), sourceIdentifier, (this.identifier!= null)));
+                    copy.setIdentifier(copyIdentifier);
+                } else {
+                    if (identifierShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.identifier = null;
+                    }
+                }
+            }
         }
         return draftCopy;
     }
 
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     public Object createNewInstance() {
         return new ContactMailCustomStyle();
     }
 
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
@@ -457,10 +512,19 @@ public class ContactMailCustomStyle implements Serializable, Cloneable, CopyTo2,
                 return false;
             }
         }
+        {
+            String lhsIdentifier;
+            lhsIdentifier = this.getIdentifier();
+            String rhsIdentifier;
+            rhsIdentifier = that.getIdentifier();
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "identifier", lhsIdentifier), LocatorUtils.property(thatLocator, "identifier", rhsIdentifier), lhsIdentifier, rhsIdentifier, (this.identifier!= null), (that.identifier!= null))) {
+                return false;
+            }
+        }
         return true;
     }
 
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     public boolean equals(Object object) {
         final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);

@@ -57,24 +57,30 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlType(name = "MessageCode")
 @XmlEnum
-@Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T02:58:15+02:00", comments = "JAXB RI v2.2.11")
+@Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
 public enum MessageCode {
 
 
     /**
-     * Resource was successful created (includes name and id of the resource).
+     * Resource was successful created (includes name and id of the
+     *                         resource).
+     *                     
      * 
      */
     MESSAGE_RESOURCE_CREATED,
 
     /**
-     * Resource was successful updated (includes name and id of the resource).
+     * Resource was successful updated (includes name and id of the
+     *                         resource).
+     *                     
      * 
      */
     MESSAGE_RESOURCE_UPDATED,
 
     /**
-     * Resource was successful deleted (includes name and id of the resource).
+     * Resource was successful deleted (includes name and id of the
+     *                         resource).
+     *                     
      * 
      */
     MESSAGE_RESOURCE_DELETED,
@@ -92,13 +98,17 @@ public enum MessageCode {
     ERROR_COMMON_HEADER_PARAMETER_VALIDATION_FAILED,
 
     /**
-     * Request is only valid within the context of an specific resource (includes name of the required resource).
+     * Request is only valid within the context of an specific resource
+     *                         (includes name of the required resource).
+     *                     
      * 
      */
     ERROR_COMMON_RESOURCE_REQUIRED,
 
     /**
-     * A conflict occured during execution of an operation (e.g. on a resource).
+     * A conflict occured during execution of an operation (e.g. on a
+     *                         resource).
+     *                     
      * 
      */
     ERROR_COMMON_REQUEST_CONFLICT,
@@ -122,19 +132,25 @@ public enum MessageCode {
     ERROR_COMMON_ACCESS_DENIED,
 
     /**
-     * Validation according the schema failed (includes the description of the failure).
+     * Validation according the schema failed (includes the description of
+     *                         the failure).
+     *                     
      * 
      */
     ERROR_COMMON_SCHEMA_VALIDATION_FAILED,
 
     /**
-     * A required parameter is missing in the request (contains the name of the parameter).
+     * A required parameter is missing in the request (contains the name of
+     *                         the parameter).
+     *                     
      * 
      */
     ERROR_COMMON_URL_PARAMETER_REQUIRED,
 
     /**
-     * At least one request parameter contains an invalid value (contains the name and the value of the parameter).
+     * At least one request parameter contains an invalid value (contains
+     *                         the name and the value of the parameter).
+     *                     
      * 
      */
     ERROR_COMMON_URL_PARAMETER_VALIDATION_FAILED,
@@ -146,7 +162,9 @@ public enum MessageCode {
     ERROR_COMMON_URL_MULTIPLE_PARAMETERS_NOT_ALLOWED,
 
     /**
-     * A request parameter is not supported (contains the name of the parameter).
+     * A request parameter is not supported (contains the name of the
+     *                         parameter).
+     *                     
      * 
      */
     ERROR_COMMON_URL_PARAMETER_NOT_SUPPORTED,
@@ -194,7 +212,7 @@ public enum MessageCode {
     ERROR_COMMON_METHOD_NOT_ALLOWED,
 
     /**
-     * Accept type not applicable. 
+     * Accept type not applicable.
      * 
      */
     ERROR_COMMON_ACCEPT_TYPE_NOT_APPLICABLE,
@@ -207,30 +225,38 @@ public enum MessageCode {
 
     /**
      * The http request is invalid (check the url or body content).
+     *                     
      * 
      */
     ERROR_COMMON_BAD_REQUEST,
 
     /**
-     * The resource is not supported within the context of the request (includes name of the unauthorized and unavailable resource e.g. savedsearch is only for searchers).
+     * The resource is not supported within the context of the request
+     *                         (includes name of the unauthorized and unavailable resource e.g. savedsearch is only for
+     *                         searchers).
+     *                     
      * 
      */
     ERROR_RESOURCE_NOT_SUPPORTED,
 
     /**
      * Resource was not found (includes name and id of the resource).
+     *                     
      * 
      */
     ERROR_RESOURCE_NOT_FOUND,
 
     /**
      * Resource was not found for at least one of the given parameters.
+     *                     
      * 
      */
     ERROR_RESOURCE_NOT_FOUND_FOR_MULTIPLE_PARAMETERS,
 
     /**
-     * Not all of the data for the resource are valid (includes the description of the failure).
+     * Not all of the data for the resource are valid (includes the
+     *                         description of the failure).
+     *                     
      * 
      */
     ERROR_RESOURCE_VALIDATION,
@@ -242,13 +268,17 @@ public enum MessageCode {
     ERROR_REQUESTED_DATA_NOT_FOUND,
 
     /**
-     * The requested resource is not unique, but is expected to be unique.
+     * The requested resource is not unique, but is expected to be
+     *                         unique.
+     *                     
      * 
      */
     ERROR_RESOURCE_NOT_UNIQUE,
 
     /**
-     * resource requested is no longer available and will not be available again.
+     * resource requested is no longer available and will not be available
+     *                         again.
+     *                     
      * 
      */
     ERROR_RESOURCE_NO_LONGER_AVAILABLE,

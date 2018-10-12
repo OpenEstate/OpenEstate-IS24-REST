@@ -21,18 +21,17 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
 
 
 /**
- * <p>Java class for Badge complex type.
+ * <p>Java class for VirtualBadge complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="Badge"&gt;
+ * &lt;complexType name="VirtualBadge"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;all&gt;
  *         &lt;element name="type" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="description" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
- *         &lt;element name="pictureUrl" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *         &lt;element name="imageUrl" type="{http://www.w3.org/2001/XMLSchema}string"/&gt;
  *         &lt;element name="active" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
  *       &lt;/all&gt;
@@ -44,11 +43,11 @@ import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Badge", propOrder = {
+@XmlType(name = "VirtualBadge", propOrder = {
 
 })
 @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
-public class Badge implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
+public class VirtualBadge implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlElement(required = true)
@@ -57,8 +56,6 @@ public class Badge implements Serializable, Cloneable, CopyTo2, Equals2, ToStrin
     @XmlElement(required = true)
     @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     protected String description;
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
-    protected String pictureUrl;
     @XmlElement(required = true)
     @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     protected String imageUrl;
@@ -115,32 +112,6 @@ public class Badge implements Serializable, Cloneable, CopyTo2, Equals2, ToStrin
     @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     public void setDescription(String value) {
         this.description = value;
-    }
-
-    /**
-     * Gets the value of the pictureUrl property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
-    public String getPictureUrl() {
-        return pictureUrl;
-    }
-
-    /**
-     * Sets the value of the pictureUrl property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
-    public void setPictureUrl(String value) {
-        this.pictureUrl = value;
     }
 
     /**
@@ -216,11 +187,6 @@ public class Badge implements Serializable, Cloneable, CopyTo2, Equals2, ToStrin
             strategy.appendField(locator, this, "description", buffer, theDescription, (this.description!= null));
         }
         {
-            String thePictureUrl;
-            thePictureUrl = this.getPictureUrl();
-            strategy.appendField(locator, this, "pictureUrl", buffer, thePictureUrl, (this.pictureUrl!= null));
-        }
-        {
             String theImageUrl;
             theImageUrl = this.getImageUrl();
             strategy.appendField(locator, this, "imageUrl", buffer, theImageUrl, (this.imageUrl!= null));
@@ -247,8 +213,8 @@ public class Badge implements Serializable, Cloneable, CopyTo2, Equals2, ToStrin
     @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
-        if (draftCopy instanceof Badge) {
-            final Badge copy = ((Badge) draftCopy);
+        if (draftCopy instanceof VirtualBadge) {
+            final VirtualBadge copy = ((VirtualBadge) draftCopy);
             {
                 Boolean typeShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.type!= null));
                 if (typeShouldBeCopiedAndSet == Boolean.TRUE) {
@@ -272,19 +238,6 @@ public class Badge implements Serializable, Cloneable, CopyTo2, Equals2, ToStrin
                 } else {
                     if (descriptionShouldBeCopiedAndSet == Boolean.FALSE) {
                         copy.description = null;
-                    }
-                }
-            }
-            {
-                Boolean pictureUrlShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.pictureUrl!= null));
-                if (pictureUrlShouldBeCopiedAndSet == Boolean.TRUE) {
-                    String sourcePictureUrl;
-                    sourcePictureUrl = this.getPictureUrl();
-                    String copyPictureUrl = ((String) strategy.copy(LocatorUtils.property(locator, "pictureUrl", sourcePictureUrl), sourcePictureUrl, (this.pictureUrl!= null)));
-                    copy.setPictureUrl(copyPictureUrl);
-                } else {
-                    if (pictureUrlShouldBeCopiedAndSet == Boolean.FALSE) {
-                        copy.pictureUrl = null;
                     }
                 }
             }
@@ -319,7 +272,7 @@ public class Badge implements Serializable, Cloneable, CopyTo2, Equals2, ToStrin
 
     @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
     public Object createNewInstance() {
-        return new Badge();
+        return new VirtualBadge();
     }
 
     @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
@@ -330,7 +283,7 @@ public class Badge implements Serializable, Cloneable, CopyTo2, Equals2, ToStrin
         if (this == object) {
             return true;
         }
-        final Badge that = ((Badge) object);
+        final VirtualBadge that = ((VirtualBadge) object);
         {
             String lhsType;
             lhsType = this.getType();
@@ -346,15 +299,6 @@ public class Badge implements Serializable, Cloneable, CopyTo2, Equals2, ToStrin
             String rhsDescription;
             rhsDescription = that.getDescription();
             if (!strategy.equals(LocatorUtils.property(thisLocator, "description", lhsDescription), LocatorUtils.property(thatLocator, "description", rhsDescription), lhsDescription, rhsDescription, (this.description!= null), (that.description!= null))) {
-                return false;
-            }
-        }
-        {
-            String lhsPictureUrl;
-            lhsPictureUrl = this.getPictureUrl();
-            String rhsPictureUrl;
-            rhsPictureUrl = that.getPictureUrl();
-            if (!strategy.equals(LocatorUtils.property(thisLocator, "pictureUrl", lhsPictureUrl), LocatorUtils.property(thatLocator, "pictureUrl", rhsPictureUrl), lhsPictureUrl, rhsPictureUrl, (this.pictureUrl!= null), (that.pictureUrl!= null))) {
                 return false;
             }
         }
