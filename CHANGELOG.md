@@ -8,6 +8,8 @@ Changelog for OpenEstate-IS24-REST
     `OpenEstate-IS24-REST-HC42`, `OpenEstate-IS24-REST-HC43`,
     `OpenEstate-IS24-REST-Examples` and `OpenEstate-IS24-REST-WebApp`. Please
     make sure to rename the dependencies in your Maven project.
+-   Added [automatic module names](http://branchandbound.net/blog/java/2017/12/automatic-module-name/) 
+    into JAR manifests.
 -   Regenerated JAXB classes against the latest XSD schemas from IS24.
 -   Updated `commons-codec` library to version 1.11.
 -   Updated `commons-io` library to version 2.6.
@@ -17,6 +19,10 @@ Changelog for OpenEstate-IS24-REST
     whenever possible. See
     [Always read the documentation/code – a.k.a. java.net.URL is evil](https://sworddance.com/blog/2007/09/09/code-review-4-always-read-the-documentationcode-aka-javaneturl-is-evil/)
     for more information.
+-   **API change:** JAXB classes were regenerated with compatibility for Bean 
+    Introspection API's. Getter methods for `Boolean` values were renamed from 
+    `getValue()` to `isValue()`.
+-   Migrated project to IntelliJ IDEA.
 
 
 0.4 (29 Jul 2017)
