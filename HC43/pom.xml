@@ -6,11 +6,11 @@
     <parent>
         <groupId>org.openestate.is24</groupId>
         <artifactId>OpenEstate-IS24-REST</artifactId>
-        <version>0.5-SNAPSHOT</version>
+        <version>0.5</version>
     </parent>
 
     <artifactId>OpenEstate-IS24-REST-HC43</artifactId>
-    <version>0.5-SNAPSHOT</version>
+    <version>0.5</version>
     <packaging>jar</packaging>
 
     <name>OpenEstate-IS24-REST-HC43</name>
