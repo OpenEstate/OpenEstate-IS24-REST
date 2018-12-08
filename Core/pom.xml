@@ -181,17 +181,6 @@
                     </args>
                 </configuration>
             </plugin>
-
-            <!-- findbugs -->
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>findbugs-maven-plugin</artifactId>
-                <configuration>
-                    <failOnError>false</failOnError>
-                    <excludeFilterFile>${project.basedir}/findbugs-exclude.xml</excludeFilterFile>
-                </configuration>
-            </plugin>
-
         </plugins>
     </build>
 </project>

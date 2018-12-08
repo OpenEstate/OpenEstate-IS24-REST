@@ -15,6 +15,6 @@
  */
 
 /**
- * Additional classes for Apache HttpComponents 4.3.
+ * Additional classes for Apache HttpComponents 4.3 (or later).
  */
 package org.openestate.is24.restapi.hc43;

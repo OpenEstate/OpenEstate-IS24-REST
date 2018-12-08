@@ -54,8 +54,6 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.baseName>OpenEstate-IS24-REST</project.baseName>
-        <project.javadocDir>${project.basedir}/apidocs</project.javadocDir>
-        <project.packageDir>${project.basedir}/package</project.packageDir>
         <createChecksum>true</createChecksum>
 
         <!-- Set this value to true, in order to skip GPG signing during the release phase. -->
@@ -226,13 +224,17 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>2.10.4</version>
-                    <!-- version 3.0.0 leads to errors when packaging releases with assembly plugin. -->
+                    <version>3.0.1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-source-plugin</artifactId>
                     <version>3.0.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.22.1</version>
                 </plugin>
 
                 <plugin>
@@ -277,23 +279,13 @@
         </pluginManagement>
         <plugins>
 
-            <!-- clean -->
+            <!-- findbugs -->
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-clean-plugin</artifactId>
-                <inherited>false</inherited>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
                 <configuration>
                     <failOnError>false</failOnError>
-                    <filesets>
-                        <fileset>
-                            <directory>${project.packageDir}</directory>
-                            <followSymlinks>false</followSymlinks>
-                        </fileset>
-                        <fileset>
-                            <directory>${project.javadocDir}</directory>
-                            <followSymlinks>false</followSymlinks>
-                        </fileset>
-                    </filesets>
+                    <excludeFilterFile>${project.basedir}/findbugs/exclude.xml</excludeFilterFile>
                 </configuration>
             </plugin>
 
@@ -371,56 +363,6 @@
                                     <quiet>true</quiet>
                                     <encoding>${project.build.sourceEncoding}</encoding>
                                     <docencoding>${project.build.sourceEncoding}</docencoding>
-                                </configuration>
-                            </execution>
-                            <execution>
-                                <id>aggregate-javadocs</id>
-                                <inherited>false</inherited>
-                                <phase>prepare-package</phase>
-                                <goals>
-                                    <goal>aggregate</goal>
-                                </goals>
-                                <configuration>
-                                    <reportOutputDirectory>${project.basedir}</reportOutputDirectory>
-                                    <encoding>${project.build.sourceEncoding}</encoding>
-                                    <docencoding>${project.build.sourceEncoding}</docencoding>
-                                    <keywords>true</keywords>
-                                    <quiet>true</quiet>
-                                    <links>
-                                        <link>https://docs.oracle.com/javase/7/docs/api/</link>
-                                    </links>
-                                    <groups>
-                                        <group>
-                                            <title>core library</title>
-                                            <packages>
-                                                org.openestate.is24.restapi:org.openestate.is24.restapi.utils:org.openestate.is24.restapi.utils.*:org.openestate.is24.restapi.xml:org.openestate.is24.restapi.xml.*
-                                            </packages>
-                                        </group>
-                                        <group>
-                                            <title>addon for Apache HttpComponents 4.2</title>
-                                            <packages>
-                                                org.openestate.is24.restapi.hc42:org.openestate.is24.restapi.hc42.*
-                                            </packages>
-                                        </group>
-                                        <group>
-                                            <title>addon for Apache HttpComponents 4.3</title>
-                                            <packages>
-                                                org.openestate.is24.restapi.hc43:org.openestate.is24.restapi.hc43.*
-                                            </packages>
-                                        </group>
-                                        <group>
-                                            <title>example classes</title>
-                                            <packages>
-                                                org.openestate.is24.restapi.examples:org.openestate.is24.restapi.examples.*
-                                            </packages>
-                                        </group>
-                                        <group>
-                                            <title>example web application</title>
-                                            <packages>
-                                                org.openestate.is24.restapi.webapp:org.openestate.is24.restapi.webapp.*
-                                            </packages>
-                                        </group>
-                                    </groups>
                                 </configuration>
                             </execution>
                         </executions>

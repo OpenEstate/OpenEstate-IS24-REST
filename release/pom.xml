@@ -33,7 +33,8 @@
     </licenses>
 
     <properties>
-        <project.packageDir>${project.parent.basedir}/package</project.packageDir>
+        <project.javadocDir>${project.basedir}/apidocs</project.javadocDir>
+        <project.packageDir>${project.basedir}/package</project.packageDir>
     </properties>
 
     <!--
@@ -69,6 +70,25 @@
     <build>
         <plugins>
 
+            <!-- clean -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <configuration>
+                    <failOnError>false</failOnError>
+                    <filesets>
+                        <fileset>
+                            <directory>${project.packageDir}</directory>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                        <fileset>
+                            <directory>${project.javadocDir}</directory>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+
             <!-- install -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -98,6 +118,89 @@
 
             <build>
                 <plugins>
+
+                    <!-- javadoc -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>aggregate-javadocs</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>javadoc</goal>
+                                </goals>
+                                <configuration>
+                                    <reportOutputDirectory>${project.basedir}</reportOutputDirectory>
+                                    <destDir>apidocs</destDir>
+                                    <doctitle>${project.parent.artifactId} ${project.parent.version} API</doctitle>
+                                    <windowtitle>${project.parent.artifactId} ${project.parent.version} API</windowtitle>
+                                    <encoding>${project.build.sourceEncoding}</encoding>
+                                    <docencoding>${project.build.sourceEncoding}</docencoding>
+                                    <keywords>true</keywords>
+                                    <quiet>true</quiet>
+                                    <!--<doclint>none</doclint>-->
+                                    <links>
+                                        <link>https://docs.oracle.com/javase/7/docs/api/</link>
+                                    </links>
+                                    <groups>
+                                        <group>
+                                            <title>core library</title>
+                                            <packages>
+                                                org.openestate.is24.restapi:
+                                                org.openestate.is24.restapi.utils:
+                                                org.openestate.is24.restapi.utils.*:
+                                                org.openestate.is24.restapi.xml:
+                                                org.openestate.is24.restapi.xml.*
+                                            </packages>
+                                        </group>
+                                        <group>
+                                            <title>addon for Apache HttpComponents 4.2</title>
+                                            <packages>
+                                                org.openestate.is24.restapi.hc42:
+                                                org.openestate.is24.restapi.hc42.*
+                                            </packages>
+                                        </group>
+                                        <group>
+                                            <title>addon for Apache HttpComponents 4.3+</title>
+                                            <packages>
+                                                org.openestate.is24.restapi.hc43:
+                                                org.openestate.is24.restapi.hc43.*
+                                            </packages>
+                                        </group>
+                                        <group>
+                                            <title>example classes</title>
+                                            <packages>
+                                                org.openestate.is24.restapi.examples:
+                                                org.openestate.is24.restapi.examples.*
+                                            </packages>
+                                        </group>
+                                        <group>
+                                            <title>example web application</title>
+                                            <packages>
+                                                org.openestate.is24.restapi.webapp:
+                                                org.openestate.is24.restapi.webapp.*
+                                            </packages>
+                                        </group>
+                                    </groups>
+                                    <sourcepath>
+                                        ${project.parent.basedir}/Core/src/main/java;
+                                        ${project.parent.basedir}/Examples/src/main/java;
+                                        ${project.parent.basedir}/HC42/src/main/java;
+                                        ${project.parent.basedir}/HC43/src/main/java;
+                                        ${project.parent.basedir}/WebApp/src/main/java
+                                    </sourcepath>
+                                    <additionalDependencies>
+                                        <dependency>
+                                            <groupId>com.google.code.findbugs</groupId>
+                                            <artifactId>annotations</artifactId>
+                                            <version>3.0.1u2</version>
+                                        </dependency>
+                                    </additionalDependencies>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
 
                     <!-- dependency -->
                     <plugin>
@@ -178,7 +281,7 @@
                                     <tarLongFileMode>posix</tarLongFileMode>
                                     <attach>false</attach>
                                     <descriptors>
-                                        <descriptor>${project.basedir}/assembly.xml</descriptor>
+                                        <descriptor>${project.basedir}/src/assembly/release.xml</descriptor>
                                     </descriptors>
                                 </configuration>
                             </execution>
