@@ -5,7 +5,7 @@
 
     <groupId>org.openestate.is24</groupId>
     <artifactId>OpenEstate-IS24-REST</artifactId>
-    <version>0.5</version>
+    <version>0.6-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>OpenEstate-IS24-REST</name>
