@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.openestate.is24</groupId>
+        <artifactId>OpenEstate-IS24-REST</artifactId>
+        <version>0.5</version>
+    </parent>
+
+    <artifactId>release</artifactId>
+    <version>0.5</version>
+    <packaging>pom</packaging>
+
+    <name>release</name>
+    <description>
+        This module is used to assemble the release package for OpenEstate-IS24-REST. It does not add any further code
+        to the libraries.
+    </description>
+    <url>https://openestate.org</url>
+    <organization>
+        <name>OpenEstate</name>
+        <url>https://openestate.org/</url>
+    </organization>
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+            <comments>A business-friendly OSS license</comments>
+        </license>
+    </licenses>
+
+    <properties>
+        <project.javadocDir>${project.basedir}/apidocs</project.javadocDir>
+        <project.packageDir>${project.basedir}/package</project.packageDir>
+    </properties>
+
+    <!--
+    NOTE: These dependency declarations are only required to sort this project to
+    the end of the line in the multi module build.
+
+    see https://maven.apache.org/plugins/maven-assembly-plugin/examples/multimodule/module-binary-inclusion-simple.html
+    -->
+    <dependencies>
+        <dependency>
+            <groupId>org.openestate.is24</groupId>
+            <artifactId>OpenEstate-IS24-REST-Core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.openestate.is24</groupId>
+            <artifactId>OpenEstate-IS24-REST-Examples</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.openestate.is24</groupId>
+            <artifactId>OpenEstate-IS24-REST-HC42</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.openestate.is24</groupId>
+            <artifactId>OpenEstate-IS24-REST-HC43</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.openestate.is24</groupId>
+            <artifactId>OpenEstate-IS24-REST-WebApp</artifactId>
+            <type>war</type>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+
+            <!-- clean -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <configuration>
+                    <failOnError>false</failOnError>
+                    <filesets>
+                        <fileset>
+                            <directory>${project.packageDir}</directory>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                        <fileset>
+                            <directory>${project.javadocDir}</directory>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+
+            <!-- install -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+
+            <!-- deploy -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+    <profiles>
+
+        <!-- release profile for oss.sonatype.org -->
+        <profile>
+            <id>ossrh-release</id>
+
+            <build>
+                <plugins>
+
+                    <!-- javadoc -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>aggregate-javadocs</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>javadoc</goal>
+                                </goals>
+                                <configuration>
+                                    <reportOutputDirectory>${project.basedir}</reportOutputDirectory>
+                                    <destDir>apidocs</destDir>
+                                    <doctitle>${project.parent.artifactId} ${project.parent.version} API</doctitle>
+                                    <windowtitle>${project.parent.artifactId} ${project.parent.version} API</windowtitle>
+                                    <encoding>${project.build.sourceEncoding}</encoding>
+                                    <docencoding>${project.build.sourceEncoding}</docencoding>
+                                    <keywords>true</keywords>
+                                    <quiet>true</quiet>
+                                    <!--<doclint>none</doclint>-->
+                                    <links>
+                                        <link>https://docs.oracle.com/javase/7/docs/api/</link>
+                                    </links>
+                                    <groups>
+                                        <group>
+                                            <title>core library</title>
+                                            <packages>
+                                                org.openestate.is24.restapi:
+                                                org.openestate.is24.restapi.utils:
+                                                org.openestate.is24.restapi.utils.*:
+                                                org.openestate.is24.restapi.xml:
+                                                org.openestate.is24.restapi.xml.*
+                                            </packages>
+                                        </group>
+                                        <group>
+                                            <title>addon for Apache HttpComponents 4.2</title>
+                                            <packages>
+                                                org.openestate.is24.restapi.hc42:
+                                                org.openestate.is24.restapi.hc42.*
+                                            </packages>
+                                        </group>
+                                        <group>
+                                            <title>addon for Apache HttpComponents 4.3+</title>
+                                            <packages>
+                                                org.openestate.is24.restapi.hc43:
+                                                org.openestate.is24.restapi.hc43.*
+                                            </packages>
+                                        </group>
+                                        <group>
+                                            <title>example classes</title>
+                                            <packages>
+                                                org.openestate.is24.restapi.examples:
+                                                org.openestate.is24.restapi.examples.*
+                                            </packages>
+                                        </group>
+                                        <group>
+                                            <title>example web application</title>
+                                            <packages>
+                                                org.openestate.is24.restapi.webapp:
+                                                org.openestate.is24.restapi.webapp.*
+                                            </packages>
+                                        </group>
+                                    </groups>
+                                    <sourcepath>
+                                        ${project.parent.basedir}/Core/src/main/java;
+                                        ${project.parent.basedir}/Examples/src/main/java;
+                                        ${project.parent.basedir}/HC42/src/main/java;
+                                        ${project.parent.basedir}/HC43/src/main/java;
+                                        ${project.parent.basedir}/WebApp/src/main/java
+                                    </sourcepath>
+                                    <additionalDependencies>
+                                        <dependency>
+                                            <groupId>com.google.code.findbugs</groupId>
+                                            <artifactId>annotations</artifactId>
+                                            <version>3.0.1u2</version>
+                                        </dependency>
+                                    </additionalDependencies>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                    <!-- dependency -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>copy-dependencies-jar</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>copy-dependencies</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${project.basedir}/target/3rdparty</outputDirectory>
+                                    <silent>true</silent>
+                                    <overWriteReleases>false</overWriteReleases>
+                                    <overWriteSnapshots>false</overWriteSnapshots>
+                                    <overWriteIfNewer>true</overWriteIfNewer>
+                                    <includeScope>runtime</includeScope>
+                                    <excludeGroupIds>${project.groupId},com.google.code.findbugs,net.jcip,net.jcip
+                                    </excludeGroupIds>
+                                </configuration>
+                            </execution>
+
+                            <execution>
+                                <id>copy-dependencies-sources</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>copy-dependencies</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${project.basedir}/target/3rdparty</outputDirectory>
+                                    <silent>true</silent>
+                                    <overWriteReleases>false</overWriteReleases>
+                                    <overWriteSnapshots>false</overWriteSnapshots>
+                                    <overWriteIfNewer>true</overWriteIfNewer>
+                                    <includeScope>runtime</includeScope>
+                                    <excludeGroupIds>${project.groupId},com.google.code.findbugs,net.jcip,net.jcip
+                                    </excludeGroupIds>
+                                    <classifier>sources</classifier>
+                                </configuration>
+                            </execution>
+
+                            <execution>
+                                <id>copy-dependencies-javadoc</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>copy-dependencies</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${project.basedir}/target/3rdparty</outputDirectory>
+                                    <silent>true</silent>
+                                    <overWriteReleases>false</overWriteReleases>
+                                    <overWriteSnapshots>false</overWriteSnapshots>
+                                    <overWriteIfNewer>true</overWriteIfNewer>
+                                    <includeScope>runtime</includeScope>
+                                    <excludeGroupIds>${project.groupId},com.google.code.findbugs,net.jcip,net.jcip
+                                    </excludeGroupIds>
+                                    <classifier>javadoc</classifier>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                    <!-- assembly  -->
+                    <plugin>
+                        <artifactId>maven-assembly-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>distro-assembly</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>single</goal>
+                                </goals>
+                                <configuration>
+                                    <finalName>${project.parent.artifactId}-${project.version}</finalName>
+                                    <outputDirectory>${project.packageDir}</outputDirectory>
+                                    <tarLongFileMode>posix</tarLongFileMode>
+                                    <attach>false</attach>
+                                    <descriptors>
+                                        <descriptor>${project.basedir}/src/assembly/release.xml</descriptor>
+                                    </descriptors>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                </plugins>
+            </build>
+
+        </profile>
+    </profiles>
+</project>
