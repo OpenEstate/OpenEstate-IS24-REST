@@ -1,8 +1,8 @@
 Changelog for OpenEstate-IS24-REST
 ==================================
 
-0.5-SNAPSHOT (not released yet)
--------------------------------
+0.5 (08 Dec 2018)
+-----------------
 
 -   Artifacts of the project were renamed to `OpenEstate-IS24-REST-Core`,
     `OpenEstate-IS24-REST-HC42`, `OpenEstate-IS24-REST-HC43`,

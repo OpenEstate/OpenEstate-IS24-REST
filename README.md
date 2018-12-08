@@ -1,5 +1,5 @@
-OpenEstate-IS24-REST 0.5-SNAPSHOT
-=================================
+OpenEstate-IS24-REST 0.5
+========================
 
 OpenEstate-IS24-REST is a client library for the REST-Webservice of
 [ImmobilienScout24.de](https://www.immobilienscout24.de/) written in Java. This
@@ -77,19 +77,19 @@ requirements):
 <dependency>
   <groupId>org.openestate.is24</groupId>
   <artifactId>OpenEstate-IS24-REST-Core</artifactId>
-  <version>0.5-SNAPSHOT</version>
+  <version>0.5</version>
 </dependency>
 
 <dependency>
   <groupId>org.openestate.is24</groupId>
   <artifactId>OpenEstate-IS24-REST-HC42</artifactId>
-  <version>0.5-SNAPSHOT</version>
+  <version>0.5</version>
 </dependency>
 
 <dependency>
   <groupId>org.openestate.is24</groupId>
   <artifactId>OpenEstate-IS24-REST-HC43</artifactId>
-  <version>0.5-SNAPSHOT</version>
+  <version>0.5</version>
 </dependency>
 ```
 
@@ -178,7 +178,7 @@ Further information
 
 -   [OpenEstate-IS24-REST at GitHub](https://github.com/OpenEstate/OpenEstate-IS24-REST)
 -   [Releases of OpenEstate-IS24-REST](https://github.com/OpenEstate/OpenEstate-IS24-REST/releases)
--   [Changelog of OpenEstate-IS24-REST](https://github.com/OpenEstate/OpenEstate-IS24-REST/blob/develop/CHANGELOG.md)
+-   [Changelog of OpenEstate-IS24-REST](https://github.com/OpenEstate/OpenEstate-IS24-REST/blob/master/CHANGELOG.md)
 -   [API documentation of OpenEstate-IS24-REST](https://media.openestate.org/apidocs/OpenEstate-IS24-REST/)
 -   [ImmobilienScout24 Developer Center](https://api.immobilienscout24.de/)
 -   [ImmobilienScout24-REST-API Forum](https://groups.google.com/forum/#!forum/immobilienscout24-development)
