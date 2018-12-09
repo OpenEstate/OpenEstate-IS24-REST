@@ -126,7 +126,7 @@
                         <artifactId>maven-javadoc-plugin</artifactId>
                         <executions>
                             <execution>
-                                <id>aggregate-javadocs</id>
+                                <id>aggregate-javadoc</id>
                                 <phase>package</phase>
                                 <goals>
                                     <goal>javadoc</goal>
@@ -147,45 +147,28 @@
                                     <groups>
                                         <group>
                                             <title>core library</title>
-                                            <packages>
-                                                org.openestate.is24.restapi:
-                                                org.openestate.is24.restapi.utils:
-                                                org.openestate.is24.restapi.utils.*:
-                                                org.openestate.is24.restapi.xml:
-                                                org.openestate.is24.restapi.xml.*
-                                            </packages>
+                                            <packages>org.openestate.is24.restapi:org.openestate.is24.restapi.utils:org.openestate.is24.restapi.utils.*:org.openestate.is24.restapi.xml:org.openestate.is24.restapi.xml.*</packages>
                                         </group>
                                         <group>
                                             <title>addon for Apache HttpComponents 4.2</title>
-                                            <packages>
-                                                org.openestate.is24.restapi.hc42:
-                                                org.openestate.is24.restapi.hc42.*
-                                            </packages>
+                                            <packages>org.openestate.is24.restapi.hc42:org.openestate.is24.restapi.hc42.*</packages>
                                         </group>
                                         <group>
                                             <title>addon for Apache HttpComponents 4.3+</title>
-                                            <packages>
-                                                org.openestate.is24.restapi.hc43:
-                                                org.openestate.is24.restapi.hc43.*
-                                            </packages>
+                                            <packages>org.openestate.is24.restapi.hc43:org.openestate.is24.restapi.hc43.*</packages>
                                         </group>
                                         <group>
                                             <title>example classes</title>
-                                            <packages>
-                                                org.openestate.is24.restapi.examples:
-                                                org.openestate.is24.restapi.examples.*
-                                            </packages>
+                                            <packages>org.openestate.is24.restapi.examples:org.openestate.is24.restapi.examples.*</packages>
                                         </group>
                                         <group>
                                             <title>example web application</title>
-                                            <packages>
-                                                org.openestate.is24.restapi.webapp:
-                                                org.openestate.is24.restapi.webapp.*
-                                            </packages>
+                                            <packages>org.openestate.is24.restapi.webapp:org.openestate.is24.restapi.webapp.*</packages>
                                         </group>
                                     </groups>
                                     <sourcepath>
                                         ${project.parent.basedir}/Core/src/main/java;
+                                        ${project.parent.basedir}/Core/src/main/jaxb;
                                         ${project.parent.basedir}/Examples/src/main/java;
                                         ${project.parent.basedir}/HC42/src/main/java;
                                         ${project.parent.basedir}/HC43/src/main/java;
