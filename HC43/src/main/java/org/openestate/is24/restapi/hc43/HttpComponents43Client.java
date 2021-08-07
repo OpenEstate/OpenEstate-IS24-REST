@@ -179,17 +179,14 @@ public class HttpComponents43Client extends AbstractClient {
     protected Response sendXmlAttachmentRequest(URL url, RequestMethod method, String xml, InputStream input, String fileName, String mimeType) throws IOException, OAuthException {
         if (method == null) method = RequestMethod.POST;
         if (!RequestMethod.POST.equals(method) && !RequestMethod.PUT.equals(method))
-            throw new IllegalArgumentException("Invalid request method!");
-        xml = (RequestMethod.POST.equals(method) || RequestMethod.PUT.equals(method)) ?
-                StringUtils.trimToNull(xml) : null;
+            throw new IllegalArgumentException("Invalid request method (" + method + ")!");
+        xml = StringUtils.trimToNull(xml);
 
         HttpUriRequest request;
         if (RequestMethod.POST.equals(method)) {
             request = new HttpPost(url.toString());
-        } else if (RequestMethod.PUT.equals(method)) {
-            request = new HttpPut(url.toString());
         } else {
-            throw new IOException("Unsupported request method '" + method + "'!");
+            request = new HttpPut(url.toString());
         }
 
         MultipartEntityBuilder b = MultipartEntityBuilder.create();
@@ -242,15 +239,13 @@ public class HttpComponents43Client extends AbstractClient {
     protected Response sendVideoUploadRequest(URI url, RequestMethod method, String auth, InputStream input, String fileName, final long fileSize) throws IOException {
         if (method == null) method = RequestMethod.POST;
         if (!RequestMethod.POST.equals(method) && !RequestMethod.PUT.equals(method))
-            throw new IllegalArgumentException("Invalid request method!");
+            throw new IllegalArgumentException("Invalid request method (" + method + ")!");
 
         HttpUriRequest request;
         if (RequestMethod.POST.equals(method)) {
             request = new HttpPost(url.toString());
-        } else if (RequestMethod.PUT.equals(method)) {
-            request = new HttpPut(url.toString());
         } else {
-            throw new IOException("Unsupported request method '" + method + "'!");
+            request = new HttpPut(url.toString());
         }
 
         MultipartEntityBuilder b = MultipartEntityBuilder.create();
@@ -316,6 +311,7 @@ public class HttpComponents43Client extends AbstractClient {
             throw new IOException("Unsupported request method '" + method + "'!");
         }
 
+        //noinspection ConstantConditions
         if (content != null && request instanceof HttpEntityEnclosingRequest) {
             ContentType type = ContentType.create(contentType, getEncoding());
 
@@ -392,6 +388,7 @@ public class HttpComponents43Client extends AbstractClient {
         this.httpClient = httpClient;
 
         // register HTTP client in the OAuth provider
+        //noinspection CatchMayIgnoreException
         try {
             OAuthProvider p = getAuthProvider();
             if (p instanceof CommonsHttpOAuthProvider) {
