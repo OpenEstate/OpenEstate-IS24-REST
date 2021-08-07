@@ -110,13 +110,13 @@ Requirements
 Dependencies
 ------------
 
--   Java 7 or newer
--   [commons-codec 1.11](https://commons.apache.org/proper/commons-codec/)
--   [commons-io 2.6](https://commons.apache.org/proper/commons-io/)
--   [commons-lang 3.8.1](https://commons.apache.org/proper/commons-lang/)
--   [commons-text 1.3](https://commons.apache.org/proper/commons-text/)
--   [jaxb2-basics-runtime 0.11.1](https://github.com/highsource/jaxb2-basics)
--   [oauth-signpost 1.2.1.2](https://code.google.com/p/oauth-signpost/)
+-   Java 11 or newer
+-   [commons-codec 1.15](https://commons.apache.org/proper/commons-codec/)
+-   [commons-io 2.11.0](https://commons.apache.org/proper/commons-io/)
+-   [commons-lang 3.12.0](https://commons.apache.org/proper/commons-lang/)
+-   [commons-text 1.9](https://commons.apache.org/proper/commons-text/)
+-   [jaxb2-basics-runtime 0.12.0](https://github.com/highsource/jaxb2-basics)
+-   [oauth-signpost 2.1.1](https://code.google.com/p/oauth-signpost/)
 -   [SLF4J 1.7.25](https://www.slf4j.org/)
 -   [Lorem 2.1](https://github.com/mdeanda/lorem) (only required by
     [`RandomRealEstateFactory.java`](Core/src/main/java/org/openestate/is24/restapi/utils/RandomRealEstateFactory.java))
