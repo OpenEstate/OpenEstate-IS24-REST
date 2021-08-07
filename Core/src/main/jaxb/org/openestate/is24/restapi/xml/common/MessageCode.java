@@ -48,6 +48,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;enumeration value="ERROR_RESOURCE_NO_LONGER_AVAILABLE"/&gt;
  *     &lt;enumeration value="ERROR_DB_NOT_AVAILABLE"/&gt;
  *     &lt;enumeration value="ERROR_CONTACT_DETAILS_MISSING"/&gt;
+ *     &lt;enumeration value="ERROR_COMMISSION_SPLIT_VALIDATION_FAILED"/&gt;
  *     &lt;enumeration value="ERROR_INVALID_COORDINATES"/&gt;
  *     &lt;enumeration value="ERROR_GEOCODING_FAILED"/&gt;
  *   &lt;/restriction&gt;
@@ -57,7 +58,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlType(name = "MessageCode")
 @XmlEnum
-@Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T06:36:25+02:00", comments = "JAXB RI v2.3.0")
+@Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
 public enum MessageCode {
 
 
@@ -294,6 +295,12 @@ public enum MessageCode {
      * 
      */
     ERROR_CONTACT_DETAILS_MISSING,
+
+    /**
+     * Commission split request is invalid.
+     * 
+     */
+    ERROR_COMMISSION_SPLIT_VALIDATION_FAILED,
 
     /**
      * The given coordinates are invalid.

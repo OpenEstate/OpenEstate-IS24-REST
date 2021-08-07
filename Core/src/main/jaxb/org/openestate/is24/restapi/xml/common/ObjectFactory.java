@@ -272,6 +272,30 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GeoPathHierarchyElementsStatistic }
+     * 
+     */
+    public GeoPathHierarchyElementsStatistic createGeoPathHierarchyElementsStatistic() {
+        return new GeoPathHierarchyElementsStatistic();
+    }
+
+    /**
+     * Create an instance of {@link GeoPathHierarchyElement }
+     * 
+     */
+    public GeoPathHierarchyElement createGeoPathHierarchyElement() {
+        return new GeoPathHierarchyElement();
+    }
+
+    /**
+     * Create an instance of {@link GeoPathHierarchyElements }
+     * 
+     */
+    public GeoPathHierarchyElements createGeoPathHierarchyElements() {
+        return new GeoPathHierarchyElements();
+    }
+
+    /**
      * Create an instance of {@link ApiSearchData }
      * 
      */
@@ -669,6 +693,46 @@ public class ObjectFactory {
      */
     public Contingent createContingent() {
         return new Contingent();
+    }
+
+    /**
+     * Create an instance of {@link ShapeInformationList }
+     * 
+     */
+    public ShapeInformationList createShapeInformationList() {
+        return new ShapeInformationList();
+    }
+
+    /**
+     * Create an instance of {@link ShapeInformation }
+     * 
+     */
+    public ShapeInformation createShapeInformation() {
+        return new ShapeInformation();
+    }
+
+    /**
+     * Create an instance of {@link GeoPath }
+     * 
+     */
+    public GeoPath createGeoPath() {
+        return new GeoPath();
+    }
+
+    /**
+     * Create an instance of {@link RealNameList }
+     * 
+     */
+    public RealNameList createRealNameList() {
+        return new RealNameList();
+    }
+
+    /**
+     * Create an instance of {@link DatasetList }
+     * 
+     */
+    public DatasetList createDatasetList() {
+        return new DatasetList();
     }
 
     /**

@@ -771,6 +771,23 @@
                     </xs:restriction>
                 </xs:simpleType>
             </xs:element>
+            <xs:element name="secondaryEmail" type="Email" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation xml:lang="en">Secondary email of this contact.</xs:documentation>
+                <xs:documentation xml:lang="de-DE">Zusätzliche E-Mail des Kontakts.</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          <xs:element name="clickOutUrl" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation xml:lang="en">clickOut url for external Partners</xs:documentation>
+              <xs:documentation xml:lang="de-DE">Kontaktformular-Url externer Anbieter</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:restriction base="xs:anyURI">
+                <xs:maxLength value="300"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="ContactMailCustomStyle">
@@ -7185,7 +7202,14 @@
 		        </xs:annotation>
 		    </xs:element>
  -->
- 		    <xs:element name="builtInKitchen" type="xs:boolean" minOccurs="0">
+            <xs:element name="energyEfficiencyClass" type="EnergyEfficiencyClass" minOccurs="0" maxOccurs="1">
+              <xs:annotation>
+                <xs:documentation xml:lang="en">energy efficiency elass</xs:documentation>
+                <xs:documentation xml:lang="de-DE">Energieeffizenzklasse</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+
+            <xs:element name="builtInKitchen" type="xs:boolean" minOccurs="0">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">has a built-in kitchen</xs:documentation>
                     <xs:documentation xml:lang="de-DE">Einbauküche</xs:documentation>
@@ -7270,6 +7294,13 @@
 		        </xs:annotation>
 		    </xs:element>
  -->
+            <xs:element name="energyEfficiencyClass" type="EnergyEfficiencyClass" minOccurs="0">
+              <xs:annotation>
+                <xs:documentation xml:lang="en">energy efficiency elass</xs:documentation>
+                <xs:documentation xml:lang="de-DE">Energieeffizenzklasse</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+
             <xs:element name="courtage" type="CourtageInfo" minOccurs="1">
                 <xs:annotation>
                     <xs:documentation xml:lang="en">courtage elements</xs:documentation>
@@ -10747,6 +10778,83 @@
 	            </xs:element>
 			</xs:choice>
 <!-- ####################################################################################################### -->
+              <xs:element name="cellar" type="YesNotApplicableType" default="NOT_APPLICABLE" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation xml:lang="en">cellar available</xs:documentation>
+                  <xs:documentation xml:lang="de-DE">Keller verfügbar</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="numberOfRooms" type="xs:double" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation xml:lang="en">count of the rooms</xs:documentation>
+                  <xs:documentation xml:lang="de-DE">Zimmeranzahl</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="balcony" type="YesNotApplicableType" default="NOT_APPLICABLE" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation xml:lang="en">has a balcony</xs:documentation>
+                  <xs:documentation xml:lang="de-DE">Balkon</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="builtInKitchen" type="YesNotApplicableType" default="NOT_APPLICABLE" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation xml:lang="en">has a built-in kitchen</xs:documentation>
+                  <xs:documentation xml:lang="de-DE">Einbauküche</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="guestToilet" type="YesNotApplicableType" default="NOT_APPLICABLE" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation xml:lang="en">guest toilet</xs:documentation>
+                  <xs:documentation xml:lang="de-DE">Gästetoilette</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="lastRefurbishment" type="xs:int" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation xml:lang="en">last refurbishment</xs:documentation>
+                  <xs:documentation xml:lang="de-DE">Letzte Modernisierung</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="numberOfBathRooms" type="xs:int" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation xml:lang="en">number of bath rooms</xs:documentation>
+                  <xs:documentation xml:lang="de-DE">Anzahl Badezimmer</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="numberOfFloors" type="xs:int" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation xml:lang="en">number of floors</xs:documentation>
+                  <xs:documentation xml:lang="de-DE">Anzahl Etagen</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="numberOfParkingSpaces" type="xs:int" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation xml:lang="en">number of parking spaces</xs:documentation>
+                  <xs:documentation xml:lang="de-DE">Parkflächenanzahl</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="parkingSpacePrice" type="xs:double" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation xml:lang="en">parking space price</xs:documentation>
+                  <xs:documentation xml:lang="de-DE">Garage/ Stellplatz-Kaufpreis</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="parkingSpaceType" type="ParkingSpaceType" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation xml:lang="en">parking space type</xs:documentation>
+                  <xs:documentation xml:lang="de-DE">Garage/ Stellplatz</xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="floor" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation xml:lang="en">floor</xs:documentation>
+                  <xs:documentation xml:lang="de-DE">Etage</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                  <xs:restriction base="xs:int">
+                    <xs:minInclusive value="-1"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
         </xs:sequence>
     </xs:group>
     <xs:element name="publishObjects">
@@ -10990,6 +11098,63 @@
         </xs:sequence>
     </xs:complexType>
 
+    <xs:complexType name="GeoPathHierarchyElement">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">Defines a shape with all informations.</xs:documentation>
+        <xs:documentation xml:lang="de-DE">Definiert eine form mit allen verfügbaren Informationen.
+        </xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+        <xs:element name="id" type="xs:string" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">Unique ShapeId; currently the same as the GAC-IDs
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="geoPath" type="xs:string" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">Represents the geohierarchy of the given region, as (SEO friendly) URI und as real names
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="gacLabel" type="xs:string" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">Name of the region as it's presented in the GAC (at least unique per shape type, often unique across all shapes)
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="seoLabel" type="xs:string" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">Name of the shape as it should be presented to a search engine (does not have to be unique)
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="type" type="xs:string" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">Shape type, originally the same as the GAC-Type, but the nextgen shapes also have the type borough which maps to GAC type quarterOrTown (but is reserved for boroughs within cities)
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+
+        <xs:element name="statistics" type="GeoHierarchyStatistics" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">Optional element which holds the statistics (i.e. number of objects)
+              for a real estate type
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="GeoPathHierarchyElements">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">List element for GeoPathHierarchyElement.</xs:documentation>
+        <xs:documentation xml:lang="de-DE">Listenelement für GeoPathHierarchyElement.</xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+        <xs:element name="geoPathHierarchyElement" type="GeoPathHierarchyElement" minOccurs="0" maxOccurs="100"/>
+      </xs:sequence>
+    </xs:complexType>
 
     <xs:element name="geoHierarchyElementsStatistic">
         <xs:annotation>
@@ -11003,6 +11168,20 @@
                 <xs:element name="children" type="GeoHierarchyElements"/>
             </xs:sequence>
         </xs:complexType>
+    </xs:element>
+
+    <xs:element name="geoPathHierarchyElementsStatistic">
+      <xs:annotation>
+        <xs:documentation xml:lang="en">List element for statistics of GeopathHierarchyElements.</xs:documentation>
+        <xs:documentation xml:lang="de-DE">Listenelement für Statistiken von GeoPathHierarchyElementen.
+        </xs:documentation>
+      </xs:annotation>
+      <xs:complexType>
+        <xs:sequence>
+          <xs:element name="parent" type="GeoPathHierarchyElement"/>
+          <xs:element name="children" type="GeoPathHierarchyElements"/>
+        </xs:sequence>
+      </xs:complexType>
     </xs:element>
 
     <xs:group name="AssistedLivingInformation">
@@ -11395,5 +11574,42 @@
             <xs:element name="tolerance" type="xs:nonNegativeInteger" minOccurs="1" maxOccurs="1" />
         </xs:sequence>
     </xs:complexType>
+
+  <xs:complexType name="ShapeInformationList">
+    <xs:sequence>
+      <xs:element name="shapeInformation" type="ShapeInformation" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ShapeInformation">
+    <xs:sequence>
+      <xs:element name="shapeId" type="xs:string" minOccurs="0"/>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="geoPath" type="GeoPath"/>
+      <xs:element name="gacLabel" type="xs:string"/>
+      <xs:element name="seoLabel" type="xs:string"/>
+      <xs:element name="type" type="xs:string"/>
+      <xs:element name="datasets" type="DatasetList" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="GeoPath">
+    <xs:sequence>
+      <xs:element name="uri" type="xs:string"/>
+      <xs:element name="realNames" type="RealNameList" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="RealNameList">
+    <xs:sequence>
+      <xs:element name="realName" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="DatasetList">
+    <xs:sequence>
+      <xs:element name="dataset" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
 
 </xs:schema>

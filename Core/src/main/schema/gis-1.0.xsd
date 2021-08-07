@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- MODIFICATION BY OPENESTATE.ORG: added xmlns:annox, xmlns:jl, xmlns:jaxb and jaxb attributes to schema -->
 <xs:schema xmlns="http://rest.immobilienscout24.de/schema/platform/gis/1.0"
            xmlns:common="http://rest.immobilienscout24.de/schema/common/1.0"
            targetNamespace="http://rest.immobilienscout24.de/schema/platform/gis/1.0"
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:annox="http://annox.dev.java.net"
+           xmlns:jl="http://annox.dev.java.net/java.lang"
+           xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+           jaxb:version="2.0"
+           jaxb:extensionBindingPrefixes="annox"
            elementFormDefault="unqualified"
            attributeFormDefault="unqualified"
            version="1.0">
@@ -147,8 +153,17 @@
         </xs:complexType>
     </xs:element>
 
+    <!-- geoHierarchyInfo is not used anymore -->
     <xs:element name="geoHierarchyInfo">
         <xs:complexType>
+            <!-- MODIFICATION BY OPENESTATE.ORG: ADD ANNOTATION @Deprecated -->
+            <xs:annotation>
+                <xs:appinfo>
+                    <annox:annotate>
+                        <jl:Deprecated/>
+                    </annox:annotate>
+                </xs:appinfo>
+            </xs:annotation>
             <xs:sequence>
                 <xs:annotation>
                     <xs:documentation>geo info hierarchy</xs:documentation>

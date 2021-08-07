@@ -276,6 +276,18 @@ public final class XmlUtils {
 
     /**
      * Read a {@link BigDecimal} value from XML
+     * with maximal 4 digits and 1 decimal place.
+     *
+     * @param value XML string
+     * @return parsed value or null, if the value is invalid
+     */
+    public static BigDecimal parseDecimal4_1(String value) {
+        value = StringUtils.trimToNull(value);
+        return (value != null) ? DatatypeConverter.parseDecimal(value) : null;
+    }
+
+    /**
+     * Read a {@link BigDecimal} value from XML
      * with maximal 8 digits and 2 decimal places.
      *
      * @param value XML string
@@ -687,6 +699,39 @@ public final class XmlUtils {
 
     /**
      * Read a {@link String} value from XML
+     * with minimal 3 and maximal 100 characters.
+     *
+     * @param value XML string
+     * @return parsed value or null, if the value is invalid
+     */
+    public static String parseText100Min3(String value) {
+        return parseText(value, 3, 100);
+    }
+
+    /**
+     * Read a {@link String} value from XML
+     * with maximal 250 characters.
+     *
+     * @param value XML string
+     * @return parsed value or null, if the value is invalid
+     */
+    public static String parseText250(String value) {
+        return parseText(value, null, 250);
+    }
+
+    /**
+     * Read a {@link String} value from XML
+     * with maximal 500 characters.
+     *
+     * @param value XML string
+     * @return parsed value or null, if the value is invalid
+     */
+    public static String parseText500(String value) {
+        return parseText(value, null, 500);
+    }
+
+    /**
+     * Read a {@link String} value from XML
      * with maximal 1000 characters.
      *
      * @param value XML string
@@ -705,6 +750,28 @@ public final class XmlUtils {
      */
     public static String parseText1800(String value) {
         return parseText(value, null, 1800);
+    }
+
+    /**
+     * Read a {@link String} value from XML
+     * with maximal 2050 characters.
+     *
+     * @param value XML string
+     * @return parsed value or null, if the value is invalid
+     */
+    public static String parseText2050(String value) {
+        return parseText(value, null, 2050);
+    }
+
+    /**
+     * Read a {@link String} value from XML
+     * with maximal 3000 characters.
+     *
+     * @param value XML string
+     * @return parsed value or null, if the value is invalid
+     */
+    public static String parseText3000(String value) {
+        return parseText(value, null, 3000);
     }
 
     /**
@@ -821,6 +888,18 @@ public final class XmlUtils {
         }
 
         return DatatypeConverter.printDecimal(value);
+    }
+
+    /**
+     * Write a {@link BigDecimal} value into XML output
+     * with maximal 4 digits and 1 decimal place.
+     *
+     * @param value value to write
+     * @return XML string
+     * @throws IllegalArgumentException if a validation error occurred
+     */
+    public static String printDecimal4_1(BigDecimal value) {
+        return printDecimal(value, BigDecimal.ZERO, BigDecimal.TEN.pow(4), 1, false);
     }
 
     /**
@@ -1354,6 +1433,42 @@ public final class XmlUtils {
 
     /**
      * Write a {@link String} value into XML output
+     * with minimal 3 and maximal 100 characters.
+     *
+     * @param value value to write
+     * @return XML string
+     * @throws IllegalArgumentException if a validation error occurred
+     */
+    public static String printText100Min3(String value) {
+        return printText(value, 3, 100);
+    }
+
+    /**
+     * Write a {@link String} value into XML output
+     * with maximal 250 characters.
+     *
+     * @param value value to write
+     * @return XML string
+     * @throws IllegalArgumentException if a validation error occurred
+     */
+    public static String printText250(String value) {
+        return printText(value, null, 250);
+    }
+
+    /**
+     * Write a {@link String} value into XML output
+     * with maximal 500 characters.
+     *
+     * @param value value to write
+     * @return XML string
+     * @throws IllegalArgumentException if a validation error occurred
+     */
+    public static String printText500(String value) {
+        return printText(value, null, 500);
+    }
+
+    /**
+     * Write a {@link String} value into XML output
      * with maximal 1000 characters.
      *
      * @param value value to write
@@ -1374,6 +1489,30 @@ public final class XmlUtils {
      */
     public static String printText1800(String value) {
         return printText(value, null, 1800);
+    }
+
+    /**
+     * Write a {@link String} value into XML output
+     * with maximal 2050 characters.
+     *
+     * @param value value to write
+     * @return XML string
+     * @throws IllegalArgumentException if a validation error occurred
+     */
+    public static String printText2050(String value) {
+        return printText(value, null, 2050);
+    }
+
+    /**
+     * Write a {@link String} value into XML output
+     * with maximal 3000 characters.
+     *
+     * @param value value to write
+     * @return XML string
+     * @throws IllegalArgumentException if a validation error occurred
+     */
+    public static String printText3000(String value) {
+        return printText(value, null, 3000);
     }
 
     /**
