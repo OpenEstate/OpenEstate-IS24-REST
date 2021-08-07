@@ -93,7 +93,7 @@ public class GIS {
      * Low level methods for the City Webservice.
      * <p>
      * The City Webservice is used in the Geo Information Service API to get
-     * informations about available cities.
+     * information about available cities.
      *
      * @author Andreas Rudolph
      * @see <a href="http://api.immobilienscout24.de/our-apis/gis.html">Geo Information Service API</a>
@@ -139,8 +139,9 @@ public class GIS {
 
             // parse result from response body after successful execution
             if (response.statusCode == Response.OK) {
-                return ((JAXBElement<City>)
-                        XmlUtils.unmarshal(response.body)).getValue();
+                @SuppressWarnings("unchecked")
+                JAXBElement<City> city = (JAXBElement<City>) XmlUtils.unmarshal(response.body);
+                return (city != null) ? city.getValue() : null;
             }
 
             // return null, if the requested object was not found
@@ -213,7 +214,7 @@ public class GIS {
      * Low level methods for the Continent Webservice.
      * <p>
      * The Continent Webservice is used in the Geo Information Service API to get
-     * informations about available continents.
+     * information about available continents.
      *
      * @author Andreas Rudolph
      * @see <a href="http://api.immobilienscout24.de/our-apis/gis.html">Geo Information Service API</a>
@@ -250,8 +251,9 @@ public class GIS {
 
             // parse result from response body after successful execution
             if (response.statusCode == Response.OK) {
-                return ((JAXBElement<Continent>)
-                        XmlUtils.unmarshal(response.body)).getValue();
+                @SuppressWarnings("unchecked")
+                JAXBElement<Continent> continent = (JAXBElement<Continent>) XmlUtils.unmarshal(response.body);
+                return (continent != null) ? continent.getValue() : null;
             }
 
             // return null, if the requested object was not found
@@ -315,7 +317,7 @@ public class GIS {
      * Low level methods for the Country Webservice.
      * <p>
      * The Country Webservice is used in the Geo Information Service API to get
-     * informations about available countries.
+     * information about available countries.
      *
      * @author Andreas Rudolph
      * @see <a href="http://api.immobilienscout24.de/our-apis/gis.html">Geo Information Service API</a>
@@ -355,8 +357,9 @@ public class GIS {
 
             // parse result from response body after successful execution
             if (response.statusCode == Response.OK) {
-                return ((JAXBElement<Country>)
-                        XmlUtils.unmarshal(response.body)).getValue();
+                @SuppressWarnings("unchecked")
+                JAXBElement<Country> country = (JAXBElement<Country>) XmlUtils.unmarshal(response.body);
+                return (country != null) ? country.getValue() : null;
             }
 
             // return null, if the requested object was not found
@@ -423,7 +426,7 @@ public class GIS {
      * Low level methods for the Quarter Webservice.
      * <p>
      * The Quarter Webservice is used in the Geo Information Service API to get
-     * informations about available city quarters.
+     * information about available city quarters.
      *
      * @author Andreas Rudolph
      * @see <a href="http://api.immobilienscout24.de/our-apis/gis.html">Geo Information Service API</a>
@@ -472,8 +475,9 @@ public class GIS {
 
             // parse result from response body after successful execution
             if (response.statusCode == Response.OK) {
-                return ((JAXBElement<Quarter>)
-                        XmlUtils.unmarshal(response.body)).getValue();
+                @SuppressWarnings("unchecked")
+                JAXBElement<Quarter> quarter = (JAXBElement<Quarter>) XmlUtils.unmarshal(response.body);
+                return (quarter != null) ? quarter.getValue() : null;
             }
 
             // return null, if the requested object was not found
@@ -549,7 +553,7 @@ public class GIS {
      * Low level methods for the Region Webservice.
      * <p>
      * The Region Webservice is used in the Geo Information Service API to get
-     * informations about available regions.
+     * information about available regions.
      *
      * @author Andreas Rudolph
      * @see <a href="http://api.immobilienscout24.de/our-apis/gis.html">Geo Information Service API</a>
@@ -592,8 +596,9 @@ public class GIS {
 
             // parse result from response body after successful execution
             if (response.statusCode == Response.OK) {
-                return ((JAXBElement<Region>)
-                        XmlUtils.unmarshal(response.body)).getValue();
+                @SuppressWarnings("unchecked")
+                JAXBElement<Region> region = (JAXBElement<Region>) XmlUtils.unmarshal(response.body);
+                return (region != null) ? region.getValue() : null;
             }
 
             // return null, if the requested object was not found

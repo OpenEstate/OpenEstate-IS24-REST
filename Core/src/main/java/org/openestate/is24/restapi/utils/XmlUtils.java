@@ -22,6 +22,7 @@ import java.io.OutputStream;
 import java.io.Reader;
 import java.io.StringReader;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.ByteBuffer;
@@ -38,8 +39,6 @@ import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
-import javax.xml.bind.ValidationEvent;
-import javax.xml.bind.ValidationEventHandler;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.apache.commons.text.StringEscapeUtils;
@@ -808,7 +807,7 @@ public final class XmlUtils {
             throw new IllegalArgumentException(
                     "The provided double value NULL is invalid!");
         }
-        value = value.setScale(precision, BigDecimal.ROUND_HALF_UP);
+        value = value.setScale(precision, RoundingMode.HALF_UP);
 
         if (min != null && value.compareTo(min) <= 0) {
             if (!zeroIncluded || !BigDecimal.ZERO.equals(value)) {
@@ -1516,12 +1515,7 @@ public final class XmlUtils {
         final org.openestate.is24.restapi.xml.common.ObjectFactory factory =
                 new org.openestate.is24.restapi.xml.common.ObjectFactory();
 
-        marshaller.setEventHandler(new ValidationEventHandler() {
-            @Override
-            public boolean handleEvent(ValidationEvent ve) {
-                return true;
-            }
-        });
+        marshaller.setEventHandler(ve -> true);
 
         marshaller.marshal(
                 factory.createAttachment(attachment), output);
@@ -1601,12 +1595,7 @@ public final class XmlUtils {
         final org.openestate.is24.restapi.xml.gis.ObjectFactory factory =
                 new org.openestate.is24.restapi.xml.gis.ObjectFactory();
 
-        marshaller.setEventHandler(new ValidationEventHandler() {
-            @Override
-            public boolean handleEvent(ValidationEvent ve) {
-                return true;
-            }
-        });
+        marshaller.setEventHandler(ve -> true);
 
         marshaller.marshal(
                 factory.createCity(city), output);
@@ -1686,12 +1675,7 @@ public final class XmlUtils {
         final org.openestate.is24.restapi.xml.gis.ObjectFactory factory =
                 new org.openestate.is24.restapi.xml.gis.ObjectFactory();
 
-        marshaller.setEventHandler(new ValidationEventHandler() {
-            @Override
-            public boolean handleEvent(ValidationEvent ve) {
-                return true;
-            }
-        });
+        marshaller.setEventHandler(ve -> true);
 
         marshaller.marshal(
                 factory.createContinent(continent), output);
@@ -1771,12 +1755,7 @@ public final class XmlUtils {
         final org.openestate.is24.restapi.xml.gis.ObjectFactory factory =
                 new org.openestate.is24.restapi.xml.gis.ObjectFactory();
 
-        marshaller.setEventHandler(new ValidationEventHandler() {
-            @Override
-            public boolean handleEvent(ValidationEvent ve) {
-                return true;
-            }
-        });
+        marshaller.setEventHandler(ve -> true);
 
         marshaller.marshal(
                 factory.createCountry(country), output);
@@ -1856,12 +1835,7 @@ public final class XmlUtils {
         final org.openestate.is24.restapi.xml.common.ObjectFactory factory =
                 new org.openestate.is24.restapi.xml.common.ObjectFactory();
 
-        marshaller.setEventHandler(new ValidationEventHandler() {
-            @Override
-            public boolean handleEvent(ValidationEvent ve) {
-                return true;
-            }
-        });
+        marshaller.setEventHandler(ve -> true);
 
         marshaller.marshal(
                 factory.createPublishObject(publishing), output);
@@ -1941,12 +1915,7 @@ public final class XmlUtils {
         final org.openestate.is24.restapi.xml.gis.ObjectFactory factory =
                 new org.openestate.is24.restapi.xml.gis.ObjectFactory();
 
-        marshaller.setEventHandler(new ValidationEventHandler() {
-            @Override
-            public boolean handleEvent(ValidationEvent ve) {
-                return true;
-            }
-        });
+        marshaller.setEventHandler(ve -> true);
 
         marshaller.marshal(
                 factory.createQuarter(quarter), output);
@@ -2025,12 +1994,7 @@ public final class XmlUtils {
         final org.openestate.is24.restapi.xml.common.ObjectFactory factory =
                 new org.openestate.is24.restapi.xml.common.ObjectFactory();
 
-        marshaller.setEventHandler(new ValidationEventHandler() {
-            @Override
-            public boolean handleEvent(ValidationEvent ve) {
-                return true;
-            }
-        });
+        marshaller.setEventHandler(ve -> true);
 
         marshaller.marshal(
                 factory.createRealtorContactDetail(contact), output);
@@ -2109,12 +2073,7 @@ public final class XmlUtils {
         final org.openestate.is24.restapi.xml.realestates.ObjectFactory factory =
                 new org.openestate.is24.restapi.xml.realestates.ObjectFactory();
 
-        marshaller.setEventHandler(new ValidationEventHandler() {
-            @Override
-            public boolean handleEvent(ValidationEvent ve) {
-                return true;
-            }
-        });
+        marshaller.setEventHandler(ve -> true);
 
         if (realEstate instanceof ApartmentBuy) {
             marshaller.marshal(
@@ -2259,12 +2218,7 @@ public final class XmlUtils {
         final org.openestate.is24.restapi.xml.gis.ObjectFactory factory =
                 new org.openestate.is24.restapi.xml.gis.ObjectFactory();
 
-        marshaller.setEventHandler(new ValidationEventHandler() {
-            @Override
-            public boolean handleEvent(ValidationEvent ve) {
-                return true;
-            }
-        });
+        marshaller.setEventHandler(ve -> true);
 
         marshaller.marshal(
                 factory.createRegion(region), output);

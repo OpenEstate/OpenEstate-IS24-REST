@@ -234,7 +234,7 @@ public class RandomRealEstateFactory {
     public RealEstate createRandomObject(Type type) {
         if (type == null) type = getRandomObjectType();
         RealEstate realEstate = type.create();
-        init(realEstate);
+        if (realEstate!=null) init(realEstate);
         return realEstate;
     }
 
