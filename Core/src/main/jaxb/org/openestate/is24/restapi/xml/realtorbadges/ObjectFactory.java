@@ -76,8 +76,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Badge }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Badge }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Badge }{@code >}
      */
     @XmlElementDecl(namespace = "http://rest.immobilienscout24.de/schema/offer/realtorbadges/1.0", name = "badge")
     public JAXBElement<Badge> createBadge(Badge value) {
@@ -85,8 +89,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link VirtualBadge }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link VirtualBadge }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link VirtualBadge }{@code >}
      */
     @XmlElementDecl(namespace = "http://rest.immobilienscout24.de/schema/offer/realtorbadges/1.0", name = "virtualBadge")
     public JAXBElement<VirtualBadge> createVirtualBadge(VirtualBadge value) {
@@ -94,8 +102,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RealtorBadges }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link RealtorBadges }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link RealtorBadges }{@code >}
      */
     @XmlElementDecl(namespace = "http://rest.immobilienscout24.de/schema/offer/realtorbadges/1.0", name = "realtorBadges")
     public JAXBElement<RealtorBadges> createRealtorBadges(RealtorBadges value) {

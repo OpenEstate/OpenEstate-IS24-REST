@@ -69,8 +69,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RealEstateProjects }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link RealEstateProjects }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link RealEstateProjects }{@code >}
      */
     @XmlElementDecl(namespace = "http://rest.immobilienscout24.de/schema/offer/realestateproject/1.0", name = "realEstateProjects")
     public JAXBElement<RealEstateProjects> createRealEstateProjects(RealEstateProjects value) {
@@ -78,8 +82,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RealEstateProject }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link RealEstateProject }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link RealEstateProject }{@code >}
      */
     @XmlElementDecl(namespace = "http://rest.immobilienscout24.de/schema/offer/realestateproject/1.0", name = "realEstateProject")
     public JAXBElement<RealEstateProject> createRealEstateProject(RealEstateProject value) {
@@ -87,8 +95,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RealEstateProjectEntries }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link RealEstateProjectEntries }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link RealEstateProjectEntries }{@code >}
      */
     @XmlElementDecl(namespace = "http://rest.immobilienscout24.de/schema/offer/realestateproject/1.0", name = "realEstateProjectEntries")
     public JAXBElement<RealEstateProjectEntries> createRealEstateProjectEntries(RealEstateProjectEntries value) {
@@ -96,8 +108,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RealEstateProjectEntry }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link RealEstateProjectEntry }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link RealEstateProjectEntry }{@code >}
      */
     @XmlElementDecl(namespace = "http://rest.immobilienscout24.de/schema/offer/realestateproject/1.0", name = "realEstateProjectEntry")
     public JAXBElement<RealEstateProjectEntry> createRealEstateProjectEntry(RealEstateProjectEntry value) {

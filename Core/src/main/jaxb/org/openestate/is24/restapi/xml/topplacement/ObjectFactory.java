@@ -51,8 +51,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Topplacements }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Topplacements }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Topplacements }{@code >}
      */
     @XmlElementDecl(namespace = "http://rest.immobilienscout24.de/schema/offer/topplacement/1.0", name = "topplacements")
     public JAXBElement<Topplacements> createTopplacements(Topplacements value) {
@@ -60,8 +64,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Topplacement }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Topplacement }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Topplacement }{@code >}
      */
     @XmlElementDecl(namespace = "http://rest.immobilienscout24.de/schema/offer/topplacement/1.0", name = "topplacement")
     public JAXBElement<Topplacement> createTopplacement(Topplacement value) {

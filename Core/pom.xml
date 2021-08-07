@@ -170,7 +170,7 @@
             <!-- JAXB -->
             <plugin>
                 <groupId>org.jvnet.jaxb2.maven2</groupId>
-                <artifactId>maven-jaxb22-plugin</artifactId>
+                <artifactId>maven-jaxb23-plugin</artifactId>
                 <configuration>
                     <generateDirectory>${project.basedir}/src/main/jaxb</generateDirectory>
                     <schemaDirectory>${project.basedir}/src/main/schema</schemaDirectory>
@@ -192,7 +192,7 @@
                     <debug>false</debug>
                     <verbose>false</verbose>
 
-                    <specVersion>2.2</specVersion>
+                    <specVersion>2.3</specVersion>
                     <extension>true</extension>
                     <strict>true</strict>
                     <args>
