@@ -96,6 +96,46 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Continent }
+     * 
+     */
+    public Continent createContinent() {
+        return new Continent();
+    }
+
+    /**
+     * Create an instance of {@link Country }
+     * 
+     */
+    public Country createCountry() {
+        return new Country();
+    }
+
+    /**
+     * Create an instance of {@link Region }
+     * 
+     */
+    public Region createRegion() {
+        return new Region();
+    }
+
+    /**
+     * Create an instance of {@link City }
+     * 
+     */
+    public City createCity() {
+        return new City();
+    }
+
+    /**
+     * Create an instance of {@link Quarter }
+     * 
+     */
+    public Quarter createQuarter() {
+        return new Quarter();
+    }
+
+    /**
      * Create an instance of {@link Messages }
      * 
      */
@@ -229,6 +269,30 @@ public class ObjectFactory {
      */
     public GeoHierarchyElements createGeoHierarchyElements() {
         return new GeoHierarchyElements();
+    }
+
+    /**
+     * Create an instance of {@link GeoPathHierarchyElementsStatistic }
+     * 
+     */
+    public GeoPathHierarchyElementsStatistic createGeoPathHierarchyElementsStatistic() {
+        return new GeoPathHierarchyElementsStatistic();
+    }
+
+    /**
+     * Create an instance of {@link GeoPathHierarchyElement }
+     * 
+     */
+    public GeoPathHierarchyElement createGeoPathHierarchyElement() {
+        return new GeoPathHierarchyElement();
+    }
+
+    /**
+     * Create an instance of {@link GeoPathHierarchyElements }
+     * 
+     */
+    public GeoPathHierarchyElements createGeoPathHierarchyElements() {
+        return new GeoPathHierarchyElements();
     }
 
     /**
@@ -576,46 +640,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Continent }
-     * 
-     */
-    public Continent createContinent() {
-        return new Continent();
-    }
-
-    /**
-     * Create an instance of {@link Country }
-     * 
-     */
-    public Country createCountry() {
-        return new Country();
-    }
-
-    /**
-     * Create an instance of {@link Region }
-     * 
-     */
-    public Region createRegion() {
-        return new Region();
-    }
-
-    /**
-     * Create an instance of {@link City }
-     * 
-     */
-    public City createCity() {
-        return new City();
-    }
-
-    /**
-     * Create an instance of {@link Quarter }
-     * 
-     */
-    public Quarter createQuarter() {
-        return new Quarter();
-    }
-
-    /**
      * Create an instance of {@link Neighbourhood }
      * 
      */
@@ -669,6 +693,46 @@ public class ObjectFactory {
      */
     public Contingent createContingent() {
         return new Contingent();
+    }
+
+    /**
+     * Create an instance of {@link ShapeInformationList }
+     * 
+     */
+    public ShapeInformationList createShapeInformationList() {
+        return new ShapeInformationList();
+    }
+
+    /**
+     * Create an instance of {@link ShapeInformation }
+     * 
+     */
+    public ShapeInformation createShapeInformation() {
+        return new ShapeInformation();
+    }
+
+    /**
+     * Create an instance of {@link GeoPath }
+     * 
+     */
+    public GeoPath createGeoPath() {
+        return new GeoPath();
+    }
+
+    /**
+     * Create an instance of {@link RealNameList }
+     * 
+     */
+    public RealNameList createRealNameList() {
+        return new RealNameList();
+    }
+
+    /**
+     * Create an instance of {@link DatasetList }
+     * 
+     */
+    public DatasetList createDatasetList() {
+        return new DatasetList();
     }
 
     /**

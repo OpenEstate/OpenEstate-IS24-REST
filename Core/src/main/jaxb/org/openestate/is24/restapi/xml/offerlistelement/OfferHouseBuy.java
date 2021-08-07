@@ -21,8 +21,11 @@ import org.jvnet.jaxb2_commons.lang.ToString2;
 import org.jvnet.jaxb2_commons.lang.ToStringStrategy2;
 import org.jvnet.jaxb2_commons.locator.ObjectLocator;
 import org.jvnet.jaxb2_commons.locator.util.LocatorUtils;
+import org.openestate.is24.restapi.xml.Adapter1;
 import org.openestate.is24.restapi.xml.common.CourtageInfo;
+import org.openestate.is24.restapi.xml.common.EnergyEfficiencyClass;
 import org.openestate.is24.restapi.xml.common.Price;
+import org.openestate.is24.restapi.xml.realestates.Adapter23;
 
 
 /**
@@ -53,43 +56,47 @@ import org.openestate.is24.restapi.xml.common.Price;
     "plotArea",
     "numberOfRooms",
     "energyPerformanceCertificate",
+    "energyEfficiencyClass",
     "courtage",
     "guestToilet",
     "cellar",
     "isBarrierFree"
 })
-@Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+@Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:38:24+02:00", comments = "JAXB RI v2.2.11")
 public class OfferHouseBuy
     extends OfferRealEstateForList
     implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:38:24+02:00", comments = "JAXB RI v2.2.11")
     protected Price price;
     @XmlElement(required = true, type = String.class)
-    @XmlJavaTypeAdapter(org.openestate.is24.restapi.xml.Adapter1 .class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "double")
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:38:24+02:00", comments = "JAXB RI v2.2.11")
     protected BigDecimal livingSpace;
     @XmlElement(required = true, type = String.class)
-    @XmlJavaTypeAdapter(org.openestate.is24.restapi.xml.Adapter1 .class)
+    @XmlJavaTypeAdapter(Adapter1 .class)
     @XmlSchemaType(name = "double")
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:38:24+02:00", comments = "JAXB RI v2.2.11")
     protected BigDecimal plotArea;
     @XmlElement(required = true, type = String.class)
-    @XmlJavaTypeAdapter(org.openestate.is24.restapi.xml.offerlistelement.Adapter1 .class)
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @XmlJavaTypeAdapter(Adapter23 .class)
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:38:24+02:00", comments = "JAXB RI v2.2.11")
     protected BigDecimal numberOfRooms;
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:38:24+02:00", comments = "JAXB RI v2.2.11")
     protected Boolean energyPerformanceCertificate;
+    @XmlSchemaType(name = "string")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:38:24+02:00", comments = "JAXB RI v2.2.11")
+    protected EnergyEfficiencyClass energyEfficiencyClass;
     @XmlElement(required = true)
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:38:24+02:00", comments = "JAXB RI v2.2.11")
     protected CourtageInfo courtage;
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:38:24+02:00", comments = "JAXB RI v2.2.11")
     protected Boolean guestToilet;
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:38:24+02:00", comments = "JAXB RI v2.2.11")
     protected Boolean cellar;
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:38:24+02:00", comments = "JAXB RI v2.2.11")
     protected Boolean isBarrierFree;
 
     /**
@@ -100,7 +107,7 @@ public class OfferHouseBuy
      *     {@link Price }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:38:24+02:00", comments = "JAXB RI v2.2.11")
     public Price getPrice() {
         return price;
     }
@@ -113,7 +120,7 @@ public class OfferHouseBuy
      *     {@link Price }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:38:24+02:00", comments = "JAXB RI v2.2.11")
     public void setPrice(Price value) {
         this.price = value;
     }
@@ -126,7 +133,7 @@ public class OfferHouseBuy
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:38:24+02:00", comments = "JAXB RI v2.2.11")
     public BigDecimal getLivingSpace() {
         return livingSpace;
     }
@@ -139,7 +146,7 @@ public class OfferHouseBuy
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:38:24+02:00", comments = "JAXB RI v2.2.11")
     public void setLivingSpace(BigDecimal value) {
         this.livingSpace = value;
     }
@@ -152,7 +159,7 @@ public class OfferHouseBuy
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:38:24+02:00", comments = "JAXB RI v2.2.11")
     public BigDecimal getPlotArea() {
         return plotArea;
     }
@@ -165,7 +172,7 @@ public class OfferHouseBuy
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:38:24+02:00", comments = "JAXB RI v2.2.11")
     public void setPlotArea(BigDecimal value) {
         this.plotArea = value;
     }
@@ -178,7 +185,7 @@ public class OfferHouseBuy
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:38:24+02:00", comments = "JAXB RI v2.2.11")
     public BigDecimal getNumberOfRooms() {
         return numberOfRooms;
     }
@@ -191,7 +198,7 @@ public class OfferHouseBuy
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:38:24+02:00", comments = "JAXB RI v2.2.11")
     public void setNumberOfRooms(BigDecimal value) {
         this.numberOfRooms = value;
     }
@@ -204,7 +211,7 @@ public class OfferHouseBuy
      *     {@link Boolean }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:38:24+02:00", comments = "JAXB RI v2.2.11")
     public Boolean getEnergyPerformanceCertificate() {
         return energyPerformanceCertificate;
     }
@@ -217,9 +224,35 @@ public class OfferHouseBuy
      *     {@link Boolean }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:38:24+02:00", comments = "JAXB RI v2.2.11")
     public void setEnergyPerformanceCertificate(Boolean value) {
         this.energyPerformanceCertificate = value;
+    }
+
+    /**
+     * Gets the value of the energyEfficiencyClass property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link EnergyEfficiencyClass }
+     *     
+     */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:38:24+02:00", comments = "JAXB RI v2.2.11")
+    public EnergyEfficiencyClass getEnergyEfficiencyClass() {
+        return energyEfficiencyClass;
+    }
+
+    /**
+     * Sets the value of the energyEfficiencyClass property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link EnergyEfficiencyClass }
+     *     
+     */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:38:24+02:00", comments = "JAXB RI v2.2.11")
+    public void setEnergyEfficiencyClass(EnergyEfficiencyClass value) {
+        this.energyEfficiencyClass = value;
     }
 
     /**
@@ -230,7 +263,7 @@ public class OfferHouseBuy
      *     {@link CourtageInfo }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:38:24+02:00", comments = "JAXB RI v2.2.11")
     public CourtageInfo getCourtage() {
         return courtage;
     }
@@ -243,7 +276,7 @@ public class OfferHouseBuy
      *     {@link CourtageInfo }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:38:24+02:00", comments = "JAXB RI v2.2.11")
     public void setCourtage(CourtageInfo value) {
         this.courtage = value;
     }
@@ -256,7 +289,7 @@ public class OfferHouseBuy
      *     {@link Boolean }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:38:24+02:00", comments = "JAXB RI v2.2.11")
     public Boolean getGuestToilet() {
         return guestToilet;
     }
@@ -269,7 +302,7 @@ public class OfferHouseBuy
      *     {@link Boolean }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:38:24+02:00", comments = "JAXB RI v2.2.11")
     public void setGuestToilet(Boolean value) {
         this.guestToilet = value;
     }
@@ -282,7 +315,7 @@ public class OfferHouseBuy
      *     {@link Boolean }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:38:24+02:00", comments = "JAXB RI v2.2.11")
     public Boolean getCellar() {
         return cellar;
     }
@@ -295,7 +328,7 @@ public class OfferHouseBuy
      *     {@link Boolean }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:38:24+02:00", comments = "JAXB RI v2.2.11")
     public void setCellar(Boolean value) {
         this.cellar = value;
     }
@@ -308,7 +341,7 @@ public class OfferHouseBuy
      *     {@link Boolean }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:38:24+02:00", comments = "JAXB RI v2.2.11")
     public Boolean getIsBarrierFree() {
         return isBarrierFree;
     }
@@ -321,12 +354,12 @@ public class OfferHouseBuy
      *     {@link Boolean }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:38:24+02:00", comments = "JAXB RI v2.2.11")
     public void setIsBarrierFree(Boolean value) {
         this.isBarrierFree = value;
     }
 
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:38:24+02:00", comments = "JAXB RI v2.2.11")
     public String toString() {
         final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
         final StringBuilder buffer = new StringBuilder();
@@ -334,7 +367,7 @@ public class OfferHouseBuy
         return buffer.toString();
     }
 
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:38:24+02:00", comments = "JAXB RI v2.2.11")
     public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
@@ -342,7 +375,7 @@ public class OfferHouseBuy
         return buffer;
     }
 
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:38:24+02:00", comments = "JAXB RI v2.2.11")
     public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         super.appendFields(locator, buffer, strategy);
         {
@@ -371,6 +404,11 @@ public class OfferHouseBuy
             strategy.appendField(locator, this, "energyPerformanceCertificate", buffer, theEnergyPerformanceCertificate, (this.energyPerformanceCertificate!= null));
         }
         {
+            EnergyEfficiencyClass theEnergyEfficiencyClass;
+            theEnergyEfficiencyClass = this.getEnergyEfficiencyClass();
+            strategy.appendField(locator, this, "energyEfficiencyClass", buffer, theEnergyEfficiencyClass, (this.energyEfficiencyClass!= null));
+        }
+        {
             CourtageInfo theCourtage;
             theCourtage = this.getCourtage();
             strategy.appendField(locator, this, "courtage", buffer, theCourtage, (this.courtage!= null));
@@ -393,18 +431,18 @@ public class OfferHouseBuy
         return buffer;
     }
 
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:38:24+02:00", comments = "JAXB RI v2.2.11")
     public Object clone() {
         return copyTo(createNewInstance());
     }
 
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:38:24+02:00", comments = "JAXB RI v2.2.11")
     public Object copyTo(Object target) {
         final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
         return copyTo(null, target, strategy);
     }
 
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:38:24+02:00", comments = "JAXB RI v2.2.11")
     public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         super.copyTo(locator, draftCopy, strategy);
@@ -476,6 +514,19 @@ public class OfferHouseBuy
                 }
             }
             {
+                Boolean energyEfficiencyClassShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.energyEfficiencyClass!= null));
+                if (energyEfficiencyClassShouldBeCopiedAndSet == Boolean.TRUE) {
+                    EnergyEfficiencyClass sourceEnergyEfficiencyClass;
+                    sourceEnergyEfficiencyClass = this.getEnergyEfficiencyClass();
+                    EnergyEfficiencyClass copyEnergyEfficiencyClass = ((EnergyEfficiencyClass) strategy.copy(LocatorUtils.property(locator, "energyEfficiencyClass", sourceEnergyEfficiencyClass), sourceEnergyEfficiencyClass, (this.energyEfficiencyClass!= null)));
+                    copy.setEnergyEfficiencyClass(copyEnergyEfficiencyClass);
+                } else {
+                    if (energyEfficiencyClassShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.energyEfficiencyClass = null;
+                    }
+                }
+            }
+            {
                 Boolean courtageShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.courtage!= null));
                 if (courtageShouldBeCopiedAndSet == Boolean.TRUE) {
                     CourtageInfo sourceCourtage;
@@ -531,12 +582,12 @@ public class OfferHouseBuy
         return draftCopy;
     }
 
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:38:24+02:00", comments = "JAXB RI v2.2.11")
     public Object createNewInstance() {
         return new OfferHouseBuy();
     }
 
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:38:24+02:00", comments = "JAXB RI v2.2.11")
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
@@ -594,6 +645,15 @@ public class OfferHouseBuy
             }
         }
         {
+            EnergyEfficiencyClass lhsEnergyEfficiencyClass;
+            lhsEnergyEfficiencyClass = this.getEnergyEfficiencyClass();
+            EnergyEfficiencyClass rhsEnergyEfficiencyClass;
+            rhsEnergyEfficiencyClass = that.getEnergyEfficiencyClass();
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "energyEfficiencyClass", lhsEnergyEfficiencyClass), LocatorUtils.property(thatLocator, "energyEfficiencyClass", rhsEnergyEfficiencyClass), lhsEnergyEfficiencyClass, rhsEnergyEfficiencyClass, (this.energyEfficiencyClass!= null), (that.energyEfficiencyClass!= null))) {
+                return false;
+            }
+        }
+        {
             CourtageInfo lhsCourtage;
             lhsCourtage = this.getCourtage();
             CourtageInfo rhsCourtage;
@@ -632,7 +692,7 @@ public class OfferHouseBuy
         return true;
     }
 
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:38:24+02:00", comments = "JAXB RI v2.2.11")
     public boolean equals(Object object) {
         final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
         return equals(null, null, object, strategy);

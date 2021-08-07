@@ -3,7 +3,7 @@
 	xmlns="http://rest.immobilienscout24.de/schema/platform/gis/1.0"
 	xmlns:common="http://rest.immobilienscout24.de/schema/common/1.0"
     targetNamespace="http://rest.immobilienscout24.de/schema/platform/gis/1.0"
-	xmlns:xs="http://www.w3.org/2001/XMLSchema"    
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	elementFormDefault="unqualified"
 	attributeFormDefault="unqualified"
 	version="1.0">
@@ -90,12 +90,12 @@
 		</xs:complexType>
 	</xs:element>
 
-	<xs:element name="continent" type="common:Continent" />		
+	<xs:element name="continent" type="common:Continent" />
 	<xs:element name="country" type="common:Country" />
 	<xs:element name="region" type="common:Region" />
 	<xs:element name="city" type="common:City" />
 	<xs:element name="quarter" type="common:Quarter" />
-	
+
 	<xs:complexType name="GeoCodedAddress">
 		<xs:annotation>
 		  <xs:documentation xml:lang="en">An address with its geocoding information.</xs:documentation>
@@ -146,6 +146,7 @@
 		</xs:complexType>
 	</xs:element>
 
+	<!-- geoHierarchyInfo is not used anymore -->
 	<xs:element name="geoHierarchyInfo">
 		<xs:complexType>
 			<xs:sequence>

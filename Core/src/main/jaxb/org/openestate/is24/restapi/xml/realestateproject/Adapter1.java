@@ -1,5 +1,5 @@
 
-package org.openestate.is24.restapi.xml.offerlistelement;
+package org.openestate.is24.restapi.xml.realestateproject;
 
 import java.math.BigDecimal;
 import javax.xml.bind.annotation.adapters.XmlAdapter;
@@ -10,11 +10,11 @@ public class Adapter1
 
 
     public BigDecimal unmarshal(String value) {
-        return (org.openestate.is24.restapi.utils.XmlUtils.parseRoomNrForBaseHouse(value));
+        return (org.openestate.is24.restapi.utils.XmlUtils.parseDecimal4_1(value));
     }
 
     public String marshal(BigDecimal value) {
-        return (org.openestate.is24.restapi.utils.XmlUtils.printRoomNrForBaseHouse(value));
+        return (org.openestate.is24.restapi.utils.XmlUtils.printDecimal4_1(value));
     }
 
 }

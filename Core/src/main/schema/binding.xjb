@@ -118,22 +118,26 @@
         </jaxb:bindings>
         <jaxb:bindings node="//xsd:simpleType/xsd:restriction[@base='TextField']/xsd:maxLength[@value='1000']/../.."
                        multiple="true">
-            <jaxb:javaType name="java.lang.String" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseText1000"
+            <jaxb:javaType name="java.lang.String"
+                           parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseText1000"
                            printMethod="org.openestate.is24.restapi.utils.XmlUtils.printText1000"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xsd:simpleType/xsd:restriction[@base='TextField']/xsd:maxLength[@value='1800']/../.."
                        multiple="true">
-            <jaxb:javaType name="java.lang.String" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseText1800"
+            <jaxb:javaType name="java.lang.String"
+                           parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseText1800"
                            printMethod="org.openestate.is24.restapi.utils.XmlUtils.printText1800"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xsd:simpleType/xsd:restriction[@base='TextField']/xsd:maxLength[@value='3999']/../.."
                        multiple="true">
-            <jaxb:javaType name="java.lang.String" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseText3999"
+            <jaxb:javaType name="java.lang.String"
+                           parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseText3999"
                            printMethod="org.openestate.is24.restapi.utils.XmlUtils.printText3999"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xsd:complexType[@name='CountryRegion']//xsd:element[@name='region']/xsd:simpleType"
                        multiple="false">
-            <jaxb:javaType name="java.lang.String" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseNonEmptyText"
+            <jaxb:javaType name="java.lang.String"
+                           parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseNonEmptyText"
                            printMethod="org.openestate.is24.restapi.utils.XmlUtils.printNonEmptyText"/>
         </jaxb:bindings>
         <jaxb:bindings
@@ -193,11 +197,13 @@
                            printMethod="org.openestate.is24.restapi.utils.XmlUtils.printThermalCharacteristic"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xsd:element[@name='groupNumber']/xsd:simpleType" multiple="false">
-            <jaxb:javaType name="java.lang.Integer" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseGroupNr"
+            <jaxb:javaType name="java.lang.Integer"
+                           parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseGroupNr"
                            printMethod="org.openestate.is24.restapi.utils.XmlUtils.printGroupNr"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xsd:element[@name='latitude']/xsd:simpleType" multiple="false">
-            <jaxb:javaType name="java.math.BigDecimal" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseLatitude"
+            <jaxb:javaType name="java.math.BigDecimal"
+                           parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseLatitude"
                            printMethod="org.openestate.is24.restapi.utils.XmlUtils.printLatitude"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xsd:element[@name='longitude']/xsd:simpleType" multiple="false">
@@ -206,7 +212,8 @@
                            printMethod="org.openestate.is24.restapi.utils.XmlUtils.printLongitude"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xsd:element[@name='faxNumber']/xsd:simpleType" multiple="false">
-            <jaxb:javaType name="java.lang.String" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parsePhoneNumber"
+            <jaxb:javaType name="java.lang.String"
+                           parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parsePhoneNumber"
                            printMethod="org.openestate.is24.restapi.utils.XmlUtils.printPhoneNumber"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xsd:element[@name='faxNumberAreaCode']/xsd:simpleType" multiple="false">
@@ -225,7 +232,8 @@
                            printMethod="org.openestate.is24.restapi.utils.XmlUtils.printPhoneNumberSubscriber"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xsd:element[@name='phoneNumber']/xsd:simpleType" multiple="false">
-            <jaxb:javaType name="java.lang.String" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parsePhoneNumber"
+            <jaxb:javaType name="java.lang.String"
+                           parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parsePhoneNumber"
                            printMethod="org.openestate.is24.restapi.utils.XmlUtils.printPhoneNumber"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xsd:element[@name='phoneNumberAreaCode']/xsd:simpleType" multiple="false">
@@ -244,7 +252,8 @@
                            printMethod="org.openestate.is24.restapi.utils.XmlUtils.printPhoneNumberSubscriber"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xsd:element[@name='cellPhoneNumber']/xsd:simpleType" multiple="false">
-            <jaxb:javaType name="java.lang.String" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parsePhoneNumber"
+            <jaxb:javaType name="java.lang.String"
+                           parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parsePhoneNumber"
                            printMethod="org.openestate.is24.restapi.utils.XmlUtils.printPhoneNumber"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xsd:element[@name='cellPhoneNumberAreaCode']/xsd:simpleType" multiple="false">
@@ -264,7 +273,8 @@
         </jaxb:bindings>
         <jaxb:bindings node="//xsd:group[@name='ExtendedApartment']//xsd:element[@name='floor']/xsd:simpleType"
                        multiple="false">
-            <jaxb:javaType name="java.lang.Integer" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseFloorNr"
+            <jaxb:javaType name="java.lang.Integer"
+                           parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseFloorNr"
                            printMethod="org.openestate.is24.restapi.utils.XmlUtils.printFloorNr"/>
         </jaxb:bindings>
         <jaxb:bindings
@@ -277,8 +287,15 @@
         <jaxb:bindings
                 node="//xsd:group[@name='ExtendedCompulsoryAuction']//xsd:element[@name='constructionYear']/xsd:simpleType"
                 multiple="false">
-            <jaxb:javaType name="java.lang.Integer" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseInteger9999"
+            <jaxb:javaType name="java.lang.Integer"
+                           parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseInteger9999"
                            printMethod="org.openestate.is24.restapi.utils.XmlUtils.printInteger9999"/>
+        </jaxb:bindings>
+        <jaxb:bindings node="//xsd:group[@name='ExtendedCompulsoryAuction']//xsd:element[@name='floor']/xsd:simpleType"
+                       multiple="false">
+            <jaxb:javaType name="java.lang.Integer"
+                           parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseFloorNr"
+                           printMethod="org.openestate.is24.restapi.utils.XmlUtils.printFloorNr"/>
         </jaxb:bindings>
         <jaxb:bindings
                 node="//xsd:group[@name='ExtendedCompulsoryAuction']//xsd:element[@name='thermalCharacteristic']/xsd:simpleType"
@@ -290,7 +307,8 @@
         <jaxb:bindings
                 node="//xsd:group[@name='ExtendedFlatShareRoom']//xsd:element[@name='constructionYear']/xsd:simpleType"
                 multiple="false">
-            <jaxb:javaType name="java.lang.Integer" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseInteger9999"
+            <jaxb:javaType name="java.lang.Integer"
+                           parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseInteger9999"
                            printMethod="org.openestate.is24.restapi.utils.XmlUtils.printInteger9999"/>
         </jaxb:bindings>
         <jaxb:bindings
@@ -300,9 +318,11 @@
                            parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseThermalCharacteristic"
                            printMethod="org.openestate.is24.restapi.utils.XmlUtils.printThermalCharacteristic"/>
         </jaxb:bindings>
-        <jaxb:bindings node="//xsd:group[@name='FlatShareAdditionalInformation']//xsd:element[@name='floor']/xsd:simpleType"
-                       multiple="false">
-            <jaxb:javaType name="java.lang.Integer" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseFloorNr"
+        <jaxb:bindings
+                node="//xsd:group[@name='FlatShareAdditionalInformation']//xsd:element[@name='floor']/xsd:simpleType"
+                multiple="false">
+            <jaxb:javaType name="java.lang.Integer"
+                           parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseFloorNr"
                            printMethod="org.openestate.is24.restapi.utils.XmlUtils.printFloorNr"/>
         </jaxb:bindings>
         <jaxb:bindings
@@ -312,14 +332,17 @@
                            parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseInteger99999"
                            printMethod="org.openestate.is24.restapi.utils.XmlUtils.printInteger99999"/>
         </jaxb:bindings>
-        <jaxb:bindings node="//xsd:group[@name='LivingInformation']//xsd:element[@name='lastRefurbishment']/xsd:simpleType"
-                       multiple="false">
+        <jaxb:bindings
+                node="//xsd:group[@name='LivingInformation']//xsd:element[@name='lastRefurbishment']/xsd:simpleType"
+                multiple="false">
             <jaxb:javaType name="java.lang.Integer" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseYear"
                            printMethod="org.openestate.is24.restapi.utils.XmlUtils.printYear"/>
         </jaxb:bindings>
-        <jaxb:bindings node="//xsd:group[@name='LivingInformation']//xsd:element[@name='constructionYear']/xsd:simpleType"
-                       multiple="false">
-            <jaxb:javaType name="java.lang.Integer" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseInteger9999"
+        <jaxb:bindings
+                node="//xsd:group[@name='LivingInformation']//xsd:element[@name='constructionYear']/xsd:simpleType"
+                multiple="false">
+            <jaxb:javaType name="java.lang.Integer"
+                           parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseInteger9999"
                            printMethod="org.openestate.is24.restapi.utils.XmlUtils.printInteger9999"/>
         </jaxb:bindings>
         <jaxb:bindings
@@ -331,17 +354,22 @@
         </jaxb:bindings>
         <jaxb:bindings node="//xsd:group[@name='LivingInformation']//xsd:element[@name='numberOfFloors']/xsd:simpleType"
                        multiple="false">
-            <jaxb:javaType name="java.lang.Integer" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseInteger999"
+            <jaxb:javaType name="java.lang.Integer"
+                           parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseInteger999"
                            printMethod="org.openestate.is24.restapi.utils.XmlUtils.printInteger999"/>
         </jaxb:bindings>
-        <jaxb:bindings node="//xsd:group[@name='LivingInformation']//xsd:element[@name='numberOfBedRooms']/xsd:simpleType"
-                       multiple="false">
-            <jaxb:javaType name="java.lang.Integer" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseInteger99"
+        <jaxb:bindings
+                node="//xsd:group[@name='LivingInformation']//xsd:element[@name='numberOfBedRooms']/xsd:simpleType"
+                multiple="false">
+            <jaxb:javaType name="java.lang.Integer"
+                           parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseInteger99"
                            printMethod="org.openestate.is24.restapi.utils.XmlUtils.printInteger99"/>
         </jaxb:bindings>
-        <jaxb:bindings node="//xsd:group[@name='LivingInformation']//xsd:element[@name='numberOfBathRooms']/xsd:simpleType"
-                       multiple="false">
-            <jaxb:javaType name="java.lang.Integer" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseInteger99"
+        <jaxb:bindings
+                node="//xsd:group[@name='LivingInformation']//xsd:element[@name='numberOfBathRooms']/xsd:simpleType"
+                multiple="false">
+            <jaxb:javaType name="java.lang.Integer"
+                           parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseInteger99"
                            printMethod="org.openestate.is24.restapi.utils.XmlUtils.printInteger99"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xsd:group[@name='BaseHouse']//xsd:element[@name='numberOfRooms']/xsd:simpleType"
@@ -350,19 +378,23 @@
                            parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseRoomNrForBaseHouse"
                            printMethod="org.openestate.is24.restapi.utils.XmlUtils.printRoomNrForBaseHouse"/>
         </jaxb:bindings>
-        <jaxb:bindings node="//xsd:group[@name='GarageInformation']//xsd:element[@name='constructionYear']/xsd:simpleType"
-                       multiple="false">
-            <jaxb:javaType name="java.lang.Integer" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseInteger9999"
+        <jaxb:bindings
+                node="//xsd:group[@name='GarageInformation']//xsd:element[@name='constructionYear']/xsd:simpleType"
+                multiple="false">
+            <jaxb:javaType name="java.lang.Integer"
+                           parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseInteger9999"
                            printMethod="org.openestate.is24.restapi.utils.XmlUtils.printInteger9999"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xsd:complexType[@name='FloorRange']//xsd:element[@name='minimal']/xsd:simpleType"
                        multiple="false">
-            <jaxb:javaType name="java.lang.Integer" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseInteger999"
+            <jaxb:javaType name="java.lang.Integer"
+                           parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseInteger999"
                            printMethod="org.openestate.is24.restapi.utils.XmlUtils.printInteger999"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xsd:complexType[@name='FloorRange']//xsd:element[@name='maximal']/xsd:simpleType"
                        multiple="false">
-            <jaxb:javaType name="java.lang.Integer" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseInteger999"
+            <jaxb:javaType name="java.lang.Integer"
+                           parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseInteger999"
                            printMethod="org.openestate.is24.restapi.utils.XmlUtils.printInteger999"/>
         </jaxb:bindings>
         <jaxb:bindings node="//xsd:complexType[@name='RadiusCriteria']//xsd:element[@name='radiusKm']/xsd:simpleType"
@@ -419,6 +451,165 @@
         <jaxb:schemaBindings>
             <jaxb:package name="org.openestate.is24.restapi.xml.realestateproject"/>
         </jaxb:schemaBindings>
+
+        <jaxb:bindings
+                node="//xsd:complexType[@name='RealEstateProject']//xsd:element[@name='numberOfHousingUnit']/xsd:simpleType"
+                multiple="true">
+            <jaxb:javaType name="java.lang.Integer"
+                           parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseInteger9999Positive"
+                           printMethod="org.openestate.is24.restapi.utils.XmlUtils.printInteger9999Positive"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings
+                node="//xsd:complexType[@name='RealEstateProject']//xsd:element[@name='description']/xsd:simpleType"
+                multiple="true">
+            <jaxb:javaType name="java.lang.String"
+                           parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseText3000"
+                           printMethod="org.openestate.is24.restapi.utils.XmlUtils.printText3000"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings
+                node="//xsd:complexType[@name='RealEstateProject']//xsd:element[@name='interiorQualityDescription']/xsd:simpleType"
+                multiple="true">
+            <jaxb:javaType name="java.lang.String" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseText250"
+                           printMethod="org.openestate.is24.restapi.utils.XmlUtils.printText250"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings
+                node="//xsd:complexType[@name='RealEstateProject']//xsd:element[@name='locationDescription']/xsd:simpleType"
+                multiple="true">
+            <jaxb:javaType name="java.lang.String"
+                           parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseText2050"
+                           printMethod="org.openestate.is24.restapi.utils.XmlUtils.printText2050"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings
+                node="//xsd:complexType[@name='RealEstateProject']//xsd:element[@name='companyName']/xsd:simpleType"
+                multiple="true">
+            <jaxb:javaType name="java.lang.String" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseText100"
+                           printMethod="org.openestate.is24.restapi.utils.XmlUtils.printText100"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="//xsd:complexType[@name='Picture']//xsd:element[@name='title']/xsd:simpleType"
+                       multiple="true">
+            <jaxb:javaType name="java.lang.String"
+                           parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseText100Min3"
+                           printMethod="org.openestate.is24.restapi.utils.XmlUtils.printText100Min3"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings
+                node="//xsd:complexType[@name='ProjectProposal']//xsd:element[@name='customerName']/xsd:simpleType"
+                multiple="true">
+            <jaxb:javaType name="java.lang.String" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseText80"
+                           printMethod="org.openestate.is24.restapi.utils.XmlUtils.printText80"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings
+                node="//xsd:complexType[@name='ProjectProposal']//xsd:element[@name='companyName']/xsd:simpleType"
+                multiple="true">
+            <jaxb:javaType name="java.lang.String" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseText100"
+                           printMethod="org.openestate.is24.restapi.utils.XmlUtils.printText100"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings
+                node="//xsd:complexType[@name='ProjectProposal']//xsd:element[@name='phoneNumber']/xsd:simpleType"
+                multiple="true">
+            <jaxb:javaType name="java.lang.String" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseText40"
+                           printMethod="org.openestate.is24.restapi.utils.XmlUtils.printText40"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings
+                node="//xsd:complexType[@name='ProjectProposal']//xsd:element[@name='projectName']/xsd:simpleType"
+                multiple="true">
+            <jaxb:javaType name="java.lang.String" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseText40"
+                           printMethod="org.openestate.is24.restapi.utils.XmlUtils.printText40"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="//xsd:complexType[@name='ProjectProposal']//xsd:element[@name='postcode']/xsd:simpleType"
+                       multiple="true">
+            <jaxb:javaType name="java.lang.String" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseText20"
+                           printMethod="org.openestate.is24.restapi.utils.XmlUtils.printText20"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="//xsd:complexType[@name='ProjectProposal']//xsd:element[@name='city']/xsd:simpleType"
+                       multiple="true">
+            <jaxb:javaType name="java.lang.String" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseText50"
+                           printMethod="org.openestate.is24.restapi.utils.XmlUtils.printText50"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings
+                node="//xsd:complexType[@name='ProjectProposal']//xsd:element[@name='numberOfHousingUnits']/xsd:simpleType"
+                multiple="true">
+            <jaxb:javaType name="java.lang.Integer"
+                           parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseInteger9999Positive"
+                           printMethod="org.openestate.is24.restapi.utils.XmlUtils.printInteger9999Positive"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="//xsd:complexType[@name='ProjectProposal']//xsd:element[@name='externalId']/xsd:simpleType"
+                       multiple="true">
+            <jaxb:javaType name="java.lang.String" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseText100"
+                           printMethod="org.openestate.is24.restapi.utils.XmlUtils.printText100"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings
+                node="//xsd:complexType[@name='InteriorCharacteristics']//xsd:element[@name='InteriorCharacteristic']/xsd:simpleType"
+                multiple="true">
+            <jaxb:javaType name="java.lang.String" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseText100"
+                           printMethod="org.openestate.is24.restapi.utils.XmlUtils.printText100"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="//xsd:complexType[@name='Contact']//xsd:element[@name='lastName']/xsd:simpleType"
+                       multiple="true">
+            <jaxb:javaType name="java.lang.String" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseText50"
+                           printMethod="org.openestate.is24.restapi.utils.XmlUtils.printText50"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="//xsd:complexType[@name='Contact']//xsd:element[@name='firstName']/xsd:simpleType"
+                       multiple="true">
+            <jaxb:javaType name="java.lang.String" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseText30"
+                           printMethod="org.openestate.is24.restapi.utils.XmlUtils.printText30"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="//xsd:complexType[@name='Contact']//xsd:element[@name='phone']/xsd:simpleType"
+                       multiple="true">
+            <jaxb:javaType name="java.lang.String" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseText40"
+                           printMethod="org.openestate.is24.restapi.utils.XmlUtils.printText40"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="//xsd:simpleType[@name='NumberOfRoomsType']"
+                       multiple="true">
+            <jaxb:javaType name="java.math.BigDecimal"
+                           parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseDecimal4_1"
+                           printMethod="org.openestate.is24.restapi.utils.XmlUtils.printDecimal4_1"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="//xsd:complexType[@name='Customization']//xsd:element[@name='layoutColor']/xsd:simpleType"
+                       multiple="true">
+            <jaxb:javaType name="java.awt.Color" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseColor"
+                           printMethod="org.openestate.is24.restapi.utils.XmlUtils.printColor"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="//xsd:complexType[@name='Customization']//xsd:element[@name='announcement']/xsd:simpleType"
+                       multiple="true">
+            <jaxb:javaType name="java.lang.String" parseMethod="org.openestate.is24.restapi.utils.XmlUtils.parseText500"
+                           printMethod="org.openestate.is24.restapi.utils.XmlUtils.printText500"/>
+        </jaxb:bindings>
+
+        <jaxb:bindings node="//xsd:simpleType[@name='percentType']">
+            <jaxb:typesafeEnumClass>
+                <jaxb:typesafeEnumMember value="0" name="ZERO"/>
+                <jaxb:typesafeEnumMember value="10" name="TEN"/>
+                <jaxb:typesafeEnumMember value="20" name="TWENTY"/>
+                <jaxb:typesafeEnumMember value="30" name="THIRTY"/>
+                <jaxb:typesafeEnumMember value="40" name="FORTY"/>
+                <jaxb:typesafeEnumMember value="50" name="FIFTY"/>
+                <jaxb:typesafeEnumMember value="60" name="SIXTY"/>
+                <jaxb:typesafeEnumMember value="70" name="SEVENTY"/>
+                <jaxb:typesafeEnumMember value="80" name="EIGHTY"/>
+                <jaxb:typesafeEnumMember value="90" name="NINETY"/>
+                <jaxb:typesafeEnumMember value="100" name="HUNDRED"/>
+            </jaxb:typesafeEnumClass>
+        </jaxb:bindings>
     </jaxb:bindings>
 
     <jaxb:bindings schemaLocation="realestates-1.0.xsd">
