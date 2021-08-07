@@ -74,15 +74,6 @@
             <artifactId>signpost-commonshttp4</artifactId>
             <scope>compile</scope>
         </dependency>
-
-        <!-- further compile dependencies -->
-        <dependency>
-            <groupId>com.google.code.findbugs</groupId>
-            <artifactId>annotations</artifactId>
-            <scope>compile</scope>
-            <optional>true</optional>
-        </dependency>
-
     </dependencies>
 
     <build>

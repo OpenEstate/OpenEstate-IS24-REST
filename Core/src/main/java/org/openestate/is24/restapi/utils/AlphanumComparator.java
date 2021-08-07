@@ -15,7 +15,6 @@
  */
 package org.openestate.is24.restapi.utils;
 
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.util.Comparator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,9 +32,6 @@ import org.slf4j.LoggerFactory;
  * Use the static "sort" method from the java.util.Collections class:
  * Collections.sort(your list, new AlphanumComparator());
  */
-@SuppressFBWarnings(
-        value = "SE_COMPARATOR_SHOULD_BE_SERIALIZABLE",
-        justification = "Serializable is not required for this class.")
 public class AlphanumComparator implements Comparator<String> {
     @SuppressWarnings("unused")
     private final static Logger LOGGER = LoggerFactory.getLogger(AlphanumComparator.class);

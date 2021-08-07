@@ -174,13 +174,6 @@
                                         ${project.parent.basedir}/HC43/src/main/java;
                                         ${project.parent.basedir}/WebApp/src/main/java
                                     </sourcepath>
-                                    <additionalDependencies>
-                                        <dependency>
-                                            <groupId>com.google.code.findbugs</groupId>
-                                            <artifactId>annotations</artifactId>
-                                            <version>3.0.1u2</version>
-                                        </dependency>
-                                    </additionalDependencies>
                                 </configuration>
                             </execution>
                         </executions>
@@ -204,7 +197,7 @@
                                     <overWriteSnapshots>false</overWriteSnapshots>
                                     <overWriteIfNewer>true</overWriteIfNewer>
                                     <includeScope>runtime</includeScope>
-                                    <excludeGroupIds>${project.groupId},com.google.code.findbugs,net.jcip,net.jcip</excludeGroupIds>
+                                    <excludeGroupIds>${project.groupId},net.jcip,net.jcip</excludeGroupIds>
                                 </configuration>
                             </execution>
 
@@ -221,7 +214,7 @@
                                     <overWriteSnapshots>false</overWriteSnapshots>
                                     <overWriteIfNewer>true</overWriteIfNewer>
                                     <includeScope>runtime</includeScope>
-                                    <excludeGroupIds>${project.groupId},com.google.code.findbugs,net.jcip,net.jcip</excludeGroupIds>
+                                    <excludeGroupIds>${project.groupId},net.jcip,net.jcip</excludeGroupIds>
                                     <classifier>sources</classifier>
                                 </configuration>
                             </execution>
@@ -239,7 +232,7 @@
                                     <overWriteSnapshots>false</overWriteSnapshots>
                                     <overWriteIfNewer>true</overWriteIfNewer>
                                     <includeScope>runtime</includeScope>
-                                    <excludeGroupIds>${project.groupId},com.google.code.findbugs,net.jcip,net.jcip</excludeGroupIds>
+                                    <excludeGroupIds>${project.groupId},net.jcip,net.jcip</excludeGroupIds>
                                     <classifier>javadoc</classifier>
                                 </configuration>
                             </execution>

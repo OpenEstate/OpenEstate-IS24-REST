@@ -15,7 +15,6 @@
  */
 package org.openestate.is24.restapi.examples;
 
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -42,9 +41,6 @@ import org.slf4j.LoggerFactory;
  * @see <a href="http://api.immobilienscout24.de/useful/tutorials-sdks-plugins/tutorial-java-signpost.html">Java-Signpost Tutorial</a>
  * @since 0.1
  */
-@SuppressFBWarnings(
-        value = {"NP_DEREFERENCE_OF_READLINE_VALUE", "DM_DEFAULT_ENCODING"},
-        justification = "Keep example code untouched.")
 public class IS24OauthExample {
     @SuppressWarnings("unused")
     private final static Logger LOGGER = LoggerFactory.getLogger(IS24OauthExample.class);

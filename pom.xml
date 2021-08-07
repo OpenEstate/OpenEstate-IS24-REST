@@ -89,11 +89,6 @@
                 <type>war</type>
             </dependency>
             <dependency>
-                <groupId>com.google.code.findbugs</groupId>
-                <artifactId>annotations</artifactId>
-                <version>3.0.1u2</version>
-            </dependency>
-            <dependency>
                 <groupId>commons-codec</groupId>
                 <artifactId>commons-codec</artifactId>
                 <version>1.11</version>
@@ -255,11 +250,6 @@
                     <artifactId>build-helper-maven-plugin</artifactId>
                     <version>3.0.0</version>
                 </plugin>
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>findbugs-maven-plugin</artifactId>
-                    <version>3.0.5</version>
-                </plugin>
 
                 <plugin>
                     <groupId>org.jvnet.jaxb2.maven2</groupId>
@@ -288,19 +278,6 @@
                 </plugin>
             </plugins>
         </pluginManagement>
-        <plugins>
-
-            <!-- findbugs -->
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>findbugs-maven-plugin</artifactId>
-                <configuration>
-                    <failOnError>false</failOnError>
-                    <excludeFilterFile>${project.basedir}/findbugs/exclude.xml</excludeFilterFile>
-                </configuration>
-            </plugin>
-
-        </plugins>
     </build>
 
     <profiles>
