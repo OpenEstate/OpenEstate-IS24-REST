@@ -38,8 +38,7 @@
 
     <modules>
         <module>Core</module>
-        <module>HC42</module>
-        <module>HC43</module>
+        <module>HC4</module>
         <module>Examples</module>
         <module>WebApp</module>
         <module>release</module>
@@ -74,12 +73,7 @@
             </dependency>
             <dependency>
                 <groupId>org.openestate.is24</groupId>
-                <artifactId>OpenEstate-IS24-REST-HC42</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.openestate.is24</groupId>
-                <artifactId>OpenEstate-IS24-REST-HC43</artifactId>
+                <artifactId>OpenEstate-IS24-REST-HC4</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -107,6 +101,16 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-text</artifactId>
                 <version>1.9</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>4.5.13</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpmime</artifactId>
+                <version>4.5.13</version>
             </dependency>
             <dependency>
                 <groupId>jakarta.annotation</groupId>
@@ -354,9 +358,12 @@
                                     <goal>jar</goal>
                                 </goals>
                                 <configuration>
+                                    <debug>false</debug>
                                     <quiet>true</quiet>
                                     <encoding>${project.build.sourceEncoding}</encoding>
                                     <docencoding>${project.build.sourceEncoding}</docencoding>
+                                    <!-- seems necessary to avoid build errors regarding modules (don't know why, yet) -->
+                                    <release>8</release>
                                 </configuration>
                             </execution>
                         </executions>

@@ -55,11 +55,7 @@
         </dependency>
         <dependency>
             <groupId>org.openestate.is24</groupId>
-            <artifactId>OpenEstate-IS24-REST-HC42</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.openestate.is24</groupId>
-            <artifactId>OpenEstate-IS24-REST-HC43</artifactId>
+            <artifactId>OpenEstate-IS24-REST-HC4</artifactId>
         </dependency>
         <dependency>
             <groupId>org.openestate.is24</groupId>
@@ -150,12 +146,8 @@
                                             <packages>org.openestate.is24.restapi:org.openestate.is24.restapi.utils:org.openestate.is24.restapi.utils.*:org.openestate.is24.restapi.xml:org.openestate.is24.restapi.xml.*</packages>
                                         </group>
                                         <group>
-                                            <title>addon for Apache HttpComponents 4.2</title>
-                                            <packages>org.openestate.is24.restapi.hc42:org.openestate.is24.restapi.hc42.*</packages>
-                                        </group>
-                                        <group>
-                                            <title>addon for Apache HttpComponents 4.3+</title>
-                                            <packages>org.openestate.is24.restapi.hc43:org.openestate.is24.restapi.hc43.*</packages>
+                                            <title>addon for Apache HttpComponents 4.5</title>
+                                            <packages>org.openestate.is24.restapi.hc4:org.openestate.is24.restapi.hc4.*</packages>
                                         </group>
                                         <group>
                                             <title>example classes</title>
@@ -166,14 +158,12 @@
                                             <packages>org.openestate.is24.restapi.webapp:org.openestate.is24.restapi.webapp.*</packages>
                                         </group>
                                     </groups>
-                                    <sourcepath>
-                                        ${project.parent.basedir}/Core/src/main/java;
-                                        ${project.parent.basedir}/Core/src/main/jaxb;
-                                        ${project.parent.basedir}/Examples/src/main/java;
-                                        ${project.parent.basedir}/HC42/src/main/java;
-                                        ${project.parent.basedir}/HC43/src/main/java;
-                                        ${project.parent.basedir}/WebApp/src/main/java
-                                    </sourcepath>
+                                    <includeDependencySources>true</includeDependencySources>
+                                    <dependencySourceIncludes>
+                                        <dependencySourceInclude>${project.groupId}:*</dependencySourceInclude>
+                                    </dependencySourceIncludes>
+                                    <!-- seems necessary to avoid build errors regarding modules (don't know why, yet) -->
+                                    <release>8</release>
                                 </configuration>
                             </execution>
                         </executions>
