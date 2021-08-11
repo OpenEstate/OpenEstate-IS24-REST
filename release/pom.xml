@@ -136,7 +136,7 @@
                                     <docencoding>${project.build.sourceEncoding}</docencoding>
                                     <keywords>true</keywords>
                                     <quiet>true</quiet>
-                                    <!--<doclint>none</doclint>-->
+                                    <doclint>none</doclint>
                                     <links>
                                         <link>https://docs.oracle.com/en/java/javase/11/docs/api/</link>
                                     </links>
@@ -149,19 +149,17 @@
                                             <title>addon for Apache HttpComponents 4.5</title>
                                             <packages>org.openestate.is24.restapi.hc4:org.openestate.is24.restapi.hc4.*</packages>
                                         </group>
-                                        <group>
-                                            <title>example classes</title>
-                                            <packages>org.openestate.is24.restapi.examples:org.openestate.is24.restapi.examples.*</packages>
-                                        </group>
-                                        <group>
-                                            <title>example web application</title>
-                                            <packages>org.openestate.is24.restapi.webapp:org.openestate.is24.restapi.webapp.*</packages>
-                                        </group>
                                     </groups>
+                                    <detectOfflineLinks>false</detectOfflineLinks>
                                     <includeDependencySources>true</includeDependencySources>
                                     <dependencySourceIncludes>
                                         <dependencySourceInclude>${project.groupId}:*</dependencySourceInclude>
                                     </dependencySourceIncludes>
+                                    <dependencySourceExcludes>
+                                        <dependencySourceExclude>${project.groupId}:OpenEstate-IS24-REST-Examples</dependencySourceExclude>
+                                        <dependencySourceExclude>${project.groupId}:OpenEstate-IS24-REST-WebApp</dependencySourceExclude>
+                                    </dependencySourceExcludes>
+
                                     <!-- seems necessary to avoid build errors regarding modules (don't know why, yet) -->
                                     <release>8</release>
                                 </configuration>
