@@ -12,11 +12,6 @@
         <module name="OpenEstate-IS24-REST-Core" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="OpenEstate-IS24-REST-HC4" target="11" />
-      <module name="OpenEstate-IS24-REST-HC42" target="11" />
-      <module name="OpenEstate-IS24-REST-HC43" target="11" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_STRING" value="-Xlint:unchecked" />
