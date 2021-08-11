@@ -185,7 +185,7 @@
                                     <overWriteSnapshots>false</overWriteSnapshots>
                                     <overWriteIfNewer>true</overWriteIfNewer>
                                     <includeScope>runtime</includeScope>
-                                    <excludeGroupIds>${project.groupId},net.jcip,net.jcip</excludeGroupIds>
+                                    <excludeGroupIds>${project.groupId}</excludeGroupIds>
                                 </configuration>
                             </execution>
 
@@ -202,7 +202,7 @@
                                     <overWriteSnapshots>false</overWriteSnapshots>
                                     <overWriteIfNewer>true</overWriteIfNewer>
                                     <includeScope>runtime</includeScope>
-                                    <excludeGroupIds>${project.groupId},net.jcip,net.jcip</excludeGroupIds>
+                                    <excludeGroupIds>${project.groupId}</excludeGroupIds>
                                     <classifier>sources</classifier>
                                 </configuration>
                             </execution>
@@ -220,7 +220,7 @@
                                     <overWriteSnapshots>false</overWriteSnapshots>
                                     <overWriteIfNewer>true</overWriteIfNewer>
                                     <includeScope>runtime</includeScope>
-                                    <excludeGroupIds>${project.groupId},net.jcip,net.jcip</excludeGroupIds>
+                                    <excludeGroupIds>${project.groupId}</excludeGroupIds>
                                     <classifier>javadoc</classifier>
                                 </configuration>
                             </execution>
