@@ -23,7 +23,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
@@ -747,7 +746,7 @@ public class ExportPool {
             throw new IOException("Can't remove file at '" + file.getAbsolutePath() + "'!");
 
         try (OutputStream output = new FileOutputStream(file)) {
-            this.settings.storeToXML(output, "ExportPool settings", StandardCharsets.UTF_8);
+            this.settings.storeToXML(output, "ExportPool settings", "UTF-8");
         }
     }
 }
