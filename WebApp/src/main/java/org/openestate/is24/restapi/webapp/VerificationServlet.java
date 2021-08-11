@@ -79,8 +79,8 @@ public class VerificationServlet extends HttpServlet {
      *
      * @param req  incoming GET request
      * @param resp outgoing response
-     * @throws IOException
-     * @throws ServletException
+     * @throws IOException      if an input or output error is detected when the servlet handles the GET request
+     * @throws ServletException if the request for the GET could not be handled
      */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
@@ -99,21 +99,21 @@ public class VerificationServlet extends HttpServlet {
      *
      * @param req  incoming GET request
      * @param resp outgoing response
-     * @throws IOException
-     * @throws ServletException
+     * @throws IOException      if an input or output error is detected when the servlet handles the request
+     * @throws ServletException if the request could not be handled
      */
     protected void doVerificationRequest(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-        Verification verification = null;
+        Verification verification;
         try {
             verification = this.getWebserviceVerification(req);
         } catch (OAuthException ex) {
             throw new IOException("Can't fetch verification!", ex);
         }
 
-        // store verification informations
+        // store verification information
         this.storeVerification(verification);
 
-        // put verification informations into request attributes
+        // put verification information into request attributes
         req.setAttribute("url", verification.verificationUrl);
         req.setAttribute("token", verification.requestToken);
         req.setAttribute("secret", verification.requestTokenSecret);
@@ -137,8 +137,8 @@ public class VerificationServlet extends HttpServlet {
      *                 parameter by the webservice
      * @param req      incoming GET request
      * @param resp     outgoing response
-     * @throws IOException
-     * @throws ServletException
+     * @throws IOException      if an input or output error is detected when the servlet handles the request
+     * @throws ServletException if the request could not be handled
      */
     protected void doVerificationResponse(String state, String token, String verifier, HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         try {
@@ -151,9 +151,9 @@ public class VerificationServlet extends HttpServlet {
                 if (token == null || secret == null) {
                     req.setAttribute("valid", false);
                 } else {
-                    Authorization authorization = null;
+                    Authorization authorization;
                     try {
-                        authorization = getWebserviceAuthorization(token, secret, verifier, req);
+                        authorization = getWebserviceAuthorization(token, secret, verifier);
                     } catch (OAuthException ex) {
                         throw new IOException("Can't fetch authorization!", ex);
                     }
@@ -197,16 +197,15 @@ public class VerificationServlet extends HttpServlet {
     }
 
     /**
-     * Generates credentials for permanent authoriation at the IS24-Webservice.
+     * Generates credentials for permanent authorization at the IS24-Webservice.
      *
      * @param token    verification token
      * @param secret   verification secret
      * @param verifier verification code
-     * @param req      incoming GET request
      * @return credentials for authorization
-     * @throws OAuthException
+     * @throws OAuthException if initialization of the authorization failed
      */
-    protected Authorization getWebserviceAuthorization(String token, String secret, String verifier, HttpServletRequest req) throws OAuthException {
+    protected Authorization getWebserviceAuthorization(String token, String secret, String verifier) throws OAuthException {
         final AbstractClient client = this.getClient();
         return client.authorizeAfterVerification(token, secret, verifier);
     }
@@ -216,7 +215,7 @@ public class VerificationServlet extends HttpServlet {
      *
      * @param req incoming GET request
      * @return credentials for verification
-     * @throws OAuthException
+     * @throws OAuthException if initiation failed
      */
     protected Verification getWebserviceVerification(HttpServletRequest req) throws OAuthException {
         final AbstractClient client = this.getClient();
@@ -226,7 +225,7 @@ public class VerificationServlet extends HttpServlet {
     /**
      * Servlet is initialized by the servlet engine.
      *
-     * @throws ServletException
+     * @throws ServletException if an exception occurs that interrupts the servlet's normal operation
      */
     @Override
     public void init() throws ServletException {
@@ -292,7 +291,7 @@ public class VerificationServlet extends HttpServlet {
      * @param verification verification credentials
      */
     protected void storeVerification(Verification verification) {
-        // keep verification informations in local memory
+        // keep verification information in local memory
         this.verifications.put(verification);
     }
 

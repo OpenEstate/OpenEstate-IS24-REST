@@ -50,21 +50,21 @@ public class IS24OauthExample {
      *
      * @param args command line arguments
      */
+    @SuppressWarnings("SpellCheckingInspection")
     public static void main(String[] args) throws Exception {
 
         OAuthConsumer consumer =
                 new DefaultOAuthConsumer("testzugang-import-api-maklermanagerKey", "VXyCmVpjR4GQVCVBf33T");
 
         OAuthProvider provider =
-                new DefaultOAuthProvider("http://sandbox.immobilienscout24.de/restapi/security/oauth/request_token",
-                        "http://sandbox.immobilienscout24.de/restapi/security/oauth/access_token",
-                        "http://sandbox.immobilienscout24.de/restapi/security/oauth/confirm_access");
+                new DefaultOAuthProvider("https://sandbox.immobilienscout24.de/restapi/security/oauth/request_token",
+                        "https://sandbox.immobilienscout24.de/restapi/security/oauth/access_token",
+                        "https://sandbox.immobilienscout24.de/restapi/security/oauth/confirm_access");
 
 
         LOGGER.info("Fetching request token...");
 
-        String authUrl =
-                provider.retrieveRequestToken(consumer, "http://www.google.de");
+        String authUrl = provider.retrieveRequestToken(consumer, "https://www.google.de");
 
         String requestToken = consumer.getToken();
         String requestTokenSecret = consumer.getTokenSecret();
@@ -110,8 +110,7 @@ public class IS24OauthExample {
 
         LOGGER.info("#################################################################################################");
 
-        URL url =
-                new URL("http://sandbox.immobilienscout24.de/restapi/api/search/v1.0/searcher/abc");
+        URL url = new URL("https://sandbox.immobilienscout24.de/restapi/api/search/v1.0/searcher/abc");
 
         HttpURLConnection apiRequest = (HttpURLConnection) url.openConnection();
 
