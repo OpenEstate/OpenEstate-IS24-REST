@@ -29,8 +29,10 @@ import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.xml.bind.DatatypeConverter;
@@ -81,12 +83,12 @@ import org.slf4j.LoggerFactory;
  * @author Andreas Rudolph
  * @since 0.2
  */
-@SuppressWarnings("WeakerAccess")
 public final class XmlUtils {
     @SuppressWarnings("unused")
     private final static Logger LOGGER = LoggerFactory.getLogger(XmlUtils.class);
     public final static String DEFAULT_ENCODING = "UTF-8";
-    private static JAXBContext JAXB = null;
+    private static JAXBContext DEFAULT_CONTEXT = null;
+    @SuppressWarnings("SpellCheckingInspection")
     private final static String JAXB_PACKAGES = ""
             + "org.openestate.is24.restapi.xml.attachmentsorder"
             + ":org.openestate.is24.restapi.xml.common"
@@ -113,60 +115,155 @@ public final class XmlUtils {
     }
 
     /**
-     * Create a marshaller for XML generation.
+     * Creates a {@link JAXBContext} for this format.
      *
-     * @return marshaller
-     * @throws JAXBException if the marshaller is not creatable
+     * @return created JAXB context
+     * @throws JAXBException if a problem with JAXB occurred
      */
     @SuppressWarnings("unused")
-    public static Marshaller createMarshaller() throws JAXBException {
-        return createMarshaller(Charset.defaultCharset().name(), true);
+    public static JAXBContext createContext() throws JAXBException {
+        return createContext(null, null);
     }
 
     /**
-     * Create a marshaller for XML generation.
+     * Creates a {@link JAXBContext} for this format.
      *
-     * @param encoding    encoding of generated XML output
-     * @param prettyPrint enable pretty printing for generated XML output
-     * @return marshaller
-     * @throws JAXBException if the marshaller is not creatable
+     * @param additionalJaxbPackages additional package with custom JAXB classes
+     * @return created JAXB context
+     * @throws JAXBException if a problem with JAXB occurred
      */
-    public static Marshaller createMarshaller(String encoding, boolean prettyPrint) throws JAXBException {
-        Marshaller m = getContext().createMarshaller();
-        m.setProperty(Marshaller.JAXB_ENCODING, encoding);
-        m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, prettyPrint);
+    @SuppressWarnings("unused")
+    public static JAXBContext createContext(List<String> additionalJaxbPackages) throws JAXBException {
+        return createContext(additionalJaxbPackages, null);
+    }
+
+    /**
+     * Creates a {@link JAXBContext} for this format.
+     *
+     * @param classloader the classloader to load the generated JAXB classes with
+     * @return created JAXB context
+     * @throws JAXBException if a problem with JAXB occurred
+     */
+    public static JAXBContext createContext(ClassLoader classloader) throws JAXBException {
+        return createContext(null, classloader);
+    }
+
+    /**
+     * Creates a {@link JAXBContext} for this format.
+     *
+     * @param additionalJaxbPackages additional package with custom JAXB classes
+     * @param classloader            the classloader to load the generated JAXB classes with
+     * @return created JAXB context
+     * @throws JAXBException if a problem with JAXB occurred
+     */
+    public static JAXBContext createContext(List<String> additionalJaxbPackages, ClassLoader classloader) throws JAXBException {
+        final List<String> packages = new ArrayList<>();
+        packages.add(JAXB_PACKAGES);
+        if (additionalJaxbPackages != null && !additionalJaxbPackages.isEmpty())
+            packages.addAll(additionalJaxbPackages);
+
+        return JAXBContext.newInstance(
+                StringUtils.join(packages, ":"),
+                (classloader != null) ? classloader : Thread.currentThread().getContextClassLoader()
+        );
+    }
+
+    /**
+     * Creates a {@link Marshaller} to write JAXB objects into XML.
+     *
+     * @return created marshaller
+     * @throws JAXBException if a problem with JAXB occurred
+     */
+    @SuppressWarnings("unused")
+    public static Marshaller createMarshaller() throws JAXBException {
+        return createMarshaller(null, true, null);
+    }
+
+    /**
+     * Creates a {@link Marshaller} to write JAXB objects into XML.
+     *
+     * @param context context to create the marshaller on
+     * @return created marshaller
+     * @throws JAXBException if a problem with JAXB occurred
+     */
+    @SuppressWarnings("unused")
+    public static Marshaller createMarshaller(JAXBContext context) throws JAXBException {
+        return createMarshaller(null, true, context);
+    }
+
+    /**
+     * Creates a {@link Marshaller} to write JAXB objects into XML.
+     *
+     * @param encoding  encoding of written XML
+     * @param formatted if written XML is pretty printed
+     * @return created marshaller
+     * @throws JAXBException if a problem with JAXB occurred
+     */
+    public static Marshaller createMarshaller(String encoding, boolean formatted) throws JAXBException {
+        return createMarshaller(encoding, formatted, null);
+    }
+
+    /**
+     * Creates a {@link Marshaller} to write JAXB objects into XML.
+     *
+     * @param encoding  encoding of written XML
+     * @param formatted if written XML is pretty printed
+     * @param context   context to create the marshaller on
+     * @return created marshaller
+     * @throws JAXBException if a problem with JAXB occurred
+     */
+    public static Marshaller createMarshaller(String encoding, boolean formatted, JAXBContext context) throws JAXBException {
+        final Marshaller m = (context != null) ?
+                context.createMarshaller() :
+                getContext().createMarshaller();
+
+        m.setProperty(Marshaller.JAXB_ENCODING, StringUtils.defaultIfBlank(encoding, Charset.defaultCharset().name()));
+        m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, formatted);
         return m;
     }
 
     /**
-     * Create an unmarshaller for XML parsing.
+     * Creates an {@link Unmarshaller} to read JAXB objects from XML.
      *
-     * @return unmarshaller
-     * @throws JAXBException if the unmarshaller is not creatable
+     * @return created unmarshaller
+     * @throws JAXBException if a problem with JAXB occurred
      */
     public static Unmarshaller createUnmarshaller() throws JAXBException {
-        return getContext().createUnmarshaller();
+        return createUnmarshaller(null);
     }
 
     /**
-     * Returns the JAXB context for XML parsing / generation.
+     * Creates an {@link Unmarshaller} to read JAXB objects from XML.
      *
-     * @return JAXB context
-     * @throws JAXBException if the JAXB context is not initialized properly
+     * @param context context to create the unmarshaller on
+     * @return created unmarshaller
+     * @throws JAXBException if a problem with JAXB occurred
+     */
+    public static Unmarshaller createUnmarshaller(JAXBContext context) throws JAXBException {
+        return (context != null) ?
+                context.createUnmarshaller() :
+                getContext().createUnmarshaller();
+    }
+
+    /**
+     * Returns the default {@link JAXBContext} for this format.
+     *
+     * @return context
+     * @throws JAXBException if a problem with JAXB occurred
      */
     public synchronized static JAXBContext getContext() throws JAXBException {
-        if (JAXB == null) initContext(Thread.currentThread().getContextClassLoader());
-        return JAXB;
+        if (DEFAULT_CONTEXT == null) initContext(null);
+        return DEFAULT_CONTEXT;
     }
 
     /**
-     * Initialize the JAXB context.
+     * Initializes the default {@link JAXBContext} for this format.
      *
-     * @param classloader class loader to access JAXB classes
-     * @throws JAXBException if the JAXB context is not initialized properly
+     * @param classloader the classloader to load the generated JAXB classes with
+     * @throws JAXBException if a problem with JAXB occurred
      */
     public synchronized static void initContext(ClassLoader classloader) throws JAXBException {
-        JAXB = JAXBContext.newInstance(JAXB_PACKAGES, classloader);
+        DEFAULT_CONTEXT = createContext(classloader);
     }
 
     /**
@@ -263,6 +360,7 @@ public final class XmlUtils {
         } catch (Exception ex) {
             //LOGGER.debug( "Invalid xsd:date value '" + value + "'!" );
             try {
+                @SuppressWarnings("SpellCheckingInspection")
                 Date date = DateUtils.parseDateStrictly(value,
                         "dd.MM.yyyy", "dd.MM.yy", "dd/MM/yyyy", "dd/MM/yy", "dd-MM-yyyy", "dd-MMM-yyyy", "yyyy-MM-dd", "yyyy/MM/dd", "yyyy-D", "MM/yyyy", "MMM yyyy", "MMMMM yyyy", "yyyy");
                 Calendar cal = Calendar.getInstance();
