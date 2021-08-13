@@ -42,8 +42,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link List }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link List }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link List }{@code >}
      */
     @XmlElementDecl(namespace = "http://rest.immobilienscout24.de/schema/attachmentsorder/1.0", name = "attachmentsorder")
     public JAXBElement<List> createAttachmentsorder(List value) {

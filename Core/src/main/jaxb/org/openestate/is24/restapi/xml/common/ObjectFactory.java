@@ -768,8 +768,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Attachment }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Attachment }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Attachment }{@code >}
      */
     @XmlElementDecl(namespace = "http://rest.immobilienscout24.de/schema/common/1.0", name = "attachment")
     public JAXBElement<Attachment> createAttachment(Attachment value) {
@@ -777,8 +781,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RealtorContactDetails }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link RealtorContactDetails }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link RealtorContactDetails }{@code >}
      */
     @XmlElementDecl(namespace = "http://rest.immobilienscout24.de/schema/common/1.0", name = "realtorContactDetail")
     public JAXBElement<RealtorContactDetails> createRealtorContactDetail(RealtorContactDetails value) {
@@ -786,8 +794,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link RealtorLogo }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link RealtorLogo }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link RealtorLogo }{@code >}
      */
     @XmlElementDecl(namespace = "http://rest.immobilienscout24.de/schema/common/1.0", name = "realtorLogo")
     public JAXBElement<RealtorLogo> createRealtorLogo(RealtorLogo value) {
@@ -795,8 +807,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link AutopilotSettings }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link AutopilotSettings }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link AutopilotSettings }{@code >}
      */
     @XmlElementDecl(namespace = "http://rest.immobilienscout24.de/schema/common/1.0", name = "autopilotSettings")
     public JAXBElement<AutopilotSettings> createAutopilotSettings(AutopilotSettings value) {
@@ -804,8 +820,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Attachments }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Attachments }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Attachments }{@code >}
      */
     @XmlElementDecl(namespace = "http://rest.immobilienscout24.de/schema/common/1.0", name = "attachments")
     public JAXBElement<Attachments> createAttachments(Attachments value) {
@@ -813,8 +833,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link User }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link User }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link User }{@code >}
      */
     @XmlElementDecl(namespace = "http://rest.immobilienscout24.de/schema/common/1.0", name = "user")
     public JAXBElement<User> createUser(User value) {
@@ -822,8 +846,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PublishObject }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link PublishObject }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link PublishObject }{@code >}
      */
     @XmlElementDecl(namespace = "http://rest.immobilienscout24.de/schema/common/1.0", name = "publishObject")
     public JAXBElement<PublishObject> createPublishObject(PublishObject value) {

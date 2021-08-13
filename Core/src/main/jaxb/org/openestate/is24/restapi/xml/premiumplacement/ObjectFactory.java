@@ -51,8 +51,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Premiumplacements }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Premiumplacements }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Premiumplacements }{@code >}
      */
     @XmlElementDecl(namespace = "http://rest.immobilienscout24.de/schema/offer/premiumplacement/1.0", name = "premiumplacements")
     public JAXBElement<Premiumplacements> createPremiumplacements(Premiumplacements value) {
@@ -60,8 +64,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Premiumplacement }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Premiumplacement }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Premiumplacement }{@code >}
      */
     @XmlElementDecl(namespace = "http://rest.immobilienscout24.de/schema/offer/premiumplacement/1.0", name = "premiumplacement")
     public JAXBElement<Premiumplacement> createPremiumplacement(Premiumplacement value) {

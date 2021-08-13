@@ -27,7 +27,7 @@
     <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
             <distribution>repo</distribution>
             <comments>A business-friendly OSS license</comments>
         </license>
@@ -55,11 +55,7 @@
         </dependency>
         <dependency>
             <groupId>org.openestate.is24</groupId>
-            <artifactId>OpenEstate-IS24-REST-HC42</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.openestate.is24</groupId>
-            <artifactId>OpenEstate-IS24-REST-HC43</artifactId>
+            <artifactId>OpenEstate-IS24-REST-HC4</artifactId>
         </dependency>
         <dependency>
             <groupId>org.openestate.is24</groupId>
@@ -140,9 +136,9 @@
                                     <docencoding>${project.build.sourceEncoding}</docencoding>
                                     <keywords>true</keywords>
                                     <quiet>true</quiet>
-                                    <!--<doclint>none</doclint>-->
+                                    <doclint>none</doclint>
                                     <links>
-                                        <link>https://docs.oracle.com/javase/7/docs/api/</link>
+                                        <link>https://docs.oracle.com/javase/8/docs/api/</link>
                                     </links>
                                     <groups>
                                         <group>
@@ -150,37 +146,22 @@
                                             <packages>org.openestate.is24.restapi:org.openestate.is24.restapi.utils:org.openestate.is24.restapi.utils.*:org.openestate.is24.restapi.xml:org.openestate.is24.restapi.xml.*</packages>
                                         </group>
                                         <group>
-                                            <title>addon for Apache HttpComponents 4.2</title>
-                                            <packages>org.openestate.is24.restapi.hc42:org.openestate.is24.restapi.hc42.*</packages>
-                                        </group>
-                                        <group>
-                                            <title>addon for Apache HttpComponents 4.3+</title>
-                                            <packages>org.openestate.is24.restapi.hc43:org.openestate.is24.restapi.hc43.*</packages>
-                                        </group>
-                                        <group>
-                                            <title>example classes</title>
-                                            <packages>org.openestate.is24.restapi.examples:org.openestate.is24.restapi.examples.*</packages>
-                                        </group>
-                                        <group>
-                                            <title>example web application</title>
-                                            <packages>org.openestate.is24.restapi.webapp:org.openestate.is24.restapi.webapp.*</packages>
+                                            <title>addon for Apache HttpComponents 4.5</title>
+                                            <packages>org.openestate.is24.restapi.hc4:org.openestate.is24.restapi.hc4.*</packages>
                                         </group>
                                     </groups>
-                                    <sourcepath>
-                                        ${project.parent.basedir}/Core/src/main/java;
-                                        ${project.parent.basedir}/Core/src/main/jaxb;
-                                        ${project.parent.basedir}/Examples/src/main/java;
-                                        ${project.parent.basedir}/HC42/src/main/java;
-                                        ${project.parent.basedir}/HC43/src/main/java;
-                                        ${project.parent.basedir}/WebApp/src/main/java
-                                    </sourcepath>
-                                    <additionalDependencies>
-                                        <dependency>
-                                            <groupId>com.google.code.findbugs</groupId>
-                                            <artifactId>annotations</artifactId>
-                                            <version>3.0.1u2</version>
-                                        </dependency>
-                                    </additionalDependencies>
+                                    <detectOfflineLinks>false</detectOfflineLinks>
+                                    <includeDependencySources>true</includeDependencySources>
+                                    <dependencySourceIncludes>
+                                        <dependencySourceInclude>${project.groupId}:*</dependencySourceInclude>
+                                    </dependencySourceIncludes>
+                                    <dependencySourceExcludes>
+                                        <dependencySourceExclude>${project.groupId}:OpenEstate-IS24-REST-Examples</dependencySourceExclude>
+                                        <dependencySourceExclude>${project.groupId}:OpenEstate-IS24-REST-WebApp</dependencySourceExclude>
+                                    </dependencySourceExcludes>
+
+                                    <!-- seems necessary to avoid build errors regarding modules (don't know why, yet) -->
+                                    <release>8</release>
                                 </configuration>
                             </execution>
                         </executions>
@@ -204,7 +185,7 @@
                                     <overWriteSnapshots>false</overWriteSnapshots>
                                     <overWriteIfNewer>true</overWriteIfNewer>
                                     <includeScope>runtime</includeScope>
-                                    <excludeGroupIds>${project.groupId},com.google.code.findbugs,net.jcip,net.jcip</excludeGroupIds>
+                                    <excludeGroupIds>${project.groupId}</excludeGroupIds>
                                 </configuration>
                             </execution>
 
@@ -221,7 +202,7 @@
                                     <overWriteSnapshots>false</overWriteSnapshots>
                                     <overWriteIfNewer>true</overWriteIfNewer>
                                     <includeScope>runtime</includeScope>
-                                    <excludeGroupIds>${project.groupId},com.google.code.findbugs,net.jcip,net.jcip</excludeGroupIds>
+                                    <excludeGroupIds>${project.groupId}</excludeGroupIds>
                                     <classifier>sources</classifier>
                                 </configuration>
                             </execution>
@@ -239,7 +220,7 @@
                                     <overWriteSnapshots>false</overWriteSnapshots>
                                     <overWriteIfNewer>true</overWriteIfNewer>
                                     <includeScope>runtime</includeScope>
-                                    <excludeGroupIds>${project.groupId},com.google.code.findbugs,net.jcip,net.jcip</excludeGroupIds>
+                                    <excludeGroupIds>${project.groupId}</excludeGroupIds>
                                     <classifier>javadoc</classifier>
                                 </configuration>
                             </execution>

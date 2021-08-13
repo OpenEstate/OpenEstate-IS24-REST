@@ -58,8 +58,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link OfferUser }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link OfferUser }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link OfferUser }{@code >}
      */
     @XmlElementDecl(namespace = "http://rest.immobilienscout24.de/schema/offer/user/1.0", name = "offerUser")
     public JAXBElement<OfferUser> createOfferUser(OfferUser value) {

@@ -15,7 +15,6 @@
  */
 package org.openestate.is24.restapi.examples;
 
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.openestate.is24.restapi.AbstractClient;
 import org.openestate.is24.restapi.DefaultClient;
 import org.slf4j.Logger;
@@ -27,7 +26,6 @@ import org.slf4j.LoggerFactory;
  *
  * @author Andreas Rudolph
  */
-@SuppressFBWarnings
 public class DefaultClientExample {
     @SuppressWarnings("unused")
     private final static Logger LOGGER = LoggerFactory.getLogger(DefaultClientExample.class);

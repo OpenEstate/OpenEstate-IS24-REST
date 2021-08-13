@@ -91,7 +91,7 @@
       <outputDirectory>lib/3rdparty</outputDirectory>
     </fileSet>
     <fileSet>
-      <directory>${project.parent.basedir}/etc/licenses</directory>
+      <directory>${project.basedir}/src/licenses</directory>
       <outputDirectory>lib/3rdparty</outputDirectory>
     </fileSet>
   </fileSets>

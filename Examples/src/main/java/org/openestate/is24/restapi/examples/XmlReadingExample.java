@@ -66,6 +66,7 @@ public class XmlReadingExample {
             // read XML at the provided location into a JAXB object
             RealEstate object;
             try {
+                @SuppressWarnings("unchecked")
                 JAXBElement<RealEstate> xml = (JAXBElement<RealEstate>)
                         unmarshaller.unmarshal(file);
                 object = xml.getValue();

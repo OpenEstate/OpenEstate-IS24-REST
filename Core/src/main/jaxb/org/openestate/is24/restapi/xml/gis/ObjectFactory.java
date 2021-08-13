@@ -142,8 +142,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link org.openestate.is24.restapi.xml.common.Continent }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link org.openestate.is24.restapi.xml.common.Continent }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link org.openestate.is24.restapi.xml.common.Continent }{@code >}
      */
     @XmlElementDecl(namespace = "http://rest.immobilienscout24.de/schema/platform/gis/1.0", name = "continent")
     public JAXBElement<org.openestate.is24.restapi.xml.common.Continent> createContinent(org.openestate.is24.restapi.xml.common.Continent value) {
@@ -151,8 +155,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link org.openestate.is24.restapi.xml.common.Country }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link org.openestate.is24.restapi.xml.common.Country }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link org.openestate.is24.restapi.xml.common.Country }{@code >}
      */
     @XmlElementDecl(namespace = "http://rest.immobilienscout24.de/schema/platform/gis/1.0", name = "country")
     public JAXBElement<org.openestate.is24.restapi.xml.common.Country> createCountry(org.openestate.is24.restapi.xml.common.Country value) {
@@ -160,8 +168,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link org.openestate.is24.restapi.xml.common.Region }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link org.openestate.is24.restapi.xml.common.Region }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link org.openestate.is24.restapi.xml.common.Region }{@code >}
      */
     @XmlElementDecl(namespace = "http://rest.immobilienscout24.de/schema/platform/gis/1.0", name = "region")
     public JAXBElement<org.openestate.is24.restapi.xml.common.Region> createRegion(org.openestate.is24.restapi.xml.common.Region value) {
@@ -169,8 +181,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link org.openestate.is24.restapi.xml.common.City }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link org.openestate.is24.restapi.xml.common.City }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link org.openestate.is24.restapi.xml.common.City }{@code >}
      */
     @XmlElementDecl(namespace = "http://rest.immobilienscout24.de/schema/platform/gis/1.0", name = "city")
     public JAXBElement<org.openestate.is24.restapi.xml.common.City> createCity(org.openestate.is24.restapi.xml.common.City value) {
@@ -178,8 +194,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link org.openestate.is24.restapi.xml.common.Quarter }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link org.openestate.is24.restapi.xml.common.Quarter }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link org.openestate.is24.restapi.xml.common.Quarter }{@code >}
      */
     @XmlElementDecl(namespace = "http://rest.immobilienscout24.de/schema/platform/gis/1.0", name = "quarter")
     public JAXBElement<org.openestate.is24.restapi.xml.common.Quarter> createQuarter(org.openestate.is24.restapi.xml.common.Quarter value) {

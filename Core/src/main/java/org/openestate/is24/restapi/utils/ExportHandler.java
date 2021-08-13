@@ -929,7 +929,7 @@ public class ExportHandler {
                         // Hashwert zur Identifizierung des Anhangs errechnen
                         URI url = link.getUrl();
                         String externalAttachmentId = (url != null) ?
-                                DigestUtils.sha1Hex(is24ObjectId + "-" + url.toString()) :
+                                DigestUtils.sha1Hex(is24ObjectId + "-" + url) :
                                 DigestUtils.sha1Hex(is24ObjectId + "-" + attachmentKey);
 
                         // Sicherstellen, dass der gleiche Anhang nicht mehrfach hochgeladen wird
@@ -1413,6 +1413,7 @@ public class ExportHandler {
      *
      * @return client
      */
+    @SuppressWarnings("unused")
     protected final AbstractClient getClient() {
         return client;
     }
@@ -1481,6 +1482,7 @@ public class ExportHandler {
      *
      * @return pool
      */
+    @SuppressWarnings("unused")
     protected final ExportPool getPool() {
         return pool;
     }
@@ -1694,9 +1696,7 @@ public class ExportHandler {
      * @param progress current progress value
      */
     protected final void setProgress(long progress) {
-        progress = Math.abs(progress);
-        this.progress = (progress <= this.totalProgress) ?
-                progress : this.totalProgress;
+        this.progress = Math.min(Math.abs(progress), this.totalProgress);
 
         // launch callback function for progress
         progressUpdated(this.progress, this.totalProgress);

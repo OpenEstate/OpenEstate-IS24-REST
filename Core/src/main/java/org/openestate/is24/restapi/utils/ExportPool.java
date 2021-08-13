@@ -133,6 +133,7 @@ public class ExportPool {
         }
 
         try {
+            @SuppressWarnings("unchecked")
             JAXBElement<RealtorContactDetails> xml = (JAXBElement<RealtorContactDetails>)
                     unmarshaller.unmarshal(xmlFile);
             RealtorContactDetails contact = xml.getValue();
@@ -156,7 +157,7 @@ public class ExportPool {
         if (!this.contactsDir.isDirectory()) return new String[]{};
         List<String> ids = new ArrayList<>();
         File[] files = this.contactsDir.listFiles();
-        if (files!=null && ArrayUtils.isNotEmpty(files)) {
+        if (files != null && ArrayUtils.isNotEmpty(files)) {
             for (File f : files) {
                 if (f.isDirectory()) ids.add(f.getName());
             }
@@ -215,6 +216,7 @@ public class ExportPool {
         }
 
         try {
+            @SuppressWarnings("unchecked")
             JAXBElement<RealEstate> xml = (JAXBElement<RealEstate>)
                     unmarshaller.unmarshal(xmlFile);
             RealEstate object = xml.getValue();
@@ -257,6 +259,7 @@ public class ExportPool {
         }
 
         try {
+            @SuppressWarnings("unchecked")
             JAXBElement<Attachment> xml = (JAXBElement<Attachment>)
                     unmarshaller.unmarshal(xmlFile);
             Attachment attachment = xml.getValue();
@@ -356,7 +359,7 @@ public class ExportPool {
         if (!objectDir.isDirectory()) return new String[]{};
         List<String> ids = new ArrayList<>();
         File[] files = objectDir.listFiles();
-        if (files!=null && ArrayUtils.isNotEmpty(files)) {
+        if (files != null && ArrayUtils.isNotEmpty(files)) {
             for (File f : files) {
                 String n = f.getName();
                 if (!n.startsWith("attachment.") || !n.endsWith(".xml")) continue;
@@ -380,7 +383,7 @@ public class ExportPool {
         if (!this.objectsDir.isDirectory()) return new String[]{};
         List<String> ids = new ArrayList<>();
         File[] files = this.objectsDir.listFiles();
-        if (files!=null && ArrayUtils.isNotEmpty(files)) {
+        if (files != null && ArrayUtils.isNotEmpty(files)) {
             for (File f : files) {
                 if (f.isDirectory()) ids.add(f.getName());
             }
@@ -395,7 +398,7 @@ public class ExportPool {
      */
     public String[] getObjectIdsForRemoval() {
         List<String> ids = new ArrayList<>();
-        for (Enumeration e = this.settings.propertyNames(); e.hasMoreElements(); ) {
+        for (Enumeration<?> e = this.settings.propertyNames(); e.hasMoreElements(); ) {
             String key = (String) e.nextElement();
             if (!key.startsWith("object.")) continue;
             String value = this.settings.getProperty(key);
@@ -594,7 +597,7 @@ public class ExportPool {
 
         int attachmentCount = 0;
         File[] files = objectDir.listFiles();
-        if (files!=null && ArrayUtils.isNotEmpty(files)) {
+        if (files != null && ArrayUtils.isNotEmpty(files)) {
             for (File f : files) {
                 String n = f.getName();
                 if (n.startsWith("attachment.") && n.endsWith(".xml"))
@@ -635,7 +638,7 @@ public class ExportPool {
 
         int attachmentCount = 0;
         File[] files = objectDir.listFiles();
-        if (files!=null && ArrayUtils.isNotEmpty(files)) {
+        if (files != null && ArrayUtils.isNotEmpty(files)) {
             for (File f : files) {
                 String n = f.getName();
                 if (n.startsWith("attachment.") && n.endsWith(".xml"))
@@ -668,7 +671,7 @@ public class ExportPool {
 
         int attachmentCount = 0;
         File[] files = objectDir.listFiles();
-        if (files!=null && ArrayUtils.isNotEmpty(files)) {
+        if (files != null && ArrayUtils.isNotEmpty(files)) {
             for (File f : files) {
                 String n = f.getName();
                 if (n.startsWith("attachment.") && n.endsWith(".xml"))

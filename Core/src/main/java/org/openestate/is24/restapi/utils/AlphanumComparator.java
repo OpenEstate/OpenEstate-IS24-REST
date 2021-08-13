@@ -15,7 +15,6 @@
  */
 package org.openestate.is24.restapi.utils;
 
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.util.Comparator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +24,7 @@ import org.slf4j.LoggerFactory;
  * Andre Bogus, and David Koelle
  * <p>
  * To convert to use Templates (Java 1.5+):
- * - Change "implements Comparator" to "implements Comparator<String>"
+ * - Change "implements Comparator" to "implements Comparator&lt;String&gt;"
  * - Change "compare(Object o1, Object o2)" to "compare(String s1, String s2)"
  * - Remove the type checking and casting in compare().
  * <p>
@@ -33,21 +32,18 @@ import org.slf4j.LoggerFactory;
  * Use the static "sort" method from the java.util.Collections class:
  * Collections.sort(your list, new AlphanumComparator());
  */
-@SuppressFBWarnings(
-        value = "SE_COMPARATOR_SHOULD_BE_SERIALIZABLE",
-        justification = "Serializable is not required for this class.")
 public class AlphanumComparator implements Comparator<String> {
     @SuppressWarnings("unused")
     private final static Logger LOGGER = LoggerFactory.getLogger(AlphanumComparator.class);
 
-    private final boolean isDigit(char ch) {
+    private boolean isDigit(char ch) {
         return ch >= 48 && ch <= 57;
     }
 
     /**
      * Length of string is passed in for improved efficiency (only need to calculate it once)
      **/
-    private final String getChunk(String s, int slength, int marker) {
+    private String getChunk(String s, int slength, int marker) {
         StringBuilder chunk = new StringBuilder();
         char c = s.charAt(marker);
         chunk.append(c);
@@ -90,7 +86,7 @@ public class AlphanumComparator implements Comparator<String> {
             thatMarker += thatChunk.length();
 
             // If both chunks contain numeric characters, sort them numerically
-            int result = 0;
+            int result;
             if (isDigit(thisChunk.charAt(0)) && isDigit(thatChunk.charAt(0))) {
                 // Simple chunk comparison by length.
                 int thisChunkLength = thisChunk.length();

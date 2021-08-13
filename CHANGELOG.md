@@ -4,7 +4,15 @@ Changelog for OpenEstate-IS24-REST
 0.6-SNAPSHOT (not released yet)
 -------------------------------
 
-...
+-   Compile for Java 8.
+-   Provide JAXB as dependency for easier use in Java 9 and beyond.
+-   Updated Apache HttpClient to version 4.5. Artifacts `OpenEstate-IS24-REST-HC42`, `OpenEstate-IS24-REST-HC43` were removed and replaced with `OpenEstate-IS24-REST-HC4`.
+-   Updated `commons-codec` library to version 1.15.
+-   Updated `commons-io` library to version 2.11.0.
+-   Updated `commons-lang` library to version 3.12.0.
+-   Updated `commons-text` library to version 1.9.
+-   Updated `oauth.signpost` library to version 2.1.1.
+-   Regenerated JAXB classes against the latest XSD schemas from IS24 with JAXB 2.3.
 
 
 0.5 (08 Dec 2018)

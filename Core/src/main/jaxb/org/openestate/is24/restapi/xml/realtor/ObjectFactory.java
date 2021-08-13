@@ -42,8 +42,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Realtor }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Realtor }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Realtor }{@code >}
      */
     @XmlElementDecl(namespace = "http://rest.immobilienscout24.de/schema/offer/realtor/1.0", name = "realtor")
     public JAXBElement<Realtor> createRealtor(Realtor value) {
