@@ -110,7 +110,7 @@ It is recommended to use this library with JDK 11 as it should work out of the b
 > 
 > See the [endorsed directory mechanism](http://docs.oracle.com/javase/6/docs/technotes/guides/standards/) for more details.
 
-All provided dependencies should work with JDK 8. If compatibility problems occur, you might switch to an earlier version.
+All provided dependencies should work with JDK 8. If compatibility problems occur, you might replace them with an earlier version.
 
 
 Limitations
