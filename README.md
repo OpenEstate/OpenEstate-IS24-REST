@@ -88,7 +88,7 @@ Dependencies
 -   [Jakarta XML Binding 2.3.3](https://projects.eclipse.org/projects/ee4j.jaxb)
 -   [jaxb2-basics-runtime 0.12.0](https://github.com/highsource/jaxb2-basics)
 -   [oauth-signpost 2.1.1](https://github.com/mttkay/signpost)
--   [SLF4J 1.7.25](https://www.slf4j.org/)
+-   [SLF4J 1.7.30](https://www.slf4j.org/)
 -   [Lorem 2.1](https://github.com/mdeanda/lorem) (only required by [`RandomRealEstateFactory.java`](Core/src/main/java/org/openestate/is24/restapi/utils/RandomRealEstateFactory.java))
 -   [Apache HttpClient 4.5](https://hc.apache.org/httpcomponents-client-4.5.x/) (optional) with further dependencies:
     -   [commons-logging 1.2](https://commons.apache.org/proper/commons-logging/)

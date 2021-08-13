@@ -12,6 +12,7 @@ Changelog for OpenEstate-IS24-REST
 -   Updated `commons-lang` library to version 3.12.0.
 -   Updated `commons-text` library to version 1.9.
 -   Updated `oauth.signpost` library to version 2.1.1.
+-   Updated `slf4j` library to version 1.7.30.
 -   Regenerated JAXB classes against the latest XSD schemas from IS24 with JAXB 2.3.
 
 
