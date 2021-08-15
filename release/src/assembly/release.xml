@@ -83,7 +83,7 @@
       <outputDirectory>docs/javadoc</outputDirectory>
     </fileSet>
     <fileSet>
-      <directory>${project.parent.basedir}/Core/src/main/xsd</directory>
+      <directory>${project.parent.basedir}/Core/specs</directory>
       <outputDirectory>docs/specs</outputDirectory>
     </fileSet>
     <fileSet>
