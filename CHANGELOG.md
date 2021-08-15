@@ -1,8 +1,8 @@
 Changelog for OpenEstate-IS24-REST
 ==================================
 
-0.6-SNAPSHOT (not released yet)
--------------------------------
+0.6 (15 Aug 2021)
+-----------------
 
 -   Compile for Java 8.
 -   Provide JAXB as dependency for easier use in Java 9 and beyond.
