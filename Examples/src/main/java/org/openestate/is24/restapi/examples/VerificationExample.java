@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2018 OpenEstate.org.
+ * Copyright 2014-2021 OpenEstate.org.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,7 +38,7 @@ public class VerificationExample {
     private final static String WEBSERVICE_URL = AbstractClient.LIVE_API;
     private final static String CONSUMER_KEY = "my consumer key";
     private final static String CONSUMER_SECRET = "my consumer secret";
-    private final static String CALLBACK_URL = "http://mywebsite.com/is24-callback.php";
+    private final static String CALLBACK_URL = "https://mywebsite.com/is24-callback.php";
 
     /**
      * Main function.

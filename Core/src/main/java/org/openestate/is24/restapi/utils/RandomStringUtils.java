@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2018 OpenEstate.org.
+ * Copyright 2014-2021 OpenEstate.org.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,22 +30,16 @@ import org.slf4j.LoggerFactory;
 public class RandomStringUtils {
     @SuppressWarnings("unused")
     private final static Logger LOGGER = LoggerFactory.getLogger(RandomStringUtils.class);
-    private final static CharacterPredicate NUMBERS = new CharacterPredicate() {
-        @Override
-        public boolean test(int codePoint) {
-            // Accept code point from 0x30 to 0x39,
-            // which represents a decimal digit in Unicode.
-            return codePoint >= 0x30 && codePoint <= 0x39;
-        }
+    private final static CharacterPredicate NUMBERS = codePoint -> {
+        // Accept code point from 0x30 to 0x39,
+        // which represents a decimal digit in Unicode.
+        return codePoint >= 0x30 && codePoint <= 0x39;
     };
-    private final static CharacterPredicate LETTERS = new CharacterPredicate() {
-        @Override
-        public boolean test(int codePoint) {
-            // Accept code point from 0x41 to 0x5a or 0x61 to 0x7a,
-            // which represents latin-1 characters in Unicode.
-            return (codePoint >= 0x41 && codePoint <= 0x5a)
-                    || (codePoint >= 0x61 && codePoint <= 0x7a);
-        }
+    private final static CharacterPredicate LETTERS = codePoint -> {
+        // Accept code point from 0x41 to 0x5a or 0x61 to 0x7a,
+        // which represents latin-1 characters in Unicode.
+        return (codePoint >= 0x41 && codePoint <= 0x5a)
+                || (codePoint >= 0x61 && codePoint <= 0x7a);
     };
 
     private RandomStringUtils() {

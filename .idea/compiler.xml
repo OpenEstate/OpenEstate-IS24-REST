@@ -6,11 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="OpenEstate-IS24-REST-Core" />
         <module name="OpenEstate-IS24-REST-Examples" />
-        <module name="OpenEstate-IS24-REST-HC42" />
-        <module name="OpenEstate-IS24-REST-HC43" />
+        <module name="OpenEstate-IS24-REST-HC4" />
         <module name="OpenEstate-IS24-REST-WebApp" />
+        <module name="OpenEstate-IS24-REST-Core" />
       </profile>
     </annotationProcessing>
   </component>

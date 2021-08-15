@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2018 OpenEstate.org.
+ * Copyright 2014-2021 OpenEstate.org.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package org.openestate.is24.restapi.examples;
 
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.openestate.is24.restapi.AbstractClient;
 import org.openestate.is24.restapi.DefaultClient;
 import org.slf4j.Logger;
@@ -27,7 +26,6 @@ import org.slf4j.LoggerFactory;
  *
  * @author Andreas Rudolph
  */
-@SuppressFBWarnings
 public class DefaultClientExample {
     @SuppressWarnings("unused")
     private final static Logger LOGGER = LoggerFactory.getLogger(DefaultClientExample.class);

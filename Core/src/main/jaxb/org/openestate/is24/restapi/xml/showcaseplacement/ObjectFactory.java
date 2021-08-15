@@ -51,8 +51,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Showcaseplacements }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Showcaseplacements }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Showcaseplacements }{@code >}
      */
     @XmlElementDecl(namespace = "http://rest.immobilienscout24.de/schema/offer/showcaseplacement/1.0", name = "showcaseplacements")
     public JAXBElement<Showcaseplacements> createShowcaseplacements(Showcaseplacements value) {
@@ -60,8 +64,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Showcaseplacement }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Showcaseplacement }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link Showcaseplacement }{@code >}
      */
     @XmlElementDecl(namespace = "http://rest.immobilienscout24.de/schema/offer/showcaseplacement/1.0", name = "showcaseplacement")
     public JAXBElement<Showcaseplacement> createShowcaseplacement(Showcaseplacement value) {

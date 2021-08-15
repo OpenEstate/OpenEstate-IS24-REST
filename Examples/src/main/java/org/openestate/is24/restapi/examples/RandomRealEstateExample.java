@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2018 OpenEstate.org.
+ * Copyright 2014-2021 OpenEstate.org.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import javax.xml.bind.JAXBException;
 import org.openestate.is24.restapi.utils.RandomRealEstateFactory;
 import org.openestate.is24.restapi.utils.XmlUtils;
@@ -43,7 +44,7 @@ public class RandomRealEstateExample {
     public static void main(String[] args) {
         try {
             final RandomRealEstateFactory factory = new RandomRealEstateFactory();
-            final Charset charset = Charset.forName("UTF-8");
+            final Charset charset = StandardCharsets.UTF_8;
             for (RandomRealEstateFactory.Type type : RandomRealEstateFactory.Type.values()) {
                 System.out.println("----------------------------------------");
                 System.out.println("example for " + type + ":");

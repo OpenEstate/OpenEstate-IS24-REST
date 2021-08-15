@@ -179,6 +179,14 @@ import org.openestate.is24.restapi.xml.Adapter4;
  *             &lt;/restriction&gt;
  *           &lt;/simpleType&gt;
  *         &lt;/element&gt;
+ *         &lt;element name="secondaryEmail" type="{http://rest.immobilienscout24.de/schema/common/1.0}Email" minOccurs="0"/&gt;
+ *         &lt;element name="clickOutUrl" minOccurs="0"&gt;
+ *           &lt;simpleType&gt;
+ *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyURI"&gt;
+ *               &lt;maxLength value="300"/&gt;
+ *             &lt;/restriction&gt;
+ *           &lt;/simpleType&gt;
+ *         &lt;/element&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -212,89 +220,98 @@ import org.openestate.is24.restapi.xml.Adapter4;
     "company",
     "homepageUrl",
     "portraitUrl",
-    "position"
+    "position",
+    "secondaryEmail",
+    "clickOutUrl"
 })
 @XmlSeeAlso({
     MasterDataContactDetailsType.class,
     ContactDetails.class
 })
-@Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+@Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
 public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equals2, ToString2
 {
 
     @XmlJavaTypeAdapter(Adapter5 .class)
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     protected String email;
     @XmlSchemaType(name = "string")
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     protected SalutationType salutation;
     @XmlJavaTypeAdapter(Adapter40 .class)
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     protected String firstname;
     @XmlJavaTypeAdapter(Adapter41 .class)
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     protected String lastname;
     @XmlJavaTypeAdapter(Adapter42 .class)
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     protected String faxNumberCountryCode;
     @XmlJavaTypeAdapter(Adapter43 .class)
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     protected String faxNumberAreaCode;
     @XmlJavaTypeAdapter(Adapter44 .class)
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     protected String faxNumberSubscriber;
     @XmlJavaTypeAdapter(Adapter45 .class)
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     protected String faxNumber;
     @XmlJavaTypeAdapter(Adapter46 .class)
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     protected String phoneNumberCountryCode;
     @XmlJavaTypeAdapter(Adapter47 .class)
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     protected String phoneNumberAreaCode;
     @XmlJavaTypeAdapter(Adapter48 .class)
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     protected String phoneNumberSubscriber;
     @XmlJavaTypeAdapter(Adapter49 .class)
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     protected String phoneNumber;
     @XmlJavaTypeAdapter(Adapter50 .class)
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     protected String cellPhoneNumberCountryCode;
     @XmlJavaTypeAdapter(Adapter51 .class)
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     protected String cellPhoneNumberAreaCode;
     @XmlJavaTypeAdapter(Adapter52 .class)
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     protected String cellPhoneNumberSubscriber;
     @XmlJavaTypeAdapter(Adapter53 .class)
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     protected String cellPhoneNumber;
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     protected Address address;
     @XmlSchemaType(name = "string")
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     protected CountryCode countryCode;
     @XmlJavaTypeAdapter(Adapter54 .class)
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     protected String title;
     @XmlJavaTypeAdapter(Adapter55 .class)
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     protected String additionName;
     @XmlJavaTypeAdapter(Adapter56 .class)
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     protected String company;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter4 .class)
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     protected URI homepageUrl;
     @XmlElement(type = String.class)
     @XmlJavaTypeAdapter(Adapter4 .class)
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     protected URI portraitUrl;
     @XmlJavaTypeAdapter(Adapter57 .class)
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     protected String position;
+    @XmlJavaTypeAdapter(Adapter5 .class)
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
+    protected String secondaryEmail;
+    @XmlElement(type = String.class)
+    @XmlJavaTypeAdapter(Adapter4 .class)
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
+    protected URI clickOutUrl;
 
     /**
      * Gets the value of the email property.
@@ -304,7 +321,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public String getEmail() {
         return email;
     }
@@ -317,7 +334,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public void setEmail(String value) {
         this.email = value;
     }
@@ -330,7 +347,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link SalutationType }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public SalutationType getSalutation() {
         return salutation;
     }
@@ -343,7 +360,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link SalutationType }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public void setSalutation(SalutationType value) {
         this.salutation = value;
     }
@@ -356,7 +373,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public String getFirstname() {
         return firstname;
     }
@@ -369,7 +386,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public void setFirstname(String value) {
         this.firstname = value;
     }
@@ -382,7 +399,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public String getLastname() {
         return lastname;
     }
@@ -395,7 +412,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public void setLastname(String value) {
         this.lastname = value;
     }
@@ -408,7 +425,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public String getFaxNumberCountryCode() {
         return faxNumberCountryCode;
     }
@@ -421,7 +438,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public void setFaxNumberCountryCode(String value) {
         this.faxNumberCountryCode = value;
     }
@@ -434,7 +451,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public String getFaxNumberAreaCode() {
         return faxNumberAreaCode;
     }
@@ -447,7 +464,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public void setFaxNumberAreaCode(String value) {
         this.faxNumberAreaCode = value;
     }
@@ -460,7 +477,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public String getFaxNumberSubscriber() {
         return faxNumberSubscriber;
     }
@@ -473,7 +490,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public void setFaxNumberSubscriber(String value) {
         this.faxNumberSubscriber = value;
     }
@@ -486,7 +503,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public String getFaxNumber() {
         return faxNumber;
     }
@@ -499,7 +516,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public void setFaxNumber(String value) {
         this.faxNumber = value;
     }
@@ -512,7 +529,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public String getPhoneNumberCountryCode() {
         return phoneNumberCountryCode;
     }
@@ -525,7 +542,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public void setPhoneNumberCountryCode(String value) {
         this.phoneNumberCountryCode = value;
     }
@@ -538,7 +555,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public String getPhoneNumberAreaCode() {
         return phoneNumberAreaCode;
     }
@@ -551,7 +568,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public void setPhoneNumberAreaCode(String value) {
         this.phoneNumberAreaCode = value;
     }
@@ -564,7 +581,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public String getPhoneNumberSubscriber() {
         return phoneNumberSubscriber;
     }
@@ -577,7 +594,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public void setPhoneNumberSubscriber(String value) {
         this.phoneNumberSubscriber = value;
     }
@@ -590,7 +607,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -603,7 +620,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public void setPhoneNumber(String value) {
         this.phoneNumber = value;
     }
@@ -616,7 +633,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public String getCellPhoneNumberCountryCode() {
         return cellPhoneNumberCountryCode;
     }
@@ -629,7 +646,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public void setCellPhoneNumberCountryCode(String value) {
         this.cellPhoneNumberCountryCode = value;
     }
@@ -642,7 +659,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public String getCellPhoneNumberAreaCode() {
         return cellPhoneNumberAreaCode;
     }
@@ -655,7 +672,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public void setCellPhoneNumberAreaCode(String value) {
         this.cellPhoneNumberAreaCode = value;
     }
@@ -668,7 +685,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public String getCellPhoneNumberSubscriber() {
         return cellPhoneNumberSubscriber;
     }
@@ -681,7 +698,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public void setCellPhoneNumberSubscriber(String value) {
         this.cellPhoneNumberSubscriber = value;
     }
@@ -694,7 +711,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public String getCellPhoneNumber() {
         return cellPhoneNumber;
     }
@@ -707,7 +724,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public void setCellPhoneNumber(String value) {
         this.cellPhoneNumber = value;
     }
@@ -720,7 +737,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link Address }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public Address getAddress() {
         return address;
     }
@@ -733,7 +750,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link Address }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public void setAddress(Address value) {
         this.address = value;
     }
@@ -746,7 +763,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link CountryCode }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public CountryCode getCountryCode() {
         return countryCode;
     }
@@ -759,7 +776,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link CountryCode }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public void setCountryCode(CountryCode value) {
         this.countryCode = value;
     }
@@ -772,7 +789,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public String getTitle() {
         return title;
     }
@@ -785,7 +802,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public void setTitle(String value) {
         this.title = value;
     }
@@ -798,7 +815,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public String getAdditionName() {
         return additionName;
     }
@@ -811,7 +828,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public void setAdditionName(String value) {
         this.additionName = value;
     }
@@ -824,7 +841,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public String getCompany() {
         return company;
     }
@@ -837,7 +854,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public void setCompany(String value) {
         this.company = value;
     }
@@ -850,7 +867,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public URI getHomepageUrl() {
         return homepageUrl;
     }
@@ -863,7 +880,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public void setHomepageUrl(URI value) {
         this.homepageUrl = value;
     }
@@ -876,7 +893,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public URI getPortraitUrl() {
         return portraitUrl;
     }
@@ -889,7 +906,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public void setPortraitUrl(URI value) {
         this.portraitUrl = value;
     }
@@ -902,7 +919,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public String getPosition() {
         return position;
     }
@@ -915,20 +932,72 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
      *     {@link String }
      *     
      */
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public void setPosition(String value) {
         this.position = value;
     }
 
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    /**
+     * Gets the value of the secondaryEmail property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
+    public String getSecondaryEmail() {
+        return secondaryEmail;
+    }
+
+    /**
+     * Sets the value of the secondaryEmail property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
+    public void setSecondaryEmail(String value) {
+        this.secondaryEmail = value;
+    }
+
+    /**
+     * Gets the value of the clickOutUrl property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
+    public URI getClickOutUrl() {
+        return clickOutUrl;
+    }
+
+    /**
+     * Sets the value of the clickOutUrl property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
+    public void setClickOutUrl(URI value) {
+        this.clickOutUrl = value;
+    }
+
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public String toString() {
-        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE;
+        final ToStringStrategy2 strategy = JAXBToStringStrategy.INSTANCE2;
         final StringBuilder buffer = new StringBuilder();
         append(null, buffer, strategy);
         return buffer.toString();
     }
 
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public StringBuilder append(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         strategy.appendStart(locator, this, buffer);
         appendFields(locator, buffer, strategy);
@@ -936,7 +1005,7 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
         return buffer;
     }
 
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public StringBuilder appendFields(ObjectLocator locator, StringBuilder buffer, ToStringStrategy2 strategy) {
         {
             String theEmail;
@@ -1058,21 +1127,31 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
             thePosition = this.getPosition();
             strategy.appendField(locator, this, "position", buffer, thePosition, (this.position!= null));
         }
+        {
+            String theSecondaryEmail;
+            theSecondaryEmail = this.getSecondaryEmail();
+            strategy.appendField(locator, this, "secondaryEmail", buffer, theSecondaryEmail, (this.secondaryEmail!= null));
+        }
+        {
+            URI theClickOutUrl;
+            theClickOutUrl = this.getClickOutUrl();
+            strategy.appendField(locator, this, "clickOutUrl", buffer, theClickOutUrl, (this.clickOutUrl!= null));
+        }
         return buffer;
     }
 
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public Object clone() {
         return copyTo(createNewInstance());
     }
 
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public Object copyTo(Object target) {
-        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE;
+        final CopyStrategy2 strategy = JAXBCopyStrategy.INSTANCE2;
         return copyTo(null, target, strategy);
     }
 
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public Object copyTo(ObjectLocator locator, Object target, CopyStrategy2 strategy) {
         final Object draftCopy = ((target == null)?createNewInstance():target);
         if (draftCopy instanceof BaseContactDetails) {
@@ -1389,16 +1468,42 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
                     }
                 }
             }
+            {
+                Boolean secondaryEmailShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.secondaryEmail!= null));
+                if (secondaryEmailShouldBeCopiedAndSet == Boolean.TRUE) {
+                    String sourceSecondaryEmail;
+                    sourceSecondaryEmail = this.getSecondaryEmail();
+                    String copySecondaryEmail = ((String) strategy.copy(LocatorUtils.property(locator, "secondaryEmail", sourceSecondaryEmail), sourceSecondaryEmail, (this.secondaryEmail!= null)));
+                    copy.setSecondaryEmail(copySecondaryEmail);
+                } else {
+                    if (secondaryEmailShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.secondaryEmail = null;
+                    }
+                }
+            }
+            {
+                Boolean clickOutUrlShouldBeCopiedAndSet = strategy.shouldBeCopiedAndSet(locator, (this.clickOutUrl!= null));
+                if (clickOutUrlShouldBeCopiedAndSet == Boolean.TRUE) {
+                    URI sourceClickOutUrl;
+                    sourceClickOutUrl = this.getClickOutUrl();
+                    URI copyClickOutUrl = ((URI) strategy.copy(LocatorUtils.property(locator, "clickOutUrl", sourceClickOutUrl), sourceClickOutUrl, (this.clickOutUrl!= null)));
+                    copy.setClickOutUrl(copyClickOutUrl);
+                } else {
+                    if (clickOutUrlShouldBeCopiedAndSet == Boolean.FALSE) {
+                        copy.clickOutUrl = null;
+                    }
+                }
+            }
         }
         return draftCopy;
     }
 
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public Object createNewInstance() {
         return new BaseContactDetails();
     }
 
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public boolean equals(ObjectLocator thisLocator, ObjectLocator thatLocator, Object object, EqualsStrategy2 strategy) {
         if ((object == null)||(this.getClass()!= object.getClass())) {
             return false;
@@ -1623,12 +1728,30 @@ public class BaseContactDetails implements Serializable, Cloneable, CopyTo2, Equ
                 return false;
             }
         }
+        {
+            String lhsSecondaryEmail;
+            lhsSecondaryEmail = this.getSecondaryEmail();
+            String rhsSecondaryEmail;
+            rhsSecondaryEmail = that.getSecondaryEmail();
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "secondaryEmail", lhsSecondaryEmail), LocatorUtils.property(thatLocator, "secondaryEmail", rhsSecondaryEmail), lhsSecondaryEmail, rhsSecondaryEmail, (this.secondaryEmail!= null), (that.secondaryEmail!= null))) {
+                return false;
+            }
+        }
+        {
+            URI lhsClickOutUrl;
+            lhsClickOutUrl = this.getClickOutUrl();
+            URI rhsClickOutUrl;
+            rhsClickOutUrl = that.getClickOutUrl();
+            if (!strategy.equals(LocatorUtils.property(thisLocator, "clickOutUrl", lhsClickOutUrl), LocatorUtils.property(thatLocator, "clickOutUrl", rhsClickOutUrl), lhsClickOutUrl, rhsClickOutUrl, (this.clickOutUrl!= null), (that.clickOutUrl!= null))) {
+                return false;
+            }
+        }
         return true;
     }
 
-    @Generated(value = "com.sun.tools.xjc.Driver", date = "2018-10-12T04:04:29+02:00", comments = "JAXB RI v2.2.11")
+    @Generated(value = "com.sun.tools.xjc.Driver", date = "2021-08-07T09:44:49+02:00", comments = "JAXB RI v2.3.0")
     public boolean equals(Object object) {
-        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE;
+        final EqualsStrategy2 strategy = JAXBEqualsStrategy.INSTANCE2;
         return equals(null, null, object, strategy);
     }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2018 OpenEstate.org.
+ * Copyright 2014-2021 OpenEstate.org.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -66,6 +66,7 @@ public class XmlReadingExample {
             // read XML at the provided location into a JAXB object
             RealEstate object;
             try {
+                @SuppressWarnings("unchecked")
                 JAXBElement<RealEstate> xml = (JAXBElement<RealEstate>)
                         unmarshaller.unmarshal(file);
                 object = xml.getValue();

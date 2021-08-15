@@ -42,8 +42,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link VideoUploadTicket }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link VideoUploadTicket }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link VideoUploadTicket }{@code >}
      */
     @XmlElementDecl(namespace = "http://rest.immobilienscout24.de/schema/videoupload/1.0", name = "videoUploadTicket")
     public JAXBElement<VideoUploadTicket> createVideoUploadTicket(VideoUploadTicket value) {

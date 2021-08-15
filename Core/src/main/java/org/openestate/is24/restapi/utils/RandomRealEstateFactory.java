@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2018 OpenEstate.org.
+ * Copyright 2014-2021 OpenEstate.org.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -234,7 +234,7 @@ public class RandomRealEstateFactory {
     public RealEstate createRandomObject(Type type) {
         if (type == null) type = getRandomObjectType();
         RealEstate realEstate = type.create();
-        init(realEstate);
+        if (realEstate!=null) init(realEstate);
         return realEstate;
     }
 

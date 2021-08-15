@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2018 OpenEstate.org.
+ * Copyright 2014-2021 OpenEstate.org.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package org.openestate.is24.restapi.examples;
 
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -42,9 +41,6 @@ import org.slf4j.LoggerFactory;
  * @see <a href="http://api.immobilienscout24.de/useful/tutorials-sdks-plugins/tutorial-java-signpost.html">Java-Signpost Tutorial</a>
  * @since 0.1
  */
-@SuppressFBWarnings(
-        value = {"NP_DEREFERENCE_OF_READLINE_VALUE", "DM_DEFAULT_ENCODING"},
-        justification = "Keep example code untouched.")
 public class IS24OauthExample {
     @SuppressWarnings("unused")
     private final static Logger LOGGER = LoggerFactory.getLogger(IS24OauthExample.class);
@@ -54,21 +50,21 @@ public class IS24OauthExample {
      *
      * @param args command line arguments
      */
+    @SuppressWarnings("SpellCheckingInspection")
     public static void main(String[] args) throws Exception {
 
         OAuthConsumer consumer =
                 new DefaultOAuthConsumer("testzugang-import-api-maklermanagerKey", "VXyCmVpjR4GQVCVBf33T");
 
         OAuthProvider provider =
-                new DefaultOAuthProvider("http://sandbox.immobilienscout24.de/restapi/security/oauth/request_token",
-                        "http://sandbox.immobilienscout24.de/restapi/security/oauth/access_token",
-                        "http://sandbox.immobilienscout24.de/restapi/security/oauth/confirm_access");
+                new DefaultOAuthProvider("https://sandbox.immobilienscout24.de/restapi/security/oauth/request_token",
+                        "https://sandbox.immobilienscout24.de/restapi/security/oauth/access_token",
+                        "https://sandbox.immobilienscout24.de/restapi/security/oauth/confirm_access");
 
 
         LOGGER.info("Fetching request token...");
 
-        String authUrl =
-                provider.retrieveRequestToken(consumer, "http://www.google.de");
+        String authUrl = provider.retrieveRequestToken(consumer, "https://www.google.de");
 
         String requestToken = consumer.getToken();
         String requestTokenSecret = consumer.getTokenSecret();
@@ -114,8 +110,7 @@ public class IS24OauthExample {
 
         LOGGER.info("#################################################################################################");
 
-        URL url =
-                new URL("http://sandbox.immobilienscout24.de/restapi/api/search/v1.0/searcher/abc");
+        URL url = new URL("https://sandbox.immobilienscout24.de/restapi/api/search/v1.0/searcher/abc");
 
         HttpURLConnection apiRequest = (HttpURLConnection) url.openConnection();
 

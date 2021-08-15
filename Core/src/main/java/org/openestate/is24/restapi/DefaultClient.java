@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2018 OpenEstate.org.
+ * Copyright 2014-2021 OpenEstate.org.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -101,8 +101,7 @@ public class DefaultClient extends AbstractClient {
         if (method == null) method = RequestMethod.POST;
         if (!RequestMethod.POST.equals(method) && !RequestMethod.PUT.equals(method))
             throw new IllegalArgumentException("Invalid request method!");
-        xml = (RequestMethod.POST.equals(method) || RequestMethod.PUT.equals(method)) ?
-                StringUtils.trimToNull(xml) : null;
+        xml = StringUtils.trimToNull(xml);
 
         final String twoHyphens = "--";
         final String lineEnd = "\r\n";
@@ -224,7 +223,7 @@ public class DefaultClient extends AbstractClient {
                         output.writeBytes(twoHyphens + boundary + lineEnd);
                         output.writeBytes("Content-Type: application/octet-stream; name=\"" + fileName + "\"" + lineEnd);
                         output.writeBytes("Content-Transfer-Encoding: binary" + lineEnd);
-                        output.writeBytes("Content-Length: " + String.valueOf(fileSize) + lineEnd);
+                        output.writeBytes("Content-Length: " + fileSize + lineEnd);
                         output.writeBytes("Content-Disposition: form-data; name=\"videofile\"; filename=\"" + fileName + "\"" + lineEnd);
                         output.writeBytes(lineEnd);
 
